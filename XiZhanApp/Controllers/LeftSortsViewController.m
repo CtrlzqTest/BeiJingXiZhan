@@ -12,6 +12,7 @@
 #import "LeftSlideViewController.h"
 #import "LoginViewController.h"
 #import "SuggestionsViewController.h"
+#import "MyInformationsViewController.h"
 
 @interface LeftSortsViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -87,7 +88,12 @@
             [tempAppDelegate.mainNavi pushViewController:vc animated:NO];
         }
             break;
-            
+        case 4:
+        {
+            MyInformationsViewController *vc = [[MyInformationsViewController alloc]init];
+            [tempAppDelegate.mainNavi pushViewController:vc animated:NO];
+        }
+            break;
         default:
             break;
     }

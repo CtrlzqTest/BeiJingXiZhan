@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		74AE81AE3B1D14B93071DF28 /* libPods-XiZhanApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F71D4EA7BC10190962AECA /* libPods-XiZhanApp.a */; };
+		F0614DD11CE1C4180036CC3E /* MyInformationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0614DD01CE1C4180036CC3E /* MyInformationsViewController.m */; };
 		F0E396AA1CE1858700D4137E /* UIView+ZQExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E396A91CE1858700D4137E /* UIView+ZQExtention.m */; };
 		F0E396B01CE186D200D4137E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E396AF1CE186D200D4137E /* RegisterViewController.m */; };
 		F0E396BB1CE1B4FA00D4137E /* MainCollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E396B91CE1B4FA00D4137E /* MainCollCell.m */; };
@@ -41,6 +42,8 @@
 		D3F71D4EA7BC10190962AECA /* libPods-XiZhanApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XiZhanApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9077ED3267EC1B33DC8260A /* Pods-XiZhanApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiZhanApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XiZhanApp/Pods-XiZhanApp.debug.xcconfig"; sourceTree = "<group>"; };
 		E7F252C107440856EF24F3AF /* Pods-XiZhanApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiZhanApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-XiZhanApp/Pods-XiZhanApp.release.xcconfig"; sourceTree = "<group>"; };
+		F0614DCF1CE1C4180036CC3E /* MyInformationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInformationsViewController.h; sourceTree = "<group>"; };
+		F0614DD01CE1C4180036CC3E /* MyInformationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInformationsViewController.m; sourceTree = "<group>"; };
 		F0E396A81CE1858700D4137E /* UIView+ZQExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZQExtention.h"; sourceTree = "<group>"; };
 		F0E396A91CE1858700D4137E /* UIView+ZQExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZQExtention.m"; sourceTree = "<group>"; };
 		F0E396AE1CE186D200D4137E /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -287,6 +290,8 @@
 				F0E396BE1CE1B9C300D4137E /* MianZeViewController.m */,
 				F0E396BF1CE1B9C300D4137E /* SuggestionsViewController.h */,
 				F0E396C01CE1B9C300D4137E /* SuggestionsViewController.m */,
+				F0614DCF1CE1C4180036CC3E /* MyInformationsViewController.h */,
+				F0614DD01CE1C4180036CC3E /* MyInformationsViewController.m */,
 			);
 			name = "MainViewControllers(首页)";
 			sourceTree = "<group>";
@@ -463,6 +468,7 @@
 				F0E396AA1CE1858700D4137E /* UIView+ZQExtention.m in Sources */,
 				F0E396C21CE1B9C300D4137E /* SuggestionsViewController.m in Sources */,
 				F0F37A091CE07B280047A469 /* BaseTabBarViewController.m in Sources */,
+				F0614DD11CE1C4180036CC3E /* MyInformationsViewController.m in Sources */,
 				F0E396CE1CE1BA5400D4137E /* UIViewController+AYCNavigationItem.m in Sources */,
 				F0E396B01CE186D200D4137E /* RegisterViewController.m in Sources */,
 				F0F379D61CE07AD90047A469 /* AppDelegate.m in Sources */,
