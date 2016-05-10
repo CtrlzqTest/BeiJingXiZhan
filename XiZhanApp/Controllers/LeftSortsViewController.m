@@ -12,6 +12,7 @@
 #import "LeftSlideViewController.h"
 #import "LoginViewController.h"
 #import "SuggestionsViewController.h"
+#import "MyInformationsViewController.h"
 
 @interface LeftSortsViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
