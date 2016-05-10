@@ -14,6 +14,8 @@
 		F0E396BC1CE1B4FA00D4137E /* MainCollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0E396BA1CE1B4FA00D4137E /* MainCollCell.xib */; };
 		F0E396C11CE1B9C300D4137E /* MianZeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E396BE1CE1B9C300D4137E /* MianZeViewController.m */; };
 		F0E396C21CE1B9C300D4137E /* SuggestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E396C01CE1B9C300D4137E /* SuggestionsViewController.m */; };
+		F0E396CD1CE1BA5400D4137E /* AYCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E396CA1CE1BA5400D4137E /* AYCButton.m */; };
+		F0E396CE1CE1BA5400D4137E /* UIViewController+AYCNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E396CC1CE1BA5400D4137E /* UIViewController+AYCNavigationItem.m */; };
 		F0F379D31CE07AD90047A469 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F379D21CE07AD90047A469 /* main.m */; };
 		F0F379D61CE07AD90047A469 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F379D51CE07AD90047A469 /* AppDelegate.m */; };
 		F0F379DC1CE07AD90047A469 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0F379DA1CE07AD90047A469 /* Main.storyboard */; };
@@ -50,6 +52,10 @@
 		F0E396BE1CE1B9C300D4137E /* MianZeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MianZeViewController.m; sourceTree = "<group>"; };
 		F0E396BF1CE1B9C300D4137E /* SuggestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestionsViewController.h; sourceTree = "<group>"; };
 		F0E396C01CE1B9C300D4137E /* SuggestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionsViewController.m; sourceTree = "<group>"; };
+		F0E396C91CE1BA5400D4137E /* AYCButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AYCButton.h; sourceTree = "<group>"; };
+		F0E396CA1CE1BA5400D4137E /* AYCButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AYCButton.m; sourceTree = "<group>"; };
+		F0E396CB1CE1BA5400D4137E /* UIViewController+AYCNavigationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AYCNavigationItem.h"; sourceTree = "<group>"; };
+		F0E396CC1CE1BA5400D4137E /* UIViewController+AYCNavigationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AYCNavigationItem.m"; sourceTree = "<group>"; };
 		F0F379CE1CE07AD90047A469 /* XiZhanApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiZhanApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0F379D21CE07AD90047A469 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F0F379D41CE07AD90047A469 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -106,16 +112,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F0B664BB1CE182CE0033C8CF /* UIView+AutoLayout */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "UIView+AutoLayout";
-			sourceTree = "<group>";
-		};
 		F0B664CA1CE191300033C8CF /* AcyButton */ = {
 			isa = PBXGroup;
 			children = (
+				F0E396C91CE1BA5400D4137E /* AYCButton.h */,
+				F0E396CA1CE1BA5400D4137E /* AYCButton.m */,
+				F0E396CB1CE1BA5400D4137E /* UIViewController+AYCNavigationItem.h */,
+				F0E396CC1CE1BA5400D4137E /* UIViewController+AYCNavigationItem.m */,
 			);
 			path = AcyButton;
 			sourceTree = "<group>";
@@ -260,7 +263,6 @@
 			isa = PBXGroup;
 			children = (
 				F0B664CA1CE191300033C8CF /* AcyButton */,
-				F0B664BB1CE182CE0033C8CF /* UIView+AutoLayout */,
 				F0F37A181CE088390047A469 /* LeftSlideViewController */,
 				F0F37A031CE07B280047A469 /* .a */,
 			);
@@ -453,6 +455,7 @@
 				F0E396C11CE1B9C300D4137E /* MianZeViewController.m in Sources */,
 				F0F37A141CE084BB0047A469 /* MainViewController.m in Sources */,
 				F0F37A081CE07B280047A469 /* BaseNaviViewController.m in Sources */,
+				F0E396CD1CE1BA5400D4137E /* AYCButton.m in Sources */,
 				F0F37A1E1CE088390047A469 /* UIView_extra.m in Sources */,
 				F0E396BB1CE1B4FA00D4137E /* MainCollCell.m in Sources */,
 				F0F37A1D1CE088390047A469 /* LeftSlideViewController.m in Sources */,
@@ -460,6 +463,7 @@
 				F0E396AA1CE1858700D4137E /* UIView+ZQExtention.m in Sources */,
 				F0E396C21CE1B9C300D4137E /* SuggestionsViewController.m in Sources */,
 				F0F37A091CE07B280047A469 /* BaseTabBarViewController.m in Sources */,
+				F0E396CE1CE1BA5400D4137E /* UIViewController+AYCNavigationItem.m in Sources */,
 				F0E396B01CE186D200D4137E /* RegisterViewController.m in Sources */,
 				F0F379D61CE07AD90047A469 /* AppDelegate.m in Sources */,
 				F0F379D31CE07AD90047A469 /* main.m in Sources */,
