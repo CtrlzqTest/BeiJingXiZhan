@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Base Navi View Controller-->
+        <scene sceneID="4af-rx-2jG">
+            <objects>
+                <navigationController storyboardIdentifier="baseNavigationVC" id="iKp-om-SgD" customClass="BaseNaviViewController" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Uuf-Do-N7E">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="HD0-fm-OPc" kind="relationship" relationship="rootViewController" id="OUx-9z-HbH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OJ7-z8-u5t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-650.5" y="234.5"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="sLi-It-JBc">
+            <objects>
+                <viewController id="HD0-fm-OPc" customClass="MainViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Etj-Cw-uaH"/>
+                        <viewControllerLayoutGuide type="bottom" id="TC9-5b-ban"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bdU-m3-xbG">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7eo-5i-TJD"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C5z-8q-ski" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-147.5" y="242.5"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="eiJ-WX-Y21">
+            <objects>
+                <viewController storyboardIdentifier="loginVC" id="WNN-Sf-Lu9" customClass="LoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="P0G-RC-XbP"/>
+                        <viewControllerLayoutGuide type="bottom" id="Q07-F6-uRp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1o8-KT-JGR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ink-nh-pSk">
+                                <rect key="frame" x="79" y="57" width="246" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YKH-3x-4wb">
+                                <rect key="frame" x="79" y="123" width="246" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="自动登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6D-Zt-HeU">
+                                <rect key="frame" x="170" y="177" width="69" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sSK-RP-0ny">
+                                <rect key="frame" x="257" y="172" width="51" height="31"/>
+                                <connections>
+                                    <action selector="autoLoginAction:" destination="WNN-Sf-Lu9" eventType="valueChanged" id="uya-RX-ULV"/>
+                                </connections>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3s7-BT-SVp">
+                                <rect key="frame" x="15" y="211" width="68" height="32"/>
+                                <inset key="imageEdgeInsets" minX="-3" minY="3" maxX="0.0" maxY="3"/>
+                                <state key="normal" title="同意" image="agreeUnSelect">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="agreeAction:" destination="WNN-Sf-Lu9" eventType="touchUpInside" id="5mf-zl-r7p"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CK1-W7-OJX">
+                                <rect key="frame" x="79" y="212" width="197" height="30"/>
+                                <state key="normal" title="《免责声明和隐私权条款》"/>
+                                <connections>
+                                    <action selector="impunityAction:" destination="WNN-Sf-Lu9" eventType="touchUpInside" id="bwZ-lh-3z2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="afx-ZG-7yQ"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="agreeBtn" destination="3s7-BT-SVp" id="90u-1W-BOL"/>
+                        <outlet property="autoLoginSwitch" destination="sSK-RP-0ny" id="9hk-gZ-QXZ"/>
+                        <outlet property="impunityBtn" destination="CK1-W7-OJX" id="6Hc-VJ-CaA"/>
+                        <outlet property="passWordLabel" destination="YKH-3x-4wb" id="e4f-Oo-kNA"/>
+                        <outlet property="userNameLabel" destination="ink-nh-pSk" id="yyn-gj-tFw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bfd-pt-eGU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="266.5" y="-696.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="agreeUnSelect" width="32" height="32"/>
+    </resources>
+</document>
