@@ -187,6 +187,7 @@
 			children = (
 				F0F37A1F1CE08BC80047A469 /* LeftSortsViewController.h */,
 				F0F37A201CE08BC80047A469 /* LeftSortsViewController.m */,
+				F0B664B71CE17D6E0033C8CF /* SuggestionsViewController（意见反馈） */,
 				F0F37A221CE093590047A469 /* LoginRegisterControllers(登录注册) */,
 				F0F37A111CE084330047A469 /* MainViewControllers(首页) */,
 			);
@@ -239,6 +240,8 @@
 		F0F37A021CE07B280047A469 /* Venders */ = {
 			isa = PBXGroup;
 			children = (
+				F0B664CA1CE191300033C8CF /* AcyButton */,
+				F0B664BB1CE182CE0033C8CF /* UIView+AutoLayout */,
 				F0F37A181CE088390047A469 /* LeftSlideViewController */,
 				F0F37A031CE07B280047A469 /* .a */,
 			);
@@ -420,11 +423,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0B664C01CE182CE0033C8CF /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
 				F0F37A0A1CE07B280047A469 /* BaseViewController.m in Sources */,
+				F0B664D01CE191300033C8CF /* UIViewController+AYCNavigationItem.m in Sources */,
 				F0F37A211CE08BC80047A469 /* LeftSortsViewController.m in Sources */,
 				F0F37A0E1CE07B280047A469 /* Utility.m in Sources */,
 				F0F37A0D1CE07B280047A469 /* User.m in Sources */,
 				F0F37A141CE084BB0047A469 /* MainViewController.m in Sources */,
+				F0B664BA1CE17E690033C8CF /* SuggestionsViewController.m in Sources */,
 				F0F37A081CE07B280047A469 /* BaseNaviViewController.m in Sources */,
 				F0F37A1E1CE088390047A469 /* UIView_extra.m in Sources */,
 				F0E396BB1CE1B4FA00D4137E /* MainCollCell.m in Sources */,
@@ -435,6 +441,9 @@
 				F0E396B01CE186D200D4137E /* RegisterViewController.m in Sources */,
 				F0F379D61CE07AD90047A469 /* AppDelegate.m in Sources */,
 				F0F379D31CE07AD90047A469 /* main.m in Sources */,
+				F0B664C11CE182CE0033C8CF /* UIView+SDAutoLayout.m in Sources */,
+				F0B664D31CE1AA9E0033C8CF /* MianZeViewController.m in Sources */,
+				F0B664CF1CE191300033C8CF /* AYCButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,7 @@
 #import "BaseNaviViewController.h"
 #import "LeftSlideViewController.h"
 #import "LoginViewController.h"
+#import "SuggestionsViewController.h"
 
 @interface LeftSortsViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -56,7 +57,7 @@
     } else if (indexPath.row == 1) {
         cell.textLabel.text = @"关于我们";
     } else if (indexPath.row == 2) {
-        cell.textLabel.text = @"版本跟新";
+        cell.textLabel.text = @"版本更新";
     } else if (indexPath.row == 3) {
         cell.textLabel.text = @"意见反馈";
     } else if (indexPath.row == 4) {
@@ -72,9 +73,24 @@
     [tempAppDelegate.leftSliderVC closeLeftView];
     
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    LoginViewController *vc = [storyBoard instantiateViewControllerWithIdentifier:@"loginVC"];
-    [tempAppDelegate.mainNavi pushViewController:vc animated:NO];
     
+    switch (indexPath.row) {
+        case 0:
+        {
+            LoginViewController *vc = [storyBoard instantiateViewControllerWithIdentifier:@"loginVC"];
+            [tempAppDelegate.mainNavi pushViewController:vc animated:NO];
+        }
+            break;
+            case 3:
+        {
+            SuggestionsViewController *vc = [[SuggestionsViewController alloc]init];
+            [tempAppDelegate.mainNavi pushViewController:vc animated:NO];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section

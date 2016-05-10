@@ -24,4 +24,10 @@
 #define ProportionWidth 1.0/375*KWidth
 #define ProportionHeight 1.0/667*KHeight
 
+// 按钮边框颜色
+#define MCRandomColor MCColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
+#define colorSpace CGColorSpaceCreateDeviceRGB()
+
+#define colorref CGColorCreate(colorSpace,(CGFloat[]){ 0.1f, 0.2275f, 0.6392f, 0.5f })
+
 #endif /* PrefixHeader_pch */
