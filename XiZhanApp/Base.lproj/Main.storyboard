@@ -55,29 +55,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ink-nh-pSk">
-                                <rect key="frame" x="79" y="57" width="246" height="30"/>
+                                <rect key="frame" x="79" y="139" width="246" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YKH-3x-4wb">
-                                <rect key="frame" x="79" y="123" width="246" height="30"/>
+                                <rect key="frame" x="79" y="205" width="246" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="自动登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6D-Zt-HeU">
-                                <rect key="frame" x="170" y="177" width="69" height="21"/>
+                                <rect key="frame" x="170" y="259" width="69" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sSK-RP-0ny">
-                                <rect key="frame" x="257" y="172" width="51" height="31"/>
+                                <rect key="frame" x="257" y="254" width="51" height="31"/>
                                 <connections>
                                     <action selector="autoLoginAction:" destination="WNN-Sf-Lu9" eventType="valueChanged" id="uya-RX-ULV"/>
                                 </connections>
                             </switch>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3s7-BT-SVp">
-                                <rect key="frame" x="15" y="211" width="68" height="32"/>
+                                <rect key="frame" x="15" y="293" width="68" height="32"/>
                                 <inset key="imageEdgeInsets" minX="-3" minY="3" maxX="0.0" maxY="3"/>
                                 <state key="normal" title="同意" image="agreeUnSelect">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -87,7 +87,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CK1-W7-OJX">
-                                <rect key="frame" x="79" y="212" width="197" height="30"/>
+                                <rect key="frame" x="79" y="294" width="197" height="30"/>
                                 <state key="normal" title="《免责声明和隐私权条款》"/>
                                 <connections>
                                     <action selector="impunityAction:" destination="WNN-Sf-Lu9" eventType="touchUpInside" id="bwZ-lh-3z2"/>
