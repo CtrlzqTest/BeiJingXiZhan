@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		74AE81AE3B1D14B93071DF28 /* libPods-XiZhanApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F71D4EA7BC10190962AECA /* libPods-XiZhanApp.a */; };
+		F0E396AA1CE1858700D4137E /* UIView+ZQExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E396A91CE1858700D4137E /* UIView+ZQExtention.m */; };
+		F0E396B01CE186D200D4137E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E396AF1CE186D200D4137E /* RegisterViewController.m */; };
+		F0E396BB1CE1B4FA00D4137E /* MainCollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E396B91CE1B4FA00D4137E /* MainCollCell.m */; };
+		F0E396BC1CE1B4FA00D4137E /* MainCollCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0E396BA1CE1B4FA00D4137E /* MainCollCell.xib */; };
 		F0F379D31CE07AD90047A469 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F379D21CE07AD90047A469 /* main.m */; };
 		F0F379D61CE07AD90047A469 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F379D51CE07AD90047A469 /* AppDelegate.m */; };
 		F0F379DC1CE07AD90047A469 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0F379DA1CE07AD90047A469 /* Main.storyboard */; };
@@ -33,6 +37,13 @@
 		D3F71D4EA7BC10190962AECA /* libPods-XiZhanApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XiZhanApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9077ED3267EC1B33DC8260A /* Pods-XiZhanApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiZhanApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XiZhanApp/Pods-XiZhanApp.debug.xcconfig"; sourceTree = "<group>"; };
 		E7F252C107440856EF24F3AF /* Pods-XiZhanApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiZhanApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-XiZhanApp/Pods-XiZhanApp.release.xcconfig"; sourceTree = "<group>"; };
+		F0E396A81CE1858700D4137E /* UIView+ZQExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZQExtention.h"; sourceTree = "<group>"; };
+		F0E396A91CE1858700D4137E /* UIView+ZQExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZQExtention.m"; sourceTree = "<group>"; };
+		F0E396AE1CE186D200D4137E /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
+		F0E396AF1CE186D200D4137E /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		F0E396B81CE1B4FA00D4137E /* MainCollCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainCollCell.h; sourceTree = "<group>"; };
+		F0E396B91CE1B4FA00D4137E /* MainCollCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainCollCell.m; sourceTree = "<group>"; };
+		F0E396BA1CE1B4FA00D4137E /* MainCollCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainCollCell.xib; sourceTree = "<group>"; };
 		F0F379CE1CE07AD90047A469 /* XiZhanApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiZhanApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0F379D21CE07AD90047A469 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F0F379D41CE07AD90047A469 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -87,6 +98,16 @@
 				D3F71D4EA7BC10190962AECA /* libPods-XiZhanApp.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F0E396B11CE18F3400D4137E /* MainViews(首页) */ = {
+			isa = PBXGroup;
+			children = (
+				F0E396B81CE1B4FA00D4137E /* MainCollCell.h */,
+				F0E396B91CE1B4FA00D4137E /* MainCollCell.m */,
+				F0E396BA1CE1B4FA00D4137E /* MainCollCell.xib */,
+			);
+			name = "MainViews(首页)";
 			sourceTree = "<group>";
 		};
 		F0F379C51CE07AD90047A469 = {
@@ -183,6 +204,8 @@
 		F0F379F81CE07B280047A469 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				F0E396A81CE1858700D4137E /* UIView+ZQExtention.h */,
+				F0E396A91CE1858700D4137E /* UIView+ZQExtention.m */,
 				F0F379F91CE07B280047A469 /* .a */,
 			);
 			path = Helper;
@@ -225,6 +248,7 @@
 		F0F37A041CE07B280047A469 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F0E396B11CE18F3400D4137E /* MainViews(首页) */,
 				F0F37A051CE07B280047A469 /* .a */,
 			);
 			path = Views;
@@ -255,6 +279,8 @@
 			children = (
 				F0F37A231CE093A10047A469 /* LoginViewController.h */,
 				F0F37A241CE093A10047A469 /* LoginViewController.m */,
+				F0E396AE1CE186D200D4137E /* RegisterViewController.h */,
+				F0E396AF1CE186D200D4137E /* RegisterViewController.m */,
 			);
 			name = "LoginRegisterControllers(登录注册)";
 			sourceTree = "<group>";
@@ -328,6 +354,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0E396BC1CE1B4FA00D4137E /* MainCollCell.xib in Resources */,
 				F0F37A0C1CE07B280047A469 /* .a in Resources */,
 				F0F37A0F1CE07B280047A469 /* .a in Resources */,
 				F0F37A101CE07B280047A469 /* .a in Resources */,
@@ -400,9 +427,12 @@
 				F0F37A141CE084BB0047A469 /* MainViewController.m in Sources */,
 				F0F37A081CE07B280047A469 /* BaseNaviViewController.m in Sources */,
 				F0F37A1E1CE088390047A469 /* UIView_extra.m in Sources */,
+				F0E396BB1CE1B4FA00D4137E /* MainCollCell.m in Sources */,
 				F0F37A1D1CE088390047A469 /* LeftSlideViewController.m in Sources */,
 				F0F37A251CE093A10047A469 /* LoginViewController.m in Sources */,
+				F0E396AA1CE1858700D4137E /* UIView+ZQExtention.m in Sources */,
 				F0F37A091CE07B280047A469 /* BaseTabBarViewController.m in Sources */,
+				F0E396B01CE186D200D4137E /* RegisterViewController.m in Sources */,
 				F0F379D61CE07AD90047A469 /* AppDelegate.m in Sources */,
 				F0F379D31CE07AD90047A469 /* main.m in Sources */,
 			);
@@ -517,6 +547,7 @@
 			baseConfigurationReference = D9077ED3267EC1B33DC8260A /* Pods-XiZhanApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = XiZhanApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;
@@ -529,6 +560,7 @@
 			baseConfigurationReference = E7F252C107440856EF24F3AF /* Pods-XiZhanApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = XiZhanApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;

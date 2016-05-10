@@ -22,7 +22,7 @@
             </objects>
             <point key="canvasLocation" x="-650.5" y="234.5"/>
         </scene>
-        <!--Main View Controller-->
+        <!--管委会-->
         <scene sceneID="sLi-It-JBc">
             <objects>
                 <viewController id="HD0-fm-OPc" customClass="MainViewController" sceneMemberID="viewController">
@@ -33,10 +33,57 @@
                     <view key="view" contentMode="scaleToFill" id="bdU-m3-xbG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QvY-9p-pDk">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="zcb-W8-SWn">
+                                    <size key="itemSize" width="158" height="188"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="0SI-oy-Cqt" customClass="MainColCell">
+                                        <rect key="frame" x="0.0" y="64" width="158" height="188"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="158" height="188"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="HD0-fm-OPc" id="VwG-PJ-415"/>
+                                    <outlet property="delegate" destination="HD0-fm-OPc" id="3zU-7N-ORc"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QvY-9p-pDk" firstAttribute="leading" secondItem="bdU-m3-xbG" secondAttribute="leading" id="B9v-K1-TSA"/>
+                            <constraint firstItem="QvY-9p-pDk" firstAttribute="top" secondItem="Etj-Cw-uaH" secondAttribute="bottom" id="U3F-6E-jas"/>
+                            <constraint firstAttribute="trailing" secondItem="QvY-9p-pDk" secondAttribute="trailing" id="Vor-2Q-GWz"/>
+                            <constraint firstItem="TC9-5b-ban" firstAttribute="top" secondItem="QvY-9p-pDk" secondAttribute="bottom" id="zFy-pc-4IL"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="7eo-5i-TJD"/>
+                    <navigationItem key="navigationItem" title="管委会" id="7eo-5i-TJD">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="z9q-mK-GB4">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rdP-F7-FmG">
+                                <rect key="frame" x="16" y="6" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="user"/>
+                                <connections>
+                                    <action selector="menuAction:" destination="HD0-fm-OPc" eventType="touchUpInside" id="9HG-iJ-Z4u"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="collectionView" destination="QvY-9p-pDk" id="qLu-b2-zNr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C5z-8q-ski" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -93,6 +140,17 @@
                                     <action selector="impunityAction:" destination="WNN-Sf-Lu9" eventType="touchUpInside" id="bwZ-lh-3z2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWF-JX-Kjl">
+                                <rect key="frame" x="140" y="350" width="75" height="28"/>
+                                <state key="normal" title="登录"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZp-7m-VI4">
+                                <rect key="frame" x="140" y="407" width="75" height="28"/>
+                                <state key="normal" title="注册"/>
+                                <connections>
+                                    <segue destination="Rfi-SK-JHA" kind="push" id="NdA-NU-bBn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -110,8 +168,84 @@
             </objects>
             <point key="canvasLocation" x="266.5" y="-696.5"/>
         </scene>
+        <!--Register View Controller-->
+        <scene sceneID="B86-J3-a8I">
+            <objects>
+                <viewController id="Rfi-SK-JHA" customClass="RegisterViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3kd-vR-xpl"/>
+                        <viewControllerLayoutGuide type="bottom" id="EGq-lx-GIR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yXH-vI-MHi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RPd-Wo-OR8">
+                                <rect key="frame" x="39" y="124" width="291" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XFI-Wj-wwq">
+                                <rect key="frame" x="39" y="190" width="291" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BXY-Aa-OHH">
+                                <rect key="frame" x="20" y="278" width="68" height="32"/>
+                                <inset key="imageEdgeInsets" minX="-3" minY="3" maxX="0.0" maxY="3"/>
+                                <state key="normal" title="同意" image="agreeUnSelect">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="agreeAction:" destination="WNN-Sf-Lu9" eventType="touchUpInside" id="mGk-MA-FLq"/>
+                                    <action selector="agreeAction:" destination="Rfi-SK-JHA" eventType="touchUpInside" id="rdc-t7-IsB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A2Z-Bf-fq7">
+                                <rect key="frame" x="84" y="279" width="197" height="30"/>
+                                <state key="normal" title="《免责声明和隐私权条款》"/>
+                                <connections>
+                                    <action selector="impunityAction:" destination="WNN-Sf-Lu9" eventType="touchUpInside" id="9bt-Qp-oTd"/>
+                                    <action selector="showImpunityAction:" destination="Rfi-SK-JHA" eventType="touchUpInside" id="FSW-Yw-s3T"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pM-On-BhS">
+                                <rect key="frame" x="145" y="392" width="75" height="28"/>
+                                <state key="normal" title="注册"/>
+                                <connections>
+                                    <action selector="registerAction:" destination="Rfi-SK-JHA" eventType="touchUpInside" id="VcG-x6-Jmc"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="o0d-ie-TpG">
+                                <rect key="frame" x="39" y="240" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x54-3f-pfb">
+                                <rect key="frame" x="150" y="241" width="89" height="30"/>
+                                <state key="normal" title="获取验证码"/>
+                                <connections>
+                                    <action selector="getCodeAction:" destination="Rfi-SK-JHA" eventType="touchUpInside" id="f7M-dw-Yn4"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="gMj-yQ-mYT"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="checkCodeTef" destination="o0d-ie-TpG" id="7aD-hT-jZh"/>
+                        <outlet property="passWordTef" destination="XFI-Wj-wwq" id="DdZ-k2-l7Y"/>
+                        <outlet property="phoneTef" destination="RPd-Wo-OR8" id="0U6-SS-JNZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5GE-Rn-xgV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="693.5" y="-707.5"/>
+        </scene>
     </scenes>
     <resources>
         <image name="agreeUnSelect" width="32" height="32"/>
+        <image name="user" width="32" height="32"/>
     </resources>
 </document>
