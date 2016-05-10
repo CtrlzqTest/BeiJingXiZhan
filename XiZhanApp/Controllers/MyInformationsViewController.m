@@ -31,6 +31,9 @@ static NSString *cellIndentifer = @"newsCell";
 -(void)initView
 {
     [self setTextTitleViewWithFrame:CGRectMake(180, 0, 120, 50) title:@"我的消息" fontSize:17.0];
+//    [self setRightBarButtonItemWithFrame:CGRectMake(0, 0, 40, 30) title:@"编辑" titleColor:[UIColor whiteColor] image:@"" imageInsets:(UIEdgeInsetsMake(0, 0, 0, 0)) backImage:nil selectBackImage:nil action:^(AYCButton *button){
+//        
+//    }];
     self.newsArray = [NSMutableArray array];
     
     self.newsList = [[UITableView alloc]init];
