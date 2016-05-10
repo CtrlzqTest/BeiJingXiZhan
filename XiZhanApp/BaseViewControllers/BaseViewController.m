@@ -7,6 +7,8 @@
 //
 
 #import "BaseViewController.h"
+#import "LeftSlideViewController.h"
+#import "AppDelegate.h"
 
 @interface BaseViewController ()
 
@@ -16,7 +18,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self canSlideMenu:NO];
     // Do any additional setup after loading the view.
+}
+
+- (void)canSlideMenu:(BOOL )isSlide {
+    AppDelegate *tempAppDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [tempAppDelegate.leftSliderVC setPanEnabled:isSlide];
 }
 
 - (void)didReceiveMemoryWarning {

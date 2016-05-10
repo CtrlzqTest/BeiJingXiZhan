@@ -10,4 +10,7 @@
 
 @interface BaseViewController : UIViewController
 
+// 侧滑显示菜单开关
+- (void)canSlideMenu:(BOOL )isSlide;
+
 @end
