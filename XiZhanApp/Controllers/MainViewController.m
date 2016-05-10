@@ -10,10 +10,13 @@
 #import "AppDelegate.h"
 #import "LeftSlideViewController.h"
 #import "MainCollCell.h"
+#import "MyInformationsViewController.h"
 
 static NSString *collCellId = @"MainCell";
 @interface MainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
-
+{
+    NSMutableArray *_dataArray;
+}
 @property (nonatomic,strong)IBOutlet UICollectionView *collectionView;
 
 @end
@@ -24,12 +27,17 @@ static NSString *collCellId = @"MainCell";
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self setFlowLayout];
+    [self initData];
     // Do any additional setup after loading the view.
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self canSlideMenu:YES];
+}
+
+- (void)initData {
+    _dataArray = [NSMutableArray arrayWithArray:@[@"志愿者消息",@"站内公告消息",@"服务台消息"]];
 }
 
 // 显示菜单
@@ -55,13 +63,19 @@ static NSString *collCellId = @"MainCell";
 
 #pragma mark --UICollectionViewDataSource
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 4;
+    return _dataArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MainCollCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collCellId forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor redColor];
+    cell.titleLabel.text = _dataArray[indexPath.row];
     return cell;
+}
+
+-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];
+    myInfoVC.title = _dataArray[indexPath.row];
+    [self.navigationController pushViewController:myInfoVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

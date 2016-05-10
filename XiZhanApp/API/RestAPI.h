@@ -42,4 +42,12 @@ static NSString *const ZQdidLogoutNotication = @"didLogoutNotication"; // 退出
 
 /**************************************************************************************/
 
+//   storyboardId
+/**************************************************************************************/
+
+static NSString *const ZQLoginViewCotrollerId = @"loginViewCotrollerId";    // 登录控制器Id
+
+/**************************************************************************************/
+
+
 #endif

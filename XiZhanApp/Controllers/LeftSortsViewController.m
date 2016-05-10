@@ -36,7 +36,15 @@
 
 - (void)setupViews {
     
-    _dataArray = [NSMutableArray arrayWithArray:@[@"登录/注册",@"关于我们",@"意见反馈",@"我的消息",@"退出登录"]];
+    NSString *loginStr = nil;
+    // 免登陆
+    if ([Utility isLogin]) {
+        [User shareUser].isLogin = YES;
+        loginStr = @"已登录";
+    }else {
+        loginStr = @"登录/注册";
+    }
+    _dataArray = [NSMutableArray arrayWithArray:@[loginStr,@"关于我们",@"意见反馈",@"我的消息",@"退出登录"]];
     
     self.tableview = [[UITableView alloc] initWithFrame:self.view.bounds style:(UITableViewStylePlain)];
     self.view.backgroundColor = [UIColor blackColor];
@@ -92,18 +100,26 @@
             if ([_dataArray[indexPath.row] isEqualToString:@"已登录"]) {
                 return;
             }
-            LoginViewController *vc = [storyBoard instantiateViewControllerWithIdentifier:@"loginVC"];
+            LoginViewController *vc = [storyBoard instantiateViewControllerWithIdentifier:ZQLoginViewCotrollerId];
             [tempAppDelegate.mainNavi pushViewController:vc animated:NO];
         }
             break;
-        case 3:
+        case 2:
         {
             SuggestionsViewController *vc = [[SuggestionsViewController alloc]init];
             [tempAppDelegate.mainNavi pushViewController:vc animated:NO];
         }
             break;
+        case 3:
+        {
+            MyInformationsViewController *vc = [[MyInformationsViewController alloc]init];
+            [tempAppDelegate.mainNavi pushViewController:vc animated:NO];
+        }
         case 4:
         {
+            // 退出登录
+            [Utility setLoginStates:NO];
+            [User shareUser].isLogin = NO;
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLogoutNotication object:nil];
             });

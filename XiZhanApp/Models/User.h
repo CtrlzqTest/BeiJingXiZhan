@@ -16,6 +16,9 @@
 @property(nonatomic,copy)NSString *USERNAME;
 @property(nonatomic,copy)NSString *LAST_LOGIN;
 @property(nonatomic,copy)NSString *USER_ID;
+@property (nonatomic,assign)BOOL isLogin;
+
++ (User *)shareUser;
 
 - (NSDictionary *)dictionaryWithModel:(User *)user;
 

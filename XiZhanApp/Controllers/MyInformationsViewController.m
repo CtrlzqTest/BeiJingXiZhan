@@ -8,11 +8,14 @@
 
 #import "MyInformationsViewController.h"
 #import "UIViewController+AYCNavigationItem.h"
+#import "LoginViewController.h"
 
 static NSString *cellIndentifer = @"newsCell";
 @interface MyInformationsViewController ()<UITableViewDelegate,UITableViewDataSource>
+
 @property(nonatomic,retain)UITableView *newsList;
 @property(nonatomic,strong)NSMutableArray *newsArray;
+
 @end
 
 @implementation MyInformationsViewController
@@ -30,7 +33,7 @@ static NSString *cellIndentifer = @"newsCell";
 
 -(void)initView
 {
-    [self setTextTitleViewWithFrame:CGRectMake(180, 0, 120, 50) title:@"我的消息" fontSize:17.0];
+//    [self setTextTitleViewWithFrame:CGRectMake(180, 0, 120, 50) title:@"我的消息" fontSize:17.0];
     self.newsArray = [NSMutableArray array];
     
     self.newsList = [[UITableView alloc]init];
@@ -39,6 +42,17 @@ static NSString *cellIndentifer = @"newsCell";
     self.newsList.delegate = self;
     [self.view addSubview:self.newsList];
 }
+
+- (IBAction)editAction:(id)sender {
+    
+    NSLog(@"%d",[User shareUser].isLogin);
+    if (![User shareUser].isLogin) {
+        LoginViewController *loginVC = [Utility getControllerWithStoryBoardId:ZQLoginViewCotrollerId];
+        [self.navigationController pushViewController:loginVC animated:YES];
+    }
+
+}
+
 
 #pragma mark listMethod
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

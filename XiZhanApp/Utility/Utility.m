@@ -14,17 +14,13 @@ static User *user = nil;
 
 @implementation Utility
 
-+ (User *)shareUser {
-    
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        NSDictionary *infoDict = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
-        user = [User mj_objectWithKeyValues:infoDict];
-    });
-    return user;
+
+
++ (id)getControllerWithStoryBoardId:(NSString *)storyBoardId {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    id vc = [storyBoard instantiateViewControllerWithIdentifier:storyBoardId];
+    return vc;
 }
-
-
 
 + (BOOL)isFirstLoadding {
     
