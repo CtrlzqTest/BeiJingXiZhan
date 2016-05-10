@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		74AE81AE3B1D14B93071DF28 /* libPods-XiZhanApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F71D4EA7BC10190962AECA /* libPods-XiZhanApp.a */; };
+		F0B664BA1CE17E690033C8CF /* SuggestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B664B91CE17E690033C8CF /* SuggestionsViewController.m */; };
+		F0B664C01CE182CE0033C8CF /* UITableView+SDAutoTableViewCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B664BD1CE182CE0033C8CF /* UITableView+SDAutoTableViewCellHeight.m */; };
+		F0B664C11CE182CE0033C8CF /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B664BF1CE182CE0033C8CF /* UIView+SDAutoLayout.m */; };
+		F0B664CF1CE191300033C8CF /* AYCButton.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B664CC1CE191300033C8CF /* AYCButton.m */; };
+		F0B664D01CE191300033C8CF /* UIViewController+AYCNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B664CE1CE191300033C8CF /* UIViewController+AYCNavigationItem.m */; };
+		F0B664D31CE1AA9E0033C8CF /* MianZeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0B664D21CE1AA9E0033C8CF /* MianZeViewController.m */; };
 		F0F379D31CE07AD90047A469 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F379D21CE07AD90047A469 /* main.m */; };
 		F0F379D61CE07AD90047A469 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F379D51CE07AD90047A469 /* AppDelegate.m */; };
 		F0F379DC1CE07AD90047A469 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0F379DA1CE07AD90047A469 /* Main.storyboard */; };
@@ -33,6 +39,18 @@
 		D3F71D4EA7BC10190962AECA /* libPods-XiZhanApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XiZhanApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9077ED3267EC1B33DC8260A /* Pods-XiZhanApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiZhanApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XiZhanApp/Pods-XiZhanApp.debug.xcconfig"; sourceTree = "<group>"; };
 		E7F252C107440856EF24F3AF /* Pods-XiZhanApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiZhanApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-XiZhanApp/Pods-XiZhanApp.release.xcconfig"; sourceTree = "<group>"; };
+		F0B664B81CE17E690033C8CF /* SuggestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestionsViewController.h; sourceTree = "<group>"; };
+		F0B664B91CE17E690033C8CF /* SuggestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestionsViewController.m; sourceTree = "<group>"; };
+		F0B664BC1CE182CE0033C8CF /* UITableView+SDAutoTableViewCellHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SDAutoTableViewCellHeight.h"; sourceTree = "<group>"; };
+		F0B664BD1CE182CE0033C8CF /* UITableView+SDAutoTableViewCellHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SDAutoTableViewCellHeight.m"; sourceTree = "<group>"; };
+		F0B664BE1CE182CE0033C8CF /* UIView+SDAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDAutoLayout.h"; sourceTree = "<group>"; };
+		F0B664BF1CE182CE0033C8CF /* UIView+SDAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDAutoLayout.m"; sourceTree = "<group>"; };
+		F0B664CB1CE191300033C8CF /* AYCButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AYCButton.h; sourceTree = "<group>"; };
+		F0B664CC1CE191300033C8CF /* AYCButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AYCButton.m; sourceTree = "<group>"; };
+		F0B664CD1CE191300033C8CF /* UIViewController+AYCNavigationItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+AYCNavigationItem.h"; sourceTree = "<group>"; };
+		F0B664CE1CE191300033C8CF /* UIViewController+AYCNavigationItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+AYCNavigationItem.m"; sourceTree = "<group>"; };
+		F0B664D11CE1AA9E0033C8CF /* MianZeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MianZeViewController.h; sourceTree = "<group>"; };
+		F0B664D21CE1AA9E0033C8CF /* MianZeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MianZeViewController.m; sourceTree = "<group>"; };
 		F0F379CE1CE07AD90047A469 /* XiZhanApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiZhanApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0F379D21CE07AD90047A469 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F0F379D41CE07AD90047A469 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -87,6 +105,39 @@
 				D3F71D4EA7BC10190962AECA /* libPods-XiZhanApp.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F0B664B71CE17D6E0033C8CF /* SuggestionsViewController（意见反馈） */ = {
+			isa = PBXGroup;
+			children = (
+				F0B664B81CE17E690033C8CF /* SuggestionsViewController.h */,
+				F0B664B91CE17E690033C8CF /* SuggestionsViewController.m */,
+				F0B664D11CE1AA9E0033C8CF /* MianZeViewController.h */,
+				F0B664D21CE1AA9E0033C8CF /* MianZeViewController.m */,
+			);
+			name = "SuggestionsViewController（意见反馈）";
+			sourceTree = "<group>";
+		};
+		F0B664BB1CE182CE0033C8CF /* UIView+AutoLayout */ = {
+			isa = PBXGroup;
+			children = (
+				F0B664BC1CE182CE0033C8CF /* UITableView+SDAutoTableViewCellHeight.h */,
+				F0B664BD1CE182CE0033C8CF /* UITableView+SDAutoTableViewCellHeight.m */,
+				F0B664BE1CE182CE0033C8CF /* UIView+SDAutoLayout.h */,
+				F0B664BF1CE182CE0033C8CF /* UIView+SDAutoLayout.m */,
+			);
+			path = "UIView+AutoLayout";
+			sourceTree = "<group>";
+		};
+		F0B664CA1CE191300033C8CF /* AcyButton */ = {
+			isa = PBXGroup;
+			children = (
+				F0B664CB1CE191300033C8CF /* AYCButton.h */,
+				F0B664CC1CE191300033C8CF /* AYCButton.m */,
+				F0B664CD1CE191300033C8CF /* UIViewController+AYCNavigationItem.h */,
+				F0B664CE1CE191300033C8CF /* UIViewController+AYCNavigationItem.m */,
+			);
+			path = AcyButton;
 			sourceTree = "<group>";
 		};
 		F0F379C51CE07AD90047A469 = {
@@ -166,6 +217,7 @@
 			children = (
 				F0F37A1F1CE08BC80047A469 /* LeftSortsViewController.h */,
 				F0F37A201CE08BC80047A469 /* LeftSortsViewController.m */,
+				F0B664B71CE17D6E0033C8CF /* SuggestionsViewController（意见反馈） */,
 				F0F37A221CE093590047A469 /* LoginRegisterControllers(登录注册) */,
 				F0F37A111CE084330047A469 /* MainViewControllers(首页) */,
 			);
@@ -216,6 +268,8 @@
 		F0F37A021CE07B280047A469 /* Venders */ = {
 			isa = PBXGroup;
 			children = (
+				F0B664CA1CE191300033C8CF /* AcyButton */,
+				F0B664BB1CE182CE0033C8CF /* UIView+AutoLayout */,
 				F0F37A181CE088390047A469 /* LeftSlideViewController */,
 				F0F37A031CE07B280047A469 /* .a */,
 			);
@@ -393,11 +447,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0B664C01CE182CE0033C8CF /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
 				F0F37A0A1CE07B280047A469 /* BaseViewController.m in Sources */,
+				F0B664D01CE191300033C8CF /* UIViewController+AYCNavigationItem.m in Sources */,
 				F0F37A211CE08BC80047A469 /* LeftSortsViewController.m in Sources */,
 				F0F37A0E1CE07B280047A469 /* Utility.m in Sources */,
 				F0F37A0D1CE07B280047A469 /* User.m in Sources */,
 				F0F37A141CE084BB0047A469 /* MainViewController.m in Sources */,
+				F0B664BA1CE17E690033C8CF /* SuggestionsViewController.m in Sources */,
 				F0F37A081CE07B280047A469 /* BaseNaviViewController.m in Sources */,
 				F0F37A1E1CE088390047A469 /* UIView_extra.m in Sources */,
 				F0F37A1D1CE088390047A469 /* LeftSlideViewController.m in Sources */,
@@ -405,6 +462,9 @@
 				F0F37A091CE07B280047A469 /* BaseTabBarViewController.m in Sources */,
 				F0F379D61CE07AD90047A469 /* AppDelegate.m in Sources */,
 				F0F379D31CE07AD90047A469 /* main.m in Sources */,
+				F0B664C11CE182CE0033C8CF /* UIView+SDAutoLayout.m in Sources */,
+				F0B664D31CE1AA9E0033C8CF /* MianZeViewController.m in Sources */,
+				F0B664CF1CE191300033C8CF /* AYCButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +577,7 @@
 			baseConfigurationReference = D9077ED3267EC1B33DC8260A /* Pods-XiZhanApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = XiZhanApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;
@@ -529,6 +590,7 @@
 			baseConfigurationReference = E7F252C107440856EF24F3AF /* Pods-XiZhanApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
 				INFOPLIST_FILE = XiZhanApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;

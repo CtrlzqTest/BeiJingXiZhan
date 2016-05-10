@@ -8,7 +8,7 @@ target 'XiZhanApp' do
 pod 'AFNetworking'
 pod 'MBProgressHUD'
 pod 'MJExtension'
-pod 'SDWebImage'
+pod 'SDWebImage’
 
 end
 
