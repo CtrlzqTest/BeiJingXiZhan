@@ -14,7 +14,9 @@
 #import "SuggestionsViewController.h"
 
 @interface LeftSortsViewController ()<UITableViewDelegate,UITableViewDataSource>
-
+{
+    NSMutableArray *_dataArray;
+}
 @end
 
 @implementation LeftSortsViewController
@@ -22,9 +24,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupViews];
+    [self addNotices];
+}
+
+- (void)addNotices {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLoginAction) name:ZQdidLoginNotication object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogoutAction) name:ZQdidLogoutNotication object:nil];
 }
 
 - (void)setupViews {
+    
+    _dataArray = [NSMutableArray arrayWithArray:@[@"登录/注册",@"关于我们",@"意见反馈",@"我的消息",@"退出登录"]];
     
     self.tableview = [[UITableView alloc] initWithFrame:self.view.bounds style:(UITableViewStylePlain)];
     self.view.backgroundColor = [UIColor blackColor];
@@ -35,9 +46,19 @@
     
 }
 
+- (void)didLoginAction {
+    _dataArray[0] = @"已登录";
+    [self.tableview reloadData];
+}
+
+- (void)didLogoutAction {
+    _dataArray[0] = @"登录/注册";
+    [self.tableview reloadData];
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return _dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -51,18 +72,8 @@
     cell.textLabel.font = [UIFont systemFontOfSize:20.0f];
     cell.backgroundColor = [UIColor clearColor];
     cell.textLabel.textColor = [UIColor whiteColor];
-    
-    if (indexPath.row == 0) {
-        cell.textLabel.text = @"登录注册";
-    } else if (indexPath.row == 1) {
-        cell.textLabel.text = @"关于我们";
-    } else if (indexPath.row == 2) {
-        cell.textLabel.text = @"版本更新";
-    } else if (indexPath.row == 3) {
-        cell.textLabel.text = @"意见反馈";
-    } else if (indexPath.row == 4) {
-        cell.textLabel.text = @"我的消息";
-    }
+    cell.imageView.image = [UIImage imageNamed:@"user-icon5"];
+    cell.textLabel.text = _dataArray[indexPath.row];
     return cell;
 }
 
@@ -77,17 +88,27 @@
     switch (indexPath.row) {
         case 0:
         {
+            if ([_dataArray[indexPath.row] isEqualToString:@"已登录"]) {
+                return;
+            }
             LoginViewController *vc = [storyBoard instantiateViewControllerWithIdentifier:@"loginVC"];
             [tempAppDelegate.mainNavi pushViewController:vc animated:NO];
         }
             break;
-            case 3:
+        case 3:
         {
             SuggestionsViewController *vc = [[SuggestionsViewController alloc]init];
             [tempAppDelegate.mainNavi pushViewController:vc animated:NO];
         }
             break;
+        case 4:
+        {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLogoutNotication object:nil];
+            });
             
+        }
+            break;
         default:
             break;
     }

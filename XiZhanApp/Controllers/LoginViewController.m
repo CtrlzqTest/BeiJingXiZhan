@@ -24,7 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.title = @"登录";
     // Do any additional setup after loading the view.
 }
 
@@ -37,12 +37,25 @@
 // 同意免责
 - (IBAction)agreeAction:(id)sender {
     
+    self.agreeBtn.selected = !self.agreeBtn.selected;
+    if (self.agreeBtn.selected) {
+        [self.agreeBtn setImage:[UIImage imageNamed:@"agreeSelect"] forState:(UIControlStateNormal)];
+    }else {
+        [self.agreeBtn setImage:[UIImage imageNamed:@"agreeUnSelect"] forState:(UIControlStateNormal)];
+    }
     
 }
 
 // 免责声明
 - (IBAction)impunityAction:(id)sender {
     
+    
+}
+
+- (IBAction)loginAction:(id)sender {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLoginNotication object:nil];
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 
