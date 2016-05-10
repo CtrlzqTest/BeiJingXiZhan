@@ -73,7 +73,6 @@
     [tempAppDelegate.leftSliderVC closeLeftView];
     
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-  
     
     switch (indexPath.row) {
         case 0:

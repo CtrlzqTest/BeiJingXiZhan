@@ -110,7 +110,6 @@
     [self.registerButton addTarget:self action:@selector(registerButtonMethod:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.registerButton];
     
-    
 }
 
 -(void)yesButtonMethod:(UIButton *)sender
