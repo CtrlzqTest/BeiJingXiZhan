@@ -10,4 +10,5 @@
 
 @interface SuggestionsViewController : BaseViewController
 
+
 @end
