@@ -9,7 +9,9 @@
 #import "LoginViewController.h"
 
 @interface LoginViewController ()
-
+{
+    
+}
 @property (weak, nonatomic) IBOutlet UITextField *userNameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passWordLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *autoLoginSwitch;
@@ -24,25 +26,42 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // Do any additional setup after loading the view.
+    self.title = @"登录";
+    [self.autoLoginSwitch setOn:NO];
 }
 
 // 自动登录按钮
 - (IBAction)autoLoginAction:(id)sender {
-    
     
 }
 
 // 同意免责
 - (IBAction)agreeAction:(id)sender {
     
+    self.agreeBtn.selected = !self.agreeBtn.selected;
+    if (self.agreeBtn.selected) {
+        [self.agreeBtn setImage:[UIImage imageNamed:@"agreeSelect"] forState:(UIControlStateNormal)];
+    }else {
+        [self.agreeBtn setImage:[UIImage imageNamed:@"agreeUnSelect"] forState:(UIControlStateNormal)];
+    }
     
 }
 
 // 免责声明
 - (IBAction)impunityAction:(id)sender {
     
+    
+}
+
+// 登录
+- (IBAction)loginAction:(id)sender {
+    
+    [User shareUser].isLogin = YES;
+    if (self.autoLoginSwitch.isOn) {
+        [Utility setLoginStates:YES];
+    }
+    [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLoginNotication object:nil];
+    [self.navigationController popViewControllerAnimated:YES];
     
 }
 

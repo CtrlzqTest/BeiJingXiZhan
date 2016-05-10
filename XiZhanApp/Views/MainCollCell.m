@@ -13,7 +13,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    CGFloat cornerRadius  = self.frame.size.width - self.headLeft.constant * 2;
+    CGFloat width = KWidth / 2.0 - 40;
+    CGFloat cornerRadius  = width - self.headLeft.constant * 2;
     self.headImageView.layer.cornerRadius = cornerRadius / 2.0;
 }
 

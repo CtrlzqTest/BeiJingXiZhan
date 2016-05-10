@@ -83,16 +83,48 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="collectionView" destination="QvY-9p-pDk" id="qLu-b2-zNr"/>
+                        <segue destination="dqn-Ee-Uqq" kind="push" id="2D5-06-BP2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C5z-8q-ski" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-147.5" y="242.5"/>
         </scene>
+        <!--My Informations View Controller-->
+        <scene sceneID="iIi-vc-gYY">
+            <objects>
+                <viewController storyboardIdentifier="myInfoVC" id="dqn-Ee-Uqq" customClass="MyInformationsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lbv-El-JUw"/>
+                        <viewControllerLayoutGuide type="bottom" id="Iik-1l-yTU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hxe-PI-0NU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="jfb-L2-Asg">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="YiZ-Xv-hHM">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iIb-F9-tfl">
+                                <rect key="frame" x="327" y="6" width="32" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="edit"/>
+                                <connections>
+                                    <action selector="editAction:" destination="dqn-Ee-Uqq" eventType="touchUpInside" id="ksz-mM-JLo"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PwC-tI-ZGB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="410.5" y="242.5"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="eiJ-WX-Y21">
             <objects>
-                <viewController storyboardIdentifier="loginVC" id="WNN-Sf-Lu9" customClass="LoginViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewCotrollerId" id="WNN-Sf-Lu9" customClass="LoginViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="P0G-RC-XbP"/>
                         <viewControllerLayoutGuide type="bottom" id="Q07-F6-uRp"/>
@@ -143,6 +175,9 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWF-JX-Kjl">
                                 <rect key="frame" x="140" y="350" width="75" height="28"/>
                                 <state key="normal" title="登录"/>
+                                <connections>
+                                    <action selector="loginAction:" destination="WNN-Sf-Lu9" eventType="touchUpInside" id="B4S-MN-nsP"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZp-7m-VI4">
                                 <rect key="frame" x="140" y="407" width="75" height="28"/>
@@ -166,7 +201,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bfd-pt-eGU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="266.5" y="-696.5"/>
+            <point key="canvasLocation" x="94.5" y="-604.5"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="B86-J3-a8I">
@@ -221,9 +256,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x54-3f-pfb">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x54-3f-pfb">
                                 <rect key="frame" x="150" y="241" width="89" height="30"/>
-                                <state key="normal" title="获取验证码"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="获取验证码">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="getCodeAction:" destination="Rfi-SK-JHA" eventType="touchUpInside" id="f7M-dw-Yn4"/>
                                 </connections>
@@ -234,7 +272,9 @@
                     <navigationItem key="navigationItem" id="gMj-yQ-mYT"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="agreeBtn" destination="BXY-Aa-OHH" id="SiI-n1-XUL"/>
                         <outlet property="checkCodeTef" destination="o0d-ie-TpG" id="7aD-hT-jZh"/>
+                        <outlet property="getCodeBtn" destination="x54-3f-pfb" id="Tk8-NV-Gfc"/>
                         <outlet property="passWordTef" destination="XFI-Wj-wwq" id="DdZ-k2-l7Y"/>
                         <outlet property="phoneTef" destination="RPd-Wo-OR8" id="0U6-SS-JNZ"/>
                     </connections>
@@ -246,6 +286,7 @@
     </scenes>
     <resources>
         <image name="agreeUnSelect" width="32" height="32"/>
+        <image name="edit" width="32" height="32"/>
         <image name="user" width="32" height="32"/>
     </resources>
 </document>

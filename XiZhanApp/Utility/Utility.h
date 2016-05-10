@@ -11,6 +11,11 @@
 @interface Utility : NSObject
 
 /**
+ *  根据id获取控制器
+ */
++ (id)getControllerWithStoryBoardId:(NSString *)storyBoardId;
+
+/**
  *  获取用户信息
  *
  *  @return 用户信息

@@ -36,10 +36,18 @@
 //   常量
 /**************************************************************************************/
 
-static NSString *const ZQdidChangeLoginStateNotication = @"didChangeLoginNotication";    // 登录成功
+static NSString *const ZQdidLoginNotication = @"didLoginNotication";    // 登录成功
 
-
+static NSString *const ZQdidLogoutNotication = @"didLogoutNotication"; // 退出登录
 
 /**************************************************************************************/
+
+//   storyboardId
+/**************************************************************************************/
+
+static NSString *const ZQLoginViewCotrollerId = @"loginViewCotrollerId";    // 登录控制器Id
+
+/**************************************************************************************/
+
 
 #endif
