@@ -115,6 +115,7 @@
             MyInformationsViewController *vc = [[MyInformationsViewController alloc]init];
             [tempAppDelegate.mainNavi pushViewController:vc animated:NO];
         }
+            break;
         case 4:
         {
             // 退出登录
