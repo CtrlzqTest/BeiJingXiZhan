@@ -11,6 +11,7 @@
 #import "MianZeViewController.h"
 
 @interface SuggestionsViewController ()
+
 @property(nonatomic,retain)UITextField *phoneField;
 @property(nonatomic,retain)UITextView *textView;
 @property(nonatomic,retain)UIButton *yesButton;
