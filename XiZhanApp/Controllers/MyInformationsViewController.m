@@ -52,6 +52,7 @@ static NSString *cellIndentifer = @"newsCell";
         [self requestMoreData];
     }];
 }
+
 -(void)getData
 {
     [self.newsList.mj_header endRefreshing];
@@ -64,7 +65,6 @@ static NSString *cellIndentifer = @"newsCell";
 }
 - (IBAction)editAction:(id)sender {
     
-    NSLog(@"%d",[User shareUser].isLogin);
     if (![User shareUser].isLogin) {
         LoginViewController *loginVC = [Utility getControllerWithStoryBoardId:ZQLoginViewCotrollerId];
         [self.navigationController pushViewController:loginVC animated:YES];

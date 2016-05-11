@@ -50,6 +50,7 @@
     [MHNetworkManager postReqeustWithURL:kgetCodeAPI params:@{@"tel":self.phoneTef.text} successBlock:^(id returnData) {
         [MBProgressHUD showSuccess:@"获取验证码成功" toView:self.view];
         [weakSelf countDownTime:@60];
+        weakSelf.checkCodeTef.text = returnData[@"smscode"];
     } failureBlock:^(NSError *error) {
         
     } showHUD:YES];
@@ -75,14 +76,13 @@
 // 注册
 - (IBAction)registerAction:(id)sender {
     
-    if ([self checkInput]) {
-        return;
+    if (![self checkInput]) {
+        return ;
     }
     __weak typeof(self) weakSelf = self;
     [MHNetworkManager postReqeustWithURL:kRegisteAPI params:@{@"tel":self.phoneTef.text,@"smscode":self.checkCodeTef.text,@"password":self.passWordTef.text} successBlock:^(id returnData) {
         
         [MBProgressHUD showSuccess:@"注册成功" toView:weakSelf.view];
-        
         [User shareUser].isLogin = YES;
         [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLoginNotication object:nil];
         [weakSelf.navigationController popToRootViewControllerAnimated:YES];

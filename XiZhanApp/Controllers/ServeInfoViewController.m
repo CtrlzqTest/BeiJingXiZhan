@@ -10,6 +10,8 @@
 #import "ServeTabCell.h"
 #import <MJRefresh.h>
 #import "SerVeDetailViewController.h"
+#import "LoginViewController.h"
+#import "PublishInfoViewController.h"
 
 static NSString *serveCellId = @"serveTabCellId";
 @interface ServeInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -23,6 +25,18 @@ static NSString *serveCellId = @"serveTabCellId";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self setupViews];
+}
+
+
+- (IBAction)editAction:(id)sender {
+    
+    if (![User shareUser].isLogin) {
+        LoginViewController *loginVC = [Utility getControllerWithStoryBoardId:ZQLoginViewCotrollerId];
+        [self.navigationController pushViewController:loginVC animated:YES];
+    }else {
+        PublishInfoViewController *publishVC = [Utility getControllerWithStoryBoardId:ZQPublishInfoViewControllerId];
+        [self.navigationController pushViewController:publishVC animated:YES];
+    }
 }
 
 - (void)setupViews {
@@ -75,7 +89,7 @@ static NSString *serveCellId = @"serveTabCellId";
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SerVeDetailViewController *vc = [[SerVeDetailViewController alloc]init];
+    SerVeDetailViewController *vc = [Utility getControllerWithStoryBoardId:ZQServeDetailViewControllerId];
     [self.navigationController pushViewController:vc animated:YES];
 }
 

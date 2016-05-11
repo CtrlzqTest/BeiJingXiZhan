@@ -7,9 +7,10 @@
 //
 
 #import "SerVeDetailViewController.h"
-#import "UIViewController+AYCNavigationItem.h"
 
 @interface SerVeDetailViewController ()
+
+
 
 @end
 
@@ -17,7 +18,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initView];
     // Do any additional setup after loading the view.
 }
 
@@ -26,10 +26,4 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)initView
-{
-    self.view.backgroundColor = [UIColor blueColor];
-    [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 40*ProportionWidth) title:@"详情" fontSize:17.0];
-    
-}
 @end

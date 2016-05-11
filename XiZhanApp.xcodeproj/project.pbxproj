@@ -17,6 +17,9 @@
 		F0C4AAF91CE2E14A0067E986 /* MHUploadParam.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AAF51CE2E14A0067E986 /* MHUploadParam.m */; };
 		F0C4AAFD1CE2E3520067E986 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F0C4AAFA1CE2E3520067E986 /* MBProgressHUD.bundle */; };
 		F0C4AAFE1CE2E3520067E986 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AAFC1CE2E3520067E986 /* MBProgressHUD+Add.m */; };
+		F0C4AB031CE30A8B0067E986 /* PublishInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AB021CE30A8B0067E986 /* PublishInfoViewController.m */; };
+		F0C4AB071CE3194B0067E986 /* ZQPhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AB051CE3194B0067E986 /* ZQPhotoViewCell.m */; };
+		F0C4AB081CE3194B0067E986 /* ZQPhotoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0C4AB061CE3194B0067E986 /* ZQPhotoViewCell.xib */; };
 		F0E396AA1CE1858700D4137E /* UIView+ZQExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E396A91CE1858700D4137E /* UIView+ZQExtention.m */; };
 		F0E396B01CE186D200D4137E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E396AF1CE186D200D4137E /* RegisterViewController.m */; };
 		F0E396BB1CE1B4FA00D4137E /* MainCollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E396B91CE1B4FA00D4137E /* MainCollCell.m */; };
@@ -78,6 +81,11 @@
 		F0C4AAFA1CE2E3520067E986 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
 		F0C4AAFB1CE2E3520067E986 /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
 		F0C4AAFC1CE2E3520067E986 /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
+		F0C4AB011CE30A8B0067E986 /* PublishInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublishInfoViewController.h; sourceTree = "<group>"; };
+		F0C4AB021CE30A8B0067E986 /* PublishInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishInfoViewController.m; sourceTree = "<group>"; };
+		F0C4AB041CE3194B0067E986 /* ZQPhotoViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQPhotoViewCell.h; sourceTree = "<group>"; };
+		F0C4AB051CE3194B0067E986 /* ZQPhotoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQPhotoViewCell.m; sourceTree = "<group>"; };
+		F0C4AB061CE3194B0067E986 /* ZQPhotoViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZQPhotoViewCell.xib; sourceTree = "<group>"; };
 		F0E396A81CE1858700D4137E /* UIView+ZQExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZQExtention.h"; sourceTree = "<group>"; };
 		F0E396A91CE1858700D4137E /* UIView+ZQExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZQExtention.m"; sourceTree = "<group>"; };
 		F0E396AE1CE186D200D4137E /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -192,6 +200,20 @@
 			path = NetwrokHandle;
 			sourceTree = "<group>";
 		};
+		F0C4AAFF1CE309850067E986 /* VolunteerViewControllers(志愿者) */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "VolunteerViewControllers(志愿者)";
+			sourceTree = "<group>";
+		};
+		F0C4AB001CE309D70067E986 /* NoticeViewControllers(站内公告) */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "NoticeViewControllers(站内公告)";
+			sourceTree = "<group>";
+		};
 		F0E396B11CE18F3400D4137E /* MainViews(首页) */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,7 +224,7 @@
 			name = "MainViews(首页)";
 			sourceTree = "<group>";
 		};
-		F0E396CF1CE1E96200D4137E /* ServeViewControllers(服务台类) */ = {
+		F0E396CF1CE1E96200D4137E /* ServeViewControllers(服务台) */ = {
 			isa = PBXGroup;
 			children = (
 				F0E396D01CE1E9E000D4137E /* ServeInfoViewController.h */,
@@ -210,7 +232,7 @@
 				F021140C1CE2FD5D00676971 /* SerVeDetailViewController.h */,
 				F021140D1CE2FD5D00676971 /* SerVeDetailViewController.m */,
 			);
-			name = "ServeViewControllers(服务台类)";
+			name = "ServeViewControllers(服务台)";
 			sourceTree = "<group>";
 		};
 		F0E396D31CE1EB5200D4137E /* ServeViews(服务台类) */ = {
@@ -301,7 +323,11 @@
 			children = (
 				F0F37A1F1CE08BC80047A469 /* LeftSortsViewController.h */,
 				F0F37A201CE08BC80047A469 /* LeftSortsViewController.m */,
-				F0E396CF1CE1E96200D4137E /* ServeViewControllers(服务台类) */,
+				F0C4AB011CE30A8B0067E986 /* PublishInfoViewController.h */,
+				F0C4AB021CE30A8B0067E986 /* PublishInfoViewController.m */,
+				F0C4AB001CE309D70067E986 /* NoticeViewControllers(站内公告) */,
+				F0C4AAFF1CE309850067E986 /* VolunteerViewControllers(志愿者) */,
+				F0E396CF1CE1E96200D4137E /* ServeViewControllers(服务台) */,
 				F0F37A221CE093590047A469 /* LoginRegisterControllers(登录注册) */,
 				F0F37A111CE084330047A469 /* MainViewControllers(首页) */,
 			);
@@ -368,6 +394,9 @@
 		F0F37A041CE07B280047A469 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F0C4AB041CE3194B0067E986 /* ZQPhotoViewCell.h */,
+				F0C4AB051CE3194B0067E986 /* ZQPhotoViewCell.m */,
+				F0C4AB061CE3194B0067E986 /* ZQPhotoViewCell.xib */,
 				F0FA99261CE2D0460078C74B /* LeftSortsTabCell.h */,
 				F0FA99271CE2D0460078C74B /* LeftSortsTabCell.m */,
 				F0FA99281CE2D0460078C74B /* LeftSortsTabCell.xib */,
@@ -508,6 +537,7 @@
 				F0F37A101CE07B280047A469 /* .a in Resources */,
 				F0F379E11CE07AD90047A469 /* LaunchScreen.storyboard in Resources */,
 				F0F37A0B1CE07B280047A469 /* .a in Resources */,
+				F0C4AB081CE3194B0067E986 /* ZQPhotoViewCell.xib in Resources */,
 				F0E396D81CE1EB8C00D4137E /* ServeTabCell.xib in Resources */,
 				F0F379DE1CE07AD90047A469 /* Assets.xcassets in Resources */,
 				F0F379DC1CE07AD90047A469 /* Main.storyboard in Resources */,
@@ -574,6 +604,7 @@
 				F0F37A0A1CE07B280047A469 /* BaseViewController.m in Sources */,
 				F0F37A211CE08BC80047A469 /* LeftSortsViewController.m in Sources */,
 				F0F37A0E1CE07B280047A469 /* Utility.m in Sources */,
+				F0C4AB071CE3194B0067E986 /* ZQPhotoViewCell.m in Sources */,
 				F0F37A0D1CE07B280047A469 /* User.m in Sources */,
 				F021140E1CE2FD5D00676971 /* SerVeDetailViewController.m in Sources */,
 				F0E396C11CE1B9C300D4137E /* MianZeViewController.m in Sources */,
@@ -591,6 +622,7 @@
 				F0F37A1D1CE088390047A469 /* LeftSlideViewController.m in Sources */,
 				F0F37A251CE093A10047A469 /* LoginViewController.m in Sources */,
 				F0E396AA1CE1858700D4137E /* UIView+ZQExtention.m in Sources */,
+				F0C4AB031CE30A8B0067E986 /* PublishInfoViewController.m in Sources */,
 				F0C4AAF61CE2E14A0067E986 /* MHAsiNetworkHandler.m in Sources */,
 				F0E396C21CE1B9C300D4137E /* SuggestionsViewController.m in Sources */,
 				F0F37A091CE07B280047A469 /* BaseTabBarViewController.m in Sources */,

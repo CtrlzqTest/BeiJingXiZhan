@@ -18,7 +18,7 @@
 
 #define kUpdateDataBaseToHost   @"vote3/test/update.do"
 
-#define kgetCodeAPI         @"app.user/checkSmsCode"      // 获取验证码
+#define kgetCodeAPI         @"app.user/getSmsCode"      // 获取验证码
 
 #define kGoodsListAPI           @"appinfo/slist"       // 购物列表
 
@@ -46,6 +46,10 @@ static NSString *const ZQdidLogoutNotication = @"didLogoutNotication"; // 退出
 static NSString *const ZQLoginViewCotrollerId = @"loginViewCotrollerId";    // 登录控制器Id
 
 static NSString *const ZQServeTabViewControllerId = @"serveTabViewControllerId";    // 服务台信息
+
+static NSString *const ZQServeDetailViewControllerId = @"serveDetailViewControllerId"; // 服务台信息详情
+
+static NSString *const ZQPublishInfoViewControllerId = @"publishInfoViewControllerId"; // 发布消息
 
 /**************************************************************************************/
 
