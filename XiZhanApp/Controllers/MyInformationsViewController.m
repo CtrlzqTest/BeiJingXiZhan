@@ -9,6 +9,7 @@
 #import "MyInformationsViewController.h"
 #import "UIViewController+AYCNavigationItem.h"
 #import "LoginViewController.h"
+#import "InformationDetailViewController.h"
 
 static NSString *cellIndentifer = @"newsCell";
 @interface MyInformationsViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -82,6 +83,7 @@ static NSString *cellIndentifer = @"newsCell";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    InformationDetailViewController *vc = [[InformationDetailViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 @end
