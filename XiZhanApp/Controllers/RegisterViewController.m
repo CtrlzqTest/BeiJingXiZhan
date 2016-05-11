@@ -7,7 +7,7 @@
 //
 
 #import "RegisterViewController.h"
-
+#import "MianZeViewController.h"
 @interface RegisterViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *phoneTef;
@@ -70,7 +70,8 @@
 
 // 免责
 - (IBAction)showImpunityAction:(id)sender {
-    
+    MianZeViewController *vc = [[MianZeViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 // 注册

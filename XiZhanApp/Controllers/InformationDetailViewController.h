@@ -9,5 +9,5 @@
 #import "BaseViewController.h"
 
 @interface InformationDetailViewController : BaseViewController
-
+@property(nonatomic,copy)NSString *webUrl;
 @end
