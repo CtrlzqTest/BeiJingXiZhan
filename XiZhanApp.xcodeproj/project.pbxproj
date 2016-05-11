@@ -42,6 +42,8 @@
 		F0FA99231CE2C3030078C74B /* ZQDatabaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FA991E1CE2C3030078C74B /* ZQDatabaseHelper.m */; };
 		F0FA99241CE2C3030078C74B /* ZQDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FA99201CE2C3030078C74B /* ZQDatabaseManager.m */; };
 		F0FA99251CE2C3030078C74B /* ZQDatabaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FA99221CE2C3030078C74B /* ZQDatabaseModel.m */; };
+		F0FA99291CE2D0460078C74B /* LeftSortsTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FA99271CE2D0460078C74B /* LeftSortsTabCell.m */; };
+		F0FA992A1CE2D0460078C74B /* LeftSortsTabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0FA99281CE2D0460078C74B /* LeftSortsTabCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +112,9 @@
 		F0FA99201CE2C3030078C74B /* ZQDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQDatabaseManager.m; sourceTree = "<group>"; };
 		F0FA99211CE2C3030078C74B /* ZQDatabaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQDatabaseModel.h; sourceTree = "<group>"; };
 		F0FA99221CE2C3030078C74B /* ZQDatabaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQDatabaseModel.m; sourceTree = "<group>"; };
+		F0FA99261CE2D0460078C74B /* LeftSortsTabCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftSortsTabCell.h; sourceTree = "<group>"; };
+		F0FA99271CE2D0460078C74B /* LeftSortsTabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSortsTabCell.m; sourceTree = "<group>"; };
+		F0FA99281CE2D0460078C74B /* LeftSortsTabCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftSortsTabCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +318,9 @@
 		F0F37A041CE07B280047A469 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F0FA99261CE2D0460078C74B /* LeftSortsTabCell.h */,
+				F0FA99271CE2D0460078C74B /* LeftSortsTabCell.m */,
+				F0FA99281CE2D0460078C74B /* LeftSortsTabCell.xib */,
 				F0E396D31CE1EB5200D4137E /* ServeViews(服务台类) */,
 				F0E396B11CE18F3400D4137E /* MainViews(首页) */,
 				F0F37A051CE07B280047A469 /* .a */,
@@ -442,6 +450,7 @@
 			files = (
 				F0E396BC1CE1B4FA00D4137E /* MainCollCell.xib in Resources */,
 				F0F37A0C1CE07B280047A469 /* .a in Resources */,
+				F0FA992A1CE2D0460078C74B /* LeftSortsTabCell.xib in Resources */,
 				F0F37A0F1CE07B280047A469 /* .a in Resources */,
 				F0F37A101CE07B280047A469 /* .a in Resources */,
 				F0F379E11CE07AD90047A469 /* LaunchScreen.storyboard in Resources */,
@@ -517,6 +526,7 @@
 				F0F37A081CE07B280047A469 /* BaseNaviViewController.m in Sources */,
 				F0E396CD1CE1BA5400D4137E /* AYCButton.m in Sources */,
 				F0F37A1E1CE088390047A469 /* UIView_extra.m in Sources */,
+				F0FA99291CE2D0460078C74B /* LeftSortsTabCell.m in Sources */,
 				F0FA99241CE2C3030078C74B /* ZQDatabaseManager.m in Sources */,
 				F0FA99231CE2C3030078C74B /* ZQDatabaseHelper.m in Sources */,
 				F0E396BB1CE1B4FA00D4137E /* MainCollCell.m in Sources */,
