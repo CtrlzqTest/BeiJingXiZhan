@@ -9,6 +9,7 @@
 #import "MyInformationsViewController.h"
 #import "UIViewController+AYCNavigationItem.h"
 #import "LoginViewController.h"
+#import "InformationDetailViewController.h"
 
 static NSString *cellIndentifer = @"newsCell";
 @interface MyInformationsViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -33,7 +34,7 @@ static NSString *cellIndentifer = @"newsCell";
 
 -(void)initView
 {
-//    [self setTextTitleViewWithFrame:CGRectMake(180, 0, 120, 50) title:@"我的消息" fontSize:17.0];
+    //[self setTextTitleViewWithFrame:CGRectMake(180, 0, 120, 50) title:@"我的消息" fontSize:17.0];
     self.newsArray = [NSMutableArray array];
     
     self.newsList = [[UITableView alloc]init];
@@ -79,6 +80,7 @@ static NSString *cellIndentifer = @"newsCell";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+    InformationDetailViewController *vc = [[InformationDetailViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 @end
