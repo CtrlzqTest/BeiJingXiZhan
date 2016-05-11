@@ -28,7 +28,7 @@
 
 -(void)initView
 {
-    self.view.backgroundColor = [UIColor blueColor];
+   // self.view.backgroundColor = [UIColor blueColor];
     [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 40*ProportionWidth) title:@"详情" fontSize:17.0];
     
 }
