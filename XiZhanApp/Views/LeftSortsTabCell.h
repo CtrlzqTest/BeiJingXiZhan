@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface LeftSortsTabCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *imgView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *rightImgView;
 
 @end

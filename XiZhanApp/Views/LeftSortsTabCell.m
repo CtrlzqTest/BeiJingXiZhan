@@ -13,6 +13,9 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.titleLabel.textColor = [UIColor whiteColor];
+    self.titleLabel.font = [UIFont systemFontOfSize:20.0f];
+    self.rightImgView.hidden = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
