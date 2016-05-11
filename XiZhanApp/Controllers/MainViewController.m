@@ -11,6 +11,7 @@
 #import "LeftSlideViewController.h"
 #import "MainCollCell.h"
 #import "MyInformationsViewController.h"
+#import "ServeInfoViewController.h"
 
 static NSString *collCellId = @"MainCell";
 @interface MainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -73,9 +74,33 @@ static NSString *collCellId = @"MainCell";
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];
-    myInfoVC.title = _dataArray[indexPath.row];
-    [self.navigationController pushViewController:myInfoVC animated:YES];
+    
+    switch (indexPath.row) {
+        case 0:
+        {
+            MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];
+            myInfoVC.title = _dataArray[indexPath.row];
+            [self.navigationController pushViewController:myInfoVC animated:YES];
+        }
+            break;
+        case 1:
+        {
+            MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];
+            myInfoVC.title = _dataArray[indexPath.row];
+            [self.navigationController pushViewController:myInfoVC animated:YES];
+        }
+            break;
+        case 2:
+        {
+            ServeInfoViewController *serveVC = [Utility getControllerWithStoryBoardId:ZQServeTabViewControllerId];
+            serveVC.title = _dataArray[indexPath.row];
+            [self.navigationController pushViewController:serveVC animated:YES];
+        }
+            break;
+        default:
+            break;
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning {

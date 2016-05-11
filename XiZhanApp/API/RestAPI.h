@@ -47,6 +47,8 @@ static NSString *const ZQdidLogoutNotication = @"didLogoutNotication"; // 退出
 
 static NSString *const ZQLoginViewCotrollerId = @"loginViewCotrollerId";    // 登录控制器Id
 
+static NSString *const ZQServeTabViewControllerId = @"serveTabViewControllerId";    // 服务台信息
+
 /**************************************************************************************/
 
 
