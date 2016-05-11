@@ -37,28 +37,85 @@
 }
 
 - (IBAction)getCodeAction:(id)sender {
-    [self countDownTime:@60];
+    
+    if (self.phoneTef.text.length <= 0) {
+        [MBProgressHUD showError:@"手机号不能为空" toView:nil];
+        return;
+    }
+    if (![Utility checkTelNumber:self.phoneTef.text]) {
+        [MBProgressHUD showError:@"手机号格式不正确" toView:nil];
+        return;
+    }
+    __weak typeof(self) weakSelf = self;
+    [MHNetworkManager postReqeustWithURL:kgetCodeAPI params:@{@"tel":self.phoneTef.text} successBlock:^(id returnData) {
+        [MBProgressHUD showSuccess:@"获取验证码成功" toView:self.view];
+        [weakSelf countDownTime:@60];
+    } failureBlock:^(NSError *error) {
+        
+    } showHUD:YES];
+    
 }
 
 - (IBAction)agreeAction:(id)sender {
+    
     self.agreeBtn.selected = !self.agreeBtn.selected;
     if (self.agreeBtn.selected) {
         [self.agreeBtn setImage:[UIImage imageNamed:@"agreeSelect"] forState:(UIControlStateNormal)];
     }else {
         [self.agreeBtn setImage:[UIImage imageNamed:@"agreeUnSelect"] forState:(UIControlStateNormal)];
     }
+    
 }
 
+// 免责
 - (IBAction)showImpunityAction:(id)sender {
     
 }
 
+// 注册
 - (IBAction)registerAction:(id)sender {
     
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    if ([self checkInput]) {
+        return;
+    }
+    __weak typeof(self) weakSelf = self;
+    [MHNetworkManager postReqeustWithURL:kRegisteAPI params:@{@"tel":self.phoneTef.text,@"smscode":self.checkCodeTef.text,@"password":self.passWordTef.text} successBlock:^(id returnData) {
+        
+        [MBProgressHUD showSuccess:@"注册成功" toView:weakSelf.view];
+        
+        [User shareUser].isLogin = YES;
+        [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLoginNotication object:nil];
+        [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        
+    } failureBlock:^(NSError *error) {
+        
+    } showHUD:YES];
+    
     
 }
 
+- (BOOL )checkInput {
+    
+    
+    if (self.phoneTef.text.length <= 0) {
+        [MBProgressHUD showError:@"手机不能为空" toView:nil];
+        return NO;
+    }
+    if (self.passWordTef.text.length <= 0) {
+        [MBProgressHUD showError:@"密码不能为空" toView:nil];
+        return NO;
+    }
+    if (self.checkCodeTef.text.length <= 0) {
+        [MBProgressHUD showError:@"请输入验证码" toView:nil];
+        return NO;
+    }
+    if (![Utility checkTelNumber:self.phoneTef.text]) {
+        [MBProgressHUD showError:@"手机号格式不正确" toView:nil];
+        return NO;
+    }
+    return YES;
+    
+}
 
 /**
  *  倒计时函数

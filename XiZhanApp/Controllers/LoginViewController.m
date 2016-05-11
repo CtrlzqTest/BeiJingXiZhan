@@ -56,12 +56,37 @@
 // 登录
 - (IBAction)loginAction:(id)sender {
     
-    [User shareUser].isLogin = YES;
-    if (self.autoLoginSwitch.isOn) {
-        [Utility setLoginStates:YES];
+    if (![self checkInput]) {
+        return;
     }
-    [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLoginNotication object:nil];
-    [self.navigationController popViewControllerAnimated:YES];
+    __weak typeof(self) weakSelf = self;
+    [MHNetworkManager postReqeustWithURL:kLoginAPI params:@{@"tel":self.userNameLabel.text,@"password":self.passWordLabel.text} successBlock:^(id returnData) {
+        
+        [User shareUser].isLogin = YES;
+        if (weakSelf.autoLoginSwitch.isOn) {
+            [Utility setLoginStates:YES];
+        }
+        [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLoginNotication object:nil];
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+        
+    } failureBlock:^(NSError *error) {
+        
+    } showHUD:YES];
+}
+
+- (BOOL )checkInput {
+    
+    
+    if (self.userNameLabel.text.length <= 0) {
+        [MBProgressHUD showError:@"用户名不能为空" toView:nil];
+        return NO;
+    }
+    
+    if (self.passWordLabel.text.length <= 0) {
+        [MBProgressHUD showError:@"密码不能为空" toView:nil];
+        return NO;
+    }
+    return YES;
     
 }
 

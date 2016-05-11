@@ -50,4 +50,9 @@
  */
 +(void)checkNewVersion:(void(^)(BOOL hasNewVersion))versionCheckBlock;
 
+/**
+  * 正则匹配手机号
+  */
++ (BOOL)checkTelNumber:(NSString *) telNumber;
+
 @end

@@ -13,7 +13,9 @@
 #import "LoginViewController.h"
 #import "SuggestionsViewController.h"
 #import "MyInformationsViewController.h"
+#import "LeftSortsTabCell.h"
 
+static NSString *leftSortsCellId = @"leftSortsCellId";
 @interface LeftSortsViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSMutableArray *_dataArray;
@@ -53,6 +55,8 @@
     self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableview];
     
+    [self.tableview registerNib:[UINib nibWithNibName:@"LeftSortsTabCell" bundle:nil] forCellReuseIdentifier:leftSortsCellId];
+    
 }
 
 - (void)didLoginAction {
@@ -72,19 +76,14 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *Identifier = @"Identifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:Identifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:Identifier];
-        
+    
+    LeftSortsTabCell *cell = [tableView dequeueReusableCellWithIdentifier:leftSortsCellId forIndexPath:indexPath];
+    cell.imgView.image = [UIImage imageNamed:@"user-icon5"];
+    cell.titleLabel.text = _dataArray[indexPath.row];
+    if (indexPath.row == 3) {
+        cell.rightImgView.hidden = NO;
     }
-//    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.accessoryView.backgroundColor = [UIColor redColor];
-    cell.textLabel.font = [UIFont systemFontOfSize:20.0f];
     cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.textColor = [UIColor whiteColor];
-    cell.imageView.image = [UIImage imageNamed:@"user-icon5"];
-    cell.textLabel.text = _dataArray[indexPath.row];
     return cell;
 }
 

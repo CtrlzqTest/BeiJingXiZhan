@@ -8,9 +8,12 @@
 
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
+
 #import "RestAPI.h"
 #import "Utility.h"
 #import "User.h"
+#import "MHNetworkManager.h"
+#import "MBProgressHUD+Add.h"
 
 #ifdef DEBUG
 #define ZQLog(...) NSLog(__VA_ARGS__)

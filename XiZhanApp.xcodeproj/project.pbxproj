@@ -11,6 +11,12 @@
 		F021140B1CE2D81A00676971 /* InformationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F021140A1CE2D81A00676971 /* InformationDetailViewController.m */; };
 		F021140E1CE2FD5D00676971 /* SerVeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F021140D1CE2FD5D00676971 /* SerVeDetailViewController.m */; };
 		F0614DD11CE1C4180036CC3E /* MyInformationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0614DD01CE1C4180036CC3E /* MyInformationsViewController.m */; };
+		F0C4AAF61CE2E14A0067E986 /* MHAsiNetworkHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AAEE1CE2E14A0067E986 /* MHAsiNetworkHandler.m */; };
+		F0C4AAF71CE2E14A0067E986 /* MHAsiNetworkItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AAF01CE2E14A0067E986 /* MHAsiNetworkItem.m */; };
+		F0C4AAF81CE2E14A0067E986 /* MHNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AAF21CE2E14A0067E986 /* MHNetworkManager.m */; };
+		F0C4AAF91CE2E14A0067E986 /* MHUploadParam.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AAF51CE2E14A0067E986 /* MHUploadParam.m */; };
+		F0C4AAFD1CE2E3520067E986 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F0C4AAFA1CE2E3520067E986 /* MBProgressHUD.bundle */; };
+		F0C4AAFE1CE2E3520067E986 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AAFC1CE2E3520067E986 /* MBProgressHUD+Add.m */; };
 		F0E396AA1CE1858700D4137E /* UIView+ZQExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E396A91CE1858700D4137E /* UIView+ZQExtention.m */; };
 		F0E396B01CE186D200D4137E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E396AF1CE186D200D4137E /* RegisterViewController.m */; };
 		F0E396BB1CE1B4FA00D4137E /* MainCollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E396B91CE1B4FA00D4137E /* MainCollCell.m */; };
@@ -58,6 +64,20 @@
 		F021140D1CE2FD5D00676971 /* SerVeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SerVeDetailViewController.m; sourceTree = "<group>"; };
 		F0614DCF1CE1C4180036CC3E /* MyInformationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInformationsViewController.h; sourceTree = "<group>"; };
 		F0614DD01CE1C4180036CC3E /* MyInformationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInformationsViewController.m; sourceTree = "<group>"; };
+		F0C4AAEB1CE2E14A0067E986 /* MHAsiNetworkDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHAsiNetworkDefine.h; sourceTree = "<group>"; };
+		F0C4AAEC1CE2E14A0067E986 /* MHAsiNetworkDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHAsiNetworkDelegate.h; sourceTree = "<group>"; };
+		F0C4AAED1CE2E14A0067E986 /* MHAsiNetworkHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHAsiNetworkHandler.h; sourceTree = "<group>"; };
+		F0C4AAEE1CE2E14A0067E986 /* MHAsiNetworkHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHAsiNetworkHandler.m; sourceTree = "<group>"; };
+		F0C4AAEF1CE2E14A0067E986 /* MHAsiNetworkItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHAsiNetworkItem.h; sourceTree = "<group>"; };
+		F0C4AAF01CE2E14A0067E986 /* MHAsiNetworkItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHAsiNetworkItem.m; sourceTree = "<group>"; };
+		F0C4AAF11CE2E14A0067E986 /* MHNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHNetworkManager.h; sourceTree = "<group>"; };
+		F0C4AAF21CE2E14A0067E986 /* MHNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHNetworkManager.m; sourceTree = "<group>"; };
+		F0C4AAF31CE2E14A0067E986 /* MHNetwrok.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHNetwrok.h; sourceTree = "<group>"; };
+		F0C4AAF41CE2E14A0067E986 /* MHUploadParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHUploadParam.h; sourceTree = "<group>"; };
+		F0C4AAF51CE2E14A0067E986 /* MHUploadParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MHUploadParam.m; sourceTree = "<group>"; };
+		F0C4AAFA1CE2E3520067E986 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
+		F0C4AAFB1CE2E3520067E986 /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
+		F0C4AAFC1CE2E3520067E986 /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
 		F0E396A81CE1858700D4137E /* UIView+ZQExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZQExtention.h"; sourceTree = "<group>"; };
 		F0E396A91CE1858700D4137E /* UIView+ZQExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZQExtention.m"; sourceTree = "<group>"; };
 		F0E396AE1CE186D200D4137E /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -154,6 +174,24 @@
 			path = AcyButton;
 			sourceTree = "<group>";
 		};
+		F0C4AAEA1CE2E14A0067E986 /* NetwrokHandle */ = {
+			isa = PBXGroup;
+			children = (
+				F0C4AAEB1CE2E14A0067E986 /* MHAsiNetworkDefine.h */,
+				F0C4AAEC1CE2E14A0067E986 /* MHAsiNetworkDelegate.h */,
+				F0C4AAED1CE2E14A0067E986 /* MHAsiNetworkHandler.h */,
+				F0C4AAEE1CE2E14A0067E986 /* MHAsiNetworkHandler.m */,
+				F0C4AAEF1CE2E14A0067E986 /* MHAsiNetworkItem.h */,
+				F0C4AAF01CE2E14A0067E986 /* MHAsiNetworkItem.m */,
+				F0C4AAF11CE2E14A0067E986 /* MHNetworkManager.h */,
+				F0C4AAF21CE2E14A0067E986 /* MHNetworkManager.m */,
+				F0C4AAF31CE2E14A0067E986 /* MHNetwrok.h */,
+				F0C4AAF41CE2E14A0067E986 /* MHUploadParam.h */,
+				F0C4AAF51CE2E14A0067E986 /* MHUploadParam.m */,
+			);
+			path = NetwrokHandle;
+			sourceTree = "<group>";
+		};
 		F0E396B11CE18F3400D4137E /* MainViews(首页) */ = {
 			isa = PBXGroup;
 			children = (
@@ -217,9 +255,9 @@
 				F0F379FF1CE07B280047A469 /* Utility */,
 				F0F37A021CE07B280047A469 /* Venders */,
 				F0F379D41CE07AD90047A469 /* AppDelegate.h */,
+				F0F379D51CE07AD90047A469 /* AppDelegate.m */,
 				F0F379DA1CE07AD90047A469 /* Main.storyboard */,
 				F0F379DD1CE07AD90047A469 /* Assets.xcassets */,
-				F0F379D51CE07AD90047A469 /* AppDelegate.m */,
 				F0F379DF1CE07AD90047A469 /* LaunchScreen.storyboard */,
 				F0F379E21CE07AD90047A469 /* Info.plist */,
 				F0F379D11CE07AD90047A469 /* Supporting Files */,
@@ -240,6 +278,7 @@
 			isa = PBXGroup;
 			children = (
 				F0F379ED1CE07B280047A469 /* RestAPI.h */,
+				F0C4AAEA1CE2E14A0067E986 /* NetwrokHandle */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -281,6 +320,9 @@
 		F0F379F81CE07B280047A469 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				F0C4AAFA1CE2E3520067E986 /* MBProgressHUD.bundle */,
+				F0C4AAFB1CE2E3520067E986 /* MBProgressHUD+Add.h */,
+				F0C4AAFC1CE2E3520067E986 /* MBProgressHUD+Add.m */,
 				F0E396A81CE1858700D4137E /* UIView+ZQExtention.h */,
 				F0E396A91CE1858700D4137E /* UIView+ZQExtention.m */,
 				F0F379F91CE07B280047A469 /* .a */,
@@ -461,6 +503,7 @@
 				F0E396BC1CE1B4FA00D4137E /* MainCollCell.xib in Resources */,
 				F0F37A0C1CE07B280047A469 /* .a in Resources */,
 				F0FA992A1CE2D0460078C74B /* LeftSortsTabCell.xib in Resources */,
+				F0C4AAFD1CE2E3520067E986 /* MBProgressHUD.bundle in Resources */,
 				F0F37A0F1CE07B280047A469 /* .a in Resources */,
 				F0F37A101CE07B280047A469 /* .a in Resources */,
 				F0F379E11CE07AD90047A469 /* LaunchScreen.storyboard in Resources */,
@@ -527,12 +570,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0FA99251CE2C3030078C74B /* ZQDatabaseModel.m in Sources */,
+				F0C4AAF81CE2E14A0067E986 /* MHNetworkManager.m in Sources */,
 				F0F37A0A1CE07B280047A469 /* BaseViewController.m in Sources */,
 				F0F37A211CE08BC80047A469 /* LeftSortsViewController.m in Sources */,
 				F0F37A0E1CE07B280047A469 /* Utility.m in Sources */,
 				F0F37A0D1CE07B280047A469 /* User.m in Sources */,
 				F021140E1CE2FD5D00676971 /* SerVeDetailViewController.m in Sources */,
 				F0E396C11CE1B9C300D4137E /* MianZeViewController.m in Sources */,
+				F0C4AAFE1CE2E3520067E986 /* MBProgressHUD+Add.m in Sources */,
 				F0F37A141CE084BB0047A469 /* MainViewController.m in Sources */,
 				F0F37A081CE07B280047A469 /* BaseNaviViewController.m in Sources */,
 				F0E396CD1CE1BA5400D4137E /* AYCButton.m in Sources */,
@@ -540,11 +585,13 @@
 				F0FA99291CE2D0460078C74B /* LeftSortsTabCell.m in Sources */,
 				F0FA99241CE2C3030078C74B /* ZQDatabaseManager.m in Sources */,
 				F0FA99231CE2C3030078C74B /* ZQDatabaseHelper.m in Sources */,
+				F0C4AAF91CE2E14A0067E986 /* MHUploadParam.m in Sources */,
 				F0E396BB1CE1B4FA00D4137E /* MainCollCell.m in Sources */,
 				F021140B1CE2D81A00676971 /* InformationDetailViewController.m in Sources */,
 				F0F37A1D1CE088390047A469 /* LeftSlideViewController.m in Sources */,
 				F0F37A251CE093A10047A469 /* LoginViewController.m in Sources */,
 				F0E396AA1CE1858700D4137E /* UIView+ZQExtention.m in Sources */,
+				F0C4AAF61CE2E14A0067E986 /* MHAsiNetworkHandler.m in Sources */,
 				F0E396C21CE1B9C300D4137E /* SuggestionsViewController.m in Sources */,
 				F0F37A091CE07B280047A469 /* BaseTabBarViewController.m in Sources */,
 				F0E396D21CE1E9E000D4137E /* ServeInfoViewController.m in Sources */,
@@ -553,6 +600,7 @@
 				F0E396B01CE186D200D4137E /* RegisterViewController.m in Sources */,
 				F0F379D61CE07AD90047A469 /* AppDelegate.m in Sources */,
 				F0F379D31CE07AD90047A469 /* main.m in Sources */,
+				F0C4AAF71CE2E14A0067E986 /* MHAsiNetworkItem.m in Sources */,
 				F0E396D71CE1EB8C00D4137E /* ServeTabCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
