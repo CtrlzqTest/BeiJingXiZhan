@@ -9,6 +9,7 @@
 #import "ServeInfoViewController.h"
 #import "ServeTabCell.h"
 #import <MJRefresh.h>
+#import "SerVeDetailViewController.h"
 
 static NSString *serveCellId = @"serveTabCellId";
 @interface ServeInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -72,14 +73,10 @@ static NSString *serveCellId = @"serveTabCellId";
     
     return cell;
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    SerVeDetailViewController *vc = [[SerVeDetailViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
-*/
 
 @end

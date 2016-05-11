@@ -10,6 +10,7 @@
 #import "UIViewController+AYCNavigationItem.h"
 #import "LoginViewController.h"
 #import "InformationDetailViewController.h"
+#import "MJRefresh.h"
 
 static NSString *cellIndentifer = @"newsCell";
 @interface MyInformationsViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -42,8 +43,25 @@ static NSString *cellIndentifer = @"newsCell";
     self.newsList.dataSource = self;
     self.newsList.delegate = self;
     [self.view addSubview:self.newsList];
+    self.newsList.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self getData];
+    }];
+    [self.newsList.mj_header beginRefreshing];
+    
+    self.newsList.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [self requestMoreData];
+    }];
+}
+-(void)getData
+{
+    [self.newsList.mj_header endRefreshing];
+    [self.newsList reloadData];
 }
 
+-(void)requestMoreData
+{
+    [self.newsList.mj_footer endRefreshing];
+}
 - (IBAction)editAction:(id)sender {
     
     NSLog(@"%d",[User shareUser].isLogin);
@@ -51,9 +69,7 @@ static NSString *cellIndentifer = @"newsCell";
         LoginViewController *loginVC = [Utility getControllerWithStoryBoardId:ZQLoginViewCotrollerId];
         [self.navigationController pushViewController:loginVC animated:YES];
     }
-
 }
-
 
 #pragma mark listMethod
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
