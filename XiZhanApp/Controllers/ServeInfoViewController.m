@@ -8,6 +8,7 @@
 
 #import "ServeInfoViewController.h"
 #import "ServeTabCell.h"
+#import <MJRefresh.h>
 
 static NSString *serveCellId = @"serveTabCellId";
 @interface ServeInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -29,7 +30,27 @@ static NSString *serveCellId = @"serveTabCellId";
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:@"ServeTabCell" bundle:nil] forCellReuseIdentifier:serveCellId];
     
+    // 下拉刷新
+    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self requestData];
+    }];
     
+    // 上拉加载
+    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [self requestMoreData];
+    }];
+}
+
+// 数据请求
+- (void)requestData {
+    
+    [self.tableView.mj_header endRefreshing];
+    [self.tableView reloadData];
+    
+}
+
+- (void)requestMoreData {
+    [self.tableView.mj_footer endRefreshing];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,7 +63,7 @@ static NSString *serveCellId = @"serveTabCellId";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 15;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

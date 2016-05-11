@@ -10,6 +10,8 @@ pod 'MBProgressHUD'
 pod 'MJExtension'
 pod 'SDWebImage'
 pod 'Masonry'
+pod 'FMDB'
+pod 'MJRefresh'
 
 end
 

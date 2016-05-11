@@ -39,6 +39,9 @@
 		F0F37A1E1CE088390047A469 /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F37A1C1CE088390047A469 /* UIView_extra.m */; };
 		F0F37A211CE08BC80047A469 /* LeftSortsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F37A201CE08BC80047A469 /* LeftSortsViewController.m */; };
 		F0F37A251CE093A10047A469 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F37A241CE093A10047A469 /* LoginViewController.m */; };
+		F0FA99231CE2C3030078C74B /* ZQDatabaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FA991E1CE2C3030078C74B /* ZQDatabaseHelper.m */; };
+		F0FA99241CE2C3030078C74B /* ZQDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FA99201CE2C3030078C74B /* ZQDatabaseManager.m */; };
+		F0FA99251CE2C3030078C74B /* ZQDatabaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FA99221CE2C3030078C74B /* ZQDatabaseModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +104,12 @@
 		F0F37A201CE08BC80047A469 /* LeftSortsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSortsViewController.m; sourceTree = "<group>"; };
 		F0F37A231CE093A10047A469 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F0F37A241CE093A10047A469 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		F0FA991D1CE2C3030078C74B /* ZQDatabaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQDatabaseHelper.h; sourceTree = "<group>"; };
+		F0FA991E1CE2C3030078C74B /* ZQDatabaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQDatabaseHelper.m; sourceTree = "<group>"; };
+		F0FA991F1CE2C3030078C74B /* ZQDatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQDatabaseManager.h; sourceTree = "<group>"; };
+		F0FA99201CE2C3030078C74B /* ZQDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQDatabaseManager.m; sourceTree = "<group>"; };
+		F0FA99211CE2C3030078C74B /* ZQDatabaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQDatabaseModel.h; sourceTree = "<group>"; };
+		F0FA99221CE2C3030078C74B /* ZQDatabaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQDatabaseModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,14 +195,14 @@
 			children = (
 				F0F379E81CE07B280047A469 /* API */,
 				F0F379EE1CE07B280047A469 /* BaseViewControllers */,
+				F0F379FA1CE07B280047A469 /* Models */,
 				F0F379F51CE07B280047A469 /* Controllers */,
+				F0F37A041CE07B280047A469 /* Views */,
 				F0F379F61CE07B280047A469 /* DataStorage */,
 				F0F379F81CE07B280047A469 /* Helper */,
-				F0F379FA1CE07B280047A469 /* Models */,
 				F0F379FE1CE07B280047A469 /* Resources */,
 				F0F379FF1CE07B280047A469 /* Utility */,
 				F0F37A021CE07B280047A469 /* Venders */,
-				F0F37A041CE07B280047A469 /* Views */,
 				F0F379D41CE07AD90047A469 /* AppDelegate.h */,
 				F0F379D51CE07AD90047A469 /* AppDelegate.m */,
 				F0F379DA1CE07AD90047A469 /* Main.storyboard */,
@@ -250,6 +259,7 @@
 		F0F379F61CE07B280047A469 /* DataStorage */ = {
 			isa = PBXGroup;
 			children = (
+				F0FA991C1CE2C3030078C74B /* 数据库 */,
 				F0F379F71CE07B280047A469 /* .a */,
 			);
 			path = DataStorage;
@@ -345,6 +355,19 @@
 				F0E396AF1CE186D200D4137E /* RegisterViewController.m */,
 			);
 			name = "LoginRegisterControllers(登录注册)";
+			sourceTree = "<group>";
+		};
+		F0FA991C1CE2C3030078C74B /* 数据库 */ = {
+			isa = PBXGroup;
+			children = (
+				F0FA991D1CE2C3030078C74B /* ZQDatabaseHelper.h */,
+				F0FA991E1CE2C3030078C74B /* ZQDatabaseHelper.m */,
+				F0FA991F1CE2C3030078C74B /* ZQDatabaseManager.h */,
+				F0FA99201CE2C3030078C74B /* ZQDatabaseManager.m */,
+				F0FA99211CE2C3030078C74B /* ZQDatabaseModel.h */,
+				F0FA99221CE2C3030078C74B /* ZQDatabaseModel.m */,
+			);
+			path = "数据库";
 			sourceTree = "<group>";
 		};
 		F64A6B1F590784F7AB19C983 /* Pods */ = {
@@ -484,6 +507,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0FA99251CE2C3030078C74B /* ZQDatabaseModel.m in Sources */,
 				F0F37A0A1CE07B280047A469 /* BaseViewController.m in Sources */,
 				F0F37A211CE08BC80047A469 /* LeftSortsViewController.m in Sources */,
 				F0F37A0E1CE07B280047A469 /* Utility.m in Sources */,
@@ -493,6 +517,8 @@
 				F0F37A081CE07B280047A469 /* BaseNaviViewController.m in Sources */,
 				F0E396CD1CE1BA5400D4137E /* AYCButton.m in Sources */,
 				F0F37A1E1CE088390047A469 /* UIView_extra.m in Sources */,
+				F0FA99241CE2C3030078C74B /* ZQDatabaseManager.m in Sources */,
+				F0FA99231CE2C3030078C74B /* ZQDatabaseHelper.m in Sources */,
 				F0E396BB1CE1B4FA00D4137E /* MainCollCell.m in Sources */,
 				F0F37A1D1CE088390047A469 /* LeftSlideViewController.m in Sources */,
 				F0F37A251CE093A10047A469 /* LoginViewController.m in Sources */,
