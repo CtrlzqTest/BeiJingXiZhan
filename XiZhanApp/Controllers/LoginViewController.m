@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-
+#import "MianZeViewController.h"
 @interface LoginViewController ()
 {
     
@@ -49,8 +49,8 @@
 
 // 免责声明
 - (IBAction)impunityAction:(id)sender {
-    
-    
+    MianZeViewController *vc = [[MianZeViewController alloc]init];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 // 登录

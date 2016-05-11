@@ -18,7 +18,7 @@
 
 #define kUpdateDataBaseToHost   @"vote3/test/update.do"
 
-#define kgetCodeAPI         @"app.user/checkSmsCode"      // 获取验证码
+#define kgetCodeAPI         @"app.user/getSmsCode"      // 获取验证码
 
 #define kGoodsListAPI           @"appinfo/slist"       // 购物列表
 
