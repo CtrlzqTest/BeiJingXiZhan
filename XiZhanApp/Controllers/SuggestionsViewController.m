@@ -65,7 +65,7 @@
     self.phoneField.layer.borderColor = colorref;
     self.phoneField.autocapitalizationType = NO;
     self.phoneField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    
+
     [self.view addSubview:self.phoneField];
     
     self.textView = [[UITextView alloc]init];
