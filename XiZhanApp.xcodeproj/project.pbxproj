@@ -662,7 +662,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c5e8fe19-2f0b-4ab5-9605-a140d8054711";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -679,7 +679,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c5e8fe19-2f0b-4ab5-9605-a140d8054711";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

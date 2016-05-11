@@ -34,7 +34,15 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    //[self initView];
+}
+-(void)viewWillAppear:(BOOL)animated
+{
+    //[self initView];
+}
 -(void)initView
 {
     NSInteger leftSpace = 40*ProportionWidth;
