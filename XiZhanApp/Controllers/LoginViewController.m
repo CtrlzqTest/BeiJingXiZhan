@@ -10,7 +10,7 @@
 #import "MianZeViewController.h"
 @interface LoginViewController ()
 {
-    
+    BOOL _isAgree;
 }
 @property (weak, nonatomic) IBOutlet UITextField *userNameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passWordLabel;
@@ -57,7 +57,7 @@
 - (IBAction)loginAction:(id)sender {
     
     if (![self checkInput]) {
-        return;
+        return ;
     }
     __weak typeof(self) weakSelf = self;
     [MHNetworkManager postReqeustWithURL:kLoginAPI params:@{@"tel":self.userNameLabel.text,@"password":self.passWordLabel.text} successBlock:^(id returnData) {
@@ -84,6 +84,10 @@
     
     if (self.passWordLabel.text.length <= 0) {
         [MBProgressHUD showError:@"密码不能为空" toView:nil];
+        return NO;
+    }
+    if (!self.agreeBtn.selected) {
+        [MBProgressHUD showError:@"请同意免责声明" toView:nil];
         return NO;
     }
     return YES;

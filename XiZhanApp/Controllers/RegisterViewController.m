@@ -46,6 +46,7 @@
         [MBProgressHUD showError:@"手机号格式不正确" toView:nil];
         return;
     }
+    
     __weak typeof(self) weakSelf = self;
     [MHNetworkManager postReqeustWithURL:kgetCodeAPI params:@{@"tel":self.phoneTef.text} successBlock:^(id returnData) {
         [MBProgressHUD showSuccess:@"获取验证码成功" toView:self.view];
@@ -92,7 +93,6 @@
         
     } showHUD:YES];
     
-    
 }
 
 - (BOOL )checkInput {
@@ -112,6 +112,10 @@
     }
     if (![Utility checkTelNumber:self.phoneTef.text]) {
         [MBProgressHUD showError:@"手机号格式不正确" toView:nil];
+        return NO;
+    }
+    if (!self.agreeBtn.selected) {
+        [MBProgressHUD showError:@"请同意免责声明" toView:nil];
         return NO;
     }
     return YES;
