@@ -10,7 +10,7 @@
 #import "UIViewController+AYCNavigationItem.h"
 #import "MianZeViewController.h"
 
-#define textNum 100
+#define textNum 10
 @interface SuggestionsViewController ()<UITextViewDelegate>
 
 @property(nonatomic,retain)UITextField *phoneField;
@@ -76,6 +76,8 @@
     self.textView.delegate = self;
     
     [self.view addSubview:self.textView];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(change:) name:UITextViewTextDidChangeNotification object:nil];
+
     
     self.countTextLabel = [[UILabel alloc]init];
     self.countTextLabel.frame = CGRectMake(KWidth-100*ProportionWidth, CGRectGetMaxY(self.textView.frame) + lineSpace, 60, 15);
@@ -128,28 +130,23 @@
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     
     self.countTextLabel.text = [NSString stringWithFormat:@"%lu/100    ",(unsigned long)self.textView.text.length];
-    if (self.textView.text.length >= textNum) {
-         self.countTextLabel.textColor = [UIColor redColor];
-         NSString *str = [self.textView.text substringToIndex:textNum];
-         self.textView.text = str;
-    }
-    else{
-         self.countTextLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
-    }
     
     return YES;
 }
-
-- (void)textViewDidChangeSelection:(UITextView *)textView{
-    self.countTextLabel.text = [NSString stringWithFormat:@"%lu/100    ",(unsigned long)self.textView.text.length];
-    if (self.textView.text.length >= textNum) {
-         self.countTextLabel.textColor = [UIColor redColor];
-        NSString *str = [self.textView.text substringToIndex:textNum];
-        self.textView.text = str;
+-(void)change:(NSNotification *)ch
+{
+    if (self.textView.text.length > textNum) {
+        self.countTextLabel.textColor = [UIColor redColor];
+        self.textView.text = [self.textView.text substringToIndex:textNum];
     }
     else{
-         self.countTextLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
+        self.countTextLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
     }
+
+}
+- (void)textViewDidChangeSelection:(UITextView *)textView
+{
+    self.countTextLabel.text = [NSString stringWithFormat:@"%lu/100    ",(unsigned long)self.textView.text.length];
 }
 #pragma mark yesButtonMethod
 -(void)yesButtonMethod:(UIButton *)sender

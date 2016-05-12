@@ -24,9 +24,13 @@
     [super viewDidLoad];
     self.title = @"注册";
     [self setupViews];
-    // Do any additional setup after loading the view.
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapMethod)];
+    [self.view addGestureRecognizer:tap];
 }
-
+-(void)tapMethod
+{
+    [self.view endEditing:YES];
+}
 - (void)setupViews {
     
     self.getCodeBtn.layer.cornerRadius = 5;
