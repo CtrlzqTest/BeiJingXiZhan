@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "JJPhotoManeger.h"
+
 @protocol MShowGroupAllSetDelegate<NSObject>
 -(void)finishSelectImg;
 @end
 
-@interface MShowGroupAllSet : UIViewController<JJPhotoDelegate>
+@interface MShowGroupAllSet : UIViewController
 - (id)initWithGroup:(ALAssetsGroup *)group selectedArr:(NSMutableArray *)arrSelected;
 
 @property(nonatomic,assign)NSInteger MaxCount;
