@@ -16,7 +16,7 @@
 #import "LeftSortsTabCell.h"
 
 static NSString *leftSortsCellId = @"leftSortsCellId";
-@interface LeftSortsViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface LeftSortsViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 {
     NSMutableArray *_dataArray;
 }
@@ -126,21 +126,27 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
             break;
         case 4:
         {
-            // 退出登录
-            [Utility setLoginStates:NO];
-            [User shareUser].isLogin = NO;
-            [Utility saveUserInfo:nil];
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLogoutNotication object:nil];
-            });
-            
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"确认退出？" message:nil delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+            [alert show];
         }
             break;
         default:
             break;
     }
 }
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        // 退出登录
+        [Utility setLoginStates:NO];
+        [User shareUser].isLogin = NO;
+        [Utility saveUserInfo:nil];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLogoutNotication object:nil];
+        });
 
+    }
+}
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     return 180;
@@ -156,7 +162,6 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
     view.backgroundColor = [UIColor clearColor];
     return view;
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
