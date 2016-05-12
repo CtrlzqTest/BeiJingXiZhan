@@ -16,21 +16,13 @@
 
 //#define BaseAPI                 @"http://192.168.16.124:8080/znweb/"    // 赵楠
 
-#define kUpdateDataBaseToHost   @"vote3/test/update.do"
-
 #define kgetCodeAPI         @"app.user/getSmsCode"      // 获取验证码
-
-#define kGoodsListAPI           @"appinfo/slist"       // 购物列表
 
 #define kLoginAPI               @"app.user/login"       // 登录
 
 #define kRegisteAPI             @"app.user/register"         //注册
 
 #define kAppopinion            @"app.opinion/add" //意见反馈
-
-#define kCollectAPI             @"appmyfavorite/save"  //收藏
-
-#define kCollectionListAPI      @"appmyfavorite/findPersonalList"  //收藏列表
 
 
 //   常量
