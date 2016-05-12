@@ -43,19 +43,21 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapMethod)];
     [self.view addGestureRecognizer:tap];
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     self.textView = [[UITextView alloc]init];
     self.textView.frame = CGRectMake(leftSpace, 130*ProportionHeight, KWidth-80, 120);
     self.textView.backgroundColor = [UIColor whiteColor];
     self.textView.editable = YES;
     self.textView.font = [UIFont systemFontOfSize:14];
     self.textView.layer.cornerRadius = 5.0;
-    self.textView.layer.masksToBounds = YES;
     self.textView.layer.borderWidth = 1.0;
     self.textView.layer.borderColor = colorref;
     self.textView.autocapitalizationType = NO;
     self.textView.delegate = self;
     
     [self.view addSubview:self.textView];
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(change:) name:UITextViewTextDidChangeNotification object:nil];
 
     
