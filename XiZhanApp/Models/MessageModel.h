@@ -10,6 +10,9 @@
 
 @interface MessageModel : ZQDatabaseModel
 
-@property(nonatomic,copy)NSString *name;
+@property(nonatomic,copy)NSString *msgTitle;
+@property(nonatomic,copy)NSString *msgDate;
+@property(nonatomic,copy)NSString *msgContent;
+@property(nonatomic,copy)NSString *msgType;
 
 @end

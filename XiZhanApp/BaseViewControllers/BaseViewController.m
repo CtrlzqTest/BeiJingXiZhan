@@ -18,8 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self canSlideMenu:NO];
-    // Do any additional setup after loading the view.
 }
 
 - (void)canSlideMenu:(BOOL )isSlide {
