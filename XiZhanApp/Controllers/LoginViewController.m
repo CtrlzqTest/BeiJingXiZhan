@@ -86,6 +86,10 @@
         [MBProgressHUD showError:@"密码不能为空" toView:nil];
         return NO;
     }
+    if (![Utility checkPassword:self.passWordLabel.text]) {
+        [MBProgressHUD showError:@"密码格式不正确,密码为6-18位数字或字母" toView:nil];
+        return NO;
+    }
     if (!self.agreeBtn.selected) {
         [MBProgressHUD showError:@"请同意免责声明" toView:nil];
         return NO;

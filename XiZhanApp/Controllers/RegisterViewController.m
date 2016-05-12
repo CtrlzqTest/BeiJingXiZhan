@@ -110,6 +110,10 @@
         [MBProgressHUD showError:@"密码不能为空" toView:nil];
         return NO;
     }
+    if (![Utility checkPassword:self.passWordTef.text]) {
+        [MBProgressHUD showError:@"密码格式不正确,密码为6-18位数字或字母" toView:nil];
+        return NO;
+    }
     if (self.checkCodeTef.text.length <= 0) {
         [MBProgressHUD showError:@"请输入验证码" toView:nil];
         return NO;
