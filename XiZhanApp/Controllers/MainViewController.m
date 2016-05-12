@@ -12,6 +12,7 @@
 #import "MainCollCell.h"
 #import "MyInformationsViewController.h"
 #import "ServeInfoViewController.h"
+#import "MessageModel.h"
 
 static NSString *collCellId = @"MainCell";
 @interface MainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -39,6 +40,7 @@ static NSString *collCellId = @"MainCell";
 
 - (void)initData {
     _dataArray = [NSMutableArray arrayWithArray:@[@"志愿者消息",@"站内公告消息",@"服务台消息"]];
+
 }
 
 // 显示菜单

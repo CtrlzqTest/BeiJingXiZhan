@@ -22,33 +22,33 @@
  *  @param propName 条件依据(属性名)
  *  @param value    条件(一般是ID的值)
  */
--(void)deleteWithPropName:(NSString *)propName value:(id)value;
++(void)deleteWithPropName:(NSString *)propName value:(id)value;
 
 /**
  *  删除表所有数据
  */
-- (void)deleteAllDataFromTable;
++ (void)deleteAllDataFromTable;
 
 /**
  *  从本地获取数据
  *
  *  @return 数据数组
  */
--(NSArray *)getAllDataFromLocal;
++(NSArray *)getAllDataFromLocal;
 
 /**
  *  条件查询
  *
  *  @param condition 查询条件
  */
-- (NSArray *)getDataWithCondition:(NSString *)condition;
++ (NSArray *)getDataWithCondition:(NSString *)condition;
 
 /**
  *  分页查询
  *
  *  @param page 页数
  */
-- (NSArray *)getDataWithPage:(NSInteger )page;
++ (NSArray *)getDataWithPage:(NSInteger )page;
 /**
  *  修改数据
  *
