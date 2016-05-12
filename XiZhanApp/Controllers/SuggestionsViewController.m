@@ -74,6 +74,8 @@
     self.textView.delegate = self;
     
     [self.view addSubview:self.textView];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(change:) name:UITextViewTextDidChangeNotification object:nil];
+
     
     self.countTextLabel = [[UILabel alloc]init];
     self.countTextLabel.frame = CGRectMake(KWidth-100*ProportionWidth, CGRectGetMaxY(self.textView.frame) + lineSpace, 60, 15);
@@ -126,28 +128,23 @@
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     
     self.countTextLabel.text = [NSString stringWithFormat:@"%lu/100    ",(unsigned long)self.textView.text.length];
-    if (self.textView.text.length >= textNum) {
-         self.countTextLabel.textColor = [UIColor redColor];
-         NSString *str = [self.textView.text substringToIndex:textNum];
-         self.textView.text = str;
-    }
-    else{
-         self.countTextLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
-    }
     
     return YES;
 }
-
-- (void)textViewDidChangeSelection:(UITextView *)textView{
-    self.countTextLabel.text = [NSString stringWithFormat:@"%lu/100    ",(unsigned long)self.textView.text.length];
-    if (self.textView.text.length >= textNum) {
-         self.countTextLabel.textColor = [UIColor redColor];
-        NSString *str = [self.textView.text substringToIndex:textNum];
-        self.textView.text = str;
+-(void)change:(NSNotification *)ch
+{
+    if (self.textView.text.length > textNum) {
+        self.countTextLabel.textColor = [UIColor redColor];
+        self.textView.text = [self.textView.text substringToIndex:textNum];
     }
     else{
-         self.countTextLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
+        self.countTextLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
     }
+
+}
+- (void)textViewDidChangeSelection:(UITextView *)textView
+{
+    self.countTextLabel.text = [NSString stringWithFormat:@"%lu/100    ",(unsigned long)self.textView.text.length];
 }
 #pragma mark yesButtonMethod
 -(void)yesButtonMethod:(UIButton *)sender
@@ -163,7 +160,6 @@
 #pragma mark registerButtonMethod
 -(void)registerButtonMethod:(UIButton *)sender
 {
-    
     if (![self checkInput]) {
         return ;
     }
@@ -171,7 +167,9 @@
     [MHNetworkManager postReqeustWithURL:kAppopinion params:@{@"tel":self.phoneField.text,@"comment":self.textView.text} successBlock:^(id returnData) {
         
         [MBProgressHUD showSuccess:@"意见成功发送" toView:weakSelf.view];
-        [weakSelf.navigationController popViewControllerAnimated:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+              [weakSelf.navigationController popViewControllerAnimated:YES];
+        });
         
     } failureBlock:^(NSError *error) {
         [MBProgressHUD showSuccess:@"意见发送失败" toView:weakSelf.view];
@@ -186,7 +184,6 @@
 
 - (BOOL )checkInput {
     
-    
     if (self.phoneField.text.length <= 0) {
         [MBProgressHUD showError:@"手机号不能为空" toView:nil];
         return NO;
@@ -194,6 +191,10 @@
     if (![Utility checkTelNumber:self.phoneField.text]) {
         [MBProgressHUD showError:@"手机号格式不正确" toView:nil];
         return NO;
+    }
+    if ( [User shareUser].isLogin) {
+        self.phoneField.text = [Utility getUserInfoFromLocal][@"tel"];
+        self.phoneField.enabled = NO;
     }
     if (self.textView.text.length <= 0) {
         [MBProgressHUD showError:@"意见不能为空" toView:nil];

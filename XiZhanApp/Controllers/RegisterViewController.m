@@ -24,9 +24,13 @@
     [super viewDidLoad];
     self.title = @"注册";
     [self setupViews];
-    // Do any additional setup after loading the view.
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapMethod)];
+    [self.view addGestureRecognizer:tap];
 }
-
+-(void)tapMethod
+{
+    [self.view endEditing:YES];
+}
 - (void)setupViews {
     
     self.getCodeBtn.layer.cornerRadius = 5;
@@ -87,6 +91,7 @@
         if ([returnData[@"message"] isEqualToString:@"success"]) {
             [MBProgressHUD showSuccess:@"注册成功" toView:weakSelf.view];
             [User shareUser].isLogin = YES;
+            [Utility saveUserInfo:returnData[@"user"]];
             [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLoginNotication object:nil];
             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
         }else {

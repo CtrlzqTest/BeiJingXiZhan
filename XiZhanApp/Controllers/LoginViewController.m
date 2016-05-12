@@ -27,8 +27,13 @@
     [super viewDidLoad];
     self.title = @"登录";
     [self.autoLoginSwitch setOn:NO];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapMethod)];
+    [self.view addGestureRecognizer:tap];
 }
-
+-(void)tapMethod
+{
+    [self.view endEditing:YES];
+}
 // 自动登录按钮
 - (IBAction)autoLoginAction:(id)sender {
     
@@ -65,6 +70,9 @@
         if (weakSelf.autoLoginSwitch.isOn) {
             [Utility setLoginStates:YES];
         }
+        [Utility saveUserInfo:returnData[@"user"]];
+        
+        NSLog(@"%@",[Utility getUserInfoFromLocal][@"tel"]) ; 
         [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLoginNotication object:nil];
         [weakSelf.navigationController popViewControllerAnimated:YES];
         
