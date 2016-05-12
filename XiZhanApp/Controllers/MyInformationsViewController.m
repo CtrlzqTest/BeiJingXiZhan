@@ -11,6 +11,7 @@
 #import "LoginViewController.h"
 #import "InformationDetailViewController.h"
 #import "MJRefresh.h"
+#import "PublishInfoViewController.h"
 
 static NSString *cellIndentifer = @"newsCell";
 @interface MyInformationsViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -68,6 +69,9 @@ static NSString *cellIndentifer = @"newsCell";
     if (![User shareUser].isLogin) {
         LoginViewController *loginVC = [Utility getControllerWithStoryBoardId:ZQLoginViewCotrollerId];
         [self.navigationController pushViewController:loginVC animated:YES];
+    }else {
+        PublishInfoViewController *publishVC = [Utility getControllerWithStoryBoardId:ZQPublishInfoViewControllerId];
+        [self.navigationController pushViewController:publishVC animated:YES];
     }
 }
 

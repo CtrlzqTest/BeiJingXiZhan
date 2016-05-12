@@ -11,6 +11,13 @@
 		F021140B1CE2D81A00676971 /* InformationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F021140A1CE2D81A00676971 /* InformationDetailViewController.m */; };
 		F021140E1CE2FD5D00676971 /* SerVeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F021140D1CE2FD5D00676971 /* SerVeDetailViewController.m */; };
 		F0614DD11CE1C4180036CC3E /* MyInformationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0614DD01CE1C4180036CC3E /* MyInformationsViewController.m */; };
+		F0A798701CE43663007927BD /* MGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A798651CE43663007927BD /* MGroupCell.m */; };
+		F0A798711CE43663007927BD /* MGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0A798661CE43663007927BD /* MGroupCell.xib */; };
+		F0A798721CE43663007927BD /* MImaCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A798681CE43663007927BD /* MImaCell.m */; };
+		F0A798731CE43663007927BD /* MImaCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0A798691CE43663007927BD /* MImaCell.xib */; };
+		F0A798741CE43663007927BD /* MImaLibTool.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A7986B1CE43663007927BD /* MImaLibTool.m */; };
+		F0A798751CE43663007927BD /* MShowAllGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A7986D1CE43663007927BD /* MShowAllGroup.m */; };
+		F0A798761CE43663007927BD /* MShowGroupAllSet.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A7986F1CE43663007927BD /* MShowGroupAllSet.m */; };
 		F0C4AAF61CE2E14A0067E986 /* MHAsiNetworkHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AAEE1CE2E14A0067E986 /* MHAsiNetworkHandler.m */; };
 		F0C4AAF71CE2E14A0067E986 /* MHAsiNetworkItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AAF01CE2E14A0067E986 /* MHAsiNetworkItem.m */; };
 		F0C4AAF81CE2E14A0067E986 /* MHNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AAF21CE2E14A0067E986 /* MHNetworkManager.m */; };
@@ -67,6 +74,19 @@
 		F021140D1CE2FD5D00676971 /* SerVeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SerVeDetailViewController.m; sourceTree = "<group>"; };
 		F0614DCF1CE1C4180036CC3E /* MyInformationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInformationsViewController.h; sourceTree = "<group>"; };
 		F0614DD01CE1C4180036CC3E /* MyInformationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInformationsViewController.m; sourceTree = "<group>"; };
+		F0A798631CE43663007927BD /* ImagePickerDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerDefine.h; sourceTree = "<group>"; };
+		F0A798641CE43663007927BD /* MGroupCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MGroupCell.h; sourceTree = "<group>"; };
+		F0A798651CE43663007927BD /* MGroupCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MGroupCell.m; sourceTree = "<group>"; };
+		F0A798661CE43663007927BD /* MGroupCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MGroupCell.xib; sourceTree = "<group>"; };
+		F0A798671CE43663007927BD /* MImaCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MImaCell.h; sourceTree = "<group>"; };
+		F0A798681CE43663007927BD /* MImaCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MImaCell.m; sourceTree = "<group>"; };
+		F0A798691CE43663007927BD /* MImaCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MImaCell.xib; sourceTree = "<group>"; };
+		F0A7986A1CE43663007927BD /* MImaLibTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MImaLibTool.h; sourceTree = "<group>"; };
+		F0A7986B1CE43663007927BD /* MImaLibTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MImaLibTool.m; sourceTree = "<group>"; };
+		F0A7986C1CE43663007927BD /* MShowAllGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShowAllGroup.h; sourceTree = "<group>"; };
+		F0A7986D1CE43663007927BD /* MShowAllGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShowAllGroup.m; sourceTree = "<group>"; };
+		F0A7986E1CE43663007927BD /* MShowGroupAllSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MShowGroupAllSet.h; sourceTree = "<group>"; };
+		F0A7986F1CE43663007927BD /* MShowGroupAllSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MShowGroupAllSet.m; sourceTree = "<group>"; };
 		F0C4AAEB1CE2E14A0067E986 /* MHAsiNetworkDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHAsiNetworkDefine.h; sourceTree = "<group>"; };
 		F0C4AAEC1CE2E14A0067E986 /* MHAsiNetworkDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHAsiNetworkDelegate.h; sourceTree = "<group>"; };
 		F0C4AAED1CE2E14A0067E986 /* MHAsiNetworkHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHAsiNetworkHandler.h; sourceTree = "<group>"; };
@@ -169,6 +189,26 @@
 				D3F71D4EA7BC10190962AECA /* libPods-XiZhanApp.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F0A798621CE43663007927BD /* MImgpicker */ = {
+			isa = PBXGroup;
+			children = (
+				F0A798631CE43663007927BD /* ImagePickerDefine.h */,
+				F0A798641CE43663007927BD /* MGroupCell.h */,
+				F0A798651CE43663007927BD /* MGroupCell.m */,
+				F0A798661CE43663007927BD /* MGroupCell.xib */,
+				F0A798671CE43663007927BD /* MImaCell.h */,
+				F0A798681CE43663007927BD /* MImaCell.m */,
+				F0A798691CE43663007927BD /* MImaCell.xib */,
+				F0A7986A1CE43663007927BD /* MImaLibTool.h */,
+				F0A7986B1CE43663007927BD /* MImaLibTool.m */,
+				F0A7986C1CE43663007927BD /* MShowAllGroup.h */,
+				F0A7986D1CE43663007927BD /* MShowAllGroup.m */,
+				F0A7986E1CE43663007927BD /* MShowGroupAllSet.h */,
+				F0A7986F1CE43663007927BD /* MShowGroupAllSet.m */,
+			);
+			path = MImgpicker;
 			sourceTree = "<group>";
 		};
 		F0B664CA1CE191300033C8CF /* AcyButton */ = {
@@ -384,6 +424,7 @@
 		F0F37A021CE07B280047A469 /* Venders */ = {
 			isa = PBXGroup;
 			children = (
+				F0A798621CE43663007927BD /* MImgpicker */,
 				F0B664CA1CE191300033C8CF /* AcyButton */,
 				F0F37A181CE088390047A469 /* LeftSlideViewController */,
 				F0F37A031CE07B280047A469 /* .a */,
@@ -541,6 +582,8 @@
 				F0E396D81CE1EB8C00D4137E /* ServeTabCell.xib in Resources */,
 				F0F379DE1CE07AD90047A469 /* Assets.xcassets in Resources */,
 				F0F379DC1CE07AD90047A469 /* Main.storyboard in Resources */,
+				F0A798711CE43663007927BD /* MGroupCell.xib in Resources */,
+				F0A798731CE43663007927BD /* MImaCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,7 +644,9 @@
 			files = (
 				F0FA99251CE2C3030078C74B /* ZQDatabaseModel.m in Sources */,
 				F0C4AAF81CE2E14A0067E986 /* MHNetworkManager.m in Sources */,
+				F0A798721CE43663007927BD /* MImaCell.m in Sources */,
 				F0F37A0A1CE07B280047A469 /* BaseViewController.m in Sources */,
+				F0A798751CE43663007927BD /* MShowAllGroup.m in Sources */,
 				F0F37A211CE08BC80047A469 /* LeftSortsViewController.m in Sources */,
 				F0F37A0E1CE07B280047A469 /* Utility.m in Sources */,
 				F0C4AB071CE3194B0067E986 /* ZQPhotoViewCell.m in Sources */,
@@ -610,8 +655,11 @@
 				F0E396C11CE1B9C300D4137E /* MianZeViewController.m in Sources */,
 				F0C4AAFE1CE2E3520067E986 /* MBProgressHUD+Add.m in Sources */,
 				F0F37A141CE084BB0047A469 /* MainViewController.m in Sources */,
+				F0A798761CE43663007927BD /* MShowGroupAllSet.m in Sources */,
 				F0F37A081CE07B280047A469 /* BaseNaviViewController.m in Sources */,
+				F0A798741CE43663007927BD /* MImaLibTool.m in Sources */,
 				F0E396CD1CE1BA5400D4137E /* AYCButton.m in Sources */,
+				F0A798701CE43663007927BD /* MGroupCell.m in Sources */,
 				F0F37A1E1CE088390047A469 /* UIView_extra.m in Sources */,
 				F0FA99291CE2D0460078C74B /* LeftSortsTabCell.m in Sources */,
 				F0FA99241CE2C3030078C74B /* ZQDatabaseManager.m in Sources */,

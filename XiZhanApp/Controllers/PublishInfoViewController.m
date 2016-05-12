@@ -8,11 +8,14 @@
 
 #import "PublishInfoViewController.h"
 #import "ZQPhotoViewCell.h"
+#import "MShowAllGroup.h"
+#import "MImaLibTool.h"
 
 static NSString *photoColCellId = @"photoColCellId";
-@interface PublishInfoViewController ()<UIActionSheetDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+@interface PublishInfoViewController ()<UIActionSheetDelegate,UICollectionViewDelegate,UICollectionViewDataSource,UIImagePickerControllerDelegate,UINavigationControllerDelegate,MShowAllGroupDelegate>
 {
     UIImagePickerController *imaPic;
+    NSMutableArray *_arrSelected;
 }
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -66,7 +69,24 @@ static NSString *photoColCellId = @"photoColCellId";
             [self presentViewController:imaPic animated:YES completion:nil];
         }
     }else if (buttonIndex == 1) {
-        
+        __weak typeof(self) weakSelf = self;
+        _arrSelected = [NSMutableArray array];
+        [[MImaLibTool shareMImaLibTool] getAllGroupWithArrObj:^(NSArray *arrObj) {
+            if (arrObj && arrObj.count > 0) {
+//                self.arrGroup = arrObj;
+                if ( arrObj.count > 0) {
+                    MShowAllGroup *svc = [[MShowAllGroup alloc] initWithArrGroup:arrObj arrSelected:_arrSelected];
+                    svc.delegate = self;
+                    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:svc];
+                    if (_arrSelected) {
+                        svc.arrSeleted = _arrSelected;
+                        svc.mvc.arrSelected = _arrSelected;
+                    }
+                    svc.maxCout = 6;
+                    [weakSelf presentViewController:nav animated:YES completion:nil];
+                }
+            }
+        }];
 //        [self loadImgDataAndShowAllGroup];
     }
 }

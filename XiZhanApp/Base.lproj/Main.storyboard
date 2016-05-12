@@ -496,9 +496,9 @@
         <image name="agreeUnSelect" width="32" height="32"/>
         <image name="camera" width="32" height="32"/>
         <image name="edit" width="32" height="32"/>
-        <image name="user" width="60" height="61"/>
+        <image name="user" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ewX-87-MmW"/>
+        <segue reference="RFY-AG-iji"/>
     </inferredMetricsTieBreakers>
 </document>
