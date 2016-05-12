@@ -19,7 +19,6 @@
 // 免责按钮
 @property (weak, nonatomic) IBOutlet UIButton *impunityBtn;
 
-
 @end
 
 @implementation LoginViewController

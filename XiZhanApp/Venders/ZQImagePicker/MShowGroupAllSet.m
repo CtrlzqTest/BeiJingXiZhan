@@ -182,10 +182,6 @@
         ALAsset *set = self.arrData[indexPath.row];
         [cell setBigImgViewWithImage:[self getBigIamgeWithALAsset:set]];
     }
-    
-//    JJPhotoManeger *mg = [JJPhotoManeger maneger];
-//    mg.delegate = self;
-//    [mg showLocalPhotoViewer:@[cell.BigImgView] selecImageindex:0];
 }
 
 - (UIImage*)getBigIamgeWithALAsset:(ALAsset*)set{
