@@ -55,9 +55,9 @@
     [MHNetworkManager postReqeustWithURL:kgetCodeAPI params:@{@"tel":self.phoneTef.text} successBlock:^(id returnData) {
         [MBProgressHUD showSuccess:@"获取验证码成功" toView:self.view];
         [weakSelf countDownTime:@60];
-        weakSelf.checkCodeTef.text = returnData[@"smscode"];
+//        weakSelf.checkCodeTef.text = returnData[@"smscode"];
     } failureBlock:^(NSError *error) {
-        
+        [MBProgressHUD showSuccess:@"获取验证码失败" toView:self.view];
     } showHUD:YES];
     
 }
