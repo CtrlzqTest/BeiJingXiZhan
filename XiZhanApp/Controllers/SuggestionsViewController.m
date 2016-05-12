@@ -10,10 +10,12 @@
 #import "UIViewController+AYCNavigationItem.h"
 #import "MianZeViewController.h"
 
-@interface SuggestionsViewController ()
+#define textNum 100
+@interface SuggestionsViewController ()<UITextViewDelegate>
 
 @property(nonatomic,retain)UITextField *phoneField;
 @property(nonatomic,retain)UITextView *textView;
+@property(nonatomic,retain)UILabel *countTextLabel;
 @property(nonatomic,retain)UIButton *yesButton;
 @property(nonatomic,retain)UIButton *detailButton;
 @property(nonatomic,retain)UIButton *registerButton;
@@ -65,16 +67,27 @@
     self.textView.frame = CGRectMake(leftSpace, CGRectGetMaxY(self.phoneField.frame) + lineSpace, KWidth-80, 120);
     self.textView.backgroundColor = [UIColor whiteColor];
     self.textView.editable = YES;
+    self.textView.font = [UIFont systemFontOfSize:14];
     self.textView.layer.cornerRadius = 5.0;
     self.textView.layer.masksToBounds = YES;
     self.textView.layer.borderWidth = 1.0;
     self.textView.layer.borderColor = colorref;
     self.textView.autocapitalizationType = NO;
+    self.textView.delegate = self;
     
     [self.view addSubview:self.textView];
     
+    self.countTextLabel = [[UILabel alloc]init];
+    self.countTextLabel.frame = CGRectMake(KWidth-100*ProportionWidth, CGRectGetMaxY(self.textView.frame) + lineSpace, 60, 15);
+    self.countTextLabel.textAlignment = NSTextAlignmentRight;
+    self.countTextLabel.font = [UIFont boldSystemFontOfSize:12];
+    self.countTextLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
+    self.countTextLabel.backgroundColor = [UIColor whiteColor];
+    self.countTextLabel.text = @"0/100    ";
+    [self.view addSubview:self.countTextLabel];
+    
     self.yesButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.yesButton.frame = CGRectMake(40*ProportionWidth, CGRectGetMaxY(self.textView.frame) + lineSpace, 30*ProportionWidth, 30*ProportionHeight);
+    self.yesButton.frame = CGRectMake(40*ProportionWidth, CGRectGetMaxY(self.countTextLabel.frame) + lineSpace, 30*ProportionWidth, 30*ProportionHeight);
     self.yesButton.layer.cornerRadius = 5.0;
     self.yesButton.layer.masksToBounds = YES;
     self.yesButton.layer.borderWidth = 0.0;
@@ -87,7 +100,7 @@
     [self.view addSubview:self.yesButton];
 
     self.detailButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.detailButton.frame = CGRectMake(CGRectGetMaxX(self.yesButton.frame)+10*ProportionWidth, CGRectGetMaxY(self.textView.frame) + lineSpace, 250*ProportionWidth, 30*ProportionHeight);
+    self.detailButton.frame = CGRectMake(CGRectGetMaxX(self.yesButton.frame)+10*ProportionWidth, CGRectGetMaxY(self.countTextLabel.frame) + lineSpace, 250*ProportionWidth, 30*ProportionHeight);
     self.detailButton.layer.cornerRadius = 5.0;
     self.detailButton.layer.masksToBounds = YES;
     self.detailButton.layer.borderWidth = 1.0;
@@ -111,23 +124,89 @@
     [self.view addSubview:self.registerButton];
     
 }
+#pragma mark textViewMethod
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    
+    self.countTextLabel.text = [NSString stringWithFormat:@"%lu/100    ",(unsigned long)self.textView.text.length];
+    if (self.textView.text.length >= textNum) {
+         self.countTextLabel.textColor = [UIColor redColor];
+         NSString *str = [self.textView.text substringToIndex:textNum];
+         self.textView.text = str;
+    }
+    else{
+         self.countTextLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
+    }
+    
+    return YES;
+}
 
+- (void)textViewDidChangeSelection:(UITextView *)textView{
+    self.countTextLabel.text = [NSString stringWithFormat:@"%lu/100    ",(unsigned long)self.textView.text.length];
+    if (self.textView.text.length >= textNum) {
+         self.countTextLabel.textColor = [UIColor redColor];
+        NSString *str = [self.textView.text substringToIndex:textNum];
+        self.textView.text = str;
+    }
+    else{
+         self.countTextLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
+    }
+}
+#pragma mark yesButtonMethod
 -(void)yesButtonMethod:(UIButton *)sender
 {
     sender.selected = !sender.selected;
 }
+#pragma mark detailButtonMethod
 -(void)detailButtonMethod:(UIButton *)sender
 {
     MianZeViewController *vc = [[MianZeViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
 }
+#pragma mark registerButtonMethod
 -(void)registerButtonMethod:(UIButton *)sender
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    
+    if (![self checkInput]) {
+        return ;
+    }
+    __weak typeof(self) weakSelf = self;
+    [MHNetworkManager postReqeustWithURL:kAppopinion params:@{@"tel":self.phoneField.text,@"comment":self.textView.text} successBlock:^(id returnData) {
+        
+        [MBProgressHUD showSuccess:@"意见成功发送" toView:weakSelf.view];
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+        
+    } failureBlock:^(NSError *error) {
+        [MBProgressHUD showSuccess:@"意见发送失败" toView:weakSelf.view];
+    } showHUD:YES];
+
 }
 
 -(void)tapMethod
 {
     [self.view endEditing:YES];
 }
+
+- (BOOL )checkInput {
+    
+    
+    if (self.phoneField.text.length <= 0) {
+        [MBProgressHUD showError:@"手机号不能为空" toView:nil];
+        return NO;
+    }
+    if (![Utility checkTelNumber:self.phoneField.text]) {
+        [MBProgressHUD showError:@"手机号格式不正确" toView:nil];
+        return NO;
+    }
+    if (self.textView.text.length <= 0) {
+        [MBProgressHUD showError:@"意见不能为空" toView:nil];
+        return NO;
+    }
+    if (!self.yesButton.selected) {
+        [MBProgressHUD showError:@"请同意免责声明" toView:nil];
+        return NO;
+    }
+    return YES;
+}
+
+
 @end

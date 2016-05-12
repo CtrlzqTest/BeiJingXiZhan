@@ -26,6 +26,8 @@
 
 #define kRegisteAPI             @"app.user/register"         //注册
 
+#define kAppopinion            @"app.opinion/add" //意见反馈
+
 #define kCollectAPI             @"appmyfavorite/save"  //收藏
 
 #define kCollectionListAPI      @"appmyfavorite/findPersonalList"  //收藏列表
