@@ -35,6 +35,8 @@ static NSString *photoColCellId = @"photoColCellId";
 
 - (void)setupViews {
     
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     _imageArray = [NSMutableArray array];
     
     self.contentTextView.layer.borderColor = [UIColor grayColor].CGColor;
