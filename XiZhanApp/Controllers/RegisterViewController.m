@@ -84,10 +84,14 @@
     __weak typeof(self) weakSelf = self;
     [MHNetworkManager postReqeustWithURL:kRegisteAPI params:@{@"tel":self.phoneTef.text,@"smscode":self.checkCodeTef.text,@"password":self.passWordTef.text} successBlock:^(id returnData) {
         
-        [MBProgressHUD showSuccess:@"注册成功" toView:weakSelf.view];
-        [User shareUser].isLogin = YES;
-        [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLoginNotication object:nil];
-        [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        if ([returnData[@"message"] isEqualToString:@"success"]) {
+            [MBProgressHUD showSuccess:@"注册成功" toView:weakSelf.view];
+            [User shareUser].isLogin = YES;
+            [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLoginNotication object:nil];
+            [weakSelf.navigationController popToRootViewControllerAnimated:YES];
+        }else {
+            [MBProgressHUD showSuccess:@"注册失败" toView:weakSelf.view];
+        }
         
     } failureBlock:^(NSError *error) {
         
