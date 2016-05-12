@@ -126,8 +126,10 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
             break;
         case 4:
         {
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"确认退出？" message:nil delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
-            [alert show];
+            if ([Utility isLogin]) {
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"确认退出？" message:nil delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+                [alert show];
+            }
         }
             break;
         default:
