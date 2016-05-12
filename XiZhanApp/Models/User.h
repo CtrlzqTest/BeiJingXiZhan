@@ -16,6 +16,8 @@
 @property(nonatomic,copy)NSString *USERNAME;
 @property(nonatomic,copy)NSString *LAST_LOGIN;
 @property(nonatomic,copy)NSString *USER_ID;
+@property(nonatomic,copy)NSString *CREATE_TIME;
+@property(nonatomic,copy)NSString *TEL;
 @property (nonatomic,assign)BOOL isLogin;
 
 + (User *)shareUser;

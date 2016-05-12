@@ -71,6 +71,9 @@
         if (weakSelf.autoLoginSwitch.isOn) {
             [Utility setLoginStates:YES];
         }
+        [Utility saveUserInfo:returnData[@"user"]];
+        
+        NSLog(@"%@",[Utility getUserInfoFromLocal][@"tel"]) ; 
         [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLoginNotication object:nil];
         [weakSelf.navigationController popViewControllerAnimated:YES];
         

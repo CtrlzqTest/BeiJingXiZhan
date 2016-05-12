@@ -30,5 +30,14 @@ static User *user = nil;
     return [user mj_keyValues];
     
 }
-
++ (NSDictionary *)replacedKeyFromPropertyName
+{
+    return @{
+             @"USER_ID" : @"id",
+             @"NAME":@"name",
+             @"USERNAME":@"nickname",
+             @"CREATE_TIME":@"createTime",
+             @"TEL":@"tel",
+             };
+}
 @end

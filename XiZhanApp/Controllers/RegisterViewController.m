@@ -91,6 +91,7 @@
         if ([returnData[@"message"] isEqualToString:@"success"]) {
             [MBProgressHUD showSuccess:@"注册成功" toView:weakSelf.view];
             [User shareUser].isLogin = YES;
+            [Utility saveUserInfo:returnData[@"user"]];
             [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLoginNotication object:nil];
             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
         }else {

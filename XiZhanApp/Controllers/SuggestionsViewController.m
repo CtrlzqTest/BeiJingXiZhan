@@ -10,7 +10,7 @@
 #import "UIViewController+AYCNavigationItem.h"
 #import "MianZeViewController.h"
 
-#define textNum 10
+#define textNum 100
 @interface SuggestionsViewController ()<UITextViewDelegate>
 
 @property(nonatomic,retain)UITextField *phoneField;
@@ -162,7 +162,6 @@
 #pragma mark registerButtonMethod
 -(void)registerButtonMethod:(UIButton *)sender
 {
-    
     if (![self checkInput]) {
         return ;
     }
@@ -170,7 +169,9 @@
     [MHNetworkManager postReqeustWithURL:kAppopinion params:@{@"tel":self.phoneField.text,@"comment":self.textView.text} successBlock:^(id returnData) {
         
         [MBProgressHUD showSuccess:@"意见成功发送" toView:weakSelf.view];
-        [weakSelf.navigationController popViewControllerAnimated:YES];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+              [weakSelf.navigationController popViewControllerAnimated:YES];
+        });
         
     } failureBlock:^(NSError *error) {
         [MBProgressHUD showSuccess:@"意见发送失败" toView:weakSelf.view];
@@ -185,7 +186,6 @@
 
 - (BOOL )checkInput {
     
-    
     if (self.phoneField.text.length <= 0) {
         [MBProgressHUD showError:@"手机号不能为空" toView:nil];
         return NO;
@@ -193,6 +193,10 @@
     if (![Utility checkTelNumber:self.phoneField.text]) {
         [MBProgressHUD showError:@"手机号格式不正确" toView:nil];
         return NO;
+    }
+    if ( [User shareUser].isLogin) {
+        self.phoneField.text = [Utility getUserInfoFromLocal][@"tel"];
+        self.phoneField.enabled = NO;
     }
     if (self.textView.text.length <= 0) {
         [MBProgressHUD showError:@"意见不能为空" toView:nil];
