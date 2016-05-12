@@ -107,8 +107,15 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
             break;
         case 2:
         {
-            SuggestionsViewController *vc = [[SuggestionsViewController alloc]init];
-            [tempAppDelegate.mainNavi pushViewController:vc animated:NO];
+            if ([User shareUser].isLogin) {
+                SuggestionsViewController *vc = [[SuggestionsViewController alloc]init];
+                [tempAppDelegate.mainNavi pushViewController:vc animated:NO];
+            }
+            else
+            {
+                LoginViewController *vc = [storyBoard instantiateViewControllerWithIdentifier:ZQLoginViewCotrollerId];
+                [tempAppDelegate.mainNavi pushViewController:vc animated:NO];
+            }
         }
             break;
         case 3:
@@ -122,6 +129,7 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
             // 退出登录
             [Utility setLoginStates:NO];
             [User shareUser].isLogin = NO;
+            [Utility saveUserInfo:nil];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLogoutNotication object:nil];
             });

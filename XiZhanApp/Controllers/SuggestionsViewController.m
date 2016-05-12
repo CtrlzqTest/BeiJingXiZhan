@@ -44,22 +44,24 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapMethod)];
     [self.view addGestureRecognizer:tap];
     
+    
     self.phoneField = [[UITextField alloc]init];
     self.phoneField.frame = CGRectMake(leftSpace, 80*ProportionHeight, KWidth-80*ProportionWidth, 40*ProportionHeight);
-    self.phoneField.placeholder = @"手机号";
+    //self.phoneField.placeholder = @"手机号";
     self.phoneField.returnKeyType = UIReturnKeyDone;
     self.phoneField.borderStyle = UITextBorderStyleRoundedRect;
     self.phoneField.backgroundColor = [UIColor whiteColor];
-    self.phoneField.enabled = YES;
+   // self.phoneField.enabled = YES;
     self.phoneField.font = [UIFont systemFontOfSize:17];
     self.phoneField.layer.cornerRadius = 5.0;
     self.phoneField.layer.masksToBounds = YES;
     self.phoneField.layer.borderWidth = 1.0;
     self.phoneField.layer.borderColor = colorref;
     self.phoneField.autocapitalizationType = NO;
+    self.phoneField.text = [Utility getUserInfoFromLocal][@"tel"];
     self.phoneField.clearButtonMode = UITextFieldViewModeWhileEditing;
     
-    [self.view addSubview:self.phoneField];
+  //  [self.view addSubview:self.phoneField];
     
     self.textView = [[UITextView alloc]init];
     self.textView.frame = CGRectMake(leftSpace, CGRectGetMaxY(self.phoneField.frame) + lineSpace, KWidth-80, 120);
@@ -164,7 +166,7 @@
         return ;
     }
     __weak typeof(self) weakSelf = self;
-    [MHNetworkManager postReqeustWithURL:kAppopinion params:@{@"tel":self.phoneField.text,@"comment":self.textView.text} successBlock:^(id returnData) {
+    [MHNetworkManager postReqeustWithURL:kAppopinion params:@{@"tel":[Utility getUserInfoFromLocal][@"tel"],@"comment":self.textView.text} successBlock:^(id returnData) {
         
         [MBProgressHUD showSuccess:@"意见成功发送" toView:weakSelf.view];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -184,6 +186,7 @@
 
 - (BOOL )checkInput {
     
+    NSLog(@"%@",[Utility getUserInfoFromLocal][@"tel"]);
     if (self.phoneField.text.length <= 0) {
         [MBProgressHUD showError:@"手机号不能为空" toView:nil];
         return NO;
@@ -192,10 +195,10 @@
         [MBProgressHUD showError:@"手机号格式不正确" toView:nil];
         return NO;
     }
-    if ( [User shareUser].isLogin) {
-        self.phoneField.text = [Utility getUserInfoFromLocal][@"tel"];
-        self.phoneField.enabled = NO;
-    }
+//    if ( [User shareUser].isLogin) {
+//        self.phoneField.text = [Utility getUserInfoFromLocal][@"tel"];
+//        self.phoneField.enabled = NO;
+//    }
     if (self.textView.text.length <= 0) {
         [MBProgressHUD showError:@"意见不能为空" toView:nil];
         return NO;
