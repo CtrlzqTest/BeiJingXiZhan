@@ -55,4 +55,8 @@
   */
 + (BOOL)checkTelNumber:(NSString *) telNumber;
 
+/**
+ *  验证密码6-18位数字拼音组合
+ */
++ (BOOL)checkPassword:(NSString *) password;
 @end

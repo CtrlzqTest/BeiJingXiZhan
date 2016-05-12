@@ -122,6 +122,15 @@ static User *user = nil;
     {
         return NO;
     }
+}
+
++ (BOOL)checkPassword:(NSString *) password
+{
+//    NSString *pattern = @"^(?![0-9]+$)(?![a-zA-Z]+$)[a-zA-Z0-9]{6,18}";// 包含字母
+    NSString *pattern = @"^[a-zA-Z0-9]{6,18}";// 可不包含字母
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", pattern];
+    BOOL isMatch = [pred evaluateWithObject:password];
+    return isMatch;
     
 }
 @end

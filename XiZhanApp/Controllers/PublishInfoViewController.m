@@ -16,6 +16,7 @@ static NSString *photoColCellId = @"photoColCellId";
 {
     UIImagePickerController *imaPic;
     NSMutableArray *_arrSelected;
+    NSMutableArray *_imageArray;
 }
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -33,6 +34,8 @@ static NSString *photoColCellId = @"photoColCellId";
 }
 
 - (void)setupViews {
+    
+    _imageArray = [NSMutableArray array];
     
     self.contentTextView.layer.borderColor = [UIColor grayColor].CGColor;
     self.contentTextView.layer.borderWidth = 0.5;
@@ -70,10 +73,10 @@ static NSString *photoColCellId = @"photoColCellId";
         }
     }else if (buttonIndex == 1) {
         __weak typeof(self) weakSelf = self;
+        // 相册选择
         _arrSelected = [NSMutableArray array];
         [[MImaLibTool shareMImaLibTool] getAllGroupWithArrObj:^(NSArray *arrObj) {
             if (arrObj && arrObj.count > 0) {
-//                self.arrGroup = arrObj;
                 if ( arrObj.count > 0) {
                     MShowAllGroup *svc = [[MShowAllGroup alloc] initWithArrGroup:arrObj arrSelected:_arrSelected];
                     svc.delegate = self;
@@ -87,8 +90,28 @@ static NSString *photoColCellId = @"photoColCellId";
                 }
             }
         }];
-//        [self loadImgDataAndShowAllGroup];
     }
+}
+
+#pragma mark -- UIImagePickerControllerDelegate
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    UIImage *image = info[@"UIImagePickerControllerOriginalImage"];
+    [_imageArray addObject:image];
+    [self.collectionView reloadData];
+    [picker dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+}
+
+#pragma mark -- MShowAllGroupDelegate
+
+-(void)finishSelectImg {
+    for (ALAsset *set in _arrSelected) {
+        CGImageRef cgImg = [set thumbnail];
+        UIImage* image = [UIImage imageWithCGImage: cgImg];
+        [_imageArray addObject:image];
+    }
+    [self.collectionView reloadData];
 }
 
 #pragma mark <UICollectionViewDelegate>
@@ -105,22 +128,32 @@ static NSString *photoColCellId = @"photoColCellId";
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 1;
+    return _imageArray.count + 1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
     ZQPhotoViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:photoColCellId forIndexPath:indexPath];
-    if (indexPath.row == 0) {
+    if (indexPath.row == _imageArray.count) {
         [cell setBigImgViewWithImage:[UIImage imageNamed:@"add"]];
+    }else {
+        [cell setBigImgViewWithImage:_imageArray[indexPath.row]];
     }
+    
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (indexPath.row == 0) {
+    if (indexPath.row == _imageArray.count) {
         [self showActionSheet];
     }
+}
+
+-(void)dealloc {
+    _imageArray = nil;
+    _arrSelected = nil;
+    imaPic = nil;
 }
 
 - (void)didReceiveMemoryWarning {
