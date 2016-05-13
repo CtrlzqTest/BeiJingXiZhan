@@ -57,7 +57,7 @@
  *
  *  @return 数据数组
  */
--(NSArray *)getAllDataWithClass:(Class )object;
+-(NSArray *)getAllDataWithClass:(NSObject *)object;
 
 /**
  *  条件查询
@@ -67,7 +67,7 @@
  *
  *  @return 返回数组
  */
-- (NSArray *)getDataWithClass:(Class )object condition:(NSString *)condition;
+- (NSArray *)getDataWithClass:(NSObject *)object condition:(NSString *)condition;
 
 /**
  *  分页查询
@@ -77,6 +77,6 @@
  *
  *  @return 返回数组
  */
--(NSArray *)getDataWithClass:(Class )object page:(NSInteger )page;
+-(NSArray *)getDataWithClass:(NSObject *)object page:(NSInteger )page;
 
 @end

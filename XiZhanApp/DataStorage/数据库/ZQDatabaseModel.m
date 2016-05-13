@@ -22,9 +22,7 @@
 }
 
 +(void)load {
-    if (self != [ZQDatabaseModel class]) {
-        [[ZQDatabaseManager shareDatabaseManager] createTableWithCalss:self];
-    }
+    
 }
 
 -(void)setValue:(id)value forUndefinedKey:(NSString *)key
@@ -38,13 +36,13 @@
 }
 
 //删除数据
-+(void)deleteWithPropName:(NSString *)propName value:(id)value
+-(void)deleteWithPropName:(NSString *)propName value:(id)value
 {
-    [[ZQDatabaseManager shareDatabaseManager] deleteWithCalss:self propName:propName value:value];
+    [[ZQDatabaseManager shareDatabaseManager] deleteWithCalss:[self class] propName:propName value:value];
 }
 
-+ (void)deleteAllDataFromTable {
-    [[ZQDatabaseManager shareDatabaseManager] deleteAllDataWithClass:self];
+- (void)deleteAllDataFromTable {
+    [[ZQDatabaseManager shareDatabaseManager] deleteAllDataWithClass:[self class]];
 }
 
 //修改数据
@@ -52,9 +50,9 @@
 {
     [[ZQDatabaseManager shareDatabaseManager] updateDataWithClass:self condition:condition];
 }
-
+#warning 需要重写下面两个方法
 // 条件查询
-+ (NSArray *)getDataWithCondition:(NSString *)condition {
+- (NSArray *)getDataWithCondition:(NSString *)condition {
     
     NSArray *tempArray = [[ZQDatabaseManager shareDatabaseManager] getDataWithClass:self condition:condition];
     return tempArray;
@@ -62,21 +60,20 @@
 }
 
 // 获得所有数据
-+(NSArray *)getAllDataFromLocal
+-(NSArray *)getAllDataFromLocal
 {
     NSArray *tempArray = [[ZQDatabaseManager shareDatabaseManager] getAllDataWithClass:self];
-    
-    NSMutableArray *resultArray = [NSMutableArray array];
-    for (NSDictionary *dict in tempArray) {
-        NSObject *temp = [[self alloc] init];
-        [temp setValuesForKeysWithDictionary:dict];
-        [resultArray addObject:temp];
-    }
-    return resultArray;
+//    NSMutableArray *resultArray = [NSMutableArray array];
+//    for (NSDictionary *dict in tempArray) {
+//        TestModel *model = [[TestModel alloc] init];
+//        [model setValuesForKeysWithDictionary:dict];
+//        [resultArray addObject:model];
+//    }
+    return tempArray;
 }
 
 // 分页获取数据
-+ (NSArray *)getDataWithPage:(NSInteger )page {
+- (NSArray *)getDataWithPage:(NSInteger )page {
     
     NSArray *tempArray = [[ZQDatabaseManager shareDatabaseManager] getDataWithClass:self page:page];
     return tempArray;

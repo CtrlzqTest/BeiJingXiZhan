@@ -10,6 +10,13 @@
 		74AE81AE3B1D14B93071DF28 /* libPods-XiZhanApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D3F71D4EA7BC10190962AECA /* libPods-XiZhanApp.a */; };
 		F021140B1CE2D81A00676971 /* InformationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F021140A1CE2D81A00676971 /* InformationDetailViewController.m */; };
 		F021140E1CE2FD5D00676971 /* SerVeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F021140D1CE2FD5D00676971 /* SerVeDetailViewController.m */; };
+		F0607B221CE5690F0029EE31 /* jpush-ios-2.1.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0607B201CE5690F0029EE31 /* jpush-ios-2.1.6.a */; };
+		F0607B241CE56EED0029EE31 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0607B231CE56EED0029EE31 /* CoreTelephony.framework */; };
+		F0607B331CE56F9D0029EE31 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F0607B321CE56F9D0029EE31 /* libz.tbd */; };
+		F0607B361CE5752F0029EE31 /* MenuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0607B351CE5752F0029EE31 /* MenuModel.m */; };
+		F0607B3E1CE5B6650029EE31 /* ZQDatabaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F0607B391CE5B6650029EE31 /* ZQDatabaseHelper.m */; };
+		F0607B3F1CE5B6650029EE31 /* ZQDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0607B3B1CE5B6650029EE31 /* ZQDatabaseManager.m */; };
+		F0607B401CE5B6650029EE31 /* ZQDatabaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0607B3D1CE5B6650029EE31 /* ZQDatabaseModel.m */; };
 		F0614DD11CE1C4180036CC3E /* MyInformationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0614DD01CE1C4180036CC3E /* MyInformationsViewController.m */; };
 		F0A7989A1CE46092007927BD /* MGroupCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0A7988F1CE46092007927BD /* MGroupCell.m */; };
 		F0A7989B1CE46092007927BD /* MGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0A798901CE46092007927BD /* MGroupCell.xib */; };
@@ -58,9 +65,6 @@
 		F0F37A1E1CE088390047A469 /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F37A1C1CE088390047A469 /* UIView_extra.m */; };
 		F0F37A211CE08BC80047A469 /* LeftSortsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F37A201CE08BC80047A469 /* LeftSortsViewController.m */; };
 		F0F37A251CE093A10047A469 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F37A241CE093A10047A469 /* LoginViewController.m */; };
-		F0FA99231CE2C3030078C74B /* ZQDatabaseHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FA991E1CE2C3030078C74B /* ZQDatabaseHelper.m */; };
-		F0FA99241CE2C3030078C74B /* ZQDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FA99201CE2C3030078C74B /* ZQDatabaseManager.m */; };
-		F0FA99251CE2C3030078C74B /* ZQDatabaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FA99221CE2C3030078C74B /* ZQDatabaseModel.m */; };
 		F0FA99291CE2D0460078C74B /* LeftSortsTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FA99271CE2D0460078C74B /* LeftSortsTabCell.m */; };
 		F0FA992A1CE2D0460078C74B /* LeftSortsTabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0FA99281CE2D0460078C74B /* LeftSortsTabCell.xib */; };
 /* End PBXBuildFile section */
@@ -73,6 +77,18 @@
 		F021140A1CE2D81A00676971 /* InformationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationDetailViewController.m; sourceTree = "<group>"; };
 		F021140C1CE2FD5D00676971 /* SerVeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SerVeDetailViewController.h; sourceTree = "<group>"; };
 		F021140D1CE2FD5D00676971 /* SerVeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SerVeDetailViewController.m; sourceTree = "<group>"; };
+		F0607B201CE5690F0029EE31 /* jpush-ios-2.1.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.6.a"; sourceTree = "<group>"; };
+		F0607B211CE5690F0029EE31 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		F0607B231CE56EED0029EE31 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		F0607B321CE56F9D0029EE31 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		F0607B341CE5752F0029EE31 /* MenuModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuModel.h; sourceTree = "<group>"; };
+		F0607B351CE5752F0029EE31 /* MenuModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuModel.m; sourceTree = "<group>"; };
+		F0607B381CE5B6650029EE31 /* ZQDatabaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQDatabaseHelper.h; sourceTree = "<group>"; };
+		F0607B391CE5B6650029EE31 /* ZQDatabaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQDatabaseHelper.m; sourceTree = "<group>"; };
+		F0607B3A1CE5B6650029EE31 /* ZQDatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQDatabaseManager.h; sourceTree = "<group>"; };
+		F0607B3B1CE5B6650029EE31 /* ZQDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQDatabaseManager.m; sourceTree = "<group>"; };
+		F0607B3C1CE5B6650029EE31 /* ZQDatabaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQDatabaseModel.h; sourceTree = "<group>"; };
+		F0607B3D1CE5B6650029EE31 /* ZQDatabaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQDatabaseModel.m; sourceTree = "<group>"; };
 		F0614DCF1CE1C4180036CC3E /* MyInformationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInformationsViewController.h; sourceTree = "<group>"; };
 		F0614DD01CE1C4180036CC3E /* MyInformationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInformationsViewController.m; sourceTree = "<group>"; };
 		F0A7988D1CE46092007927BD /* ImagePickerDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerDefine.h; sourceTree = "<group>"; };
@@ -163,12 +179,6 @@
 		F0F37A201CE08BC80047A469 /* LeftSortsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSortsViewController.m; sourceTree = "<group>"; };
 		F0F37A231CE093A10047A469 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F0F37A241CE093A10047A469 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		F0FA991D1CE2C3030078C74B /* ZQDatabaseHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQDatabaseHelper.h; sourceTree = "<group>"; };
-		F0FA991E1CE2C3030078C74B /* ZQDatabaseHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQDatabaseHelper.m; sourceTree = "<group>"; };
-		F0FA991F1CE2C3030078C74B /* ZQDatabaseManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQDatabaseManager.h; sourceTree = "<group>"; };
-		F0FA99201CE2C3030078C74B /* ZQDatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQDatabaseManager.m; sourceTree = "<group>"; };
-		F0FA99211CE2C3030078C74B /* ZQDatabaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQDatabaseModel.h; sourceTree = "<group>"; };
-		F0FA99221CE2C3030078C74B /* ZQDatabaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQDatabaseModel.m; sourceTree = "<group>"; };
 		F0FA99261CE2D0460078C74B /* LeftSortsTabCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftSortsTabCell.h; sourceTree = "<group>"; };
 		F0FA99271CE2D0460078C74B /* LeftSortsTabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSortsTabCell.m; sourceTree = "<group>"; };
 		F0FA99281CE2D0460078C74B /* LeftSortsTabCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftSortsTabCell.xib; sourceTree = "<group>"; };
@@ -179,6 +189,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0607B331CE56F9D0029EE31 /* libz.tbd in Frameworks */,
+				F0607B241CE56EED0029EE31 /* CoreTelephony.framework in Frameworks */,
+				F0607B221CE5690F0029EE31 /* jpush-ios-2.1.6.a in Frameworks */,
 				74AE81AE3B1D14B93071DF28 /* libPods-XiZhanApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -189,9 +202,33 @@
 		63AABC9602237B4FCE3BC932 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F0607B321CE56F9D0029EE31 /* libz.tbd */,
+				F0607B231CE56EED0029EE31 /* CoreTelephony.framework */,
 				D3F71D4EA7BC10190962AECA /* libPods-XiZhanApp.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F0607B1F1CE5690F0029EE31 /* jPush */ = {
+			isa = PBXGroup;
+			children = (
+				F0607B201CE5690F0029EE31 /* jpush-ios-2.1.6.a */,
+				F0607B211CE5690F0029EE31 /* JPUSHService.h */,
+			);
+			path = jPush;
+			sourceTree = "<group>";
+		};
+		F0607B371CE5B6650029EE31 /* 数据库 */ = {
+			isa = PBXGroup;
+			children = (
+				F0607B381CE5B6650029EE31 /* ZQDatabaseHelper.h */,
+				F0607B391CE5B6650029EE31 /* ZQDatabaseHelper.m */,
+				F0607B3A1CE5B6650029EE31 /* ZQDatabaseManager.h */,
+				F0607B3B1CE5B6650029EE31 /* ZQDatabaseManager.m */,
+				F0607B3C1CE5B6650029EE31 /* ZQDatabaseModel.h */,
+				F0607B3D1CE5B6650029EE31 /* ZQDatabaseModel.m */,
+			);
+			path = "数据库";
 			sourceTree = "<group>";
 		};
 		F0A7988C1CE46092007927BD /* ZQImagePicker */ = {
@@ -380,7 +417,7 @@
 		F0F379F61CE07B280047A469 /* DataStorage */ = {
 			isa = PBXGroup;
 			children = (
-				F0FA991C1CE2C3030078C74B /* 数据库 */,
+				F0607B371CE5B6650029EE31 /* 数据库 */,
 				F0F379F71CE07B280047A469 /* .a */,
 			);
 			path = DataStorage;
@@ -406,6 +443,8 @@
 				F0F379FC1CE07B280047A469 /* User.m */,
 				F0ED7A1F1CE4676300369D33 /* MessageModel.h */,
 				F0ED7A201CE4676300369D33 /* MessageModel.m */,
+				F0607B341CE5752F0029EE31 /* MenuModel.h */,
+				F0607B351CE5752F0029EE31 /* MenuModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -429,6 +468,7 @@
 		F0F37A021CE07B280047A469 /* Venders */ = {
 			isa = PBXGroup;
 			children = (
+				F0607B1F1CE5690F0029EE31 /* jPush */,
 				F0A7988C1CE46092007927BD /* ZQImagePicker */,
 				F0B664CA1CE191300033C8CF /* AcyButton */,
 				F0F37A181CE088390047A469 /* LeftSlideViewController */,
@@ -492,19 +532,6 @@
 			name = "LoginRegisterControllers(登录注册)";
 			sourceTree = "<group>";
 		};
-		F0FA991C1CE2C3030078C74B /* 数据库 */ = {
-			isa = PBXGroup;
-			children = (
-				F0FA991D1CE2C3030078C74B /* ZQDatabaseHelper.h */,
-				F0FA991E1CE2C3030078C74B /* ZQDatabaseHelper.m */,
-				F0FA991F1CE2C3030078C74B /* ZQDatabaseManager.h */,
-				F0FA99201CE2C3030078C74B /* ZQDatabaseManager.m */,
-				F0FA99211CE2C3030078C74B /* ZQDatabaseModel.h */,
-				F0FA99221CE2C3030078C74B /* ZQDatabaseModel.m */,
-			);
-			path = "数据库";
-			sourceTree = "<group>";
-		};
 		F64A6B1F590784F7AB19C983 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -549,6 +576,11 @@
 					F0F379CD1CE07AD90047A469 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 2936LQZ357;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -647,7 +679,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F0FA99251CE2C3030078C74B /* ZQDatabaseModel.m in Sources */,
 				F0C4AAF81CE2E14A0067E986 /* MHNetworkManager.m in Sources */,
 				F0A7989C1CE46092007927BD /* MImaCell.m in Sources */,
 				F0F37A0A1CE07B280047A469 /* BaseViewController.m in Sources */,
@@ -661,6 +692,7 @@
 				F0C4AAFE1CE2E3520067E986 /* MBProgressHUD+Add.m in Sources */,
 				F0F37A141CE084BB0047A469 /* MainViewController.m in Sources */,
 				F0A798A01CE46092007927BD /* MShowGroupAllSet.m in Sources */,
+				F0607B3E1CE5B6650029EE31 /* ZQDatabaseHelper.m in Sources */,
 				F0F37A081CE07B280047A469 /* BaseNaviViewController.m in Sources */,
 				F0A7989E1CE46092007927BD /* MImaLibTool.m in Sources */,
 				F0E396CD1CE1BA5400D4137E /* AYCButton.m in Sources */,
@@ -668,18 +700,19 @@
 				F0A7989A1CE46092007927BD /* MGroupCell.m in Sources */,
 				F0F37A1E1CE088390047A469 /* UIView_extra.m in Sources */,
 				F0FA99291CE2D0460078C74B /* LeftSortsTabCell.m in Sources */,
-				F0FA99241CE2C3030078C74B /* ZQDatabaseManager.m in Sources */,
-				F0FA99231CE2C3030078C74B /* ZQDatabaseHelper.m in Sources */,
+				F0607B361CE5752F0029EE31 /* MenuModel.m in Sources */,
 				F0C4AAF91CE2E14A0067E986 /* MHUploadParam.m in Sources */,
 				F0E396BB1CE1B4FA00D4137E /* MainCollCell.m in Sources */,
 				F021140B1CE2D81A00676971 /* InformationDetailViewController.m in Sources */,
 				F0F37A1D1CE088390047A469 /* LeftSlideViewController.m in Sources */,
 				F0F37A251CE093A10047A469 /* LoginViewController.m in Sources */,
+				F0607B401CE5B6650029EE31 /* ZQDatabaseModel.m in Sources */,
 				F0E396AA1CE1858700D4137E /* UIView+ZQExtention.m in Sources */,
 				F0C4AB031CE30A8B0067E986 /* PublishInfoViewController.m in Sources */,
 				F0C4AAF61CE2E14A0067E986 /* MHAsiNetworkHandler.m in Sources */,
 				F0E396C21CE1B9C300D4137E /* SuggestionsViewController.m in Sources */,
 				F0F37A091CE07B280047A469 /* BaseTabBarViewController.m in Sources */,
+				F0607B3F1CE5B6650029EE31 /* ZQDatabaseManager.m in Sources */,
 				F0E396D21CE1E9E000D4137E /* ServeInfoViewController.m in Sources */,
 				F0614DD11CE1C4180036CC3E /* MyInformationsViewController.m in Sources */,
 				F0E396CE1CE1BA5400D4137E /* UIViewController+AYCNavigationItem.m in Sources */,
@@ -810,6 +843,10 @@
 				INFOPLIST_FILE = XiZhanApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/XiZhanApp/Venders/jPush",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -827,6 +864,10 @@
 				INFOPLIST_FILE = XiZhanApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/XiZhanApp/Venders/jPush",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

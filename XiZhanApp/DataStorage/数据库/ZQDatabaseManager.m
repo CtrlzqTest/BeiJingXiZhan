@@ -110,11 +110,11 @@ static ZQDatabaseManager *manager = nil;
 
 //查询数据
  //1,获取所有数据
--(NSArray *)getAllDataWithClass:(Class )object
+-(NSArray *)getAllDataWithClass:(NSObject *)object
 {
     NSArray *tempArray = nil;
     if ([_db open]) {
-        NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@",[ZQDatabaseHelper getTableName:object]];
+        NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@",[ZQDatabaseHelper getTableName:[object class]]];
         FMResultSet *set= [_db executeQuery:sql];
         tempArray = [self getDataStrWithSet:set];
     }else{
@@ -124,13 +124,13 @@ static ZQDatabaseManager *manager = nil;
 }
 
  //2,条件查询
-- (NSArray *)getDataWithClass:(Class )object condition:(NSString *)condition {
+- (NSArray *)getDataWithClass:(NSObject *)object condition:(NSString *)condition {
     
     NSArray *tempArray = nil;
     NSString *sql = nil;
     if ([_db open]) {
         if (condition.length <= 0) {
-            sql = [NSString stringWithFormat:@"SELECT * FROM %@",[ZQDatabaseHelper getTableName:object]];
+            sql = [NSString stringWithFormat:@"SELECT * FROM %@",[ZQDatabaseHelper getTableName:[object class]]];
         }else {
             sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@",[ZQDatabaseHelper getTableName:[object class]],condition];
         }
@@ -145,10 +145,10 @@ static ZQDatabaseManager *manager = nil;
 }
 
 // 3,分页显示
--(NSArray *)getDataWithClass:(Class )object page:(NSInteger )page {
+-(NSArray *)getDataWithClass:(NSObject *)object page:(NSInteger )page {
     NSArray *tempArray = nil;
     if ([_db open]) {
-        NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ limit %ld,20",[ZQDatabaseHelper getTableName:object],(long)page - 1];
+        NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ limit %ld,20",[ZQDatabaseHelper getTableName:[object class]],(long)page - 1];
         FMResultSet *set= [_db executeQuery:sql];
         tempArray = [self getDataStrWithSet:set];
     }else{

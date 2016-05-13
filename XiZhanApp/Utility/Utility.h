@@ -59,4 +59,14 @@
  *  验证密码6-18位数字拼音组合
  */
 + (BOOL)checkPassword:(NSString *) password;
+
+
+/** 时间戳转时间
+ */
++ (NSString *)timeFormat:(NSString *)date format:(NSString *)dateFormat;
+
+/**
+ *  字符串转时间戳
+ */
++(NSString *)timeIntervalWithDateStr:(NSString *)dateStr;
 @end

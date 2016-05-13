@@ -6,13 +6,18 @@
 //  Copyright © 2016年 zhangqiang. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import "ZQDatabaseModel.h"
 
 @interface MessageModel : ZQDatabaseModel
 
-@property(nonatomic,copy)NSString *msgTitle;
-@property(nonatomic,copy)NSString *msgDate;
-@property(nonatomic,copy)NSString *msgContent;
-@property(nonatomic,copy)NSString *msgType;
+@property(nonatomic,strong)NSString *msgtitle;
+@property(nonatomic,assign)long msgdate;
+@property(nonatomic,strong)NSString *msgcontent;
+@property(nonatomic,strong)NSString *msgtype;
+@property(nonatomic,strong)NSString *msgId;
+@property(nonatomic,assign)BOOL isread;
+
++(MessageModel *)shareTestModel;
 
 @end

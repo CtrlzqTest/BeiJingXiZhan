@@ -24,6 +24,11 @@
 
 #define kAppopinion            @"app.opinion/add" //意见反馈
 
+#define kMuenListAPI           @"app.menu/getMenu" //首页菜单
+
+#define kAllMessageAPI           @"app.menu/list" // 所有消息列表
+
+
 
 //   常量
 /**************************************************************************************/

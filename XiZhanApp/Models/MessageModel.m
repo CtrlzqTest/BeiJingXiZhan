@@ -7,16 +7,60 @@
 //
 
 #import "MessageModel.h"
-#import <MJExtension.h>
 
+static MessageModel *testModel = nil;
 @implementation MessageModel
 
++(MessageModel *)shareTestModel {
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        testModel = [[MessageModel alloc] init];
+    });
+    return testModel;
+}
+
 +(void)load {
-    [super load];
+    [[ZQDatabaseManager shareDatabaseManager] createTableWithCalss:[MessageModel class]];
 }
 
 -(void)setValue:(id)value forUndefinedKey:(NSString *)key {
     
+}
+
++ (NSDictionary *)replacedKeyFromPropertyName
+{
+    return @{
+             @"msgid" : @"id",
+             @"msgtitle" : @"msgTitle",
+             @"msgdate" : @"msgDate",
+             @"msgcontent" : @"msgContent",
+             @"msgtype" : @"msgType",
+             @"isread" : @"isRead"
+             };
+}
+
+// 获取本地数据
+-(NSArray *)getAllDataFromLocal {
+    NSArray *tempArray = [super getAllDataFromLocal];
+    NSMutableArray *resultArray = [NSMutableArray array];
+    for (NSDictionary *dict in tempArray) {
+        MessageModel *model = [[MessageModel alloc] init];
+        [model setValuesForKeysWithDictionary:dict];
+        [resultArray addObject:model];
+    }
+    return resultArray;
+}
+
+// 条件查询
+-(NSArray *)getDataWithCondition:(NSString *)condition {
+    NSArray *tempArray = [super getDataWithCondition:condition];
+    NSMutableArray *resultArray = [NSMutableArray array];
+    for (NSDictionary *dict in tempArray) {
+        MessageModel *model = [[MessageModel alloc] init];
+        [model setValuesForKeysWithDictionary:dict];
+        [resultArray addObject:model];
+    }
+    return resultArray;
 }
 
 @end

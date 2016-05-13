@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -70,27 +71,59 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="管委会" id="7eo-5i-TJD">
-                        <barButtonItem key="leftBarButtonItem" style="plain" id="z9q-mK-GB4">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rdP-F7-FmG">
-                                <rect key="frame" x="16" y="6" width="32" height="32"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="Ak8-wS-puU">
+                            <view key="customView" contentMode="scaleToFill" id="jcu-w7-w84">
+                                <rect key="frame" x="16" y="5" width="83" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="user"/>
-                                <connections>
-                                    <action selector="menuAction:" destination="HD0-fm-OPc" eventType="touchUpInside" id="9HG-iJ-Z4u"/>
-                                </connections>
-                            </button>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UdP-yK-Ag8">
+                                        <rect key="frame" x="0.0" y="0.0" width="33" height="33"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="UdP-yK-Ag8" secondAttribute="height" id="3A6-wV-1p5"/>
+                                        </constraints>
+                                        <state key="normal" image="user"/>
+                                        <connections>
+                                            <action selector="menuAction:" destination="HD0-fm-OPc" eventType="touchUpInside" id="NMg-r0-K2e"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Point_red" translatesAutoresizingMaskIntoConstraints="NO" id="IZH-9y-M7g">
+                                        <rect key="frame" x="18" y="13" width="20" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="IZH-9y-M7g" secondAttribute="height" id="9dR-Zm-KVa"/>
+                                            <constraint firstAttribute="height" constant="20" id="WhO-an-YEb"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="UdP-yK-Ag8" firstAttribute="leading" secondItem="jcu-w7-w84" secondAttribute="leading" id="2hv-a8-YSB"/>
+                                    <constraint firstItem="IZH-9y-M7g" firstAttribute="trailing" secondItem="UdP-yK-Ag8" secondAttribute="trailing" constant="5" id="J8c-av-ZJM"/>
+                                    <constraint firstItem="IZH-9y-M7g" firstAttribute="bottom" secondItem="UdP-yK-Ag8" secondAttribute="bottom" id="SKA-YN-7T9"/>
+                                    <constraint firstAttribute="trailing" secondItem="UdP-yK-Ag8" secondAttribute="trailing" id="aTZ-KX-Wvn"/>
+                                    <constraint firstItem="UdP-yK-Ag8" firstAttribute="leading" secondItem="jcu-w7-w84" secondAttribute="leading" id="cXt-gc-adJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="UdP-yK-Ag8" secondAttribute="bottom" id="g82-Wu-QpL"/>
+                                    <constraint firstItem="UdP-yK-Ag8" firstAttribute="top" secondItem="jcu-w7-w84" secondAttribute="top" id="s1d-Pk-CK3"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2hv-a8-YSB"/>
+                                        <exclude reference="aTZ-KX-Wvn"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="collectionView" destination="QvY-9p-pDk" id="qLu-b2-zNr"/>
+                        <outlet property="redPointImgView" destination="IZH-9y-M7g" id="dP9-Lc-9i8"/>
                         <segue destination="dqn-Ee-Uqq" kind="push" id="2D5-06-BP2"/>
                         <segue destination="zRE-A5-A7L" kind="push" id="2dx-7N-Env"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C5z-8q-ski" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-147.5" y="242.5"/>
+            <point key="canvasLocation" x="-130.5" y="226.5"/>
         </scene>
         <!--My Informations View Controller-->
         <scene sceneID="iIi-vc-gYY">
@@ -493,6 +526,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Point_red" width="32" height="32"/>
         <image name="agreeUnSelect" width="32" height="32"/>
         <image name="camera" width="32" height="32"/>
         <image name="edit" width="32" height="32"/>

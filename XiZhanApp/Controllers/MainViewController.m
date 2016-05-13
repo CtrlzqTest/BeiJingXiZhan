@@ -13,6 +13,9 @@
 #import "MyInformationsViewController.h"
 #import "ServeInfoViewController.h"
 #import "MessageModel.h"
+#import "MenuModel.h"
+#import <MJRefresh.h>
+
 
 static NSString *collCellId = @"MainCell";
 @interface MainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -20,6 +23,7 @@ static NSString *collCellId = @"MainCell";
     NSMutableArray *_dataArray;
 }
 @property (nonatomic,strong)IBOutlet UICollectionView *collectionView;
+@property (weak, nonatomic) IBOutlet UIImageView *redPointImgView;
 
 @end
 
@@ -39,7 +43,23 @@ static NSString *collCellId = @"MainCell";
 }
 
 - (void)initData {
-    _dataArray = [NSMutableArray arrayWithArray:@[@"志愿者消息",@"站内公告消息",@"服务台消息"]];
+    
+    [MHNetworkManager getRequstWithURL:kMuenListAPI params:nil successBlock:^(id returnData) {
+        
+        if ([returnData[@"message"] isEqualToString:@"success"]) {
+            _dataArray = [MenuModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
+        }else {
+            [MBProgressHUD showError:@"获取列表失败" toView:self.view];
+        }
+        [self.collectionView reloadData];
+        [self.collectionView.mj_header endRefreshing];
+        
+    } failureBlock:^(NSError *error) {
+        [self.collectionView.mj_header endRefreshing];
+        [MBProgressHUD showError:@"网络不给力" toView:self.view];
+    } showHUD:YES];
+    
+//    _dataArray = [NSMutableArray arrayWithArray:@[@"志愿者消息",@"站内公告消息",@"服务台消息"]];
 
 }
 
@@ -62,6 +82,17 @@ static NSString *collCellId = @"MainCell";
     self.collectionView.collectionViewLayout = flowLayout;
     
     [self.collectionView registerNib:[UINib nibWithNibName:@"MainCollCell" bundle:nil] forCellWithReuseIdentifier:collCellId];
+    
+    // 下拉刷新
+    self.collectionView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self initData];
+    }];
+    [self.collectionView.mj_header beginRefreshing];
+    
+//    // 上拉加载
+//    self.collectionView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+////        [self requestMoreData];
+//    }];
 }
 
 #pragma mark --UICollectionViewDataSource
@@ -71,31 +102,34 @@ static NSString *collCellId = @"MainCell";
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MainCollCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collCellId forIndexPath:indexPath];
-    cell.titleLabel.text = _dataArray[indexPath.row];
+    MenuModel *model = _dataArray[indexPath.row];
+    cell.titleLabel.text = model.msgType;
     return cell;
 }
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    MenuModel *model = _dataArray[indexPath.row];
     switch (indexPath.row) {
         case 0:
         {
             MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];
-            myInfoVC.title = _dataArray[indexPath.row];
+            
+            myInfoVC.title = model.msgType;
             [self.navigationController pushViewController:myInfoVC animated:YES];
         }
             break;
         case 1:
         {
             MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];
-            myInfoVC.title = _dataArray[indexPath.row];
+            myInfoVC.title = model.msgType;
             [self.navigationController pushViewController:myInfoVC animated:YES];
         }
             break;
         case 2:
         {
             ServeInfoViewController *serveVC = [Utility getControllerWithStoryBoardId:ZQServeTabViewControllerId];
-            serveVC.title = _dataArray[indexPath.row];
+            serveVC.title = model.msgType;
             [self.navigationController pushViewController:serveVC animated:YES];
         }
             break;

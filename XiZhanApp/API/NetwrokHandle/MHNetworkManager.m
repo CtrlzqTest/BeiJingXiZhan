@@ -70,7 +70,8 @@
             failureBlock:(MHAsiFailureBlock)failureBlock
                  showHUD:(BOOL)showHUD
 {
-    [self getRequstWithURL:url params:params target:nil action:nil delegate:nil successBlock:successBlock failureBlock:failureBlock showHUD:showHUD];
+    NSString *str = [BaseAPI stringByAppendingString:url];
+    [self getRequstWithURL:str params:params target:nil action:nil delegate:nil successBlock:successBlock failureBlock:failureBlock showHUD:showHUD];
 }
 /**
  *   GET请求通过代理回调

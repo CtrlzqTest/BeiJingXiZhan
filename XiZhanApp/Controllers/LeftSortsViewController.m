@@ -14,11 +14,13 @@
 #import "SuggestionsViewController.h"
 #import "MyInformationsViewController.h"
 #import "LeftSortsTabCell.h"
+#import "MessageModel.h"
 
 static NSString *leftSortsCellId = @"leftSortsCellId";
 @interface LeftSortsViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 {
     NSMutableArray *_dataArray;
+    BOOL _isShowRedPoint;  // 是否显示小圆点
 }
 @end
 
@@ -43,6 +45,7 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
     if ([Utility isLogin]) {
         [User shareUser].isLogin = YES;
         loginStr = @"已登录";
+        [self requestData];
     }else {
         loginStr = @"登录/注册";
     }
@@ -59,13 +62,48 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
     
 }
 
+// 获取我的消息列表（所有消息）
+- (void)requestData {
+    
+    NSArray *resultArray = [[MessageModel shareTestModel] getDataWithCondition:@"msgDate = (select max(msgDate) from MessageModel)"];
+    NSString *flag = nil;
+    NSString *msgDate = nil;
+    if (resultArray.count == 0) {
+        flag = @"2"; msgDate = @"";
+    }else {
+        MessageModel *model = [[MessageModel mj_objectArrayWithKeyValuesArray:resultArray] firstObject];
+        flag = @"1"; msgDate = [NSString stringWithFormat:@"%ld",model.msgdate];
+    }
+    
+    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":flag,@"msgDate":msgDate} successBlock:^(id returnData) {
+        
+        if ([returnData[@"message"] isEqualToString:@"success"]) {
+            NSArray *resultArray = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
+            if (resultArray.count > 0) {
+                _isShowRedPoint = YES;
+                [self.tableview reloadData];    // 显示小圆点
+                for (MessageModel *model in resultArray) {
+                    [model save];
+                }
+            }
+        }else {
+            
+        }
+    } failureBlock:^(NSError *error) {
+        
+    } showHUD:NO];
+
+}
+
 - (void)didLoginAction {
     _dataArray[0] = @"已登录";
+    [self requestData];
     [self.tableview reloadData];
 }
 
 - (void)didLogoutAction {
     _dataArray[0] = @"登录/注册";
+    _isShowRedPoint = NO;
     [self.tableview reloadData];
 }
 
@@ -80,8 +118,10 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
     LeftSortsTabCell *cell = [tableView dequeueReusableCellWithIdentifier:leftSortsCellId forIndexPath:indexPath];
     cell.imgView.image = [UIImage imageNamed:@"user-icon5"];
     cell.titleLabel.text = _dataArray[indexPath.row];
-    if (indexPath.row == 3) {
+    if (indexPath.row == 3 && _isShowRedPoint) {
         cell.rightImgView.hidden = NO;
+    }else {
+        cell.rightImgView.hidden = YES;
     }
     cell.backgroundColor = [UIColor clearColor];
     return cell;

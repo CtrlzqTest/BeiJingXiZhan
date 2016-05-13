@@ -30,6 +30,7 @@ static User *user = nil;
     return [user mj_keyValues];
     
 }
+
 + (NSDictionary *)replacedKeyFromPropertyName
 {
     return @{
