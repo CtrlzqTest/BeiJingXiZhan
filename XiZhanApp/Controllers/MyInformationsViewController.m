@@ -27,6 +27,7 @@ static NSString *cellIndentifer = @"newsCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
+    self.title = self.msgType;
     // Do any additional setup after loading the view.
 }
 
@@ -41,8 +42,12 @@ static NSString *cellIndentifer = @"newsCell";
 //    self.newsArray = [NSMutableArray array];
     
     // 本地数据库获取
-    
-    self.newsArray = [NSMutableArray arrayWithArray:[[MessageModel shareTestModel] getDataWithPage:1]];
+//    self.newsArray = [NSMutableArray arrayWithArray:[[MessageModel shareTestModel] getDataWithPage:1]];
+    if (self.msgType != nil) {
+        self.newsArray = [NSMutableArray arrayWithArray:[[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@'",self.msgType]]];
+    }else {
+        self.newsArray = [NSMutableArray arrayWithArray:[[MessageModel shareTestModel] getDataWithPage:1]];
+    }
     
     self.newsList = [[UITableView alloc]init];
     self.newsList.frame = CGRectMake(0, 0, KWidth, KHeight);

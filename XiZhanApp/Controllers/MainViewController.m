@@ -114,14 +114,14 @@ static NSString *collCellId = @"MainCell";
         case 0:
         {
             MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];
-            myInfoVC.title = model.msgType;
+            myInfoVC.msgType = model.msgType;
             [self.navigationController pushViewController:myInfoVC animated:YES];
         }
             break;
         case 1:
         {
             MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];
-            myInfoVC.title = model.msgType;
+            myInfoVC.msgType = model.msgType;
             [self.navigationController pushViewController:myInfoVC animated:YES];
         }
             break;
