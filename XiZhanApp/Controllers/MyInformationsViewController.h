@@ -10,4 +10,6 @@
 
 @interface MyInformationsViewController : BaseViewController
 
+@property (nonatomic,copy)NSString *msgType;
+
 @end

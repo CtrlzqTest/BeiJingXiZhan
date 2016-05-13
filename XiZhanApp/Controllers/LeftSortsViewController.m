@@ -80,12 +80,14 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
         if ([returnData[@"message"] isEqualToString:@"success"]) {
             NSArray *resultArray = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
             if (resultArray.count > 0) {
-                _isShowRedPoint = YES;
-                [self.tableview reloadData];    // 显示小圆点
+                _isShowRedPoint = YES;  // 显示小圆点
                 for (MessageModel *model in resultArray) {
                     [model save];
                 }
+            }else{
+                _isShowRedPoint = NO;
             }
+            [self.tableview reloadData];
         }else {
             
         }
@@ -160,6 +162,8 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
             break;
         case 3:
         {
+            _isShowRedPoint = NO;
+            [self.tableview reloadData];
             MyInformationsViewController *vc = [[MyInformationsViewController alloc]init];
             [tempAppDelegate.mainNavi pushViewController:vc animated:NO];
         }

@@ -12,6 +12,7 @@
 #import "InformationDetailViewController.h"
 #import "MJRefresh.h"
 #import "PublishInfoViewController.h"
+#import "MessageModel.h"
 
 static NSString *cellIndentifer = @"newsCell";
 @interface MyInformationsViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -37,7 +38,11 @@ static NSString *cellIndentifer = @"newsCell";
 -(void)initView
 {
     //[self setTextTitleViewWithFrame:CGRectMake(180, 0, 120, 50) title:@"我的消息" fontSize:17.0];
-    self.newsArray = [NSMutableArray array];
+//    self.newsArray = [NSMutableArray array];
+    
+    // 本地数据库获取
+    
+    self.newsArray = [NSMutableArray arrayWithArray:[[MessageModel shareTestModel] getDataWithPage:1]];
     
     self.newsList = [[UITableView alloc]init];
     self.newsList.frame = CGRectMake(0, 0, KWidth, KHeight);
@@ -47,7 +52,7 @@ static NSString *cellIndentifer = @"newsCell";
     self.newsList.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self getData];
     }];
-    [self.newsList.mj_header beginRefreshing];
+//    [self.newsList.mj_header beginRefreshing];
     
     self.newsList.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [self requestMoreData];
@@ -56,6 +61,35 @@ static NSString *cellIndentifer = @"newsCell";
 
 -(void)getData
 {
+    NSArray *resultArray = [[MessageModel shareTestModel] getDataWithCondition:@"msgDate = (select max(msgDate) from MessageModel)"];
+    NSString *flag = nil;
+    NSString *msgDate = nil;
+    if (resultArray.count == 0) {
+        flag = @"2"; msgDate = @"";
+    }else {
+        MessageModel *model = [[MessageModel mj_objectArrayWithKeyValuesArray:resultArray] firstObject];
+        flag = @"1"; msgDate = [NSString stringWithFormat:@"%ld",model.msgdate];
+    }
+    
+    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":flag,@"msgDate":msgDate} successBlock:^(id returnData) {
+        
+        if ([returnData[@"message"] isEqualToString:@"success"]) {
+            NSArray *resultArray = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
+            if (resultArray.count > 0) {
+                for (MessageModel *model in resultArray) {
+                    // 先添加到数组，同时保存到数据库
+                    [self.newsArray addObject:model];
+                    [model save];
+                }
+            }
+            [self.newsList reloadData];
+        }else {
+            
+        }
+    } failureBlock:^(NSError *error) {
+        
+    } showHUD:NO];
+    
     [self.newsList.mj_header endRefreshing];
     [self.newsList reloadData];
 }
@@ -78,11 +112,11 @@ static NSString *cellIndentifer = @"newsCell";
 #pragma mark listMethod
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60.0;
+    return 60;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return self.newsArray.count;
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -90,9 +124,10 @@ static NSString *cellIndentifer = @"newsCell";
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifer];
     }
+    MessageModel *model = self.newsArray[indexPath.row];
     cell.selectionStyle = UITableViewCellSeparatorStyleNone;
     cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.text = [NSString stringWithFormat:@"标题%ld",(long)indexPath.row];
+    cell.textLabel.text = model.msgtitle;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;

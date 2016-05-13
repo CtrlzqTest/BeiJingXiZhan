@@ -63,4 +63,15 @@ static MessageModel *testModel = nil;
     return resultArray;
 }
 
+- (NSArray *)getDataWithPage:(NSInteger )page {
+    NSArray *tempArray = [super getDataWithPage:page];
+    NSMutableArray *resultArray = [NSMutableArray array];
+    for (NSDictionary *dict in tempArray) {
+        MessageModel *model = [[MessageModel alloc] init];
+        [model setValuesForKeysWithDictionary:dict];
+        [resultArray addObject:model];
+    }
+    return resultArray;
+}
+
 @end

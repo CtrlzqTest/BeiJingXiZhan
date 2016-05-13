@@ -76,6 +76,12 @@
 - (NSArray *)getDataWithPage:(NSInteger )page {
     
     NSArray *tempArray = [[ZQDatabaseManager shareDatabaseManager] getDataWithClass:self page:page];
+//    NSMutableArray *resultArray = [NSMutableArray array];
+//    for (NSDictionary *dict in tempArray) {
+//        NSObject *model = [[self alloc] init];
+//        [model setValuesForKeysWithDictionary:dict];
+//        [resultArray addObject:model];
+//    }
     return tempArray;
 }
 
