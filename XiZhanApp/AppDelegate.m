@@ -143,7 +143,20 @@
     //            [self gotoVC:self.dictForUserInfo];//如果不是，则实现对应跳转
     //        }
 
-    [self chooseSkipVC];
+    if (application.applicationState == UIApplicationStateActive)
+    {
+        NSLog(@"前台");
+        
+    }else if(application.applicationState == UIApplicationStateInactive)
+    {
+        NSLog(@"刚要进入前台");
+        //        [[NSNotificationCenter defaultCenter] postNotificationName:@"push" object:str];
+        //        self.pushSting = str;
+        [self chooseSkipVC];
+    }else if (application.applicationState == UIApplicationStateBackground){
+        //        NSLog(@"后台");
+        [MBProgressHUD showError:@"后台" toView:nil];
+    }
 
 }
 -(void)chooseSkipVC
