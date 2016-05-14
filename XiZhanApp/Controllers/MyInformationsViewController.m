@@ -11,9 +11,10 @@
 #import "LoginViewController.h"
 #import "InformationDetailViewController.h"
 #import "MJRefresh.h"
-#import "PublishInfoViewController.h"
+//#import "PublishInfoViewController.h"
 #import "MessageModel.h"
 #import "MsgType1TabCell.h"
+#import "PublishViewController.h"
 
 static NSString *cellIndentifer = @"msgType1";
 @interface MyInformationsViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -113,7 +114,8 @@ static NSString *cellIndentifer = @"msgType1";
         LoginViewController *loginVC = [Utility getControllerWithStoryBoardId:ZQLoginViewCotrollerId];
         [self.navigationController pushViewController:loginVC animated:YES];
     }else {
-        PublishInfoViewController *publishVC = [Utility getControllerWithStoryBoardId:ZQPublishInfoViewControllerId];
+       // PublishInfoViewController *publishVC = [Utility getControllerWithStoryBoardId:ZQPublishInfoViewControllerId];
+        PublishViewController *publishVC = [[PublishViewController alloc]init];
         [self.navigationController pushViewController:publishVC animated:YES];
     }
 }
