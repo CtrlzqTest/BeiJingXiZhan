@@ -111,10 +111,16 @@
 }
 
 // 条件查询
-+ (NSArray *)getDataWithCondition:(NSString *)condition page:(NSInteger )page{
++ (NSArray *)getDataWithCondition:(NSString *)condition page:(NSInteger )page orderBy:(NSString *)proName{
     
-    NSArray *tempArray = [[ZQDatabaseManager shareDatabaseManager] getDataWithClass:self condition:condition];
-    return tempArray;
+    NSArray *tempArray = [[ZQDatabaseManager shareDatabaseManager] getDataWithClass:self condition:condition page:page orderBy:proName];
+    NSMutableArray *resultArray = [NSMutableArray array];
+    for (NSDictionary *dict in tempArray) {
+        NSObject *model = [[self alloc] init];
+        [model setValuesForKeysWithDictionary:dict];
+        [resultArray addObject:model];
+    }
+    return resultArray;
     
 }
 

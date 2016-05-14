@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+    RefreshTypeDrag,
+    RefreshTypePull,
+} RefreshType;
+
 @interface BaseViewController : UIViewController
 
 // 侧滑显示菜单开关

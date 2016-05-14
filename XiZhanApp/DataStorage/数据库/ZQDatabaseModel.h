@@ -72,4 +72,9 @@
  *  @param page 页数
  */
 + (NSArray *)getDataWithPage:(NSInteger )page orderBy:(NSString *)proName;
+
+/**
+ *  组合查询
+ */
++ (NSArray *)getDataWithCondition:(NSString *)condition page:(NSInteger )page orderBy:(NSString *)proName;
 @end
