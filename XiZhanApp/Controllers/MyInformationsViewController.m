@@ -135,7 +135,11 @@ static NSString *cellIndentifer = @"msgType1";
             }else {
                 if (refreshType == RefreshTypeDrag) {
                     _page = 1;
-                    self.newsArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@'",self.msgType] page:_page orderBy:@"msgdate"]];
+                    if (self.msgType != nil) {
+                        self.newsArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@'",self.msgType] page:_page orderBy:@"msgdate"]];
+                    }else {
+                        self.newsArray = self.newsArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:nil page:_page orderBy:@"msgdate"]];
+                    }
                 }else {
                     // 上拉没有跟多数据
                     [self.newsList.mj_footer endRefreshingWithNoMoreData];
