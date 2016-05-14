@@ -13,4 +13,5 @@
 @property(nonatomic,copy)NSString *parentIdString;
 @property(nonatomic,copy)NSString *msgType;
 
+@property(nonatomic,assign)NSInteger isSkip;
 @end
