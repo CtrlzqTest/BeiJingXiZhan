@@ -8,7 +8,9 @@
 
 #import "BaseViewController.h"
 
+@class MessageModel;
 @interface SerVeDetailViewController : BaseViewController
+@property(nonatomic,strong)MessageModel *model;
 
 @property(nonatomic,assign)NSInteger isSkip;
 @end

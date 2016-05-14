@@ -182,7 +182,7 @@
     
   // NSString *str = @"4028900b54a7a7de0154a7a7e0270000";
     __weak typeof(self) weakSelf = self;
-    [MHNetworkManager postReqeustWithURL:kMenuAdd params:@{@"msgTitle":self.fieldOfUser.text,@"msgContent":self.miaoShuTextView.text,@"userId":[Utility getUserInfoFromLocal][@"id"],@"parentId":self.parentIdString} successBlock:^(id returnData) {
+    [MHNetworkManager postReqeustWithURL:kMenuAdd params:@{@"msgTitle":self.fieldOfUser.text,@"msgContent":self.miaoShuTextView.text,@"userId":[Utility getUserInfoFromLocal][@"id"],@"parentId":self.parentIdString,@"imgUrl":self.imgString} successBlock:^(id returnData) {
         NSLog(@"%@",returnData);
         [weakSelf.navigationController popViewControllerAnimated:YES];
         if (![self.menuModel.msgType isEqualToString:@"服务台消息"]) {

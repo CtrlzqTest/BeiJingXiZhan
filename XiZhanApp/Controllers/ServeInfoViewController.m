@@ -244,14 +244,17 @@ static NSString *serveCellId = @"serveTabCellId";
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    SerVeDetailViewController *vc = [Utility getControllerWithStoryBoardId:ZQServeDetailViewControllerId];
-    [self.navigationController pushViewController:vc animated:YES];
     MessageModel *model = _dataArray[indexPath.row];
     if (!model.isread) {
         model.isread = YES;
         [self.tableView reloadData];
         [model updateWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
     }
-}
+
+   // SerVeDetailViewController *vc = [Utility getControllerWithStoryBoardId:ZQServeDetailViewControllerId];
+    SerVeDetailViewController *vc = [[SerVeDetailViewController alloc]init];
+    vc.model = model;
+    [self.navigationController pushViewController:vc animated:YES];
+   }
 
 @end

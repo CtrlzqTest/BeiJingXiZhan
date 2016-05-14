@@ -128,35 +128,31 @@
 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
-//    NSInteger count = --[UIApplication sharedApplication].applicationIconBadgeNumber;
-//    if (count >= 0) {
-//        [JPUSHService clearAllLocalNotifications];
-//        [JPUSHService setBadge:count];
-//    }
-//    _bageIsZero = YES;
-//    [JPUSHService handleRemoteNotification:userInfo];
-//    NSLog(@"推送消息:%@",userInfo);
-//    self.dictForUserInfo = [NSMutableDictionary dictionaryWithDictionary:userInfo];
-//    
-//    //        if (![str isEqualToString:self.dictForUserInfo[@"addUser"]])//判定登录名是否推送提交者
-//    //        {
-//    //            [self gotoVC:self.dictForUserInfo];//如果不是，则实现对应跳转
-//    //        }
-//
-//    if (application.applicationState == UIApplicationStateActive)
-//    {
-//        NSLog(@"前台");
-//        
-//    }else if(application.applicationState == UIApplicationStateInactive)
-//    {
-//        NSLog(@"刚要进入前台");
-//        //        [[NSNotificationCenter defaultCenter] postNotificationName:@"push" object:str];
-//        //        self.pushSting = str;
-//        [self chooseSkipVC];
-//    }else if (application.applicationState == UIApplicationStateBackground){
-//        //        NSLog(@"后台");
-//        [MBProgressHUD showError:@"后台" toView:nil];
-//    }
+    NSInteger count = --[UIApplication sharedApplication].applicationIconBadgeNumber;
+    if (count >= 0) {
+        [JPUSHService clearAllLocalNotifications];
+        [JPUSHService setBadge:count];
+    }
+    _bageIsZero = YES;
+    [JPUSHService handleRemoteNotification:userInfo];
+    NSLog(@"推送消息:%@",userInfo);
+    self.dictForUserInfo = [NSMutableDictionary dictionaryWithDictionary:userInfo];
+    
+
+    if (application.applicationState == UIApplicationStateActive)
+    {
+        NSLog(@"前台");
+        
+    }else if(application.applicationState == UIApplicationStateInactive)
+    {
+        NSLog(@"刚要进入前台");
+        //        [[NSNotificationCenter defaultCenter] postNotificationName:@"push" object:str];
+        //        self.pushSting = str;
+        [self chooseSkipVC];
+    }else if (application.applicationState == UIApplicationStateBackground){
+        //        NSLog(@"后台");
+        [MBProgressHUD showError:@"后台" toView:nil];
+    }
 
 }
 -(void)chooseSkipVC
