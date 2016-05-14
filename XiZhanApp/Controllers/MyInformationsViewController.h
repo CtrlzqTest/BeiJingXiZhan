@@ -11,5 +11,6 @@
 @interface MyInformationsViewController : BaseViewController
 
 @property (nonatomic,copy)NSString *msgType;
+@property (nonatomic,copy)NSString *parentIdString;
 
 @end

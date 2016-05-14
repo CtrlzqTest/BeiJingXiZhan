@@ -37,6 +37,7 @@ static NSString *serveCellId = @"serveTabCellId";
     }else {
       //  PublishInfoViewController *publishVC = [Utility getControllerWithStoryBoardId:ZQPublishInfoViewControllerId];
        PublishViewController *publishVC = [[PublishViewController alloc]init];
+        publishVC.parentIdString = self.parentIdString;
         [self.navigationController pushViewController:publishVC animated:YES];
     }
 }
