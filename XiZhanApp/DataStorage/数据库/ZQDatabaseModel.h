@@ -11,6 +11,9 @@
 
 @interface ZQDatabaseModel : NSObject
 
+// 设置字段唯一,防止插入重复插入
++ (void)setUniqueProperty:(NSString *)proName;
+
 /**
  *  插入数据
  */

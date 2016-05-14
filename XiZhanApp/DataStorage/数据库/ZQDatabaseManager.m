@@ -43,6 +43,7 @@ static ZQDatabaseManager *manager = nil;
     return self;
 }
 
+
 //创建表
 -(void)createTableWithCalss:(Class )aClass
 {
@@ -55,6 +56,22 @@ static ZQDatabaseManager *manager = nil;
         NSLog(@"数据库打开失败!!!");
     }
 }
+
+// 设置字段唯一,防止插入重复插入
+- (void)setUniqueClass:(Class )aClass property:(NSString *)proName {
+    
+    if ([_db open]) {
+        NSString *sql = [NSString stringWithFormat:@"ALTER %@ CUSTOMERS MODIFY %@ NOT NULL UNIQUE",aClass,proName];
+        if ([_db executeUpdate:sql]) {
+            
+            //            [_db close];
+        }
+    }else{
+        NSLog(@"数据库打开失败!!!");
+    }
+    
+}
+
 //插入数据
 -(void)insertWithClass:(NSObject *)aClass
 {

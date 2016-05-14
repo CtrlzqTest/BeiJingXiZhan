@@ -17,6 +17,8 @@
  */
 -(void)createTableWithCalss:(Class )aClass;
 
+// 设置字段唯一,防止插入重复插入
+- (void)setUniqueClass:(Class )aClass property:(NSString *)proName;
 /**
  *  插入数据
  *

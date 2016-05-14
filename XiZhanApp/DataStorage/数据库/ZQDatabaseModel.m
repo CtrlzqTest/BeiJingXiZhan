@@ -29,6 +29,14 @@
 {
     
 }
+
+// 设置字段唯一,防止插入重复插入
++ (void)setUniqueProperty:(NSString *)proName {
+    
+    [[ZQDatabaseManager shareDatabaseManager] setUniqueClass:self property:proName];
+    
+}
+
 //插入数据
 -(void)save
 {
