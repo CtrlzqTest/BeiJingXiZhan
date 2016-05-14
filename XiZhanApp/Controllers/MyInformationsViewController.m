@@ -18,7 +18,7 @@
 static NSString *cellIndentifer = @"msgType1";
 @interface MyInformationsViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property(nonatomic,retain)UITableView *newsList;
+@property(nonatomic,strong)UITableView *newsList;
 @property(nonatomic,strong)NSMutableArray *newsArray;
 
 @end
@@ -87,7 +87,7 @@ static NSString *cellIndentifer = @"msgType1";
             if (resultArray.count > 0) {
                 for (MessageModel *model in resultArray) {
                     // 先添加到数组，同时保存到数据库
-                    [self.newsArray addObject:model];
+                    [self.newsArray insertObject:model atIndex:0];
                     [model save];
                 }
             }
@@ -129,16 +129,24 @@ static NSString *cellIndentifer = @"msgType1";
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MsgType1TabCell *cell = [self.newsList dequeueReusableCellWithIdentifier:cellIndentifer];
-    
+    MsgType1TabCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifer forIndexPath:indexPath];
     MessageModel *model = self.newsArray[indexPath.row];
-    
+    [cell writeDataWithModel:model];
     return cell;
+    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     InformationDetailViewController *vc = [[InformationDetailViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
+    
+    MessageModel *model = self.newsArray[indexPath.row];
+    if (!model.isread) {
+        model.isread = YES;
+        [self.newsList reloadData];
+        [model updateWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
+    }
+    
 }
 @end

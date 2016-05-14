@@ -15,7 +15,7 @@
 @property(nonatomic,assign)long msgdate;
 @property(nonatomic,strong)NSString *msgcontent;
 @property(nonatomic,strong)NSString *msgtype;
-@property(nonatomic,strong)NSString *msgId;
+@property(nonatomic,strong)NSString *msgid;
 @property(nonatomic,assign)BOOL isread;
 
 +(MessageModel *)shareTestModel;
