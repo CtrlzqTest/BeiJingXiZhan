@@ -32,10 +32,20 @@ static NSString *serveCellId = @"serveTabCellId";
     
     _page = 1;
     self.title = self.msgType;
+    
     [self getDataFromLocal];
     [self setupViews];
-}
 
+    if (self.isSkip == 1) {
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"skip" object:nil];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backMethod)];
+    }
+}
+-(void)backMethod
+{
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
 
 - (IBAction)editAction:(id)sender {
     

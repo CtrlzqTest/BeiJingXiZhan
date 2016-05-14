@@ -35,20 +35,8 @@ static NSString *cellIndentifer = @"msgType1";
     [self initView];
     self.title = self.msgType;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(addInformation:) name:@"addInformation" object:nil];
-    // Do any additional setup after loading the view.
-}
-#pragma mark 添加消息后刷新列表
--(void)addInformation:(NSNotification *)notice
-{
-    [self requestDataWithRefreshType:RefreshTypeDrag];
-}
-#pragma mark noticeSkipToList
--(void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
-    self.title = self.msgType;
     if (self.isSkip == 1) {
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"skip" object:nil];
         //        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(backMethod)];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backMethod)];
@@ -58,6 +46,11 @@ static NSString *cellIndentifer = @"msgType1";
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     //[self.navigationController popViewControllerAnimated:YES];
+}
+#pragma mark 添加消息后刷新列表
+-(void)addInformation:(NSNotification *)notice
+{
+    [self requestDataWithRefreshType:RefreshTypeDrag];
 }
 
 - (void)didReceiveMemoryWarning {
