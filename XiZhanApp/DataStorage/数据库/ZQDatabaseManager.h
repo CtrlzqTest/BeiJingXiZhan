@@ -97,4 +97,7 @@
  *  @return 返回数组
  */
 -(NSArray *)getDataWithClass:(Class )object page:(NSInteger )page orderBy:(NSString *)proName;
+
+// 所有情况
+- (NSArray *)getDataWithClass:(Class )object condition:(NSString *)condition page:(NSInteger )page orderBy:(NSString *)proName;
 @end

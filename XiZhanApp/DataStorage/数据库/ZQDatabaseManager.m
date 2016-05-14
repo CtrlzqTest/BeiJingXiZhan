@@ -184,23 +184,31 @@ static ZQDatabaseManager *manager = nil;
     return tempArray;
 }
 
-// 条件查询加分页
+// 所有情况
 - (NSArray *)getDataWithClass:(Class )object condition:(NSString *)condition page:(NSInteger )page orderBy:(NSString *)proName{
     
     NSArray *tempArray = nil;
-    NSMutableString *sql = nil;
+    NSMutableString *sql = [[NSMutableString alloc] init];
     if ([_db open]) {
 //        if (condition.length <= 0) {
 //            sql = [NSString stringWithFormat:@"SELECT * FROM %@ limit %ld,20",[ZQDatabaseHelper getTableName:object],page];
 //        }else {
 //            sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ limit %ld,20",[ZQDatabaseHelper getTableName:object],condition,page];
 //        }
+        [sql appendFormat:@"SELECT * FROM %@",object];
         if (condition.length > 0) {
-            
+            [sql appendFormat:@" WHERE %@",condition];
         }
-        
+        if (proName.length > 0) {
+            [sql appendFormat:@" order by %@ desc",proName];
+        }
+        if (page != 0) {
+            [sql appendFormat:@" limit %ld,20",(page - 1) * 20];
+        }
+        NSLog(@"SQL:%@",sql);
         FMResultSet *set= [_db executeQuery:sql];
         tempArray = [self getDataStrWithSet:set];
+        sql = nil;
     }else{
         NSLog(@"数据库打开失败!!!");
     }

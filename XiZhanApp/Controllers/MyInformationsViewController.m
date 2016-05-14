@@ -18,7 +18,9 @@
 
 static NSString *cellIndentifer = @"msgType1";
 @interface MyInformationsViewController ()<UITableViewDelegate,UITableViewDataSource>
-
+{
+    NSInteger _page;
+}
 @property(nonatomic,strong)UITableView *newsList;
 @property(nonatomic,strong)NSMutableArray *newsArray;
 
@@ -28,6 +30,8 @@ static NSString *cellIndentifer = @"msgType1";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    _page = 1;
     [self initView];
     self.title = self.msgType;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(addInformation:) name:@"addInformation" object:nil];
@@ -36,7 +40,7 @@ static NSString *cellIndentifer = @"msgType1";
 
 -(void)addInformation:(NSNotification *)notice
 {
-    [self getData];
+    [self requestDataWithRefreshType:RefreshTypeDrag];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -45,15 +49,12 @@ static NSString *cellIndentifer = @"msgType1";
 
 -(void)initView
 {
-    //[self setTextTitleViewWithFrame:CGRectMake(180, 0, 120, 50) title:@"我的消息" fontSize:17.0];
-//    self.newsArray = [NSMutableArray array];
     
     // 本地数据库获取
-//    self.newsArray = [NSMutableArray arrayWithArray:[[MessageModel shareTestModel] getDataWithPage:1]];
     if (self.msgType != nil) {
-        self.newsArray = [NSMutableArray arrayWithArray:[[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@' order by msgdate desc",self.msgType]]];
+        self.newsArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@'",self.msgType] page:_page orderBy:@"msgdate"]];
     }else {
-        self.newsArray = [NSMutableArray arrayWithArray:[MessageModel getAllDataFromLocalOrderby:@"msgdate"]];
+        self.newsArray = self.newsArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:nil page:_page orderBy:@"msgdate"]];
     }
     
     self.newsList = [[UITableView alloc]init];
@@ -65,28 +66,43 @@ static NSString *cellIndentifer = @"msgType1";
     [self.newsList registerNib:[UINib nibWithNibName:@"MsgType1TabCell" bundle:nil] forCellReuseIdentifier:cellIndentifer];
     
     self.newsList.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self getData];
+        [self requestDataWithRefreshType:RefreshTypeDrag];
     }];
 //    [self.newsList.mj_header beginRefreshing];
-    MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
-    self.newsList.mj_footer = footer;
     
-//    self.newsList.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-//        [self requestMoreData];
-//    }];
+    self.newsList.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        [self requestDataWithRefreshType:RefreshTypePull];
+    }];
     
 }
 
--(void)getData
+-(void)requestDataWithRefreshType:(RefreshType )refreshType
 {
-    NSArray *resultArray = [[MessageModel shareTestModel] getDataWithCondition:@"msgDate = (select max(msgDate) from MessageModel)"];
     NSString *flag = nil;
     NSString *msgDate = nil;
+    NSArray *resultArray = [[MessageModel shareTestModel] getDataWithCondition:@"msgDate = (select max(msgDate) from MessageModel)"];
     if (resultArray.count == 0) {
         flag = @"2"; msgDate = @"";
-    }else {
+    }else if(refreshType == RefreshTypeDrag){
+        // 数据库有数据，下拉先刷新
         MessageModel *model = [[MessageModel mj_objectArrayWithKeyValuesArray:resultArray] firstObject];
         flag = @"1"; msgDate = [NSString stringWithFormat:@"%ld",model.msgdate];
+    }else if(refreshType == RefreshTypePull){
+        // 上拉加载
+        // 1,从数据库取数据
+        _page ++;
+        NSArray *tempArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@'",self.msgType] page:_page orderBy:@"msgdate"]];
+        if (tempArray.count > 0) {
+            [_newsArray addObjectsFromArray:tempArray];
+            [self.newsList.mj_footer endRefreshing];
+            [self.newsList reloadData];
+            return;
+        }
+        // 2,没有的话,请求后台数据
+        NSArray *resultArray_min = [[MessageModel shareTestModel] getDataWithCondition:@"msgDate = (select min(msgDate) from MessageModel)"];
+        MessageModel *model = [[MessageModel mj_objectArrayWithKeyValuesArray:resultArray_min] firstObject];
+        msgDate = [NSString stringWithFormat:@"%ld",model.msgdate];
+        flag = @"0";
     }
     
     [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":flag,@"msgDate":msgDate} successBlock:^(id returnData) {
@@ -96,26 +112,41 @@ static NSString *cellIndentifer = @"msgType1";
             if (resultArray.count > 0) {
                 for (MessageModel *model in resultArray) {
                     // 先添加到数组，同时保存到数据库
-                    [self.newsArray insertObject:model atIndex:0];
+                    if (refreshType == RefreshTypeDrag) {
+                        [self.newsArray insertObject:model atIndex:0];
+                    }else {
+                        [self.newsArray addObject:model];
+                        [self.newsList.mj_footer endRefreshing];
+                    }
                     [model save];
+                }
+            }else {
+                if (refreshType == RefreshTypeDrag) {
+                    _page = 1;
+                    self.newsArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@'",self.msgType] page:_page orderBy:@"msgdate"]];
+                }else {
+                    // 上拉没有跟多数据
+                    [self.newsList.mj_footer endRefreshingWithNoMoreData];
                 }
             }
             [self.newsList reloadData];
         }else {
-            
+           // 请求失败
         }
-    } failureBlock:^(NSError *error) {
         
+        
+        
+    } failureBlock:^(NSError *error) {
+        if ([self.newsList.mj_footer isRefreshing]) {
+            [self.newsList.mj_footer endRefreshing];
+        }
+        [MBProgressHUD showError:@"网络不给力" toView:self.view];
     } showHUD:NO];
     
     [self.newsList.mj_header endRefreshing];
     [self.newsList reloadData];
 }
 
--(void)requestMoreData
-{
-    [self.newsList.mj_footer endRefreshing];
-}
 - (IBAction)editAction:(id)sender {
     
     if (![User shareUser].isLogin) {
