@@ -22,6 +22,17 @@ static User *user = nil;
     return vc;
 }
 
++ (void)saveMyMsgReadState:(BOOL)state {
+    
+    [[NSUserDefaults standardUserDefaults] setBool:state forKey:@"msgReadState"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
++ (BOOL)getMyMsgReadState {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"msgReadState"];
+}
+
 + (BOOL)isFirstLoadding {
     
     BOOL flag = [[NSUserDefaults standardUserDefaults] boolForKey:@"isFirstLoadding"];

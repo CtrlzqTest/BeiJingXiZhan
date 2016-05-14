@@ -36,6 +36,8 @@ static NSString *const ZQdidLoginNotication = @"didLoginNotication";    // 登�
 
 static NSString *const ZQdidLogoutNotication = @"didLogoutNotication"; // 退出登录
 
+static NSString *const ZQReadStateDidChangeNotication = @"changeReadStatesNotication"; // 消息已读状态
+
 /**************************************************************************************/
 
 //   storyboardId
@@ -48,6 +50,8 @@ static NSString *const ZQServeTabViewControllerId = @"serveTabViewControllerId";
 static NSString *const ZQServeDetailViewControllerId = @"serveDetailViewControllerId"; // 服务台信息详情
 
 static NSString *const ZQPublishInfoViewControllerId = @"publishInfoViewControllerId"; // 发布消息
+
+
 
 /**************************************************************************************/
 

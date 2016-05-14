@@ -9,6 +9,15 @@
 #import <Foundation/Foundation.h>
 
 @interface Utility : NSObject
+/**
+ *  保存我的消息已读状态
+ */
++ (void)saveMyMsgReadState:(BOOL)state;
+
+/**
+ *  获取我的消息已读状态
+ */
++ (BOOL)getMyMsgReadState;
 
 /**
  *  根据id获取控制器

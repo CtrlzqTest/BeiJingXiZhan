@@ -20,7 +20,6 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
 @interface LeftSortsViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
 {
     NSMutableArray *_dataArray;
-    BOOL _isShowRedPoint;  // 是否显示小圆点
 }
 @end
 
@@ -36,6 +35,7 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLoginAction) name:ZQdidLoginNotication object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didLogoutAction) name:ZQdidLogoutNotication object:nil];
+    
 }
 
 - (void)setupViews {
@@ -45,10 +45,10 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
     if ([Utility isLogin]) {
         [User shareUser].isLogin = YES;
         loginStr = @"已登录";
-        [self requestData];
     }else {
         loginStr = @"登录/注册";
     }
+    [self requestData];
     _dataArray = [NSMutableArray arrayWithArray:@[loginStr,@"关于我们",@"意见反馈",@"我的消息",@"退出登录"]];
     
     self.tableview = [[UITableView alloc] initWithFrame:self.view.bounds style:(UITableViewStylePlain)];
@@ -80,12 +80,14 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
         if ([returnData[@"message"] isEqualToString:@"success"]) {
             NSArray *resultArray = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
             if (resultArray.count > 0) {
-                _isShowRedPoint = YES;  // 显示小圆点
+                [Utility saveMyMsgReadState:YES];  // 显示小圆点
+                // 通知首页显示小圆点
+                [[NSNotificationCenter defaultCenter] postNotificationName:ZQReadStateDidChangeNotication object:nil];
                 for (MessageModel *model in resultArray) {
                     [model save];
                 }
             }else{
-                _isShowRedPoint = NO;
+//                [Utility saveMyMsgReadState:NO];
             }
             [self.tableview reloadData];
         }else {
@@ -105,7 +107,8 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
 
 - (void)didLogoutAction {
     _dataArray[0] = @"登录/注册";
-    _isShowRedPoint = NO;
+    [Utility saveMyMsgReadState:NO];
+    [[NSNotificationCenter defaultCenter] postNotificationName:ZQReadStateDidChangeNotication object:nil];
     [self.tableview reloadData];
 }
 
@@ -120,7 +123,7 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
     LeftSortsTabCell *cell = [tableView dequeueReusableCellWithIdentifier:leftSortsCellId forIndexPath:indexPath];
     cell.imgView.image = [UIImage imageNamed:@"user-icon5"];
     cell.titleLabel.text = _dataArray[indexPath.row];
-    if (indexPath.row == 3 && _isShowRedPoint) {
+    if (indexPath.row == 3 && [Utility getMyMsgReadState] && [User shareUser].isLogin) {
         cell.rightImgView.hidden = NO;
     }else {
         cell.rightImgView.hidden = YES;
@@ -162,7 +165,9 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
             break;
         case 3:
         {
-            _isShowRedPoint = NO;
+            [Utility saveMyMsgReadState:NO];
+            // 是否已读状态
+            [[NSNotificationCenter defaultCenter] postNotificationName:ZQReadStateDidChangeNotication object:nil];
             [self.tableview reloadData];
             MyInformationsViewController *vc = [[MyInformationsViewController alloc]init];
             [tempAppDelegate.mainNavi pushViewController:vc animated:NO];

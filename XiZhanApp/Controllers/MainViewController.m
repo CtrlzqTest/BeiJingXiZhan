@@ -31,14 +31,37 @@ static NSString *collCellId = @"MainCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    [self addNotices];
     [self setFlowLayout];
     [self initData];
-    // Do any additional setup after loading the view.
+    
+    // 消息提示
+    if ([User shareUser].isLogin && [Utility getMyMsgReadState]) {
+        self.redPointImgView.hidden = NO;
+    }else {
+        self.redPointImgView.hidden = YES;
+    }
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self canSlideMenu:YES];
+}
+
+// 添加通知
+- (void)addNotices {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shouldShowRedPoint) name:ZQReadStateDidChangeNotication object:nil];
+}
+
+- (void)shouldShowRedPoint {
+    
+    if ([User shareUser].isLogin && [Utility getMyMsgReadState]) {
+        self.redPointImgView.hidden = NO;
+    }else {
+        self.redPointImgView.hidden = YES;
+    }
 }
 
 - (void)initData {

@@ -86,7 +86,7 @@
                                             <action selector="menuAction:" destination="HD0-fm-OPc" eventType="touchUpInside" id="NMg-r0-K2e"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Point_red" translatesAutoresizingMaskIntoConstraints="NO" id="IZH-9y-M7g">
+                                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Point_red" translatesAutoresizingMaskIntoConstraints="NO" id="IZH-9y-M7g">
                                         <rect key="frame" x="18" y="13" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="IZH-9y-M7g" secondAttribute="height" id="9dR-Zm-KVa"/>
