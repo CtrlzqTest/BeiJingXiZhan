@@ -7,11 +7,23 @@
 //
 
 #import "ServeTabCell.h"
+#import "MessageModel.h"
 
 @implementation ServeTabCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    
+}
+
+- (void)writeDataWithModel:(MessageModel *)msgModel {
+    
+    self.titleLabel.text = msgModel.msgtitle;
+    if (msgModel.isread) {
+        self.redPointImgView.hidden = YES;
+    }else {
+        self.redPointImgView.hidden = NO;
+    }
     
 }
 

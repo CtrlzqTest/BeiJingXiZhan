@@ -157,6 +157,57 @@ static ZQDatabaseManager *manager = nil;
     return tempArray;
 }
 
+// 排序查询
+-(NSArray *)getAllDataWithClass:(Class )object orderBy:(NSString *)proName
+{
+    NSArray *tempArray = nil;
+    if ([_db open]) {
+        NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ order by %@ DESC",[ZQDatabaseHelper getTableName:object],proName];
+        FMResultSet *set= [_db executeQuery:sql];
+        tempArray = [self getDataStrWithSet:set];
+    }else{
+        NSLog(@"数据库打开失败!!!");
+    }
+    return tempArray;
+}
+
+// 3,分页显示并排序
+-(NSArray *)getDataWithClass:(Class )object page:(NSInteger )page orderBy:(NSString *)proName{
+    NSArray *tempArray = nil;
+    if ([_db open]) {
+        NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ order by %@ desc limit %ld,20",[ZQDatabaseHelper getTableName:object],proName,(long)page - 1];
+        FMResultSet *set= [_db executeQuery:sql];
+        tempArray = [self getDataStrWithSet:set];
+    }else{
+        NSLog(@"数据库打开失败!!!");
+    }
+    return tempArray;
+}
+
+// 条件查询加分页
+- (NSArray *)getDataWithClass:(Class )object condition:(NSString *)condition page:(NSInteger )page orderBy:(NSString *)proName{
+    
+    NSArray *tempArray = nil;
+    NSMutableString *sql = nil;
+    if ([_db open]) {
+//        if (condition.length <= 0) {
+//            sql = [NSString stringWithFormat:@"SELECT * FROM %@ limit %ld,20",[ZQDatabaseHelper getTableName:object],page];
+//        }else {
+//            sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ limit %ld,20",[ZQDatabaseHelper getTableName:object],condition,page];
+//        }
+        if (condition.length > 0) {
+            
+        }
+        
+        FMResultSet *set= [_db executeQuery:sql];
+        tempArray = [self getDataStrWithSet:set];
+    }else{
+        NSLog(@"数据库打开失败!!!");
+    }
+    return tempArray;
+    
+}
+
 #pragma mark - Private methods
 -(NSArray *)getDataStrWithSet:(FMResultSet *)set
 {

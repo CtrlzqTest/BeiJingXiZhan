@@ -152,7 +152,7 @@ static NSString *collCellId = @"MainCell";
         case 2:
         {
             ServeInfoViewController *serveVC = [Utility getControllerWithStoryBoardId:ZQServeTabViewControllerId];
-            serveVC.title = model.msgType;
+            serveVC.msgType = model.msgType;
             serveVC.parentIdString = model.msgId;
             [self.navigationController pushViewController:serveVC animated:YES];
         }

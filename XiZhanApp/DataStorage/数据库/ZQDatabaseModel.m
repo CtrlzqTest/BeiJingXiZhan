@@ -85,4 +85,37 @@
     return tempArray;
 }
 
+// 获得所有数据并排序
++(NSArray *)getAllDataFromLocalOrderby:(NSString *)proName
+{
+    NSArray *tempArray = [[ZQDatabaseManager shareDatabaseManager] getAllDataWithClass:self orderBy:proName];
+    NSMutableArray *resultArray = [NSMutableArray array];
+    for (NSDictionary *dict in tempArray) {
+        NSObject *model = [[self alloc] init];
+        [model setValuesForKeysWithDictionary:dict];
+        [resultArray addObject:model];
+    }
+    return resultArray;
+}
+
+// 分页查询并排序
++ (NSArray *)getDataWithPage:(NSInteger )page orderBy:(NSString *)proName {
+    NSArray *tempArray = [[ZQDatabaseManager shareDatabaseManager] getDataWithClass:self page:page orderBy:proName];
+    NSMutableArray *resultArray = [NSMutableArray array];
+    for (NSDictionary *dict in tempArray) {
+        NSObject *model = [[self alloc] init];
+        [model setValuesForKeysWithDictionary:dict];
+        [resultArray addObject:model];
+    }
+    return resultArray;
+}
+
+// 条件查询
++ (NSArray *)getDataWithCondition:(NSString *)condition page:(NSInteger )page{
+    
+    NSArray *tempArray = [[ZQDatabaseManager shareDatabaseManager] getDataWithClass:self condition:condition];
+    return tempArray;
+    
+}
+
 @end

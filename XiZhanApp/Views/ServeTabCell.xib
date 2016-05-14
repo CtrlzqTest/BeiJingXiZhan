@@ -29,16 +29,22 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="right" translatesAutoresizingMaskIntoConstraints="NO" id="I5F-So-iEP">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Point_red" translatesAutoresizingMaskIntoConstraints="NO" id="I5F-So-iEP">
                         <rect key="frame" x="386" y="33" width="20" height="19"/>
                     </imageView>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="imgView" destination="MRU-1T-g9t" id="4bZ-QK-qjp"/>
+                <outlet property="msgLabel" destination="cgy-Ot-ZkU" id="FKc-vf-bfn"/>
+                <outlet property="redPointImgView" destination="I5F-So-iEP" id="b8U-eL-wTu"/>
+                <outlet property="titleLabel" destination="Vk9-vs-aUq" id="CSR-8k-ecW"/>
+            </connections>
             <point key="canvasLocation" x="289" y="264.5"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="right" width="32" height="32"/>
+        <image name="Point_red" width="32" height="32"/>
         <image name="user" width="32" height="32"/>
     </resources>
 </document>
