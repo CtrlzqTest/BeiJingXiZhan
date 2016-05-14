@@ -138,10 +138,6 @@
     NSLog(@"推送消息:%@",userInfo);
     self.dictForUserInfo = [NSMutableDictionary dictionaryWithDictionary:userInfo];
     
-    //        if (![str isEqualToString:self.dictForUserInfo[@"addUser"]])//判定登录名是否推送提交者
-    //        {
-    //            [self gotoVC:self.dictForUserInfo];//如果不是，则实现对应跳转
-    //        }
 
     if (application.applicationState == UIApplicationStateActive)
     {
