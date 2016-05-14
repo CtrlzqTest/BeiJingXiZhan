@@ -172,6 +172,7 @@
     UINavigationController * Nav = [[UINavigationController alloc]initWithRootViewController:detailList];
    // detailList.isSkip = _isSkiptoVC;
       detailList.parentIdString = dict[@"parentId"];
+    detailList.msgType = dict[@"msgType"];
     [self.window.rootViewController presentViewController:Nav animated:YES completion:nil];
 }
 - (void)applicationWillResignActive:(UIApplication *)application {
