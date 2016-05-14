@@ -45,7 +45,8 @@ static MessageModel *testModel = nil;
              @"msgdate" : @"msgDate",
              @"msgcontent" : @"msgContent",
              @"msgtype" : @"msgType",
-             @"isread" : @"isRead"
+             @"isread" : @"isRead",
+             @"imgurl":@"imgUrl"
              };
 }
 
