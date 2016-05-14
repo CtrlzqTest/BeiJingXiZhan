@@ -46,7 +46,7 @@
     [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 40*ProportionWidth) title:@"详情" fontSize:17.0];
     
     self.webUrl = self.model.msgtitle;
-    self.webUrl = [self.webUrl stringByAppendingString:@"\n"];
+    self.webUrl = [self.webUrl stringByAppendingString:@"\n\n"];
     self.webUrl = [self.webUrl stringByAppendingString:self.model.msgcontent];
     
     self.myWeb = [[UIWebView alloc]init];
