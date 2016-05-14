@@ -30,6 +30,15 @@
 - (void)deleteAllDataFromTable;
 
 /**
+ *  修改数据
+ *
+ *  @param propName  列名(要修改什么数据)
+ *  @param value     修改的值
+ *  @param condition 修改条件
+ */
+-(void)updateWithCondition:(NSString *)condition;
+
+/**
  *  从本地获取数据
  *
  *  @return 数据数组
@@ -49,14 +58,18 @@
  *  @param page 页数
  */
 - (NSArray *)getDataWithPage:(NSInteger )page;
+
 /**
- *  修改数据
+ *  从本地获取数据并排序
  *
- *  @param propName  列名(要修改什么数据)
- *  @param value     修改的值
- *  @param condition 修改条件
+ *  @return 数据数组
  */
--(void)updateWithCondition:(NSString *)condition;
++(NSArray *)getAllDataFromLocalOrderby:(NSString *)proName;
 
-
+/**
+ *  分页查询并排序
+ *
+ *  @param page 页数
+ */
++ (NSArray *)getDataWithPage:(NSInteger )page orderBy:(NSString *)proName;
 @end

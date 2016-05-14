@@ -46,9 +46,9 @@ static NSString *cellIndentifer = @"msgType1";
     // 本地数据库获取
 //    self.newsArray = [NSMutableArray arrayWithArray:[[MessageModel shareTestModel] getDataWithPage:1]];
     if (self.msgType != nil) {
-        self.newsArray = [NSMutableArray arrayWithArray:[[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@'",self.msgType]]];
+        self.newsArray = [NSMutableArray arrayWithArray:[[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@' order by msgdate desc",self.msgType]]];
     }else {
-        self.newsArray = [NSMutableArray arrayWithArray:[[MessageModel shareTestModel] getDataWithPage:1]];
+        self.newsArray = [NSMutableArray arrayWithArray:[MessageModel getAllDataFromLocalOrderby:@"msgdate"]];
     }
     
     self.newsList = [[UITableView alloc]init];
@@ -63,10 +63,13 @@ static NSString *cellIndentifer = @"msgType1";
         [self getData];
     }];
 //    [self.newsList.mj_header beginRefreshing];
+    MJRefreshAutoGifFooter *footer = [MJRefreshAutoGifFooter footerWithRefreshingTarget:self refreshingAction:@selector(requestMoreData)];
+    self.newsList.mj_footer = footer;
     
-    self.newsList.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        [self requestMoreData];
-    }];
+//    self.newsList.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+//        [self requestMoreData];
+//    }];
+    
 }
 
 -(void)getData

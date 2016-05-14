@@ -79,4 +79,22 @@
  */
 -(NSArray *)getDataWithClass:(NSObject *)object page:(NSInteger )page;
 
+/**
+ *  获取某个表下的所有数据并且排序
+ *
+ *  @param object 类(确定表名)
+ *
+ *  @return 数据数组
+ */
+-(NSArray *)getAllDataWithClass:(Class )object orderBy:(NSString *)proName;
+
+/**
+ *  分页查询并排序
+ *
+ *  @param object    表名
+ *  @param page      页数
+ *
+ *  @return 返回数组
+ */
+-(NSArray *)getDataWithClass:(Class )object page:(NSInteger )page orderBy:(NSString *)proName;
 @end

@@ -157,6 +157,33 @@ static ZQDatabaseManager *manager = nil;
     return tempArray;
 }
 
+// 排序查询
+-(NSArray *)getAllDataWithClass:(Class )object orderBy:(NSString *)proName
+{
+    NSArray *tempArray = nil;
+    if ([_db open]) {
+        NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ order by %@ DESC",[ZQDatabaseHelper getTableName:object],proName];
+        FMResultSet *set= [_db executeQuery:sql];
+        tempArray = [self getDataStrWithSet:set];
+    }else{
+        NSLog(@"数据库打开失败!!!");
+    }
+    return tempArray;
+}
+
+// 3,分页显示并排序
+-(NSArray *)getDataWithClass:(Class )object page:(NSInteger )page orderBy:(NSString *)proName{
+    NSArray *tempArray = nil;
+    if ([_db open]) {
+        NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ order by %@ desc limit %ld,20",[ZQDatabaseHelper getTableName:object],proName,(long)page - 1];
+        FMResultSet *set= [_db executeQuery:sql];
+        tempArray = [self getDataStrWithSet:set];
+    }else{
+        NSLog(@"数据库打开失败!!!");
+    }
+    return tempArray;
+}
+
 #pragma mark - Private methods
 -(NSArray *)getDataStrWithSet:(FMResultSet *)set
 {
