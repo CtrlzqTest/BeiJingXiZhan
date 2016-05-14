@@ -20,7 +20,11 @@
 - (void)writeDataWithModel:(MessageModel *)msgModel {
     
     self.titleLabel.text = msgModel.msgtitle;
-    
+    if (msgModel.isread) {
+        self.pointImgView.hidden = YES;
+    }else {
+        self.pointImgView.hidden = NO;
+    }
     
 }
 
