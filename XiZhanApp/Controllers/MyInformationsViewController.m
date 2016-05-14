@@ -30,9 +30,14 @@ static NSString *cellIndentifer = @"msgType1";
     [super viewDidLoad];
     [self initView];
     self.title = self.msgType;
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(addInformation:) name:@"addInformation" object:nil];
     // Do any additional setup after loading the view.
 }
 
+-(void)addInformation:(NSNotification *)notice
+{
+    [self getData];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -153,6 +158,5 @@ static NSString *cellIndentifer = @"msgType1";
         [self.newsList reloadData];
         [model updateWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
     }
-    
 }
 @end
