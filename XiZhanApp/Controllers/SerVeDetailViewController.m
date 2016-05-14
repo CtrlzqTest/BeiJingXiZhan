@@ -10,8 +10,6 @@
 
 @interface SerVeDetailViewController ()
 
-
-
 @end
 
 @implementation SerVeDetailViewController
@@ -21,6 +19,20 @@
     // Do any additional setup after loading the view.
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    if (self.isSkip == 1) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"skip" object:nil];
+        //        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(backMethod)];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backMethod)];
+    }
+}
+-(void)backMethod
+{
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

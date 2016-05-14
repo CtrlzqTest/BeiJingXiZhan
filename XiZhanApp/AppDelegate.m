@@ -13,13 +13,19 @@
 #import "MessageModel.h"
 #import "JPUSHService.h"
 #import "MessageModel.h"
+#import "InformationDetailViewController.h"
+#import "SerVeDetailViewController.h"
+#import "MyInformationsViewController.h"
+#import "ServeInfoViewController.h"
 
 #define AppKey @"6816fee48fb77859f7a9011b"
 @interface AppDelegate ()
 {
     NSDictionary *_lunchOptions;
+    BOOL _bageIsZero;
+    NSInteger _isSkiptoVC;
 }
-
+@property(nonatomic,retain)NSMutableDictionary *dictForUserInfo;
 @end
 
 @implementation AppDelegate
@@ -33,6 +39,8 @@
     // 极光推送
     [self setupjPushWithLaunchOptions:launchOptions];
     
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changgeIndexValue:) name:@"skip" object:nil];
+
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
     self.mainNavi = [mainStoryboard instantiateViewControllerWithIdentifier:@"baseNavigationVC"];
@@ -45,7 +53,10 @@
     
     return YES;
 }
-
+-(void)changgeIndexValue:(NSNotification *)notice
+{
+    _isSkiptoVC = 0;
+}
 - (void)requestData {
     
 //    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:nil successBlock:^(id returnData) {
@@ -105,14 +116,64 @@
 
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
+
     [JPUSHService handleRemoteNotification:userInfo];
+    NSLog(@"%@",userInfo);
 }
 
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo
   completionHandler:(void (^)())completionHandler {
+    
 }
 
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    NSInteger count = --[UIApplication sharedApplication].applicationIconBadgeNumber;
+    if (count >= 0) {
+        [JPUSHService clearAllLocalNotifications];
+        [JPUSHService setBadge:count];
+    }
+    _bageIsZero = YES;
+    [JPUSHService handleRemoteNotification:userInfo];
+    NSLog(@"推送消息:%@",userInfo);
+    self.dictForUserInfo = [NSMutableDictionary dictionaryWithDictionary:userInfo];
+    [self chooseSkipVC];
 
+}
+-(void)chooseSkipVC
+{
+    
+    if ([self.dictForUserInfo[@"msgType"] isEqualToString:@"志愿者服务"] ||[self.dictForUserInfo[@"msgType"] isEqualToString:@"站内公告消息"]) {
+        [self gotoInformationDetailVC:self.dictForUserInfo];
+    }
+    else if([self.dictForUserInfo[@"msgType"] isEqualToString:@"服务台消息"])
+    {
+        [self gotoKongZhiTaiVC:self.dictForUserInfo];
+    }
+}
+#pragma mark 跳转至消息列表界面
+-(void)gotoInformationDetailVC:(NSDictionary *)dict
+{
+    _isSkiptoVC = 1;
+   // InformationDetailViewController *detailList = [[InformationDetailViewController alloc]init];
+    MyInformationsViewController *detailList = [[MyInformationsViewController alloc]init];
+    UINavigationController * Nav = [[UINavigationController alloc]initWithRootViewController:detailList];
+    
+    detailList.isSkip = _isSkiptoVC;
+    detailList.parentIdString = dict[@"parentId"];
+    detailList.msgType = dict[@"msgType"];
+    [self.window.rootViewController presentViewController:Nav animated:YES completion:nil];
+}
+#pragma mark 跳转至控制台列表界面
+-(void)gotoKongZhiTaiVC:(NSDictionary *)dict
+{
+    _isSkiptoVC = 1;
+    ServeInfoViewController *detailList = [Utility getControllerWithStoryBoardId:ZQServeTabViewControllerId];
+    UINavigationController * Nav = [[UINavigationController alloc]initWithRootViewController:detailList];
+   // detailList.isSkip = _isSkiptoVC;
+      detailList.parentIdString = dict[@"parentId"];
+    [self.window.rootViewController presentViewController:Nav animated:YES completion:nil];
+}
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -129,6 +190,13 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    if (!_bageIsZero)
+    {
+        [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+        [JPUSHService clearAllLocalNotifications];
+        [JPUSHService setBadge:0];
+    }
+    _bageIsZero = NO;
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

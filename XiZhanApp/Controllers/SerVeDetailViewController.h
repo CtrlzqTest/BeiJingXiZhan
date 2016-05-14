@@ -10,4 +10,5 @@
 
 @interface SerVeDetailViewController : BaseViewController
 
+@property(nonatomic,assign)NSInteger isSkip;
 @end

@@ -26,6 +26,20 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    if (self.isSkip == 1) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"skip" object:nil];
+//        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(backMethod)];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backMethod)];
+    }
+}
+-(void)backMethod
+{
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
 -(void)initView
 {
    // self.view.backgroundColor = [UIColor blueColor];
