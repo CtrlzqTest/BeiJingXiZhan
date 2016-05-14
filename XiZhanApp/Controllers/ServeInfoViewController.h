@@ -10,4 +10,5 @@
 
 @interface ServeInfoViewController : BaseViewController
 
+@property(nonatomic,copy)NSString *parentIdString;
 @end

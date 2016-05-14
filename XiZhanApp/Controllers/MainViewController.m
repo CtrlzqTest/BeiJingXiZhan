@@ -114,6 +114,7 @@ static NSString *collCellId = @"MainCell";
         {
             MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];
             myInfoVC.msgType = model.msgType;
+            myInfoVC.parentIdString = model.msgId;
             [self.navigationController pushViewController:myInfoVC animated:YES];
         }
             break;
@@ -121,6 +122,7 @@ static NSString *collCellId = @"MainCell";
         {
             MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];
             myInfoVC.msgType = model.msgType;
+             myInfoVC.parentIdString = model.msgId;
             [self.navigationController pushViewController:myInfoVC animated:YES];
         }
             break;
@@ -128,6 +130,7 @@ static NSString *collCellId = @"MainCell";
         {
             ServeInfoViewController *serveVC = [Utility getControllerWithStoryBoardId:ZQServeTabViewControllerId];
             serveVC.title = model.msgType;
+            serveVC.parentIdString = model.msgId;
             [self.navigationController pushViewController:serveVC animated:YES];
         }
             break;
