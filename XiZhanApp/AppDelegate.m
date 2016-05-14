@@ -161,6 +161,7 @@
     
     detailList.isSkip = _isSkiptoVC;
     detailList.parentIdString = dict[@"parentId"];
+    detailList.msgType = dict[@"msgType"];
     [self.window.rootViewController presentViewController:Nav animated:YES completion:nil];
 }
 #pragma mark 跳转至控制台列表界面

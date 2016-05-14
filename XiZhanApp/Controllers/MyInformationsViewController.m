@@ -43,6 +43,7 @@ static NSString *cellIndentifer = @"msgType1";
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.title = self.msgType;
     if (self.isSkip == 1) {
         [[NSNotificationCenter defaultCenter]postNotificationName:@"skip" object:nil];
         //        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(backMethod)];
@@ -52,6 +53,7 @@ static NSString *cellIndentifer = @"msgType1";
 -(void)backMethod
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    //[self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
