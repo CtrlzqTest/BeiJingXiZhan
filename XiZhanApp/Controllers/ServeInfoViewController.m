@@ -41,7 +41,15 @@ static NSString *serveCellId = @"serveTabCellId";
         [[NSNotificationCenter defaultCenter]postNotificationName:@"skip" object:nil];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backMethod)];
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pubulishServe) name:@"addInformation" object:nil];
+    
 }
+
+- (void)pubulishServe {
+    [self requestDataWithRefreshType:RefreshTypeDrag];
+}
+
 -(void)backMethod
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
