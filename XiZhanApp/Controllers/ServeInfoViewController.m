@@ -126,8 +126,6 @@ static NSString *serveCellId = @"serveTabCellId";
             // 请求失败
         }
         
-        
-        
     } failureBlock:^(NSError *error) {
         if ([self.tableView.mj_footer isRefreshing]) {
             [self.tableView.mj_footer endRefreshing];

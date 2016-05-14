@@ -137,7 +137,22 @@
     [JPUSHService handleRemoteNotification:userInfo];
     NSLog(@"推送消息:%@",userInfo);
     self.dictForUserInfo = [NSMutableDictionary dictionaryWithDictionary:userInfo];
-    [self chooseSkipVC];
+    
+    
+    if (application.applicationState == UIApplicationStateActive)
+    {
+        NSLog(@"前台");
+        
+    }else if(application.applicationState == UIApplicationStateInactive)
+    {
+        NSLog(@"刚要进入前台");
+        //        [[NSNotificationCenter defaultCenter] postNotificationName:@"push" object:str];
+        //        self.pushSting = str;
+        [self chooseSkipVC];
+    }else if (application.applicationState == UIApplicationStateBackground){
+        //        NSLog(@"后台");
+        [MBProgressHUD showError:@"后台" toView:nil];
+    }
 
 }
 -(void)chooseSkipVC
@@ -164,6 +179,7 @@
     detailList.msgType = dict[@"msgType"];
     [self.window.rootViewController presentViewController:Nav animated:YES completion:nil];
 }
+
 #pragma mark 跳转至控制台列表界面
 -(void)gotoKongZhiTaiVC:(NSDictionary *)dict
 {
