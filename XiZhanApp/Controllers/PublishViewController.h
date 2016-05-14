@@ -7,7 +7,10 @@
 //
 
 #import "LQPhotoPickerViewController.h"
-
+#import "MenuModel.h"
 @interface PublishViewController : LQPhotoPickerViewController
+
 @property(nonatomic,copy)NSString *parentIdString;
+@property(nonatomic,strong)MenuModel *menuModel;
+
 @end

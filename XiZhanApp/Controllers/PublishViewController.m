@@ -184,11 +184,12 @@
     __weak typeof(self) weakSelf = self;
     [MHNetworkManager postReqeustWithURL:kMenuAdd params:@{@"msgTitle":self.fieldOfUser.text,@"msgContent":self.miaoShuTextView.text,@"userId":[Utility getUserInfoFromLocal][@"id"],@"parentId":self.parentIdString} successBlock:^(id returnData) {
         NSLog(@"%@",returnData);
-        
         [weakSelf.navigationController popViewControllerAnimated:YES];
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"addInformation" object:nil];
-        
-        
+        if (![self.menuModel.msgType isEqualToString:@"服务台消息"]) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"addInformation" object:nil];
+        }else {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"serveInfo" object:nil];
+        }
     } failureBlock:^(NSError *error) {
         
     } showHUD:YES];

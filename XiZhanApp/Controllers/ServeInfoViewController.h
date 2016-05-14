@@ -7,11 +7,12 @@
 //
 
 #import "BaseViewController.h"
+#import "MenuModel.h"
 
 @interface ServeInfoViewController : BaseViewController
 
 @property(nonatomic,copy)NSString *parentIdString;
 @property(nonatomic,copy)NSString *msgType;
-
+@property(nonatomic,strong)MenuModel *menuModel;
 @property(nonatomic,assign)NSInteger isSkip;
 @end

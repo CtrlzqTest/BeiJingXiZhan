@@ -42,12 +42,12 @@ static NSString *serveCellId = @"serveTabCellId";
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backMethod)];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pubulishServe) name:@"addInformation" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pubulishServe) name:@"serveInfo" object:nil];
     
 }
 
 - (void)pubulishServe {
-    [self requestDataWithRefreshType:RefreshTypeDrag];
+    [self requestData];
 }
 
 -(void)backMethod
@@ -64,6 +64,7 @@ static NSString *serveCellId = @"serveTabCellId";
       //  PublishInfoViewController *publishVC = [Utility getControllerWithStoryBoardId:ZQPublishInfoViewControllerId];
        PublishViewController *publishVC = [[PublishViewController alloc]init];
         publishVC.parentIdString = self.parentIdString;
+        publishVC.menuModel = self.menuModel;
         [self.navigationController pushViewController:publishVC animated:YES];
     }
 }
@@ -73,8 +74,59 @@ static NSString *serveCellId = @"serveTabCellId";
     // 本地数据库获取
     if (self.msgType != nil) {
         _dataArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@'",self.msgType] page:_page orderBy:@"msgdate"]];
-    }    
+        if (_dataArray.count < 15) {
+            [self requestDataWithRefreshType:RefreshTypePull];
+        }
+    }
 }
+
+- (void)requestData {
+    
+    NSString *flag = nil;
+    NSString *msgDate = nil;
+    NSArray *resultArray = [[MessageModel shareTestModel] getDataWithCondition:@"msgdate = (select max(msgdate) from MessageModel)"];
+    if (resultArray.count == 0) {
+        flag = @"2"; msgDate = @"";
+    }else{
+        MessageModel *model = [[MessageModel mj_objectArrayWithKeyValuesArray:resultArray] firstObject];
+        flag = @"1"; msgDate = [NSString stringWithFormat:@"%ld",model.msgdate];
+    }
+    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":flag,@"msgDate":msgDate} successBlock:^(id returnData) {
+        
+        if ([returnData[@"message"] isEqualToString:@"success"]) {
+            NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
+            if (resultArray1.count > 0) {
+                
+                for (MessageModel *model in resultArray1) {
+                    // 先添加到数组，同时保存到数据库
+                    [_dataArray insertObject:model atIndex:0];
+                    [self.tableView.mj_footer endRefreshing];
+                    NSArray *coutArr = [[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
+                    if (coutArr.count <= 0) {
+                        [model save];
+                    }
+                    
+                }
+            }else {
+                
+            }
+            [self.tableView reloadData];
+        }else {
+            // 请求失败
+        }
+        
+    } failureBlock:^(NSError *error) {
+        if ([self.tableView.mj_footer isRefreshing]) {
+            [self.tableView.mj_footer endRefreshing];
+        }
+        [MBProgressHUD showError:@"网络不给力" toView:self.view];
+    } showHUD:NO];
+    
+    [self.tableView.mj_header endRefreshing];
+    [self.tableView reloadData];
+    
+}
+
 
 -(void)requestDataWithRefreshType:(RefreshType )refreshType
 {
@@ -118,7 +170,10 @@ static NSString *serveCellId = @"serveTabCellId";
                         [_dataArray addObject:model];
                         [self.tableView.mj_footer endRefreshing];
                     }
-                    [model save];
+                    NSArray *coutArr = [[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
+                    if (coutArr.count <= 0) {
+                        [model save];
+                    }
                 }
             }else {
                 if (refreshType == RefreshTypeDrag) {
@@ -153,9 +208,9 @@ static NSString *serveCellId = @"serveTabCellId";
     
     // 下拉刷新
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self requestDataWithRefreshType:RefreshTypeDrag];
+        [self requestData];
     }];
-    
+    [self.tableView.mj_header beginRefreshing];
     // 上拉加载
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [self requestDataWithRefreshType:RefreshTypePull];
