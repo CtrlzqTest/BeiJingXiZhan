@@ -13,8 +13,9 @@
 #import "MJRefresh.h"
 #import "PublishInfoViewController.h"
 #import "MessageModel.h"
+#import "MsgType1TabCell.h"
 
-static NSString *cellIndentifer = @"newsCell";
+static NSString *cellIndentifer = @"msgType1";
 @interface MyInformationsViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,retain)UITableView *newsList;
@@ -54,6 +55,9 @@ static NSString *cellIndentifer = @"newsCell";
     self.newsList.dataSource = self;
     self.newsList.delegate = self;
     [self.view addSubview:self.newsList];
+    // 注册cell
+    [self.newsList registerNib:[UINib nibWithNibName:@"MsgType1TabCell" bundle:nil] forCellReuseIdentifier:cellIndentifer];
+    
     self.newsList.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self getData];
     }];
@@ -125,15 +129,9 @@ static NSString *cellIndentifer = @"newsCell";
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [self.newsList dequeueReusableCellWithIdentifier:cellIndentifer];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIndentifer];
-    }
+    MsgType1TabCell *cell = [self.newsList dequeueReusableCellWithIdentifier:cellIndentifer];
+    
     MessageModel *model = self.newsArray[indexPath.row];
-    cell.selectionStyle = UITableViewCellSeparatorStyleNone;
-    cell.backgroundColor = [UIColor clearColor];
-    cell.textLabel.text = model.msgtitle;
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
