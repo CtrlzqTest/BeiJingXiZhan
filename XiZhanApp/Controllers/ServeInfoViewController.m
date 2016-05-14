@@ -13,10 +13,13 @@
 #import "LoginViewController.h"
 //#import "PublishInfoViewController.h"
 #import "PublishViewController.h"
+#import "MessageModel.h"
 
 static NSString *serveCellId = @"serveTabCellId";
 @interface ServeInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
-
+{
+    NSMutableArray *_dataArray;
+}
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -25,6 +28,9 @@ static NSString *serveCellId = @"serveTabCellId";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.title = self.msgType;
+    [self getDataFromLocal];
     [self setupViews];
 }
 
@@ -40,6 +46,50 @@ static NSString *serveCellId = @"serveTabCellId";
         publishVC.parentIdString = self.parentIdString;
         [self.navigationController pushViewController:publishVC animated:YES];
     }
+}
+
+- (void)getDataFromLocal {
+    
+    // 本地数据库获取
+    if (self.msgType != nil) {
+        _dataArray = [NSMutableArray arrayWithArray:[[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@' order by msgdate desc",self.msgType]]];
+    }
+    
+}
+
+-(void)requestData
+{
+    NSArray *resultArray = [[MessageModel shareTestModel] getDataWithCondition:@"msgDate = (select max(msgDate) from MessageModel)"];
+    NSString *flag = nil;
+    NSString *msgDate = nil;
+    if (resultArray.count == 0) {
+        flag = @"2"; msgDate = @"";
+    }else {
+        MessageModel *model = [[MessageModel mj_objectArrayWithKeyValuesArray:resultArray] firstObject];
+        flag = @"1"; msgDate = [NSString stringWithFormat:@"%ld",model.msgdate];
+    }
+    
+    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":flag,@"msgDate":msgDate} successBlock:^(id returnData) {
+        
+        if ([returnData[@"message"] isEqualToString:@"success"]) {
+            NSArray *resultArray = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
+            if (resultArray.count > 0) {
+                for (MessageModel *model in resultArray) {
+                    // 先添加到数组，同时保存到数据库
+                    [_dataArray insertObject:model atIndex:0];
+                    [model save];
+                }
+            }
+            [self.tableView reloadData];
+        }else {
+            
+        }
+    } failureBlock:^(NSError *error) {
+        [MBProgressHUD showError:@"网络不给力" toView:self.view];
+    } showHUD:NO];
+    
+    [self.tableView.mj_header endRefreshing];
+    [self.tableView reloadData];
 }
 
 - (void)setupViews {
@@ -59,14 +109,6 @@ static NSString *serveCellId = @"serveTabCellId";
     }];
 }
 
-// 数据请求
-- (void)requestData {
-    
-    [self.tableView.mj_header endRefreshing];
-    [self.tableView reloadData];
-    
-}
-
 - (void)requestMoreData {
     [self.tableView.mj_footer endRefreshing];
 }
@@ -81,13 +123,14 @@ static NSString *serveCellId = @"serveTabCellId";
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 15;
+    return _dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    MessageModel *model = _dataArray[indexPath.row];
     ServeTabCell *cell = [tableView dequeueReusableCellWithIdentifier:serveCellId forIndexPath:indexPath];
-    
+    [cell writeDataWithModel:model];
     return cell;
 }
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

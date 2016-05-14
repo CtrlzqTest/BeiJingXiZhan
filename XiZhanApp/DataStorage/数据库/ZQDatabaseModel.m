@@ -110,4 +110,12 @@
     return resultArray;
 }
 
+// 条件查询
++ (NSArray *)getDataWithCondition:(NSString *)condition page:(NSInteger )page{
+    
+    NSArray *tempArray = [[ZQDatabaseManager shareDatabaseManager] getDataWithClass:self condition:condition];
+    return tempArray;
+    
+}
+
 @end

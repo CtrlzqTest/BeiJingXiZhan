@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class MessageModel;
 @interface ServeTabCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UIImageView *imgView;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *msgLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *redPointImgView;
+
+- (void)writeDataWithModel:(MessageModel *)msgModel;
 
 @end

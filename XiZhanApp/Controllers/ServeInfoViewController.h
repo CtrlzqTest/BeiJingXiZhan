@@ -11,4 +11,6 @@
 @interface ServeInfoViewController : BaseViewController
 
 @property(nonatomic,copy)NSString *parentIdString;
+@property(nonatomic,copy)NSString *msgType;
+
 @end
