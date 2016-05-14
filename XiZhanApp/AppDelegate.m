@@ -151,22 +151,26 @@
         [self gotoKongZhiTaiVC:self.dictForUserInfo];
     }
 }
-#pragma mark 跳转至消息详情界面
+#pragma mark 跳转至消息列表界面
 -(void)gotoInformationDetailVC:(NSDictionary *)dict
 {
     _isSkiptoVC = 1;
-    InformationDetailViewController *detailList = [[InformationDetailViewController alloc]init];
-    UINavigationController * Nav = [[UINavigationController alloc]initWithRootViewController:detailList];//这里加导航栏是因为我跳转的页面带导航栏，如果跳转的页面不带导航，那这句话请省去。
+   // InformationDetailViewController *detailList = [[InformationDetailViewController alloc]init];
+    MyInformationsViewController *detailList = [[MyInformationsViewController alloc]init];
+    UINavigationController * Nav = [[UINavigationController alloc]initWithRootViewController:detailList];
+    
     detailList.isSkip = _isSkiptoVC;
+    detailList.parentIdString = dict[@"parentId"];
     [self.window.rootViewController presentViewController:Nav animated:YES completion:nil];
 }
-#pragma mark 跳转至控制台详情界面
+#pragma mark 跳转至控制台列表界面
 -(void)gotoKongZhiTaiVC:(NSDictionary *)dict
 {
     _isSkiptoVC = 1;
-    SerVeDetailViewController *detailList = [[SerVeDetailViewController alloc]init];
-    UINavigationController * Nav = [[UINavigationController alloc]initWithRootViewController:detailList];//这里加导航栏是因为我跳转的页面带导航栏，如果跳转的页面不带导航，那这句话请省去。
-    detailList.isSkip = _isSkiptoVC;
+    ServeInfoViewController *detailList = [Utility getControllerWithStoryBoardId:ZQServeTabViewControllerId];
+    UINavigationController * Nav = [[UINavigationController alloc]initWithRootViewController:detailList];
+   // detailList.isSkip = _isSkiptoVC;
+      detailList.parentIdString = dict[@"parentId"];
     [self.window.rootViewController presentViewController:Nav animated:YES completion:nil];
 }
 - (void)applicationWillResignActive:(UIApplication *)application {

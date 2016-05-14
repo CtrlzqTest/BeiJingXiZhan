@@ -33,16 +33,33 @@ static NSString *cellIndentifer = @"msgType1";
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(addInformation:) name:@"addInformation" object:nil];
     // Do any additional setup after loading the view.
 }
-
+#pragma mark 添加消息后刷新列表
 -(void)addInformation:(NSNotification *)notice
 {
     [self getData];
 }
+#pragma mark noticeSkipToList
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    if (self.isSkip == 1) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"skip" object:nil];
+        //        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(backMethod)];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backMethod)];
+    }
+}
+-(void)backMethod
+{
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark initMethod
 -(void)initView
 {
     //[self setTextTitleViewWithFrame:CGRectMake(180, 0, 120, 50) title:@"我的消息" fontSize:17.0];
