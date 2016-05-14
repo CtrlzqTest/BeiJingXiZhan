@@ -10,4 +10,6 @@
 
 @interface InformationDetailViewController : BaseViewController
 @property(nonatomic,copy)NSString *webUrl;
+
+@property(nonatomic,assign)NSInteger isSkip;
 @end
