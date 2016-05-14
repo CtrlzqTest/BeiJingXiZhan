@@ -11,7 +11,8 @@
 #import <MJRefresh.h>
 #import "SerVeDetailViewController.h"
 #import "LoginViewController.h"
-#import "PublishInfoViewController.h"
+//#import "PublishInfoViewController.h"
+#import "PublishViewController.h"
 
 static NSString *serveCellId = @"serveTabCellId";
 @interface ServeInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -34,7 +35,8 @@ static NSString *serveCellId = @"serveTabCellId";
         LoginViewController *loginVC = [Utility getControllerWithStoryBoardId:ZQLoginViewCotrollerId];
         [self.navigationController pushViewController:loginVC animated:YES];
     }else {
-        PublishInfoViewController *publishVC = [Utility getControllerWithStoryBoardId:ZQPublishInfoViewControllerId];
+      //  PublishInfoViewController *publishVC = [Utility getControllerWithStoryBoardId:ZQPublishInfoViewControllerId];
+       PublishViewController *publishVC = [[PublishViewController alloc]init];
         [self.navigationController pushViewController:publishVC animated:YES];
     }
 }

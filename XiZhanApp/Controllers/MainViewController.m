@@ -16,7 +16,6 @@
 #import "MenuModel.h"
 #import <MJRefresh.h>
 
-
 static NSString *collCellId = @"MainCell";
 @interface MainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 {

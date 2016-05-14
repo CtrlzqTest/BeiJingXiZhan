@@ -26,10 +26,9 @@
 
 #define kMuenListAPI           @"app.menu/getMenu" //首页菜单
 
-#define kAllMessageAPI           @"app.menu/list" // 所有消息列表
+#define kAllMessageAPI         @"app.menu/list" // 所有消息列表
 
-
-
+#define kMenuAdd               @"app.menu/add"   //添加意见
 //   常量
 /**************************************************************************************/
 
