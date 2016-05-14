@@ -8,8 +8,10 @@
 
 #import "BaseViewController.h"
 
+@class MessageModel;
 @interface InformationDetailViewController : BaseViewController
 @property(nonatomic,copy)NSString *webUrl;
 
+@property(nonatomic,strong)MessageModel *model;
 @property(nonatomic,assign)NSInteger isSkip;
 @end

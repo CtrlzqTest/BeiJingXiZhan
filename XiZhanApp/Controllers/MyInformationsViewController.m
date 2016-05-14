@@ -192,14 +192,15 @@ static NSString *cellIndentifer = @"msgType1";
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    InformationDetailViewController *vc = [[InformationDetailViewController alloc]init];
-    [self.navigationController pushViewController:vc animated:YES];
-    
     MessageModel *model = self.newsArray[indexPath.row];
     if (!model.isread) {
         model.isread = YES;
         [self.newsList reloadData];
         [model updateWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
     }
-}
+
+    InformationDetailViewController *vc = [[InformationDetailViewController alloc]init];
+    vc.model = model;
+    [self.navigationController pushViewController:vc animated:YES];
+    }
 @end
