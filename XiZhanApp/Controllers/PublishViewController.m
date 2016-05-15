@@ -185,12 +185,16 @@
     [MHNetworkManager postReqeustWithURL:kMenuAdd params:@{@"msgTitle":self.fieldOfUser.text,@"msgContent":self.miaoShuTextView.text,@"userId":[Utility getUserInfoFromLocal][@"id"],@"parentId":self.parentIdString,@"imgUrl":self.imgString} successBlock:^(id returnData) {
         NSLog(@"%@",returnData);
         
-        if ([self.menuModel.msgType isEqualToString:@"服务台消息"]) {
-            [[NSNotificationCenter defaultCenter] postNotificationName:ZQAddServeInfoNotication object:nil];
-        }else {
-            [[NSNotificationCenter defaultCenter] postNotificationName:ZQAddOtherInfoNotication object:nil];
-        }
+//        if ([self.menuModel.msgType isEqualToString:@"服务台消息"]) {
+//            [[NSNotificationCenter defaultCenter] postNotificationName:ZQAddServeInfoNotication object:nil];
+//        }else {
+//            [[NSNotificationCenter defaultCenter] postNotificationName:ZQAddOtherInfoNotication object:nil];
+//        }
         [weakSelf.navigationController popViewControllerAnimated:YES];
+        // 通知列表需要刷新
+        if ([self.delegate respondsToSelector:@selector(noticeTableViewRefresh:)]) {
+            [self.delegate noticeTableViewRefresh:nil];
+        }
     } failureBlock:^(NSError *error) {
         
     } showHUD:YES];

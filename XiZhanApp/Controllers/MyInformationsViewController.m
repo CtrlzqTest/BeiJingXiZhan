@@ -17,9 +17,10 @@
 #import "PublishViewController.h"
 
 static NSString *cellIndentifer = @"msgType1";
-@interface MyInformationsViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface MyInformationsViewController ()<UITableViewDelegate,UITableViewDataSource,PublishViewControllerDelegate>
 {
     NSInteger _page;
+    BOOL _shouldRefresh; // 是否需要刷新数据
 }
 @property(nonatomic,strong)UITableView *newsList;
 @property(nonatomic,strong)NSMutableArray *newsArray;
@@ -34,7 +35,7 @@ static NSString *cellIndentifer = @"msgType1";
     _page = 1;
     [self initView];
     self.title = self.msgType;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addOtherInfo) name:ZQAddOtherInfoNotication object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addOtherInfo) name:ZQAddOtherInfoNotication object:nil];
     
     if (self.isSkip == 1) {
         [self.navigationController setNavigationBarHidden:NO animated:YES];
@@ -45,19 +46,34 @@ static NSString *cellIndentifer = @"msgType1";
     }
 }
 
--(void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 -(void)backMethod
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
-#pragma mark 添加消息后刷新列表
--(void)addOtherInfo
-{
-    [self requestData];
+
+#pragma mark -- PublishViewControllerDelegate
+// 成功发布消息之后，设置需要刷新
+-(void)noticeTableViewRefresh:(MessageModel *)model {
+    _shouldRefresh = YES;
 }
+
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (_shouldRefresh) {
+        [self.newsList.mj_header beginRefreshing];
+    }
+}
+
+// 视图消失的时候，设置不需要刷新
+-(void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    _shouldRefresh = NO;
+}
+#pragma mark 添加消息后刷新列表
+//-(void)addOtherInfo
+//{
+//    [self requestData];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -134,15 +150,16 @@ static NSString *cellIndentifer = @"msgType1";
         }else {
             // 请求失败
         }
-    
+        [self.newsList.mj_header endRefreshing];
     } failureBlock:^(NSError *error) {
         if ([self.newsList.mj_footer isRefreshing]) {
             [self.newsList.mj_footer endRefreshing];
         }
         [MBProgressHUD showError:@"网络不给力" toView:self.view];
+        [self.newsList.mj_header endRefreshing];
     } showHUD:NO];
     
-    [self.newsList.mj_header endRefreshing];
+    
 //    [self.newsList reloadData];
 
 }
@@ -236,6 +253,7 @@ static NSString *cellIndentifer = @"msgType1";
         PublishViewController *publishVC = [[PublishViewController alloc]init];
         publishVC.parentIdString = self.parentIdString;
         publishVC.menuModel = self.menuModel;
+        publishVC.delegate = self;
         [self.navigationController pushViewController:publishVC animated:YES];
     }
 }

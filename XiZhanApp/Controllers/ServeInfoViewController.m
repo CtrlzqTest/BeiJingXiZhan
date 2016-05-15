@@ -16,10 +16,11 @@
 #import "MessageModel.h"
 
 static NSString *serveCellId = @"serveTabCellId";
-@interface ServeInfoViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface ServeInfoViewController ()<UITableViewDelegate,UITableViewDataSource,PublishViewControllerDelegate>
 {
     NSInteger _page;
     NSMutableArray *_dataArray;
+    BOOL _shouldRefresh; // 是否需要刷新数据
 }
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -43,20 +44,26 @@ static NSString *serveCellId = @"serveTabCellId";
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backMethod)];
     }
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(pubulishServe) name:ZQAddServeInfoNotication object:nil];
+  
+}
+
+#pragma mark -- PublishViewControllerDelegate
+// 成功发布消息之后，设置需要刷新
+-(void)noticeTableViewRefresh:(MessageModel *)model {
+    _shouldRefresh = YES;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    if (_shouldRefresh) {
+        [self.tableView.mj_header beginRefreshing];
+    }
 }
 
+// 视图消失的时候，设置不需要刷新
 -(void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    
-}
-
--(void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    _shouldRefresh = NO;
 }
 
 - (void)setupViews {
@@ -76,9 +83,9 @@ static NSString *serveCellId = @"serveTabCellId";
     }];
 }
 
-- (void)pubulishServe {
-    [self requestData];
-}
+//- (void)pubulishServe {
+//    [self requestData];
+//}
 
 -(void)backMethod
 {
@@ -95,6 +102,7 @@ static NSString *serveCellId = @"serveTabCellId";
        PublishViewController *publishVC = [[PublishViewController alloc]init];
         publishVC.parentIdString = self.parentIdString;
         publishVC.menuModel = self.menuModel;
+        publishVC.delegate = self;
         [self.navigationController pushViewController:publishVC animated:YES];
     }
 }
@@ -149,20 +157,21 @@ static NSString *serveCellId = @"serveTabCellId";
         }else {
             // 请求失败
         }
-        
+        [self.tableView.mj_header endRefreshing];
     } failureBlock:^(NSError *error) {
         if ([self.tableView.mj_footer isRefreshing]) {
             [self.tableView.mj_footer endRefreshing];
         }
         [MBProgressHUD showError:@"网络不给力" toView:self.view];
+        [self.tableView.mj_header endRefreshing];
     } showHUD:NO];
     
-    [self.tableView.mj_header endRefreshing];
+    
 //    [self.tableView reloadData];
     
 }
 
-
+// 上拉加载
 -(void)requestDataWithRefreshType:(RefreshType )refreshType
 {
     NSString *flag = nil;
@@ -249,6 +258,7 @@ static NSString *serveCellId = @"serveTabCellId";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 85;
