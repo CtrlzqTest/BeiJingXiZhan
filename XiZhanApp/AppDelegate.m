@@ -148,6 +148,7 @@
         NSLog(@"刚要进入前台");
         //        [[NSNotificationCenter defaultCenter] postNotificationName:@"push" object:str];
         //        self.pushSting = str;
+        
         [self chooseSkipVC];
     }else if (application.applicationState == UIApplicationStateBackground){
         //        NSLog(@"后台");
@@ -157,7 +158,9 @@
 }
 -(void)chooseSkipVC
 {
-    
+    [JPUSHService clearAllLocalNotifications];
+    [JPUSHService setBadge:0];
+
     if ([self.dictForUserInfo[@"msgType"] isEqualToString:@"志愿者服务"] ||[self.dictForUserInfo[@"msgType"] isEqualToString:@"站内公告消息"]) {
         [self gotoInformationDetailVC:self.dictForUserInfo];
     }

@@ -39,6 +39,7 @@ static NSString *serveCellId = @"serveTabCellId";
     if (self.isSkip == 1) {
         [self.navigationController setNavigationBarHidden:NO animated:YES];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"skip" object:nil];
+        [self requestData];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backMethod)];
     }
     

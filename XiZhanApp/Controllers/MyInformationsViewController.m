@@ -40,6 +40,7 @@ static NSString *cellIndentifer = @"msgType1";
         [self.navigationController setNavigationBarHidden:NO animated:YES];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"skip" object:nil];
         //        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(backMethod)];
+        [self requestData];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backMethod)];
     }
 }
@@ -51,7 +52,6 @@ static NSString *cellIndentifer = @"msgType1";
 -(void)backMethod
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-    //[self.navigationController popViewControllerAnimated:YES];
 }
 #pragma mark 添加消息后刷新列表
 -(void)addOtherInfo

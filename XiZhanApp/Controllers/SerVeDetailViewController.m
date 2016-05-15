@@ -54,7 +54,7 @@ static NSString *indentify = @"proCellX";
         [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 40*ProportionWidth) title:@"详情" fontSize:17.0];
     
     self.stringOftext = self.model.msgtitle;
-    self.stringOftext = [self.stringOftext stringByAppendingString:@"\n"];
+    self.stringOftext = [self.stringOftext stringByAppendingString:@"  "];
     self.stringOftext = [self.stringOftext stringByAppendingString:self.model.msgcontent];
     
     UILabel *label = [[UILabel alloc]init];
