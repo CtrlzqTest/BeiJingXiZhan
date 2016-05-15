@@ -34,7 +34,8 @@ static NSString *cellIndentifer = @"msgType1";
     _page = 1;
     [self initView];
     self.title = self.msgType;
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(addInformation:) name:@"addInformation" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addOtherInfo) name:ZQAddOtherInfoNotication object:nil];
+    
     if (self.isSkip == 1) {
         [self.navigationController setNavigationBarHidden:NO animated:YES];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"skip" object:nil];
@@ -42,13 +43,18 @@ static NSString *cellIndentifer = @"msgType1";
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backMethod)];
     }
 }
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 -(void)backMethod
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     //[self.navigationController popViewControllerAnimated:YES];
 }
 #pragma mark 添加消息后刷新列表
--(void)addInformation:(NSNotification *)notice
+-(void)addOtherInfo
 {
     [self requestData];
 }
@@ -65,14 +71,14 @@ static NSString *cellIndentifer = @"msgType1";
     // 本地数据库获取
     if (self.msgType != nil) {
         self.newsArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@'",self.msgType] page:_page orderBy:@"msgdate"]];
-        if (self.newsArray.count < 15) {
-            [self requestDataWithRefreshType:RefreshTypePull];
-        }
+//        if (self.newsArray.count < 15) {
+//            [self requestDataWithRefreshType:RefreshTypePull];
+//        }
     }else {
         self.newsArray = self.newsArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:nil page:_page orderBy:@"msgdate"]];
-        if (self.newsArray.count < 15) {
-            [self requestDataWithRefreshType:RefreshTypePull];
-        }
+//        if (self.newsArray.count < 15) {
+//            [self requestDataWithRefreshType:RefreshTypePull];
+//        }
     }
     
     self.newsList = [[UITableView alloc]init];
@@ -112,24 +118,23 @@ static NSString *cellIndentifer = @"msgType1";
             if (resultArray1.count > 0) {
                 
                 for (MessageModel *model in resultArray1) {
-                    // 先添加到数组，同时保存到数据库
-                    [self.newsArray insertObject:model atIndex:0];
                     [self.newsList.mj_footer endRefreshing];
                     NSArray *coutArr = [[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
                     if (coutArr.count <= 0) {
+                        // 先添加到数组，同时保存到数据库
+                        [self.newsArray insertObject:model atIndex:0];
                         [model save];
+                        [self.newsList reloadData];
                     }
                 }
             }else {
                 
             }
-            [self.newsList reloadData];
+            
         }else {
             // 请求失败
         }
-        
-        
-        
+    
     } failureBlock:^(NSError *error) {
         if ([self.newsList.mj_footer isRefreshing]) {
             [self.newsList.mj_footer endRefreshing];
@@ -138,7 +143,7 @@ static NSString *cellIndentifer = @"msgType1";
     } showHUD:NO];
     
     [self.newsList.mj_header endRefreshing];
-    [self.newsList reloadData];
+//    [self.newsList reloadData];
 
 }
 
