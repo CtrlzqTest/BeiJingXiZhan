@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="proCellX" id="gTV-IL-0wX" customClass="ImgCell">
+            <rect key="frame" x="0.0" y="0.0" width="112" height="95"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="112" height="95"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vtF-pA-3DQ">
+                        <rect key="frame" x="0.0" y="0.0" width="112" height="95"/>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="vtF-pA-3DQ" secondAttribute="bottom" id="Nmi-Dn-oIf"/>
+                <constraint firstItem="vtF-pA-3DQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="RhR-Ab-g8i"/>
+                <constraint firstAttribute="trailing" secondItem="vtF-pA-3DQ" secondAttribute="trailing" id="Vkt-UN-eOS"/>
+                <constraint firstItem="vtF-pA-3DQ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Zei-TO-M5W"/>
+            </constraints>
+            <size key="customSize" width="112" height="95"/>
+            <connections>
+                <outlet property="imgOfCell" destination="vtF-pA-3DQ" id="EwX-ea-Q7O"/>
+            </connections>
+            <point key="canvasLocation" x="192" y="232.5"/>
+        </collectionViewCell>
+    </objects>
+</document>
