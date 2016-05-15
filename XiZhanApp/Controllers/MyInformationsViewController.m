@@ -34,7 +34,8 @@ static NSString *cellIndentifer = @"msgType1";
     _page = 1;
     [self initView];
     self.title = self.msgType;
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(addInformation:) name:@"addInformation" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addOtherInfo) name:ZQAddOtherInfoNotication object:nil];
+    
     if (self.isSkip == 1) {
         [self.navigationController setNavigationBarHidden:NO animated:YES];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"skip" object:nil];
@@ -42,15 +43,20 @@ static NSString *cellIndentifer = @"msgType1";
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backMethod)];
     }
 }
+
+-(void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 -(void)backMethod
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     //[self.navigationController popViewControllerAnimated:YES];
 }
 #pragma mark 添加消息后刷新列表
--(void)addInformation:(NSNotification *)notice
+-(void)addOtherInfo
 {
-    [self requestDataWithRefreshType:RefreshTypeDrag];
+    [self requestData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -65,8 +71,14 @@ static NSString *cellIndentifer = @"msgType1";
     // 本地数据库获取
     if (self.msgType != nil) {
         self.newsArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@'",self.msgType] page:_page orderBy:@"msgdate"]];
+//        if (self.newsArray.count < 15) {
+//            [self requestDataWithRefreshType:RefreshTypePull];
+//        }
     }else {
         self.newsArray = self.newsArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:nil page:_page orderBy:@"msgdate"]];
+//        if (self.newsArray.count < 15) {
+//            [self requestDataWithRefreshType:RefreshTypePull];
+//        }
     }
     
     self.newsList = [[UITableView alloc]init];
@@ -78,14 +90,61 @@ static NSString *cellIndentifer = @"msgType1";
     [self.newsList registerNib:[UINib nibWithNibName:@"MsgType1TabCell" bundle:nil] forCellReuseIdentifier:cellIndentifer];
     
     self.newsList.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self requestDataWithRefreshType:RefreshTypeDrag];
+        [self requestData];
     }];
-//    [self.newsList.mj_header beginRefreshing];
+    [self.newsList.mj_header beginRefreshing];
     
     self.newsList.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [self requestDataWithRefreshType:RefreshTypePull];
     }];
     
+}
+
+- (void)requestData {
+    
+    NSString *flag = nil;
+    NSString *msgDate = nil;
+    NSArray *resultArray = [[MessageModel shareTestModel] getDataWithCondition:@"msgdate = (select max(msgdate) from MessageModel)"];
+    if (resultArray.count == 0) {
+        flag = @"2"; msgDate = @"";
+    }else{
+        MessageModel *model = [[MessageModel mj_objectArrayWithKeyValuesArray:resultArray] firstObject];
+        flag = @"1"; msgDate = [NSString stringWithFormat:@"%ld",model.msgdate];
+    }
+    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":flag,@"msgDate":msgDate} successBlock:^(id returnData) {
+        
+        if ([returnData[@"message"] isEqualToString:@"success"]) {
+            NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
+            if (resultArray1.count > 0) {
+                
+                for (MessageModel *model in resultArray1) {
+                    [self.newsList.mj_footer endRefreshing];
+                    NSArray *coutArr = [[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
+                    if (coutArr.count <= 0) {
+                        // 先添加到数组，同时保存到数据库
+                        [self.newsArray insertObject:model atIndex:0];
+                        [model save];
+                        [self.newsList reloadData];
+                    }
+                }
+            }else {
+                
+            }
+            
+        }else {
+            // 请求失败
+        }
+    
+    } failureBlock:^(NSError *error) {
+        if ([self.newsList.mj_footer isRefreshing]) {
+            [self.newsList.mj_footer endRefreshing];
+        }
+        [MBProgressHUD showError:@"网络不给力" toView:self.view];
+    } showHUD:NO];
+    
+    [self.newsList.mj_header endRefreshing];
+//    [self.newsList reloadData];
+
 }
 
 -(void)requestDataWithRefreshType:(RefreshType )refreshType
@@ -122,6 +181,7 @@ static NSString *cellIndentifer = @"msgType1";
         if ([returnData[@"message"] isEqualToString:@"success"]) {
             NSArray *resultArray = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
             if (resultArray.count > 0) {
+                
                 for (MessageModel *model in resultArray) {
                     // 先添加到数组，同时保存到数据库
                     if (refreshType == RefreshTypeDrag) {
@@ -130,7 +190,10 @@ static NSString *cellIndentifer = @"msgType1";
                         [self.newsArray addObject:model];
                         [self.newsList.mj_footer endRefreshing];
                     }
-                    [model save];
+                    NSArray *coutArr = [[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
+                    if (coutArr.count <= 0) {
+                        [model save];
+                    }
                 }
             }else {
                 if (refreshType == RefreshTypeDrag) {
@@ -172,6 +235,7 @@ static NSString *cellIndentifer = @"msgType1";
        // PublishInfoViewController *publishVC = [Utility getControllerWithStoryBoardId:ZQPublishInfoViewControllerId];
         PublishViewController *publishVC = [[PublishViewController alloc]init];
         publishVC.parentIdString = self.parentIdString;
+        publishVC.menuModel = self.menuModel;
         [self.navigationController pushViewController:publishVC animated:YES];
     }
 }

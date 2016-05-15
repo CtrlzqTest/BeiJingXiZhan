@@ -84,7 +84,11 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
                 // 通知首页显示小圆点
                 [[NSNotificationCenter defaultCenter] postNotificationName:ZQReadStateDidChangeNotication object:nil];
                 for (MessageModel *model in resultArray) {
-                    [model save];
+                    NSArray *coutArr = [[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
+                    if (coutArr.count <= 0) {
+                        [model save];
+                    }
+                    
                 }
             }else{
 //                [Utility saveMyMsgReadState:NO];

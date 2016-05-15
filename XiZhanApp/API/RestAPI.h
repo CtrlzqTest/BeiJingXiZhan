@@ -10,9 +10,9 @@
 #define _____RestAPI_h
 #import <UIKit/UIKit.h>
 
-#define BaseAPI                 @"http://192.168.16.147:8080/bjws/"  // 龙龙
+//#define BaseAPI                 @"http://192.168.16.147:8080/bjws/"  // 龙龙
 
-//#define BaseAPI                 @"http://192.168.16.147:8080/onepage/"  // 公司服务器
+#define BaseAPI                 @"http://124.207.156.101:80/bjws/"  // 公司服务器
 
 //#define BaseAPI                 @"http://192.168.16.124:8080/znweb/"    // 赵楠
 
@@ -37,6 +37,10 @@ static NSString *const ZQdidLoginNotication = @"didLoginNotication";    // 登�
 static NSString *const ZQdidLogoutNotication = @"didLogoutNotication"; // 退出登录
 
 static NSString *const ZQReadStateDidChangeNotication = @"changeReadStatesNotication"; // 消息已读状态
+
+static NSString *const ZQAddServeInfoNotication = @"addServeInfoNotication"; // 添加服务台消息
+
+static NSString *const ZQAddOtherInfoNotication = @"addOtherInfoNotication"; // 添加其他消息
 
 /**************************************************************************************/
 
