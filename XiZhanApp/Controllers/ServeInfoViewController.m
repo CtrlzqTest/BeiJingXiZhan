@@ -34,8 +34,8 @@ static NSString *serveCellId = @"serveTabCellId";
     _page = 1;
     self.title = self.msgType;
     
-    [self getDataFromLocal];
     [self setupViews];
+    [self getData];
 
     if (self.isSkip == 1) {
         [self.navigationController setNavigationBarHidden:NO animated:YES];
@@ -69,19 +69,23 @@ static NSString *serveCellId = @"serveTabCellId";
 
 - (void)setupViews {
     
+    _dataArray = [NSMutableArray array];
     self.automaticallyAdjustsScrollViewInsets = NO;
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:@"ServeTabCell" bundle:nil] forCellReuseIdentifier:serveCellId];
     
     // 下拉刷新
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [self requestData];
+        [self getData];
     }];
-    [self.tableView.mj_header beginRefreshing];
+//    [self.tableView.mj_header beginRefreshing];
     // 上拉加载
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-        [self requestDataWithRefreshType:RefreshTypePull];
+//        [self requestDataWithRefreshType:RefreshTypePull];
+        [self getMoreData];
     }];
+    
+    self.tableView.tableFooterView = [[UIView alloc] init];
 }
 
 //- (void)pubulishServe {
@@ -108,33 +112,9 @@ static NSString *serveCellId = @"serveTabCellId";
     }
 }
 
-- (void)getDataFromLocal {
+- (void)getData {
     
-    // 本地数据库获取
-    if (self.msgType != nil) {
-        _dataArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@'",self.msgType] page:_page orderBy:@"msgdate"]];
-        if (_dataArray.count <= 0) {
-            [self requestData];
-        }else if (_dataArray.count < 15) {
-            [self requestDataWithRefreshType:RefreshTypePull];
-        }
-    }
-}
-
-// 获取新数据
-- (void)requestData {
-    
-    NSString *flag = nil;
-    NSString *msgDate = nil;
-    NSArray *resultArray = [[MessageModel shareTestModel] getDataWithCondition:@"msgdate = (select max(msgdate) from MessageModel)"];
-    if (resultArray.count == 0) {
-        flag = @"2"; msgDate = @"";
-    }else{
-        MessageModel *model = [resultArray firstObject];
-        flag = @"1"; msgDate = [NSString stringWithFormat:@"%ld",model.msgdate];
-    }
-    // msgid是消息分类
-    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":flag,@"msgDate":msgDate,@"parentId":self.menuModel.msgId} successBlock:^(id returnData) {
+    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"parentId":self.menuModel.msgId} successBlock:^(id returnData) {
         
         if ([returnData[@"message"] isEqualToString:@"success"]) {
             NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
@@ -146,13 +126,13 @@ static NSString *serveCellId = @"serveTabCellId";
                     NSArray *coutArr = [[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
                     if (coutArr.count <= 0) {
                         // 先添加到数组，同时保存到数据库
-                        [_dataArray insertObject:model atIndex:0];
+//                        [_dataArray insertObject:model atIndex:0];
                         [model save];
-                        [self.tableView reloadData];
                     }
                 }
             }
-            
+            _dataArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@'",self.menuModel.msgType] page:1 orderBy:@"msgdate"]];
+            [self.tableView reloadData];
         }else {
             // 请求失败
         }
@@ -164,86 +144,55 @@ static NSString *serveCellId = @"serveTabCellId";
         }
         [MBProgressHUD showError:@"网络不给力" toView:self.view];
         [self.tableView.mj_header endRefreshing];
-    } showHUD:NO];
+        
+    } showHUD:YES];
+
 }
 
-// 上拉加载
--(void)requestDataWithRefreshType:(RefreshType )refreshType
-{
-    NSString *flag = nil;
-    NSString *msgDate = nil;
-    NSArray *resultArray = [[MessageModel shareTestModel] getDataWithCondition:@"msgDate = (select max(msgDate) from MessageModel)"];
-    if (resultArray.count == 0) {
-        flag = @"2"; msgDate = @"";
-    }else if(refreshType == RefreshTypeDrag){
-        // 数据库有数据，下拉先刷新
-        MessageModel *model = [[MessageModel mj_objectArrayWithKeyValuesArray:resultArray] firstObject];
-        flag = @"1"; msgDate = [NSString stringWithFormat:@"%ld",model.msgdate];
-    }else if(refreshType == RefreshTypePull){
-        // 上拉加载
-        // 1,从数据库取数据
-        _page ++;
-        NSArray *tempArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@'",self.msgType] page:_page orderBy:@"msgdate"]];
-        if (tempArray.count > 0) {
-            [_dataArray addObjectsFromArray:tempArray];
-            [self.tableView.mj_footer endRefreshing];
-            [self.tableView reloadData];
-            return;
-        }
-        // 2,没有的话,请求后台数据
-        NSArray *resultArray_min = [[MessageModel shareTestModel] getDataWithCondition:@"msgDate = (select min(msgDate) from MessageModel)"];
-        MessageModel *model = [[MessageModel mj_objectArrayWithKeyValuesArray:resultArray_min] firstObject];
-        msgDate = [NSString stringWithFormat:@"%ld",model.msgdate];
-        flag = @"0";
-    }
+- (void)getMoreData {
     
-    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":flag,@"msgDate":msgDate,@"parentId":self.menuModel.msgId} successBlock:^(id returnData) {
+    __block MessageModel *lastMsgModel = [_dataArray lastObject];
+    NSString *lastMsgDate = [NSString stringWithFormat:@"%ld",lastMsgModel.msgdate];
+    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":@"0",@"msgDate":lastMsgDate,@"parentId":self.menuModel.msgId} successBlock:^(id returnData) {
         
         if ([returnData[@"message"] isEqualToString:@"success"]) {
-            NSArray *resultArray = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
-            if (resultArray.count > 0) {
-                for (MessageModel *model in resultArray) {
+            NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
+            if (resultArray1.count > 0) {
+                
+                for (MessageModel *model in resultArray1) {
+                    
+                    // 判断数据库是否已存在该条消息
                     NSArray *coutArr = [[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
-                    if (coutArr.count > 0) {
-                        return ;
-                    }
-                    // 先添加到数组，同时保存到数据库
-                    if (refreshType == RefreshTypeDrag) {
-                        [_dataArray insertObject:model atIndex:0];
-                    }else {
-                        [_dataArray addObject:model];
-                        [self.tableView.mj_footer endRefreshing];
-                    }
                     if (coutArr.count <= 0) {
+                        // 先添加到数组，同时保存到数据库
+                        //  [_dataArray insertObject:model atIndex:0];
                         [model save];
                     }
                 }
             }else {
-                if (refreshType == RefreshTypeDrag) {
-                    _page = 1;
-                    _dataArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@'",self.msgType] page:_page orderBy:@"msgdate"]];
-                }else {
-                    // 上拉没有跟多数据
-                    [self.tableView.mj_footer endRefreshingWithNoMoreData];
-                }
+                [self.tableView.mj_footer endRefreshingWithNoMoreData];
             }
+            NSArray *moreArray = [MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgdate < '%ld' and msgtype = '%@'",lastMsgModel.msgdate,self.menuModel.msgType] page:1 orderBy:@"msgdate"];
+            [_dataArray addObjectsFromArray:moreArray];
+            
+            [self.tableView.mj_footer endRefreshing];
             [self.tableView reloadData];
         }else {
             // 请求失败
         }
+        [self.tableView.mj_header endRefreshing];
         
     } failureBlock:^(NSError *error) {
         if ([self.tableView.mj_footer isRefreshing]) {
             [self.tableView.mj_footer endRefreshing];
         }
         [MBProgressHUD showError:@"网络不给力" toView:self.view];
-    } showHUD:NO];
+        [self.tableView.mj_header endRefreshing];
+        
+    } showHUD:YES];
+
     
-    [self.tableView.mj_header endRefreshing];
-    [self.tableView reloadData];
 }
-
-
 
 - (void)requestMoreData {
     
