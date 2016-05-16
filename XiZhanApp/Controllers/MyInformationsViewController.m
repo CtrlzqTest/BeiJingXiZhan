@@ -108,7 +108,9 @@ static NSString *cellIndentifer = @"msgType1";
 
 - (void)getData {
     
-    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"parentId":self.menuModel.msgId} successBlock:^(id returnData) {
+    NSDictionary *dict = !self.menuModel ? nil : @{@"parentId":self.menuModel.msgId};
+
+    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:dict successBlock:^(id returnData) {
         
         if ([returnData[@"message"] isEqualToString:@"success"]) {
             NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
@@ -125,7 +127,8 @@ static NSString *cellIndentifer = @"msgType1";
                     }
                 }
             }
-            _dataArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@'",self.menuModel.msgType] page:1 orderBy:@"msgdate"]];
+            NSString *condition = !self.menuModel ? nil : [NSString stringWithFormat:@"msgtype = '%@'",self.menuModel.msgType];
+            _dataArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:condition page:1 orderBy:@"msgdate"]];
             [self.tableView reloadData];
             
         }else {
@@ -148,7 +151,8 @@ static NSString *cellIndentifer = @"msgType1";
     
     __block MessageModel *lastMsgModel = [_dataArray lastObject];
     NSString *lastMsgDate = [NSString stringWithFormat:@"%ld",lastMsgModel.msgdate];
-    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":@"0",@"msgDate":lastMsgDate,@"parentId":self.menuModel.msgId} successBlock:^(id returnData) {
+    NSString *parentId = !self.menuModel ? @"" : self.menuModel.msgId;
+    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":@"0",@"msgDate":lastMsgDate,@"parentId":parentId} successBlock:^(id returnData) {
         
         if ([returnData[@"message"] isEqualToString:@"success"]) {
             NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
@@ -167,7 +171,8 @@ static NSString *cellIndentifer = @"msgType1";
             }else {
                 [self.tableView.mj_footer endRefreshingWithNoMoreData];
             }
-            NSArray *moreArray = [MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgdate < '%ld' and msgtype = '%@'",lastMsgModel.msgdate,self.menuModel.msgType] page:1 orderBy:@"msgdate"];
+            NSString *condition = !self.menuModel ? [NSString stringWithFormat:@"msgdate < '%ld'",lastMsgModel.msgdate] : [NSString stringWithFormat:@"msgdate < '%ld' and msgtype = '%@'",lastMsgModel.msgdate,self.menuModel.msgType];
+            NSArray *moreArray = [MessageModel getDataWithCondition:condition page:1 orderBy:@"msgdate"];
             [_dataArray addObjectsFromArray:moreArray];
             
             [self.tableView.mj_footer endRefreshing];
