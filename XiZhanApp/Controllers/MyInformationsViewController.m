@@ -128,7 +128,8 @@ static NSString *cellIndentifer = @"msgType1";
         MessageModel *model = [[MessageModel mj_objectArrayWithKeyValuesArray:resultArray] firstObject];
         flag = @"1"; msgDate = [NSString stringWithFormat:@"%ld",model.msgdate];
     }
-    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":flag,@"msgDate":msgDate} successBlock:^(id returnData) {
+    
+    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":flag,@"msgDate":msgDate,@"parentId":self.menuModel.msgId} successBlock:^(id returnData) {
         
         if ([returnData[@"message"] isEqualToString:@"success"]) {
             NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
@@ -194,7 +195,7 @@ static NSString *cellIndentifer = @"msgType1";
         flag = @"0";
     }
     
-    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":flag,@"msgDate":msgDate} successBlock:^(id returnData) {
+    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":flag,@"msgDate":msgDate,@"parentId":self.menuModel.msgId} successBlock:^(id returnData) {
         
         if ([returnData[@"message"] isEqualToString:@"success"]) {
             NSArray *resultArray = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];

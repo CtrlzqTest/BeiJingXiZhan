@@ -138,6 +138,7 @@ static NSString *collCellId = @"MainCell";
             MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];
             myInfoVC.msgType = model.msgType;
             myInfoVC.parentIdString = model.msgId;
+            myInfoVC.menuModel = model;
             [self.navigationController pushViewController:myInfoVC animated:YES];
         }
             break;

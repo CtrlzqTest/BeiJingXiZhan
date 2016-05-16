@@ -197,7 +197,7 @@ static NSString *serveCellId = @"serveTabCellId";
         flag = @"0";
     }
     
-    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":flag,@"msgDate":msgDate} successBlock:^(id returnData) {
+    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":flag,@"msgDate":msgDate,@"parentId":self.menuModel.msgId} successBlock:^(id returnData) {
         
         if ([returnData[@"message"] isEqualToString:@"success"]) {
             NSArray *resultArray = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
