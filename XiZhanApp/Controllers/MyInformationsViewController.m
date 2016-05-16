@@ -88,9 +88,9 @@ static NSString *cellIndentifer = @"msgType1";
     // 本地数据库获取
     if (self.msgType != nil) {
         self.newsArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@'",self.msgType] page:_page orderBy:@"msgdate"]];
-//        if (self.newsArray.count < 15) {
-//            [self requestDataWithRefreshType:RefreshTypePull];
-//        }
+        if (self.newsArray.count < 15) {
+            [self requestDataWithRefreshType:RefreshTypePull];
+        }
     }else {
         self.newsArray = self.newsArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:nil page:_page orderBy:@"msgdate"]];
 //        if (self.newsArray.count < 15) {

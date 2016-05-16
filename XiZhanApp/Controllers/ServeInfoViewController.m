@@ -130,10 +130,11 @@ static NSString *serveCellId = @"serveTabCellId";
     if (resultArray.count == 0) {
         flag = @"2"; msgDate = @"";
     }else{
-        MessageModel *model = [[MessageModel mj_objectArrayWithKeyValuesArray:resultArray] firstObject];
+        MessageModel *model = [resultArray firstObject];
         flag = @"1"; msgDate = [NSString stringWithFormat:@"%ld",model.msgdate];
     }
-    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":flag,@"msgDate":msgDate} successBlock:^(id returnData) {
+    // msgid是消息分类
+    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":flag,@"msgDate":msgDate,@"parentId":self.menuModel.msgId} successBlock:^(id returnData) {
         
         if ([returnData[@"message"] isEqualToString:@"success"]) {
             NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
@@ -141,7 +142,7 @@ static NSString *serveCellId = @"serveTabCellId";
                 
                 for (MessageModel *model in resultArray1) {
                     
-                    [self.tableView.mj_footer endRefreshing];
+                    // 判断数据库是否已存在该条消息
                     NSArray *coutArr = [[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
                     if (coutArr.count <= 0) {
                         // 先添加到数组，同时保存到数据库
@@ -149,16 +150,14 @@ static NSString *serveCellId = @"serveTabCellId";
                         [model save];
                         [self.tableView reloadData];
                     }
-                    
                 }
-            }else {
-                
             }
             
         }else {
             // 请求失败
         }
         [self.tableView.mj_header endRefreshing];
+        
     } failureBlock:^(NSError *error) {
         if ([self.tableView.mj_footer isRefreshing]) {
             [self.tableView.mj_footer endRefreshing];
@@ -166,10 +165,6 @@ static NSString *serveCellId = @"serveTabCellId";
         [MBProgressHUD showError:@"网络不给力" toView:self.view];
         [self.tableView.mj_header endRefreshing];
     } showHUD:NO];
-    
-    
-//    [self.tableView reloadData];
-    
 }
 
 // 上拉加载
