@@ -173,8 +173,14 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
             // 是否已读状态
             [[NSNotificationCenter defaultCenter] postNotificationName:ZQReadStateDidChangeNotication object:nil];
             [self.tableview reloadData];
-            MyInformationsViewController *vc = [[MyInformationsViewController alloc]init];
-            [tempAppDelegate.mainNavi pushViewController:vc animated:NO];
+            if ([User shareUser].isLogin) {
+                MyInformationsViewController *vc = [[MyInformationsViewController alloc]init];
+                [tempAppDelegate.mainNavi pushViewController:vc animated:NO];
+            }else {
+                LoginViewController *vc = [storyBoard instantiateViewControllerWithIdentifier:ZQLoginViewCotrollerId];
+                [tempAppDelegate.mainNavi pushViewController:vc animated:NO];
+            }
+            
         }
             break;
         case 4:
