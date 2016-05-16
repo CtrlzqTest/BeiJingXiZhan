@@ -144,6 +144,15 @@
     return createSQL;
 }
 
+/**
+ *  反射获取类所有属性,将类型转换成sqlite数据类型
+ *
+ *  @param class Model类
+ *
+ *  @return KEY为属性类型，Value为属性名的字典
+ */
+
+
 #pragma mark - Private methods
 + (NSString *)nameFilter:(NSString *)name
 {

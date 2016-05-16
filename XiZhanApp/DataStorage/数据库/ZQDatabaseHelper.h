@@ -9,6 +9,16 @@
 #import <Foundation/Foundation.h>
 @interface ZQDatabaseHelper : NSObject
 
+
+/**
+ *  反射获取类所有属性
+ *
+ *  @param class Model类
+ *
+ *  @return KEY为属性类型，Value为属性名的字典
+ */
++(NSDictionary *)fields:(Class )class;
+
 /**
  *  获得创建表的SQL语句
  *

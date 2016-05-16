@@ -18,6 +18,7 @@
 @property(nonatomic,strong)NSString *msgid;
 @property(nonatomic,assign)BOOL isread;
 @property(nonatomic,copy)NSString *imgurl;
+@property(nonatomic,copy)NSString *userid;
 
 +(MessageModel *)shareTestModel;
 

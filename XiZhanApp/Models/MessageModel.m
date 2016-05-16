@@ -23,13 +23,14 @@ static MessageModel *testModel = nil;
     if (self = [super init]) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
-            [MessageModel setUniqueProperty:@"msgdate"];
+            [MessageModel setUniqueProperty:@"msgid"];
         });
     }
     return self;
 }
 
 +(void)load {
+    
     [[ZQDatabaseManager shareDatabaseManager] createTableWithCalss:[MessageModel class]];
 }
 
