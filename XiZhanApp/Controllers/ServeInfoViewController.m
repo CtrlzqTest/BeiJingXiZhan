@@ -88,10 +88,6 @@ static NSString *serveCellId = @"serveTabCellId";
     self.tableView.tableFooterView = [[UIView alloc] init];
 }
 
-//- (void)pubulishServe {
-//    [self requestData];
-//}
-
 -(void)backMethod
 {
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];

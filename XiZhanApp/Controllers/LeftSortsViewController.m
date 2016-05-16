@@ -180,7 +180,6 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
                 LoginViewController *vc = [storyBoard instantiateViewControllerWithIdentifier:ZQLoginViewCotrollerId];
                 [tempAppDelegate.mainNavi pushViewController:vc animated:NO];
             }
-            
         }
             break;
         case 4:
