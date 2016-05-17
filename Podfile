@@ -12,6 +12,7 @@ pod 'SDWebImage'
 pod 'Masonry'
 pod 'FMDB'
 pod 'MJRefresh'
+pod 'IQKeyboardManager'
 
 end
 
