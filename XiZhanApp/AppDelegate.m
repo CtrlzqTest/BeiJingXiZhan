@@ -154,7 +154,6 @@
         //        NSLog(@"后台");
         [MBProgressHUD showError:@"后台" toView:nil];
     }
-
 }
 -(void)chooseSkipVC
 {

@@ -55,7 +55,7 @@
 -(void)initView
 {
     self.imgString = [NSMutableString stringWithFormat:@""];
-    [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 50*ProportionWidth)title:@"详情" fontSize:17.0];
+    [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 50*ProportionWidth)title:@"发布" fontSize:17.0];
     self.view.backgroundColor = [UIColor lightGrayColor];
     
     self.ScrollofStatus = [[UIScrollView alloc]init];
@@ -88,6 +88,7 @@
     self.fieldOfUser.placeholder = @"标题";
     self.fieldOfUser.autocapitalizationType = NO;
     self.fieldOfUser.clearButtonMode = UITextFieldViewModeWhileEditing;
+    self.fieldOfUser.returnKeyType = UIReturnKeyDone;
     self.fieldOfUser.delegate = self;
     [self.ScrollofStatus addSubview:self.fieldOfUser];
     
@@ -100,6 +101,7 @@
     self.miaoShuTextView.layer.borderColor = colorref;
     self.miaoShuTextView.autocapitalizationType = NO;
     self.miaoShuTextView.delegate = self;
+    self.miaoShuTextView.returnKeyType = UIReturnKeyDone;
     [self.ScrollofStatus addSubview: self.miaoShuTextView];
     
     self.photoButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -211,5 +213,17 @@
         return NO;
     }
     return YES;
+}
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if ([text isEqualToString:@"\n"]) {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
+}
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    return [textField resignFirstResponder];
 }
 @end
