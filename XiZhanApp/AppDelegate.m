@@ -12,7 +12,7 @@
 #import "LeftSortsViewController.h"
 #import "MessageModel.h"
 #import "JPUSHService.h"
-#import "MessageModel.h"
+#import "MenuModel.h"
 #import "InformationDetailViewController.h"
 #import "SerVeDetailViewController.h"
 #import "MyInformationsViewController.h"
@@ -174,12 +174,13 @@
 {
     _isSkiptoVC = 1;
    // InformationDetailViewController *detailList = [[InformationDetailViewController alloc]init];
-    MyInformationsViewController *detailList = [[MyInformationsViewController alloc]init];
+    MyInformationsViewController *detailList = [[MyInformationsViewController alloc] init];
     UINavigationController * Nav = [[UINavigationController alloc]initWithRootViewController:detailList];
     
     detailList.isSkip = _isSkiptoVC;
     detailList.parentIdString = dict[@"parentId"];
     detailList.msgType = dict[@"msgType"];
+    
     [self.window.rootViewController presentViewController:Nav animated:YES completion:nil];
 }
 
@@ -190,8 +191,8 @@
     ServeInfoViewController *detailList = [Utility getControllerWithStoryBoardId:ZQServeTabViewControllerId];
     UINavigationController * Nav = [[UINavigationController alloc]initWithRootViewController:detailList];
     detailList.isSkip = _isSkiptoVC;
-      detailList.parentIdString = dict[@"parentId"];
-    detailList.msgType = dict[@"msgType"];
+    MenuModel *model = [MenuModel mj_objectWithKeyValues:dict];
+    detailList.menuModel = model;
     [self.window.rootViewController presentViewController:Nav animated:YES completion:nil];
 }
 - (void)applicationWillResignActive:(UIApplication *)application {
