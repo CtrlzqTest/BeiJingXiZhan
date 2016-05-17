@@ -83,61 +83,11 @@
 {
     NSString *tableName = [self nameFilter:[NSString stringWithUTF8String:class_getName(class)]];
     NSMutableString *createSQL = [NSMutableString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (_id INTEGER PRIMARY KEY AUTOINCREMENT",tableName];
-    NSDictionary *properties = [self fields:class];
-    for (NSString *str in [properties allKeys]) {
-        NSString *propName = [self nameFilter:str];
-        NSString *propType = [properties objectForKey:str];
-//        if (![propName isEqualToString:@"_id"]) {
-//            
-//        }
-        if ([propType isEqualToString:@"i"] || // int
-            [propType isEqualToString:@"I"] || // unsigned int
-            [propType isEqualToString:@"l"] || // long
-            [propType isEqualToString:@"L"] || // usigned long
-            [propType isEqualToString:@"q"] || // long long
-            [propType isEqualToString:@"Q"] || // unsigned long long
-            [propType isEqualToString:@"s"] || // short
-            [propType isEqualToString:@"S"] || // unsigned short
-            [propType isEqualToString:@"B"] )  // bool or _Bool
-        {
-            [createSQL appendFormat:@", %@ INTEGER", propName];
-        }
-        // Character Types
-        else if ([propType isEqualToString:@"c"] ||	// char
-                 [propType isEqualToString:@"C"] )  // unsigned char
-        {
-            [createSQL appendFormat:@", %@ INTEGER", propName];
-        }
-        else if ([propType isEqualToString:@"f"] || // float
-                 [propType isEqualToString:@"d"] )  // double
-        {
-            [createSQL appendFormat:@", %@ REAL", propName];
-        }
-        else if ([propType hasPrefix:@"@"] ) // Object
-        {
-            NSString *className = [propType substringWithRange:NSMakeRange(2, [propType length]-3)];
-            
-            if([className isEqualToString:@"NSString"])
-            {
-                [createSQL appendFormat:@", %@ TEXT", propName];
-            }
-            else if([className isEqualToString:@"NSNumber"])
-            {
-                [createSQL appendFormat:@", %@ REAL", propName];
-            }
-            else if([className isEqualToString:@"NSDate"])
-            {
-                [createSQL appendFormat:@", %@ REAL", propName];
-            }
-            else if([className isEqualToString:@"NSData"])
-            {
-                [createSQL appendFormat:@", %@ BLOB", propName];
-            }
-            else
-            {
-                NSLog(@"Unknow Object Type: %@", className);
-            }
-        }
+    NSDictionary *properties = [self getPropertyDict:class];
+    for (NSString *propName in [properties allKeys]) {
+        NSString *propType = [properties objectForKey:propName];
+        [createSQL appendFormat:@", %@ %@", propName,propType];
+ 
     }
     [createSQL appendString:@")"];
     NSLog(@"%@",createSQL);
@@ -151,7 +101,67 @@
  *
  *  @return KEY为属性类型，Value为属性名的字典
  */
-
++ (NSDictionary *)getPropertyDict:(Class )aClass {
+    
+    NSMutableDictionary *resultDict = [NSMutableDictionary dictionary];
+    NSDictionary *properties = [self fields:aClass];
+    for (NSString *str in [properties allKeys]) {
+        NSString *propName = [self nameFilter:str];
+        NSString *propType = [properties objectForKey:str];
+        //        if (![propName isEqualToString:@"_id"]) {
+        //
+        //        }
+        if ([propType isEqualToString:@"i"] || // int
+            [propType isEqualToString:@"I"] || // unsigned int
+            [propType isEqualToString:@"l"] || // long
+            [propType isEqualToString:@"L"] || // usigned long
+            [propType isEqualToString:@"q"] || // long long
+            [propType isEqualToString:@"Q"] || // unsigned long long
+            [propType isEqualToString:@"s"] || // short
+            [propType isEqualToString:@"S"] || // unsigned short
+            [propType isEqualToString:@"B"] )  // bool or _Bool
+        {
+            [resultDict setValue:@"INTEGER" forKey:propName];
+        }
+        // Character Types
+        else if ([propType isEqualToString:@"c"] ||	// char
+                 [propType isEqualToString:@"C"] )  // unsigned char
+        {
+            [resultDict setValue:@"INTEGER" forKey:propName];
+        }
+        else if ([propType isEqualToString:@"f"] || // float
+                 [propType isEqualToString:@"d"] )  // double
+        {
+            [resultDict setValue:@"REAL" forKey:propName];
+        }
+        else if ([propType hasPrefix:@"@"] ) // Object
+        {
+            NSString *className = [propType substringWithRange:NSMakeRange(2, [propType length]-3)];
+            
+            if([className isEqualToString:@"NSString"])
+            {
+                [resultDict setValue:@"TEXT" forKey:propName];
+            }
+            else if([className isEqualToString:@"NSNumber"])
+            {
+                [resultDict setValue:@"REAL" forKey:propName];
+            }
+            else if([className isEqualToString:@"NSDate"])
+            {
+                [resultDict setValue:@"REAL" forKey:propName];
+            }
+            else if([className isEqualToString:@"NSData"])
+            {
+                [resultDict setValue:@"BLOB" forKey:propName];
+            }
+            else
+            {
+                NSLog(@"Unknow Object Type: %@", className);
+            }
+        }
+    }
+    return resultDict;
+}
 
 #pragma mark - Private methods
 + (NSString *)nameFilter:(NSString *)name

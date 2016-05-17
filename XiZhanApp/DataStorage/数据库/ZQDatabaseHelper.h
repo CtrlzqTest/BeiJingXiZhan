@@ -11,6 +11,15 @@
 
 
 /**
+ *  将类型转换成sqlite数据类型
+ *
+ *  @param class Model类
+ *
+ *  @return KEY为属性类型，Value为属性名的字典
+ */
++ (NSDictionary *)getPropertyDict:(Class )aClass;
+
+/**
  *  反射获取类所有属性
  *
  *  @param class Model类

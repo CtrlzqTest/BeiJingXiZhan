@@ -47,21 +47,8 @@ static ZQDatabaseManager *manager = nil;
 -(void)createTableWithCalss:(Class )aClass
 {
     if ([_db open]) {
-        // 查看表是否存在，如果存在，获取列名，更新列名
-        NSString *tableName = [ZQDatabaseHelper getTableName:aClass];
-        NSArray *exitArray = [self getDataWithClass:aClass condition:[NSString stringWithFormat:@"_id = (select max(_id) from %@)",tableName] page:0 orderBy:nil];
-        // 动态添加字段
-//        NSMutableString *addSql = [NSMutableString stringWithFormat:@"ALTER TABLE '%@' ADD ",tableName];
-        if (exitArray.count != 0) {
-            NSDictionary *tableListDict = [exitArray firstObject];
-            NSDictionary *propertyDict = [ZQDatabaseHelper fields:aClass];
-            // 要加属性类型,现在还转换
-            for (NSString *proName in propertyDict.allKeys) {
-                if (![[tableListDict allKeys] containsObject:proName]) {
-                    NSLog(@"%@",proName);
-                }
-            }
-        }
+        // 查看是否有新字段，有的话就加入表
+        [self setNewTableList:aClass];
         if ([_db executeUpdate:[ZQDatabaseHelper getCreateSQL:aClass]]) {
             NSLog(@"创建表成功！！！");
             [_db close];
@@ -75,7 +62,7 @@ static ZQDatabaseManager *manager = nil;
 - (void)setUniqueClass:(Class )aClass property:(NSString *)proName {
     
     if ([_db open]) {
-        NSString *sql = [NSString stringWithFormat:@"ALTER TABLE '%@' CUSTOMERS MODIFY %@ NOT NULL UNIQUE",aClass,proName];
+        NSString *sql = [NSString stringWithFormat:@"ALTER TABLE %@ MODIFY %@ NOT NULL UNIQUE",aClass,proName];
         if ([_db executeUpdate:sql]) {
             
             //            [_db close];
@@ -272,4 +259,32 @@ static ZQDatabaseManager *manager = nil;
     }
     return resultArray;
 }
+
+- (void)setNewTableList:(Class )aClass {
+    NSString *tableName = [ZQDatabaseHelper getTableName:aClass];
+    NSArray *exitArray = [self getDataWithClass:aClass condition:[NSString stringWithFormat:@"_id = (select max(_id) from %@)",tableName] page:0 orderBy:nil];
+    // 动态添加字段
+    NSMutableString *addSql = [NSMutableString stringWithFormat:@"ALTER TABLE %@ ADD ",tableName];
+    BOOL flag = NO;  //是否有新字段
+    if (exitArray.count != 0) {
+        NSDictionary *tableListDict = [exitArray firstObject];
+        NSDictionary *propertyDict = [ZQDatabaseHelper getPropertyDict:aClass];
+        
+        for (NSString *proName in propertyDict.allKeys) {
+            if (![[tableListDict allKeys] containsObject:proName]) {
+                flag = YES;
+                [addSql appendFormat:@"%@ %@,",proName,[propertyDict valueForKey:proName]];
+            }
+        }
+    }
+    if (!flag) {
+        return;
+    }
+    NSString *sql = [addSql substringToIndex:addSql.length - 1];
+    if ([_db executeUpdate:sql]) {
+        NSLog(@"字段添加成功！！！");
+    }
+    
+}
+
 @end
