@@ -17,6 +17,7 @@
 #import "SerVeDetailViewController.h"
 #import "MyInformationsViewController.h"
 #import "ServeInfoViewController.h"
+#import "IQKeyboardManager.h"
 
 #define AppKey @"6816fee48fb77859f7a9011b"
 @interface AppDelegate ()
@@ -34,6 +35,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
 //    [NSThread sleepForTimeInterval:3.0];
+    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
+    manager.enable = YES;
+    manager.shouldResignOnTouchOutside = YES;
+    manager.shouldToolbarUsesTextFieldTintColor = YES;
+    manager.enableAutoToolbar = NO;
     
     [self requestData];
     // 极光推送
@@ -154,7 +160,6 @@
         //        NSLog(@"后台");
         [MBProgressHUD showError:@"后台" toView:nil];
     }
-
 }
 -(void)chooseSkipVC
 {
