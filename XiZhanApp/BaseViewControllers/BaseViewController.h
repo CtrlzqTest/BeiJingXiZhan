@@ -18,4 +18,12 @@ typedef enum : NSUInteger {
 // 侧滑显示菜单开关
 - (void)canSlideMenu:(BOOL )isSlide;
 
+// 无数据显示图片
+- (void)addNodataViewInView:(UIView *)view;
+
+// 移除没数据图片
+- (void)removeNodataView;
+
+// 点击刷新数据
+- (void)tapNoDataView;
 @end

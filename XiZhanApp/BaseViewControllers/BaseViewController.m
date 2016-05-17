@@ -11,7 +11,10 @@
 #import "AppDelegate.h"
 
 @interface BaseViewController ()
-
+{
+    UIImageView *_imgView;
+    UILabel *_label;
+}
 @end
 
 @implementation BaseViewController
@@ -20,6 +23,32 @@
     [super viewDidLoad];
     
     [self canSlideMenu:NO];
+}
+
+- (void)addNodataViewInView:(UIView *)view {
+    
+    if (_imgView == nil) {
+        _imgView = [[UIImageView alloc] initWithFrame:CGRectMake(KWidth/2-30, KHeight/2-80, 75, 85)];
+        _imgView.image = [UIImage imageNamed:@"pix2"];
+        _imgView.userInteractionEnabled = YES;
+        [_imgView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapNoDataView)]];
+        _label = [[UILabel alloc] initWithFrame:CGRectMake(KWidth/2-20, KHeight/2+10, 60, 25)];
+        _label.text = @"暂无数据";
+        _label.font = [UIFont systemFontOfSize:14];
+        _label.textColor = [UIColor lightGrayColor];
+    }
+    
+    [view addSubview:_label];
+    [view addSubview:_imgView];
+}
+
+- (void)tapNoDataView {
+    [self removeNodataView];
+}
+
+- (void)removeNodataView {
+    [_imgView removeFromSuperview];
+    [_label removeFromSuperview];
 }
 
 - (void)canSlideMenu:(BOOL )isSlide {
@@ -32,6 +61,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)dealloc {
+    _imgView = nil;
+    _label = nil;
+}
 /*
 #pragma mark - Navigation
 

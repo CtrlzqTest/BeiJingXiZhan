@@ -66,6 +66,7 @@ static NSString *collCellId = @"MainCell";
 
 - (void)initData {
     
+    [self removeNodataView];
     [MHNetworkManager getRequstWithURL:kMuenListAPI params:nil successBlock:^(id returnData) {
         
         if ([returnData[@"message"] isEqualToString:@"success"]) {
@@ -73,18 +74,29 @@ static NSString *collCellId = @"MainCell";
         }else {
             [MBProgressHUD showError:@"获取列表失败" toView:self.view];
         }
+        if (_dataArray.count <= 0) {
+            [self addNodataViewInView:self.collectionView];
+        }
         [self.collectionView reloadData];
         [self.collectionView.mj_header endRefreshing];
         
     } failureBlock:^(NSError *error) {
         [self.collectionView.mj_header endRefreshing];
         [MBProgressHUD showError:@"网络不给力" toView:self.view];
+        if (_dataArray.count <= 0) {
+            [self addNodataViewInView:self.collectionView];
+        }
+
     } showHUD:YES];
     
 //    _dataArray = [NSMutableArray arrayWithArray:@[@"志愿者消息",@"站内公告消息",@"服务台消息"]];
 
 }
 
+-(void)tapNoDataView {
+    [super tapNoDataView];
+    [self.collectionView.mj_header beginRefreshing];
+}
 // 显示菜单
 - (IBAction)menuAction:(id)sender {
     
