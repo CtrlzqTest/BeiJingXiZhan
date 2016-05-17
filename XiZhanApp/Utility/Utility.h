@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface Utility : NSObject
+
+
+
 /**
  *  保存我的消息已读状态
  */
@@ -69,6 +72,9 @@
  */
 + (BOOL)checkPassword:(NSString *) password;
 
+/**************************************************
+        事件处理函数
+***************************************************/
 
 /** 时间戳转时间
  */
@@ -78,4 +84,25 @@
  *  字符串转时间戳
  */
 +(NSString *)timeIntervalWithDateStr:(NSString *)dateStr;
+
+/**
+ *  获取文字的高度,确定宽度
+ *
+ *  @param str   文字
+ *  @param width 宽度
+ *
+ *  @return 高度
+ */
+- (CGFloat )getHeightWithString:(NSString *)str width:(CGFloat )width fontSize:(CGFloat )fontSize;
+
+/**
+ *  获取文字的宽度,确定高度
+ *
+ *  @param str   文字
+ *  @param width 高度
+ *
+ *  @return 宽度
+ */
+- (CGFloat )getWidthWithString:(NSString *)str height:(CGFloat )height fontSize:(CGFloat )fontSize;
+
 @end
