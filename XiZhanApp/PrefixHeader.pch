@@ -32,8 +32,10 @@
 
 // 按钮边框颜色
 #define MCRandomColor MCColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
-#define colorSpace CGColorSpaceCreateDeviceRGB()
+//#define colorSpace CGColorSpaceCreateDeviceRGB()
 
-#define colorref CGColorCreate(colorSpace,(CGFloat[]){ 0.1f, 0.2275f, 0.6392f, 0.5f })
+//#define colorref CGColorCreate(colorSpace,(CGFloat[]){ 0.1f, 0.2275f, 0.6392f, 0.5f })
+
+#define colorref [UIColor colorWithRed:0.1f green:0.2275f blue:0.6392f alpha:0.5f].CGColor
 
 #endif /* PrefixHeader_pch */
