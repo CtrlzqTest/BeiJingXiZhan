@@ -19,7 +19,6 @@
 #import "ServeInfoViewController.h"
 #import "IQKeyboardManager.h"
 
-#define AppKey @"6816fee48fb77859f7a9011b"
 @interface AppDelegate ()
 {
     NSDictionary *_lunchOptions;

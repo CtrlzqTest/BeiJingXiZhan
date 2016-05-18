@@ -59,5 +59,7 @@ static NSString *const ZQPublishInfoViewControllerId = @"publishInfoViewControll
 
 /**************************************************************************************/
 
+// 推送
+#define AppKey @"6816fee48fb77859f7a9011b"
 
 #endif
