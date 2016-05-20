@@ -59,11 +59,11 @@
     [self.collectionView registerNib:[UINib nibWithNibName:MImaCellClassName bundle:nil] forCellWithReuseIdentifier:MImaCellClassName];
     
     UIBarButtonItem *rightBar = [[UIBarButtonItem alloc] initWithTitle:@"确定" style:UIBarButtonItemStylePlain target:self action:@selector(actionRightBar)];
-    rightBar.tintColor = [UIColor blueColor];
+    rightBar.tintColor = [UIColor colorWithRed:0 green:97.0/255 blue:167.0/255 alpha:1.0];
     self.navigationItem.rightBarButtonItem = rightBar;
     
     UIBarButtonItem *leftBar = [[UIBarButtonItem alloc] initWithTitle:@"<照片" style:UIBarButtonItemStylePlain target:self action:@selector(actionLeftBar)];
-    leftBar.tintColor = [UIColor blueColor];
+    leftBar.tintColor = [UIColor colorWithRed:0 green:97.0/255 blue:167.0/255 alpha:1.0];
     self.navigationItem.leftBarButtonItem = leftBar;
     
     if (_MaxCount<=0) {

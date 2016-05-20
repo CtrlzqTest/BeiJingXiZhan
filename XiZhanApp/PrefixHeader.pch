@@ -15,6 +15,7 @@
 #import "MHNetworkManager.h"
 #import "MBProgressHUD+Add.h"
 #import <MJExtension.h>
+#import "UIViewController+AYCNavigationItem.h"
 
 #ifdef DEBUG
 #define ZQLog(...) NSLog(__VA_ARGS__)
@@ -36,6 +37,6 @@
 
 //#define colorref CGColorCreate(colorSpace,(CGFloat[]){ 0.1f, 0.2275f, 0.6392f, 0.5f })
 
-#define colorref [UIColor colorWithRed:0.1f green:0.2275f blue:0.6392f alpha:0.5f].CGColor
+#define colorref [UIColor colorWithRed:0 green:97.0/255 blue:167.0/255 alpha:1.0].CGColor
 
 #endif /* PrefixHeader_pch */

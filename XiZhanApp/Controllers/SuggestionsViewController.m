@@ -27,7 +27,7 @@
     [super viewDidLoad];
      [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 50*ProportionWidth)title:@"意见反馈" fontSize:17.0];
 //    self.view.backgroundColor = [UIColor colorWithRed:0.773 green:0.153 blue:0.384 alpha:1.000];
-    self.view.backgroundColor = [UIColor blueColor];
+   self.view.backgroundColor = [UIColor whiteColor];
     [self initView];
 }
 
@@ -50,8 +50,8 @@
     self.textView.backgroundColor = [UIColor whiteColor];
     self.textView.editable = YES;
     self.textView.font = [UIFont systemFontOfSize:14];
-    self.textView.layer.cornerRadius = 5.0;
-    self.textView.layer.borderWidth = 1.0;
+    self.textView.layer.cornerRadius = 15.0;
+    self.textView.layer.borderWidth = 3.0;
     self.textView.layer.borderColor = colorref;
     self.textView.autocapitalizationType = NO;
     self.textView.delegate = self;
@@ -85,11 +85,11 @@
 
     self.detailButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     self.detailButton.frame = CGRectMake(CGRectGetMaxX(self.yesButton.frame)+10*ProportionWidth, CGRectGetMaxY(self.countTextLabel.frame) + lineSpace, 250*ProportionWidth, 30*ProportionHeight);
-    self.detailButton.layer.cornerRadius = 5.0;
+    self.detailButton.layer.cornerRadius = 15.0;
     self.detailButton.layer.masksToBounds = YES;
-    self.detailButton.layer.borderWidth = 1.0;
+    self.detailButton.layer.borderWidth = 2.0;
     self.detailButton.layer.borderColor = colorref;
-    [self.detailButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [self.detailButton setTitleColor:[UIColor colorWithRed:0 green:97.0/255 blue:167.0/255 alpha:1.0] forState:UIControlStateNormal];
     [self.detailButton setTitle:@"同意《免责申明和隐私权条款》" forState:UIControlStateNormal];
     [self.detailButton addTarget:self action:@selector(detailButtonMethod:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.detailButton];

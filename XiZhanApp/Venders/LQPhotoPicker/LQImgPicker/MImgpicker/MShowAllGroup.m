@@ -44,7 +44,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:MGroupCellClassName bundle:nil] forCellReuseIdentifier:MGroupCellClassName];
     
     UIBarButtonItem *rightBar = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStylePlain target:self action:@selector(actionRightBar)];
-    rightBar.tintColor = [UIColor blueColor];
+    rightBar.tintColor = [UIColor colorWithRed:0 green:97.0/255 blue:167.0/255 alpha:1.0];
     self.navigationItem.rightBarButtonItem = rightBar;
     
     // Do any additional setup after loading the view.

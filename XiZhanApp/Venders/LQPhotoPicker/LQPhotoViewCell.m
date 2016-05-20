@@ -19,6 +19,7 @@
     return self;
 }
 - (void)setBigImgViewWithImage:(UIImage *)img{
+    _BigImgView.layer.masksToBounds = YES;
     if (_BigImgView) {
         _BigImgView.frame = _profilePhoto.frame;
         _BigImgView.image = img;
