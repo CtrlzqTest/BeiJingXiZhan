@@ -52,12 +52,12 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
     _dataArray = [NSMutableArray arrayWithArray:@[loginStr,@"关于我们",@"意见反馈",@"我的消息",@"退出登录"]];
     
     self.tableview = [[UITableView alloc] initWithFrame:self.view.bounds style:(UITableViewStylePlain)];
-    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor colorWithWhite:0.898 alpha:1.000];
     self.tableview.dataSource = self;
     self.tableview.delegate  = self;
     self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableview];
-    
+
     [self.tableview registerNib:[UINib nibWithNibName:@"LeftSortsTabCell" bundle:nil] forCellReuseIdentifier:leftSortsCellId];
     
 }
