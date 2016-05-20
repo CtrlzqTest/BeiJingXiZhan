@@ -55,7 +55,6 @@
 		F0614DD11CE1C4180036CC3E /* MyInformationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0614DD01CE1C4180036CC3E /* MyInformationsViewController.m */; };
 		F092EEC31CE6B79500353351 /* MsgType1TabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F092EEC11CE6B79500353351 /* MsgType1TabCell.m */; };
 		F092EEC41CE6B79500353351 /* MsgType1TabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F092EEC21CE6B79500353351 /* MsgType1TabCell.xib */; };
-		F0ACA27F1CEF296400ABFD7E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0ACA27E1CEF296400ABFD7E /* Images.xcassets */; };
 		F0C4AAF61CE2E14A0067E986 /* MHAsiNetworkHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AAEE1CE2E14A0067E986 /* MHAsiNetworkHandler.m */; };
 		F0C4AAF71CE2E14A0067E986 /* MHAsiNetworkItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AAF01CE2E14A0067E986 /* MHAsiNetworkItem.m */; };
 		F0C4AAF81CE2E14A0067E986 /* MHNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AAF21CE2E14A0067E986 /* MHNetworkManager.m */; };
@@ -185,7 +184,6 @@
 		F092EEC01CE6B79500353351 /* MsgType1TabCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgType1TabCell.h; sourceTree = "<group>"; };
 		F092EEC11CE6B79500353351 /* MsgType1TabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgType1TabCell.m; sourceTree = "<group>"; };
 		F092EEC21CE6B79500353351 /* MsgType1TabCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgType1TabCell.xib; sourceTree = "<group>"; };
-		F0ACA27E1CEF296400ABFD7E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F0C4AAEB1CE2E14A0067E986 /* MHAsiNetworkDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHAsiNetworkDefine.h; sourceTree = "<group>"; };
 		F0C4AAEC1CE2E14A0067E986 /* MHAsiNetworkDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHAsiNetworkDelegate.h; sourceTree = "<group>"; };
 		F0C4AAED1CE2E14A0067E986 /* MHAsiNetworkHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MHAsiNetworkHandler.h; sourceTree = "<group>"; };
@@ -581,7 +579,6 @@
 				F0F379DD1CE07AD90047A469 /* Assets.xcassets */,
 				F0F379DF1CE07AD90047A469 /* LaunchScreen.storyboard */,
 				F0F379E21CE07AD90047A469 /* Info.plist */,
-				F0ACA27E1CEF296400ABFD7E /* Images.xcassets */,
 				F0F379D11CE07AD90047A469 /* Supporting Files */,
 			);
 			path = XiZhanApp;
@@ -837,7 +834,6 @@
 				F0E396BC1CE1B4FA00D4137E /* MainCollCell.xib in Resources */,
 				F0088C921CE6BE8300AF6EAF /* MGroupCell.xib in Resources */,
 				F0088C9D1CE6BE8300AF6EAF /* LQPhotoViewCell.xib in Resources */,
-				F0ACA27F1CEF296400ABFD7E /* Images.xcassets in Resources */,
 				F092EEC41CE6B79500353351 /* MsgType1TabCell.xib in Resources */,
 				F0088C821CE6BE8300AF6EAF /* ico_check_select.png in Resources */,
 				F0088C831CE6BE8300AF6EAF /* ico_check_select@2x.png in Resources */,
