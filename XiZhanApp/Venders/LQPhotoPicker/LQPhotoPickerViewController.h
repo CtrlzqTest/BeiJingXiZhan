@@ -40,7 +40,7 @@
 //图片总数量限制
 @property(nonatomic,assign) NSInteger LQPhotoPicker_imgMaxCount;
 
-
+@property(nonatomic,retain) UIButton *pickButton;
 //初始化collectionView
 - (void)LQPhotoPicker_initPickerView;
 //修改collectionView 的位置

@@ -58,7 +58,9 @@
     [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
-    
+    [self setRightTextBarButtonItemWithFrame:CGRectMake(330, 0, 40, 30) title:@"提交" titleColor:[UIColor whiteColor] backImage:nil selectBackImage:nil action:^(AYCButton *button) {
+        [weakSelf postData];
+    }];
     self.imgString = [NSMutableString stringWithFormat:@""];
     [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 50*ProportionWidth)title:@"发布" fontSize:17.0];
     self.view.backgroundColor = [UIColor whiteColor];
@@ -111,14 +113,15 @@
     [self.ScrollofStatus addSubview: self.miaoShuTextView];
     
     self.photoButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    self.photoButton = self.pickButton;
     self.photoButton.layer.cornerRadius = 5.0;
     self.photoButton.layer.masksToBounds = YES;
     self.photoButton.layer.borderWidth = 0.0;
     self.photoButton.layer.borderColor = colorref;
     [self.photoButton setBackgroundImage:[UIImage imageNamed:@"camera.png"] forState:UIControlStateNormal];
-    [self.photoButton addTarget:self action:@selector(postData) forControlEvents:UIControlEventTouchUpInside];
+   // [self.photoButton addTarget:self action:@selector(postData) forControlEvents:UIControlEventTouchUpInside];
    // [self.photoButton setTintColor:[UIColor whiteColor]];
-    
+    //self.pickButton = self.photoButton;
     [self.ScrollofStatus addSubview:self.photoButton];
     
     self.summitButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];

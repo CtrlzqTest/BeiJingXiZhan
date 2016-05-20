@@ -89,8 +89,16 @@ static NSString * const reuseIdentifier = @"LQPhotoViewCell";
     addImgStrLabel.font = [UIFont systemFontOfSize:12];
     addImgStrLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
     [self.pickerCollectionView addSubview:addImgStrLabel];
+    
+    self.pickButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.pickButton addTarget:self action:@selector(pickImageMethod) forControlEvents:UIControlEventTouchUpInside];
+    [self.pickerCollectionView addSubview:self.pickButton];
 }
 
+-(void)pickImageMethod
+{
+    [self addNewImg];
+}
 #pragma mark <UICollectionViewDataSource>
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
