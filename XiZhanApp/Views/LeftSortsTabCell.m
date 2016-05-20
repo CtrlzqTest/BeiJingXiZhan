@@ -13,7 +13,10 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.titleLabel.textColor = [UIColor whiteColor];
+    UIView *view = [[UIView alloc] init];
+    view.backgroundColor = [UIColor colorWithRed:0.082 green:0.624 blue:0.820 alpha:1.000];
+    self.selectedBackgroundView = view;
+    self.titleLabel.textColor = [UIColor grayColor];
     self.titleLabel.font = [UIFont systemFontOfSize:20.0f];
     self.rightImgView.hidden = YES;
 }

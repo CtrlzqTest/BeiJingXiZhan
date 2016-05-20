@@ -14,7 +14,7 @@
 }
 @property (weak, nonatomic) IBOutlet UITextField *userNameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passWordLabel;
-@property (weak, nonatomic) IBOutlet UISwitch *autoLoginSwitch;
+@property (weak, nonatomic) IBOutlet UIButton *autoLoginSwitch;
 @property (weak, nonatomic) IBOutlet UIButton *agreeBtn;
 // 免责按钮
 @property (weak, nonatomic) IBOutlet UIButton *impunityBtn;
@@ -26,16 +26,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"登录";
-    [self.autoLoginSwitch setOn:NO];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapMethod)];
     [self.view addGestureRecognizer:tap];
+    [self setupViews];
 }
+
+- (void)setupViews {
+    
+    self.userNameLabel.layer.borderWidth = 2.5;
+    self.userNameLabel.layer.borderColor = colorref;
+    self.userNameLabel.layer.cornerRadius = 20;
+    
+    self.passWordLabel.layer.borderWidth = 2.5;
+    self.passWordLabel.layer.borderColor = colorref;
+    self.passWordLabel.layer.cornerRadius = 20;
+    
+}
+
 -(void)tapMethod
 {
     [self.view endEditing:YES];
 }
 // 自动登录按钮
 - (IBAction)autoLoginAction:(id)sender {
+    
+    self.autoLoginSwitch.selected = !self.autoLoginSwitch.selected;
+    if (self.autoLoginSwitch.selected) {
+        [self.autoLoginSwitch setImage:[UIImage imageNamed:@"autoLogin_sel"] forState:(UIControlStateNormal)];
+    }else {
+        [self.autoLoginSwitch setImage:[UIImage imageNamed:@"autoLogin_unsel"] forState:(UIControlStateNormal)];
+    }
     
 }
 
@@ -44,15 +64,16 @@
     
     self.agreeBtn.selected = !self.agreeBtn.selected;
     if (self.agreeBtn.selected) {
-        [self.agreeBtn setImage:[UIImage imageNamed:@"agreeSelect"] forState:(UIControlStateNormal)];
+        [self.agreeBtn setImage:[UIImage imageNamed:@"autoLogin_sel"] forState:(UIControlStateNormal)];
     }else {
-        [self.agreeBtn setImage:[UIImage imageNamed:@"agreeUnSelect"] forState:(UIControlStateNormal)];
+        [self.agreeBtn setImage:[UIImage imageNamed:@"autoLogin_unsel"] forState:(UIControlStateNormal)];
     }
     
 }
 
 // 免责声明
 - (IBAction)impunityAction:(id)sender {
+    
     MianZeViewController *vc = [[MianZeViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
 }
@@ -67,7 +88,7 @@
     [MHNetworkManager postReqeustWithURL:kLoginAPI params:@{@"tel":self.userNameLabel.text,@"password":self.passWordLabel.text} successBlock:^(id returnData) {
         
         [User shareUser].isLogin = YES;
-        if (weakSelf.autoLoginSwitch.isOn) {
+        if (weakSelf.autoLoginSwitch.selected) {
             [Utility setLoginStates:YES];
         }
         [Utility saveUserInfo:returnData[@"user"]];

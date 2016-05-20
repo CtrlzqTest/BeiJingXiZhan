@@ -32,7 +32,7 @@ static NSString *collCellId = @"MainCell";
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self addNotices];
-    [self setFlowLayout];
+    [self setupViews];
     [self initData];
     
     // 消息提示
@@ -105,7 +105,7 @@ static NSString *collCellId = @"MainCell";
     
 }
 
-- (void)setFlowLayout {
+- (void)setupViews {
     
     // 和maincolcell统一
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
