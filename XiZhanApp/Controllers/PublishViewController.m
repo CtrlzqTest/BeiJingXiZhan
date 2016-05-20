@@ -56,7 +56,7 @@
 {
     self.imgString = [NSMutableString stringWithFormat:@""];
     [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 50*ProportionWidth)title:@"发布" fontSize:17.0];
-    self.view.backgroundColor = [UIColor lightGrayColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     
     self.ScrollofStatus = [[UIScrollView alloc]init];
     self.ScrollofStatus.frame = CGRectMake(0,0, KWidth, KHeight);
@@ -81,11 +81,12 @@
     self.fieldOfUser.backgroundColor = [UIColor whiteColor];
     
     self.fieldOfUser.enabled = YES;
-    self.fieldOfUser.layer.cornerRadius = 5.0;
+    self.fieldOfUser.layer.cornerRadius = 20.0;
     self.fieldOfUser.layer.masksToBounds = YES;
-    self.fieldOfUser.layer.borderWidth = 1.0;
+    self.fieldOfUser.layer.borderWidth = 3.0;
     self.fieldOfUser.layer.borderColor = colorref;
     self.fieldOfUser.placeholder = @"标题";
+    //self.fieldOfUser.textColor = [UIColor colorWithRed:0 green:97.0/255 blue:167.0/255 alpha:1.0];
     self.fieldOfUser.autocapitalizationType = NO;
     self.fieldOfUser.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.fieldOfUser.returnKeyType = UIReturnKeyDone;
@@ -95,9 +96,9 @@
     self.miaoShuTextView = [[UITextView alloc]init];
     self.miaoShuTextView.backgroundColor = [UIColor whiteColor];
     [self.miaoShuTextView setFont:[UIFont systemFontOfSize:17.0]];
-    self.miaoShuTextView.layer.cornerRadius = 5.0;
+    self.miaoShuTextView.layer.cornerRadius = 15.0;
     self.miaoShuTextView.layer.masksToBounds = YES;
-    self.miaoShuTextView.layer.borderWidth = 1.0;
+    self.miaoShuTextView.layer.borderWidth = 3.0;
     self.miaoShuTextView.layer.borderColor = colorref;
     self.miaoShuTextView.autocapitalizationType = NO;
     self.miaoShuTextView.delegate = self;
@@ -137,7 +138,7 @@
     _explainLabel.frame = CGRectMake(leftInset, [self LQPhotoPicker_getPickerViewFrame].origin.y+[self LQPhotoPicker_getPickerViewFrame].size.height+10*ProportionHeight, KWidth-80, 20*ProportionHeight);
     // CGFloat height =  + [self LQPhotoPicker_getPickerViewFrame].size.height + 30 + 100;
     
-    self.fieldOfUser.frame = CGRectMake(leftInset,CGRectGetMaxY(_explainLabel.frame) + 20*ProportionHeight, KWidth-80, 40*ProportionHeight);
+    self.fieldOfUser.frame = CGRectMake(leftInset+10*ProportionWidth,CGRectGetMaxY(_explainLabel.frame) + 20*ProportionHeight, KWidth-100, 40*ProportionHeight);
     self.miaoShuTextView.frame = CGRectMake(leftInset,CGRectGetMaxY(self.fieldOfUser.frame) + 20*ProportionHeight, KWidth-80, 185*ProportionHeight);
     self.summitButton.frame = CGRectMake(leftInset,CGRectGetMaxY(self.miaoShuTextView.frame) + 20*ProportionHeight, KWidth-80, 60*ProportionHeight);
     self.photoButton.frame = CGRectMake(172*ProportionWidth,CGRectGetMaxY(self.summitButton.frame) + 20*ProportionHeight, 30*ProportionHeight, 30*ProportionHeight);
