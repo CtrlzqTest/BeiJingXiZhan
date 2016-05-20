@@ -33,13 +33,23 @@
 
 - (void)setupViews {
     
+    // 返回按钮
+    __weak typeof(self) weakSelf = self;
+    [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    }];
+    
     self.userNameLabel.layer.borderWidth = 2.5;
     self.userNameLabel.layer.borderColor = colorref;
     self.userNameLabel.layer.cornerRadius = 20;
+    self.userNameLabel.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
+    self.userNameLabel.leftViewMode = UITextFieldViewModeAlways;
     
     self.passWordLabel.layer.borderWidth = 2.5;
     self.passWordLabel.layer.borderColor = colorref;
     self.passWordLabel.layer.cornerRadius = 20;
+    self.passWordLabel.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
+    self.passWordLabel.leftViewMode = UITextFieldViewModeAlways;
     
 }
 

@@ -7,7 +7,6 @@
 //
 
 #import "PublishViewController.h"
-#import "UIViewController+AYCNavigationItem.h"
 
 @interface PublishViewController ()<UITextFieldDelegate,UITextViewDelegate,LQPhotoPickerViewDelegate>
 
@@ -54,6 +53,12 @@
 #pragma mark initMethod
 -(void)initView
 {
+    // 返回按钮
+    __weak typeof(self) weakSelf = self;
+    [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    }];
+    
     self.imgString = [NSMutableString stringWithFormat:@""];
     [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 50*ProportionWidth)title:@"发布" fontSize:17.0];
     self.view.backgroundColor = [UIColor whiteColor];

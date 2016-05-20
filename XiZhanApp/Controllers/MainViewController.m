@@ -108,6 +108,13 @@ static NSString *collCellId = @"MainCell";
 
 - (void)setupViews {
     
+//    // 返回按钮
+//    __weak typeof(self) weakSelf = self;
+//    [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"user" selectImage:nil action:^(AYCButton *button) {
+//        [weakSelf menuAction:nil];
+//    }];
+
+    
     self.view.backgroundColor = [UIColor whiteColor];
     // 和maincolcell统一
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];

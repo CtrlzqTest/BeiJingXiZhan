@@ -69,6 +69,12 @@ static NSString *serveCellId = @"serveTabCellId";
 
 - (void)setupViews {
     
+    // 返回按钮
+    __weak typeof(self) weakSelf = self;
+    [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    }];
+    
     _dataArray = [NSMutableArray array];
     self.automaticallyAdjustsScrollViewInsets = NO;
     // 注册cell

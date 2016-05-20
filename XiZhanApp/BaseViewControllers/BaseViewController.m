@@ -23,6 +23,11 @@
     [super viewDidLoad];
     // 导航栏标题颜色,和字体大小
     [self setNavigationBarTitleColor:[UIColor whiteColor]];
+//    // 返回按钮
+//    __weak typeof(self) weakSelf = self;
+//    [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
+//        [weakSelf.navigationController popViewControllerAnimated:YES];
+//    }];
     
     [self canSlideMenu:NO];
 }
