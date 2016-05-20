@@ -12,5 +12,6 @@
 
 @property(nonatomic,copy)NSString *msgId;
 @property(nonatomic,copy)NSString *msgType;
+@property(nonatomic,copy)NSString *imgUrl;
 
 @end

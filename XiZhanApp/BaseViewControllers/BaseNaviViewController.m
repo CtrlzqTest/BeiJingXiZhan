@@ -7,6 +7,7 @@
 //
 
 #import "BaseNaviViewController.h"
+#import "UIViewController+AYCNavigationItem.h"
 
 @interface BaseNaviViewController ()
 
@@ -16,6 +17,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationBar.barTintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"naviBack"]];
+    
     // Do any additional setup after loading the view.
 }
 

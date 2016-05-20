@@ -21,6 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // 导航栏标题颜色,和字体大小
+    [self setNavigationBarTitleColor:[UIColor whiteColor]];
     
     [self canSlideMenu:NO];
 }

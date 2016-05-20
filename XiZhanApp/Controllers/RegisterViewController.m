@@ -33,10 +33,22 @@
 }
 - (void)setupViews {
     
-    self.getCodeBtn.layer.cornerRadius = 5;
-    self.getCodeBtn.layer.borderWidth = 0.2;
-    self.getCodeBtn.layer.borderColor = [UIColor redColor].CGColor;
+    self.getCodeBtn.layer.cornerRadius = 20;
+    self.getCodeBtn.layer.borderWidth = 2.5;
+    self.getCodeBtn.layer.borderColor = colorref;
     self.getCodeBtn.highlighted = NO;
+    
+    self.phoneTef.layer.borderWidth = 2.5;
+    self.phoneTef.layer.borderColor = colorref;
+    self.phoneTef.layer.cornerRadius = 20;
+    
+    self.passWordTef.layer.borderWidth = 2.5;
+    self.passWordTef.layer.borderColor = colorref;
+    self.passWordTef.layer.cornerRadius = 20;
+    
+    self.checkCodeTef.layer.borderWidth = 2.5;
+    self.checkCodeTef.layer.borderColor = colorref;
+    self.checkCodeTef.layer.cornerRadius = 20;
     
 }
 

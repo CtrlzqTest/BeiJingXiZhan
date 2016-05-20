@@ -15,6 +15,7 @@
 #import "MessageModel.h"
 #import "MenuModel.h"
 #import <MJRefresh.h>
+#import <UIImageView+WebCache.h>
 
 static NSString *collCellId = @"MainCell";
 @interface MainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -107,6 +108,7 @@ static NSString *collCellId = @"MainCell";
 
 - (void)setupViews {
     
+    self.view.backgroundColor = [UIColor whiteColor];
     // 和maincolcell统一
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.itemSize = CGSizeMake(KWidth / 2.0 - 40, (KWidth / 2.0 - 40) * 1.2);
@@ -138,6 +140,7 @@ static NSString *collCellId = @"MainCell";
     MainCollCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collCellId forIndexPath:indexPath];
     MenuModel *model = _dataArray[indexPath.row];
     cell.titleLabel.text = model.msgType;
+    [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:nil];
     return cell;
 }
 
