@@ -55,9 +55,9 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
     self.view.backgroundColor = [UIColor colorWithWhite:0.898 alpha:1.000];
     self.tableview.dataSource = self;
     self.tableview.delegate  = self;
-    self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableview];
-
+    self.tableview.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableview registerNib:[UINib nibWithNibName:@"LeftSortsTabCell" bundle:nil] forCellReuseIdentifier:leftSortsCellId];
     
 }
@@ -125,7 +125,8 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
 {
     
     LeftSortsTabCell *cell = [tableView dequeueReusableCellWithIdentifier:leftSortsCellId forIndexPath:indexPath];
-    cell.imgView.image = [UIImage imageNamed:@"user-icon5"];
+//    cell.imgView.image = [UIImage imageNamed:@"user-icon5"];
+    cell.imgView.hidden = YES;
     cell.titleLabel.text = _dataArray[indexPath.row];
     if (indexPath.row == 3 && [Utility getMyMsgReadState] && [User shareUser].isLogin) {
         cell.rightImgView.hidden = NO;
