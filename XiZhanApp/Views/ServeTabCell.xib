@@ -12,7 +12,7 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="84.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="85"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="MRU-1T-g9t">
@@ -39,20 +39,43 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eKD-UR-q34">
+                        <rect key="frame" x="31" y="5" width="75" height="75"/>
+                        <color key="backgroundColor" red="0.97647058819999999" green="0.35682784560000003" blue="0.36694225530000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="eKD-UR-q34" secondAttribute="height" id="Y69-0x-U0Z"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Y69-0x-U0Z"/>
+                            </mask>
+                        </variation>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="eKD-UR-q34" firstAttribute="trailing" secondItem="MRU-1T-g9t" secondAttribute="trailing" id="1vQ-Us-oRk"/>
                     <constraint firstAttribute="trailing" secondItem="Vk9-vs-aUq" secondAttribute="trailing" constant="50" id="9HY-if-pnL"/>
                     <constraint firstAttribute="bottom" secondItem="MRU-1T-g9t" secondAttribute="bottom" constant="5" id="G55-uw-Fee"/>
                     <constraint firstItem="cgy-Ot-ZkU" firstAttribute="top" secondItem="Vk9-vs-aUq" secondAttribute="bottom" constant="8" id="IRb-yI-6kG"/>
+                    <constraint firstItem="eKD-UR-q34" firstAttribute="leading" secondItem="MRU-1T-g9t" secondAttribute="leading" id="JUU-fP-Szh"/>
+                    <constraint firstItem="eKD-UR-q34" firstAttribute="bottom" secondItem="MRU-1T-g9t" secondAttribute="bottom" id="NaM-QX-TFk"/>
                     <constraint firstItem="cgy-Ot-ZkU" firstAttribute="leading" secondItem="Vk9-vs-aUq" secondAttribute="leading" id="Wpm-cY-EoA"/>
                     <constraint firstItem="Vk9-vs-aUq" firstAttribute="leading" secondItem="MRU-1T-g9t" secondAttribute="trailing" constant="8" id="a3O-Mb-XTZ"/>
                     <constraint firstItem="MRU-1T-g9t" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="cKU-UF-5jN"/>
                     <constraint firstItem="cgy-Ot-ZkU" firstAttribute="trailing" secondItem="Vk9-vs-aUq" secondAttribute="trailing" id="dfS-dQ-EEu"/>
+                    <constraint firstItem="eKD-UR-q34" firstAttribute="top" secondItem="MRU-1T-g9t" secondAttribute="top" id="hAH-Qu-1wy"/>
                     <constraint firstItem="MRU-1T-g9t" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="lhA-Wf-jVZ"/>
                     <constraint firstItem="Vk9-vs-aUq" firstAttribute="top" secondItem="MRU-1T-g9t" secondAttribute="top" constant="5" id="pP7-AD-pf4"/>
+                    <constraint firstItem="eKD-UR-q34" firstAttribute="width" secondItem="eKD-UR-q34" secondAttribute="height" id="vgn-zE-eLX"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="vgn-zE-eLX"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="backImgView" destination="eKD-UR-q34" id="W8a-88-W0o"/>
                 <outlet property="imgView" destination="MRU-1T-g9t" id="4bZ-QK-qjp"/>
                 <outlet property="msgLabel" destination="cgy-Ot-ZkU" id="FKc-vf-bfn"/>
                 <outlet property="redPointImgView" destination="I5F-So-iEP" id="b8U-eL-wTu"/>

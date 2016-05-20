@@ -18,6 +18,7 @@ static CGFloat cellHeight = 100.0;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *msgLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *redPointImgView;
+@property (weak, nonatomic) IBOutlet UIImageView *backImgView;
 
 - (void)writeDataWithModel:(MessageModel *)msgModel;
 

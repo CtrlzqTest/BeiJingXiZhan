@@ -13,7 +13,10 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    
+    CGFloat cornerRadius = (cellHeight - 10) / 2.0;
+    self.imgView.layer.cornerRadius = cornerRadius;
+    self.imgView.clipsToBounds = YES;
+    [self.contentView sendSubviewToBack:self.backImgView];
 }
 
 - (void)writeDataWithModel:(MessageModel *)msgModel {
