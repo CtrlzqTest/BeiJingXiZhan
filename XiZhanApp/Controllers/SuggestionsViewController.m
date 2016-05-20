@@ -40,6 +40,11 @@
     NSInteger leftSpace = 40*ProportionWidth;
     NSInteger lineSpace = 25*ProportionHeight;
     
+    __weak typeof(self) weakSelf = self;
+    [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    }];
+
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapMethod)];
     [self.view addGestureRecognizer:tap];
     
