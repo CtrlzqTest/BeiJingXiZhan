@@ -26,6 +26,7 @@
     NSInteger _isSkiptoVC;
 }
 @property(nonatomic,retain)NSMutableDictionary *dictForUserInfo;
+
 @end
 
 @implementation AppDelegate
@@ -33,12 +34,12 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-//    [NSThread sleepForTimeInterval:3.0];
-    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
-    manager.enable = YES;
-    manager.shouldResignOnTouchOutside = YES;
-    manager.shouldToolbarUsesTextFieldTintColor = YES;
-    manager.enableAutoToolbar = NO;
+    [NSThread sleepForTimeInterval:1.2];
+//    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
+//    manager.enable = YES;
+//    manager.shouldResignOnTouchOutside = YES;
+//    manager.shouldToolbarUsesTextFieldTintColor = YES;
+//    manager.enableAutoToolbar = NO;
     
     [self requestData];
     // 极光推送
@@ -52,6 +53,7 @@
     LeftSortsViewController *leftSortsVC = [[LeftSortsViewController alloc] init];
     
     self.leftSliderVC = [[LeftSlideViewController alloc] initWithLeftView:leftSortsVC andMainView:self.mainNavi];
+    
     
     self.window.rootViewController = self.leftSliderVC;
     [self.window makeKeyAndVisible];
