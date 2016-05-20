@@ -33,11 +33,13 @@
 
 - (void)setupViews {
     
-    self.userNameLabel.layer.borderWidth = 3;
-//    self.userNameLabel.layer.borderColor =
+    self.userNameLabel.layer.borderWidth = 2.5;
+    self.userNameLabel.layer.borderColor = colorref;
+    self.userNameLabel.layer.cornerRadius = 20;
     
-    self.passWordLabel.layer.borderWidth = 3;
-    //    self.userNameLabel.layer.borderColor =
+    self.passWordLabel.layer.borderWidth = 2.5;
+    self.passWordLabel.layer.borderColor = colorref;
+    self.passWordLabel.layer.cornerRadius = 20;
     
 }
 

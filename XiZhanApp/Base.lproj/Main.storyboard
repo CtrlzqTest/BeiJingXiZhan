@@ -375,21 +375,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ink-nh-pSk">
-                                <rect key="frame" x="50" y="100" width="275" height="30"/>
+                                <rect key="frame" x="50" y="100" width="275" height="40"/>
                                 <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="w8O-ue-20N"/>
+                                    <constraint firstAttribute="height" constant="40" id="w8O-ue-20N"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YKH-3x-4wb">
-                                <rect key="frame" x="50" y="150" width="275" height="30"/>
+                                <rect key="frame" x="50" y="160" width="275" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自动登录" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6D-Zt-HeU">
-                                <rect key="frame" x="221" y="200" width="69" height="30"/>
+                                <rect key="frame" x="221" y="220" width="69" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="p75-ER-30K"/>
                                     <constraint firstAttribute="width" constant="69" id="qmC-qj-s5r"/>
@@ -404,7 +404,7 @@
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CK1-W7-OJX">
-                                <rect key="frame" x="100" y="255" width="225" height="30"/>
+                                <rect key="frame" x="100" y="275" width="225" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="bjG-Fv-I1a"/>
                                 </constraints>
@@ -421,8 +421,8 @@
                                     <action selector="impunityAction:" destination="WNN-Sf-Lu9" eventType="touchUpInside" id="bwZ-lh-3z2"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWF-JX-Kjl">
-                                <rect key="frame" x="128" y="336" width="120" height="33"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWF-JX-Kjl">
+                                <rect key="frame" x="128" y="355" width="120" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="Rfh-bN-zNW"/>
                                     <constraint firstAttribute="height" constant="35" id="onZ-tD-4J0"/>
@@ -440,8 +440,8 @@
                                     <action selector="loginAction:" destination="WNN-Sf-Lu9" eventType="touchUpInside" id="B4S-MN-nsP"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZp-7m-VI4">
-                                <rect key="frame" x="128" y="396" width="120" height="33"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iZp-7m-VI4">
+                                <rect key="frame" x="128" y="415" width="120" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="注册" backgroundImage="login_unSelect">
                                     <color key="titleColor" red="0.48627450979999998" green="0.6705882353" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -452,8 +452,8 @@
                                     <segue destination="Rfi-SK-JHA" kind="push" id="NdA-NU-bBn"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h35-db-GiR">
-                                <rect key="frame" x="300" y="204" width="21" height="22"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h35-db-GiR">
+                                <rect key="frame" x="295" y="220" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="CAb-5G-h1b"/>
                                     <constraint firstAttribute="width" secondItem="h35-db-GiR" secondAttribute="height" id="Xjs-BM-hsV"/>
@@ -464,7 +464,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3s7-BT-SVp">
-                                <rect key="frame" x="65" y="255" width="30" height="30"/>
+                                <rect key="frame" x="65" y="275" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="3s7-BT-SVp" secondAttribute="height" id="HE8-Od-uY6"/>
                                 </constraints>
