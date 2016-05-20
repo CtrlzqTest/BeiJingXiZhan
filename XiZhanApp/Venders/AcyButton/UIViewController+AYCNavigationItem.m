@@ -18,7 +18,7 @@
 }
 /** 设置标题字体颜色 */
 - (void)setNavigationBarTitleColor:(UIColor *)color{
-    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:color}];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:19],NSForegroundColorAttributeName:color}];
 }
 
 /** 设置导航条中间标题 */

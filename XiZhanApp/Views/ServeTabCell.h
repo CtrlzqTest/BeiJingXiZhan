@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @class MessageModel;
+
+static CGFloat cellHeight = 100.0;
+
 @interface ServeTabCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
