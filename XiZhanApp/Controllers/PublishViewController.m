@@ -111,7 +111,8 @@
     self.photoButton.layer.borderWidth = 0.0;
     self.photoButton.layer.borderColor = colorref;
     [self.photoButton setBackgroundImage:[UIImage imageNamed:@"camera.png"] forState:UIControlStateNormal];
-    [self.photoButton setTintColor:[UIColor whiteColor]];
+    [self.photoButton addTarget:self action:@selector(postData) forControlEvents:UIControlEventTouchUpInside];
+   // [self.photoButton setTintColor:[UIColor whiteColor]];
     
     [self.ScrollofStatus addSubview:self.photoButton];
     
@@ -124,7 +125,7 @@
     [self.summitButton setTitle:@"发布" forState:UIControlStateNormal];
     [self.summitButton setTintColor:[UIColor whiteColor]];
     [self.summitButton addTarget:self action:@selector(postData) forControlEvents:UIControlEventTouchUpInside];
-    [self.ScrollofStatus addSubview:self.summitButton];
+  //  [self.ScrollofStatus addSubview:self.summitButton];
     [self updateViewsFrame];
     
 }
@@ -141,7 +142,7 @@
     self.fieldOfUser.frame = CGRectMake(leftInset+10*ProportionWidth,CGRectGetMaxY(_explainLabel.frame) + 20*ProportionHeight, KWidth-100, 40*ProportionHeight);
     self.miaoShuTextView.frame = CGRectMake(leftInset,CGRectGetMaxY(self.fieldOfUser.frame) + 20*ProportionHeight, KWidth-80, 185*ProportionHeight);
     self.summitButton.frame = CGRectMake(leftInset,CGRectGetMaxY(self.miaoShuTextView.frame) + 20*ProportionHeight, KWidth-80, 60*ProportionHeight);
-    self.photoButton.frame = CGRectMake(172*ProportionWidth,CGRectGetMaxY(self.summitButton.frame) + 20*ProportionHeight, 30*ProportionHeight, 30*ProportionHeight);
+    self.photoButton.frame = CGRectMake(156*ProportionWidth,CGRectGetMaxY(self.summitButton.frame) + 20*ProportionHeight, 64*ProportionHeight, 56*ProportionHeight);
     self.ScrollofStatus.contentSize = CGSizeMake(0, 700*ProportionHeight);
     
 }

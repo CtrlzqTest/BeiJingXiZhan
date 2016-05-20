@@ -75,7 +75,7 @@ static NSString * const reuseIdentifier = @"LQPhotoViewCell";
     {
         _LQPhotoPicker_bigImageArray = [NSMutableArray array];
     }
-    pushImgName = @"plus.png";
+    pushImgName = @"addPic.png";
     
     _pickerCollectionView.scrollEnabled = NO;
     
@@ -84,8 +84,9 @@ static NSString * const reuseIdentifier = @"LQPhotoViewCell";
     }
     
     //添加图片提示
-    addImgStrLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 50, 70, 20)];
-    addImgStrLabel.text = @"添加图片";
+    addImgStrLabel = [[UILabel alloc]initWithFrame:CGRectMake(100, 50, 90, 20)];
+    addImgStrLabel.text = @"点击添加图片";
+    addImgStrLabel.font = [UIFont systemFontOfSize:12];
     addImgStrLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
     [self.pickerCollectionView addSubview:addImgStrLabel];
 }
@@ -114,14 +115,17 @@ static NSString * const reuseIdentifier = @"LQPhotoViewCell";
         cell.closeButton.hidden = YES;
         
         //没有任何图片
-        if (_LQPhotoPicker_smallImageArray.count == 0) {
+        if (_LQPhotoPicker_smallImageArray.count == 0)
+        {
             addImgStrLabel.hidden = NO;
         }
-        else{
+        else
+        {
             addImgStrLabel.hidden = YES;
         }
     }
-    else{
+    else
+    {
         [cell.profilePhoto setImage:_LQPhotoPicker_smallImageArray[indexPath.item]];
         cell.closeButton.hidden = NO;
     }
