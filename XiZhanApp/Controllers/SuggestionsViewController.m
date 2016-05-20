@@ -70,15 +70,16 @@
     self.countTextLabel.text = @"0/100    ";
     [self.view addSubview:self.countTextLabel];
     
-    self.yesButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    self.yesButton.frame = CGRectMake(40*ProportionWidth, CGRectGetMaxY(self.countTextLabel.frame) + lineSpace, 21*ProportionWidth, 21*ProportionHeight);
+    self.yesButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.yesButton.frame = CGRectMake(40*ProportionWidth, CGRectGetMaxY(self.countTextLabel.frame) + lineSpace, 30*ProportionWidth, 30*ProportionHeight);
     //self.yesButton.layer.cornerRadius = 5.0;
     //self.yesButton.layer.masksToBounds = YES;
     //self.yesButton.layer.borderWidth = 0.0;
     //self.yesButton.layer.borderColor = colorref;
     
+   // self.yesButton.tintColor = [UIColor lightGrayColor];
      [self.yesButton setImage:[UIImage imageNamed:@"autoLogin_unsel"]forState:UIControlStateNormal];
-   // [self.yesButton setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"autoLogin_unsel"]]];
+   
     [self.yesButton addTarget:self action:@selector(yesButtonMethod:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.yesButton];
 
