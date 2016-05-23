@@ -21,7 +21,6 @@
     
 //    self.navigationBar.barTintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"naviBack"]];
     [self.navigationBar setGradientLayerStartColor:[UIColor colorWithRed:0.110 green:0.690 blue:0.859 alpha:1.000] endColor:[UIColor colorWithRed:0.067 green:0.388 blue:0.635 alpha:1.000]];
-    
     // Do any additional setup after loading the view.
 }
 
