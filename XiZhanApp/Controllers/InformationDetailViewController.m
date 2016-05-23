@@ -48,6 +48,11 @@ static NSString *indentify = @"proCellX";
 //}
 -(void)initView
 {
+    // 返回按钮
+    __weak typeof(self) weakSelf = self;
+    [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    }];
     self.imageArray = [self.model.imgurl componentsSeparatedByString:@","];
    self.view.backgroundColor = [UIColor whiteColor];
     [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 40*ProportionWidth) title:@"详情" fontSize:17.0];
