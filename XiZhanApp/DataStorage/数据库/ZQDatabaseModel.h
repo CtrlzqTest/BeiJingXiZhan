@@ -78,6 +78,12 @@
 
 /**
  *  组合查询
+ *
+ *  @param condition 特殊条件
+ *  @param page      分页
+ *  @param proName   根据字段排序
+ *
+ *  @return 模型数组
  */
 + (NSArray *)getDataWithCondition:(NSString *)condition page:(NSInteger )page orderBy:(NSString *)proName;
 @end
