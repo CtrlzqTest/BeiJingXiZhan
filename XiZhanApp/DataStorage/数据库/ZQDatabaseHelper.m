@@ -209,6 +209,7 @@
             [theProps setObject:propType forKey:propName];
         }
     }
+    free(property_list);
     return theProps;
 }
 @end
