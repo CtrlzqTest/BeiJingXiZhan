@@ -42,7 +42,9 @@ static NSString *serveCellId = @"serveTabCellId";
         [[NSNotificationCenter defaultCenter]postNotificationName:@"skip" object:nil];
        // [self requestData];
          _shouldRefresh = YES;
+        [self.navigationController.navigationBar setGradientLayerStartColor:[UIColor colorWithRed:0.110 green:0.690 blue:0.859 alpha:1.000] endColor:[UIColor colorWithRed:0.067 green:0.388 blue:0.635 alpha:1.000]];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backMethod)];
+        self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
     }
     
   
