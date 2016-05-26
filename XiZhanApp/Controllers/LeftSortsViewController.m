@@ -13,6 +13,7 @@
 #import "LoginViewController.h"
 #import "SuggestionsViewController.h"
 #import "MyInformationsViewController.h"
+#import "AboutXiZhanViewController.h"
 #import "LeftSortsTabCell.h"
 #import "MessageModel.h"
 
@@ -152,6 +153,12 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
                 return;
             }
             LoginViewController *vc = [storyBoard instantiateViewControllerWithIdentifier:ZQLoginViewCotrollerId];
+            [tempAppDelegate.mainNavi pushViewController:vc animated:NO];
+        }
+            break;
+            case 1:
+        {
+            AboutXiZhanViewController *vc = [[AboutXiZhanViewController alloc]init];
             [tempAppDelegate.mainNavi pushViewController:vc animated:NO];
         }
             break;
