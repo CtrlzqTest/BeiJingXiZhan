@@ -1,12 +1,12 @@
 //
-//  MyInformationsViewController.m
+//  InfoClassifyViewController.m
 //  XiZhanApp
 //
-//  Created by zhangqiang on 16/5/10.
+//  Created by zhangqiang on 16/5/27.
 //  Copyright © 2016年 zhangqiang. All rights reserved.
 //
 
-#import "MyInformationsViewController.h"
+#import "InfoClassifyViewController.h"
 #import "UIViewController+AYCNavigationItem.h"
 #import "LoginViewController.h"
 #import "InformationDetailViewController.h"
@@ -16,8 +16,8 @@
 #import "MsgType1TabCell.h"
 #import "PublishViewController.h"
 
-static NSString *cellIndentifer = @"msgType1";
-@interface MyInformationsViewController ()<UITableViewDelegate,UITableViewDataSource,PublishViewControllerDelegate>
+static NSString *cellIndentifer = @"msgType2";
+@interface InfoClassifyViewController ()<UITableViewDelegate,UITableViewDataSource,PublishViewControllerDelegate>
 {
     NSInteger _page;
     BOOL _shouldRefresh; // 是否需要刷新数据
@@ -28,7 +28,7 @@ static NSString *cellIndentifer = @"msgType1";
 
 @end
 
-@implementation MyInformationsViewController
+@implementation InfoClassifyViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -36,7 +36,7 @@ static NSString *cellIndentifer = @"msgType1";
     _page = 1;
     [self initView];
     self.title = self.msgType;
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addOtherInfo) name:ZQAddOtherInfoNotication object:nil];
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addOtherInfo) name:ZQAddOtherInfoNotication object:nil];
     
     if (self.isSkip == 1) {
         [self.navigationController setNavigationBarHidden:NO animated:YES];
@@ -106,7 +106,7 @@ static NSString *cellIndentifer = @"msgType1";
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self getData];
     }];
-//    [self.tableView.mj_header beginRefreshing];
+    //    [self.tableView.mj_header beginRefreshing];
     
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [self getMoreData];
@@ -117,7 +117,7 @@ static NSString *cellIndentifer = @"msgType1";
 - (void)getData {
     
     NSDictionary *dict = !self.menuModel ? nil : @{@"parentId":self.menuModel.msgId};
-
+    
     [MHNetworkManager getRequstWithURL:kAllMessageAPI params:dict successBlock:^(id returnData) {
         
         if ([returnData[@"message"] isEqualToString:@"success"]) {
@@ -208,7 +208,7 @@ static NSString *cellIndentifer = @"msgType1";
         LoginViewController *loginVC = [Utility getControllerWithStoryBoardId:ZQLoginViewCotrollerId];
         [self.navigationController pushViewController:loginVC animated:YES];
     }else {
-       // PublishInfoViewController *publishVC = [Utility getControllerWithStoryBoardId:ZQPublishInfoViewControllerId];
+        // PublishInfoViewController *publishVC = [Utility getControllerWithStoryBoardId:ZQPublishInfoViewControllerId];
         PublishViewController *publishVC = [[PublishViewController alloc]init];
         publishVC.parentIdString = self.parentIdString;
         publishVC.menuModel = self.menuModel;
@@ -243,9 +243,21 @@ static NSString *cellIndentifer = @"msgType1";
         [self.tableView reloadData];
         [model updateWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
     }
-
+    
     InformationDetailViewController *vc = [[InformationDetailViewController alloc]init];
     vc.model = model;
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
 @end
