@@ -141,7 +141,7 @@
                     <navigationItem key="navigationItem" id="jfb-L2-Asg">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="YiZ-Xv-hHM">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iIb-F9-tfl">
-                                <rect key="frame" x="327" y="6" width="32" height="32"/>
+                                <rect key="frame" x="334" y="9" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="edit"/>
                                 <connections>
@@ -299,7 +299,7 @@
                     <navigationItem key="navigationItem" id="CQk-Sk-prc">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="dww-OJ-Rc2">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nXw-Uw-v0M">
-                                <rect key="frame" x="327" y="6" width="32" height="32"/>
+                                <rect key="frame" x="334" y="9" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="edit"/>
                                 <connections>
@@ -655,6 +655,6 @@
         <image name="user" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ewX-87-MmW"/>
+        <segue reference="RFY-AG-iji"/>
     </inferredMetricsTieBreakers>
 </document>
