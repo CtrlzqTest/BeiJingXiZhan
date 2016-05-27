@@ -14,9 +14,10 @@
 #import "ImgCell.h"
 
 static NSString *indentify = @"proCellX";
-@interface InformationDetailViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,DJPhotoBrowserDelegate>
+@interface InformationDetailViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,DJPhotoBrowserDelegate,UIWebViewDelegate>
 @property(nonatomic,retain)UICollectionView *myCollectionV;
 @property(nonatomic,strong)NSArray *imageArray;
+@property(nonatomic,retain)UIWebView *web;
 @end
 
 @implementation InformationDetailViewController
@@ -31,21 +32,25 @@ static NSString *indentify = @"proCellX";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-//-(void)viewWillAppear:(BOOL)animated
-//{
-//    [super viewWillAppear:animated];
-//    [self.navigationController setNavigationBarHidden:NO animated:YES];
-//    if (self.isSkip == 1) {
-//        [[NSNotificationCenter defaultCenter]postNotificationName:@"skip" object:nil];
-////        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back.png"] style:UIBarButtonItemStylePlain target:self action:@selector(backMethod)];
-//        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"返回" style:UIBarButtonItemStylePlain target:self action:@selector(backMethod)];
-//    }
-//}
-//-(void)backMethod
-//{
-//    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-//}
+#pragma mark webMethod
+-(void)initWebView
+{
+    _web = [[UIWebView alloc]initWithFrame:CGRectMake(20*ProportionWidth, 134*ProportionHeight, KWidth-40*ProportionWidth, 450*ProportionHeight)];
+    _web.delegate = self;
+    
+    [self.view addSubview:_web];
+    [_web loadHTMLString:self.webUrl baseURL:nil];
+}
+-(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    if (navigationType == UIWebViewNavigationTypeLinkClicked) {
+        return NO;
+    }
+    else
+    {
+        return YES;
+    }
+}
 -(void)initView
 {
     // 返回按钮
@@ -67,22 +72,15 @@ static NSString *indentify = @"proCellX";
     [self.view addSubview:label];
     
     if (self.imageArray.count == 0) {
-        
+
     }
     else
     {
-//        for (int i = 0;i < array.count ;i++) {
-//            UIImageView *imgv = [[UIImageView alloc]init];
-//            imgv.frame = CGRectMake(i*1.0/3*KWidth, 1.0/3*KHeight, 1.0/3*KWidth-20*ProportionWidth, 1.0/3*KHeight);
-//           [imgv setImageWithURL:[NSURL URLWithString:array[i]]];
-//            [self.view addSubview:imgv];
-//        }
         [self addCollectionView];
     }
 }
 -(void)addCollectionView
 {
-    //[self getData];
     UICollectionViewFlowLayout *flowL = [[UICollectionViewFlowLayout alloc]init];
     
     //创建一个UICollectionView
