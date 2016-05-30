@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3905B791C80DF8AB78FDE1FC /* libPods-XiZhanApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 036F9B0E880F84484974823E /* libPods-XiZhanApp.a */; };
+		9BD07646BEBB48D36F1787A9 /* libPods-XiZhanApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5255C008A689B328196B5986 /* libPods-XiZhanApp.a */; };
 		F00007E71CF6CAA100479EFB /* about_info.png in Resources */ = {isa = PBXBuildFile; fileRef = F00007E61CF6CAA100479EFB /* about_info.png */; };
 		F00007EA1CF6CE6F00479EFB /* AboutXiZhanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F00007E91CF6CE6F00479EFB /* AboutXiZhanViewController.m */; };
 		F0088C7C1CE6BE8300AF6EAF /* close.png in Resources */ = {isa = PBXBuildFile; fileRef = F0088C3F1CE6BE8300AF6EAF /* close.png */; };
@@ -107,9 +107,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		036F9B0E880F84484974823E /* libPods-XiZhanApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XiZhanApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7E80CB6122F442FBF8348774 /* Pods-XiZhanApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiZhanApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-XiZhanApp/Pods-XiZhanApp.release.xcconfig"; sourceTree = "<group>"; };
-		DF0159F75224AF0EBC63CC6E /* Pods-XiZhanApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiZhanApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XiZhanApp/Pods-XiZhanApp.debug.xcconfig"; sourceTree = "<group>"; };
+		15D31FFDB611C4BDBC732DF9 /* Pods-XiZhanApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiZhanApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-XiZhanApp/Pods-XiZhanApp.release.xcconfig"; sourceTree = "<group>"; };
+		1D5605D5BC043DB5427C2060 /* Pods-XiZhanApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XiZhanApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XiZhanApp/Pods-XiZhanApp.debug.xcconfig"; sourceTree = "<group>"; };
+		5255C008A689B328196B5986 /* libPods-XiZhanApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-XiZhanApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F00007E61CF6CAA100479EFB /* about_info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about_info.png; sourceTree = "<group>"; };
 		F00007E81CF6CE6F00479EFB /* AboutXiZhanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutXiZhanViewController.h; sourceTree = "<group>"; };
 		F00007E91CF6CE6F00479EFB /* AboutXiZhanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutXiZhanViewController.m; sourceTree = "<group>"; };
@@ -288,30 +288,30 @@
 				F0607B331CE56F9D0029EE31 /* libz.tbd in Frameworks */,
 				F0607B241CE56EED0029EE31 /* CoreTelephony.framework in Frameworks */,
 				F0607B221CE5690F0029EE31 /* jpush-ios-2.1.6.a in Frameworks */,
-				3905B791C80DF8AB78FDE1FC /* libPods-XiZhanApp.a in Frameworks */,
+				9BD07646BEBB48D36F1787A9 /* libPods-XiZhanApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		073DFD2B7A10B88992F80567 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1D5605D5BC043DB5427C2060 /* Pods-XiZhanApp.debug.xcconfig */,
+				15D31FFDB611C4BDBC732DF9 /* Pods-XiZhanApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		63AABC9602237B4FCE3BC932 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				F0607B321CE56F9D0029EE31 /* libz.tbd */,
 				F0607B231CE56EED0029EE31 /* CoreTelephony.framework */,
-				036F9B0E880F84484974823E /* libPods-XiZhanApp.a */,
+				5255C008A689B328196B5986 /* libPods-XiZhanApp.a */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		AF4DCE031F6E5741C14EB4F1 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				DF0159F75224AF0EBC63CC6E /* Pods-XiZhanApp.debug.xcconfig */,
-				7E80CB6122F442FBF8348774 /* Pods-XiZhanApp.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		F0088C3D1CE6BE8300AF6EAF /* LQPhotoPicker */ = {
@@ -565,7 +565,7 @@
 				F0F379D01CE07AD90047A469 /* XiZhanApp */,
 				F0F379CF1CE07AD90047A469 /* Products */,
 				63AABC9602237B4FCE3BC932 /* Frameworks */,
-				AF4DCE031F6E5741C14EB4F1 /* Pods */,
+				073DFD2B7A10B88992F80567 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -783,13 +783,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F0F379E51CE07AD90047A469 /* Build configuration list for PBXNativeTarget "XiZhanApp" */;
 			buildPhases = (
-				B6946796B781919981798F28 /* 📦 Check Pods Manifest.lock */,
+				A2C1DB27C372A6B447A36DD3 /* 📦 Check Pods Manifest.lock */,
 				F0F379CA1CE07AD90047A469 /* Sources */,
 				F0F379CB1CE07AD90047A469 /* Frameworks */,
 				F0F379CC1CE07AD90047A469 /* Resources */,
-				802DBE6CF6AD61FDE5703918 /* 📦 Embed Pods Frameworks */,
-				6DC48BC7CAA486BAB8E5F990 /* 📦 Copy Pods Resources */,
-				2BB041AA9DE42E83678433BE /* Embed Pods Frameworks */,
+				7519B20FA563B10C245AE6A7 /* 📦 Embed Pods Frameworks */,
+				F40DBFCF11A1B5208E616DA2 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -880,37 +879,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2BB041AA9DE42E83678433BE /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XiZhanApp/Pods-XiZhanApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		6DC48BC7CAA486BAB8E5F990 /* 📦 Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "📦 Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XiZhanApp/Pods-XiZhanApp-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		802DBE6CF6AD61FDE5703918 /* 📦 Embed Pods Frameworks */ = {
+		7519B20FA563B10C245AE6A7 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -925,7 +894,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XiZhanApp/Pods-XiZhanApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B6946796B781919981798F28 /* 📦 Check Pods Manifest.lock */ = {
+		A2C1DB27C372A6B447A36DD3 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -938,6 +907,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F40DBFCF11A1B5208E616DA2 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XiZhanApp/Pods-XiZhanApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1122,7 +1106,7 @@
 		};
 		F0F379E61CE07AD90047A469 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DF0159F75224AF0EBC63CC6E /* Pods-XiZhanApp.debug.xcconfig */;
+			baseConfigurationReference = 1D5605D5BC043DB5427C2060 /* Pods-XiZhanApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1144,7 +1128,7 @@
 		};
 		F0F379E71CE07AD90047A469 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7E80CB6122F442FBF8348774 /* Pods-XiZhanApp.release.xcconfig */;
+			baseConfigurationReference = 15D31FFDB611C4BDBC732DF9 /* Pods-XiZhanApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
