@@ -135,7 +135,7 @@ static NSString *cellIndentifer = @"msgType2";
                     }
                 }
             }
-            NSString *condition = !self.menuModel ? nil : [NSString stringWithFormat:@"msgtype = '%@'",self.menuModel.menuType];
+            NSString *condition = !self.menuModel ? nil : [NSString stringWithFormat:@"msgtype = '%@'",self.menuModel.menuTitle];
             _dataArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:condition page:1 orderBy:@"msgdate"]];
             [self.tableView reloadData];
             
@@ -179,7 +179,7 @@ static NSString *cellIndentifer = @"msgType2";
             }else {
                 [self.tableView.mj_footer endRefreshingWithNoMoreData];
             }
-            NSString *condition = !self.menuModel ? [NSString stringWithFormat:@"msgdate < '%ld'",lastMsgModel.msgdate] : [NSString stringWithFormat:@"msgdate < '%ld' and msgtype = '%@'",lastMsgModel.msgdate,self.menuModel.menuType];
+            NSString *condition = !self.menuModel ? [NSString stringWithFormat:@"msgdate < '%ld'",lastMsgModel.msgdate] : [NSString stringWithFormat:@"msgdate < '%ld' and msgtype = '%@'",lastMsgModel.msgdate,self.menuModel.menuTitle];
             NSArray *moreArray = [MessageModel getDataWithCondition:condition page:1 orderBy:@"msgdate"];
             [_dataArray addObjectsFromArray:moreArray];
             

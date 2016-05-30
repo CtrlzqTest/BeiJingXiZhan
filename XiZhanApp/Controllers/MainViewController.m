@@ -69,9 +69,9 @@ static NSString *collCellId = @"MainCell";
     
     [self removeNodataView];
     [MHNetworkManager getRequstWithURL:kMuenListAPI params:nil successBlock:^(id returnData) {
-        
-        if ([returnData[@"code"] isEqualToString:@"0"]) {
-            _dataArray = [MenuModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
+
+        if ([returnData[@"code"] integerValue] == 0) {
+            _dataArray = [MenuModel mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
         }else {
             [MBProgressHUD showError:@"获取列表失败" toView:self.view];
         }
@@ -146,7 +146,7 @@ static NSString *collCellId = @"MainCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MainCollCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collCellId forIndexPath:indexPath];
     MenuModel *model = _dataArray[indexPath.row];
-    cell.titleLabel.text = model.menuType;
+    cell.titleLabel.text = model.menuTitle;
     [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:nil];
     return cell;
 }
@@ -158,7 +158,7 @@ static NSString *collCellId = @"MainCell";
         case 0:
         {
             MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];
-            myInfoVC.msgType = model.menuType;
+            myInfoVC.msgType = model.menuTitle;
             myInfoVC.parentIdString = model.menuId;
             myInfoVC.menuModel = model;
             [self.navigationController pushViewController:myInfoVC animated:YES];
@@ -167,7 +167,7 @@ static NSString *collCellId = @"MainCell";
         case 1:
         {
             MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];
-            myInfoVC.msgType = model.menuType;
+            myInfoVC.msgType = model.menuTitle;
             myInfoVC.parentIdString = model.menuId;
             myInfoVC.menuModel = model;
             [self.navigationController pushViewController:myInfoVC animated:YES];
@@ -176,7 +176,7 @@ static NSString *collCellId = @"MainCell";
         case 2:
         {
             ServeInfoViewController *serveVC = [Utility getControllerWithStoryBoardId:ZQServeTabViewControllerId];
-            serveVC.msgType = model.menuType;
+            serveVC.msgType = model.menuTitle;
             serveVC.parentIdString = model.menuId;
             serveVC.menuModel = model;
             [self.navigationController pushViewController:serveVC animated:YES];

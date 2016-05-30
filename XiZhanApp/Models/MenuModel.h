@@ -11,7 +11,8 @@
 @interface MenuModel : ZQDatabaseModel
 
 @property(nonatomic,copy)NSString *menuId;
-@property(nonatomic,copy)NSString *menuType;
+@property(nonatomic,copy)NSString *menuTitle;
 @property(nonatomic,copy)NSString *imgUrl;
+@property(nonatomic,copy)NSString *alias;
 
 @end

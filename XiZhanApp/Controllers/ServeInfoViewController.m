@@ -137,7 +137,7 @@ static NSString *serveCellId = @"serveTabCellId";
                     }
                 }
             }
-            _dataArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@'",self.menuModel.menuType] page:1 orderBy:@"msgdate"]];
+            _dataArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@'",self.menuModel.menuTitle] page:1 orderBy:@"msgdate"]];
             [self.tableView reloadData];
         }else {
             // 请求失败
@@ -178,7 +178,7 @@ static NSString *serveCellId = @"serveTabCellId";
             }else {
                 [self.tableView.mj_footer endRefreshingWithNoMoreData];
             }
-            NSArray *moreArray = [MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgdate < '%ld' and msgtype = '%@'",lastMsgModel.msgdate,self.menuModel.menuType] page:1 orderBy:@"msgdate"];
+            NSArray *moreArray = [MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgdate < '%ld' and msgtype = '%@'",lastMsgModel.msgdate,self.menuModel.menuTitle] page:1 orderBy:@"msgdate"];
             [_dataArray addObjectsFromArray:moreArray];
             
             [self.tableView.mj_footer endRefreshing];

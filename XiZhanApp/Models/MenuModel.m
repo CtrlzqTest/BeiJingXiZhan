@@ -22,8 +22,9 @@
 {
     return @{
              @"menuId" : @"ID",
-             @"menuType" : @"Alias",
+             @"menuTitle" : @"NodeName",
              @"imgUrl" : @"ImageUrl",
+             @"alias" : @"Alias",
              };
 }
 
