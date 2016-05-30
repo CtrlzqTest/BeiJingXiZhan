@@ -181,13 +181,14 @@
     _isSkiptoVC = 1;
    // InformationDetailViewController *detailList = [[InformationDetailViewController alloc]init];
     MyInformationsViewController *detailList = [[MyInformationsViewController alloc] init];
-    UINavigationController * Nav = [[UINavigationController alloc]initWithRootViewController:detailList];
+//    UINavigationController * Nav = [[UINavigationController alloc]initWithRootViewController:detailList];
     
     detailList.isSkip = _isSkiptoVC;
     detailList.parentIdString = dict[@"parentId"];
     detailList.msgType = dict[@"msgType"];
     
-    [self.window.rootViewController presentViewController:Nav animated:YES completion:nil];
+    [self.mainNavi pushViewController:detailList animated:NO];
+//    [self.window.rootViewController presentViewController:Nav animated:YES completion:nil];
 }
 
 #pragma mark 跳转至控制台列表界面
@@ -195,11 +196,14 @@
 {
     _isSkiptoVC = 1;
     ServeInfoViewController *detailList = [Utility getControllerWithStoryBoardId:ZQServeTabViewControllerId];
-    UINavigationController * Nav = [[UINavigationController alloc]initWithRootViewController:detailList];
+//    UINavigationController * Nav = [[UINavigationController alloc]initWithRootViewController:detailList];
     detailList.isSkip = _isSkiptoVC;
     MenuModel *model = [MenuModel mj_objectWithKeyValues:dict];
     detailList.menuModel = model;
-    [self.window.rootViewController presentViewController:Nav animated:YES completion:nil];
+    detailList.parentIdString = dict[@"parentId"];
+    detailList.msgType = dict[@"msgType"];
+    [self.mainNavi pushViewController:detailList animated:NO];
+//    [self.window.rootViewController presentViewController:Nav animated:YES completion:nil];
     
 }
 - (void)applicationWillResignActive:(UIApplication *)application {

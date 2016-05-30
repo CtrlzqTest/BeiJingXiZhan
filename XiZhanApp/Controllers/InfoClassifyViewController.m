@@ -1,57 +1,61 @@
 //
-//  ServeInfoViewController.m
+//  InfoClassifyViewController.m
 //  XiZhanApp
 //
-//  Created by zhangqiang on 16/5/10.
+//  Created by zhangqiang on 16/5/27.
 //  Copyright © 2016年 zhangqiang. All rights reserved.
 //
 
-#import "ServeInfoViewController.h"
-#import "ServeTabCell.h"
-#import <MJRefresh.h>
-#import "SerVeDetailViewController.h"
+#import "InfoClassifyViewController.h"
+#import "UIViewController+AYCNavigationItem.h"
 #import "LoginViewController.h"
+#import "InformationDetailViewController.h"
+#import "MJRefresh.h"
 //#import "PublishInfoViewController.h"
-#import "PublishViewController.h"
 #import "MessageModel.h"
+#import "MsgType1TabCell.h"
+#import "PublishViewController.h"
 
-static NSString *serveCellId = @"serveTabCellId";
-@interface ServeInfoViewController ()<UITableViewDelegate,UITableViewDataSource,PublishViewControllerDelegate>
+static NSString *cellIndentifer = @"msgType2";
+@interface InfoClassifyViewController ()<UITableViewDelegate,UITableViewDataSource,PublishViewControllerDelegate>
 {
     NSInteger _page;
-    NSMutableArray *_dataArray;
     BOOL _shouldRefresh; // 是否需要刷新数据
+    NSMutableArray *_dataArray;
 }
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property(nonatomic,strong)UITableView *tableView;
+@property(nonatomic,strong)NSMutableArray *newsArray;
 
 @end
 
-@implementation ServeInfoViewController
+@implementation InfoClassifyViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     _page = 1;
+    [self initView];
     self.title = self.msgType;
+    //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addOtherInfo) name:ZQAddOtherInfoNotication object:nil];
     
-    [self setupViews];
-    [self getData];
-
-//    if (self.isSkip == 1) {
+    if (self.isSkip == 1) {
 //        [self.navigationController setNavigationBarHidden:NO animated:YES];
-//        [[NSNotificationCenter defaultCenter]postNotificationName:@"skip" object:nil];
-//       // [self requestData];
-//         _shouldRefresh = YES;
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"skip" object:nil];
+        _shouldRefresh = YES;
 //        [self.navigationController.navigationBar setGradientLayerStartColor:[UIColor colorWithRed:0.110 green:0.690 blue:0.859 alpha:1.000] endColor:[UIColor colorWithRed:0.067 green:0.388 blue:0.635 alpha:1.000]];
-//        __weak typeof(self) weakSelf = self;
-//        [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
-//            [weakSelf backMethod];
-//        }];
-//
-//    }
-    
-  
+        __weak typeof(self) weakSelf = self;
+        [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
+            
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }];
+    }
+    [self getData];
 }
+
+//-(void)backMethod
+//{
+//    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+//}
 
 #pragma mark -- PublishViewControllerDelegate
 // 成功发布消息之后，设置需要刷新
@@ -71,57 +75,50 @@ static NSString *serveCellId = @"serveTabCellId";
     [super viewDidDisappear:animated];
     _shouldRefresh = NO;
 }
+#pragma mark 添加消息后刷新列表
+//-(void)addOtherInfo
+//{
+//    [self requestData];
+//}
 
-- (void)setupViews {
-    
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+#pragma mark initMethod
+-(void)initView
+{
     // 返回按钮
     __weak typeof(self) weakSelf = self;
     [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
-    [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 40*ProportionWidth) title: self.msgType fontSize:17.0];
-    _dataArray = [NSMutableArray array];
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    // 注册cell
-    [self.tableView registerNib:[UINib nibWithNibName:@"ServeTabCell" bundle:nil] forCellReuseIdentifier:serveCellId];
     
-    // 下拉刷新
+    self.tableView = [[UITableView alloc]init];
+    self.tableView.frame = CGRectMake(0, 0, KWidth, KHeight);
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    [self.view addSubview:self.tableView];
+    // 注册cell
+    [self.tableView registerNib:[UINib nibWithNibName:@"MsgType1TabCell" bundle:nil] forCellReuseIdentifier:cellIndentifer];
+    
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self getData];
     }];
-//    [self.tableView.mj_header beginRefreshing];
-    // 上拉加载
+    //    [self.tableView.mj_header beginRefreshing];
+    
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
-//        [self requestDataWithRefreshType:RefreshTypePull];
         [self getMoreData];
     }];
     
-    self.tableView.tableFooterView = [[UIView alloc] init];
-}
-
--(void)backMethod
-{
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (IBAction)editAction:(id)sender {
-    
-    if (![User shareUser].isLogin) {
-        LoginViewController *loginVC = [Utility getControllerWithStoryBoardId:ZQLoginViewCotrollerId];
-        [self.navigationController pushViewController:loginVC animated:YES];
-    }else {
-      //  PublishInfoViewController *publishVC = [Utility getControllerWithStoryBoardId:ZQPublishInfoViewControllerId];
-       PublishViewController *publishVC = [[PublishViewController alloc]init];
-        publishVC.parentIdString = self.parentIdString;
-        publishVC.menuModel = self.menuModel;
-        publishVC.delegate = self;
-        [self.navigationController pushViewController:publishVC animated:YES];
-    }
 }
 
 - (void)getData {
     
-    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"parentId":self.menuModel.msgId} successBlock:^(id returnData) {
+    NSDictionary *dict = !self.menuModel ? nil : @{@"parentId":self.menuModel.msgId};
+    
+    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:dict successBlock:^(id returnData) {
         
         if ([returnData[@"message"] isEqualToString:@"success"]) {
             NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
@@ -133,13 +130,15 @@ static NSString *serveCellId = @"serveTabCellId";
                     NSArray *coutArr = [[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
                     if (coutArr.count <= 0) {
                         // 先添加到数组，同时保存到数据库
-//                        [_dataArray insertObject:model atIndex:0];
+                        // [_dataArray insertObject:model atIndex:0];
                         [model save];
                     }
                 }
             }
-            _dataArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@'",self.menuModel.msgType] page:1 orderBy:@"msgdate"]];
+            NSString *condition = !self.menuModel ? nil : [NSString stringWithFormat:@"msgtype = '%@'",self.menuModel.msgType];
+            _dataArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:condition page:1 orderBy:@"msgdate"]];
             [self.tableView reloadData];
+            
         }else {
             // 请求失败
         }
@@ -153,14 +152,15 @@ static NSString *serveCellId = @"serveTabCellId";
         [self.tableView.mj_header endRefreshing];
         
     } showHUD:YES];
-
+    
 }
 
 - (void)getMoreData {
     
     __block MessageModel *lastMsgModel = [_dataArray lastObject];
     NSString *lastMsgDate = [NSString stringWithFormat:@"%ld",lastMsgModel.msgdate];
-    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":@"0",@"msgDate":lastMsgDate,@"parentId":self.menuModel.msgId} successBlock:^(id returnData) {
+    NSString *parentId = !self.menuModel ? @"" : self.menuModel.msgId;
+    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":@"0",@"msgDate":lastMsgDate,@"parentId":parentId} successBlock:^(id returnData) {
         
         if ([returnData[@"message"] isEqualToString:@"success"]) {
             NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
@@ -179,7 +179,8 @@ static NSString *serveCellId = @"serveTabCellId";
             }else {
                 [self.tableView.mj_footer endRefreshingWithNoMoreData];
             }
-            NSArray *moreArray = [MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgdate < '%ld' and msgtype = '%@'",lastMsgModel.msgdate,self.menuModel.msgType] page:1 orderBy:@"msgdate"];
+            NSString *condition = !self.menuModel ? [NSString stringWithFormat:@"msgdate < '%ld'",lastMsgModel.msgdate] : [NSString stringWithFormat:@"msgdate < '%ld' and msgtype = '%@'",lastMsgModel.msgdate,self.menuModel.msgType];
+            NSArray *moreArray = [MessageModel getDataWithCondition:condition page:1 orderBy:@"msgdate"];
             [_dataArray addObjectsFromArray:moreArray];
             
             [self.tableView.mj_footer endRefreshing];
@@ -197,36 +198,43 @@ static NSString *serveCellId = @"serveTabCellId";
         [self.tableView.mj_header endRefreshing];
         
     } showHUD:YES];
-
     
 }
 
-- (void)requestMoreData {
+
+- (IBAction)editAction:(id)sender {
     
-    [self.tableView.mj_footer endRefreshing];
+    if (![User shareUser].isLogin) {
+        LoginViewController *loginVC = [Utility getControllerWithStoryBoardId:ZQLoginViewCotrollerId];
+        [self.navigationController pushViewController:loginVC animated:YES];
+    }else {
+        // PublishInfoViewController *publishVC = [Utility getControllerWithStoryBoardId:ZQPublishInfoViewControllerId];
+        PublishViewController *publishVC = [[PublishViewController alloc]init];
+        publishVC.parentIdString = self.parentIdString;
+        publishVC.menuModel = self.menuModel;
+        publishVC.delegate = self;
+        [self.navigationController pushViewController:publishVC animated:YES];
+    }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+#pragma mark listMethod
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60;
 }
-
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return cellHeight;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return _dataArray.count;
 }
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MsgType1TabCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifer forIndexPath:indexPath];
     MessageModel *model = _dataArray[indexPath.row];
-    ServeTabCell *cell = [tableView dequeueReusableCellWithIdentifier:serveCellId forIndexPath:indexPath];
     [cell writeDataWithModel:model];
     return cell;
+    
 }
+
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MessageModel *model = _dataArray[indexPath.row];
@@ -235,11 +243,21 @@ static NSString *serveCellId = @"serveTabCellId";
         [self.tableView reloadData];
         [model updateWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
     }
-
-   // SerVeDetailViewController *vc = [Utility getControllerWithStoryBoardId:ZQServeDetailViewControllerId];
-    SerVeDetailViewController *vc = [[SerVeDetailViewController alloc]init];
+    
+    InformationDetailViewController *vc = [[InformationDetailViewController alloc]init];
     vc.model = model;
     [self.navigationController pushViewController:vc animated:YES];
-   }
+}
+
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
 
 @end
