@@ -146,7 +146,7 @@ static NSString *collCellId = @"MainCell";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     MainCollCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collCellId forIndexPath:indexPath];
     MenuModel *model = _dataArray[indexPath.row];
-    cell.titleLabel.text = model.msgType;
+    cell.titleLabel.text = model.menuType;
     [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:nil];
     return cell;
 }
@@ -158,8 +158,8 @@ static NSString *collCellId = @"MainCell";
         case 0:
         {
             MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];
-            myInfoVC.msgType = model.msgType;
-            myInfoVC.parentIdString = model.msgId;
+            myInfoVC.msgType = model.menuType;
+            myInfoVC.parentIdString = model.menuId;
             myInfoVC.menuModel = model;
             [self.navigationController pushViewController:myInfoVC animated:YES];
         }
@@ -167,8 +167,8 @@ static NSString *collCellId = @"MainCell";
         case 1:
         {
             MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];
-            myInfoVC.msgType = model.msgType;
-            myInfoVC.parentIdString = model.msgId;
+            myInfoVC.msgType = model.menuType;
+            myInfoVC.parentIdString = model.menuId;
             myInfoVC.menuModel = model;
             [self.navigationController pushViewController:myInfoVC animated:YES];
         }
@@ -176,8 +176,8 @@ static NSString *collCellId = @"MainCell";
         case 2:
         {
             ServeInfoViewController *serveVC = [Utility getControllerWithStoryBoardId:ZQServeTabViewControllerId];
-            serveVC.msgType = model.msgType;
-            serveVC.parentIdString = model.msgId;
+            serveVC.msgType = model.menuType;
+            serveVC.parentIdString = model.menuId;
             serveVC.menuModel = model;
             [self.navigationController pushViewController:serveVC animated:YES];
         }

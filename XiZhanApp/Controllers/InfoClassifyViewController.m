@@ -116,7 +116,7 @@ static NSString *cellIndentifer = @"msgType2";
 
 - (void)getData {
     
-    NSDictionary *dict = !self.menuModel ? nil : @{@"parentId":self.menuModel.msgId};
+    NSDictionary *dict = !self.menuModel ? nil : @{@"parentId":self.menuModel.menuId};
     
     [MHNetworkManager getRequstWithURL:kAllMessageAPI params:dict successBlock:^(id returnData) {
         
@@ -135,7 +135,7 @@ static NSString *cellIndentifer = @"msgType2";
                     }
                 }
             }
-            NSString *condition = !self.menuModel ? nil : [NSString stringWithFormat:@"msgtype = '%@'",self.menuModel.msgType];
+            NSString *condition = !self.menuModel ? nil : [NSString stringWithFormat:@"msgtype = '%@'",self.menuModel.menuType];
             _dataArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:condition page:1 orderBy:@"msgdate"]];
             [self.tableView reloadData];
             
@@ -159,7 +159,7 @@ static NSString *cellIndentifer = @"msgType2";
     
     __block MessageModel *lastMsgModel = [_dataArray lastObject];
     NSString *lastMsgDate = [NSString stringWithFormat:@"%ld",lastMsgModel.msgdate];
-    NSString *parentId = !self.menuModel ? @"" : self.menuModel.msgId;
+    NSString *parentId = !self.menuModel ? @"" : self.menuModel.menuId;
     [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":@"0",@"msgDate":lastMsgDate,@"parentId":parentId} successBlock:^(id returnData) {
         
         if ([returnData[@"message"] isEqualToString:@"success"]) {
@@ -179,7 +179,7 @@ static NSString *cellIndentifer = @"msgType2";
             }else {
                 [self.tableView.mj_footer endRefreshingWithNoMoreData];
             }
-            NSString *condition = !self.menuModel ? [NSString stringWithFormat:@"msgdate < '%ld'",lastMsgModel.msgdate] : [NSString stringWithFormat:@"msgdate < '%ld' and msgtype = '%@'",lastMsgModel.msgdate,self.menuModel.msgType];
+            NSString *condition = !self.menuModel ? [NSString stringWithFormat:@"msgdate < '%ld'",lastMsgModel.msgdate] : [NSString stringWithFormat:@"msgdate < '%ld' and msgtype = '%@'",lastMsgModel.msgdate,self.menuModel.menuType];
             NSArray *moreArray = [MessageModel getDataWithCondition:condition page:1 orderBy:@"msgdate"];
             [_dataArray addObjectsFromArray:moreArray];
             

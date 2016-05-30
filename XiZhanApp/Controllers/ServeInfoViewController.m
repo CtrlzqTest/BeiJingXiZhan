@@ -120,7 +120,7 @@ static NSString *serveCellId = @"serveTabCellId";
 
 - (void)getData {
     
-    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"parentId":self.menuModel.msgId} successBlock:^(id returnData) {
+    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"parentId":self.menuModel.menuId} successBlock:^(id returnData) {
         
         if ([returnData[@"message"] isEqualToString:@"success"]) {
             NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
@@ -137,7 +137,7 @@ static NSString *serveCellId = @"serveTabCellId";
                     }
                 }
             }
-            _dataArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@'",self.menuModel.msgType] page:1 orderBy:@"msgdate"]];
+            _dataArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgtype = '%@'",self.menuModel.menuType] page:1 orderBy:@"msgdate"]];
             [self.tableView reloadData];
         }else {
             // 请求失败
@@ -159,7 +159,7 @@ static NSString *serveCellId = @"serveTabCellId";
     
     __block MessageModel *lastMsgModel = [_dataArray lastObject];
     NSString *lastMsgDate = [NSString stringWithFormat:@"%ld",lastMsgModel.msgdate];
-    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":@"0",@"msgDate":lastMsgDate,@"parentId":self.menuModel.msgId} successBlock:^(id returnData) {
+    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":@"0",@"msgDate":lastMsgDate,@"parentId":self.menuModel.menuId} successBlock:^(id returnData) {
         
         if ([returnData[@"message"] isEqualToString:@"success"]) {
             NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
@@ -178,7 +178,7 @@ static NSString *serveCellId = @"serveTabCellId";
             }else {
                 [self.tableView.mj_footer endRefreshingWithNoMoreData];
             }
-            NSArray *moreArray = [MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgdate < '%ld' and msgtype = '%@'",lastMsgModel.msgdate,self.menuModel.msgType] page:1 orderBy:@"msgdate"];
+            NSArray *moreArray = [MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgdate < '%ld' and msgtype = '%@'",lastMsgModel.msgdate,self.menuModel.menuType] page:1 orderBy:@"msgdate"];
             [_dataArray addObjectsFromArray:moreArray];
             
             [self.tableView.mj_footer endRefreshing];
