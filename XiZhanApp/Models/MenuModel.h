@@ -10,8 +10,8 @@
 
 @interface MenuModel : ZQDatabaseModel
 
-@property(nonatomic,copy)NSString *msgId;
-@property(nonatomic,copy)NSString *msgType;
+@property(nonatomic,copy)NSString *menuId;
+@property(nonatomic,copy)NSString *menuType;
 @property(nonatomic,copy)NSString *imgUrl;
 
 @end
