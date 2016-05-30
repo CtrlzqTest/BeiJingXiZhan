@@ -50,7 +50,6 @@ static NSString *serveCellId = @"serveTabCellId";
 //
 //    }
     
-  
 }
 
 #pragma mark -- PublishViewControllerDelegate
