@@ -70,7 +70,7 @@ static NSString *collCellId = @"MainCell";
     [self removeNodataView];
     [MHNetworkManager getRequstWithURL:kMuenListAPI params:nil successBlock:^(id returnData) {
         
-        if ([returnData[@"message"] isEqualToString:@"success"]) {
+        if ([returnData[@"code"] isEqualToString:@"0"]) {
             _dataArray = [MenuModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
         }else {
             [MBProgressHUD showError:@"获取列表失败" toView:self.view];

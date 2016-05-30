@@ -21,7 +21,9 @@
 + (NSDictionary *)replacedKeyFromPropertyName
 {
     return @{
-             @"msgId" : @"id",
+             @"menuId" : @"ID",
+             @"menuType" : @"Alias",
+             @"imgUrl" : @"ImageUrl",
              };
 }
 

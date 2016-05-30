@@ -11,13 +11,15 @@
 
 //#define BaseAPI                 @"http://192.168.16.147:8080/bjws/"  // 龙龙
 
+#define BaseAPI                 @"http://192.168.16.139:8080/bjws/"  // 龙龙
+
 //#define BaseAPI                 @"http://222.240.172.197:8081/api/"  // 西站测试
 
 //#define BaseAPI                 @"http://124.207.156.101:80/bjws/"  // 公司服务器
 
 //#define BaseAPI                 @"http://192.168.16.124:8080/znweb/"    // 赵楠
 
-#define BaseAPI                 @"http://124.207.156.101:80/bjws/"    // 公网
+//#define BaseAPI                 @"http://124.207.156.101:80/bjws/"    // 公网
 
 #define kgetCodeAPI             @"app.user/getSmsCode"      // 获取验证码
 
@@ -27,7 +29,9 @@
 
 #define kAppopinion            @"app.opinion/add" //意见反馈
 
-#define kMuenListAPI           @"app.menu/getMenu" //首页菜单
+//#define kMuenListAPI           @"app.menu/getMenu" //首页菜单
+
+#define kMuenListAPI           @"api/List/GetNodesByParentID" //首页菜单
 
 #define kAllMessageAPI         @"app.menu/list" // 所有消息列表
 
