@@ -7,7 +7,7 @@
 //
 
 #import "MsgType1TabCell.h"
-#import "MessageModel.h"
+#import "MenuModel.h"
 
 @implementation MsgType1TabCell
 
@@ -17,14 +17,9 @@
     
 }
 
-- (void)writeDataWithModel:(MessageModel *)msgModel {
+- (void)writeDataWithModel:(MenuModel *)msgModel {
     
-    self.titleLabel.text = msgModel.msgtitle;
-    if (msgModel.isread) {
-        self.pointImgView.hidden = YES;
-    }else {
-        self.pointImgView.hidden = NO;
-    }
+    self.titleLabel.text = msgModel.menuTitle;
     
 }
 

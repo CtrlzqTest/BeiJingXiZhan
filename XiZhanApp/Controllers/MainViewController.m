@@ -16,6 +16,7 @@
 #import "MenuModel.h"
 #import <MJRefresh.h>
 #import <UIImageView+WebCache.h>
+#import "InfoClassifyViewController.h"
 
 static NSString *collCellId = @"MainCell";
 @interface MainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -157,27 +158,25 @@ static NSString *collCellId = @"MainCell";
     switch (indexPath.row) {
         case 0:
         {
-            MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];
-            myInfoVC.msgType = model.menuTitle;
-            myInfoVC.parentIdString = model.menuId;
+            InfoClassifyViewController *myInfoVC = [[InfoClassifyViewController alloc] init];
             myInfoVC.menuModel = model;
             [self.navigationController pushViewController:myInfoVC animated:YES];
         }
             break;
         case 1:
         {
-            MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];
-            myInfoVC.msgType = model.menuTitle;
-            myInfoVC.parentIdString = model.menuId;
+//            MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];
+            InfoClassifyViewController *myInfoVC = [[InfoClassifyViewController alloc] init];
+//            myInfoVC.msgType = model.menuTitle;
+//            myInfoVC.parentIdString = model.menuId;
             myInfoVC.menuModel = model;
             [self.navigationController pushViewController:myInfoVC animated:YES];
         }
             break;
         case 2:
         {
-            ServeInfoViewController *serveVC = [Utility getControllerWithStoryBoardId:ZQServeTabViewControllerId];
-            serveVC.msgType = model.menuTitle;
-            serveVC.parentIdString = model.menuId;
+//            ServeInfoViewController *serveVC = [Utility getControllerWithStoryBoardId:ZQServeTabViewControllerId];
+            InfoClassifyViewController *serveVC = [[InfoClassifyViewController alloc] init];
             serveVC.menuModel = model;
             [self.navigationController pushViewController:serveVC animated:YES];
         }

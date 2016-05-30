@@ -27,11 +27,13 @@
 
 #define kRegisteAPI             @"app.user/register"         //注册
 
-#define kAppopinion            @"app.opinion/add" //意见反馈
+#define kAppopinion            @"api/Add/CommitFeedback" //意见反馈
 
 //#define kMuenListAPI           @"app.menu/getMenu" //首页菜单
 
 #define kMuenListAPI           @"api/List/GetNodesByParentID" //首页菜单
+
+//#define kClassifyListAPI           @"api/List/GetNodesByParentID" //消息分类列表
 
 #define kAllMessageAPI         @"app.menu/list" // 所有消息列表
 

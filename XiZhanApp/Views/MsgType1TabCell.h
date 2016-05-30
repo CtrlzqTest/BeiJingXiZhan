@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class MessageModel;
+@class MenuModel;
 @interface MsgType1TabCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *pointImgView;
 
-- (void)writeDataWithModel:(MessageModel *)msgModel;
+- (void)writeDataWithModel:(MenuModel *)msgModel;
 
 @end

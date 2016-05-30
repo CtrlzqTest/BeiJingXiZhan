@@ -11,9 +11,6 @@
 
 @interface InfoClassifyViewController : BaseViewController
 
-@property (nonatomic,copy)NSString *msgType;
-@property (nonatomic,copy)NSString *parentIdString;
 @property(nonatomic,strong)MenuModel *menuModel;
-@property(nonatomic,assign)NSInteger isSkip;
 
 @end

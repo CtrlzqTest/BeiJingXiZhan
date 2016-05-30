@@ -35,7 +35,7 @@ static NSString *cellIndentifer = @"msgType1";
     
     _page = 1;
     [self initView];
-    self.title = self.msgType;
+    self.title = self.menuModel.menuTitle;
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addOtherInfo) name:ZQAddOtherInfoNotication object:nil];
     
 //    if (self.isSkip == 1) {
