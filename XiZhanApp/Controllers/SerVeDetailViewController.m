@@ -51,7 +51,12 @@ static NSString *indentify = @"proCellX";
     
     self.imageArray = [self.model.imgurl componentsSeparatedByString:@","];
     self.view.backgroundColor = [UIColor whiteColor];
-        [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 40*ProportionWidth) title:@"详情" fontSize:17.0];
+    __weak typeof(self) weakSelf = self;
+    [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    }];
+    
+    [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 40*ProportionWidth) title:@"详情" fontSize:17.0];
     
     self.stringOftext = self.model.msgtitle;
     self.stringOftext = [self.stringOftext stringByAppendingString:@"  "];
@@ -172,7 +177,8 @@ static NSString *indentify = @"proCellX";
         CGRect rect = [self.myCollectionV convertRect:cell.frame toView:self.view];
         if (rect.origin.y <= 250) {
             NSInteger row = index - 3;
-            if (row>=0) {
+            if (row>=0)
+            {
                 [self.myCollectionV scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:row inSection:0] atScrollPosition:UICollectionViewScrollPositionTop animated:NO];
             }
         }

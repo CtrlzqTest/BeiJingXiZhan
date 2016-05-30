@@ -39,23 +39,23 @@ static NSString *cellIndentifer = @"msgType2";
     //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addOtherInfo) name:ZQAddOtherInfoNotication object:nil];
     
     if (self.isSkip == 1) {
-        [self.navigationController setNavigationBarHidden:NO animated:YES];
+//        [self.navigationController setNavigationBarHidden:NO animated:YES];
         [[NSNotificationCenter defaultCenter]postNotificationName:@"skip" object:nil];
         _shouldRefresh = YES;
-        [self.navigationController.navigationBar setGradientLayerStartColor:[UIColor colorWithRed:0.110 green:0.690 blue:0.859 alpha:1.000] endColor:[UIColor colorWithRed:0.067 green:0.388 blue:0.635 alpha:1.000]];
+//        [self.navigationController.navigationBar setGradientLayerStartColor:[UIColor colorWithRed:0.110 green:0.690 blue:0.859 alpha:1.000] endColor:[UIColor colorWithRed:0.067 green:0.388 blue:0.635 alpha:1.000]];
         __weak typeof(self) weakSelf = self;
         [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
             
-            [weakSelf backMethod];
+            [weakSelf.navigationController popViewControllerAnimated:YES];
         }];
     }
     [self getData];
 }
 
--(void)backMethod
-{
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-}
+//-(void)backMethod
+//{
+//    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+//}
 
 #pragma mark -- PublishViewControllerDelegate
 // 成功发布消息之后，设置需要刷新
