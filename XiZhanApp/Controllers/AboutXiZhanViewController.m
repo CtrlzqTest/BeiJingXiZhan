@@ -50,8 +50,10 @@
     [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 50*ProportionWidth)title:@"关于我们" fontSize:17.0];
     _web = [[UIWebView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     _web.delegate = self;
+    
     [self.view addSubview:_web];
-    [_web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@""]]];
+    NSString *strUrl = [BaseAPI stringByAppendingString:kAboutUs];
+    [_web loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:strUrl]]];
 }
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {

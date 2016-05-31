@@ -39,7 +39,9 @@
 
 #define kMenuAdd               @"app.menu/add"   //添加意见
 
-#define kMianzeAPI    @"disclaimer.html"
+#define kMianzeAPI    @"disclaimer.html"//免责申明
+
+#define kAboutUs      @"aboutus.html"//关于我们
 //   常量
 /**************************************************************************************/
 
