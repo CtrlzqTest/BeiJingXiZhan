@@ -13,11 +13,10 @@
 #import "MJRefresh.h"
 //#import "PublishInfoViewController.h"
 #import "MessageModel.h"
-#import "MsgType1TabCell.h"
+#import "MenuType2TabCell.h"
 #import "PublishViewController.h"
 #import "MyInformationsViewController.h"
 
-static NSString *cellIndentifer = @"msgType1";
 @interface InfoClassifyViewController ()<UITableViewDelegate,UITableViewDataSource,PublishViewControllerDelegate>
 {
     NSInteger _page;
@@ -88,7 +87,7 @@ static NSString *cellIndentifer = @"msgType1";
     self.tableView.delegate = self;
     [self.view addSubview:self.tableView];
     // 注册cell
-    [self.tableView registerNib:[UINib nibWithNibName:@"MsgType1TabCell" bundle:nil] forCellReuseIdentifier:cellIndentifer];
+    [self.tableView registerNib:[UINib nibWithNibName:@"MenuType2TabCell" bundle:nil] forCellReuseIdentifier:cellId];
     
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self getData];
@@ -151,11 +150,10 @@ static NSString *cellIndentifer = @"msgType1";
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MsgType1TabCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifer forIndexPath:indexPath];
+    MenuType2TabCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
     MenuModel *model = _dataArray[indexPath.row];
     [cell writeDataWithModel:model];
     return cell;
-    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

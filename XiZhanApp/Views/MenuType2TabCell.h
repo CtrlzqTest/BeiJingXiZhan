@@ -1,20 +1,26 @@
 //
-//  MsgType1TabCell.h
+//  MenuType2TabCell.h
 //  XiZhanApp
 //
-//  Created by zhangqiang on 16/5/14.
+//  Created by zhangqiang on 16/5/31.
 //  Copyright © 2016年 zhangqiang. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@class MessageModel;
-@interface MsgType1TabCell : UITableViewCell
+@class MenuModel;
+static NSString *cellId = @"menuType2";
+
+@interface MenuType2TabCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *pointImgView;
 
-- (void)writeDataWithModel:(MessageModel *)msgModel;
-
+/**
+ *  赋值
+ *
+ *  @param msgModel MenuModel description
+ */
+- (void)writeDataWithModel:(MenuModel *)menuModel;
 @end
