@@ -48,6 +48,7 @@
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
     [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 50*ProportionWidth)title:@"关于我们" fontSize:17.0];
+    self.view.backgroundColor = [UIColor whiteColor];
     _web = [[UIWebView alloc]initWithFrame:[UIScreen mainScreen].bounds];
     _web.delegate = self;
     
