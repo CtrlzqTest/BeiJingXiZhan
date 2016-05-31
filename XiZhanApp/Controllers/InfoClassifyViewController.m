@@ -94,6 +94,7 @@ static NSString *cellIndentifer = @"msgType1";
         [self getData];
     }];
     [self.tableView.mj_header beginRefreshing];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
 }
 

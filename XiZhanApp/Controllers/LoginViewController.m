@@ -69,6 +69,14 @@
     
 }
 
+// 忘记密码
+- (IBAction)resetPwdAction:(id)sender {
+    
+    
+    
+}
+
+
 // 同意免责
 - (IBAction)agreeAction:(id)sender {
     
