@@ -34,11 +34,7 @@ static User *user = nil;
 + (NSDictionary *)replacedKeyFromPropertyName
 {
     return @{
-             @"USER_ID" : @"id",
-             @"NAME":@"name",
-             @"USERNAME":@"nickname",
-             @"CREATE_TIME":@"createTime",
-             @"TEL":@"tel",
+             @"userId" : @"id",
              };
 }
 @end

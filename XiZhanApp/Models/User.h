@@ -10,14 +10,11 @@
 
 @interface User : NSObject
 
-@property(nonatomic,copy)NSString *NAME;
-@property(nonatomic,copy)NSString *PASSWORD;
-@property(nonatomic,copy)NSString *SEX;
-@property(nonatomic,copy)NSString *USERNAME;
-@property(nonatomic,copy)NSString *LAST_LOGIN;
-@property(nonatomic,copy)NSString *USER_ID;
-@property(nonatomic,copy)NSString *CREATE_TIME;
-@property(nonatomic,copy)NSString *TEL;
+@property(nonatomic,copy)NSString *name;
+@property(nonatomic,copy)NSString *pwd;
+@property(nonatomic,copy)NSString *userId;
+@property(nonatomic,copy)NSString *createTime;
+@property(nonatomic,copy)NSString *tel;
 @property (nonatomic,assign)BOOL isLogin;
 
 + (User *)shareUser;

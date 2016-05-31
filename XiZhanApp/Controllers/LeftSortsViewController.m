@@ -16,6 +16,7 @@
 #import "AboutXiZhanViewController.h"
 #import "LeftSortsTabCell.h"
 #import "MessageModel.h"
+#import "JPUSHService.h"
 
 static NSString *leftSortsCellId = @"leftSortsCellId";
 @interface LeftSortsViewController ()<UITableViewDelegate,UITableViewDataSource,UIAlertViewDelegate>
@@ -108,6 +109,8 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
 }
 
 - (void)didLoginAction {
+    
+    [JPUSHService setTags:nil alias:[User shareUser].tel callbackSelector:@selector(callBackAction:) object:self];
     _dataArray[0] = @"已登录";
     [_dataArray addObject:@"退出登录"];
     [self requestData];
@@ -115,11 +118,18 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
 }
 
 - (void)didLogoutAction {
+    
+    [JPUSHService setAlias:@"" callbackSelector:@selector(callBackAction:) object:nil];
     _dataArray[0] = @"登录/注册";
     [_dataArray removeLastObject];
     [Utility saveMyMsgReadState:NO];
     [[NSNotificationCenter defaultCenter] postNotificationName:ZQReadStateDidChangeNotication object:nil];
     [self.tableview reloadData];
+}
+
+// 极光设置单推
+- (void)callBackAction:(id )sender {
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

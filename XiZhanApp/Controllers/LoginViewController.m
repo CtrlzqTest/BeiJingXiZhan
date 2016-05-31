@@ -108,18 +108,21 @@
 //    NSString *pwd = [Utility md5:self.passWordLabel.text];
     [MHNetworkManager postReqeustWithURL:kLoginAPI params:@{@"tel":self.userNameLabel.text,@"password":pwd} successBlock:^(id returnData) {
         
-        [User shareUser].isLogin = YES;
-        if (weakSelf.autoLoginSwitch.selected) {
-            [Utility setLoginStates:YES];
+        if ([returnData[@"message"] isEqualToString:@"success"]) {
+            
+            [Utility saveUserInfo:returnData[@"user"]];
+            [User shareUser].isLogin = YES;
+            if (weakSelf.autoLoginSwitch.selected) {
+                [Utility setLoginStates:YES];
+            }
+            [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLoginNotication object:nil];
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }else {
+            [MBProgressHUD showError:@"登录失败" toView:nil];
         }
-        [Utility saveUserInfo:returnData[@"user"]];
-        
-        NSLog(@"%@",[Utility getUserInfoFromLocal][@"tel"]) ; 
-        [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLoginNotication object:nil];
-        [weakSelf.navigationController popViewControllerAnimated:YES];
         
     } failureBlock:^(NSError *error) {
-        
+        [MBProgressHUD showError:@"服务器异常" toView:nil];
     } showHUD:YES];
 }
 
