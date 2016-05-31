@@ -56,6 +56,15 @@
 +(BOOL )isLogin;
 
 /**
+ *  MD5加密
+ *
+ *  @param str 加密字符串
+ *
+ *  @return 加密后
+ */
++ (NSString *) md5:(NSString *)str;
+
+/**
  *  版本检测
  *
  *  @param versionCheckBlock 是否有新版本

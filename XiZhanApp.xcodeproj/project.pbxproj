@@ -92,12 +92,8 @@
 		F0F37A081CE07B280047A469 /* BaseNaviViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F379F01CE07B280047A469 /* BaseNaviViewController.m */; };
 		F0F37A091CE07B280047A469 /* BaseTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F379F21CE07B280047A469 /* BaseTabBarViewController.m */; };
 		F0F37A0A1CE07B280047A469 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F379F41CE07B280047A469 /* BaseViewController.m */; };
-		F0F37A0B1CE07B280047A469 /* .a in Resources */ = {isa = PBXBuildFile; fileRef = F0F379F71CE07B280047A469 /* .a */; };
-		F0F37A0C1CE07B280047A469 /* .a in Resources */ = {isa = PBXBuildFile; fileRef = F0F379F91CE07B280047A469 /* .a */; };
 		F0F37A0D1CE07B280047A469 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F379FC1CE07B280047A469 /* User.m */; };
 		F0F37A0E1CE07B280047A469 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F37A011CE07B280047A469 /* Utility.m */; };
-		F0F37A0F1CE07B280047A469 /* .a in Resources */ = {isa = PBXBuildFile; fileRef = F0F37A031CE07B280047A469 /* .a */; };
-		F0F37A101CE07B280047A469 /* .a in Resources */ = {isa = PBXBuildFile; fileRef = F0F37A051CE07B280047A469 /* .a */; };
 		F0F37A141CE084BB0047A469 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F37A131CE084BB0047A469 /* MainViewController.m */; };
 		F0F37A1D1CE088390047A469 /* LeftSlideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F37A1A1CE088390047A469 /* LeftSlideViewController.m */; };
 		F0F37A1E1CE088390047A469 /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F37A1C1CE088390047A469 /* UIView_extra.m */; };
@@ -259,15 +255,11 @@
 		F0F379F21CE07B280047A469 /* BaseTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTabBarViewController.m; sourceTree = "<group>"; };
 		F0F379F31CE07B280047A469 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		F0F379F41CE07B280047A469 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		F0F379F71CE07B280047A469 /* .a */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .a; sourceTree = "<group>"; };
-		F0F379F91CE07B280047A469 /* .a */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .a; sourceTree = "<group>"; };
 		F0F379FB1CE07B280047A469 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		F0F379FC1CE07B280047A469 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		F0F379FD1CE07B280047A469 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		F0F37A001CE07B280047A469 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		F0F37A011CE07B280047A469 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
-		F0F37A031CE07B280047A469 /* .a */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .a; sourceTree = "<group>"; };
-		F0F37A051CE07B280047A469 /* .a */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .a; sourceTree = "<group>"; };
 		F0F37A121CE084BB0047A469 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		F0F37A131CE084BB0047A469 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		F0F37A191CE088390047A469 /* LeftSlideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftSlideViewController.h; sourceTree = "<group>"; };
@@ -657,7 +649,6 @@
 			isa = PBXGroup;
 			children = (
 				F0607B371CE5B6650029EE31 /* 数据库 */,
-				F0F379F71CE07B280047A469 /* .a */,
 			);
 			path = DataStorage;
 			sourceTree = "<group>";
@@ -670,7 +661,6 @@
 				F0C4AAFC1CE2E3520067E986 /* MBProgressHUD+Add.m */,
 				F0E396A81CE1858700D4137E /* UIView+ZQExtention.h */,
 				F0E396A91CE1858700D4137E /* UIView+ZQExtention.m */,
-				F0F379F91CE07B280047A469 /* .a */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -713,7 +703,6 @@
 				F0607B1F1CE5690F0029EE31 /* jPush */,
 				F0B664CA1CE191300033C8CF /* AcyButton */,
 				F0F37A181CE088390047A469 /* LeftSlideViewController */,
-				F0F37A031CE07B280047A469 /* .a */,
 			);
 			path = Venders;
 			sourceTree = "<group>";
@@ -730,7 +719,6 @@
 				F0FA99281CE2D0460078C74B /* LeftSortsTabCell.xib */,
 				F0E396D31CE1EB5200D4137E /* ServeViews(服务台类) */,
 				F0E396B11CE18F3400D4137E /* MainViews(首页) */,
-				F0F37A051CE07B280047A469 /* .a */,
 				F0DC51551CE84CB400CE29AD /* ImgCell.h */,
 				F0DC51561CE84CB400CE29AD /* ImgCell.m */,
 				F0DC51571CE84CB400CE29AD /* ImgCell.xib */,
@@ -857,18 +845,14 @@
 				F0088C821CE6BE8300AF6EAF /* ico_check_select.png in Resources */,
 				F0088C831CE6BE8300AF6EAF /* ico_check_select@2x.png in Resources */,
 				F0088C7C1CE6BE8300AF6EAF /* close.png in Resources */,
-				F0F37A0C1CE07B280047A469 /* .a in Resources */,
 				F0088C871CE6BE8300AF6EAF /* plus@3x.png in Resources */,
 				F0FA992A1CE2D0460078C74B /* LeftSortsTabCell.xib in Resources */,
 				F0C4AAFD1CE2E3520067E986 /* MBProgressHUD.bundle in Resources */,
-				F0F37A0F1CE07B280047A469 /* .a in Resources */,
 				F0088C851CE6BE8300AF6EAF /* plus.png in Resources */,
-				F0F37A101CE07B280047A469 /* .a in Resources */,
 				F0F379E11CE07AD90047A469 /* LaunchScreen.storyboard in Resources */,
 				F00007E71CF6CAA100479EFB /* about_info.png in Resources */,
 				F0DC51591CE84CB400CE29AD /* ImgCell.xib in Resources */,
 				F0088C7F1CE6BE8300AF6EAF /* ico_check_nomal.png in Resources */,
-				F0F37A0B1CE07B280047A469 /* .a in Resources */,
 				F0C4AB081CE3194B0067E986 /* ZQPhotoViewCell.xib in Resources */,
 				F0088C941CE6BE8300AF6EAF /* MImaCell.xib in Resources */,
 				F0E396D81CE1EB8C00D4137E /* ServeTabCell.xib in Resources */,

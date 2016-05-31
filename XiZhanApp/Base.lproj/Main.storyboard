@@ -386,7 +386,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YKH-3x-4wb">
                                 <rect key="frame" x="50" y="160" width="275" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="自动登录" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6D-Zt-HeU">
                                 <rect key="frame" x="221" y="220" width="69" height="30"/>
@@ -559,7 +559,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jG0-32-G06">
                                 <rect key="frame" x="50" y="165" width="275" height="50"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pzF-6g-ai9">
                                 <rect key="frame" x="50" y="230" width="121.5" height="50"/>
@@ -651,7 +651,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XFI-Wj-wwq">
                                 <rect key="frame" x="50" y="155" width="275" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BXY-Aa-OHH">
                                 <rect key="frame" x="70" y="280" width="30" height="30"/>
@@ -693,9 +693,10 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x54-3f-pfb">
                                 <rect key="frame" x="181" y="210" width="144" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="获取验证码">
+                                <state key="normal" title="获取验证码" backgroundImage="login_select">
                                     <color key="titleColor" red="0.48627450979999998" green="0.6705882353" blue="0.80784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <state key="highlighted" backgroundImage="login_unSelect"/>
                                 <connections>
                                     <action selector="getCodeAction:" destination="Rfi-SK-JHA" eventType="touchUpInside" id="f7M-dw-Yn4"/>
                                 </connections>

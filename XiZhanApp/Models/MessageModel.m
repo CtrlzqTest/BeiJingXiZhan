@@ -41,13 +41,13 @@ static MessageModel *testModel = nil;
 + (NSDictionary *)replacedKeyFromPropertyName
 {
     return @{
-             @"msgid" : @"id",
-             @"msgtitle" : @"msgTitle",
-             @"msgdate" : @"msgDate",
-             @"msgcontent" : @"msgContent",
-             @"msgtype" : @"msgType",
+             @"msgid" : @"ContentID",
+             @"msgtitle" : @"title",
+             @"msgdate" : @"CreateTime",
+             @"msgcontent" : @"Content",
+             @"msgtype" : @"NodeID",
              @"isread" : @"isRead",
-             @"imgurl":@"imgUrl"
+             @"imgurl":@"ImageUrl"
              };
 }
 
