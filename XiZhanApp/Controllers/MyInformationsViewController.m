@@ -119,10 +119,11 @@ static NSString *cellIndentifer = @"msgType1";
     
 //    NSDictionary *dict = !self.menuModel ? nil : @{@"parentId":self.menuModel.menuId};
     NSString *nodeId = !self.menuModel ? @"" : self.menuModel.menuId;
-    [MHNetworkManager getRequstWithURL:kMessageListAPI params:@{@"nodeid":nodeId,@"pageIndex":@"0",@"pageSize":@"15"} successBlock:^(id returnData) {
+    NSString *pageIndex = [NSString stringWithFormat:@"%ld",_page];
+    [MHNetworkManager getRequstWithURL:kMessageListAPI params:@{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15"} successBlock:^(id returnData) {
         
         if ([returnData[@"code"] integerValue] == 0) {
-            NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
+            NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
             if (resultArray1.count > 0) {
                 
                 for (MessageModel *model in resultArray1) {
@@ -136,7 +137,7 @@ static NSString *cellIndentifer = @"msgType1";
                     }
                 }
             }
-            NSString *condition = !self.menuModel ? nil : [NSString stringWithFormat:@"msgtype = '%@'",self.menuModel.menuTitle];
+            NSString *condition = !self.menuModel ? nil : [NSString stringWithFormat:@"nodeid = '%@'",self.menuModel.menuId];
             _dataArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:condition page:1 orderBy:@"msgdate"]];
             [self.tableView reloadData];
             

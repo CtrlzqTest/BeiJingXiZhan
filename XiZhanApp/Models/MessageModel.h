@@ -14,8 +14,9 @@
 @property(nonatomic,strong)NSString *msgtitle;
 @property(nonatomic,assign)long msgdate;
 @property(nonatomic,strong)NSString *msgcontent;
-@property(nonatomic,strong)NSString *msgtype;
+//@property(nonatomic,strong)NSString *msgtype;
 @property(nonatomic,strong)NSString *msgid;
+@property(nonatomic,copy)NSString *nodeid;
 @property(nonatomic,assign)BOOL isread;
 @property(nonatomic,copy)NSString *imgurl;
 @property(nonatomic,copy)NSString *userid;

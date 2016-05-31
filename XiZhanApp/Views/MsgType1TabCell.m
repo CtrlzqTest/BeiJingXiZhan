@@ -22,7 +22,7 @@
     if (msgModel.isread) {
         self.pointImgView.hidden = YES;
     }else {
-        self.pointImgView.hidden = YES;
+        self.pointImgView.hidden = NO;
     }
     self.titleLabel.text = msgModel.msgtitle;
     
