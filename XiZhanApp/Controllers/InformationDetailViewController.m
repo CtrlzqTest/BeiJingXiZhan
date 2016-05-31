@@ -71,9 +71,9 @@ static NSString *indentify = @"proCellX";
 //    label.text = [NSString stringWithFormat:@"%@",self.webUrl];
 //    [self.view addSubview:label];
     
-    _web = [[UIWebView alloc]initWithFrame:CGRectMake(20*ProportionWidth, 1.0/3*KHeight, KWidth-40*ProportionWidth, 450*ProportionHeight)];
+    _web = [[UIWebView alloc]initWithFrame:CGRectMake(20*ProportionWidth, 1.0/3*KHeight, KWidth-40*ProportionWidth, 2.0/3*KHeight)];
     _web.delegate = self;
-    
+    _web.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_web];
     [_web loadHTMLString:self.webUrl baseURL:nil];
     
