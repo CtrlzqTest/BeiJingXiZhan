@@ -67,12 +67,23 @@ static NSString *indentify = @"proCellX";
     self.webUrl = [self.webUrl stringByAppendingString:self.model.msgcontent];
     
     UILabel *label = [[UILabel alloc]init];
-    label.frame = CGRectMake(0, 0, KWidth, KHeight*1.0/3);
+    label.frame = CGRectMake(0, 1.0/3*KHeight, KWidth, KHeight*1.0/3);
     label.text = [NSString stringWithFormat:@"%@",self.webUrl];
     [self.view addSubview:label];
     
     if (self.imageArray.count == 0) {
-
+        UICollectionViewFlowLayout *flowL = [[UICollectionViewFlowLayout alloc]init];
+        
+        //创建一个UICollectionView
+        _myCollectionV = [[UICollectionView alloc]initWithFrame:CGRectMake(0,0, 0, 0) collectionViewLayout:flowL];
+        _myCollectionV.delegate = self;
+        _myCollectionV.dataSource = self;
+        //设置背景
+        _myCollectionV.backgroundColor = [UIColor clearColor];
+        
+        //[_myCollectionV registerClass:[ImgCell class] forCellWithReuseIdentifier:indentify];
+        [_myCollectionV registerNib:[UINib nibWithNibName:@"ImgCell" bundle:nil] forCellWithReuseIdentifier:indentify];
+          [self.view addSubview:_myCollectionV];
     }
     else
     {
@@ -84,7 +95,7 @@ static NSString *indentify = @"proCellX";
     UICollectionViewFlowLayout *flowL = [[UICollectionViewFlowLayout alloc]init];
     
     //创建一个UICollectionView
-    _myCollectionV = [[UICollectionView alloc]initWithFrame:CGRectMake(0,1.0/3*KHeight, KWidth, KHeight) collectionViewLayout:flowL];
+    _myCollectionV = [[UICollectionView alloc]initWithFrame:CGRectMake(0,0, KWidth, 1.0/3*KHeight) collectionViewLayout:flowL];
     //设置代理为当前控制器
     _myCollectionV.delegate = self;
     _myCollectionV.dataSource = self;

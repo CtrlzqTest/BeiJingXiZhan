@@ -38,6 +38,8 @@
 #define kAllMessageAPI         @"app.menu/list" // 所有消息列表
 
 #define kMenuAdd               @"app.menu/add"   //添加意见
+
+#define kMianzeAPI    @"disclaimer.html"
 //   常量
 /**************************************************************************************/
 
