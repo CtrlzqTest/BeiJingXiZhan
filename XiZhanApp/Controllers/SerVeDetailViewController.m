@@ -63,21 +63,25 @@ static NSString *indentify = @"proCellX";
     self.stringOftext = [self.stringOftext stringByAppendingString:self.model.msgcontent];
     
     UILabel *label = [[UILabel alloc]init];
-    label.frame = CGRectMake(0, 0, KWidth, KHeight*1.0/3);
+    label.frame = CGRectMake(0, KHeight*1.0/3, KWidth, KHeight*1.0/3);
     label.text = [NSString stringWithFormat:@"%@",self.stringOftext];
     [self.view addSubview:label];
     
     if (self.imageArray.count == 0) {
+        UICollectionViewFlowLayout *flowL = [[UICollectionViewFlowLayout alloc]init];
         
+        //创建一个UICollectionView
+        _myCollectionV = [[UICollectionView alloc]initWithFrame:CGRectMake(0,0, 0, 0) collectionViewLayout:flowL];
+        //设置代理为当前控制器
+        _myCollectionV.delegate = self;
+        _myCollectionV.dataSource = self;
+        //设置背景
+        _myCollectionV.backgroundColor = [UIColor clearColor];
+        [self.view addSubview:_myCollectionV];
     }
+    
     else
     {
-//        for (int i = 0;i < array.count ;i++) {
-//            UIImageView *imgv = [[UIImageView alloc]init];
-//            imgv.frame = CGRectMake(i*1.0/3*KWidth, 1.0/3*KHeight, 1.0/3*KWidth-20*ProportionWidth, 1.0/3*KHeight);
-//            [imgv setImageWithURL:[NSURL URLWithString:array[i]]];
-//            [self.view addSubview:imgv];
-//        }
         [self addCollectionView];
     }
 
@@ -89,7 +93,7 @@ static NSString *indentify = @"proCellX";
     UICollectionViewFlowLayout *flowL = [[UICollectionViewFlowLayout alloc]init];
     
     //创建一个UICollectionView
-    _myCollectionV = [[UICollectionView alloc]initWithFrame:CGRectMake(0,1.0/3*KHeight, KWidth, KHeight) collectionViewLayout:flowL];
+    _myCollectionV = [[UICollectionView alloc]initWithFrame:CGRectMake(0,0, KWidth, 1.0/3*KHeight) collectionViewLayout:flowL];
     //设置代理为当前控制器
     _myCollectionV.delegate = self;
     _myCollectionV.dataSource = self;
