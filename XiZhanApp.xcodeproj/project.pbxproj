@@ -101,6 +101,8 @@
 		F0F37A251CE093A10047A469 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F37A241CE093A10047A469 /* LoginViewController.m */; };
 		F0FA99291CE2D0460078C74B /* LeftSortsTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FA99271CE2D0460078C74B /* LeftSortsTabCell.m */; };
 		F0FA992A1CE2D0460078C74B /* LeftSortsTabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0FA99281CE2D0460078C74B /* LeftSortsTabCell.xib */; };
+		F0FC4B1B1CFD781700E6A536 /* MenuType2TabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FC4B191CFD781700E6A536 /* MenuType2TabCell.m */; };
+		F0FC4B1C1CFD781700E6A536 /* MenuType2TabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0FC4B1A1CFD781700E6A536 /* MenuType2TabCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -273,6 +275,9 @@
 		F0FA99261CE2D0460078C74B /* LeftSortsTabCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftSortsTabCell.h; sourceTree = "<group>"; };
 		F0FA99271CE2D0460078C74B /* LeftSortsTabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSortsTabCell.m; sourceTree = "<group>"; };
 		F0FA99281CE2D0460078C74B /* LeftSortsTabCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftSortsTabCell.xib; sourceTree = "<group>"; };
+		F0FC4B181CFD781700E6A536 /* MenuType2TabCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuType2TabCell.h; sourceTree = "<group>"; };
+		F0FC4B191CFD781700E6A536 /* MenuType2TabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuType2TabCell.m; sourceTree = "<group>"; };
+		F0FC4B1A1CFD781700E6A536 /* MenuType2TabCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuType2TabCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -462,6 +467,9 @@
 				F092EEC01CE6B79500353351 /* MsgType1TabCell.h */,
 				F092EEC11CE6B79500353351 /* MsgType1TabCell.m */,
 				F092EEC21CE6B79500353351 /* MsgType1TabCell.xib */,
+				F0FC4B181CFD781700E6A536 /* MenuType2TabCell.h */,
+				F0FC4B191CFD781700E6A536 /* MenuType2TabCell.m */,
+				F0FC4B1A1CFD781700E6A536 /* MenuType2TabCell.xib */,
 			);
 			name = "MessageList(消息列表)";
 			sourceTree = "<group>";
@@ -857,6 +865,7 @@
 				F0088C941CE6BE8300AF6EAF /* MImaCell.xib in Resources */,
 				F0E396D81CE1EB8C00D4137E /* ServeTabCell.xib in Resources */,
 				F0088C8F1CE6BE8300AF6EAF /* none.png in Resources */,
+				F0FC4B1C1CFD781700E6A536 /* MenuType2TabCell.xib in Resources */,
 				F0F379DE1CE07AD90047A469 /* Assets.xcassets in Resources */,
 				F0F379DC1CE07AD90047A469 /* Main.storyboard in Resources */,
 				F0088C861CE6BE8300AF6EAF /* plus@2x.png in Resources */,
@@ -981,6 +990,7 @@
 				F0607B401CE5B6650029EE31 /* ZQDatabaseModel.m in Sources */,
 				F0E396AA1CE1858700D4137E /* UIView+ZQExtention.m in Sources */,
 				F0C4AAF61CE2E14A0067E986 /* MHAsiNetworkHandler.m in Sources */,
+				F0FC4B1B1CFD781700E6A536 /* MenuType2TabCell.m in Sources */,
 				F0E396C21CE1B9C300D4137E /* SuggestionsViewController.m in Sources */,
 				F0F37A091CE07B280047A469 /* BaseTabBarViewController.m in Sources */,
 				F0088C891CE6BE8300AF6EAF /* MHeaderImaCell.m in Sources */,

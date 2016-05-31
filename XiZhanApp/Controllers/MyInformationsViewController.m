@@ -202,6 +202,12 @@ static NSString *cellIndentifer = @"msgType1";
     
 }
 
+- (void)requestMoreData {
+    
+    
+    
+}
+
 
 - (IBAction)editAction:(id)sender {
     
