@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "MianZeViewController.h"
+
 @interface LoginViewController ()
 {
     BOOL _isAgree;
@@ -98,12 +99,14 @@
 
 // 登录
 - (IBAction)loginAction:(id)sender {
+    NSString *pwd = [Utility md5:self.passWordLabel.text];
     
     if (![self checkInput]) {
         return ;
     }
     __weak typeof(self) weakSelf = self;
-    [MHNetworkManager postReqeustWithURL:kLoginAPI params:@{@"tel":self.userNameLabel.text,@"password":self.passWordLabel.text} successBlock:^(id returnData) {
+//    NSString *pwd = [Utility md5:self.passWordLabel.text];
+    [MHNetworkManager postReqeustWithURL:kLoginAPI params:@{@"tel":self.userNameLabel.text,@"password":pwd} successBlock:^(id returnData) {
         
         [User shareUser].isLogin = YES;
         if (weakSelf.autoLoginSwitch.selected) {

@@ -67,7 +67,7 @@
         return ;
     }
     __weak typeof(self) weakSelf = self;
-    [MHNetworkManager postReqeustWithURL:kRegisteAPI params:@{@"tel":self.phoneTef.text,@"smscode":self.codeTef.text,@"password":self.pwdTef.text} successBlock:^(id returnData) {
+    [MHNetworkManager postReqeustWithURL:kResetPwdAPI params:@{@"tel":self.phoneTef.text,@"smscode":self.codeTef.text,@"password":[Utility md5:self.pwdTef.text]} successBlock:^(id returnData) {
         
         if ([returnData[@"message"] isEqualToString:@"success"]) {
             [MBProgressHUD showSuccess:@"修改成功" toView:weakSelf.view];

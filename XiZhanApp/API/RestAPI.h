@@ -25,6 +25,8 @@
 
 #define kLoginAPI               @"app.user/login"       // 登录
 
+#define kResetPwdAPI               @"app.user/repassword"       // 修改密码
+
 #define kRegisteAPI             @"app.user/register"         //注册
 
 #define kAppopinion            @"api/Add/CommitFeedback" //意见反馈
@@ -33,7 +35,7 @@
 
 #define kMuenListAPI           @"api/List/GetNodesByParentID" //首页菜单
 
-//#define kClassifyListAPI           @"api/List/GetNodesByParentID" //消息分类列表
+#define kMessageListAPI           @"api/List/GetContents" //消息列表
 
 #define kAllMessageAPI         @"app.menu/list" // 所有消息列表
 

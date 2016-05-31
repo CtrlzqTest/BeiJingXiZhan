@@ -110,10 +110,10 @@
         return ;
     }
     __weak typeof(self) weakSelf = self;
-    [MHNetworkManager postReqeustWithURL:kRegisteAPI params:@{@"tel":self.phoneTef.text,@"smscode":self.checkCodeTef.text,@"password":self.passWordTef.text} successBlock:^(id returnData) {
+    [MHNetworkManager postReqeustWithURL:kRegisteAPI params:@{@"tel":self.phoneTef.text,@"smscode":self.checkCodeTef.text,@"password":[Utility md5:self.passWordTef.text]} successBlock:^(id returnData) {
         
         if ([returnData[@"message"] isEqualToString:@"success"]) {
-            [MBProgressHUD showSuccess:@"注册成功" toView:weakSelf.view];
+            [MBProgressHUD showSuccess:@"注册成功" toView:nil];
             [User shareUser].isLogin = YES;
             [Utility saveUserInfo:returnData[@"user"]];
             [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLoginNotication object:nil];

@@ -46,11 +46,14 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
     if ([Utility isLogin]) {
         [User shareUser].isLogin = YES;
         loginStr = @"已登录";
+        _dataArray = [NSMutableArray arrayWithArray:@[loginStr,@"关于我们",@"意见反馈",@"我的消息",@"退出登录"]];
     }else {
         loginStr = @"登录/注册";
+        _dataArray = [NSMutableArray arrayWithArray:@[loginStr,@"关于我们",@"意见反馈",@"我的消息"]];
     }
+    
+    
     [self requestData];
-    _dataArray = [NSMutableArray arrayWithArray:@[loginStr,@"关于我们",@"意见反馈",@"我的消息",@"退出登录"]];
     
     self.tableview = [[UITableView alloc] initWithFrame:self.view.bounds style:(UITableViewStylePlain)];
     self.view.backgroundColor = [UIColor colorWithWhite:0.898 alpha:1.000];
@@ -106,12 +109,14 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
 
 - (void)didLoginAction {
     _dataArray[0] = @"已登录";
+    [_dataArray addObject:@"退出登录"];
     [self requestData];
     [self.tableview reloadData];
 }
 
 - (void)didLogoutAction {
     _dataArray[0] = @"登录/注册";
+    [_dataArray removeLastObject];
     [Utility saveMyMsgReadState:NO];
     [[NSNotificationCenter defaultCenter] postNotificationName:ZQReadStateDidChangeNotication object:nil];
     [self.tableview reloadData];
@@ -192,7 +197,7 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
             break;
         case 4:
         {
-            if ([Utility isLogin]) {
+            if ([User shareUser].isLogin) {
                 UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"确认退出？" message:nil delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
                 [alert show];
             }

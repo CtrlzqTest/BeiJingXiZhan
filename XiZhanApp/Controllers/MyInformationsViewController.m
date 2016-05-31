@@ -111,16 +111,17 @@ static NSString *cellIndentifer = @"msgType1";
     self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         [self getMoreData];
     }];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
 }
 
 - (void)getData {
     
-    NSDictionary *dict = !self.menuModel ? nil : @{@"parentId":self.menuModel.menuId};
-
-    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:dict successBlock:^(id returnData) {
+//    NSDictionary *dict = !self.menuModel ? nil : @{@"parentId":self.menuModel.menuId};
+    NSString *nodeId = !self.menuModel ? @"" : self.menuModel.menuId;
+    [MHNetworkManager getRequstWithURL:kMessageListAPI params:@{@"nodeid":nodeId,@"pageIndex":@"0",@"pageSize":@"15"} successBlock:^(id returnData) {
         
-        if ([returnData[@"message"] isEqualToString:@"success"]) {
+        if ([returnData[@"code"] integerValue] == 0) {
             NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
             if (resultArray1.count > 0) {
                 
