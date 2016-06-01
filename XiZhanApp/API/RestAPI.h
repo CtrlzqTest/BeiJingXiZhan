@@ -39,7 +39,9 @@
 
 #define kAllMessageAPI         @"app.menu/list" // 所有消息列表
 
-#define kMenuAdd               @"app.menu/add"   //添加意见
+#define kMenuAdd               @"api/Add/PublishContent"   //添加意见
+
+#define kUploadFile            @"api/File/UploadFile"//上传文件
 
 #define kMianzeAPI    @"disclaimer.html"//免责申明
 
