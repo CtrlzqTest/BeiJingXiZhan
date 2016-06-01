@@ -26,7 +26,7 @@
     NSInteger _isSkiptoVC;
 }
 @property(nonatomic,retain)NSMutableDictionary *dictForUserInfo;
-
+@property(nonatomic,copy)NSString *updateURLString;
 @end
 
 @implementation AppDelegate
@@ -46,6 +46,14 @@
     [self setupjPushWithLaunchOptions:launchOptions];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changgeIndexValue:) name:@"skip" object:nil];
+    // 检查版本更新
+    [Utility checkNewVersion:^(BOOL hasNewVersion,NSDictionary *stringForUpdate) {
+        if (hasNewVersion) {
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"版本更新" message:stringForUpdate[@"remark"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"点击进入下载", nil];
+            self.updateURLString = stringForUpdate[@"loadUrl"];
+            [alertView show];
+        }
+    }];
 
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
@@ -60,6 +68,14 @@
     
     return YES;
 }
+#pragma mark 跳转下载最新版本
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.updateURLString]];
+    }
+}
+
 -(void)changgeIndexValue:(NSNotification *)notice
 {
     _isSkiptoVC = 0;

@@ -69,7 +69,7 @@
  *
  *  @param versionCheckBlock 是否有新版本
  */
-+(void)checkNewVersion:(void(^)(BOOL hasNewVersion))versionCheckBlock;
++(void)checkNewVersion:(void(^)(BOOL hasNewVersion,NSDictionary *stringForUpdate))versionCheckBlock;
 
 /**
   * 正则匹配手机号

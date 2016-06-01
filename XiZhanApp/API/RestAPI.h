@@ -46,6 +46,9 @@
 #define kMianzeAPI    @"disclaimer.html"//免责申明
 
 #define kAboutUs      @"aboutus.html"//关于我们
+
+#define kCheckNewVersionAPI @"app.appversion/update"
+
 //   常量
 /**************************************************************************************/
 
