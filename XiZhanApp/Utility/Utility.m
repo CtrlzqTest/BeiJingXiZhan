@@ -78,23 +78,26 @@ static User *user = nil;
     return result;
 }
 
-+(void)checkNewVersion:(void(^)(BOOL hasNewVersion))versionCheckBlock{
++(void)checkNewVersion:(void(^)(BOOL hasNewVersion,NSDictionary *stringForUpdate))versionCheckBlock{
     
-//    NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
-////    NSLog(@"%@",[infoDict objectForKey:@"CFBundleShortVersionString"]);
-//    __block double currentVersion = [[infoDict objectForKey:@"CFBundleShortVersionString"] doubleValue];
-//    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-//    [dict setObject:@"IOS" forKey:@"clientType"];
-//    [RequestManager startRequest:kCheckNewVersionAPI paramer:dict method:(RequestMethodPost) success:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        
-//        NSDictionary *dict = [responseObject objectForKey:@"list"];
-//        double newVersion = [[dict objectForKey:@"versionNum"] doubleValue];
-//        BOOL flag = newVersion > currentVersion;
-//        versionCheckBlock(flag);
-//        
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-////        versionCheckBlock(NO);
-//    }];
+    NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+    //    NSLog(@"%@",[infoDict objectForKey:@"CFBundleShortVersionString"]);
+    __block double currentVersion = [[infoDict objectForKey:@"CFBundleShortVersionString"] doubleValue];
+     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+     [dict setObject:@"IOS" forKey:@"clientType"];
+    
+    [MHNetworkManager postReqeustWithURL:kCheckNewVersionAPI params:dict successBlock:^(id returnData) {
+        NSDictionary *dict = [returnData objectForKey:@"list"];
+        NSLog(@"\ncheckVersion%@\n",dict);
+        double newVersion = [[dict objectForKey:@"versionNum"] doubleValue];
+        BOOL flag = newVersion > currentVersion;
+     //   NSString *str = [dict objectForKey:@"loadUrl"];
+        versionCheckBlock(flag,dict);
+        
+    } failureBlock:^(NSError *error) {
+        
+    } showHUD:NO];
+
 }
 
 + (BOOL)checkTelNumber:(NSString *) telNumber
