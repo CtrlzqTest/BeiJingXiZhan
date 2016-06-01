@@ -108,7 +108,7 @@ static NSString *cellIndentifer = @"msgType1";
     }];
 //    [self.tableView.mj_header beginRefreshing];
     
-    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
         [self getMoreData];
     }];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
@@ -123,6 +123,7 @@ static NSString *cellIndentifer = @"msgType1";
     [MHNetworkManager getRequstWithURL:kMessageListAPI params:@{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15"} successBlock:^(id returnData) {
         
         if ([returnData[@"code"] integerValue] == 0) {
+            _page ++;
             NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
             if (resultArray1.count > 0) {
                 
@@ -160,11 +161,12 @@ static NSString *cellIndentifer = @"msgType1";
 - (void)getMoreData {
     
     __block MessageModel *lastMsgModel = [_dataArray lastObject];
-    NSString *lastMsgDate = [NSString stringWithFormat:@"%ld",lastMsgModel.msgdate];
-    NSString *parentId = !self.menuModel ? @"" : self.menuModel.menuId;
-    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":@"0",@"msgDate":lastMsgDate,@"parentId":parentId} successBlock:^(id returnData) {
+    NSString *nodeId = !self.menuModel ? @"" : self.menuModel.menuId;
+    NSString *pageIndex = [NSString stringWithFormat:@"%ld",_page];
+    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15"} successBlock:^(id returnData) {
         
-        if ([returnData[@"message"] isEqualToString:@"success"]) {
+        if ([returnData[@"code"] integerValue] == 0) {
+            _page ++;
             NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
             if (resultArray1.count > 0) {
                 

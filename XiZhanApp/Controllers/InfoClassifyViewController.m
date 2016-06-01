@@ -159,10 +159,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MenuModel *model = _dataArray[indexPath.row];
-    
     MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];;
     myInfoVC.menuModel = model;
     [self.navigationController pushViewController:myInfoVC animated:YES];
+    
 }
 
 
