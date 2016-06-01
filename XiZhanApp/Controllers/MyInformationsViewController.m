@@ -123,10 +123,10 @@ static NSString *cellIndentifer = @"msgType1";
     [MHNetworkManager getRequstWithURL:kMessageListAPI params:@{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15"} successBlock:^(id returnData) {
         
         if ([returnData[@"code"] integerValue] == 0) {
-            _page ++;
+
             NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
             if (resultArray1.count > 0) {
-                
+                _page ++;
                 for (MessageModel *model in resultArray1) {
                     
                     // 判断数据库是否已存在该条消息
@@ -166,10 +166,9 @@ static NSString *cellIndentifer = @"msgType1";
     [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15"} successBlock:^(id returnData) {
         
         if ([returnData[@"code"] integerValue] == 0) {
-            _page ++;
             NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
             if (resultArray1.count > 0) {
-                
+                _page ++;
                 for (MessageModel *model in resultArray1) {
                     
                     // 判断数据库是否已存在该条消息
