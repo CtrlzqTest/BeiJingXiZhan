@@ -194,14 +194,10 @@
     
   // NSString *str = @"4028900b54a7a7de0154a7a7e0270000";
     __weak typeof(self) weakSelf = self;
-    [MHNetworkManager postReqeustWithURL:kMenuAdd params:@{@"msgTitle":self.fieldOfUser.text,@"msgContent":self.miaoShuTextView.text,@"userId":[Utility getUserInfoFromLocal][@"id"],@"parentId":self.parentIdString,@"imgUrl":self.imgString} successBlock:^(id returnData) {
+//    nodeid={nodeid}&title={title}&subtitle={subtitle}&content={content}&summary={summary}&author={author}&department={department}&keyword={keyword}&istop={istop}&isrecommend={isrecommend}&ishot={ishot}&iscolor={iscolor}&iscomment={iscomment}
+    [MHNetworkManager postReqeustWithURL:kMenuAdd params:@{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":@"0",@"author":[Utility getUserInfoFromLocal][@"id"],@"department":@"",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0"} successBlock:^(id returnData) {
         NSLog(@"%@",returnData);
         
-//        if ([self.menuModel.msgType isEqualToString:@"服务台消息"]) {
-//            [[NSNotificationCenter defaultCenter] postNotificationName:ZQAddServeInfoNotication object:nil];
-//        }else {
-//            [[NSNotificationCenter defaultCenter] postNotificationName:ZQAddOtherInfoNotication object:nil];
-//        }
         [MBProgressHUD showSuccess:@"编辑成功！" toView:nil];
         [weakSelf.navigationController popViewControllerAnimated:YES];
         // 通知列表需要刷新
