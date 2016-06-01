@@ -108,7 +108,7 @@ static NSString *cellIndentifer = @"msgType1";
     }];
 //    [self.tableView.mj_header beginRefreshing];
     
-    self.tableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
         [self getMoreData];
     }];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];

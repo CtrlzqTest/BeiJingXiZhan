@@ -60,6 +60,7 @@
     
     return YES;
 }
+
 -(void)changgeIndexValue:(NSNotification *)notice
 {
     _isSkiptoVC = 0;
