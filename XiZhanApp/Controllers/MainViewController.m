@@ -11,7 +11,6 @@
 #import "LeftSlideViewController.h"
 #import "MainCollCell.h"
 #import "MyInformationsViewController.h"
-#import "ServeInfoViewController.h"
 #import "MessageModel.h"
 #import "MenuModel.h"
 #import <MJRefresh.h>
