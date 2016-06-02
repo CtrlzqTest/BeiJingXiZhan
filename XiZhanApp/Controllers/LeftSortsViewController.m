@@ -53,7 +53,6 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
         _dataArray = [NSMutableArray arrayWithArray:@[loginStr,@"关于我们",@"意见反馈",@"我的消息"]];
     }
     
-    
     [self requestData];
     
     self.tableview = [[UITableView alloc] initWithFrame:self.view.bounds style:(UITableViewStylePlain)];
@@ -80,7 +79,8 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
 //        MessageModel *model = [[MessageModel mj_objectArrayWithKeyValuesArray:resultArray] firstObject];
 //        flag = @"1"; msgDate = [NSString stringWithFormat:@"%ld",model.msgdate];
 //    }
-//    
+//
+    return;
     [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":@"",@"msgDate":@""} successBlock:^(id returnData) {
         
         if ([returnData[@"message"] isEqualToString:@"success"]) {
@@ -92,7 +92,7 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
                 [[NSNotificationCenter defaultCenter] postNotificationName:ZQReadStateDidChangeNotication object:nil];
                 
                 for (MessageModel *model in resultArray) {
-                    
+                    model.msgdate = [Utility timeIntervalWithDateStr:model.msgdatestr];
                     NSArray *coutArr = [[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
                     if (coutArr.count <= 0) {
                         [model save];
@@ -224,6 +224,12 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
 {
     if (buttonIndex == 1) {
         // 退出登录
+        [MHNetworkManager getRequstWithURL:kLogoutAPI params:@{@"userId":[User shareUser].userId} successBlock:^(id returnData) {
+            
+        } failureBlock:^(NSError *error) {
+            
+        } showHUD:NO];
+    
         [Utility setLoginStates:NO];
         [User shareUser].isLogin = NO;
         [Utility saveUserInfo:nil];

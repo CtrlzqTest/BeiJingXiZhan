@@ -193,15 +193,15 @@ static User *user = nil;
     return currentDateStr;
 }
 
-+(NSString *)timeIntervalWithDateStr:(NSString *)dateStr {
++(long )timeIntervalWithDateStr:(NSString *)dateStr {
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];//格式化
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    [dateFormatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
     NSDate *date = [dateFormatter dateFromString:dateStr];
     
     NSTimeInterval time = [date timeIntervalSince1970];
     long time2 = (long )(time * 1000);
-    return [NSString stringWithFormat:@"%ldL",time2];
+    return time2;
 }
 
 // 根据宽度计算文字高度

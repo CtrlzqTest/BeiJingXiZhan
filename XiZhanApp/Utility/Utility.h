@@ -102,7 +102,7 @@
 /**
  *  字符串转时间戳
  */
-+(NSString *)timeIntervalWithDateStr:(NSString *)dateStr;
++(long )timeIntervalWithDateStr:(NSString *)dateStr;
 
 /**
  *  获取文字的高度,确定宽度

@@ -43,7 +43,7 @@ static MessageModel *testModel = nil;
     return @{
              @"msgid" : @"ID",
              @"msgtitle" : @"Title",
-             @"msgdate" : @"CreateTime",
+             @"msgdatestr" : @"CreateTime",
              @"msgcontent" : @"Content",
              @"isread" : @"isRead",
              @"imgurl":@"ImageUrl",

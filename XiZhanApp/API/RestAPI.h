@@ -25,29 +25,31 @@
 
 #define kLoginAPI               @"app.user/login"       // 登录
 
+#define kLogoutAPI               @"app.user/logout"       // 退出登录
+
 #define kResetPwdAPI            @"app.user/repassword"       // 修改密码
 
 #define kRegisteAPI             @"app.user/register"         //注册
 
-#define kAppopinion            @"api/Add/CommitFeedback" //意见反馈
+#define kAppopinion             @"api/Add/CommitFeedback" //意见反馈
 
-//#define kMuenListAPI         @"app.menu/getMenu" //首页菜单
+//#define kMuenListAPI          @"app.menu/getMenu" //首页菜单
 
-#define kMuenListAPI           @"api/List/GetNodesByParentID" //首页菜单
+#define kMuenListAPI            @"api/List/GetNodesByParentID" //首页菜单
 
-#define kMessageListAPI        @"api/List/GetContents" //消息列表
+#define kMessageListAPI         @"api/List/GetContents" //消息列表
 
-#define kAllMessageAPI         @"app.menu/list" // 所有消息列表
+#define kAllMessageAPI          @"app.menu/list" // 所有消息列表
 
-#define kMenuAdd               @"api/Add/PublishContent"   //添加意见
+#define kMenuAdd                @"api/Add/PublishContent"   //添加意见
 
-#define kUploadFile            @"api/File/UploadFile"//上传文件
+#define kUploadFile             @"api/File/UploadFile"//上传文件
 
-#define kMianzeAPI             @"disclaimer.html"//免责申明
+#define kMianzeAPI              @"disclaimer.html"//免责申明
 
-#define kAboutUs      @"aboutus.html"//关于我们
+#define kAboutUs                @"aboutus.html"//关于我们
 
-#define kCheckNewVersionAPI @"app.appversion/update"
+#define kCheckNewVersionAPI     @"app.appversion/update"
 
 //   常量
 /**************************************************************************************/
