@@ -29,5 +29,7 @@
 @property (nonatomic, copy) NSString *mimeType;
 
 
+-(NSString *)fileName;
 
+-(NSString *)mimeType;
 @end

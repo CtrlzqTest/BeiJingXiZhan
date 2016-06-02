@@ -9,7 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "MHAsiNetworkDefine.h"
 #import "MHAsiNetworkDelegate.h"
-@class MHUploadParam;
+#import "MHUploadParam.h"
+
 /// 请求管理着
 @interface MHNetworkManager : NSObject
 

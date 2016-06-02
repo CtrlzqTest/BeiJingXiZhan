@@ -13,6 +13,8 @@
 
 #define BaseAPI                 @"http://192.168.16.139:8080/bjws/"  // 龙龙
 
+#define BaseXiZhanAPI           @"http://222.240.172.197:8081/api/" // 西站测试
+
 //#define BaseAPI                 @"http://222.240.172.197:8081/api/"  // 西站测试
 
 //#define BaseAPI                 @"http://124.207.156.101:80/bjws/"  // 公司服务器

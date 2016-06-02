@@ -203,8 +203,10 @@
     }
     DTLog(@"上传图片接口 URL-> %@",url);
     DTLog(@"上传图片的参数-> %@",paramsDict);
+    
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:url parameters:paramsDict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+    [manager POST:url parameters:paramsDict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
+    {
         [formData appendPartWithFileData:uploadParam.data name:uploadParam.name fileName:uploadParam.fileName mimeType:uploadParam.mimeType];
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [MBProgressHUD hideHUDForView:nil animated:YES];
