@@ -7,6 +7,7 @@
 //
 
 #import "TaxiClassifyViewController.h"
+#import "MenuModel.h"
 #import "MenuType2TabCell.h"
 #import <MJRefresh.h>
 
@@ -54,7 +55,13 @@
 
 - (void)getData {
     
-    
+    MenuModel *menuModel1 = [[MenuModel alloc] init];
+    menuModel1.menuTitle = @"获取出租车站点信息";
+    MenuModel *menuModel2 = [[MenuModel alloc] init];
+    menuModel2.menuTitle = @"获取出租车每个站点的最新数据";
+    [_dataArray addObject:menuModel1];
+    [_dataArray addObject:menuModel2];
+    [self.tableView reloadData];
     
 }
 

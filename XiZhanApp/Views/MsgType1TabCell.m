@@ -8,6 +8,7 @@
 
 #import "MsgType1TabCell.h"
 #import "MessageModel.h"
+#import "TaxiMsgModel.h"
 
 @implementation MsgType1TabCell
 
@@ -25,6 +26,17 @@
         self.pointImgView.hidden = NO;
     }
     self.titleLabel.text = msgModel.msgtitle;
+    
+}
+
+- (void)writeDataWithTaxiModel:(TaxiMsgModel *)taxiModel {
+    
+    if (taxiModel.isread) {
+        self.pointImgView.hidden = YES;
+    }else {
+        self.pointImgView.hidden = NO;
+    }
+    self.titleLabel.text = taxiModel.msgtitle;
     
 }
 

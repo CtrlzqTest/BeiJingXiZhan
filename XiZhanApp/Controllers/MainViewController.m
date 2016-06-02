@@ -16,6 +16,7 @@
 #import <MJRefresh.h>
 #import <UIImageView+WebCache.h>
 #import "InfoClassifyViewController.h"
+#import "TaxiMsgListViewController.h"
 
 static NSString *collCellId = @"MainCell";
 @interface MainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -157,36 +158,17 @@ static NSString *collCellId = @"MainCell";
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    MenuModel *model = _dataArray[indexPath.row];
-    switch (indexPath.row) {
-        case 0:
-        {
-            InfoClassifyViewController *myInfoVC = [[InfoClassifyViewController alloc] init];
-            myInfoVC.menuModel = model;
-            [self.navigationController pushViewController:myInfoVC animated:YES];
-        }
-            break;
-        case 1:
-        {
-//            MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];
-            InfoClassifyViewController *myInfoVC = [[InfoClassifyViewController alloc] init];
-//            myInfoVC.msgType = model.menuTitle;
-//            myInfoVC.parentIdString = model.menuId;
-            myInfoVC.menuModel = model;
-            [self.navigationController pushViewController:myInfoVC animated:YES];
-        }
-            break;
-        case 2:
-        {
-//            ServeInfoViewController *serveVC = [Utility getControllerWithStoryBoardId:ZQServeTabViewControllerId];
-            InfoClassifyViewController *serveVC = [[InfoClassifyViewController alloc] init];
-            serveVC.menuModel = model;
-            [self.navigationController pushViewController:serveVC animated:YES];
-        }
-            break;
-        default:
-            break;
+    if (indexPath.row == _dataArray.count - 1) {
+        TaxiMsgListViewController *taxiMsgVC = [[TaxiMsgListViewController alloc] init];
+        [self.navigationController pushViewController:taxiMsgVC animated:YES];
+        return;
     }
+    
+    MenuModel *model = _dataArray[indexPath.row];
+    InfoClassifyViewController *myInfoVC = [[InfoClassifyViewController alloc] init];
+    myInfoVC.menuModel = model;
+    [self.navigationController pushViewController:myInfoVC animated:YES];
+    
     
 }
 
