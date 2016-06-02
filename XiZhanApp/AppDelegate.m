@@ -82,6 +82,13 @@
 }
 - (void)requestData {
     
+    NSString *deviceToken = [[UIDevice currentDevice] identifierForVendor].UUIDString;
+    if (![[Utility getDeviceToken] isEqualToString:deviceToken]) {
+        [Utility saveDeviceToken:deviceToken];
+    }else {
+        NSLog(@"%@一样",deviceToken);
+    }
+    
 //    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:nil successBlock:^(id returnData) {
 //        
 //        if ([returnData[@"message"] isEqualToString:@"success"]) {

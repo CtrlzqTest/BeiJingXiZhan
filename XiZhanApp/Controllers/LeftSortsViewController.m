@@ -71,29 +71,32 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
 - (void)requestData {
     
     NSArray *resultArray = [[MessageModel shareTestModel] getDataWithCondition:@"msgDate = (select max(msgDate) from MessageModel)"];
-    NSString *flag = nil;
-    NSString *msgDate = nil;
-    if (resultArray.count == 0) {
-        flag = @"2"; msgDate = @"";
-    }else {
-        MessageModel *model = [[MessageModel mj_objectArrayWithKeyValuesArray:resultArray] firstObject];
-        flag = @"1"; msgDate = [NSString stringWithFormat:@"%ld",model.msgdate];
-    }
-    
-    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":flag,@"msgDate":msgDate} successBlock:^(id returnData) {
+    __block MessageModel *messageModel = [[MessageModel mj_objectArrayWithKeyValuesArray:resultArray] firstObject];
+//    NSString *flag = nil;
+//    NSString *msgDate = nil;
+//    if (resultArray.count == 0) {
+//        flag = @"2"; msgDate = @"";
+//    }else {
+//        MessageModel *model = [[MessageModel mj_objectArrayWithKeyValuesArray:resultArray] firstObject];
+//        flag = @"1"; msgDate = [NSString stringWithFormat:@"%ld",model.msgdate];
+//    }
+//    
+    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":@"",@"msgDate":@""} successBlock:^(id returnData) {
         
         if ([returnData[@"message"] isEqualToString:@"success"]) {
             NSArray *resultArray = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
             if (resultArray.count > 0) {
+                
                 [Utility saveMyMsgReadState:YES];  // 显示小圆点
                 // 通知首页显示小圆点
                 [[NSNotificationCenter defaultCenter] postNotificationName:ZQReadStateDidChangeNotication object:nil];
+                
                 for (MessageModel *model in resultArray) {
+                    
                     NSArray *coutArr = [[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
                     if (coutArr.count <= 0) {
                         [model save];
                     }
-                    
                 }
             }else{
 //                [Utility saveMyMsgReadState:NO];

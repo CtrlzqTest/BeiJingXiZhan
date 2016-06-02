@@ -78,6 +78,20 @@ static User *user = nil;
     return result;
 }
 
+// 保存设备唯一标示
++ (void)saveDeviceToken:(NSString *)deviceToken {
+    
+    [[NSUserDefaults standardUserDefaults] setValue:deviceToken forKey:@"deviceToken"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
+// 获取设备唯一标识
++ (NSString *)getDeviceToken {
+    
+    return [[NSUserDefaults standardUserDefaults] valueForKey:@"deviceToken"];
+    
+}
 +(void)checkNewVersion:(void(^)(BOOL hasNewVersion,NSDictionary *stringForUpdate))versionCheckBlock{
     
     NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
