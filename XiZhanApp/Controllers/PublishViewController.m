@@ -195,7 +195,7 @@
   // NSString *str = @"4028900b54a7a7de0154a7a7e0270000";
     __weak typeof(self) weakSelf = self;
 //    nodeid={nodeid}&title={title}&subtitle={subtitle}&content={content}&summary={summary}&author={author}&department={department}&keyword={keyword}&istop={istop}&isrecommend={isrecommend}&ishot={ishot}&iscolor={iscolor}&iscomment={iscomment}
-    [MHNetworkManager postReqeustWithURL:kMenuAdd params:@{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":@"0",@"author":[Utility getUserInfoFromLocal][@"id"],@"department":@"",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0"} successBlock:^(id returnData) {
+    [MHNetworkManager postReqeustWithURL:kMenuAdd params:@{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":@"0",@"author":[Utility getUserInfoFromLocal][@"name"],@"department":@"0",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0"} successBlock:^(id returnData) {
         NSLog(@"%@",returnData);
         
         [MBProgressHUD showSuccess:@"编辑成功！" toView:nil];

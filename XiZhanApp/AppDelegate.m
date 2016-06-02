@@ -49,7 +49,7 @@
     // 检查版本更新
     [Utility checkNewVersion:^(BOOL hasNewVersion,NSDictionary *stringForUpdate) {
         if (hasNewVersion) {
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"版本更新" message:stringForUpdate[@"remark"] delegate:self cancelButtonTitle:nil otherButtonTitles:@"点击进入下载", nil];
+            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"版本更新" message:@"系统检测有新版本" delegate:self cancelButtonTitle:nil otherButtonTitles:@"点击进入下载", nil];
             self.updateURLString = stringForUpdate[@"loadUrl"];
             [alertView show];
         }

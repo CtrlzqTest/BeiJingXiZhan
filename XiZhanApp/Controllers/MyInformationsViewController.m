@@ -219,7 +219,7 @@ static NSString *cellIndentifer = @"msgType1";
     }else {
        // PublishInfoViewController *publishVC = [Utility getControllerWithStoryBoardId:ZQPublishInfoViewControllerId];
         PublishViewController *publishVC = [[PublishViewController alloc]init];
-        publishVC.parentIdString = self.parentIdString;
+        publishVC.parentIdString = self.menuModel.menuId;
         publishVC.menuModel = self.menuModel;
         publishVC.delegate = self;
         [self.navigationController pushViewController:publishVC animated:YES];
