@@ -22,6 +22,4 @@
 @property(nonatomic,strong)MenuModel *menuModel;
 @property(nonatomic,assign)id<PublishViewControllerDelegate> delegate;
 
-+(UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize;
-
 @end
