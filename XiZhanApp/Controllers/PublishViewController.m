@@ -155,20 +155,74 @@
     
 }
 #pragma mark - 上传数据到服务器前将图片转data
+//- (void)submitToServer{
+//    NSMutableArray *bigImageArray = [self LQPhotoPicker_getBigImageArray];
+//    for (UIImage *item in bigImageArray)
+//    {
+//        NSData *data = UIImageJPEGRepresentation(item, 0.1f);
+//       
+//        NSString *str = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+//        [self.imgString appendString:str];
+//        [self.imgString appendString:@","];
+//    }
+//    NSLog(@"%@",self.imgString);
+//}
 - (void)submitToServer{
     NSMutableArray *bigImageArray = [self LQPhotoPicker_getBigImageArray];
     for (UIImage *item in bigImageArray)
     {
-        // CGSize size = CGSizeMake(80, 80);
-        //item = [self imageByScalingAndCroppingForSize:size];
-        NSData *data = UIImageJPEGRepresentation(item, 0.1f);
-        NSString *str = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-        [self.imgString appendString:str];
-        [self.imgString appendString:@","];
+       
+        NSInteger index = [bigImageArray indexOfObject:item];
+        CGSize imgSize = item.size;
+        CGFloat heightDivideWidth = imgSize.height*1.0/imgSize.width;
+        NSData *data = [self imageWithImage:item scaledToSize:CGSizeMake(KWidth, KWidth*heightDivideWidth)];
+        MHUploadParam *param = [[MHUploadParam alloc] init];
+        param.data = data;
+        param.fileName = [param fileName];//文件名
+        param.name = [@"bin" stringByAppendingString:[NSString stringWithFormat:@"%ld",index]];//参数名
+        param.mimeType = [param mimeType];//文件格式
+        
+        NSString *strUrl = @"http://222.240.172.197:8081/api/File/UploadFile?path=";
+        [MHNetworkManager uploadFileWithURL:strUrl params:nil successBlock:^(id returnData) {
+            NSLog(@"%@",returnData);
+        } failureBlock:^(NSError *error) {
+            NSLog(@"%@",error);
+        } uploadParam:param showHUD:NO];
+//        NSString *str = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
+//        [self.imgString appendString:str];
+//        [self.imgString appendString:@","];
     }
     NSLog(@"%@",self.imgString);
 }
+//对图片尺寸进行压缩--
+- (NSData *)imageWithImage:(UIImage*)image
+              scaledToSize:(CGSize)newSize;
+{
+    UIGraphicsBeginImageContext(newSize);
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return UIImageJPEGRepresentation(newImage, 0.8);
+}
 
+//+(UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize
+//{
+//    // Create a graphics image context
+//    UIGraphicsBeginImageContext(newSize);
+//    
+//    // Tell the old image to draw in this new context, with the desired
+//    // new size
+//    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+//    
+//    // Get the new image from the context
+//    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+//    
+//    // End the context
+//    UIGraphicsEndImageContext();
+//    
+//    // Return the new image.
+//    return newImage;
+//}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -181,8 +235,6 @@
 #pragma mark postDataMethod
 -(void)postData
 {
-  //  [self submitToServer];
-    
     if (![self checkInput]) {
         return;
     }
@@ -195,7 +247,7 @@
   // NSString *str = @"4028900b54a7a7de0154a7a7e0270000";
     __weak typeof(self) weakSelf = self;
 //    nodeid={nodeid}&title={title}&subtitle={subtitle}&content={content}&summary={summary}&author={author}&department={department}&keyword={keyword}&istop={istop}&isrecommend={isrecommend}&ishot={ishot}&iscolor={iscolor}&iscomment={iscomment}
-    [MHNetworkManager postReqeustWithURL:kMenuAdd params:@{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":@"0",@"author":[Utility getUserInfoFromLocal][@"name"],@"department":@"0",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0"} successBlock:^(id returnData) {
+    [MHNetworkManager postReqeustWithURL:kMenuAdd params:@{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":@"0",@"author":@"0",@"department":@"0",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0"} successBlock:^(id returnData) {
         NSLog(@"%@",returnData);
         
         [MBProgressHUD showSuccess:@"编辑成功！" toView:nil];
@@ -206,6 +258,7 @@
         }
     } failureBlock:^(NSError *error) {
         [MBProgressHUD showError:@"发送失败！" toView:nil];
+        NSLog(@"%@",error);
     } showHUD:YES];
 }
 - (BOOL )checkInput {
