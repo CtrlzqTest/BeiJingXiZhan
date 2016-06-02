@@ -157,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PwC-tI-ZGB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="333.5" y="265.5"/>
+            <point key="canvasLocation" x="437.5" y="296.5"/>
         </scene>
         <!--Publish Info View Controller-->
         <scene sceneID="91d-W7-CL7">
@@ -317,7 +317,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fWv-NZ-I76" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="393.5" y="1078.5"/>
+            <point key="canvasLocation" x="394.5" y="1242.5"/>
         </scene>
         <!--Ser Ve Detail View Controller-->
         <scene sceneID="e8E-rx-gTl">
@@ -763,6 +763,6 @@
         <image name="user" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="RFY-AG-iji"/>
+        <segue reference="ewX-87-MmW"/>
     </inferredMetricsTieBreakers>
 </document>
