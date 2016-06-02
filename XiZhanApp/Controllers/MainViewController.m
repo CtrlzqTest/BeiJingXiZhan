@@ -11,7 +11,6 @@
 #import "LeftSlideViewController.h"
 #import "MainCollCell.h"
 #import "MyInformationsViewController.h"
-#import "ServeInfoViewController.h"
 #import "MessageModel.h"
 #import "MenuModel.h"
 #import <MJRefresh.h>
@@ -73,12 +72,16 @@ static NSString *collCellId = @"MainCell";
 
         if ([returnData[@"code"] integerValue] == 0) {
             _dataArray = [MenuModel mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
+            MenuModel *menuModel = [[MenuModel alloc] init];
+            menuModel.menuTitle = @"出租车";
+            [_dataArray addObject:menuModel];
         }else {
             [MBProgressHUD showError:@"获取列表失败" toView:self.view];
         }
         if (_dataArray.count <= 0) {
             [self addNodataViewInView:self.collectionView];
         }
+        
         [self.collectionView reloadData];
         [self.collectionView.mj_header endRefreshing];
         
