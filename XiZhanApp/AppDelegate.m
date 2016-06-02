@@ -14,9 +14,7 @@
 #import "JPUSHService.h"
 #import "MenuModel.h"
 #import "InformationDetailViewController.h"
-#import "SerVeDetailViewController.h"
 #import "MyInformationsViewController.h"
-#import "ServeInfoViewController.h"
 #import "IQKeyboardManager.h"
 
 @interface AppDelegate ()
@@ -45,7 +43,6 @@
     // 极光推送
     [self setupjPushWithLaunchOptions:launchOptions];
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changgeIndexValue:) name:@"skip" object:nil];
     // 检查版本更新
     [Utility checkNewVersion:^(BOOL hasNewVersion,NSDictionary *stringForUpdate) {
         if (hasNewVersion) {
@@ -76,10 +73,6 @@
     }
 }
 
--(void)changgeIndexValue:(NSNotification *)notice
-{
-    _isSkiptoVC = 0;
-}
 - (void)requestData {
     
     NSString *deviceToken = [[UIDevice currentDevice] identifierForVendor].UUIDString;
@@ -189,45 +182,19 @@
 {
     [JPUSHService clearAllLocalNotifications];
     [JPUSHService setBadge:0];
-
-    if ([self.dictForUserInfo[@"msgType"] isEqualToString:@"志愿者服务"] ||[self.dictForUserInfo[@"msgType"] isEqualToString:@"站内公告消息"]) {
-        [self gotoInformationDetailVC:self.dictForUserInfo];
-    }
-    else if([self.dictForUserInfo[@"msgType"] isEqualToString:@"服务台消息"])
-    {
-        [self gotoKongZhiTaiVC:self.dictForUserInfo];
-    }
+    [self gotoInformationDetailVC:self.dictForUserInfo];
 }
 #pragma mark 跳转至消息列表界面
 -(void)gotoInformationDetailVC:(NSDictionary *)dict
 {
-    _isSkiptoVC = 1;
-   // InformationDetailViewController *detailList = [[InformationDetailViewController alloc]init];
-    MyInformationsViewController *detailList = [[MyInformationsViewController alloc] init];
-//    UINavigationController * Nav = [[UINavigationController alloc]initWithRootViewController:detailList];
-    
-    detailList.isSkip = _isSkiptoVC;
-    detailList.parentIdString = dict[@"parentId"];
-    detailList.msgType = dict[@"msgType"];
-    
-    [self.mainNavi pushViewController:detailList animated:NO];
-//    [self.window.rootViewController presentViewController:Nav animated:YES completion:nil];
-}
 
-#pragma mark 跳转至控制台列表界面
--(void)gotoKongZhiTaiVC:(NSDictionary *)dict
-{
-    _isSkiptoVC = 1;
-    ServeInfoViewController *detailList = [Utility getControllerWithStoryBoardId:ZQServeTabViewControllerId];
-//    UINavigationController * Nav = [[UINavigationController alloc]initWithRootViewController:detailList];
-    detailList.isSkip = _isSkiptoVC;
+    MyInformationsViewController *detailList = [[MyInformationsViewController alloc] init];
+
     MenuModel *model = [MenuModel mj_objectWithKeyValues:dict];
     detailList.menuModel = model;
     detailList.parentIdString = dict[@"parentId"];
     detailList.msgType = dict[@"msgType"];
     [self.mainNavi pushViewController:detailList animated:NO];
-//    [self.window.rootViewController presentViewController:Nav animated:YES completion:nil];
-    
 }
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
