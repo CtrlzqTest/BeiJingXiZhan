@@ -63,7 +63,17 @@
  *  @return 加密后
  */
 + (NSString *) md5:(NSString *)str;
+/**
+ *  保存设备唯一标识
+ *
+ *  @param deviceToken 设备标识
+ */
++ (void)saveDeviceToken:(NSString *)deviceToken;
 
+/**
+ *  获取设备唯一标识
+ */
++ (NSString *)getDeviceToken;
 /**
  *  版本检测
  *
@@ -92,7 +102,7 @@
 /**
  *  字符串转时间戳
  */
-+(NSString *)timeIntervalWithDateStr:(NSString *)dateStr;
++(long )timeIntervalWithDateStr:(NSString *)dateStr;
 
 /**
  *  获取文字的高度,确定宽度

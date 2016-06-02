@@ -133,6 +133,7 @@ static NSString *cellIndentifer = @"msgType1";
                     NSArray *coutArr = [[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
                     if (coutArr.count <= 0) {
                         // 先添加到数组，同时保存到数据库
+                        model.msgdate = [Utility timeIntervalWithDateStr:model.msgdatestr];
                         // [_dataArray insertObject:model atIndex:0];
                         [model save];
                     }
@@ -163,7 +164,7 @@ static NSString *cellIndentifer = @"msgType1";
     __block MessageModel *lastMsgModel = [_dataArray lastObject];
     NSString *nodeId = !self.menuModel ? @"" : self.menuModel.menuId;
     NSString *pageIndex = [NSString stringWithFormat:@"%ld",_page];
-    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15"} successBlock:^(id returnData) {
+    [MHNetworkManager getRequstWithURL:kMessageListAPI params:@{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15"} successBlock:^(id returnData) {
         
         if ([returnData[@"code"] integerValue] == 0) {
             NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
@@ -175,6 +176,7 @@ static NSString *cellIndentifer = @"msgType1";
                     NSArray *coutArr = [[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
                     if (coutArr.count <= 0) {
                         // 先添加到数组，同时保存到数据库
+                        model.msgdate = [Utility timeIntervalWithDateStr:model.msgdatestr];
                         //  [_dataArray insertObject:model atIndex:0];
                         [model save];
                     }
@@ -182,12 +184,12 @@ static NSString *cellIndentifer = @"msgType1";
             }else {
                 [self.tableView.mj_footer endRefreshingWithNoMoreData];
             }
-            NSString *condition = !self.menuModel ? [NSString stringWithFormat:@"msgdate < '%ld'",lastMsgModel.msgdate] : [NSString stringWithFormat:@"msgdate < '%ld' and msgtype = '%@'",lastMsgModel.msgdate,self.menuModel.menuTitle];
+            NSString *condition = !self.menuModel ? [NSString stringWithFormat:@"msgdate < '%ld'",lastMsgModel.msgdate] : [NSString stringWithFormat:@"msgdate < '%ld' and nodeid = '%@'",lastMsgModel.msgdate,self.menuModel.menuId];
             NSArray *moreArray = [MessageModel getDataWithCondition:condition page:1 orderBy:@"msgdate"];
             [_dataArray addObjectsFromArray:moreArray];
-            
             [self.tableView.mj_footer endRefreshing];
             [self.tableView reloadData];
+            
         }else {
             // 请求失败
         }

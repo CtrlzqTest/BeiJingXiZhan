@@ -20,6 +20,7 @@
 @property(nonatomic,assign)BOOL isread;
 @property(nonatomic,copy)NSString *imgurl;
 @property(nonatomic,copy)NSString *userid;
+@property(nonatomic,copy)NSString *msgdatestr;
 
 +(MessageModel *)shareTestModel;
 

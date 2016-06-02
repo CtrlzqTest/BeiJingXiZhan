@@ -78,6 +78,20 @@ static User *user = nil;
     return result;
 }
 
+// 保存设备唯一标示
++ (void)saveDeviceToken:(NSString *)deviceToken {
+    
+    [[NSUserDefaults standardUserDefaults] setValue:deviceToken forKey:@"deviceToken"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
+// 获取设备唯一标识
++ (NSString *)getDeviceToken {
+    
+    return [[NSUserDefaults standardUserDefaults] valueForKey:@"deviceToken"];
+    
+}
 +(void)checkNewVersion:(void(^)(BOOL hasNewVersion,NSDictionary *stringForUpdate))versionCheckBlock{
     
     NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
@@ -179,15 +193,15 @@ static User *user = nil;
     return currentDateStr;
 }
 
-+(NSString *)timeIntervalWithDateStr:(NSString *)dateStr {
++(long )timeIntervalWithDateStr:(NSString *)dateStr {
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];//格式化
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    [dateFormatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
     NSDate *date = [dateFormatter dateFromString:dateStr];
     
     NSTimeInterval time = [date timeIntervalSince1970];
     long time2 = (long )(time * 1000);
-    return [NSString stringWithFormat:@"%ldL",time2];
+    return time2;
 }
 
 // 根据宽度计算文字高度

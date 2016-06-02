@@ -52,6 +52,7 @@
     self.passWordLabel.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.passWordLabel.leftViewMode = UITextFieldViewModeAlways;
     
+    
 }
 
 -(void)tapMethod
@@ -117,6 +118,7 @@
             }
             [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLoginNotication object:nil];
             [weakSelf.navigationController popViewControllerAnimated:YES];
+            
         }else {
             [MBProgressHUD showError:@"登录失败" toView:nil];
         }
