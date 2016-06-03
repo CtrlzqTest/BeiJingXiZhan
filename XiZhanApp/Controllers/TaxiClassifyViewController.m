@@ -34,6 +34,10 @@
 - (void)setupViews {
     
     _dataArray = [NSMutableArray array];
+    MenuModel *menuModel2 = [[MenuModel alloc] init];
+    menuModel2.menuTitle = @"获取出租车每个站点的最新数据";
+    [_dataArray addObject:menuModel2];
+
     // 返回按钮
     __weak typeof(self) weakSelf = self;
     [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
@@ -60,10 +64,7 @@
     
 //    MenuModel *menuModel1 = [[MenuModel alloc] init];
 //    menuModel1.menuTitle = @"获取出租车站点信息";
-    MenuModel *menuModel2 = [[MenuModel alloc] init];
-    menuModel2.menuTitle = @"获取出租车每个站点的最新数据";
 //    [_dataArray addObject:menuModel1];
-    [_dataArray addObject:menuModel2];
     [self.tableView reloadData];
     [self.tableView.mj_header endRefreshing];
     
