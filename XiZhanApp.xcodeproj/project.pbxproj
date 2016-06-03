@@ -50,6 +50,8 @@
 		F0186CCA1D00226900F90CE1 /* TaxiMsgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0186CC91D00226900F90CE1 /* TaxiMsgModel.m */; };
 		F021140B1CE2D81A00676971 /* InformationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F021140A1CE2D81A00676971 /* InformationDetailViewController.m */; };
 		F026E5EF1CFD2F9B00C22FCE /* ForgetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F026E5EE1CFD2F9B00C22FCE /* ForgetPwdViewController.m */; };
+		F04A71EA1D0132A4006E4ADA /* TaxiMsgTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F04A71E81D0132A4006E4ADA /* TaxiMsgTableCell.m */; };
+		F04A71EB1D0132A4006E4ADA /* TaxiMsgTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F04A71E91D0132A4006E4ADA /* TaxiMsgTableCell.xib */; };
 		F0607B221CE5690F0029EE31 /* jpush-ios-2.1.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0607B201CE5690F0029EE31 /* jpush-ios-2.1.6.a */; };
 		F0607B241CE56EED0029EE31 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0607B231CE56EED0029EE31 /* CoreTelephony.framework */; };
 		F0607B331CE56F9D0029EE31 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = F0607B321CE56F9D0029EE31 /* libz.tbd */; };
@@ -179,6 +181,9 @@
 		F021140A1CE2D81A00676971 /* InformationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationDetailViewController.m; sourceTree = "<group>"; };
 		F026E5ED1CFD2F9B00C22FCE /* ForgetPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPwdViewController.h; sourceTree = "<group>"; };
 		F026E5EE1CFD2F9B00C22FCE /* ForgetPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPwdViewController.m; sourceTree = "<group>"; };
+		F04A71E71D0132A4006E4ADA /* TaxiMsgTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxiMsgTableCell.h; sourceTree = "<group>"; };
+		F04A71E81D0132A4006E4ADA /* TaxiMsgTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxiMsgTableCell.m; sourceTree = "<group>"; };
+		F04A71E91D0132A4006E4ADA /* TaxiMsgTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaxiMsgTableCell.xib; sourceTree = "<group>"; };
 		F0607B201CE5690F0029EE31 /* jpush-ios-2.1.6.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.6.a"; sourceTree = "<group>"; };
 		F0607B211CE5690F0029EE31 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		F0607B231CE56EED0029EE31 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -484,6 +489,9 @@
 				F0FC4B181CFD781700E6A536 /* MenuType2TabCell.h */,
 				F0FC4B191CFD781700E6A536 /* MenuType2TabCell.m */,
 				F0FC4B1A1CFD781700E6A536 /* MenuType2TabCell.xib */,
+				F04A71E71D0132A4006E4ADA /* TaxiMsgTableCell.h */,
+				F04A71E81D0132A4006E4ADA /* TaxiMsgTableCell.m */,
+				F04A71E91D0132A4006E4ADA /* TaxiMsgTableCell.xib */,
 			);
 			name = "MessageList(消息列表)";
 			sourceTree = "<group>";
@@ -858,6 +866,7 @@
 				F0F379DE1CE07AD90047A469 /* Assets.xcassets in Resources */,
 				F0F379DC1CE07AD90047A469 /* Main.storyboard in Resources */,
 				F0088C861CE6BE8300AF6EAF /* plus@2x.png in Resources */,
+				F04A71EB1D0132A4006E4ADA /* TaxiMsgTableCell.xib in Resources */,
 				F0088C801CE6BE8300AF6EAF /* ico_check_nomal@2x.png in Resources */,
 				F0088C841CE6BE8300AF6EAF /* ico_check_select@3x.png in Resources */,
 				F0088C811CE6BE8300AF6EAF /* ico_check_nomal@3x.png in Resources */,
@@ -950,6 +959,7 @@
 				F0186CC41D00129100F90CE1 /* TaxiClassifyViewController.m in Sources */,
 				F0186CC71D001DA200F90CE1 /* TaxiMsgListViewController.m in Sources */,
 				F0C4AB071CE3194B0067E986 /* ZQPhotoViewCell.m in Sources */,
+				F04A71EA1D0132A4006E4ADA /* TaxiMsgTableCell.m in Sources */,
 				F0F37A0D1CE07B280047A469 /* User.m in Sources */,
 				F092EEC31CE6B79500353351 /* MsgType1TabCell.m in Sources */,
 				F0088C8D1CE6BE8300AF6EAF /* JJPhoto.m in Sources */,

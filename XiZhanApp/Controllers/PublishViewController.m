@@ -184,8 +184,10 @@
         NSString *strUrl = @"http://222.240.172.197:8081/api/File/UploadFile?path=";
         [MHNetworkManager uploadFileWithURL:strUrl params:nil successBlock:^(id returnData) {
             NSLog(@"%@",returnData);
+             [MBProgressHUD showSuccess:@"上传图片成功！" toView:nil];
         } failureBlock:^(NSError *error) {
             NSLog(@"%@",error);
+            [MBProgressHUD showError:@"上传图片失败！" toView:nil];
         } uploadParam:param showHUD:NO];
 //        NSString *str = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
 //        [self.imgString appendString:str];
@@ -231,13 +233,18 @@
     [MHNetworkManager postReqeustWithURL:kMenuAdd params:@{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":@"0",@"author":@"0",@"department":@"0",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0"} successBlock:^(id returnData) {
         
         NSLog(@"%@",returnData);
-        
+   //     if ([returnData[@"code"] isEqualToString:@"500"]) {
+            [MBProgressHUD showError:@"发送失败！" toView:nil];
+//        }
+//        else
+//        {
         [MBProgressHUD showSuccess:@"编辑成功！" toView:nil];
         [weakSelf.navigationController popViewControllerAnimated:YES];
         // 通知列表需要刷新
         if ([self.delegate respondsToSelector:@selector(noticeTableViewRefresh:)]) {
             [self.delegate noticeTableViewRefresh:nil];
         }
+       // }
     } failureBlock:^(NSError *error) {
         [MBProgressHUD showError:@"发送失败！" toView:nil];
         NSLog(@"%@",error);

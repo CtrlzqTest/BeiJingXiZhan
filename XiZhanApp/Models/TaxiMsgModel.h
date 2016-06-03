@@ -10,7 +10,7 @@
 
 @interface TaxiMsgModel : NSObject
 
-@property(nonatomic,strong)NSString *taxiStationName;
+@property(nonatomic,strong)NSString *taxiRankName;
 @property(nonatomic,strong)NSString *areaID;
 @property(nonatomic,strong)NSString *taxiCount;
 @property(nonatomic,copy)NSString *laneCount;
