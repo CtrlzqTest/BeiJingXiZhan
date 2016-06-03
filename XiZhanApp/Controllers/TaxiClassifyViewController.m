@@ -7,6 +7,7 @@
 //
 
 #import "TaxiClassifyViewController.h"
+#import "TaxiMsgListViewController.h"
 #import "MenuModel.h"
 #import "MenuType2TabCell.h"
 #import <MJRefresh.h>
@@ -25,6 +26,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = self.menuModel.menuTitle;
+    [self setupViews];
     // Do any additional setup after loading the view.
 }
 
@@ -55,13 +58,14 @@
 
 - (void)getData {
     
-    MenuModel *menuModel1 = [[MenuModel alloc] init];
-    menuModel1.menuTitle = @"获取出租车站点信息";
+//    MenuModel *menuModel1 = [[MenuModel alloc] init];
+//    menuModel1.menuTitle = @"获取出租车站点信息";
     MenuModel *menuModel2 = [[MenuModel alloc] init];
     menuModel2.menuTitle = @"获取出租车每个站点的最新数据";
-    [_dataArray addObject:menuModel1];
+//    [_dataArray addObject:menuModel1];
     [_dataArray addObject:menuModel2];
     [self.tableView reloadData];
+    [self.tableView.mj_header endRefreshing];
     
 }
 
@@ -86,9 +90,8 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MenuModel *model = _dataArray[indexPath.row];
-//    MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];;
-//    myInfoVC.menuModel = model;
-//    [self.navigationController pushViewController:myInfoVC animated:YES];
+    TaxiMsgListViewController *taxiStationVC = [[TaxiMsgListViewController alloc] init];
+    [self.navigationController pushViewController:taxiStationVC animated:YES];
     
 }
 

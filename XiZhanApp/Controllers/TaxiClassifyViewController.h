@@ -8,6 +8,9 @@
 
 #import "BaseViewController.h"
 
+@class MenuModel;
 @interface TaxiClassifyViewController : BaseViewController
+
+@property(nonatomic,strong)MenuModel *menuModel;
 
 @end

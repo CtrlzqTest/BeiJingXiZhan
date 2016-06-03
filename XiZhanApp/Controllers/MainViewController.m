@@ -16,7 +16,7 @@
 #import <MJRefresh.h>
 #import <UIImageView+WebCache.h>
 #import "InfoClassifyViewController.h"
-#import "TaxiMsgListViewController.h"
+#import "TaxiClassifyViewController.h"
 
 static NSString *collCellId = @"MainCell";
 @interface MainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -158,13 +158,15 @@ static NSString *collCellId = @"MainCell";
 
 -(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
+    MenuModel *model = _dataArray[indexPath.row];
+    
     if (indexPath.row == _dataArray.count - 1) {
-        TaxiMsgListViewController *taxiMsgVC = [[TaxiMsgListViewController alloc] init];
+        TaxiClassifyViewController *taxiMsgVC = [[TaxiClassifyViewController alloc] init];
+        taxiMsgVC.menuModel = model;
         [self.navigationController pushViewController:taxiMsgVC animated:YES];
         return;
     }
     
-    MenuModel *model = _dataArray[indexPath.row];
     InfoClassifyViewController *myInfoVC = [[InfoClassifyViewController alloc] init];
     myInfoVC.menuModel = model;
     [self.navigationController pushViewController:myInfoVC animated:YES];

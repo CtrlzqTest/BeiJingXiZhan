@@ -29,16 +29,6 @@
     
 }
 
-- (void)writeDataWithTaxiModel:(TaxiMsgModel *)taxiModel {
-    
-    if (taxiModel.isread) {
-        self.pointImgView.hidden = YES;
-    }else {
-        self.pointImgView.hidden = NO;
-    }
-    self.titleLabel.text = taxiModel.msgtitle;
-    
-}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

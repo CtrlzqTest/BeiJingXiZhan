@@ -25,10 +25,4 @@ static NSString *cellIndentifer = @"msgType1";
  */
 - (void)writeDataWithModel:(MessageModel *)msgModel;
 
-/**
- *  根据出租车消息赋值
- *
- *  @param taxiModel taxiModel description
- */
-- (void)writeDataWithTaxiModel:(TaxiMsgModel *)taxiModel;
 @end

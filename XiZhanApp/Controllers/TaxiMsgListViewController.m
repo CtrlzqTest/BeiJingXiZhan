@@ -67,23 +67,7 @@
         
         if ([returnData[@"code"] integerValue] == 0) {
             
-            NSArray *resultArray1 = [TaxiMsgModel mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
-            if (resultArray1.count > 0) {
-                _page ++;
-                for (TaxiMsgModel *model in resultArray1) {
-                    
-                    // 判断数据库是否已存在该条消息
-//                    NSArray *coutArr = [TaxiMsgModel getDataWithCondition:;
-                    NSArray *coutArr = [TaxiMsgModel getDataWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid] page:0 orderBy:nil];
-                    if (coutArr.count <= 0) {
-                        // 先添加到数组，同时保存到数据库
-                        model.msgdate = [Utility timeIntervalWithDateStr:model.msgdatestr];
-                        // [_dataArray insertObject:model atIndex:0];
-                        [model save];
-                    }
-                }
-            }
-            _dataArray = [NSMutableArray arrayWithArray:[TaxiMsgModel getDataWithCondition:nil page:1 orderBy:@"msgdate"]];
+            _dataArray = [TaxiMsgModel mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
             [self.tableView reloadData];
             
         }else {
@@ -117,7 +101,6 @@
 {
     MsgType1TabCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifer forIndexPath:indexPath];
     TaxiMsgModel *model = _dataArray[indexPath.row];
-    [cell writeDataWithTaxiModel:model];
     return cell;
 }
 
