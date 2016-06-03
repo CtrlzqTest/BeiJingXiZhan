@@ -101,7 +101,7 @@
     
     // 判断是否有分类列表
 //    NSDictionary *dict = !self.menuModel ? nil : @{@"parentId":self.menuModel.menuId};
-    
+    [self removeNodataView];
     [MHNetworkManager getRequstWithURL:kMuenListAPI params:@{@"parentid":self.menuModel.menuId} successBlock:^(id returnData) {
 
         if ([returnData[@"code"] integerValue] == 0) {
@@ -112,14 +112,19 @@
             [MBProgressHUD showError:@"获取列表失败" toView:self.view];
         }
         [self.tableView.mj_header endRefreshing];
-        
+        if (_dataArray.count <= 0) {
+            [self addNodataViewInView:self.tableView];
+        }
     } failureBlock:^(NSError *error) {
+        
         if ([self.tableView.mj_footer isRefreshing]) {
             [self.tableView.mj_footer endRefreshing];
         }
         [MBProgressHUD showError:@"网络不给力" toView:self.view];
         [self.tableView.mj_header endRefreshing];
-        
+        if (_dataArray.count <= 0) {
+            [self addNodataViewInView:self.tableView];
+        }
     } showHUD:YES];
     
 }

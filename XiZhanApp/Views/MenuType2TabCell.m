@@ -13,9 +13,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.pointImgView.hidden = YES;
     // Initialization code
 }
-
 
 - (void)writeDataWithModel:(MenuModel *)menuModel {
     

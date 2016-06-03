@@ -102,21 +102,29 @@
     [self.view addSubview:self.tableView];
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:@"MsgType1TabCell" bundle:nil] forCellReuseIdentifier:cellIndentifer];
-    
+
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self getData];
     }];
 //    [self.tableView.mj_header beginRefreshing];
-    
-    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+    MJRefreshBackNormalFooter *autoFooter = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         [self getMoreData];
     }];
+//    [autoFooter setTitle:@"正在加载更多数据..." forState:MJRefreshStateRefreshing];
+    [autoFooter setTitle:@"暂无更多数据" forState:MJRefreshStateNoMoreData];
+    self.tableView.mj_footer = autoFooter;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
 }
 
+// 点击加载更多
+-(void)tapNoDataView {
+    [self getData];
+}
+
 - (void)getData {
     
+    [self removeNodataView];
 //    NSDictionary *dict = !self.menuModel ? nil : @{@"parentId":self.menuModel.menuId};
     NSString *nodeId = !self.menuModel ? @"" : self.menuModel.menuId;
     NSString *pageIndex = [NSString stringWithFormat:@"%ld",_page];
@@ -141,6 +149,10 @@
             }
             NSString *condition = !self.menuModel ? nil : [NSString stringWithFormat:@"nodeid = '%@'",self.menuModel.menuId];
             _dataArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:condition page:1 orderBy:@"msgdate"]];
+            if (_dataArray.count <= 0) {
+//                [MBProgressHUD showMessag:@"" toView:nil];
+                [self addNodataViewInView:self.tableView];
+            }
             [self.tableView reloadData];
             
         }else {
@@ -149,6 +161,9 @@
         [self.tableView.mj_header endRefreshing];
         
     } failureBlock:^(NSError *error) {
+        if (_dataArray.count <= 0) {
+            [self addNodataViewInView:self.tableView];
+        }
         if ([self.tableView.mj_footer isRefreshing]) {
             [self.tableView.mj_footer endRefreshing];
         }
@@ -161,6 +176,7 @@
 
 - (void)getMoreData {
     
+    [self removeNodataView];
     __block MessageModel *lastMsgModel = [_dataArray lastObject];
     NSString *nodeId = !self.menuModel ? @"" : self.menuModel.menuId;
     NSString *pageIndex = [NSString stringWithFormat:@"%ld",_page];
@@ -187,6 +203,9 @@
             NSString *condition = !self.menuModel ? [NSString stringWithFormat:@"msgdate < '%ld'",lastMsgModel.msgdate] : [NSString stringWithFormat:@"msgdate < '%ld' and nodeid = '%@'",lastMsgModel.msgdate,self.menuModel.menuId];
             NSArray *moreArray = [MessageModel getDataWithCondition:condition page:1 orderBy:@"msgdate"];
             [_dataArray addObjectsFromArray:moreArray];
+            if (_dataArray.count <= 0) {
+                [self addNodataViewInView:self.tableView];
+            }
             [self.tableView.mj_footer endRefreshing];
             [self.tableView reloadData];
             
@@ -196,7 +215,9 @@
         [self.tableView.mj_header endRefreshing];
         
     } failureBlock:^(NSError *error) {
-        
+        if (_dataArray.count <= 0) {
+            [self addNodataViewInView:self.tableView];
+        }
         if ([self.tableView.mj_footer isRefreshing]) {
             [self.tableView.mj_footer endRefreshing];
         }
