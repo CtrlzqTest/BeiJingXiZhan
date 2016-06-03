@@ -13,5 +13,5 @@
 @property(nonatomic,copy)NSString *webUrl;
 
 @property(nonatomic,strong)MessageModel *model;
-@property(nonatomic,assign)NSInteger isSkip;
+
 @end
