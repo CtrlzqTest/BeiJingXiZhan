@@ -8,6 +8,7 @@
 
 #import "MsgType1TabCell.h"
 #import "MessageModel.h"
+#import "TaxiMsgModel.h"
 
 @implementation MsgType1TabCell
 
@@ -27,6 +28,7 @@
     self.titleLabel.text = msgModel.msgtitle;
     
 }
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

@@ -33,6 +33,8 @@
 
 #define kRegisteAPI             @"app.user/register"         //注册
 
+#define kGetTaxiRankInfoAPI     @"api/List/GetTaxiRankInfo"  // 获取出租车站点信息
+
 #define kAppopinion             @"api/Add/CommitFeedback" //意见反馈
 
 //#define kMuenListAPI          @"app.menu/getMenu" //首页菜单

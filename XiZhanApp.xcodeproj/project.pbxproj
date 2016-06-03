@@ -46,6 +46,8 @@
 		F0088C9D1CE6BE8300AF6EAF /* LQPhotoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0088C7B1CE6BE8300AF6EAF /* LQPhotoViewCell.xib */; };
 		F0088CA31CE6C16F00AF6EAF /* PublishViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0088CA21CE6C16F00AF6EAF /* PublishViewController.m */; };
 		F0186CC41D00129100F90CE1 /* TaxiClassifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0186CC31D00129000F90CE1 /* TaxiClassifyViewController.m */; };
+		F0186CC71D001DA200F90CE1 /* TaxiMsgListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0186CC61D001DA200F90CE1 /* TaxiMsgListViewController.m */; };
+		F0186CCA1D00226900F90CE1 /* TaxiMsgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0186CC91D00226900F90CE1 /* TaxiMsgModel.m */; };
 		F021140B1CE2D81A00676971 /* InformationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F021140A1CE2D81A00676971 /* InformationDetailViewController.m */; };
 		F026E5EF1CFD2F9B00C22FCE /* ForgetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F026E5EE1CFD2F9B00C22FCE /* ForgetPwdViewController.m */; };
 		F0607B221CE5690F0029EE31 /* jpush-ios-2.1.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0607B201CE5690F0029EE31 /* jpush-ios-2.1.6.a */; };
@@ -169,6 +171,10 @@
 		F0088CA21CE6C16F00AF6EAF /* PublishViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublishViewController.m; sourceTree = "<group>"; };
 		F0186CC21D00129000F90CE1 /* TaxiClassifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxiClassifyViewController.h; sourceTree = "<group>"; };
 		F0186CC31D00129000F90CE1 /* TaxiClassifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxiClassifyViewController.m; sourceTree = "<group>"; };
+		F0186CC51D001DA200F90CE1 /* TaxiMsgListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxiMsgListViewController.h; sourceTree = "<group>"; };
+		F0186CC61D001DA200F90CE1 /* TaxiMsgListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxiMsgListViewController.m; sourceTree = "<group>"; };
+		F0186CC81D00226900F90CE1 /* TaxiMsgModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxiMsgModel.h; sourceTree = "<group>"; };
+		F0186CC91D00226900F90CE1 /* TaxiMsgModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxiMsgModel.m; sourceTree = "<group>"; };
 		F02114091CE2D81A00676971 /* InformationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationDetailViewController.h; sourceTree = "<group>"; };
 		F021140A1CE2D81A00676971 /* InformationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationDetailViewController.m; sourceTree = "<group>"; };
 		F026E5ED1CFD2F9B00C22FCE /* ForgetPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPwdViewController.h; sourceTree = "<group>"; };
@@ -441,6 +447,8 @@
 			children = (
 				F0186CC21D00129000F90CE1 /* TaxiClassifyViewController.h */,
 				F0186CC31D00129000F90CE1 /* TaxiClassifyViewController.m */,
+				F0186CC51D001DA200F90CE1 /* TaxiMsgListViewController.h */,
+				F0186CC61D001DA200F90CE1 /* TaxiMsgListViewController.m */,
 			);
 			name = "TaxiViewControllers(出租车)";
 			sourceTree = "<group>";
@@ -657,10 +665,12 @@
 			children = (
 				F0F379FB1CE07B280047A469 /* User.h */,
 				F0F379FC1CE07B280047A469 /* User.m */,
-				F0ED7A1F1CE4676300369D33 /* MessageModel.h */,
-				F0ED7A201CE4676300369D33 /* MessageModel.m */,
 				F0607B341CE5752F0029EE31 /* MenuModel.h */,
 				F0607B351CE5752F0029EE31 /* MenuModel.m */,
+				F0186CC81D00226900F90CE1 /* TaxiMsgModel.h */,
+				F0186CC91D00226900F90CE1 /* TaxiMsgModel.m */,
+				F0ED7A1F1CE4676300369D33 /* MessageModel.h */,
+				F0ED7A201CE4676300369D33 /* MessageModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -938,6 +948,7 @@
 				F0088C931CE6BE8300AF6EAF /* MImaCell.m in Sources */,
 				F0088C8A1CE6BE8300AF6EAF /* MHeadImaView.m in Sources */,
 				F0186CC41D00129100F90CE1 /* TaxiClassifyViewController.m in Sources */,
+				F0186CC71D001DA200F90CE1 /* TaxiMsgListViewController.m in Sources */,
 				F0C4AB071CE3194B0067E986 /* ZQPhotoViewCell.m in Sources */,
 				F0F37A0D1CE07B280047A469 /* User.m in Sources */,
 				F092EEC31CE6B79500353351 /* MsgType1TabCell.m in Sources */,
@@ -972,6 +983,7 @@
 				F0FC4B1B1CFD781700E6A536 /* MenuType2TabCell.m in Sources */,
 				F0E396C21CE1B9C300D4137E /* SuggestionsViewController.m in Sources */,
 				F0F37A091CE07B280047A469 /* BaseTabBarViewController.m in Sources */,
+				F0186CCA1D00226900F90CE1 /* TaxiMsgModel.m in Sources */,
 				F0088C891CE6BE8300AF6EAF /* MHeaderImaCell.m in Sources */,
 				F0DC51581CE84CB400CE29AD /* ImgCell.m in Sources */,
 				F0607B3F1CE5B6650029EE31 /* ZQDatabaseManager.m in Sources */,

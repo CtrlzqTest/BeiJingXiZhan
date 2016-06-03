@@ -1,18 +1,17 @@
 //
-//  TaxiClassifyViewController.m
+//  TaxiMsgListViewController.m
 //  XiZhanApp
 //
 //  Created by zhangqiang on 16/6/2.
 //  Copyright © 2016年 zhangqiang. All rights reserved.
 //
 
-#import "TaxiClassifyViewController.h"
 #import "TaxiMsgListViewController.h"
-#import "MenuModel.h"
-#import "MenuType2TabCell.h"
+#import "MsgType1TabCell.h"
+#import "TaxiMsgModel.h"
 #import <MJRefresh.h>
 
-@interface TaxiClassifyViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface TaxiMsgListViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
     NSInteger _page;
     BOOL _shouldRefresh; // 是否需要刷新数据
@@ -22,22 +21,23 @@
 
 @end
 
-@implementation TaxiClassifyViewController
+@implementation TaxiMsgListViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = self.menuModel.menuTitle;
-    [self setupViews];
+    [self initView];
     // Do any additional setup after loading the view.
 }
 
-- (void)setupViews {
-    
-    _dataArray = [NSMutableArray array];
+-(void)initView
+{
     // 返回按钮
     __weak typeof(self) weakSelf = self;
     [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
         [weakSelf.navigationController popViewControllerAnimated:YES];
+    }];
+    [self setRightImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"edit" selectImage:nil action:^(AYCButton *button) {
+        
     }];
     
     self.tableView = [[UITableView alloc]init];
@@ -46,29 +46,47 @@
     self.tableView.delegate = self;
     [self.view addSubview:self.tableView];
     // 注册cell
-    [self.tableView registerNib:[UINib nibWithNibName:@"MenuType2TabCell" bundle:nil] forCellReuseIdentifier:cellId];
+    [self.tableView registerNib:[UINib nibWithNibName:@"MsgType1TabCell" bundle:nil] forCellReuseIdentifier:cellIndentifer];
     
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         [self getData];
     }];
     [self.tableView.mj_header beginRefreshing];
+    
+    self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
+        
+    }];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
 }
 
 - (void)getData {
     
-//    MenuModel *menuModel1 = [[MenuModel alloc] init];
-//    menuModel1.menuTitle = @"获取出租车站点信息";
-    MenuModel *menuModel2 = [[MenuModel alloc] init];
-    menuModel2.menuTitle = @"获取出租车每个站点的最新数据";
-//    [_dataArray addObject:menuModel1];
-    [_dataArray addObject:menuModel2];
-    [self.tableView reloadData];
-    [self.tableView.mj_header endRefreshing];
+//    NSString *pageIndex = [NSString stringWithFormat:@"%ld",_page];
+    [MHNetworkManager getRequstWithURL:kGetTaxiRankInfoAPI params:nil successBlock:^(id returnData) {
+        
+        if ([returnData[@"code"] integerValue] == 0) {
+            
+            _dataArray = [TaxiMsgModel mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
+            [self.tableView reloadData];
+            
+        }else {
+            // 请求失败
+        }
+        [self.tableView.mj_header endRefreshing];
+        
+    } failureBlock:^(NSError *error) {
+        if ([self.tableView.mj_footer isRefreshing]) {
+            [self.tableView.mj_footer endRefreshing];
+        }
+        [MBProgressHUD showError:@"网络不给力" toView:self.view];
+        [self.tableView.mj_header endRefreshing];
+        
+    } showHUD:YES];
     
 }
 
+#pragma mark -- UITableViewDataSource
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 60;
@@ -81,20 +99,16 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MenuType2TabCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId forIndexPath:indexPath];
-    MenuModel *model = _dataArray[indexPath.row];
-    [cell writeDataWithModel:model];
+    MsgType1TabCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIndentifer forIndexPath:indexPath];
+    TaxiMsgModel *model = _dataArray[indexPath.row];
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MenuModel *model = _dataArray[indexPath.row];
-    TaxiMsgListViewController *taxiStationVC = [[TaxiMsgListViewController alloc] init];
-    [self.navigationController pushViewController:taxiStationVC animated:YES];
+    
     
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

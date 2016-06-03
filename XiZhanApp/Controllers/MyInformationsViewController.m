@@ -16,7 +16,7 @@
 #import "MsgType1TabCell.h"
 #import "PublishViewController.h"
 
-static NSString *cellIndentifer = @"msgType1";
+
 @interface MyInformationsViewController ()<UITableViewDelegate,UITableViewDataSource,PublishViewControllerDelegate>
 {
     NSInteger _page;
@@ -196,6 +196,7 @@ static NSString *cellIndentifer = @"msgType1";
         [self.tableView.mj_header endRefreshing];
         
     } failureBlock:^(NSError *error) {
+        
         if ([self.tableView.mj_footer isRefreshing]) {
             [self.tableView.mj_footer endRefreshing];
         }
