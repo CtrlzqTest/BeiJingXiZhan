@@ -110,7 +110,7 @@
     self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
         
     }];
-   // self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
 }
 
