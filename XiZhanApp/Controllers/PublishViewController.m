@@ -7,7 +7,7 @@
 //
 
 #import "PublishViewController.h"
-
+#import <AFNetworking.h>
 @interface PublishViewController ()<UITextFieldDelegate,UITextViewDelegate,LQPhotoPickerViewDelegate>
 
 @property(nonatomic,retain)UIScrollView *ScrollofStatus;
@@ -171,11 +171,10 @@
     NSMutableArray *bigImageArray = [self LQPhotoPicker_getBigImageArray];
     for (UIImage *item in bigImageArray)
     {
-       
-        NSInteger index = [bigImageArray indexOfObject:item];
-        CGSize imgSize = item.size;
-        CGFloat heightDivideWidth = imgSize.height*1.0/imgSize.width;
-        NSData *data = [self imageWithImage:item scaledToSize:CGSizeMake(KWidth, KWidth*heightDivideWidth)];
+        NSInteger index = [bigImageArray indexOfObject:item];//获取下标
+        CGSize imgSize = item.size;//原图大小
+        CGFloat heightDivideWidth = imgSize.height*1.0/imgSize.width;//宽高比
+        NSData *data = [self imageWithImage:item scaledToSize:CGSizeMake(KWidth, KWidth*heightDivideWidth)];//基准量为设备宽
         MHUploadParam *param = [[MHUploadParam alloc] init];
         param.data = data;
         param.fileName = [param fileName];//文件名
@@ -204,7 +203,30 @@
     UIGraphicsEndImageContext();
     return UIImageJPEGRepresentation(newImage, 0.8);
 }
+-(void)postImgData
+{
+     NSMutableArray *bigImageArray = [self LQPhotoPicker_getBigImageArray];
+    //__weak typeof(self) weakSelf = self;
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+      NSString *strUrl = @"http://222.240.172.197:8081/api/File/UploadFile?path=";
+    [manager POST:strUrl parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
+     {
+         if (bigImageArray.count > 0) {
+             for (NSInteger i = 0; i < bigImageArray.count; i++) {
+                 UIImage *img = bigImageArray[i];
+                 NSData *data = [self imageWithImage:img scaledToSize:CGSizeMake(KWidth, KWidth*4.0/3)];//基准量为设备宽
+            [formData appendPartWithFileData:data name:[NSString stringWithFormat:@"img%ld",i+1] fileName:[NSString stringWithFormat:@"img%ld",i+1] mimeType:@"image/png"];
+             }
+         }
+     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject)
+     {
+         NSLog(@"%@",responseObject);
+     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error)
+     {
+        
+     }];
 
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -224,8 +246,8 @@
         [MBProgressHUD showMessag:@"请输入详情" toView:self.view];
         return;
     }
-    [self submitToServer];
-    
+     [self submitToServer];
+   // [self postImgData];
   // NSString *str = @"4028900b54a7a7de0154a7a7e0270000";
     __weak typeof(self) weakSelf = self;
 //    nodeid={nodeid}&title={title}&subtitle={subtitle}&content={content}&summary={summary}&author={author}&department={department}&keyword={keyword}&istop={istop}&isrecommend={isrecommend}&ishot={ishot}&iscolor={iscolor}&iscomment={iscomment}
