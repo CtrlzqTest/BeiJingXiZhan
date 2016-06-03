@@ -205,6 +205,7 @@
     UIGraphicsEndImageContext();
     return UIImageJPEGRepresentation(newImage, 0.8);
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -230,6 +231,7 @@
     __weak typeof(self) weakSelf = self;
 //    nodeid={nodeid}&title={title}&subtitle={subtitle}&content={content}&summary={summary}&author={author}&department={department}&keyword={keyword}&istop={istop}&isrecommend={isrecommend}&ishot={ishot}&iscolor={iscolor}&iscomment={iscomment}
     [MHNetworkManager postReqeustWithURL:kMenuAdd params:@{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":@"0",@"author":@"0",@"department":@"0",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0"} successBlock:^(id returnData) {
+        
         NSLog(@"%@",returnData);
    //     if ([returnData[@"code"] isEqualToString:@"500"]) {
             [MBProgressHUD showError:@"发送失败！" toView:nil];
