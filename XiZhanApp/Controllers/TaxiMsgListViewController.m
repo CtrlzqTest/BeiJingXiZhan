@@ -9,6 +9,7 @@
 #import "TaxiMsgListViewController.h"
 #import "TaxiMsgModel.h"
 #import "TaxiMsgTableCell.h"
+#import "TaxiMsgCellEdit.h"
 
 #import <MJRefresh.h>
 
@@ -22,6 +23,10 @@
 @property(nonatomic,strong)UIView *header;
 @property(nonatomic,retain)UILabel *peoplCountLabel;
 @property(nonatomic,retain)UILabel *carCountLabel;
+@property(nonatomic,retain)TaxiMsgCellEdit *editView;
+@property(nonatomic,retain)UITextField *taxiTF;
+@property(nonatomic,retain)UITextField *peopleTF;
+
 @end
 
 @implementation TaxiMsgListViewController
@@ -39,14 +44,15 @@
     
     CGFloat leftSide = 20.0;
     
-    UILabel *buttonHeaderLabel = [[UILabel alloc]initWithFrame:CGRectMake(20, 0, KWidth, 40)];
+    UILabel *buttonHeaderLabel = [[UILabel alloc]initWithFrame:CGRectMake(40, 10, 160, 40)];
+    buttonHeaderLabel.textAlignment = NSTextAlignmentCenter;
     buttonHeaderLabel.text = @"出租车待客处查询";
     buttonHeaderLabel.textColor = mainColor;
     UIImageView *imgLabel = [[UIImageView alloc]init];
     imgLabel.frame = buttonHeaderLabel.bounds;
-    imgLabel.image = [UIImage imageNamed:@"login_unselect.png"];
-    [imgLabel addSubview:buttonHeaderLabel];
-    [_header addSubview:imgLabel];
+    imgLabel.image = [UIImage imageNamed:@"login_unSelect"];
+    [buttonHeaderLabel addSubview:imgLabel];
+    [_header addSubview:buttonHeaderLabel];
     
     UILabel *headerLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(buttonHeaderLabel.frame), KWidth, 40)];
     headerLabel.textAlignment = NSTextAlignmentCenter;
@@ -102,7 +108,7 @@
     [self initHeaderView];
     // 返回按钮
     __weak typeof(self) weakSelf = self;
-    [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"user" selectImage:nil action:^(AYCButton *button) {
+    [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
     
@@ -171,6 +177,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TaxiMsgTableCell *cell = [tableView dequeueReusableCellWithIdentifier:cellMsgTable forIndexPath:indexPath];
+    //cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"login_unSelect"]];
     TaxiMsgModel *model = _dataArray[indexPath.row];
     [cell writeDataWithModel:model];
     return cell;
@@ -178,8 +185,71 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    TaxiMsgCellEdit *alertView = [[TaxiMsgCellEdit alloc] initWithFrame:CGRectMake(50, KHeight/2 - 100, KWidth-100, 160)];
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, alertView.frame.size.width, 30)];
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.textColor = mainColor;
+    titleLabel.text = @"编辑";
+    [alertView addSubview:titleLabel];
     
+    UILabel *taxiLabel = [[UILabel alloc]init];
+    taxiLabel.frame = CGRectMake(0, CGRectGetMaxY(titleLabel.frame) + 4, 80, 30);
+    taxiLabel.textColor = mainColor;
+    taxiLabel.text = @"出租车";
+    [alertView addSubview:taxiLabel];
     
+    UITextField *taxiTF = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(taxiLabel.frame), CGRectGetMaxY(titleLabel.frame) + 4, alertView.frame.size.width-100, 30)];
+    taxiTF.borderStyle = UITextBorderStyleRoundedRect;
+    taxiTF.layer.borderWidth = 1;
+    taxiTF.layer.borderColor = colorref;
+    taxiTF.layer.cornerRadius = 5;
+    taxiTF.keyboardType = UIKeyboardTypeNumberPad;
+    _taxiTF = taxiTF;
+    [alertView addSubview:_taxiTF];
+    
+    UILabel *peopleLabel = [[UILabel alloc]init];
+    peopleLabel.frame = CGRectMake(0, CGRectGetMaxY(taxiLabel.frame) + 4, 80, 30);
+    peopleLabel.textColor = mainColor;
+    peopleLabel.text = @"待客人数";
+    [alertView addSubview:peopleLabel];
+    
+    UITextField *peopleTF = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(taxiLabel.frame), CGRectGetMaxY(taxiLabel.frame) + 4, alertView.frame.size.width-100, 30)];
+    peopleTF.borderStyle = UITextBorderStyleRoundedRect;
+    peopleTF.layer.borderWidth = 1;
+    peopleTF.layer.borderColor = colorref;
+    peopleTF.layer.cornerRadius = 5;
+    peopleTF.keyboardType = UIKeyboardTypeNumberPad;
+    _peopleTF = peopleTF;
+    [alertView addSubview:_peopleTF];
+
+    UIButton *cancelBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    cancelBtn.frame = CGRectMake(10, CGRectGetMaxY(peopleTF.frame) + 4, 60, 40);
+    [cancelBtn addTarget:self action:@selector(cancelClick:) forControlEvents:UIControlEventTouchUpInside];
+    [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
+    [cancelBtn setTitleColor:mainColor forState:UIControlStateNormal];
+    cancelBtn.titleLabel.font = [UIFont systemFontOfSize:17];
+    cancelBtn.backgroundColor = [UIColor orangeColor];
+    [alertView addSubview:cancelBtn];
+    
+    UIButton *confirmBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    confirmBtn.frame = CGRectMake(CGRectGetMaxX(alertView.frame)-120, CGRectGetMaxY(peopleTF.frame) + 4, 60, 40);
+    [confirmBtn addTarget:self action:@selector(confirmClick:) forControlEvents:UIControlEventTouchUpInside];
+    [confirmBtn setTitle:@"确定" forState:UIControlStateNormal];
+    [confirmBtn setTitleColor:mainColor forState:UIControlStateNormal];
+    confirmBtn.titleLabel.font = [UIFont systemFontOfSize:17];
+    confirmBtn.backgroundColor = [UIColor orangeColor];
+    [alertView addSubview:confirmBtn];
+    
+    [alertView show];
+}
+- (void)cancelClick:(UIButton *)btn
+{
+    [btn.superview performSelector:@selector(close)];
+}
+
+-  (void)confirmClick:(UIButton *)btn
+{
+    [btn.superview performSelector:@selector(close)];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
