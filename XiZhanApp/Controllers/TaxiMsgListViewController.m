@@ -63,7 +63,7 @@
     
     UILabel *subHeaderLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(headerLabel.frame), KWidth, 40)];
     subHeaderLabel.textAlignment = NSTextAlignmentCenter;
-    subHeaderLabel.text = @"待客出租车与候车旅客统计数量";
+    subHeaderLabel.text = @"(待客出租车与候车旅客统计数量)";
     subHeaderLabel.textColor = mainColor;
     [_header addSubview:subHeaderLabel];
     
