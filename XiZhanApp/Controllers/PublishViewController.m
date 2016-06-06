@@ -181,7 +181,7 @@
         param.name = [@"bin" stringByAppendingString:[NSString stringWithFormat:@"%ld",index]];//参数名
         param.mimeType = [param mimeType];//文件格式
         
-        NSString *strUrl = @"http://222.240.172.197:8081/api/File/UploadFile?path=";
+        NSString *strUrl = @"http://222.240.172.197/app_31/File/UploadFile?path=nodeimage";
         [MHNetworkManager uploadFileWithURL:strUrl params:nil successBlock:^(id returnData) {
             NSLog(@"%@",returnData);
              [MBProgressHUD showSuccess:@"上传图片成功！" toView:nil];
