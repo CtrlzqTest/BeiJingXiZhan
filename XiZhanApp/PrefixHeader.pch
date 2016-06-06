@@ -40,4 +40,6 @@
 
 #define colorref [UIColor colorWithRed:0 green:97.0/255 blue:167.0/255 alpha:1.0].CGColor
 
+#define mainColor [UIColor colorWithRed:0 green:97.0/255 blue:167.0/255 alpha:1.0]
+
 #endif /* PrefixHeader_pch */

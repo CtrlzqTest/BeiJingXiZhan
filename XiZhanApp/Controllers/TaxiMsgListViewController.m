@@ -35,42 +35,54 @@
 -(void)initHeaderView
 {
     _header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KWidth, 200*ProportionHeight)];
-    _header.backgroundColor = [UIColor orangeColor];
+   // _header.backgroundColor = [UIColor orangeColor];
     
     CGFloat leftSide = 20.0;
+    UILabel *buttonHeaderLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, KWidth, 40)];
+    buttonHeaderLabel.text = @"出租车待客处查询";
+    buttonHeaderLabel.textColor = mainColor;
+    [_header addSubview:buttonHeaderLabel];
     
-    UILabel *headerLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, KWidth, 40)];
+    UILabel *headerLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(buttonHeaderLabel.frame), KWidth, 40)];
     headerLabel.textAlignment = NSTextAlignmentCenter;
     headerLabel.text = @"出租车待客数量消息";
+    headerLabel.textColor = mainColor;
     [_header addSubview:headerLabel];
     
     UILabel *subHeaderLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(headerLabel.frame), KWidth, 40)];
     subHeaderLabel.textAlignment = NSTextAlignmentCenter;
     subHeaderLabel.text = @"待客出租车与候车旅客统计数量";
+    subHeaderLabel.textColor = mainColor;
     [_header addSubview:subHeaderLabel];
     
     UILabel *carAllCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(leftSide, CGRectGetMaxY(subHeaderLabel.frame), 200*ProportionWidth, 40)];
     carAllCountLabel.text = @"待客出租车总数";
+    carAllCountLabel.textColor = mainColor;
     [_header addSubview:carAllCountLabel];
     
     _carCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(carAllCountLabel.frame), CGRectGetMaxY(subHeaderLabel.frame), 50*ProportionWidth, 40)];
     _carCountLabel.text = @"xxx";
+    _carCountLabel.textColor = mainColor;
     [_header addSubview:_carCountLabel];
     
     UILabel *carDanWeiLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_carCountLabel.frame), CGRectGetMaxY(subHeaderLabel.frame), 60*ProportionWidth, 40)];
     carDanWeiLabel.text = @"辆";
+    carDanWeiLabel.textColor = mainColor;
     [_header addSubview:carDanWeiLabel];
     
     UILabel *peopleAllCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(leftSide, CGRectGetMaxY(carAllCountLabel.frame), 200*ProportionWidth, 40)];
     peopleAllCountLabel.text = @"候车旅客总数";
+    peopleAllCountLabel.textColor = mainColor;
     [_header addSubview:peopleAllCountLabel];
     
     _peoplCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(carAllCountLabel.frame), CGRectGetMaxY(carAllCountLabel.frame), 50*ProportionWidth, 40)];
     _peoplCountLabel.text = @"xxx";
+    _peoplCountLabel.textColor = mainColor;
     [_header addSubview:_peoplCountLabel];
     
     UILabel *peoplDanWeiLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_carCountLabel.frame), CGRectGetMaxY(carAllCountLabel.frame), 60*ProportionWidth, 40)];
     peoplDanWeiLabel.text = @"人";
+    peoplDanWeiLabel.textColor = mainColor;
     [_header addSubview:peoplDanWeiLabel];
 }
 #pragma mark updateHeaderData
@@ -85,7 +97,7 @@
     [self initHeaderView];
     // 返回按钮
     __weak typeof(self) weakSelf = self;
-    [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
+    [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"user" selectImage:nil action:^(AYCButton *button) {
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
     
