@@ -8,6 +8,7 @@
 
 #import "Utility.h"
 //#import "User.h"
+#import "GSKeychain.h"
 #import <CommonCrypto/CommonDigest.h>
 
 static User *user = nil;
@@ -76,6 +77,12 @@ static User *user = nil;
     for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
         [result appendFormat:@"%02X", digest[i]];
     return result;
+}
+
++ (NSString *) sha1:(NSString *)str {
+    
+    return nil;
+    
 }
 
 // 保存设备唯一标示
@@ -219,6 +226,32 @@ static User *user = nil;
     CGSize size = [str boundingRectWithSize:CGSizeMake(MAXFLOAT, height) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
     return size.width;
     
+}
+
+// 注册智信
++ (BOOL )registZhixin {
+    
+    NSString *uuidKey = [GSKeychain secretForKey:UUIDkey];
+    if (uuidKey.length <= 0) {
+        NSString * sysUUID = [UIDevice currentDevice].identifierForVendor.UUIDString;
+        [GSKeychain setSecret:sysUUID forKey:UUIDkey];
+    }
+    
+    return YES;
+//    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:nil successBlock:^(id returnData) {
+//        
+//        if ([returnData[@"message"] isEqualToString:@"success"]) {
+//            NSArray *resultArray = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
+//            for (MessageModel *model in resultArray) {
+//                [model save];
+//            }
+//        }else {
+//            
+//        }
+//    } failureBlock:^(NSError *error) {
+//        
+//    } showHUD:NO];
+
 }
 
 @end

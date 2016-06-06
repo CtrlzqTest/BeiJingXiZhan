@@ -33,13 +33,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [NSThread sleepForTimeInterval:1.2];
-//    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
-//    manager.enable = YES;
-//    manager.shouldResignOnTouchOutside = YES;
-//    manager.shouldToolbarUsesTextFieldTintColor = YES;
-//    manager.enableAutoToolbar = NO;
     
-    [self requestData];
+    // 注册智信
+    [Utility registZhixin];
     // 极光推送
     [self setupjPushWithLaunchOptions:launchOptions];
     
@@ -71,31 +67,6 @@
     if (buttonIndex == 0) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.updateURLString]];
     }
-}
-
-- (void)requestData {
-    
-    NSString *deviceToken = [[UIDevice currentDevice] identifierForVendor].UUIDString;
-    if (![[Utility getDeviceToken] isEqualToString:deviceToken]) {
-        [Utility saveDeviceToken:deviceToken];
-    }else {
-        NSLog(@"%@一样",deviceToken);
-    }
-    
-//    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:nil successBlock:^(id returnData) {
-//        
-//        if ([returnData[@"message"] isEqualToString:@"success"]) {
-//            NSArray *resultArray = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
-//            for (MessageModel *model in resultArray) {
-//                [model save];
-//            }
-//        }else {
-//            
-//        }
-//    } failureBlock:^(NSError *error) {
-//        
-//    } showHUD:NO];
-    
 }
 
 #pragma mark 推送消息
