@@ -20,6 +20,8 @@
 }
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)UIView *header;
+@property(nonatomic,retain)UILabel *peoplCountLabel;
+@property(nonatomic,retain)UILabel *carCountLabel;
 @end
 
 @implementation TaxiMsgListViewController
@@ -29,7 +31,7 @@
     [self initView];
     // Do any additional setup after loading the view.
 }
-
+#pragma mark  initheaderUI
 -(void)initHeaderView
 {
     _header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KWidth, 200*ProportionHeight)];
@@ -51,11 +53,11 @@
     carAllCountLabel.text = @"待客出租车总数";
     [_header addSubview:carAllCountLabel];
     
-    UILabel *carCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(carAllCountLabel.frame), CGRectGetMaxY(subHeaderLabel.frame), 50*ProportionWidth, 40)];
-    carCountLabel.text = @"xxx";
-    [_header addSubview:carCountLabel];
+    _carCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(carAllCountLabel.frame), CGRectGetMaxY(subHeaderLabel.frame), 50*ProportionWidth, 40)];
+    _carCountLabel.text = @"xxx";
+    [_header addSubview:_carCountLabel];
     
-    UILabel *carDanWeiLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(carCountLabel.frame), CGRectGetMaxY(subHeaderLabel.frame), 60*ProportionWidth, 40)];
+    UILabel *carDanWeiLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_carCountLabel.frame), CGRectGetMaxY(subHeaderLabel.frame), 60*ProportionWidth, 40)];
     carDanWeiLabel.text = @"辆";
     [_header addSubview:carDanWeiLabel];
     
@@ -63,13 +65,20 @@
     peopleAllCountLabel.text = @"候车旅客总数";
     [_header addSubview:peopleAllCountLabel];
     
-    UILabel *peoplCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(carAllCountLabel.frame), CGRectGetMaxY(carAllCountLabel.frame), 50*ProportionWidth, 40)];
-    peoplCountLabel.text = @"xxx";
-    [_header addSubview:peoplCountLabel];
+    _peoplCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(carAllCountLabel.frame), CGRectGetMaxY(carAllCountLabel.frame), 50*ProportionWidth, 40)];
+    _peoplCountLabel.text = @"xxx";
+    [_header addSubview:_peoplCountLabel];
     
-    UILabel *peoplDanWeiLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(carCountLabel.frame), CGRectGetMaxY(carAllCountLabel.frame), 60*ProportionWidth, 40)];
+    UILabel *peoplDanWeiLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_carCountLabel.frame), CGRectGetMaxY(carAllCountLabel.frame), 60*ProportionWidth, 40)];
     peoplDanWeiLabel.text = @"人";
     [_header addSubview:peoplDanWeiLabel];
+}
+#pragma mark updateHeaderData
+
+-(void)updateHeaderDataMethod
+{
+    _peoplCountLabel.text = [NSString stringWithFormat:@"%d",arc4random() % 100];
+    _carCountLabel.text = [NSString stringWithFormat:@"%d",arc4random() % 100];
 }
 -(void)initView
 {
@@ -101,12 +110,12 @@
     self.tableView.mj_footer = [MJRefreshAutoFooter footerWithRefreshingBlock:^{
         
     }];
-   // self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
 }
 
 - (void)getData {
-    
+    [self updateHeaderDataMethod];
 //    NSString *pageIndex = [NSString stringWithFormat:@"%ld",_page];
     [MHNetworkManager getRequstWithURL:kGetTaxiInfoNewDataAPI params:nil successBlock:^(id returnData) {
         
