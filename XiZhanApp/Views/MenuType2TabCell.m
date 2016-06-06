@@ -8,6 +8,7 @@
 
 #import "MenuType2TabCell.h"
 #import "MenuModel.h"
+#import <UIImageView+WebCache.h>
 
 @implementation MenuType2TabCell
 
@@ -20,6 +21,7 @@
 - (void)writeDataWithModel:(MenuModel *)menuModel {
     
     self.titleLabel.text = menuModel.menuTitle;
+    [self.imgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",@"http://222.240.172.197/app_31/",menuModel.imgUrl]] placeholderImage:nil];
     
 }
 

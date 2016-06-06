@@ -18,7 +18,7 @@
 {
     return @{
              @"taxiRankName" :  @"Name",
-             @"areaID" :        @"AreaID",
+             @"taxiRankId" :    @"TaxiRankID",
              @"taxiCount" :     @"MaxTaxiCount",
              @"laneCount" :     @"LaneCount",
              @"peopleCount" :   @"MaxPeopleCount",

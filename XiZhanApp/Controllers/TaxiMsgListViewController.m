@@ -108,7 +108,7 @@
 - (void)getData {
     
 //    NSString *pageIndex = [NSString stringWithFormat:@"%ld",_page];
-    [MHNetworkManager getRequstWithURL:kGetTaxiRankInfoAPI params:nil successBlock:^(id returnData) {
+    [MHNetworkManager getRequstWithURL:kGetTaxiInfoNewDataAPI params:nil successBlock:^(id returnData) {
         
         if ([returnData[@"code"] integerValue] == 0) {
             

@@ -11,7 +11,7 @@
 
 //#define BaseAPI                 @"http://192.168.16.147:8080/bjws/"  // 龙龙
 
-#define BaseAPI                 @"http://192.168.16.139:8080/bjws/"  // 龙龙
+#define BaseAPI                 @"http://124.207.156.101:80/bjws/"  // 龙龙
 
 #define BaseXiZhanAPI           @"http://222.240.172.197:8081/api/" // 西站测试
 
@@ -34,6 +34,8 @@
 #define kRegisteAPI             @"app.user/register"         //注册
 
 #define kGetTaxiRankInfoAPI     @"api/List/GetTaxiRankInfo"  // 获取出租车站点信息
+
+#define kGetTaxiInfoNewDataAPI     @"api/List/GetTaxiInfoNewData" //获取出租车站点新数据
 
 #define kAppopinion             @"api/Add/CommitFeedback" //意见反馈
 
