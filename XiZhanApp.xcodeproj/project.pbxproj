@@ -50,6 +50,7 @@
 		F0186CCA1D00226900F90CE1 /* TaxiMsgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0186CC91D00226900F90CE1 /* TaxiMsgModel.m */; };
 		F021140B1CE2D81A00676971 /* InformationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F021140A1CE2D81A00676971 /* InformationDetailViewController.m */; };
 		F026E5EF1CFD2F9B00C22FCE /* ForgetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F026E5EE1CFD2F9B00C22FCE /* ForgetPwdViewController.m */; };
+		F046537F1D055DAA005D8E81 /* TaxiMsgCellEdit.m in Sources */ = {isa = PBXBuildFile; fileRef = F046537E1D055DAA005D8E81 /* TaxiMsgCellEdit.m */; };
 		F04A71EA1D0132A4006E4ADA /* TaxiMsgTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F04A71E81D0132A4006E4ADA /* TaxiMsgTableCell.m */; };
 		F04A71EB1D0132A4006E4ADA /* TaxiMsgTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F04A71E91D0132A4006E4ADA /* TaxiMsgTableCell.xib */; };
 		F0607B221CE5690F0029EE31 /* jpush-ios-2.1.6.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F0607B201CE5690F0029EE31 /* jpush-ios-2.1.6.a */; };
@@ -182,6 +183,8 @@
 		F021140A1CE2D81A00676971 /* InformationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationDetailViewController.m; sourceTree = "<group>"; };
 		F026E5ED1CFD2F9B00C22FCE /* ForgetPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPwdViewController.h; sourceTree = "<group>"; };
 		F026E5EE1CFD2F9B00C22FCE /* ForgetPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPwdViewController.m; sourceTree = "<group>"; };
+		F046537D1D055DAA005D8E81 /* TaxiMsgCellEdit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxiMsgCellEdit.h; sourceTree = "<group>"; };
+		F046537E1D055DAA005D8E81 /* TaxiMsgCellEdit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxiMsgCellEdit.m; sourceTree = "<group>"; };
 		F04A71E71D0132A4006E4ADA /* TaxiMsgTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxiMsgTableCell.h; sourceTree = "<group>"; };
 		F04A71E81D0132A4006E4ADA /* TaxiMsgTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxiMsgTableCell.m; sourceTree = "<group>"; };
 		F04A71E91D0132A4006E4ADA /* TaxiMsgTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaxiMsgTableCell.xib; sourceTree = "<group>"; };
@@ -495,6 +498,8 @@
 				F04A71E71D0132A4006E4ADA /* TaxiMsgTableCell.h */,
 				F04A71E81D0132A4006E4ADA /* TaxiMsgTableCell.m */,
 				F04A71E91D0132A4006E4ADA /* TaxiMsgTableCell.xib */,
+				F046537D1D055DAA005D8E81 /* TaxiMsgCellEdit.h */,
+				F046537E1D055DAA005D8E81 /* TaxiMsgCellEdit.m */,
 			);
 			name = "MessageList(消息列表)";
 			sourceTree = "<group>";
@@ -948,6 +953,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F046537F1D055DAA005D8E81 /* TaxiMsgCellEdit.m in Sources */,
 				F0088C961CE6BE8300AF6EAF /* MShowAllGroup.m in Sources */,
 				F0088C8B1CE6BE8300AF6EAF /* JJMainScrollView.m in Sources */,
 				F0088C981CE6BE8300AF6EAF /* SDBaseProgressView.m in Sources */,
