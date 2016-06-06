@@ -24,8 +24,11 @@
 }
 -(void)writeDataWithModel:(TaxiMsgModel *)msgModel
 {
+    self.taxiStationNameLabel.textColor = mainColor;
     self.taxiStationNameLabel.text = msgModel.taxiRankName;
+    self.taxiCountLabel.textColor = mainColor;
     self.taxiCountLabel.text = msgModel.taxiCount;
+    self.peopleCountLabel.textColor = mainColor;
     self.peopleCountLabel.text = msgModel.peopleCount;
 }
 @end
