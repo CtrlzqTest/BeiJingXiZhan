@@ -24,11 +24,27 @@
 }
 -(void)writeDataWithModel:(TaxiMsgModel *)msgModel
 {
+    self.layerLabel.layer.cornerRadius = 30.0;
+    self.layerLabel.layer.masksToBounds = YES;
+    self.layerLabel.layer.borderWidth = 2.0;
+    self.layerLabel.layer.borderColor = colorref;
+    
     self.taxiStationNameLabel.textColor = mainColor;
     self.taxiStationNameLabel.text = msgModel.taxiRankName;
     self.taxiCountLabel.textColor = mainColor;
     self.taxiCountLabel.text = msgModel.taxiCount;
+    
+    self.taxiCountLabel.layer.cornerRadius = 15.0;
+    self.taxiCountLabel.layer.masksToBounds = YES;
+    self.taxiCountLabel.layer.borderWidth = 2.0;
+    self.taxiCountLabel.layer.borderColor = colorref;
+    
     self.peopleCountLabel.textColor = mainColor;
+    
     self.peopleCountLabel.text = msgModel.peopleCount;
+    self.peopleCountLabel.layer.cornerRadius = 15.0;
+    self.peopleCountLabel.layer.masksToBounds = YES;
+    self.peopleCountLabel.layer.borderWidth = 2.0;
+    self.peopleCountLabel.layer.borderColor = colorref;
 }
 @end

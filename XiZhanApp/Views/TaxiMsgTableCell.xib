@@ -7,72 +7,70 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" restorationIdentifier="taxtMsgTableCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="taxtMsgTableCell" rowHeight="128" id="KGk-i7-Jjw" customClass="TaxiMsgTableCell">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="taxtMsgTableCell" selectionStyle="default" indentationWidth="10" reuseIdentifier="taxtMsgTableCell" rowHeight="92" id="KGk-i7-Jjw" customClass="TaxiMsgTableCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="94"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="129"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="93"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="南广场" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jx-5Y-NrE">
-                        <rect key="frame" x="9" y="55" width="103" height="26"/>
+                        <rect key="frame" x="9" y="34" width="103" height="26"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="出租车待客" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hza-cb-bgc">
-                        <rect key="frame" x="131" y="37" width="120" height="26"/>
+                        <rect key="frame" x="131" y="11" width="120" height="26"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.26275131510168687" green="0.53050046541325524" blue="0.70146233974358974" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="候车旅客" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gFj-aS-7DW">
-                        <rect key="frame" x="131" y="71" width="120" height="26"/>
+                        <rect key="frame" x="131" y="51" width="120" height="26"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.26275131509999999" green="0.53050046539999995" blue="0.70146233970000005" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9NP-Bx-LcF">
-                        <rect key="frame" x="270" y="39" width="59" height="26"/>
+                        <rect key="frame" x="270" y="11" width="50" height="26"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="辆" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s46-If-LIR">
-                        <rect key="frame" x="345" y="37" width="23" height="26"/>
+                        <rect key="frame" x="337" y="11" width="23" height="26"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.26275131509999999" green="0.53050046539999995" blue="0.70146233970000005" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="200" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="px0-Qw-eEK">
-                        <rect key="frame" x="270" y="73" width="59" height="26"/>
+                        <rect key="frame" x="270" y="55" width="50" height="26"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVS-pk-H8A">
-                        <rect key="frame" x="345" y="71" width="22" height="26"/>
+                        <rect key="frame" x="338" y="55" width="22" height="26"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.26275131509999999" green="0.53050046539999995" blue="0.70146233970000005" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="login_unSelect" translatesAutoresizingMaskIntoConstraints="NO" id="TWl-Me-wXS">
-                        <rect key="frame" x="270" y="37" width="59" height="26"/>
-                    </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="login_unSelect" translatesAutoresizingMaskIntoConstraints="NO" id="O1v-W8-rPL">
-                        <rect key="frame" x="270" y="71" width="59" height="26"/>
-                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Cp-ca-fSR">
+                        <rect key="frame" x="9" y="8" width="358" height="77"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
+                <outlet property="layerLabel" destination="4Cp-ca-fSR" id="Dua-cS-hkk"/>
                 <outlet property="peopleCountLabel" destination="px0-Qw-eEK" id="o4p-Ns-3mK"/>
                 <outlet property="taxiCountLabel" destination="9NP-Bx-LcF" id="sqq-SQ-DWc"/>
                 <outlet property="taxiStationNameLabel" destination="3jx-5Y-NrE" id="1fG-ov-THq"/>
             </connections>
-            <point key="canvasLocation" x="318.5" y="195"/>
+            <point key="canvasLocation" x="303.5" y="201"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="login_unSelect" width="120" height="33"/>
-    </resources>
 </document>
