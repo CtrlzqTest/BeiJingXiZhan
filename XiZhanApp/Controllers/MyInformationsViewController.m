@@ -38,17 +38,6 @@
     self.title = self.menuModel.menuTitle;
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addOtherInfo) name:ZQAddOtherInfoNotication object:nil];
     
-//    if (self.isSkip == 1) {
-//        [self.navigationController setNavigationBarHidden:NO animated:YES];
-//        [[NSNotificationCenter defaultCenter]postNotificationName:@"skip" object:nil];
-//        _shouldRefresh = YES;
-//        [self.navigationController.navigationBar setGradientLayerStartColor:[UIColor colorWithRed:0.110 green:0.690 blue:0.859 alpha:1.000] endColor:[UIColor colorWithRed:0.067 green:0.388 blue:0.635 alpha:1.000]];
-//        __weak typeof(self) weakSelf = self;
-//        [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
-//            
-//            [weakSelf backMethod];
-//        }];
-//    }
     [self getData];
 }
 

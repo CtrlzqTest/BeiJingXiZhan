@@ -8,6 +8,7 @@
 
 #import "Utility.h"
 //#import "User.h"
+#import "GSKeychain.h"
 #import <CommonCrypto/CommonDigest.h>
 
 static User *user = nil;
@@ -76,6 +77,24 @@ static User *user = nil;
     for(int i = 0; i < CC_MD5_DIGEST_LENGTH; i++)
         [result appendFormat:@"%02X", digest[i]];
     return result;
+}
+
+// SHA1加密
++ (NSString *) sha1:(NSString *)str {
+    
+    const char *cstr = [str cStringUsingEncoding:NSUTF8StringEncoding];
+    NSData *data = [NSData dataWithBytes:cstr length:str.length];
+    
+    uint8_t digest[CC_SHA1_DIGEST_LENGTH];
+    
+    CC_SHA1(data.bytes, (CC_LONG)data.length, digest);
+    
+    NSMutableString* output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
+    
+    for(int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++){
+        [output appendFormat:@"%02X", digest[i]];
+    }
+    return output;
 }
 
 // 保存设备唯一标示
@@ -219,6 +238,72 @@ static User *user = nil;
     CGSize size = [str boundingRectWithSize:CGSizeMake(MAXFLOAT, height) options:NSStringDrawingUsesLineFragmentOrigin attributes:attributes context:nil].size;
     return size.width;
     
+}
+
+// 注册智信
++ (BOOL )registZhixin {
+
+    NSString *uuidKey = [GSKeychain secretForKey:UUIDkey];
+//    NSString *secretKey = [GSKeychain secretForKey:UUIDSecret];
+    
+    if (uuidKey.length <= 0) {
+        NSString * sysUUID = [UIDevice currentDevice].identifierForVendor.UUIDString;
+        NSString *secret = [self createGuidKey];
+        [GSKeychain setSecret:sysUUID forKey:UUIDkey];
+        [GSKeychain setSecret:secret forKey:UUIDSecret];
+    }
+    return YES;
+//    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:nil successBlock:^(id returnData) {
+//        
+//        if ([returnData[@"message"] isEqualToString:@"success"]) {
+//            NSArray *resultArray = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
+//            for (MessageModel *model in resultArray) {
+//                [model save];
+//            }
+//        }else {
+//            
+//        }
+//    } failureBlock:^(NSError *error) {
+//        
+//    } showHUD:NO];
+
+}
+
+// 获得随机的GUID
++ (NSString *)createGuidKey {
+    
+    CFUUIDRef uuid_ref = CFUUIDCreate(NULL);
+    CFStringRef uuid_string_ref= CFUUIDCreateString(NULL, uuid_ref);
+    CFRelease(uuid_ref);
+    NSString *uuid = [NSString stringWithString:(__bridge NSString*)uuid_string_ref];
+    CFRelease(uuid_string_ref);
+    return uuid;
+}
+// 接口签名
++ (NSString *)getSecretAPI:(NSString *)keyAPI {
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
+    NSString *apptimestamp = [NSString stringWithFormat:@"%.0f",time];
+    NSString *appKey = [GSKeychain secretForKey:UUIDkey];
+    [dict setValue:@"1" forKey:@"type"];
+    [dict setValue:@"dog" forKey:@"action"];
+    [dict setValue:@"31" forKey:@"appid"];
+    [dict setValue:appKey forKey:@"appkey"];
+    [dict setValue:apptimestamp forKey:@"apptimestamp"];
+    
+    NSArray *allKeys = [[dict allKeys] sortedArrayUsingSelector:@selector(compare:)];
+    NSMutableString *str = [NSMutableString string];
+    [str appendString:[GSKeychain secretForKey:UUIDSecret]];
+    for (NSString *key in allKeys) {
+        [str appendFormat:@"%@%@",key,dict[key]];
+    }
+    NSString *signStr = [self sha1:str];
+    NSString *APIStr = [keyAPI stringByAppendingFormat:@"?type=1&action=dog&appid=31&appkey=%@&apptimestamp=%@&appsign=%@",appKey,apptimestamp,signStr];
+    dict = nil;
+    allKeys = nil;
+    str = nil;
+    return APIStr;
 }
 
 @end

@@ -63,6 +63,16 @@
  *  @return 加密后
  */
 + (NSString *) md5:(NSString *)str;
+
+/**
+ *  SHA1加密
+ *
+ *  @param str 加密字符串
+ *
+ *  @return 加密后
+ */
++ (NSString *) sha1:(NSString *)str;
+
 /**
  *  保存设备唯一标识
  *
@@ -123,5 +133,30 @@
  *  @return 宽度
  */
 - (CGFloat )getWidthWithString:(NSString *)str height:(CGFloat )height fontSize:(CGFloat )fontSize;
+
+/***************************************************************************************************
+    智信对接处理
+ ***********************************************************************************************/
+
+/**
+ *  注册智信
+ */
++ (BOOL )registZhixin;
+
+/**
+ *  接口加密
+ *
+ *  @param keyAPI 关键接口action
+ *
+ *  @return 返回加密后的API
+ */
++ (NSString *)getSecretAPI:(NSString *)keyAPI;
+
+/**
+ *  获取GUID
+ *
+ *  @return 返回GUID
+ */
++ (NSString *)createGuidKey;
 
 @end
