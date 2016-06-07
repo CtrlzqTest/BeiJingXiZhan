@@ -152,4 +152,11 @@
  */
 + (NSString *)getSecretAPI:(NSString *)keyAPI;
 
+/**
+ *  获取GUID
+ *
+ *  @return 返回GUID
+ */
++ (NSString *)createGuidKey;
+
 @end

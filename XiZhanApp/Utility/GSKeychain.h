@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 
 static NSString *UUIDkey = @"Device_UUID";
+static NSString *UUIDSecret = @"UUIDSecret";
 
 @interface GSKeychain : NSObject
 

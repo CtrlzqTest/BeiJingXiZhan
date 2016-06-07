@@ -33,7 +33,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [NSThread sleepForTimeInterval:1.2];
-    
     // 注册智信
     [Utility registZhixin];
     // 极光推送

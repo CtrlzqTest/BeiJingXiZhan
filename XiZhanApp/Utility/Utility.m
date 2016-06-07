@@ -92,7 +92,7 @@ static User *user = nil;
     NSMutableString* output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
     
     for(int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++){
-        [output appendFormat:@"%02x", digest[i]];
+        [output appendFormat:@"%02X", digest[i]];
     }
     return output;
 }
@@ -242,13 +242,16 @@ static User *user = nil;
 
 // 注册智信
 + (BOOL )registZhixin {
-    
+
     NSString *uuidKey = [GSKeychain secretForKey:UUIDkey];
+//    NSString *secretKey = [GSKeychain secretForKey:UUIDSecret];
+    
     if (uuidKey.length <= 0) {
         NSString * sysUUID = [UIDevice currentDevice].identifierForVendor.UUIDString;
+        NSString *secret = [self createGuidKey];
         [GSKeychain setSecret:sysUUID forKey:UUIDkey];
+        [GSKeychain setSecret:secret forKey:UUIDSecret];
     }
-    
     return YES;
 //    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:nil successBlock:^(id returnData) {
 //        
@@ -266,11 +269,41 @@ static User *user = nil;
 
 }
 
+// 获得随机的GUID
++ (NSString *)createGuidKey {
+    
+    CFUUIDRef uuid_ref = CFUUIDCreate(NULL);
+    CFStringRef uuid_string_ref= CFUUIDCreateString(NULL, uuid_ref);
+    CFRelease(uuid_ref);
+    NSString *uuid = [NSString stringWithString:(__bridge NSString*)uuid_string_ref];
+    CFRelease(uuid_string_ref);
+    return uuid;
+}
 // 接口签名
-//+ (NSString *)getSecretAPI:(NSString *)keyAPI {
-//    
-//    
-//    
-//}
++ (NSString *)getSecretAPI:(NSString *)keyAPI {
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+    NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
+    NSString *apptimestamp = [NSString stringWithFormat:@"%.0f",time];
+    NSString *appKey = [GSKeychain secretForKey:UUIDkey];
+    [dict setValue:@"1" forKey:@"type"];
+    [dict setValue:@"dog" forKey:@"action"];
+    [dict setValue:@"31" forKey:@"appid"];
+    [dict setValue:appKey forKey:@"appkey"];
+    [dict setValue:apptimestamp forKey:@"apptimestamp"];
+    
+    NSArray *allKeys = [[dict allKeys] sortedArrayUsingSelector:@selector(compare:)];
+    NSMutableString *str = [NSMutableString string];
+    [str appendString:[GSKeychain secretForKey:UUIDSecret]];
+    for (NSString *key in allKeys) {
+        [str appendFormat:@"%@%@",key,dict[key]];
+    }
+    NSString *signStr = [self sha1:str];
+    NSString *APIStr = [keyAPI stringByAppendingFormat:@"?type=1&action=dog&appid=31&appkey=%@&apptimestamp=%@&appsign=%@",appKey,apptimestamp,signStr];
+    dict = nil;
+    allKeys = nil;
+    str = nil;
+    return APIStr;
+}
 
 @end
