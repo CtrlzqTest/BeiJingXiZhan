@@ -24,7 +24,7 @@
 }
 -(void)writeDataWithModel:(TaxiMsgModel *)msgModel
 {
-    self.layerLabel.layer.cornerRadius = 30.0;
+    self.layerLabel.layer.cornerRadius = 45.0;
     self.layerLabel.layer.masksToBounds = YES;
     self.layerLabel.layer.borderWidth = 2.0;
     self.layerLabel.layer.borderColor = colorref;

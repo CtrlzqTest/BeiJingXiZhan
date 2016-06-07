@@ -19,7 +19,7 @@
 @property(nonatomic,strong) UILabel *explainLabel;
 
 
-@property(nonatomic,strong)NSMutableString *imgString;
+@property(nonatomic,strong)NSString *imgString;
 @end
 
 @implementation PublishViewController
@@ -169,6 +169,7 @@
 //}
 - (void)submitToServer{
     NSMutableArray *bigImageArray = [self LQPhotoPicker_getBigImageArray];
+    __weak typeof(self) weakSel = self;
     for (UIImage *item in bigImageArray)
     {
         NSInteger index = [bigImageArray indexOfObject:item];//获取下标
@@ -184,7 +185,17 @@
         NSString *strUrl = @"http://222.240.172.197:8081/api/File/UploadFile?path=contentimage";
         [MHNetworkManager uploadFileWithURL:strUrl params:nil successBlock:^(id returnData) {
             NSLog(@"%@",returnData);
-             [MBProgressHUD showSuccess:@"上传图片成功！" toView:nil];
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:returnData
+                                                                options:NSJSONReadingMutableContainers
+                                                                  error:nil];
+            NSLog(@"%@",dic[@"code"]);
+            if ([returnData[@"code"] isEqualToString:@"0"]) {
+                NSDictionary *dict = returnData[@"data"];
+               // weakSelf.imgString = [BaseXiZhanAPI stringByAppendingString:dict[@"path"]];
+                weakSel.imgString = dict[@"path"];
+                weakSel.imgString = [weakSel.imgString stringByAppendingString:@","];
+                [MBProgressHUD showSuccess:@"上传图片成功！" toView:nil];
+            }
         } failureBlock:^(NSError *error) {
             NSLog(@"%@",error);
             [MBProgressHUD showError:@"上传图片失败！" toView:nil];
@@ -193,7 +204,7 @@
 //        [self.imgString appendString:str];
 //        [self.imgString appendString:@","];
     }
-    NSLog(@"%@",self.imgString);
+    NSLog(@"%@",weakSel.imgString);
 }
 //对图片尺寸进行压缩--
 - (NSData *)imageWithImage:(UIImage*)image
@@ -230,7 +241,7 @@
   // NSString *str = @"4028900b54a7a7de0154a7a7e0270000";
     __weak typeof(self) weakSelf = self;
 //    nodeid={nodeid}&title={title}&subtitle={subtitle}&content={content}&summary={summary}&author={author}&department={department}&keyword={keyword}&istop={istop}&isrecommend={isrecommend}&ishot={ishot}&iscolor={iscolor}&iscomment={iscomment}
-    [MHNetworkManager postReqeustWithURL:kMenuAdd params:@{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":@"0",@"author":@"0",@"department":@"0",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0"} successBlock:^(id returnData) {
+    [MHNetworkManager postReqeustWithURL:kMenuAdd params:@{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":self.fieldOfUser.text,@"imageurl":self.imgString,@"createuser":[Utility getUserInfoFromLocal][@"id"],@"author":[Utility getUserInfoFromLocal][@"tel"],@"department":@"0",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0"} successBlock:^(id returnData) {
         
         NSLog(@"%@",returnData);
    //     if ([returnData[@"code"] isEqualToString:@"500"]) {
