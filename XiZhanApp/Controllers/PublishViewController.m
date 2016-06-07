@@ -19,7 +19,7 @@
 @property(nonatomic,strong) UILabel *explainLabel;
 
 
-@property(nonatomic,strong)NSMutableString *imgString;
+@property(nonatomic,strong)NSString *imgString;
 @end
 
 @implementation PublishViewController
@@ -59,7 +59,7 @@
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
     [self setRightTextBarButtonItemWithFrame:CGRectMake(330, 0, 40, 30) title:@"提交" titleColor:[UIColor whiteColor] backImage:nil selectBackImage:nil action:^(AYCButton *button) {
-        [weakSelf postData];
+        [weakSelf submitToServer];
     }];
     self.imgString = [NSMutableString stringWithFormat:@""];
     [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 50*ProportionWidth)title:@"发布" fontSize:17.0];
@@ -169,6 +169,12 @@
 //}
 - (void)submitToServer{
     NSMutableArray *bigImageArray = [self LQPhotoPicker_getBigImageArray];
+    __weak typeof(self) weakSel = self;
+    
+    if (bigImageArray.count == 0) {
+        [self postData];
+    }
+
     for (UIImage *item in bigImageArray)
     {
         NSInteger index = [bigImageArray indexOfObject:item];//获取下标
@@ -184,16 +190,28 @@
         NSString *strUrl = @"http://222.240.172.197:8081/api/File/UploadFile?path=contentimage";
         [MHNetworkManager uploadFileWithURL:strUrl params:nil successBlock:^(id returnData) {
             NSLog(@"%@",returnData);
-             [MBProgressHUD showSuccess:@"上传图片成功！" toView:nil];
+
+            if ([returnData[@"code"] integerValue] == 0)
+            {
+                NSDictionary *dict = returnData[@"data"];
+                weakSel.imgString = [weakSel.imgString stringByAppendingString:dict[@"path"]];
+                weakSel.imgString = [weakSel.imgString stringByAppendingString:@","];
+                
+                NSArray *imgArray = [weakSel.imgString componentsSeparatedByString:@","];
+                if (imgArray.count == bigImageArray.count+1) {
+                     [MBProgressHUD showSuccess:@"上传图片成功！" toView:nil];
+                    [weakSel postData];
+                }
+            }
         } failureBlock:^(NSError *error) {
             NSLog(@"%@",error);
             [MBProgressHUD showError:@"上传图片失败！" toView:nil];
         } uploadParam:param showHUD:NO];
-//        NSString *str = [data base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
-//        [self.imgString appendString:str];
-//        [self.imgString appendString:@","];
     }
-    NSLog(@"%@",self.imgString);
+//    if (indexCount <= 0) {
+//        NSLog(@"self.imgString:%@",self.imgString);
+//        [self postData];
+//   }
 }
 //对图片尺寸进行压缩--
 - (NSData *)imageWithImage:(UIImage*)image
@@ -225,30 +243,30 @@
         [MBProgressHUD showMessag:@"请输入详情" toView:self.view];
         return;
     }
-     [self submitToServer];
-   // [self postImgData];
-  // NSString *str = @"4028900b54a7a7de0154a7a7e0270000";
+    
     __weak typeof(self) weakSelf = self;
-//    nodeid={nodeid}&title={title}&subtitle={subtitle}&content={content}&summary={summary}&author={author}&department={department}&keyword={keyword}&istop={istop}&isrecommend={isrecommend}&ishot={ishot}&iscolor={iscolor}&iscomment={iscomment}
-    [MHNetworkManager postReqeustWithURL:kMenuAdd params:@{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":@"0",@"author":@"0",@"department":@"0",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0"} successBlock:^(id returnData) {
+
+    
+    [MHNetworkManager postWithURL:kMenuAdd params:@{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":self.fieldOfUser.text,@"imageurl":@"",@"createuser":[Utility getUserInfoFromLocal][@"id"],@"author":[Utility getUserInfoFromLocal][@"tel"],@"department":@"0",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0"} successBlock:^(id returnData) {
         
         NSLog(@"%@",returnData);
-   //     if ([returnData[@"code"] isEqualToString:@"500"]) {
+        if ([returnData[@"code"] integerValue] == 500 ) {
             [MBProgressHUD showError:@"发送失败！" toView:nil];
-//        }
-//        else
-//        {
+        }
+        else
+        {
         [MBProgressHUD showSuccess:@"编辑成功！" toView:nil];
         [weakSelf.navigationController popViewControllerAnimated:YES];
         // 通知列表需要刷新
         if ([self.delegate respondsToSelector:@selector(noticeTableViewRefresh:)]) {
             [self.delegate noticeTableViewRefresh:nil];
         }
-       // }
+        }
     } failureBlock:^(NSError *error) {
         [MBProgressHUD showError:@"发送失败！" toView:nil];
         NSLog(@"%@",error);
     } showHUD:YES];
+    
 }
 - (BOOL )checkInput {
     

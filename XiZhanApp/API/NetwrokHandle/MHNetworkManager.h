@@ -75,6 +75,12 @@
               successBlock:(MHAsiSuccessBlock)successBlock
               failureBlock:(MHAsiFailureBlock)failureBlock
                    showHUD:(BOOL)showHUD;
+
++ (void)postWithURL:(NSString*)url
+             params:(NSDictionary*)params
+       successBlock:(MHAsiSuccessBlock)successBlock
+       failureBlock:(MHAsiFailureBlock)failureBlock
+            showHUD:(BOOL)showHUD;
 /**
  *   post请求通过代理回调
  *

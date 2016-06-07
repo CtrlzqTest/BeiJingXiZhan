@@ -147,9 +147,23 @@
               failureBlock:(MHAsiFailureBlock)failureBlock
                    showHUD:(BOOL)showHUD
 {
+    
     NSString *str = [BaseAPI stringByAppendingString:url];
     [self postReqeustWithURL:str params:params target:nil action:nil delegate:nil successBlock:successBlock failureBlock:failureBlock showHUD:showHUD];
 }
+
+
++ (void)postWithURL:(NSString*)url
+                    params:(NSDictionary*)params
+              successBlock:(MHAsiSuccessBlock)successBlock
+              failureBlock:(MHAsiFailureBlock)failureBlock
+                   showHUD:(BOOL)showHUD
+{
+    
+    NSString *str = [BaseXiZhanAPI stringByAppendingString:url];
+    [self postReqeustWithURL:str params:params target:nil action:nil delegate:nil successBlock:successBlock failureBlock:failureBlock showHUD:showHUD];
+}
+
 /**
  *   post请求通过代理回调
  *
@@ -205,6 +219,13 @@
     DTLog(@"上传图片的参数-> %@",paramsDict);
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer = [AFJSONResponseSerializer serializer];
+    //        manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObject:@"text/html"];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/xml",@"text/html", nil];
+    //设置请求超时时长
+    [manager.requestSerializer setTimeoutInterval:10];
+    //        manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    
     [manager POST:url parameters:paramsDict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
     {
         [formData appendPartWithFileData:uploadParam.data name:uploadParam.name fileName:uploadParam.fileName mimeType:uploadParam.mimeType];
