@@ -147,9 +147,23 @@
               failureBlock:(MHAsiFailureBlock)failureBlock
                    showHUD:(BOOL)showHUD
 {
+    
     NSString *str = [BaseAPI stringByAppendingString:url];
     [self postReqeustWithURL:str params:params target:nil action:nil delegate:nil successBlock:successBlock failureBlock:failureBlock showHUD:showHUD];
 }
+
+
++ (void)postWithURL:(NSString*)url
+                    params:(NSDictionary*)params
+              successBlock:(MHAsiSuccessBlock)successBlock
+              failureBlock:(MHAsiFailureBlock)failureBlock
+                   showHUD:(BOOL)showHUD
+{
+    
+    NSString *str = [BaseXiZhanAPI stringByAppendingString:url];
+    [self postReqeustWithURL:str params:params target:nil action:nil delegate:nil successBlock:successBlock failureBlock:failureBlock showHUD:showHUD];
+}
+
 /**
  *   post请求通过代理回调
  *

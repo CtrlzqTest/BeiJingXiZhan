@@ -19,10 +19,10 @@
 static NSString *cellMsgTable = @"taxtMsgTableCell";
 
 @interface TaxiMsgTableCell : UITableViewCell
-@property(nonatomic,weak)IBOutlet UILabel *taxiStationNameLabel;
-@property(nonatomic,weak)IBOutlet UILabel *taxiCountLabel;
-@property(nonatomic,weak)IBOutlet UILabel *peopleCountLabel;
-@property(nonatomic,weak)IBOutlet UILabel *layerLabel;
+@property(nonatomic,retain)IBOutlet UILabel *taxiStationNameLabel;
+@property(nonatomic,retain)IBOutlet UILabel *taxiCountLabel;
+@property(nonatomic,retain)IBOutlet UILabel *peopleCountLabel;
+@property(nonatomic,retain)IBOutlet UILabel *layerLabel;
 
 - (void)writeDataWithModel:(TaxiMsgModel *)msgModel;
 @end

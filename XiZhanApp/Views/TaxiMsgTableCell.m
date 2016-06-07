@@ -12,6 +12,22 @@
 
 @implementation TaxiMsgTableCell
 
+-(id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        [self initCellView];
+    }
+    return self;
+}
+-(void)initCellView
+{
+    self.taxiStationNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(8*ProportionWidth, 40*ProportionHeight, 320*ProportionWidth, 83*ProportionHeight)];
+    self.taxiStationNameLabel.numberOfLines = 0;
+    self.taxiStationNameLabel.textColor = [UIColor whiteColor];
+    [self.contentView addSubview:self.taxiStationNameLabel];
+
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
