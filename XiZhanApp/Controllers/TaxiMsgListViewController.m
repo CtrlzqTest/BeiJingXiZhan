@@ -48,10 +48,11 @@
     buttonHeaderLabel.textAlignment = NSTextAlignmentCenter;
     buttonHeaderLabel.text = @"出租车待客处查询";
     buttonHeaderLabel.textColor = mainColor;
-    UIImageView *imgLabel = [[UIImageView alloc]init];
-    imgLabel.frame = buttonHeaderLabel.bounds;
-    imgLabel.image = [UIImage imageNamed:@"login_unSelect"];
-    [buttonHeaderLabel addSubview:imgLabel];
+    buttonHeaderLabel.layer.cornerRadius = 15.0;
+    buttonHeaderLabel.layer.masksToBounds = YES;
+    buttonHeaderLabel.layer.borderWidth = 2.0;
+    buttonHeaderLabel.layer.borderColor = colorref;
+    
     [_header addSubview:buttonHeaderLabel];
     
     UILabel *headerLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(buttonHeaderLabel.frame), KWidth, 40)];
@@ -62,7 +63,7 @@
     
     UILabel *subHeaderLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(headerLabel.frame), KWidth, 40)];
     subHeaderLabel.textAlignment = NSTextAlignmentCenter;
-    subHeaderLabel.text = @"待客出租车与候车旅客统计数量";
+    subHeaderLabel.text = @"(待客出租车与候车旅客统计数量)";
     subHeaderLabel.textColor = mainColor;
     [_header addSubview:subHeaderLabel];
     
@@ -71,9 +72,14 @@
     carAllCountLabel.textColor = mainColor;
     [_header addSubview:carAllCountLabel];
     
-    _carCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(carAllCountLabel.frame), CGRectGetMaxY(subHeaderLabel.frame), 50*ProportionWidth, 40)];
+    _carCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(carAllCountLabel.frame), CGRectGetMaxY(subHeaderLabel.frame)+5, 50*ProportionWidth, 30)];
     _carCountLabel.text = @"xxx";
+     _carCountLabel.textAlignment = NSTextAlignmentCenter;
     _carCountLabel.textColor = mainColor;
+    _carCountLabel.layer.cornerRadius = 15.0;
+    _carCountLabel.layer.masksToBounds = YES;
+    _carCountLabel.layer.borderWidth = 2.0;
+    _carCountLabel.layer.borderColor = colorref;
     [_header addSubview:_carCountLabel];
     
     UILabel *carDanWeiLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_carCountLabel.frame), CGRectGetMaxY(subHeaderLabel.frame), 60*ProportionWidth, 40)];
@@ -86,9 +92,14 @@
     peopleAllCountLabel.textColor = mainColor;
     [_header addSubview:peopleAllCountLabel];
     
-    _peoplCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(carAllCountLabel.frame), CGRectGetMaxY(carAllCountLabel.frame), 50*ProportionWidth, 40)];
+    _peoplCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(carAllCountLabel.frame), CGRectGetMaxY(carAllCountLabel.frame)+5, 50*ProportionWidth, 30)];
     _peoplCountLabel.text = @"xxx";
     _peoplCountLabel.textColor = mainColor;
+    _peoplCountLabel.textAlignment = NSTextAlignmentCenter;
+    _peoplCountLabel.layer.cornerRadius = 15.0;
+    _peoplCountLabel.layer.masksToBounds = YES;
+    _peoplCountLabel.layer.borderWidth = 2.0;
+    _peoplCountLabel.layer.borderColor = colorref;
     [_header addSubview:_peoplCountLabel];
     
     UILabel *peoplDanWeiLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(_carCountLabel.frame), CGRectGetMaxY(carAllCountLabel.frame), 60*ProportionWidth, 40)];
@@ -120,6 +131,7 @@
     self.tableView.frame = CGRectMake(0, 0, KWidth, KHeight);
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
     // 注册cell
     [self.tableView registerNib:[UINib nibWithNibName:@"TaxiMsgTableCell" bundle:nil] forCellReuseIdentifier:cellMsgTable];
@@ -166,7 +178,7 @@
 #pragma mark -- UITableViewDataSource
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 130*ProportionHeight;
+    return 94*ProportionHeight;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

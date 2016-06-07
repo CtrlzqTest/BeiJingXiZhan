@@ -22,6 +22,7 @@ static NSString *cellMsgTable = @"taxtMsgTableCell";
 @property(nonatomic,weak)IBOutlet UILabel *taxiStationNameLabel;
 @property(nonatomic,weak)IBOutlet UILabel *taxiCountLabel;
 @property(nonatomic,weak)IBOutlet UILabel *peopleCountLabel;
+@property(nonatomic,weak)IBOutlet UILabel *layerLabel;
 
 - (void)writeDataWithModel:(TaxiMsgModel *)msgModel;
 @end
