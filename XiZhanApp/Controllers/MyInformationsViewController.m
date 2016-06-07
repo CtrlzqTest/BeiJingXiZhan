@@ -117,7 +117,13 @@
 //    NSDictionary *dict = !self.menuModel ? nil : @{@"parentId":self.menuModel.menuId};
     NSString *nodeId = !self.menuModel ? @"" : self.menuModel.menuId;
     NSString *pageIndex = [NSString stringWithFormat:@"%ld",_page];
-    [MHNetworkManager getRequstWithURL:kMessageListAPI params:@{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15"} successBlock:^(id returnData) {
+    NSDictionary *dict = nil;
+    if (self.menuModel == nil) {
+        dict = @{@"pageIndex":pageIndex,@"pageSize":@"15",@"time":[Utility getCurrentDateStr]};
+    }else {
+        dict = @{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15",@"time":[Utility getCurrentDateStr]};
+    }
+    [MHNetworkManager getRequstWithURL:kMessageListAPI params:dict successBlock:^(id returnData) {
         
         if ([returnData[@"code"] integerValue] == 0) {
 
@@ -168,9 +174,15 @@
     
     [self removeNodataView];
     __block MessageModel *lastMsgModel = [_dataArray lastObject];
+    NSDictionary *dict = nil;
     NSString *nodeId = !self.menuModel ? @"" : self.menuModel.menuId;
     NSString *pageIndex = [NSString stringWithFormat:@"%ld",_page];
-    [MHNetworkManager getRequstWithURL:kMessageListAPI params:@{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15"} successBlock:^(id returnData) {
+    if (self.menuModel == nil) {
+        dict = @{@"pageIndex":pageIndex,@"pageSize":@"15"};
+    }else {
+        dict = @{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15"};
+    }
+    [MHNetworkManager getRequstWithURL:kMessageListAPI params:dict successBlock:^(id returnData) {
         
         if ([returnData[@"code"] integerValue] == 0) {
             NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];

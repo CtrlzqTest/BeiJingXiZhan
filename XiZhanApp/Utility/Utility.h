@@ -115,6 +115,12 @@
 +(long )timeIntervalWithDateStr:(NSString *)dateStr;
 
 /**
+ *  获取系统当前时间
+ *
+ *  @return 时间字符串
+ */
++ (NSString *)getCurrentDateStr;
+/**
  *  获取文字的高度,确定宽度
  *
  *  @param str   文字

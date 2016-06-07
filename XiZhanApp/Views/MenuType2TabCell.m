@@ -21,7 +21,7 @@
 - (void)writeDataWithModel:(MenuModel *)menuModel {
     
     self.titleLabel.text = menuModel.menuTitle;
-    [self.imgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",@"http://222.240.172.197/app_31/",menuModel.imgUrl]] placeholderImage:nil];
+    [self.imgView sd_setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%@",@"http://222.240.172.197/app_31/",menuModel.imgUrl]] placeholderImage:[UIImage imageNamed:@"default"]];
     
 }
 
