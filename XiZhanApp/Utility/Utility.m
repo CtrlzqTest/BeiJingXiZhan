@@ -79,10 +79,22 @@ static User *user = nil;
     return result;
 }
 
+// SHA1加密
 + (NSString *) sha1:(NSString *)str {
     
-    return nil;
+    const char *cstr = [str cStringUsingEncoding:NSUTF8StringEncoding];
+    NSData *data = [NSData dataWithBytes:cstr length:str.length];
     
+    uint8_t digest[CC_SHA1_DIGEST_LENGTH];
+    
+    CC_SHA1(data.bytes, (CC_LONG)data.length, digest);
+    
+    NSMutableString* output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
+    
+    for(int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++){
+        [output appendFormat:@"%02x", digest[i]];
+    }
+    return output;
 }
 
 // 保存设备唯一标示
@@ -253,5 +265,12 @@ static User *user = nil;
 //    } showHUD:NO];
 
 }
+
+// 接口签名
+//+ (NSString *)getSecretAPI:(NSString *)keyAPI {
+//    
+//    
+//    
+//}
 
 @end

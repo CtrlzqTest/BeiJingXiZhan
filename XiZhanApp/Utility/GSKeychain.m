@@ -60,6 +60,7 @@
 
 #pragma mark - Public methods
 
+
 + (void)setSecret:(NSString *)secret forKey:(NSString *)key
 {
     NSMutableDictionary *dict = [self genericLookupDictionaryForIdentifier:key];
