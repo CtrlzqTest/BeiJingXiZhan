@@ -9,6 +9,7 @@
 #import "MsgType1TabCell.h"
 #import "MessageModel.h"
 #import "TaxiMsgModel.h"
+#import <UIImageView+WebCache.h>
 
 @implementation MsgType1TabCell
 
@@ -26,7 +27,7 @@
         self.pointImgView.hidden = NO;
     }
     self.titleLabel.text = msgModel.msgtitle;
-    
+    [self.iconImgView sd_setImageWithURL:[NSURL URLWithString:msgModel.imgurl] placeholderImage:[UIImage imageNamed:@"default"]];
 }
 
 

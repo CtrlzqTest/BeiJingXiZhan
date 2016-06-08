@@ -194,8 +194,6 @@ static User *user = nil;
 
 + (NSString *)timeFormat:(NSString *)date format:(NSString *)dateFormat
 {
-    
-    
     NSTimeInterval time=([date doubleValue]+28800)/1000;//因为时差问题要加8小时 == 28800 sec
     
     NSDate *detaildate=[NSDate dateWithTimeIntervalSince1970:time];
@@ -208,8 +206,16 @@ static User *user = nil;
     
     [dateFormatter setDateFormat:dateFormat];
     
-    NSString *currentDateStr = [dateFormatter stringFromDate: detaildate];
+    NSString *currentDateStr = [dateFormatter stringFromDate:detaildate];
     return currentDateStr;
+}
+
++ (NSString *)getCurrentDateStr {
+    
+    NSDate *date = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];//格式化
+    [dateFormatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
+    return [dateFormatter stringFromDate:date];
 }
 
 +(long )timeIntervalWithDateStr:(NSString *)dateStr {
@@ -252,6 +258,7 @@ static User *user = nil;
         [GSKeychain setSecret:sysUUID forKey:UUIDkey];
         [GSKeychain setSecret:secret forKey:UUIDSecret];
     }
+    
     return YES;
 //    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:nil successBlock:^(id returnData) {
 //        

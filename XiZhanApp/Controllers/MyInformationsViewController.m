@@ -117,7 +117,13 @@
 //    NSDictionary *dict = !self.menuModel ? nil : @{@"parentId":self.menuModel.menuId};
     NSString *nodeId = !self.menuModel ? @"" : self.menuModel.menuId;
     NSString *pageIndex = [NSString stringWithFormat:@"%ld",_page];
-    [MHNetworkManager getRequstWithURL:kMessageListAPI params:@{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15"} successBlock:^(id returnData) {
+    NSDictionary *dict = nil;
+    if (self.menuModel == nil) {
+        dict = @{@"pageIndex":pageIndex,@"pageSize":@"15",@"time":[Utility getCurrentDateStr],@"sort":@"createTime"};
+    }else {
+        dict = @{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15",@"time":[Utility getCurrentDateStr],@"sort":@"createTime"};
+    }
+    [MHNetworkManager getRequstWithURL:kMessageListAPI params:dict successBlock:^(id returnData) {
         
         if ([returnData[@"code"] integerValue] == 0) {
 
@@ -126,7 +132,7 @@
                 _page ++;
                 for (MessageModel *model in resultArray1) {
                     
-                    // 判断数据库是否已存在该条消息
+                    // 判断数据库是否已存在该条消息b
                     NSArray *coutArr = [[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
                     if (coutArr.count <= 0) {
                         // 先添加到数组，同时保存到数据库
@@ -168,9 +174,15 @@
     
     [self removeNodataView];
     __block MessageModel *lastMsgModel = [_dataArray lastObject];
+    NSDictionary *dict = nil;
     NSString *nodeId = !self.menuModel ? @"" : self.menuModel.menuId;
     NSString *pageIndex = [NSString stringWithFormat:@"%ld",_page];
-    [MHNetworkManager getRequstWithURL:kMessageListAPI params:@{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15"} successBlock:^(id returnData) {
+    if (self.menuModel == nil) {
+        dict = @{@"pageIndex":pageIndex,@"pageSize":@"15"};
+    }else {
+        dict = @{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15"};
+    }
+    [MHNetworkManager getRequstWithURL:kMessageListAPI params:dict successBlock:^(id returnData) {
         
         if ([returnData[@"code"] integerValue] == 0) {
             NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];

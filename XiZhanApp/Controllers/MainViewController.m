@@ -152,7 +152,7 @@ static NSString *collCellId = @"MainCell";
     MainCollCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collCellId forIndexPath:indexPath];
     MenuModel *model = _dataArray[indexPath.row];
     cell.titleLabel.text = model.menuTitle;
-    [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:nil];
+    [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:[UIImage imageNamed:@"default"]];
     return cell;
 }
 
