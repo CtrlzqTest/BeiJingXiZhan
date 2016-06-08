@@ -16,9 +16,9 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backImg" translatesAutoresizingMaskIntoConstraints="NO" id="iAU-WS-bRX">
-                        <rect key="frame" x="10" y="5" width="89" height="92"/>
+                        <rect key="frame" x="10" y="5" width="92" height="92"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="iAU-WS-bRX" secondAttribute="height" multiplier="36:37" id="9TH-1o-V7m"/>
+                            <constraint firstAttribute="width" secondItem="iAU-WS-bRX" secondAttribute="height" id="9TH-1o-V7m"/>
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Point_red" translatesAutoresizingMaskIntoConstraints="NO" id="3h6-WO-Vsf">
@@ -29,7 +29,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cw-0F-0uz">
-                        <rect key="frame" x="107" y="40" width="254" height="21"/>
+                        <rect key="frame" x="110" y="40" width="251" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Jb7-up-Ml6"/>
                         </constraints>

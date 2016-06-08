@@ -114,7 +114,7 @@
 - (void)getData {
     
     [self removeNodataView];
-//    NSDictionary *dict = !self.menuModel ? nil : @{@"parentId":self.menuModel.menuId};
+    _page = 1;
     NSString *nodeId = !self.menuModel ? @"" : self.menuModel.menuId;
     NSString *pageIndex = [NSString stringWithFormat:@"%ld",_page];
     NSDictionary *dict = nil;
@@ -255,7 +255,7 @@
 #pragma mark listMethod
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 60;
+    return cellHeight;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
