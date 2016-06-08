@@ -97,6 +97,11 @@
     
 }
 
+#pragma mark 点击刷新
+-(void)tapNoDataView {
+    [self getData];
+}
+
 - (void)getData {
     
     // 判断是否有分类列表

@@ -11,11 +11,15 @@
 #import "TaxiMsgModel.h"
 #import <UIImageView+WebCache.h>
 
+
 @implementation MsgType1TabCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    CGFloat cornerRadius = (cellHeight - 10) / 2.0;
+    self.iconImgView.layer.cornerRadius = cornerRadius;
+    self.iconImgView.clipsToBounds = YES;
     
 }
 

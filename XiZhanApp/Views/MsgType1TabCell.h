@@ -10,6 +10,8 @@
 
 @class MessageModel;
 @class TaxiMsgModel;
+
+static CGFloat cellHeight = 120.0;
 static NSString *cellIndentifer = @"msgType1";
 
 @interface MsgType1TabCell : UITableViewCell
