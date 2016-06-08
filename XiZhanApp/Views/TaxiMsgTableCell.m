@@ -22,11 +22,41 @@
 }
 -(void)initCellView
 {
-    self.taxiStationNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(8*ProportionWidth, 40*ProportionHeight, 320*ProportionWidth, 83*ProportionHeight)];
-    self.taxiStationNameLabel.numberOfLines = 0;
-    self.taxiStationNameLabel.textColor = [UIColor whiteColor];
+    self.taxiStationNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(9*ProportionWidth, 34*ProportionHeight, 103*ProportionWidth, 26*ProportionHeight)];
+   // self.taxiStationNameLabel.numberOfLines = 0;
     [self.contentView addSubview:self.taxiStationNameLabel];
 
+    self.taxiShowLabel = [[UILabel alloc]initWithFrame:CGRectMake(131*ProportionWidth, 11*ProportionHeight, 120*ProportionWidth, 26*ProportionHeight)];
+    self.taxiShowLabel.textColor = mainColor;
+    self.taxiShowLabel.text = @"出租车待客";
+    [self.contentView addSubview:self.taxiShowLabel];
+    
+    self.peopleShowLabel = [[UILabel alloc]initWithFrame:CGRectMake(131*ProportionWidth, 51*ProportionHeight, 120*ProportionWidth, 26*ProportionHeight)];
+    self.peopleShowLabel.textColor = mainColor;
+    self.peopleShowLabel.text = @"候车乘客";
+    [self.contentView addSubview:self.peopleShowLabel];
+    
+    self.taxiCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(270*ProportionWidth, 11*ProportionHeight, 50*ProportionWidth, 26*ProportionHeight)];
+    [self.contentView addSubview:self.taxiCountLabel];
+    
+    self.peopleCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(270*ProportionWidth, 55*ProportionHeight, 50*ProportionWidth, 26*ProportionHeight)];
+    [self.contentView addSubview:self.peopleCountLabel];
+    
+    self.taxiDanWeiLabel = [[UILabel alloc]initWithFrame:CGRectMake(337*ProportionWidth, 11*ProportionHeight, 23*ProportionWidth, 26*ProportionHeight)];
+    self.taxiDanWeiLabel.textColor = mainColor;
+    self.taxiDanWeiLabel.text = @"辆";
+    [self.contentView addSubview:self.taxiDanWeiLabel];
+    
+    self.peopleDanWeiLabel = [[UILabel alloc]initWithFrame:CGRectMake(337*ProportionWidth, 55*ProportionHeight, 23*ProportionWidth, 26*ProportionHeight)];
+    self.peopleDanWeiLabel.textColor = mainColor;
+    self.peopleDanWeiLabel.text = @"人";
+    [self.contentView addSubview:self.peopleDanWeiLabel];
+    
+    self.layerLabel = [[UILabel alloc]initWithFrame:CGRectMake(9*ProportionWidth, 8*ProportionHeight, 358*ProportionWidth, 77*ProportionHeight)];
+    self.layerLabel.backgroundColor = [UIColor clearColor];
+    self.layerLabel.text = @"";
+    [self.contentView addSubview:self.layerLabel];
+    
 }
 - (void)awakeFromNib {
     [super awakeFromNib];
@@ -47,17 +77,23 @@
     
     self.taxiStationNameLabel.textColor = mainColor;
     self.taxiStationNameLabel.text = msgModel.taxiRankName;
+    self.taxiStationNameLabel.adjustsFontSizeToFitWidth = YES;
+    //[self.taxiStationNameLabel sizeToFit];
     self.taxiCountLabel.textColor = mainColor;
     self.taxiCountLabel.text = msgModel.taxiCount;
-    
+    self.taxiCountLabel.adjustsFontSizeToFitWidth = YES;
     self.taxiCountLabel.layer.cornerRadius = 15.0;
+    self.taxiCountLabel.textAlignment = NSTextAlignmentCenter;
+    //  [self.taxiCountLabel sizeToFit];
     self.taxiCountLabel.layer.masksToBounds = YES;
     self.taxiCountLabel.layer.borderWidth = 2.0;
     self.taxiCountLabel.layer.borderColor = colorref;
     
     self.peopleCountLabel.textColor = mainColor;
-    
+    self.peopleCountLabel.adjustsFontSizeToFitWidth = YES;
     self.peopleCountLabel.text = msgModel.peopleCount;
+    self.peopleCountLabel.textAlignment = NSTextAlignmentCenter;
+    //[self.peopleCountLabel sizeToFit];
     self.peopleCountLabel.layer.cornerRadius = 15.0;
     self.peopleCountLabel.layer.masksToBounds = YES;
     self.peopleCountLabel.layer.borderWidth = 2.0;

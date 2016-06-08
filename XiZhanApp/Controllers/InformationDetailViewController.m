@@ -16,8 +16,10 @@
 static NSString *indentify = @"proCellX";
 @interface InformationDetailViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,DJPhotoBrowserDelegate,UIWebViewDelegate>
 @property(nonatomic,retain)UICollectionView *myCollectionV;
-@property(nonatomic,strong)NSArray *imageArray;
+@property(nonatomic,strong)NSMutableArray *imageArray;
 @property(nonatomic,retain)UIWebView *web;
+@property(nonatomic,retain)UITextField *titleTF;
+@property(nonatomic,retain)UITextView *contentTV;
 @end
 
 @implementation InformationDetailViewController
@@ -25,6 +27,7 @@ static NSString *indentify = @"proCellX";
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initView];
+    //[self initWebView];
     // Do any additional setup after loading the view.
 }
 
@@ -35,11 +38,17 @@ static NSString *indentify = @"proCellX";
 #pragma mark webMethod
 -(void)initWebView
 {
+    __weak typeof(self) weakSelf = self;
+    [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    }];
+    [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 40*ProportionWidth) title:@"详情" fontSize:17.0];
+    self.view.backgroundColor = [UIColor whiteColor];
     _web = [[UIWebView alloc]initWithFrame:CGRectMake(20*ProportionWidth, 134*ProportionHeight, KWidth-40*ProportionWidth, 450*ProportionHeight)];
     _web.delegate = self;
     
     [self.view addSubview:_web];
-    [_web loadHTMLString:self.webUrl baseURL:nil];
+    [_web loadHTMLString:self.model.linkUrl baseURL:nil];
 }
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
@@ -58,24 +67,56 @@ static NSString *indentify = @"proCellX";
     [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
-    self.imageArray = [self.model.imgurl componentsSeparatedByString:@","];
+    
+   // self.imageArray = [self.model.imgurl componentsSeparatedByString:@","];
+    NSArray *array = [self.model.imgurl componentsSeparatedByString:@","];
+    for (NSInteger i = 0; i < array.count; i++) {
+        NSString *item = [BaseXiZhanImgAPI stringByAppendingString:array[i]];
+        [self.imageArray addObject:item];
+    }
+    for (NSString *item in self.imageArray) {
+        NSLog(@"item:%@",item);
+    }
    self.view.backgroundColor = [UIColor whiteColor];
     [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 40*ProportionWidth) title:@"详情" fontSize:17.0];
     
-    self.webUrl = self.model.msgtitle;
-    self.webUrl = [self.webUrl stringByAppendingString:@"\n"];
-    self.webUrl = [self.webUrl stringByAppendingString:self.model.msgcontent];
+//    self.webUrl = self.model.msgtitle;
+//    self.webUrl = [self.webUrl stringByAppendingString:@"\n"];
+//    self.webUrl = [self.webUrl stringByAppendingString:self.model.msgcontent];
+//    
+//    _web = [[UIWebView alloc]initWithFrame:CGRectMake(20*ProportionWidth, 1.0/3*KHeight, KWidth-40*ProportionWidth, 2.0/3*KHeight)];
+//    _web.delegate = self;
+//    _web.backgroundColor = [UIColor clearColor];
+//   // [self.view addSubview:_web];
+//    [_web loadHTMLString:self.webUrl baseURL:nil];
+    CGFloat leftInset = 40*ProportionWidth;
     
-//    UILabel *label = [[UILabel alloc]init];
-//    label.frame = CGRectMake(0, 1.0/3*KHeight, KWidth, KHeight*1.0/3);
-//    label.text = [NSString stringWithFormat:@"%@",self.webUrl];
-//    [self.view addSubview:label];
-    
-    _web = [[UIWebView alloc]initWithFrame:CGRectMake(20*ProportionWidth, 1.0/3*KHeight, KWidth-40*ProportionWidth, 2.0/3*KHeight)];
-    _web.delegate = self;
-    _web.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:_web];
-    [_web loadHTMLString:self.webUrl baseURL:nil];
+    _titleTF = [[UITextField alloc]init];
+    _titleTF.frame = CGRectMake(leftInset+10*ProportionWidth,1.0/3*KHeight, KWidth-100, 40*ProportionHeight);
+    _titleTF.borderStyle = UITextBorderStyleRoundedRect;
+    _titleTF.backgroundColor = [UIColor whiteColor];
+    _titleTF.enabled = NO;
+    _titleTF.layer.cornerRadius = 20.0;
+    _titleTF.layer.masksToBounds = YES;
+   _titleTF.layer.borderWidth = 3.0;
+    _titleTF.layer.borderColor = colorref;
+    _titleTF.text = self.model.msgtitle;
+    _titleTF.textColor = mainColor;
+   
+    [self.view addSubview:_titleTF];
+
+    _contentTV = [[UITextView alloc]init];
+        _contentTV.frame = CGRectMake(leftInset,CGRectGetMaxY(_titleTF.frame) + 20*ProportionHeight, KWidth-80, 185*ProportionHeight);
+    _contentTV.backgroundColor = [UIColor whiteColor];
+    [_contentTV setFont:[UIFont systemFontOfSize:17.0]];
+    _contentTV.layer.cornerRadius = 15.0;
+    _contentTV.layer.masksToBounds = YES;
+    _contentTV.layer.borderWidth = 3.0;
+    _contentTV.layer.borderColor = colorref;
+    _contentTV.editable = NO;
+    _contentTV.textColor = mainColor;
+    _contentTV.text = self.model.msgcontent;
+    [self.view addSubview: _contentTV];
     
     
     if (self.imageArray.count == 0) {
