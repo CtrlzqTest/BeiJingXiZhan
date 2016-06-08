@@ -84,7 +84,7 @@ static NSString *indentify = @"proCellX";
         UICollectionViewFlowLayout *flowL = [[UICollectionViewFlowLayout alloc]init];
         
         //创建一个UICollectionView
-        _myCollectionV = [[UICollectionView alloc]initWithFrame:CGRectMake(0,0, 0, 0) collectionViewLayout:flowL];
+        _myCollectionV = [[UICollectionView alloc]initWithFrame:CGRectMake(0,60, 0, 0) collectionViewLayout:flowL];
         _myCollectionV.delegate = self;
         _myCollectionV.dataSource = self;
         //设置背景
