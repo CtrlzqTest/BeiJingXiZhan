@@ -39,7 +39,7 @@
 #pragma mark  initheaderUI
 -(void)initHeaderView
 {
-    _header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KWidth, 200*ProportionHeight)];
+    _header = [[UIView alloc]initWithFrame:CGRectMake(0, 0, KWidth, 200)];
    // _header.backgroundColor = [UIColor orangeColor];
     
     CGFloat leftSide = 20.0;
@@ -134,7 +134,8 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
     // 注册cell
-    [self.tableView registerNib:[UINib nibWithNibName:@"TaxiMsgTableCell" bundle:nil] forCellReuseIdentifier:cellMsgTable];
+    [self.tableView registerClass:[TaxiMsgTableCell class] forCellReuseIdentifier:cellMsgTable];
+    //[self.tableView registerNib:[UINib nibWithNibName:@"TaxiMsgTableCell" bundle:nil] forCellReuseIdentifier:cellMsgTable];
     self.tableView.tableHeaderView = _header;
     
     self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{

@@ -21,6 +21,7 @@
 @property(nonatomic,copy)NSString *imgurl;
 @property(nonatomic,copy)NSString *userid;
 @property(nonatomic,copy)NSString *msgdatestr;
+@property(nonatomic,copy)NSString *linkUrl;
 
 +(MessageModel *)shareTestModel;
 
