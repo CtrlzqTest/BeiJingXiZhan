@@ -71,6 +71,6 @@
     </objects>
     <resources>
         <image name="Point_red" width="32" height="32"/>
-        <image name="default" width="77" height="78"/>
+        <image name="default" width="240" height="240"/>
     </resources>
 </document>

@@ -119,9 +119,9 @@
     NSString *pageIndex = [NSString stringWithFormat:@"%ld",_page];
     NSDictionary *dict = nil;
     if (self.menuModel == nil) {
-        dict = @{@"pageIndex":pageIndex,@"pageSize":@"15",@"time":[Utility getCurrentDateStr]};
+        dict = @{@"pageIndex":pageIndex,@"pageSize":@"15",@"time":[Utility getCurrentDateStr],@"sort":@"createTime"};
     }else {
-        dict = @{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15",@"time":[Utility getCurrentDateStr]};
+        dict = @{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15",@"time":[Utility getCurrentDateStr],@"sort":@"createTime"};
     }
     [MHNetworkManager getRequstWithURL:kMessageListAPI params:dict successBlock:^(id returnData) {
         
@@ -132,7 +132,7 @@
                 _page ++;
                 for (MessageModel *model in resultArray1) {
                     
-                    // 判断数据库是否已存在该条消息
+                    // 判断数据库是否已存在该条消息b
                     NSArray *coutArr = [[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
                     if (coutArr.count <= 0) {
                         // 先添加到数组，同时保存到数据库

@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="101.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="iAU-WS-bRX">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backImg" translatesAutoresizingMaskIntoConstraints="NO" id="iAU-WS-bRX">
                         <rect key="frame" x="10" y="5" width="89" height="92"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="iAU-WS-bRX" secondAttribute="height" multiplier="36:37" id="9TH-1o-V7m"/>
@@ -37,19 +37,27 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G4h-p1-khY">
+                        <rect key="frame" x="62" y="11" width="79" height="80"/>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="8cw-0F-0uz" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="0Ba-vc-62y"/>
                     <constraint firstItem="iAU-WS-bRX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="0lp-1O-pT0"/>
+                    <constraint firstItem="G4h-p1-khY" firstAttribute="width" secondItem="iAU-WS-bRX" secondAttribute="width" id="3zb-7Q-I5o"/>
                     <constraint firstAttribute="bottom" secondItem="iAU-WS-bRX" secondAttribute="bottom" constant="5" id="6y5-zt-2TA"/>
                     <constraint firstItem="3h6-WO-Vsf" firstAttribute="leading" secondItem="8cw-0F-0uz" secondAttribute="trailing" constant="8" id="F4W-Pg-QDt"/>
                     <constraint firstItem="iAU-WS-bRX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="J31-6z-I55"/>
+                    <constraint firstItem="G4h-p1-khY" firstAttribute="leading" secondItem="iAU-WS-bRX" secondAttribute="leading" id="JL7-ji-lJ2"/>
                     <constraint firstItem="3h6-WO-Vsf" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="TFa-Nd-VRG"/>
                     <constraint firstItem="8cw-0F-0uz" firstAttribute="leading" secondItem="iAU-WS-bRX" secondAttribute="trailing" constant="8" id="TxM-uM-WfZ"/>
                     <constraint firstAttribute="trailing" secondItem="3h6-WO-Vsf" secondAttribute="trailing" constant="15" id="hv0-at-lan"/>
+                    <constraint firstItem="G4h-p1-khY" firstAttribute="top" secondItem="iAU-WS-bRX" secondAttribute="top" id="s6G-0C-M79"/>
+                    <constraint firstItem="G4h-p1-khY" firstAttribute="height" secondItem="iAU-WS-bRX" secondAttribute="height" id="uh5-h7-zKc"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="iconImgView" destination="G4h-p1-khY" id="6Em-hs-Hp0"/>
                 <outlet property="imgView" destination="iAU-WS-bRX" id="0jh-Pm-HDA"/>
                 <outlet property="pointImgView" destination="3h6-WO-Vsf" id="3mQ-90-FCN"/>
                 <outlet property="titleLabel" destination="8cw-0F-0uz" id="3vI-EK-v7N"/>
@@ -59,6 +67,6 @@
     </objects>
     <resources>
         <image name="Point_red" width="32" height="32"/>
-        <image name="default" width="77" height="78"/>
+        <image name="backImg" width="80" height="80"/>
     </resources>
 </document>

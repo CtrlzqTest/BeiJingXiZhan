@@ -258,6 +258,7 @@ static User *user = nil;
         [GSKeychain setSecret:sysUUID forKey:UUIDkey];
         [GSKeychain setSecret:secret forKey:UUIDSecret];
     }
+    
     return YES;
 //    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:nil successBlock:^(id returnData) {
 //        
