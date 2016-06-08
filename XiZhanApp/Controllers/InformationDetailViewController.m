@@ -69,8 +69,9 @@ static NSString *indentify = @"proCellX";
     }];
     
    // self.imageArray = [self.model.imgurl componentsSeparatedByString:@","];
+    self.imageArray = [NSMutableArray array];
     NSArray *array = [self.model.imgurl componentsSeparatedByString:@","];
-    for (NSInteger i = 0; i < array.count; i++) {
+    for (NSInteger i = 0; i < array.count-1; i++) {
         NSString *item = [BaseXiZhanImgAPI stringByAppendingString:array[i]];
         [self.imageArray addObject:item];
     }
@@ -79,7 +80,25 @@ static NSString *indentify = @"proCellX";
     }
    self.view.backgroundColor = [UIColor whiteColor];
     [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 40*ProportionWidth) title:@"详情" fontSize:17.0];
-    
+    if (self.imageArray.count == 0) {
+        UICollectionViewFlowLayout *flowL = [[UICollectionViewFlowLayout alloc]init];
+        
+        //创建一个UICollectionView
+        _myCollectionV = [[UICollectionView alloc]initWithFrame:CGRectMake(0,0, 0, 0) collectionViewLayout:flowL];
+        _myCollectionV.delegate = self;
+        _myCollectionV.dataSource = self;
+        //设置背景
+        _myCollectionV.backgroundColor = [UIColor clearColor];
+        
+        //[_myCollectionV registerClass:[ImgCell class] forCellWithReuseIdentifier:indentify];
+        [_myCollectionV registerNib:[UINib nibWithNibName:@"ImgCell" bundle:nil] forCellWithReuseIdentifier:indentify];
+        [self.view addSubview:_myCollectionV];
+    }
+    else
+    {
+        [self addCollectionView];
+    }
+
 //    self.webUrl = self.model.msgtitle;
 //    self.webUrl = [self.webUrl stringByAppendingString:@"\n"];
 //    self.webUrl = [self.webUrl stringByAppendingString:self.model.msgcontent];
@@ -92,7 +111,7 @@ static NSString *indentify = @"proCellX";
     CGFloat leftInset = 40*ProportionWidth;
     
     _titleTF = [[UITextField alloc]init];
-    _titleTF.frame = CGRectMake(leftInset+10*ProportionWidth,1.0/3*KHeight, KWidth-100, 40*ProportionHeight);
+    _titleTF.frame = CGRectMake(leftInset+10*ProportionWidth,CGRectGetMaxY(_myCollectionV.frame)+10*ProportionHeight, KWidth-100, 40*ProportionHeight);
     _titleTF.borderStyle = UITextBorderStyleRoundedRect;
     _titleTF.backgroundColor = [UIColor whiteColor];
     _titleTF.enabled = NO;
@@ -119,31 +138,13 @@ static NSString *indentify = @"proCellX";
     [self.view addSubview: _contentTV];
     
     
-    if (self.imageArray.count == 0) {
-        UICollectionViewFlowLayout *flowL = [[UICollectionViewFlowLayout alloc]init];
-        
-        //创建一个UICollectionView
-        _myCollectionV = [[UICollectionView alloc]initWithFrame:CGRectMake(0,0, 0, 0) collectionViewLayout:flowL];
-        _myCollectionV.delegate = self;
-        _myCollectionV.dataSource = self;
-        //设置背景
-        _myCollectionV.backgroundColor = [UIColor clearColor];
-        
-        //[_myCollectionV registerClass:[ImgCell class] forCellWithReuseIdentifier:indentify];
-        [_myCollectionV registerNib:[UINib nibWithNibName:@"ImgCell" bundle:nil] forCellWithReuseIdentifier:indentify];
-          [self.view addSubview:_myCollectionV];
     }
-    else
-    {
-        [self addCollectionView];
-    }
-}
 -(void)addCollectionView
 {
     UICollectionViewFlowLayout *flowL = [[UICollectionViewFlowLayout alloc]init];
     
     //创建一个UICollectionView
-    _myCollectionV = [[UICollectionView alloc]initWithFrame:CGRectMake(0,0, KWidth, 1.0/3*KHeight) collectionViewLayout:flowL];
+    _myCollectionV = [[UICollectionView alloc]initWithFrame:CGRectMake(0,80*ProportionHeight, KWidth, 1.0/3*KHeight) collectionViewLayout:flowL];
     //设置代理为当前控制器
     _myCollectionV.delegate = self;
     _myCollectionV.dataSource = self;
