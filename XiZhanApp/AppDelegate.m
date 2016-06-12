@@ -157,7 +157,6 @@
 #pragma mark 跳转至消息列表界面
 -(void)gotoInformationDetailVC:(NSDictionary *)dict
 {
-
     MyInformationsViewController *detailList = [[MyInformationsViewController alloc] init];
 
     MenuModel *model = [MenuModel mj_objectWithKeyValues:dict];
