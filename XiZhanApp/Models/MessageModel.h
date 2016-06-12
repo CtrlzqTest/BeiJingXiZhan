@@ -22,6 +22,7 @@
 @property(nonatomic,copy)NSString *userid;
 @property(nonatomic,copy)NSString *msgdatestr;
 @property(nonatomic,copy)NSString *linkUrl;
+@property(nonatomic,copy)NSString *submitclient;
 
 +(MessageModel *)shareTestModel;
 
