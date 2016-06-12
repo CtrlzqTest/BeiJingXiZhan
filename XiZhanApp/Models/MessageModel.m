@@ -48,7 +48,8 @@ static MessageModel *testModel = nil;
              @"isread" : @"isRead",
              @"imgurl":@"ImageUrl",
              @"nodeid":@"NodeID",
-             @"linkUrl":@"LinkUrl"
+             @"linkUrl":@"LinkUrl",
+             @"submitclient":@"SubmitClient"
              };
 }
 
