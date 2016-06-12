@@ -129,6 +129,8 @@
     _bageIsZero = YES;
     [JPUSHService handleRemoteNotification:userInfo];
     NSLog(@"推送消息:%@",userInfo);
+    NSDictionary *dict = userInfo[@"aps"];
+    NSLog(@"%@",dict[@"alert"]);
     self.dictForUserInfo = [NSMutableDictionary dictionaryWithDictionary:userInfo];
     
 

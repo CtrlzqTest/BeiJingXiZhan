@@ -39,6 +39,8 @@
 
 #define kGetTaxiInfoNewDataAPI  @"api/List/GetTaxiInfoNewData" //获取出租车站点新数据
 
+#define KPostTaxiInformation    @"api/Add/PublishTaxiRankInfo" //提交出租车新信息
+
 #define kAppopinion             @"api/Add/CommitFeedback" //意见反馈
 
 //#define kMuenListAPI          @"app.menu/getMenu" //首页菜单

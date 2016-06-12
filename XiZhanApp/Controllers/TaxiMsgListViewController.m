@@ -26,7 +26,7 @@
 @property(nonatomic,retain)TaxiMsgCellEdit *editView;
 @property(nonatomic,retain)UITextField *taxiTF;
 @property(nonatomic,retain)UITextField *peopleTF;
-
+@property(nonatomic,strong)TaxiMsgModel *modelChange;
 @end
 
 @implementation TaxiMsgListViewController
@@ -179,7 +179,7 @@
 #pragma mark -- UITableViewDataSource
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 94*ProportionHeight;
+    return 100*ProportionHeight;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -198,7 +198,10 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    TaxiMsgCellEdit *alertView = [[TaxiMsgCellEdit alloc] initWithFrame:CGRectMake(50, KHeight/2 - 100, KWidth-100, 160)];
+    TaxiMsgModel *model = _dataArray[indexPath.row];
+    _modelChange = model;
+    NSLog(@"%@ %@ %@ %@",_modelChange.laneCount,_modelChange.taxiRankName,_modelChange.peopleCount,_modelChange.taxiCount);
+    TaxiMsgCellEdit *alertView = [[TaxiMsgCellEdit alloc] initWithFrame:CGRectMake(50, KHeight/2 - 150, KWidth-100, 160)];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, alertView.frame.size.width, 30)];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.textColor = mainColor;
@@ -254,7 +257,9 @@
     [alertView addSubview:confirmBtn];
     
     [alertView show];
+    
 }
+
 - (void)cancelClick:(UIButton *)btn
 {
     [btn.superview performSelector:@selector(close)];
@@ -262,7 +267,32 @@
 
 -  (void)confirmClick:(UIButton *)btn
 {
-    [btn.superview performSelector:@selector(close)];
+    NSLog(@"456");
+    if (![self checkInPut]) {
+        return;
+    }
+    __weak typeof(self) weakSelf = self;
+    [MHNetworkManager postWithURL:KPostTaxiInformation params:@{@"name":_modelChange.taxiRankName,@"areaID":_modelChange.areaID,@"laneCount":_modelChange.laneCount,@"maxTaxiCount":_taxiTF.text,@"maxPeopleCount":_peopleTF.text,@"description":@"0",@"imageurl":@"0"} successBlock:^(id returnData) {
+
+        NSLog(@"%@",returnData);
+        [weakSelf getData];
+        [btn.superview performSelector:@selector(close)];
+    } failureBlock:^(NSError *error) {
+        [MBProgressHUD showError:@"" toView:nil];
+    } showHUD:YES];
+
+}
+-(BOOL)checkInPut
+{
+    if (_peopleTF.text.length <= 0) {
+        [MBProgressHUD showError:@"待客人数数量不得为空" toView:nil];
+        return NO;
+    }
+    if (_taxiTF.text.length <= 0) {
+        [MBProgressHUD showError:@"出租车数量不得为空" toView:nil];
+        return NO;
+    }
+    return YES;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

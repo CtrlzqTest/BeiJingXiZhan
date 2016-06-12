@@ -23,7 +23,8 @@
 -(void)initCellView
 {
     self.taxiStationNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(9*ProportionWidth, 34*ProportionHeight, 103*ProportionWidth, 26*ProportionHeight)];
-   // self.taxiStationNameLabel.numberOfLines = 0;
+    self.taxiStationNameLabel.numberOfLines = 0;
+    self.taxiStationNameLabel.font = [UIFont systemFontOfSize:14.0];
     [self.contentView addSubview:self.taxiStationNameLabel];
 
     self.taxiShowLabel = [[UILabel alloc]initWithFrame:CGRectMake(131*ProportionWidth, 11*ProportionHeight, 120*ProportionWidth, 26*ProportionHeight)];
@@ -77,8 +78,13 @@
     
     self.taxiStationNameLabel.textColor = mainColor;
     self.taxiStationNameLabel.text = msgModel.taxiRankName;
-    self.taxiStationNameLabel.adjustsFontSizeToFitWidth = YES;
+   // self.taxiStationNameLabel.adjustsFontSizeToFitWidth = YES;
     //[self.taxiStationNameLabel sizeToFit];
+    CGSize size = CGSizeMake(103*ProportionWidth, 80*ProportionHeight);//设置展示内容的宽高
+    CGSize labelSize = [msgModel.taxiRankName sizeWithFont:self.taxiStationNameLabel.font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
+    self.taxiStationNameLabel.frame = CGRectMake(9*ProportionWidth, 34*ProportionHeight,labelSize.width, labelSize.height);
+    self.taxiStationNameLabel.text = msgModel.taxiRankName;
+    
     self.taxiCountLabel.textColor = mainColor;
     self.taxiCountLabel.text = msgModel.taxiCount;
     self.taxiCountLabel.adjustsFontSizeToFitWidth = YES;

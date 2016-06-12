@@ -67,17 +67,23 @@ static NSString *indentify = @"proCellX";
     [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
-    
-   // self.imageArray = [self.model.imgurl componentsSeparatedByString:@","];
+
     self.imageArray = [NSMutableArray array];
     NSArray *array = [self.model.imgurl componentsSeparatedByString:@","];
+    if (array.count == 1) {
+        self.imageArray = [NSMutableArray array];
+    }
+    else
+    {
     for (NSInteger i = 0; i < array.count; i++) {
         NSString *item = [BaseXiZhanImgAPI stringByAppendingString:array[i]];
         [self.imageArray addObject:item];
     }
+    }
     for (NSString *item in self.imageArray) {
         NSLog(@"item:%@",item);
     }
+    
    self.view.backgroundColor = [UIColor whiteColor];
     [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 40*ProportionWidth) title:@"详情" fontSize:17.0];
     if (self.imageArray.count == 0) {
