@@ -26,7 +26,14 @@ static NSString *indentify = @"proCellX";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initView];
+    if ([self.model.submitclient isEqualToString:@"2"]) {
+        [self initView];
+    }
+    else if([self.model.submitclient isEqualToString:@"1"])
+    {
+        [self initWebView];
+    }
+
     //[self initWebView];
     // Do any additional setup after loading the view.
 }
@@ -44,11 +51,27 @@ static NSString *indentify = @"proCellX";
     }];
     [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 40*ProportionWidth) title:@"详情" fontSize:17.0];
     self.view.backgroundColor = [UIColor whiteColor];
-    _web = [[UIWebView alloc]initWithFrame:CGRectMake(20*ProportionWidth, 134*ProportionHeight, KWidth-40*ProportionWidth, 450*ProportionHeight)];
-    _web.delegate = self;
+  
+    _titleTF = [[UITextField alloc]init];
+    _titleTF.frame = CGRectMake(50*ProportionWidth,80*ProportionHeight, KWidth-100, 40*ProportionHeight);
+    _titleTF.borderStyle = UITextBorderStyleRoundedRect;
+    _titleTF.backgroundColor = [UIColor whiteColor];
+    _titleTF.enabled = NO;
+    _titleTF.layer.cornerRadius = 20.0;
+    _titleTF.layer.masksToBounds = YES;
+    _titleTF.layer.borderWidth = 3.0;
+    _titleTF.layer.borderColor = colorref;
+    _titleTF.text = self.model.msgtitle;
+    _titleTF.adjustsFontSizeToFitWidth = YES;
+    _titleTF.textColor = mainColor;
     
+    [self.view addSubview:_titleTF];
+    
+    _web = [[UIWebView alloc]initWithFrame:CGRectMake(20*ProportionWidth,CGRectGetMaxY(_titleTF.frame)+10*ProportionHeight, KWidth-40*ProportionWidth, 450*ProportionHeight)];
+    _web.delegate = self;
+    _web.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_web];
-    [_web loadHTMLString:self.model.linkUrl baseURL:nil];
+    [_web loadHTMLString:self.model.msgcontent baseURL:nil];
 }
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
@@ -69,21 +92,18 @@ static NSString *indentify = @"proCellX";
     }];
 
     self.imageArray = [NSMutableArray array];
-    NSArray *array = [self.model.imgurl componentsSeparatedByString:@","];
-    if (array.count == 1) {
-        self.imageArray = [NSMutableArray array];
+    if (![self.model.imgurl isEqualToString: @""]) {
+        NSArray *array = [self.model.imgurl componentsSeparatedByString:@","];
+        
+        for (NSInteger i = 0; i < array.count; i++) {
+            NSString *item = [BaseXiZhanImgAPI stringByAppendingString:array[i]];
+            [self.imageArray addObject:item];
+        }
+        
+        for (NSString *item in self.imageArray) {
+            NSLog(@"item:%@",item);
+        }
     }
-    else
-    {
-    for (NSInteger i = 0; i < array.count; i++) {
-        NSString *item = [BaseXiZhanImgAPI stringByAppendingString:array[i]];
-        [self.imageArray addObject:item];
-    }
-    }
-    for (NSString *item in self.imageArray) {
-        NSLog(@"item:%@",item);
-    }
-    
    self.view.backgroundColor = [UIColor whiteColor];
     [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 40*ProportionWidth) title:@"详情" fontSize:17.0];
     if (self.imageArray.count == 0) {

@@ -272,7 +272,7 @@
         return;
     }
     __weak typeof(self) weakSelf = self;
-    [MHNetworkManager postWithURL:KPostTaxiInformation params:@{@"name":_modelChange.taxiRankName,@"areaID":_modelChange.areaID,@"laneCount":_modelChange.laneCount,@"maxTaxiCount":_taxiTF.text,@"maxPeopleCount":_peopleTF.text,@"description":@"0",@"imageurl":@"0"} successBlock:^(id returnData) {
+    [MHNetworkManager postWithURL:KPostTaxiInformation params:@{@"name":_modelChange.taxiRankName,@"areaID":_modelChange.areaID,@"laneCount":_modelChange.laneCount,@"maxTaxiCount":_taxiTF.text,@"maxPeopleCount":_peopleTF.text,@"description":@"",@"imageurl":@""} successBlock:^(id returnData) {
 
         NSLog(@"%@",returnData);
         [weakSelf getData];
@@ -282,6 +282,7 @@
     } showHUD:YES];
 
 }
+
 -(BOOL)checkInPut
 {
     if (_peopleTF.text.length <= 0) {
