@@ -52,6 +52,10 @@
     self.passWordLabel.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.passWordLabel.leftViewMode = UITextFieldViewModeAlways;
     
+    NSDictionary *infoDict = [Utility getUserInfoFromLocal];
+    if ([infoDict[@"tel"] length] > 0) {
+        self.userNameLabel.text = infoDict[@"tel"];
+    }
     
 }
 

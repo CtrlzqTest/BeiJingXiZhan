@@ -286,6 +286,7 @@ static User *user = nil;
     CFRelease(uuid_string_ref);
     return uuid;
 }
+
 // 接口签名
 + (NSString *)getSecretAPI:(NSString *)keyAPI {
     
