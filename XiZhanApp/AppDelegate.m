@@ -133,7 +133,6 @@
     NSLog(@"alert:%@",dict[@"alert"]);
     self.dictForUserInfo = [NSMutableDictionary dictionaryWithDictionary:userInfo];
     
-
     if (application.applicationState == UIApplicationStateActive)
     {
         NSLog(@"前台");

@@ -256,12 +256,12 @@
         }
         else
         {
-        [MBProgressHUD showSuccess:@"编辑成功！" toView:nil];
-        [weakSelf.navigationController popViewControllerAnimated:YES];
+            [MBProgressHUD showSuccess:@"编辑成功！" toView:nil];
+            [weakSelf.navigationController popViewControllerAnimated:YES];
         // 通知列表需要刷新
         if ([self.delegate respondsToSelector:@selector(noticeTableViewRefresh:)]) {
-            [self.delegate noticeTableViewRefresh:nil];
-        }
+                [self.delegate noticeTableViewRefresh:nil];
+            }
         }
     } failureBlock:^(NSError *error) {
         [MBProgressHUD showError:@"发送失败！" toView:nil];
