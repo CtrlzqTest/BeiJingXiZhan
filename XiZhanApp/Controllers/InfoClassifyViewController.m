@@ -73,7 +73,6 @@
 #pragma mark initMethod
 -(void)initView
 {
-    
     _dataArray = [NSMutableArray array];
     // 返回按钮
     __weak typeof(self) weakSelf = self;

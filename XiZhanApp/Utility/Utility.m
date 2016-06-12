@@ -250,29 +250,24 @@ static User *user = nil;
 + (BOOL )registZhixin {
 
     NSString *uuidKey = [GSKeychain secretForKey:UUIDkey];
-//    NSString *secretKey = [GSKeychain secretForKey:UUIDSecret];
     
     if (uuidKey.length <= 0) {
         NSString * sysUUID = [UIDevice currentDevice].identifierForVendor.UUIDString;
         NSString *secret = [self createGuidKey];
-        [GSKeychain setSecret:sysUUID forKey:UUIDkey];
-        [GSKeychain setSecret:secret forKey:UUIDSecret];
+        
+        [MHNetworkManager getRequstWithURL:kRegistZhixinAPI params:@{@"appkey":sysUUID,@"appsecret":secret,@"clienttype":@"2"} successBlock:^(id returnData) {
+            
+            if ([returnData[@"code"] integerValue] == 0) {
+                [GSKeychain setSecret:sysUUID forKey:UUIDkey];
+                [GSKeychain setSecret:secret forKey:UUIDSecret];
+            }
+            
+        } failureBlock:^(NSError *error) {
+            
+        } showHUD:NO];
     }
-    
     return YES;
-//    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:nil successBlock:^(id returnData) {
-//        
-//        if ([returnData[@"message"] isEqualToString:@"success"]) {
-//            NSArray *resultArray = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
-//            for (MessageModel *model in resultArray) {
-//                [model save];
-//            }
-//        }else {
-//            
-//        }
-//    } failureBlock:^(NSError *error) {
-//        
-//    } showHUD:NO];
+
 
 }
 

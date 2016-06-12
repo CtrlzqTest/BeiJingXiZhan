@@ -35,7 +35,7 @@
     
     _page = 1;
     [self initView];
-    self.title = self.menuModel.menuTitle;
+    self.title = self.menuModel ? self.menuModel.menuTitle : @"我的消息";
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addOtherInfo) name:ZQAddOtherInfoNotication object:nil];
     
     [self getData];
