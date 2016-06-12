@@ -131,7 +131,6 @@
     NSLog(@"推送消息:%@",userInfo);
     self.dictForUserInfo = [NSMutableDictionary dictionaryWithDictionary:userInfo];
     
-
     if (application.applicationState == UIApplicationStateActive)
     {
         NSLog(@"前台");
