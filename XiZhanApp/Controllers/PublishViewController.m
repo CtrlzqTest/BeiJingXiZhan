@@ -199,6 +199,8 @@
                 
                 NSArray *imgArray = [weakSel.imgString componentsSeparatedByString:@","];
                 if (imgArray.count == bigImageArray.count+1) {
+                    weakSel.imgString = [weakSel.imgString substringToIndex:[weakSel.imgString length]-1];
+                    NSLog(@"%@",weakSel.imgString);
                      [MBProgressHUD showSuccess:@"上传图片成功！" toView:nil];
                     [weakSel postData];
                 }
@@ -221,7 +223,7 @@
     [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
     UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-    return UIImageJPEGRepresentation(newImage, 0.8);
+    return UIImageJPEGRepresentation(newImage, 1.0);
 }
 
 - (void)didReceiveMemoryWarning {

@@ -52,7 +52,7 @@
     self.peopleDanWeiLabel.text = @"人";
     [self.contentView addSubview:self.peopleDanWeiLabel];
     
-    self.layerLabel = [[UILabel alloc]initWithFrame:CGRectMake(9*ProportionWidth, 8*ProportionHeight, 358*ProportionWidth, 77*ProportionHeight)];
+    self.layerLabel = [[UILabel alloc]initWithFrame:CGRectMake(5*ProportionWidth, 8*ProportionHeight, 367*ProportionWidth, 77*ProportionHeight)];
     self.layerLabel.backgroundColor = [UIColor clearColor];
     self.layerLabel.text = @"";
     [self.contentView addSubview:self.layerLabel];
@@ -70,7 +70,7 @@
 }
 -(void)writeDataWithModel:(TaxiMsgModel *)msgModel
 {
-    self.layerLabel.layer.cornerRadius = 45.0;
+    self.layerLabel.layer.cornerRadius = 35.0;
     self.layerLabel.layer.masksToBounds = YES;
     self.layerLabel.layer.borderWidth = 2.0;
     self.layerLabel.layer.borderColor = colorref;

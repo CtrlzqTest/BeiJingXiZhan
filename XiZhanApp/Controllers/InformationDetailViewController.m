@@ -71,7 +71,7 @@ static NSString *indentify = @"proCellX";
    // self.imageArray = [self.model.imgurl componentsSeparatedByString:@","];
     self.imageArray = [NSMutableArray array];
     NSArray *array = [self.model.imgurl componentsSeparatedByString:@","];
-    for (NSInteger i = 0; i < array.count-1; i++) {
+    for (NSInteger i = 0; i < array.count; i++) {
         NSString *item = [BaseXiZhanImgAPI stringByAppendingString:array[i]];
         [self.imageArray addObject:item];
     }
@@ -84,7 +84,7 @@ static NSString *indentify = @"proCellX";
         UICollectionViewFlowLayout *flowL = [[UICollectionViewFlowLayout alloc]init];
         
         //创建一个UICollectionView
-        _myCollectionV = [[UICollectionView alloc]initWithFrame:CGRectMake(0,60, 0, 0) collectionViewLayout:flowL];
+        _myCollectionV = [[UICollectionView alloc]initWithFrame:CGRectMake(0,70, 0, 0) collectionViewLayout:flowL];
         _myCollectionV.delegate = self;
         _myCollectionV.dataSource = self;
         //设置背景
@@ -144,7 +144,7 @@ static NSString *indentify = @"proCellX";
     UICollectionViewFlowLayout *flowL = [[UICollectionViewFlowLayout alloc]init];
     
     //创建一个UICollectionView
-    _myCollectionV = [[UICollectionView alloc]initWithFrame:CGRectMake(0,80*ProportionHeight, KWidth, 1.0/3*KHeight) collectionViewLayout:flowL];
+    _myCollectionV = [[UICollectionView alloc]initWithFrame:CGRectMake(0,60*ProportionHeight, KWidth, 1.0/3*KHeight) collectionViewLayout:flowL];
     //设置代理为当前控制器
     _myCollectionV.delegate = self;
     _myCollectionV.dataSource = self;
