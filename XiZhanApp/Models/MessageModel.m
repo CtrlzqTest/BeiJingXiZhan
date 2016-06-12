@@ -49,7 +49,8 @@ static MessageModel *testModel = nil;
              @"imgurl":@"ImageUrl",
              @"nodeid":@"NodeID",
              @"linkUrl":@"LinkUrl",
-             @"submitclient":@"SubmitClient"
+             @"submitclient":@"SubmitClient",
+             @"nodeid" : @"NodeID"
              };
 }
 

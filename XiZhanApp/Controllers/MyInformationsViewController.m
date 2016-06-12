@@ -142,6 +142,7 @@
                     }
                 }
             }
+            
             NSString *condition = !self.menuModel ? nil : [NSString stringWithFormat:@"nodeid = '%@'",self.menuModel.menuId];
             _dataArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:condition page:1 orderBy:@"msgdate"]];
             if (_dataArray.count <= 0) {
