@@ -31,7 +31,9 @@
         self.pointImgView.hidden = NO;
     }
     self.titleLabel.text = msgModel.msgtitle;
-    [self.iconImgView sd_setImageWithURL:[NSURL URLWithString:msgModel.imgurl] placeholderImage:[UIImage imageNamed:@"default"]];
+    NSString *urlStr = [BaseXiZhanImgAPI stringByAppendingString:msgModel.imgurl];
+    [self.iconImgView sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"default"]];
+    
 }
 
 

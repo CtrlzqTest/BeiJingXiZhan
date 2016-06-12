@@ -88,7 +88,7 @@
     AYCButton *leftButton = [AYCButton buttonWithType:UIButtonTypeCustom];
     leftButton.frame = frame;
     [leftButton setImage:[UIImage imageNamed:image] forState:UIControlStateNormal];
-    [leftButton setImage:[UIImage imageNamed:selectImage] forState:UIControlStateHighlighted];
+//    [leftButton setImage:[UIImage imageNamed:selectImage] forState:UIControlStateHighlighted];
     leftButton.action = action;
     UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
     self.navigationItem.leftBarButtonItem = leftBarButtonItem;
