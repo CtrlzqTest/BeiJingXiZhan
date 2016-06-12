@@ -9,7 +9,7 @@
 #define _____RestAPI_h
 #import <UIKit/UIKit.h>
 
-//#define BaseAPI                 @"http://192.168.16.147:8080/bjws/"  // 龙龙
+#define BaseAPI                 @"http://192.168.16.139:8080/bjws/"  // 龙龙
 
 //#define BaseAPI                 @"http://124.207.156.101:80/bjws/"  // 龙龙
 
@@ -19,7 +19,7 @@
 
 //#define BaseAPI                 @"http://222.240.172.197:8081/api/"  // 西站测试
 
-#define BaseAPI                   @"http://124.207.156.101:80/bjws/"  // 公司服务器
+//#define BaseAPI                   @"http://124.207.156.101:80/bjws/"  // 公司服务器
 
 //#define BaseAPI                 @"http://192.168.16.124:8080/znweb/"    // 赵楠
 
@@ -53,9 +53,11 @@
 
 #define kUploadFile             @"api/File/UploadFile"//上传文件
 
-#define kMianzeAPI              @"disclaimer.html"//免责申明
+#define kMianzeAPI              @"disclaimer.html"  //免责申明
 
-#define kAboutUs                @"aboutus.html"//关于我们
+#define kAboutUs                @"aboutus.html"     //关于我们
+
+#define kRegistZhixinAPI        @"api/AppClient/RegisterDevice"  // 向智信注册设备
 
 #define kCheckNewVersionAPI     @"app.appversion/update"
 

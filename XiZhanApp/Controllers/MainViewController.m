@@ -72,7 +72,9 @@ static NSString *collCellId = @"MainCell";
     [MHNetworkManager getRequstWithURL:kMuenListAPI params:nil successBlock:^(id returnData) {
 
         if ([returnData[@"code"] integerValue] == 0) {
+            
             _dataArray = [MenuModel mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
+            
             MenuModel *menuModel = [[MenuModel alloc] init];
             menuModel.menuTitle = @"出租车";
             [_dataArray addObject:menuModel];
@@ -170,7 +172,6 @@ static NSString *collCellId = @"MainCell";
     InfoClassifyViewController *myInfoVC = [[InfoClassifyViewController alloc] init];
     myInfoVC.menuModel = model;
     [self.navigationController pushViewController:myInfoVC animated:YES];
-    
     
 }
 
