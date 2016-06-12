@@ -109,7 +109,7 @@
 // 点击加载更多
 -(void)tapNoDataView {
     [self getData];
-}
+} 
 
 - (void)getData {
     
