@@ -68,6 +68,10 @@ static NSString *indentify = @"proCellX";
     [self.view addSubview:_titleTF];
     
     _web = [[UIWebView alloc]initWithFrame:CGRectMake(20*ProportionWidth,CGRectGetMaxY(_titleTF.frame)+10*ProportionHeight, KWidth-40*ProportionWidth, 450*ProportionHeight)];
+    _web.layer.cornerRadius = 20.0;
+    _web.layer.masksToBounds = YES;
+    _web.layer.borderWidth = 3.0;
+    _web.layer.borderColor = colorref;
     _web.delegate = self;
     _web.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_web];
