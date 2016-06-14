@@ -93,7 +93,7 @@ static NSString *cellId = @"cellId";
     }else {
         cell.imageView.image = [UIImage imageNamed:@"autoLogin_unsel"];
     }
-     AreaOfXiZhan *model = _titleArray[indexPath.row];
+    AreaOfXiZhan *model = _titleArray[indexPath.row];
     cell.textLabel.text = model.AreaName;
     return cell;
 }
@@ -152,6 +152,11 @@ static NSString *cellId = @"cellId";
     if (!flag) {
         [MBProgressHUD showMessag:@"请选择服务区域" toView:self];
     }
+//   [ MHNetworkManager postWithURL:<#(NSString *)#> params:<#(NSDictionary *)#> successBlock:^(id returnData) {
+//        
+//    } failureBlock:^(NSError *error) {
+//        
+//    } showHUD:YES];
 }
 
 /*

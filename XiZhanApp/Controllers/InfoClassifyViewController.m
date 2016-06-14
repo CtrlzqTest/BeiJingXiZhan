@@ -27,7 +27,7 @@
 }
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)NSMutableArray *newsArray;
-@property(nonatomic,retain)NSMutableArray *areaArray;
+@property(nonatomic,copy)NSMutableArray *areaArray;
 @end
 
 @implementation InfoClassifyViewController
@@ -99,8 +99,11 @@
     __block UIButton *rightBtn = nil;
    
     rightBtn = [self setRightTextBarButtonItemWithFrame:CGRectMake(0, 0, 80, 30) title:@"签到" titleColor:[UIColor whiteColor] backImage:nil selectBackImage:nil action:^(AYCButton *button) {
-        ZQChooseView *choosView = [[ZQChooseView alloc] initWithDataSource:_areaArray chooseType:ZQChooseTypeSingle];
+        ZQChooseView *choosView = [[ZQChooseView alloc] initWithDataSource:weakSelf.areaArray chooseType:ZQChooseTypeSingle];
         [choosView showChooseViewCallBack:^(NSInteger selectIndex) {
+//            weakSelf.meetingRoomModel = meetingArray[selectIndex];
+//            [weakSelf.field2 setTitle:weakSelf.meetingRoomModel.meetingRoomName forState:(UIControlStateNormal)];
+//            [weakSelf requestMeetingOrderData:_dateStr];
         }];
 
         [rightBtn setTitle:@"已签到" forState:UIControlStateNormal];
