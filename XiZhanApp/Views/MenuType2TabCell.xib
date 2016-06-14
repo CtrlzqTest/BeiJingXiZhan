@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="404" height="89.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="xtg-Tz-GDI">
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="xtg-Tz-GDI">
                         <rect key="frame" x="10" y="5" width="79.5" height="79.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="xtg-Tz-GDI" secondAttribute="height" multiplier="36:37" id="ISx-17-911"/>

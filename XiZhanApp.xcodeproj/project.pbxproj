@@ -70,8 +70,6 @@
 		F0C4AAF91CE2E14A0067E986 /* MHUploadParam.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AAF51CE2E14A0067E986 /* MHUploadParam.m */; };
 		F0C4AAFD1CE2E3520067E986 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F0C4AAFA1CE2E3520067E986 /* MBProgressHUD.bundle */; };
 		F0C4AAFE1CE2E3520067E986 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AAFC1CE2E3520067E986 /* MBProgressHUD+Add.m */; };
-		F0C4AB071CE3194B0067E986 /* ZQPhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AB051CE3194B0067E986 /* ZQPhotoViewCell.m */; };
-		F0C4AB081CE3194B0067E986 /* ZQPhotoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0C4AB061CE3194B0067E986 /* ZQPhotoViewCell.xib */; };
 		F0DC514D1CE84AC800CE29AD /* DJBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0DC51471CE84AC800CE29AD /* DJBrowserImageView.m */; };
 		F0DC514E1CE84AC800CE29AD /* DJPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = F0DC51491CE84AC800CE29AD /* DJPhotoBrowser.m */; };
 		F0DC514F1CE84AC800CE29AD /* DJWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0DC514C1CE84AC800CE29AD /* DJWaitingView.m */; };
@@ -221,9 +219,6 @@
 		F0C4AAFA1CE2E3520067E986 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
 		F0C4AAFB1CE2E3520067E986 /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
 		F0C4AAFC1CE2E3520067E986 /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
-		F0C4AB041CE3194B0067E986 /* ZQPhotoViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQPhotoViewCell.h; sourceTree = "<group>"; };
-		F0C4AB051CE3194B0067E986 /* ZQPhotoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQPhotoViewCell.m; sourceTree = "<group>"; };
-		F0C4AB061CE3194B0067E986 /* ZQPhotoViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZQPhotoViewCell.xib; sourceTree = "<group>"; };
 		F0DC51461CE84AC800CE29AD /* DJBrowserImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJBrowserImageView.h; sourceTree = "<group>"; };
 		F0DC51471CE84AC800CE29AD /* DJBrowserImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJBrowserImageView.m; sourceTree = "<group>"; };
 		F0DC51481CE84AC800CE29AD /* DJPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJPhotoBrowser.h; sourceTree = "<group>"; };
@@ -726,9 +721,6 @@
 			isa = PBXGroup;
 			children = (
 				F092EEBF1CE6B6E200353351 /* MessageList(消息列表) */,
-				F0C4AB041CE3194B0067E986 /* ZQPhotoViewCell.h */,
-				F0C4AB051CE3194B0067E986 /* ZQPhotoViewCell.m */,
-				F0C4AB061CE3194B0067E986 /* ZQPhotoViewCell.xib */,
 				F0FA99261CE2D0460078C74B /* LeftSortsTabCell.h */,
 				F0FA99271CE2D0460078C74B /* LeftSortsTabCell.m */,
 				F0FA99281CE2D0460078C74B /* LeftSortsTabCell.xib */,
@@ -868,7 +860,6 @@
 				F00007E71CF6CAA100479EFB /* about_info.png in Resources */,
 				F0DC51591CE84CB400CE29AD /* ImgCell.xib in Resources */,
 				F0088C7F1CE6BE8300AF6EAF /* ico_check_nomal.png in Resources */,
-				F0C4AB081CE3194B0067E986 /* ZQPhotoViewCell.xib in Resources */,
 				F0088C941CE6BE8300AF6EAF /* MImaCell.xib in Resources */,
 				F0E396D81CE1EB8C00D4137E /* ServeTabCell.xib in Resources */,
 				F0088C8F1CE6BE8300AF6EAF /* none.png in Resources */,
@@ -970,7 +961,6 @@
 				F0088C8A1CE6BE8300AF6EAF /* MHeadImaView.m in Sources */,
 				F0186CC41D00129100F90CE1 /* TaxiClassifyViewController.m in Sources */,
 				F0186CC71D001DA200F90CE1 /* TaxiMsgListViewController.m in Sources */,
-				F0C4AB071CE3194B0067E986 /* ZQPhotoViewCell.m in Sources */,
 				F04A71EA1D0132A4006E4ADA /* TaxiMsgTableCell.m in Sources */,
 				F0F37A0D1CE07B280047A469 /* User.m in Sources */,
 				F092EEC31CE6B79500353351 /* MsgType1TabCell.m in Sources */,
