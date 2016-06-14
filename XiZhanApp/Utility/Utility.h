@@ -153,10 +153,11 @@
  *  接口加密
  *
  *  @param keyAPI 关键接口action
+ *  @param tempDict 其他get参数
  *
  *  @return 返回加密后的API
  */
-+ (NSString *)getSecretAPI:(NSString *)keyAPI;
++ (NSString *)getSecretAPI:(NSString *)keyAPI paramDict:(NSMutableDictionary *)tempDict;
 
 /**
  *  获取GUID

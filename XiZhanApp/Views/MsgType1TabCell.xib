@@ -80,6 +80,7 @@
                 <outlet property="iconImgView" destination="G4h-p1-khY" id="6Em-hs-Hp0"/>
                 <outlet property="imgView" destination="iAU-WS-bRX" id="0jh-Pm-HDA"/>
                 <outlet property="pointImgView" destination="3h6-WO-Vsf" id="3mQ-90-FCN"/>
+                <outlet property="subTitleLabel" destination="KAI-PC-H3F" id="MUL-oQ-f30"/>
                 <outlet property="titleLabel" destination="8cw-0F-0uz" id="3vI-EK-v7N"/>
             </connections>
             <point key="canvasLocation" x="353" y="352"/>
