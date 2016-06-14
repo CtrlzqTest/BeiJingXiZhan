@@ -20,6 +20,7 @@
     }
     return self;
 }
+
 -(void)initCellView
 {
     self.taxiStationNameLabel = [[UILabel alloc]initWithFrame:CGRectMake(9*ProportionWidth, 34*ProportionHeight, 103*ProportionWidth, 26*ProportionHeight)];

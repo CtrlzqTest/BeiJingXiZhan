@@ -249,6 +249,7 @@ static User *user = nil;
 // 注册智信
 + (BOOL )registZhixin {
 
+    [GSKeychain removeAllSecrets];
     NSString *uuidKey = [GSKeychain secretForKey:UUIDkey];
 //    [self getSecretAPI:nil];
     if (uuidKey.length <= 0) {

@@ -155,7 +155,7 @@ static NSString *collCellId = @"MainCell";
     MainCollCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collCellId forIndexPath:indexPath];
     MenuModel *model = _dataArray[indexPath.row];
     cell.titleLabel.text = model.menuTitle;
-    NSString *imgUrl = [NSString stringWithFormat:@"%@%@",BaseXiZhanImgAPI,model.imgUrl];
+    NSString *imgUrl = [NSString stringWithFormat:@"%@%@",BaseMainImgAPI,model.imgUrl];
     [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"default"]];
     return cell;
 }
