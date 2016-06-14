@@ -278,7 +278,7 @@
         [weakSelf getData];
         [btn.superview performSelector:@selector(close)];
     } failureBlock:^(NSError *error) {
-        [MBProgressHUD showError:@"" toView:nil];
+        [MBProgressHUD showError:@"编辑失败！" toView:nil];
     } showHUD:YES];
 
 }
