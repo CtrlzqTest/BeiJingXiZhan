@@ -45,6 +45,8 @@
 
 #define KPostTaxiInformation    @"api/Add/PublishTaxiRankInfo" //提交出租车新信息
 
+#define kGetParkInfoNewAPI      @"api/List/GetParkStatusInfoLatestData" // 获取停车场最新数据
+
 #define KPostNewPublishTaxiInfo @"api/Add/PublishTaxiInfo"//出租车运力管理
 
 #define kAppopinion             @"api/Add/CommitFeedback" //意见反馈

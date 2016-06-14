@@ -90,7 +90,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MenuModel *model = _dataArray[indexPath.row];
+//    MenuModel *model = _dataArray[indexPath.row];
     TaxiMsgListViewController *taxiStationVC = [[TaxiMsgListViewController alloc] init];
     [self.navigationController pushViewController:taxiStationVC animated:YES];
     

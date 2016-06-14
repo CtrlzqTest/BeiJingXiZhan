@@ -73,6 +73,9 @@
 		F0C4AAF91CE2E14A0067E986 /* MHUploadParam.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AAF51CE2E14A0067E986 /* MHUploadParam.m */; };
 		F0C4AAFD1CE2E3520067E986 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F0C4AAFA1CE2E3520067E986 /* MBProgressHUD.bundle */; };
 		F0C4AAFE1CE2E3520067E986 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AAFC1CE2E3520067E986 /* MBProgressHUD+Add.m */; };
+		F0D142291D0FD1C600E76199 /* ParkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0D142281D0FD1C600E76199 /* ParkViewController.m */; };
+		F0D1422D1D0FD8D400E76199 /* ParkTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0D1422C1D0FD8D400E76199 /* ParkTabCell.m */; };
+		F0D142301D0FEC3900E76199 /* ParkMsgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0D1422F1D0FEC3900E76199 /* ParkMsgModel.m */; };
 		F0DC514D1CE84AC800CE29AD /* DJBrowserImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0DC51471CE84AC800CE29AD /* DJBrowserImageView.m */; };
 		F0DC514E1CE84AC800CE29AD /* DJPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = F0DC51491CE84AC800CE29AD /* DJPhotoBrowser.m */; };
 		F0DC514F1CE84AC800CE29AD /* DJWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0DC514C1CE84AC800CE29AD /* DJWaitingView.m */; };
@@ -227,6 +230,12 @@
 		F0C4AAFA1CE2E3520067E986 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
 		F0C4AAFB1CE2E3520067E986 /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
 		F0C4AAFC1CE2E3520067E986 /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
+		F0D142271D0FD1C600E76199 /* ParkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkViewController.h; sourceTree = "<group>"; };
+		F0D142281D0FD1C600E76199 /* ParkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkViewController.m; sourceTree = "<group>"; };
+		F0D1422B1D0FD8D400E76199 /* ParkTabCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkTabCell.h; sourceTree = "<group>"; };
+		F0D1422C1D0FD8D400E76199 /* ParkTabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkTabCell.m; sourceTree = "<group>"; };
+		F0D1422E1D0FEC3900E76199 /* ParkMsgModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkMsgModel.h; sourceTree = "<group>"; };
+		F0D1422F1D0FEC3900E76199 /* ParkMsgModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkMsgModel.m; sourceTree = "<group>"; };
 		F0DC51461CE84AC800CE29AD /* DJBrowserImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJBrowserImageView.h; sourceTree = "<group>"; };
 		F0DC51471CE84AC800CE29AD /* DJBrowserImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DJBrowserImageView.m; sourceTree = "<group>"; };
 		F0DC51481CE84AC800CE29AD /* DJPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DJPhotoBrowser.h; sourceTree = "<group>"; };
@@ -463,6 +472,8 @@
 				F0186CC31D00129000F90CE1 /* TaxiClassifyViewController.m */,
 				F0186CC51D001DA200F90CE1 /* TaxiMsgListViewController.h */,
 				F0186CC61D001DA200F90CE1 /* TaxiMsgListViewController.m */,
+				F0D142271D0FD1C600E76199 /* ParkViewController.h */,
+				F0D142281D0FD1C600E76199 /* ParkViewController.m */,
 			);
 			name = "TaxiViewControllers(出租车)";
 			sourceTree = "<group>";
@@ -503,6 +514,8 @@
 				F04A71E91D0132A4006E4ADA /* TaxiMsgTableCell.xib */,
 				F046537D1D055DAA005D8E81 /* TaxiMsgCellEdit.h */,
 				F046537E1D055DAA005D8E81 /* TaxiMsgCellEdit.m */,
+				F0D1422B1D0FD8D400E76199 /* ParkTabCell.h */,
+				F0D1422C1D0FD8D400E76199 /* ParkTabCell.m */,
 			);
 			name = "MessageList(消息列表)";
 			sourceTree = "<group>";
@@ -688,6 +701,8 @@
 				F0607B351CE5752F0029EE31 /* MenuModel.m */,
 				F0186CC81D00226900F90CE1 /* TaxiMsgModel.h */,
 				F0186CC91D00226900F90CE1 /* TaxiMsgModel.m */,
+				F0D1422E1D0FEC3900E76199 /* ParkMsgModel.h */,
+				F0D1422F1D0FEC3900E76199 /* ParkMsgModel.m */,
 				F0ED7A1F1CE4676300369D33 /* MessageModel.h */,
 				F0ED7A201CE4676300369D33 /* MessageModel.m */,
 				F02426DF1D0FDF9C00661961 /* AreaOfXiZhan.h */,
@@ -961,6 +976,7 @@
 				F046537F1D055DAA005D8E81 /* TaxiMsgCellEdit.m in Sources */,
 				F0088C961CE6BE8300AF6EAF /* MShowAllGroup.m in Sources */,
 				F0088C8B1CE6BE8300AF6EAF /* JJMainScrollView.m in Sources */,
+				F0D142301D0FEC3900E76199 /* ParkMsgModel.m in Sources */,
 				F0088C981CE6BE8300AF6EAF /* SDBaseProgressView.m in Sources */,
 				F0C4AAF81CE2E14A0067E986 /* MHNetworkManager.m in Sources */,
 				F0088C901CE6BE8300AF6EAF /* LQImgPickerActionSheet.m in Sources */,
@@ -980,6 +996,7 @@
 				F092EEC31CE6B79500353351 /* MsgType1TabCell.m in Sources */,
 				F0088C8D1CE6BE8300AF6EAF /* JJPhoto.m in Sources */,
 				F0DC514F1CE84AC800CE29AD /* DJWaitingView.m in Sources */,
+				F0D1422D1D0FD8D400E76199 /* ParkTabCell.m in Sources */,
 				F0F18BDA1CF845B000BD675F /* InfoClassifyViewController.m in Sources */,
 				F0088C8C1CE6BE8300AF6EAF /* JJOneScrollView.m in Sources */,
 				F0E396C11CE1B9C300D4137E /* MianZeViewController.m in Sources */,
@@ -1003,6 +1020,7 @@
 				F0E396BB1CE1B4FA00D4137E /* MainCollCell.m in Sources */,
 				F021140B1CE2D81A00676971 /* InformationDetailViewController.m in Sources */,
 				F0F37A1D1CE088390047A469 /* LeftSlideViewController.m in Sources */,
+				F0D142291D0FD1C600E76199 /* ParkViewController.m in Sources */,
 				F0F37A251CE093A10047A469 /* LoginViewController.m in Sources */,
 				F0607B401CE5B6650029EE31 /* ZQDatabaseModel.m in Sources */,
 				F0E396AA1CE1858700D4137E /* UIView+ZQExtention.m in Sources */,

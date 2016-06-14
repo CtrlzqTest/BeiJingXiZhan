@@ -167,14 +167,15 @@
                         selectBackImage:(NSString *)selectBackImage
                                  action:(void(^)(AYCButton *button))action
 {
-    AYCButton *rightButton = [AYCButton buttonWithType:UIButtonTypeSystem];
+    AYCButton *rightButton = [AYCButton buttonWithType:UIButtonTypeCustom];
+    rightButton.backgroundColor = [UIColor redColor];
     rightButton.frame = frame;
     [rightButton setTitle:titile forState:UIControlStateNormal];
     [rightButton setTitleColor:titleColor forState:UIControlStateNormal];
     rightButton.titleLabel.font = [UIFont boldSystemFontOfSize:17.0];
     rightButton.titleLabel.textAlignment = NSTextAlignmentRight;
-    [rightButton setBackgroundImage:[UIImage imageNamed:backImage] forState:UIControlStateNormal];
-    [rightButton setBackgroundImage:[UIImage imageNamed:selectBackImage] forState:UIControlStateHighlighted];
+//    [rightButton setBackgroundImage:[UIImage imageNamed:backImage] forState:UIControlStateNormal];
+//    [rightButton setBackgroundImage:[UIImage imageNamed:selectBackImage] forState:UIControlStateHighlighted];
     rightButton.action = action;
     UIBarButtonItem *rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
     self.navigationItem.rightBarButtonItem = rightBarButtonItem;
