@@ -278,9 +278,10 @@
 //    } failureBlock:^(NSError *error) {
 //
 //    } showHUD:YES];
+    NSLog(@"[Utility getUserInfoFromLocal]name:%@",[Utility getUserInfoFromLocal][@"tel"]);
     NSNumber *taxiNum = [NSNumber numberWithInt:[_taxiTF.text intValue]] ;
     NSNumber *peopleNum = [NSNumber numberWithInt:[_peopleTF.text intValue]];
-    [MHNetworkManager postWithURL:KPostNewPublishTaxiInfo params:@{@"taxiRankID":_modelChange.TaxiRankID,@"taxiCount":taxiNum,@"peopleCount":peopleNum,@"createUser":[Utility getUserInfoFromLocal][@"name"]} successBlock:^(id returnData) {
+    [MHNetworkManager postWithURL:KPostNewPublishTaxiInfo params:@{@"taxiRankID":_modelChange.TaxiRankID,@"taxiCount":taxiNum,@"peopleCount":peopleNum,@"createUser":[Utility getUserInfoFromLocal][@"tel"]} successBlock:^(id returnData) {
         
         NSLog(@"%@",returnData);
         [weakSelf getData];

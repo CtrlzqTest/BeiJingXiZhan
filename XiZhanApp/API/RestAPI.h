@@ -38,6 +38,7 @@
 
 #define kRegisteAPI             @"app.user/register"         //注册
 
+#define kGetAreaAPI             @"api/List/GetAreas" //获取区域信息列表
 #define kGetTaxiRankInfoAPI     @"api/List/GetTaxiRankInfo"  // 获取出租车站点信息
 
 #define kGetTaxiInfoNewDataAPI  @"api/List/GetTaxiInfoNewData" //获取出租车站点新数据

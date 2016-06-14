@@ -78,13 +78,13 @@
     self.layerLabel.layer.borderColor = colorref;
     
     self.taxiStationNameLabel.textColor = mainColor;
-   // self.taxiStationNameLabel.text = msgModel.taxiRankName;
-   // self.taxiStationNameLabel.adjustsFontSizeToFitWidth = YES;
-    //[self.taxiStationNameLabel sizeToFit];
+   
+    self.taxiStationNameLabel.adjustsFontSizeToFitWidth = YES;
+    [self.taxiStationNameLabel sizeToFit];
     CGSize size = CGSizeMake(103*ProportionWidth, 80*ProportionHeight);//设置展示内容的宽高
-   // CGSize labelSize = [msgModel.taxiRankName sizeWithFont:self.taxiStationNameLabel.font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
-   // self.taxiStationNameLabel.frame = CGRectMake(9*ProportionWidth, 34*ProportionHeight,labelSize.width, labelSize.height);
-   // self.taxiStationNameLabel.text = msgModel.taxiRankName;
+    CGSize labelSize = [msgModel.Name sizeWithFont:self.taxiStationNameLabel.font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
+    self.taxiStationNameLabel.frame = CGRectMake(9*ProportionWidth, 34*ProportionHeight,labelSize.width, labelSize.height);
+    self.taxiStationNameLabel.text = msgModel.Name;
     
     self.taxiCountLabel.textColor = mainColor;
     self.taxiCountLabel.text = msgModel.TaxiCount;
