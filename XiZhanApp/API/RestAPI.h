@@ -13,9 +13,12 @@
 
 #define BaseAPI                 @"http://124.207.156.101:80/bjws/"  // 龙龙
 
-#define BaseXiZhanAPI              @"http://222.240.172.197:8081/" // 西站测试
+#define BaseXiZhanAPI           @"http://222.240.172.197:8081/" // 西站测试
 
-#define BaseXiZhanImgAPI           @"http://222.240.172.197/app_31/"
+#define BaseXiZhanImgAPI        @"http://222.240.172.197/app_31/"
+
+// for首页
+#define BaseMainImgAPI          @"http://222.240.172.197/"
 
 //#define BaseAPI                 @"http://222.240.172.197:8081/api/"  // 西站测试
 

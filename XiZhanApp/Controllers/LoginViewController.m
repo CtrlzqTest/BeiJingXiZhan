@@ -104,8 +104,8 @@
 
 // 登录
 - (IBAction)loginAction:(id)sender {
-    NSString *pwd = [Utility md5:self.passWordLabel.text];
     
+    NSString *pwd = [Utility md5:self.passWordLabel.text];
     if (![self checkInput]) {
         return ;
     }
@@ -130,6 +130,7 @@
     } failureBlock:^(NSError *error) {
         [MBProgressHUD showError:@"服务器异常" toView:nil];
     } showHUD:YES];
+    
 }
 
 - (BOOL )checkInput {
