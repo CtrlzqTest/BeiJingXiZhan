@@ -17,12 +17,7 @@
 + (NSDictionary *)replacedKeyFromPropertyName
 {
     return @{
-             @"taxiRankName" :  @"Name",
-             @"taxiRankId" :    @"TaxiRankID",
-             @"taxiCount" :     @"MaxTaxiCount",
-             @"laneCount" :     @"LaneCount",
-             @"peopleCount" :   @"MaxPeopleCount",
-             @"stationId" :     @"ID"
+                @"stationId" :  @"ID"
              };
 }
 

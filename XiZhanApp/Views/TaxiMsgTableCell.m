@@ -77,16 +77,16 @@
     self.layerLabel.layer.borderColor = colorref;
     
     self.taxiStationNameLabel.textColor = mainColor;
-    self.taxiStationNameLabel.text = msgModel.taxiRankName;
+   // self.taxiStationNameLabel.text = msgModel.taxiRankName;
    // self.taxiStationNameLabel.adjustsFontSizeToFitWidth = YES;
     //[self.taxiStationNameLabel sizeToFit];
     CGSize size = CGSizeMake(103*ProportionWidth, 80*ProportionHeight);//设置展示内容的宽高
-    CGSize labelSize = [msgModel.taxiRankName sizeWithFont:self.taxiStationNameLabel.font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
-    self.taxiStationNameLabel.frame = CGRectMake(9*ProportionWidth, 34*ProportionHeight,labelSize.width, labelSize.height);
-    self.taxiStationNameLabel.text = msgModel.taxiRankName;
+   // CGSize labelSize = [msgModel.taxiRankName sizeWithFont:self.taxiStationNameLabel.font constrainedToSize:size lineBreakMode:UILineBreakModeWordWrap];
+   // self.taxiStationNameLabel.frame = CGRectMake(9*ProportionWidth, 34*ProportionHeight,labelSize.width, labelSize.height);
+   // self.taxiStationNameLabel.text = msgModel.taxiRankName;
     
     self.taxiCountLabel.textColor = mainColor;
-    self.taxiCountLabel.text = msgModel.taxiCount;
+    self.taxiCountLabel.text = msgModel.TaxiCount;
     self.taxiCountLabel.adjustsFontSizeToFitWidth = YES;
     self.taxiCountLabel.layer.cornerRadius = 15.0;
     self.taxiCountLabel.textAlignment = NSTextAlignmentCenter;
@@ -97,7 +97,7 @@
     
     self.peopleCountLabel.textColor = mainColor;
     self.peopleCountLabel.adjustsFontSizeToFitWidth = YES;
-    self.peopleCountLabel.text = msgModel.peopleCount;
+    self.peopleCountLabel.text = msgModel.PeopleCount;
     self.peopleCountLabel.textAlignment = NSTextAlignmentCenter;
     //[self.peopleCountLabel sizeToFit];
     self.peopleCountLabel.layer.cornerRadius = 15.0;
