@@ -76,8 +76,15 @@
     _dataArray = [NSMutableArray array];
     // 返回按钮
     __weak typeof(self) weakSelf = self;
+    // 左侧按钮
     [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
         [weakSelf.navigationController popViewControllerAnimated:YES];
+    }];
+    
+    // 右侧按钮
+    __block UIButton *rightBtn = nil;
+    rightBtn = [self setRightTextBarButtonItemWithFrame:CGRectMake(0, 0, 80, 30) title:@"签到" titleColor:[UIColor whiteColor] backImage:nil selectBackImage:nil action:^(AYCButton *button) {
+        [rightBtn setTitle:@"已签到" forState:UIControlStateNormal];
     }];
     
     self.tableView = [[UITableView alloc]init];
