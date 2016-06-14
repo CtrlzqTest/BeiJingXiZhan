@@ -17,6 +17,7 @@
 #import <UIImageView+WebCache.h>
 #import "InfoClassifyViewController.h"
 #import "TaxiClassifyViewController.h"
+#import "ParkViewController.h"
 
 static NSString *collCellId = @"MainCell";
 @interface MainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -78,6 +79,10 @@ static NSString *collCellId = @"MainCell";
             MenuModel *menuModel = [[MenuModel alloc] init];
             menuModel.menuTitle = @"出租车";
             [_dataArray addObject:menuModel];
+            
+            MenuModel *menuModel2 = [[MenuModel alloc] init];
+            menuModel2.menuTitle = @"停车场";
+            [_dataArray addObject:menuModel2];
             
         }else {
             [MBProgressHUD showError:@"获取列表失败" toView:self.view];
@@ -164,11 +169,16 @@ static NSString *collCellId = @"MainCell";
     
     MenuModel *model = _dataArray[indexPath.row];
     
-    if (indexPath.row == _dataArray.count - 1) {
+    if (indexPath.row == _dataArray.count - 2) {
         TaxiClassifyViewController *taxiMsgVC = [[TaxiClassifyViewController alloc] init];
         taxiMsgVC.menuModel = model;
         [self.navigationController pushViewController:taxiMsgVC animated:YES];
-        return;
+        return ;
+    }else if(indexPath.row == _dataArray.count - 1) {
+        ParkViewController *taxiMsgVC = [Utility getControllerWithStoryBoardId:parkVCId];
+        taxiMsgVC.menuModel = model;
+        [self.navigationController pushViewController:taxiMsgVC animated:YES];
+        return ;
     }
     
     InfoClassifyViewController *myInfoVC = [[InfoClassifyViewController alloc] init];

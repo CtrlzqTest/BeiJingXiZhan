@@ -159,7 +159,6 @@
               failureBlock:(MHAsiFailureBlock)failureBlock
                    showHUD:(BOOL)showHUD
 {
-    NSLog(@"%@",params);
     NSString *str = [BaseXiZhanAPI stringByAppendingString:url];
     [self postReqeustWithURL:str params:params target:nil action:nil delegate:nil successBlock:successBlock failureBlock:failureBlock showHUD:showHUD];
 }
