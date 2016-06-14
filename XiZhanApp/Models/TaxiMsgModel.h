@@ -15,5 +15,5 @@
 @property(nonatomic,copy)NSString *PeopleCount;
 @property(nonatomic,copy)NSString *stationId;
 @property(nonatomic,copy)NSString *CreateUser;
-
+@property(nonatomic,copy)NSString *Name;
 @end

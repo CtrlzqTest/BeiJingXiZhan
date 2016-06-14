@@ -49,6 +49,9 @@
 		F0186CC71D001DA200F90CE1 /* TaxiMsgListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0186CC61D001DA200F90CE1 /* TaxiMsgListViewController.m */; };
 		F0186CCA1D00226900F90CE1 /* TaxiMsgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0186CC91D00226900F90CE1 /* TaxiMsgModel.m */; };
 		F021140B1CE2D81A00676971 /* InformationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F021140A1CE2D81A00676971 /* InformationDetailViewController.m */; };
+		F02426DD1D0FD35200661961 /* ZQChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = F02426DB1D0FD35200661961 /* ZQChooseView.m */; };
+		F02426DE1D0FD35200661961 /* ZQChooseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F02426DC1D0FD35200661961 /* ZQChooseView.xib */; };
+		F02426E11D0FDF9C00661961 /* AreaOfXiZhan.m in Sources */ = {isa = PBXBuildFile; fileRef = F02426E01D0FDF9C00661961 /* AreaOfXiZhan.m */; };
 		F026E5EF1CFD2F9B00C22FCE /* ForgetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F026E5EE1CFD2F9B00C22FCE /* ForgetPwdViewController.m */; };
 		F046537F1D055DAA005D8E81 /* TaxiMsgCellEdit.m in Sources */ = {isa = PBXBuildFile; fileRef = F046537E1D055DAA005D8E81 /* TaxiMsgCellEdit.m */; };
 		F04A71EA1D0132A4006E4ADA /* TaxiMsgTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F04A71E81D0132A4006E4ADA /* TaxiMsgTableCell.m */; };
@@ -179,6 +182,11 @@
 		F0186CC91D00226900F90CE1 /* TaxiMsgModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxiMsgModel.m; sourceTree = "<group>"; };
 		F02114091CE2D81A00676971 /* InformationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationDetailViewController.h; sourceTree = "<group>"; };
 		F021140A1CE2D81A00676971 /* InformationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationDetailViewController.m; sourceTree = "<group>"; };
+		F02426DA1D0FD35200661961 /* ZQChooseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQChooseView.h; sourceTree = "<group>"; };
+		F02426DB1D0FD35200661961 /* ZQChooseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQChooseView.m; sourceTree = "<group>"; };
+		F02426DC1D0FD35200661961 /* ZQChooseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZQChooseView.xib; sourceTree = "<group>"; };
+		F02426DF1D0FDF9C00661961 /* AreaOfXiZhan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AreaOfXiZhan.h; sourceTree = "<group>"; };
+		F02426E01D0FDF9C00661961 /* AreaOfXiZhan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaOfXiZhan.m; sourceTree = "<group>"; };
 		F026E5ED1CFD2F9B00C22FCE /* ForgetPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPwdViewController.h; sourceTree = "<group>"; };
 		F026E5EE1CFD2F9B00C22FCE /* ForgetPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPwdViewController.m; sourceTree = "<group>"; };
 		F046537D1D055DAA005D8E81 /* TaxiMsgCellEdit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxiMsgCellEdit.h; sourceTree = "<group>"; };
@@ -682,6 +690,8 @@
 				F0186CC91D00226900F90CE1 /* TaxiMsgModel.m */,
 				F0ED7A1F1CE4676300369D33 /* MessageModel.h */,
 				F0ED7A201CE4676300369D33 /* MessageModel.m */,
+				F02426DF1D0FDF9C00661961 /* AreaOfXiZhan.h */,
+				F02426E01D0FDF9C00661961 /* AreaOfXiZhan.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -720,6 +730,9 @@
 		F0F37A041CE07B280047A469 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F02426DA1D0FD35200661961 /* ZQChooseView.h */,
+				F02426DB1D0FD35200661961 /* ZQChooseView.m */,
+				F02426DC1D0FD35200661961 /* ZQChooseView.xib */,
 				F092EEBF1CE6B6E200353351 /* MessageList(消息列表) */,
 				F0FA99261CE2D0460078C74B /* LeftSortsTabCell.h */,
 				F0FA99271CE2D0460078C74B /* LeftSortsTabCell.m */,
@@ -843,6 +856,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F02426DE1D0FD35200661961 /* ZQChooseView.xib in Resources */,
 				F0088C7E1CE6BE8300AF6EAF /* close@3x.png in Resources */,
 				F0088C7D1CE6BE8300AF6EAF /* close@2x.png in Resources */,
 				F0E396BC1CE1B4FA00D4137E /* MainCollCell.xib in Resources */,
@@ -983,6 +997,7 @@
 				F0FA99291CE2D0460078C74B /* LeftSortsTabCell.m in Sources */,
 				F0088C9C1CE6BE8300AF6EAF /* LQPhotoViewCell.m in Sources */,
 				F0607B361CE5752F0029EE31 /* MenuModel.m in Sources */,
+				F02426E11D0FDF9C00661961 /* AreaOfXiZhan.m in Sources */,
 				F0088C881CE6BE8300AF6EAF /* MFlowLayOut.m in Sources */,
 				F0C4AAF91CE2E14A0067E986 /* MHUploadParam.m in Sources */,
 				F0E396BB1CE1B4FA00D4137E /* MainCollCell.m in Sources */,
@@ -1004,6 +1019,7 @@
 				F0E396CE1CE1BA5400D4137E /* UIViewController+AYCNavigationItem.m in Sources */,
 				F0DC514E1CE84AC800CE29AD /* DJPhotoBrowser.m in Sources */,
 				F0E396B01CE186D200D4137E /* RegisterViewController.m in Sources */,
+				F02426DD1D0FD35200661961 /* ZQChooseView.m in Sources */,
 				F0F379D61CE07AD90047A469 /* AppDelegate.m in Sources */,
 				F0F379D31CE07AD90047A469 /* main.m in Sources */,
 				F0C4AAF71CE2E14A0067E986 /* MHAsiNetworkItem.m in Sources */,

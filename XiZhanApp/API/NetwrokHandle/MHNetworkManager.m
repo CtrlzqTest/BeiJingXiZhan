@@ -73,6 +73,16 @@
     NSString *str = [BaseAPI stringByAppendingString:url];
     [self getRequstWithURL:str params:params target:nil action:nil delegate:nil successBlock:successBlock failureBlock:failureBlock showHUD:showHUD];
 }
+
++ (void)getWithURL:(NSString*)url
+                  params:(NSDictionary*)params
+            successBlock:(MHAsiSuccessBlock)successBlock
+            failureBlock:(MHAsiFailureBlock)failureBlock
+                 showHUD:(BOOL)showHUD
+{
+    NSString *str = [BaseXiZhanAPI stringByAppendingString:url];
+    [self getRequstWithURL:str params:params target:nil action:nil delegate:nil successBlock:successBlock failureBlock:failureBlock showHUD:showHUD];
+}
 /**
  *   GET请求通过代理回调
  *
