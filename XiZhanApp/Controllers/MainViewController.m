@@ -78,6 +78,7 @@ static NSString *collCellId = @"MainCell";
             MenuModel *menuModel = [[MenuModel alloc] init];
             menuModel.menuTitle = @"出租车";
             [_dataArray addObject:menuModel];
+            
         }else {
             [MBProgressHUD showError:@"获取列表失败" toView:self.view];
         }
@@ -154,7 +155,8 @@ static NSString *collCellId = @"MainCell";
     MainCollCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collCellId forIndexPath:indexPath];
     MenuModel *model = _dataArray[indexPath.row];
     cell.titleLabel.text = model.menuTitle;
-    [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:model.imgUrl] placeholderImage:[UIImage imageNamed:@"default"]];
+    NSString *imgUrl = [NSString stringWithFormat:@"%@%@",BaseXiZhanImgAPI,model.imgUrl];
+    [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"default"]];
     return cell;
 }
 

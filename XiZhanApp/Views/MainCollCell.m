@@ -16,6 +16,7 @@
     CGFloat width = KWidth / 2.0 - 40;
     CGFloat cornerRadius  = width - self.headLeft.constant * 2;
     self.headImageView.layer.cornerRadius = cornerRadius / 2.0;
+    self.headImageView.clipsToBounds = YES;
     self.headImageView.backgroundColor = [UIColor colorWithRed:0.082 green:0.627 blue:0.824 alpha:1.000];
 }
 

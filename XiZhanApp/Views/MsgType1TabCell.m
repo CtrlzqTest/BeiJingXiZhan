@@ -17,7 +17,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    CGFloat cornerRadius = (cellHeight - 10) / 2.0;
+    CGFloat cornerRadius = (cellHeight - 16) / 2.0;
     self.iconImgView.layer.cornerRadius = cornerRadius;
     self.iconImgView.clipsToBounds = YES;
     
@@ -31,11 +31,11 @@
         self.pointImgView.hidden = NO;
     }
     self.titleLabel.text = msgModel.msgtitle;
-    NSString *urlStr = [BaseXiZhanImgAPI stringByAppendingString:msgModel.imgurl];
+    NSArray *array = [msgModel.imgurl componentsSeparatedByString:@","];
+    NSString *urlStr = [BaseXiZhanImgAPI stringByAppendingString:[array firstObject]];
     [self.iconImgView sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"default"]];
     
 }
-
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
