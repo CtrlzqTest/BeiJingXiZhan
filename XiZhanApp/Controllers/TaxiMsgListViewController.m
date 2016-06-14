@@ -153,7 +153,7 @@
 - (void)getData {
     [self updateHeaderDataMethod];
 //    NSString *pageIndex = [NSString stringWithFormat:@"%ld",_page];
-    [MHNetworkManager getRequstWithURL:kGetTaxiRankInfoAPI params:nil successBlock:^(id returnData) {
+    [MHNetworkManager getRequstWithURL:kGetTaxiInfoNewDataAPI params:nil successBlock:^(id returnData) {
         
         if ([returnData[@"code"] integerValue] == 0) {
             
@@ -200,7 +200,7 @@
 {
     TaxiMsgModel *model = _dataArray[indexPath.row];
     _modelChange = model;
-    NSLog(@"%@ %@ %@ %@",_modelChange.laneCount,_modelChange.taxiRankName,_modelChange.peopleCount,_modelChange.taxiCount);
+
     TaxiMsgCellEdit *alertView = [[TaxiMsgCellEdit alloc] initWithFrame:CGRectMake(50, KHeight/2 - 150, KWidth-100, 160)];
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, alertView.frame.size.width, 30)];
     titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -272,8 +272,16 @@
         return;
     }
     __weak typeof(self) weakSelf = self;
-    [MHNetworkManager postWithURL:KPostTaxiInformation params:@{@"name":_modelChange.taxiRankName,@"areaID":_modelChange.areaID,@"laneCount":_modelChange.laneCount,@"maxTaxiCount":_taxiTF.text,@"maxPeopleCount":_peopleTF.text,@"description":@"",@"imageurl":@""} successBlock:^(id returnData) {
-
+    
+//   [MHNetworkManager postWithURL:KPostTaxiInformation params:@{@"name":_modelChange.taxiRankName,@"areaID":_modelChange.areaID,@"laneCount":_modelChange.laneCount,@"maxTaxiCount":_taxiTF.text,@"maxPeopleCount":_peopleTF.text,@"description":@"0",@"imageurl":@"0"} successBlock:^(id returnData) {
+//       
+//    } failureBlock:^(NSError *error) {
+//
+//    } showHUD:YES];
+    NSNumber *taxiNum = [NSNumber numberWithInt:[_taxiTF.text intValue]] ;
+    NSNumber *peopleNum = [NSNumber numberWithInt:[_peopleTF.text intValue]];
+    [MHNetworkManager postWithURL:KPostNewPublishTaxiInfo params:@{@"taxiRankID":_modelChange.TaxiRankID,@"taxiCount":taxiNum,@"peopleCount":peopleNum,@"createUser":[Utility getUserInfoFromLocal][@"name"]} successBlock:^(id returnData) {
+        
         NSLog(@"%@",returnData);
         [weakSelf getData];
         [btn.superview performSelector:@selector(close)];
