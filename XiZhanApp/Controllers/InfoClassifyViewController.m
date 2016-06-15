@@ -104,6 +104,7 @@
         __block UIButton *rightBtn = nil;
         
         _resignButton = rightBtn;
+        if (![Utility getVolunteerState]) {
         _resignButton = [self setRightTextBarButtonItemWithFrame:CGRectMake(0, 0, 80, 30) title:@"签到" titleColor:[UIColor whiteColor] backImage:nil selectBackImage:nil action:^(AYCButton *button) {
             if (weakSelf.isFirstTouch) {
                 
@@ -120,7 +121,14 @@
                 [alert show];
             }
         }];
-
+        }
+        else
+        {
+            _resignButton = [self setRightTextBarButtonItemWithFrame:CGRectMake(0, 0, 80, 30) title:@"已签到" titleColor:[UIColor whiteColor] backImage:nil selectBackImage:nil action:^(AYCButton *button) {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"确认签退？" message:nil delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+                    [alert show];
+            }];
+        }
     }
     
     self.tableView = [[UITableView alloc]init];
@@ -146,6 +154,7 @@
             NSLog(@"offLine:%@",returnData[@"data"]);
          _isFirstTouch = !_isFirstTouch;
         [_resignButton setTitle:@"已签退" forState:UIControlStateNormal];
+        [Utility saveVolunteerState:NO];
         } failureBlock:^(NSError *error) {
             
         } showHUD:YES];
@@ -158,6 +167,7 @@
     NSLog(@"zid:%@",[Utility getUserInfoFromLocal][@"zid"]);
     [MHNetworkManager postWithURL:kPostOnLine params:@{@"userid":@"2ed21ffb_6c35_4ab9_ba51_5b1bc095d22e",@"areaid":areaOfXiZhan.AreaID,@"time":[Utility getCurrentDateStr]} successBlock:^(id returnData) {
         NSLog(@"%@",returnData[@"data"]);
+        [Utility  saveVolunteerState:YES];
         [_resignButton setTitle:@"已签到" forState:UIControlStateNormal];
         _isFirstTouch = !_isFirstTouch;
     } failureBlock:^(NSError *error) {
