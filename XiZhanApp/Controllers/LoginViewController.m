@@ -125,7 +125,7 @@
             [weakSelf.navigationController popViewControllerAnimated:YES];
             
         }else {
-            [MBProgressHUD showError:@"登录失败" toView:nil];
+            [MBProgressHUD showError:@"密码与用户名不匹配" toView:nil];
         }
         
     } failureBlock:^(NSError *error) {
