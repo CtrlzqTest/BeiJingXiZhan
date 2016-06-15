@@ -108,16 +108,12 @@
         ZQChooseView *choosView = [[ZQChooseView alloc] initWithDataSource:weakSelf.areaArray chooseType:ZQChooseTypeSingle];
         [choosView showChooseViewCallBack:^(NSInteger selectIndex) {
             AreaOfXiZhan *model = weakSelf.areaArray[selectIndex];
-          //  [weakSelf requestOnline:model];
+            [weakSelf requestOnline:model];
             
         }];
-        
-        [_resignButton setTitle:@"已签到" forState:UIControlStateNormal];
-            _isFirstTouch = !_isFirstTouch;
         }
         else
         {
-        _isFirstTouch = !_isFirstTouch;
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"确认签退？" message:nil delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
             [alert show];
         }
@@ -144,10 +140,12 @@
         //
         [MHNetworkManager postWithURL:kPostOffLine params:@{@"userid":[Utility getUserInfoFromLocal][@"userid"],@"time":[Utility getCurrentDateStr]} successBlock:^(id returnData) {
             NSLog(@"offLine:%@",returnData[@"data"]);
+         _isFirstTouch = !_isFirstTouch;
+        [_resignButton setTitle:@"已签退" forState:UIControlStateNormal];
         } failureBlock:^(NSError *error) {
             
         } showHUD:YES];
-         [_resignButton setTitle:@"已签退" forState:UIControlStateNormal];
+        
     }
 }
 
@@ -155,6 +153,8 @@
 {
     [MHNetworkManager postWithURL:kPostOnLine params:@{@"userid":[Utility getUserInfoFromLocal][@"userid"],@"areaid":areaOfXiZhan.AreaID,@"time":[Utility getCurrentDateStr]} successBlock:^(id returnData) {
         NSLog(@"%@",returnData[@"data"]);
+        [_resignButton setTitle:@"已签到" forState:UIControlStateNormal];
+        _isFirstTouch = !_isFirstTouch;
     } failureBlock:^(NSError *error) {
         
     } showHUD:YES];
