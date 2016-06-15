@@ -71,32 +71,23 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
     
     NSArray *resultArray = [[MessageModel shareTestModel] getDataWithCondition:@"msgDate = (select max(msgDate) from MessageModel)"];
     __block MessageModel *messageModel = [[MessageModel mj_objectArrayWithKeyValuesArray:resultArray] firstObject];
-//    NSString *flag = nil;
-//    NSString *msgDate = nil;
-//    if (resultArray.count == 0) {
-//        flag = @"2"; msgDate = @"";
-//    }else {
-//        MessageModel *model = [[MessageModel mj_objectArrayWithKeyValuesArray:resultArray] firstObject];
-//        flag = @"1"; msgDate = [NSString stringWithFormat:@"%ld",model.msgdate];
-//    }
-//
-    NSDictionary *dict = @{@"pageIndex":@"1",@"pageSize":@"1",@"time":[Utility getCurrentDateStr],@"sort":@"CreateTime"};
     
-    [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":@"",@"msgDate":@""} successBlock:^(id returnData) {
+    NSDictionary *dict = @{@"pageIndex":@"1",@"pageSize":@"1",@"time":[Utility getCurrentDateStr],@"sort":@"CreateTime"};
+    [MHNetworkManager getRequstWithURL:kMessageListAPI params:dict successBlock:^(id returnData) {
         
-        if ([returnData[@"message"] isEqualToString:@"success"]) {
-            NSArray *resultArray = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
+        if ([returnData[@"code"] integerValue] == 0) {
+            NSArray *resultArray = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
             MessageModel *newModel = [resultArray firstObject];
-            if (resultArray.count > 0) {
+            // 如果服务器第一条数据的时间大于本地存储的最大时间
+            if (newModel && [Utility timeIntervalWithDateStr:newModel.msgdatestr] > messageModel.msgdate) {
                 
                 [Utility saveMyMsgReadState:YES];  // 显示小圆点
                 // 通知首页显示小圆点
                 [[NSNotificationCenter defaultCenter] postNotificationName:ZQReadStateDidChangeNotication object:nil];
-
+                [self.tableview reloadData];
             }else{
 //                [Utility saveMyMsgReadState:NO];
             }
-            [self.tableview reloadData];
         }else {
             
         }
