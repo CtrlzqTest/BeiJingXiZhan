@@ -117,7 +117,7 @@
             }
             else
             {
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"确认签退？" message:nil delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"确认签退？" message:nil delegate:weakSelf cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
                 [alert show];
             }
         }];
@@ -126,7 +126,7 @@
         {
             _resignButton = [self setRightTextBarButtonItemWithFrame:CGRectMake(0, 0, 80, 30) title:@"已签到" titleColor:[UIColor whiteColor] backImage:nil selectBackImage:nil action:^(AYCButton *button) {
                 if (weakSelf.isFirstTouch) {
-                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"确认签退？" message:nil delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"确认签退？" message:nil delegate:weakSelf cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
                     [alert show];
                 }
                 else
