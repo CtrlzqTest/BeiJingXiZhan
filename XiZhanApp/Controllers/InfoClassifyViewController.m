@@ -28,6 +28,8 @@
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)NSMutableArray *newsArray;
 @property(nonatomic,copy)NSMutableArray *areaArray;
+@property(nonatomic,assign)BOOL isFirstTouch;
+@property(nonatomic,retain)UIButton *resignButton;
 @end
 
 @implementation InfoClassifyViewController
@@ -84,6 +86,7 @@
 #pragma mark initMethod
 -(void)initView
 {
+    _isFirstTouch = YES;
     _dataArray = [NSMutableArray array];
     // 返回按钮
     _areaArray = [NSMutableArray array];
@@ -98,15 +101,26 @@
     // 右侧按钮
     __block UIButton *rightBtn = nil;
    
-    rightBtn = [self setRightTextBarButtonItemWithFrame:CGRectMake(0, 0, 80, 30) title:@"签到" titleColor:[UIColor whiteColor] backImage:nil selectBackImage:nil action:^(AYCButton *button) {
+    _resignButton = rightBtn;
+    _resignButton = [self setRightTextBarButtonItemWithFrame:CGRectMake(0, 0, 80, 30) title:@"签到" titleColor:[UIColor whiteColor] backImage:nil selectBackImage:nil action:^(AYCButton *button) {
+        if (weakSelf.isFirstTouch) {
+            
         ZQChooseView *choosView = [[ZQChooseView alloc] initWithDataSource:weakSelf.areaArray chooseType:ZQChooseTypeSingle];
         [choosView showChooseViewCallBack:^(NSInteger selectIndex) {
-//            weakSelf.meetingRoomModel = meetingArray[selectIndex];
-//            [weakSelf.field2 setTitle:weakSelf.meetingRoomModel.meetingRoomName forState:(UIControlStateNormal)];
-//            [weakSelf requestMeetingOrderData:_dateStr];
+            AreaOfXiZhan *model = weakSelf.areaArray[selectIndex];
+          //  [weakSelf requestOnline:model];
+            
         }];
-
-        [rightBtn setTitle:@"已签到" forState:UIControlStateNormal];
+        
+        [_resignButton setTitle:@"已签到" forState:UIControlStateNormal];
+            _isFirstTouch = !_isFirstTouch;
+        }
+        else
+        {
+        _isFirstTouch = !_isFirstTouch;
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"确认签退？" message:nil delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+            [alert show];
+        }
     }];
     
     self.tableView = [[UITableView alloc]init];
@@ -124,7 +138,27 @@
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
 }
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        //
+        [MHNetworkManager postWithURL:kPostOffLine params:@{@"userid":[Utility getUserInfoFromLocal][@"userid"],@"time":[Utility getCurrentDateStr]} successBlock:^(id returnData) {
+            NSLog(@"offLine:%@",returnData[@"data"]);
+        } failureBlock:^(NSError *error) {
+            
+        } showHUD:YES];
+         [_resignButton setTitle:@"已签退" forState:UIControlStateNormal];
+    }
+}
 
+-(void)requestOnline:(AreaOfXiZhan *)areaOfXiZhan
+{
+    [MHNetworkManager postWithURL:kPostOnLine params:@{@"userid":[Utility getUserInfoFromLocal][@"userid"],@"areaid":areaOfXiZhan.AreaID,@"time":[Utility getCurrentDateStr]} successBlock:^(id returnData) {
+        NSLog(@"%@",returnData[@"data"]);
+    } failureBlock:^(NSError *error) {
+        
+    } showHUD:YES];
+}
 #pragma mark 点击刷新
 -(void)tapNoDataView {
     [self getData];

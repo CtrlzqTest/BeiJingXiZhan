@@ -39,6 +39,11 @@
 #define kRegisteAPI             @"app.user/register"         //注册
 
 #define kGetAreaAPI             @"api/List/GetAreas" //获取区域信息列表
+
+#define kPostOnLine             @"api/Add/OnLine"//志愿者上线接口
+
+#define kPostOffLine            @"api/Update/OffLine" //志愿者下线
+
 #define kGetTaxiRankInfoAPI     @"api/List/GetTaxiRankInfo"  // 获取出租车站点信息
 
 #define kGetTaxiInfoNewDataAPI  @"api/List/GetTaxiInfoNewData" //获取出租车站点新数据
