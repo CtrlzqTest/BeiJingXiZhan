@@ -80,24 +80,19 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
 //        flag = @"1"; msgDate = [NSString stringWithFormat:@"%ld",model.msgdate];
 //    }
 //
-    return;
+    NSDictionary *dict = @{@"pageIndex":@"1",@"pageSize":@"1",@"time":[Utility getCurrentDateStr],@"sort":@"CreateTime"};
+    
     [MHNetworkManager getRequstWithURL:kAllMessageAPI params:@{@"flag":@"",@"msgDate":@""} successBlock:^(id returnData) {
         
         if ([returnData[@"message"] isEqualToString:@"success"]) {
             NSArray *resultArray = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
+            MessageModel *newModel = [resultArray firstObject];
             if (resultArray.count > 0) {
                 
                 [Utility saveMyMsgReadState:YES];  // 显示小圆点
                 // 通知首页显示小圆点
                 [[NSNotificationCenter defaultCenter] postNotificationName:ZQReadStateDidChangeNotication object:nil];
-                
-                for (MessageModel *model in resultArray) {
-                    model.msgdate = [Utility timeIntervalWithDateStr:model.msgdatestr];
-                    NSArray *coutArr = [[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
-                    if (coutArr.count <= 0) {
-                        [model save];
-                    }
-                }
+
             }else{
 //                [Utility saveMyMsgReadState:NO];
             }
@@ -113,7 +108,7 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
 
 - (void)didLoginAction {
     
-    [JPUSHService setTags:nil alias:[User shareUser].tel callbackSelector:@selector(callBackAction:) object:self];
+//    [JPUSHService setTags:nil alias:[User shareUser].tel callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:self];
     _dataArray[0] = @"已登录";
     [_dataArray addObject:@"退出登录"];
     [self requestData];
@@ -122,7 +117,6 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
 
 - (void)didLogoutAction {
     
-    [JPUSHService setAlias:@"" callbackSelector:@selector(callBackAction:) object:nil];
     _dataArray[0] = @"登录/注册";
     [_dataArray removeLastObject];
     [Utility saveMyMsgReadState:NO];
@@ -131,9 +125,14 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
 }
 
 // 极光设置单推
-- (void)callBackAction:(id )sender {
-    
+-(void)tagsAliasCallback:(int)iResCode
+                    tags:(NSSet*)tags
+                   alias:(NSString*)alias
+{
+    NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias);
 }
+
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
