@@ -56,6 +56,16 @@
 +(BOOL )isLogin;
 
 /**
+ *  保存志愿者上线状态
+ */
++ (void)saveVolunteerState:(BOOL)state;
+
+/**
+ *  获取志愿者状态
+ */
++ (BOOL)getVolunteerState;
+
+/**
  *  MD5加密
  *
  *  @param str 加密字符串

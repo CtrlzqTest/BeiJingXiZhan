@@ -67,6 +67,21 @@ static User *user = nil;
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+/**
+ *  保存志愿者上线状态
+ */
++ (void)saveVolunteerState:(BOOL)state
+{
+    [[NSUserDefaults standardUserDefaults] setBool:state forKey:@"isOnline"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+/**
+ *  获取志愿者状态
+ */
++ (BOOL)getVolunteerState
+{
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"isOnline"];
+}
 // MD5加密
 + (NSString *) md5:(NSString *)str {
     

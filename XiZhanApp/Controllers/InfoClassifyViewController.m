@@ -98,26 +98,38 @@
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
     
-    // 右侧按钮
-    __block UIButton *rightBtn = nil;
-   
-    _resignButton = rightBtn;
-    _resignButton = [self setRightTextBarButtonItemWithFrame:CGRectMake(0, 0, 80, 30) title:@"签到" titleColor:[UIColor whiteColor] backImage:nil selectBackImage:nil action:^(AYCButton *button) {
-        if (weakSelf.isFirstTouch) {
-            
-        ZQChooseView *choosView = [[ZQChooseView alloc] initWithDataSource:weakSelf.areaArray chooseType:ZQChooseTypeSingle];
-        [choosView showChooseViewCallBack:^(NSInteger selectIndex) {
-            AreaOfXiZhan *model = weakSelf.areaArray[selectIndex];
-            [weakSelf requestOnline:model];
-            
+    if ([[Utility getUserInfoFromLocal][@"type"] isEqualToString:@"2"])//type = 2志愿者,type = 1普通用户
+    {
+        // 右侧按钮
+        __block UIButton *rightBtn = nil;
+        
+        _resignButton = rightBtn;
+        if (![Utility getVolunteerState]) {
+        _resignButton = [self setRightTextBarButtonItemWithFrame:CGRectMake(0, 0, 80, 30) title:@"签到" titleColor:[UIColor whiteColor] backImage:nil selectBackImage:nil action:^(AYCButton *button) {
+            if (weakSelf.isFirstTouch) {
+                
+                ZQChooseView *choosView = [[ZQChooseView alloc] initWithDataSource:weakSelf.areaArray chooseType:ZQChooseTypeSingle];
+                [choosView showChooseViewCallBack:^(NSInteger selectIndex) {
+                    AreaOfXiZhan *model = weakSelf.areaArray[selectIndex];
+                    [weakSelf requestOnline:model];
+                    
+                }];
+            }
+            else
+            {
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"确认签退？" message:nil delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+                [alert show];
+            }
         }];
         }
         else
         {
+            _resignButton = [self setRightTextBarButtonItemWithFrame:CGRectMake(0, 0, 80, 30) title:@"已签到" titleColor:[UIColor whiteColor] backImage:nil selectBackImage:nil action:^(AYCButton *button) {
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"确认签退？" message:nil delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
-            [alert show];
+                    [alert show];
+            }];
         }
-    }];
+    }
     
     self.tableView = [[UITableView alloc]init];
     self.tableView.frame = CGRectMake(0, 0, KWidth, KHeight);
@@ -138,10 +150,11 @@
 {
     if (buttonIndex == 1) {
         //
-        [MHNetworkManager postWithURL:kPostOffLine params:@{@"userid":[Utility getUserInfoFromLocal][@"userid"],@"time":[Utility getCurrentDateStr]} successBlock:^(id returnData) {
+        [MHNetworkManager postWithURL:kPostOffLine params:@{@"userid":@"2ed21ffb_6c35_4ab9_ba51_5b1bc095d22e",@"time":[Utility getCurrentDateStr]} successBlock:^(id returnData) {
             NSLog(@"offLine:%@",returnData[@"data"]);
          _isFirstTouch = !_isFirstTouch;
         [_resignButton setTitle:@"已签退" forState:UIControlStateNormal];
+        [Utility saveVolunteerState:NO];
         } failureBlock:^(NSError *error) {
             
         } showHUD:YES];
@@ -151,8 +164,10 @@
 
 -(void)requestOnline:(AreaOfXiZhan *)areaOfXiZhan
 {
-    [MHNetworkManager postWithURL:kPostOnLine params:@{@"userid":[Utility getUserInfoFromLocal][@"userid"],@"areaid":areaOfXiZhan.AreaID,@"time":[Utility getCurrentDateStr]} successBlock:^(id returnData) {
+    NSLog(@"zid:%@",[Utility getUserInfoFromLocal][@"zid"]);
+    [MHNetworkManager postWithURL:kPostOnLine params:@{@"userid":@"2ed21ffb_6c35_4ab9_ba51_5b1bc095d22e",@"areaid":areaOfXiZhan.AreaID,@"time":[Utility getCurrentDateStr]} successBlock:^(id returnData) {
         NSLog(@"%@",returnData[@"data"]);
+        [Utility  saveVolunteerState:YES];
         [_resignButton setTitle:@"已签到" forState:UIControlStateNormal];
         _isFirstTouch = !_isFirstTouch;
     } failureBlock:^(NSError *error) {
