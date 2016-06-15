@@ -220,6 +220,7 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
             break;
     }
 }
+
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
