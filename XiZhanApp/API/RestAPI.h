@@ -62,7 +62,7 @@
 
 #define kMessageListAPI         @"api/List/GetContents" //消息列表
 
-#define kAllMessageAPI          @"app.menu/list" // 所有消息列表
+//#define kAllMessageAPI          @"app.menu/list" // 所有消息列表
 
 #define kMenuAdd                @"api/Add/PublishContent"   //添加意见
 
