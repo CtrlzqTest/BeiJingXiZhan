@@ -265,7 +265,7 @@ static User *user = nil;
 + (BOOL )registZhixin {
 
     NSString *uuidKey = [GSKeychain secretForKey:UUIDkey];
-    [self getSecretAPI:nil paramDict:nil];
+   // [self getSecretAPI:nil paramDict:nil];
     if (uuidKey.length <= 0) {
         NSString * sysUUID = [UIDevice currentDevice].identifierForVendor.UUIDString;
         NSString *secret = [self createGuidKey];
