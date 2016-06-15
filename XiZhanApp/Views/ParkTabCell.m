@@ -22,8 +22,8 @@
 
 - (void)writeDataWithModel:(ParkMsgModel *)model {
     
-//    self.parkLabel.text = model;
-    self.carCountLabel.text = model.CarCount;
+    self.nameLabel.text = model.Name;
+    self.carCountLabel.text = [NSString stringWithFormat:@"%ld",model.MaxCarCount - model.CarCount];
     
 }
 

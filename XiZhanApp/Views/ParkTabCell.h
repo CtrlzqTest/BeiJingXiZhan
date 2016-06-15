@@ -14,7 +14,7 @@ static CGFloat cellHeight = 100.0;
 
 @interface ParkTabCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *parkLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *carCountLabel;
 
 - (void)writeDataWithModel:(ParkMsgModel *)model;

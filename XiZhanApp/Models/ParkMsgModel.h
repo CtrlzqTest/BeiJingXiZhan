@@ -10,9 +10,13 @@
 
 @interface ParkMsgModel : NSObject
 
+
 @property(nonatomic,strong)NSString *ParkID;
-@property(nonatomic,strong)NSString *CarCount;
+@property(nonatomic,assign)NSInteger CarCount;
 @property(nonatomic,copy)NSString *createtime;
 @property(nonatomic,copy)NSString *CreateUser;
+@property(nonatomic,assign)NSInteger MaxCarCount;
+@property(nonatomic,copy)NSString *Name;
+@property(nonatomic,copy)NSString *msgID;
 
 @end
