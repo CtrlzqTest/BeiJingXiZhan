@@ -105,12 +105,12 @@
 // 登录
 - (IBAction)loginAction:(id)sender {
     
-    NSString *pwd = [Utility md5:self.passWordLabel.text];
+//    NSString *pwd = [Utility md5:self.passWordLabel.text];
+    NSString *pwd = self.passWordLabel.text;
     if (![self checkInput]) {
         return ;
     }
     __weak typeof(self) weakSelf = self;
-//    NSString *pwd = [Utility md5:self.passWordLabel.text];
     [MHNetworkManager postReqeustWithURL:kLoginAPI params:@{@"tel":self.userNameLabel.text,@"password":pwd} successBlock:^(id returnData) {
         
         if ([returnData[@"message"] isEqualToString:@"success"]) {
