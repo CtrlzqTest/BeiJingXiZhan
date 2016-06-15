@@ -18,6 +18,7 @@
 @property(nonatomic,copy)NSString *type;
 @property(nonatomic,copy)NSString *rolename;
 @property(nonatomic,copy)NSString *roleAlias;
+@property(nonatomic,copy)NSString *zid;
 @property (nonatomic,assign)BOOL isLogin;
 
 + (User *)shareUser;
