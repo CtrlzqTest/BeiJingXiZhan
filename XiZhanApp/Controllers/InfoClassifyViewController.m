@@ -125,8 +125,18 @@
         else
         {
             _resignButton = [self setRightTextBarButtonItemWithFrame:CGRectMake(0, 0, 80, 30) title:@"已签到" titleColor:[UIColor whiteColor] backImage:nil selectBackImage:nil action:^(AYCButton *button) {
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"确认签退？" message:nil delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+                if (weakSelf.isFirstTouch) {
+                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"确认签退？" message:nil delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
                     [alert show];
+                }
+                else
+                {
+                    ZQChooseView *choosView = [[ZQChooseView alloc] initWithDataSource:weakSelf.areaArray chooseType:ZQChooseTypeSingle];
+                    [choosView showChooseViewCallBack:^(NSInteger selectIndex) {
+                        AreaOfXiZhan *model = weakSelf.areaArray[selectIndex];
+                        [weakSelf requestOnline:model];
+                    }];
+                }
             }];
         }
     }
