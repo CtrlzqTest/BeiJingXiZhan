@@ -25,6 +25,15 @@ static User *user = nil;
     return user;
 }
 
+- (void)resetUserInfo:(NSDictionary *)dict {
+    
+    BOOL loginState = user.isLogin;
+    user = [User mj_objectWithKeyValues:dict];
+    user.isLogin = loginState;
+    [Utility saveUserInfo:[self dictionaryWithModel:user]];
+    
+}
+
 - (NSDictionary *)dictionaryWithModel:(User *)user {
     
     return [user mj_keyValues];

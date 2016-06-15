@@ -34,7 +34,7 @@
     NSArray *array = [msgModel.imgurl componentsSeparatedByString:@","];
     NSString *urlStr = [BaseXiZhanImgAPI stringByAppendingString:[array firstObject]];
     [self.iconImgView sd_setImageWithURL:[NSURL URLWithString:urlStr] placeholderImage:[UIImage imageNamed:@"default"]];
-    
+    self.subTitleLabel.text = msgModel.msgdatestr;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

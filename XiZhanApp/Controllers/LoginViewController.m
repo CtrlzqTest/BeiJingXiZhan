@@ -115,8 +115,9 @@
         
         if ([returnData[@"message"] isEqualToString:@"success"]) {
             
-            [Utility saveUserInfo:returnData[@"user"]];
+//            [Utility saveUserInfo:returnData[@"user"]];
             [User shareUser].isLogin = YES;
+            [[User shareUser] resetUserInfo:returnData[@"user"]];
             if (weakSelf.autoLoginSwitch.selected) {
                 [Utility setLoginStates:YES];
             }

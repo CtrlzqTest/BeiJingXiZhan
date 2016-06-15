@@ -20,6 +20,7 @@ static NSString *cellIndentifer = @"msgType1";
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *pointImgView;
 @property (weak, nonatomic) IBOutlet UIImageView *iconImgView;
+@property (weak, nonatomic) IBOutlet UILabel *subTitleLabel;
 
 /**
  *  赋值
