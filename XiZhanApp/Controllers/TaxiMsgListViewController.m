@@ -292,10 +292,15 @@
     NSNumber *taxiNum = [NSNumber numberWithInt:[_taxiTF.text intValue]] ;
     NSNumber *peopleNum = [NSNumber numberWithInt:[_peopleTF.text intValue]];
     [MHNetworkManager postWithURL:KPostNewPublishTaxiInfo params:@{@"taxiRankID":_modelChange.TaxiRankID,@"taxiCount":taxiNum,@"peopleCount":peopleNum,@"createUser":[Utility getUserInfoFromLocal][@"tel"]} successBlock:^(id returnData) {
-        
         NSLog(@"%@",returnData);
-        [weakSelf getData];
-        [btn.superview performSelector:@selector(close)];
+        if ([returnData[@"code"]integerValue] == 0) {
+            [weakSelf getData];
+            [btn.superview performSelector:@selector(close)];
+        }
+       else
+       {
+           [MBProgressHUD showError:@"编辑失败！" toView:nil];
+       }
     } failureBlock:^(NSError *error) {
         [MBProgressHUD showError:@"编辑失败！" toView:nil];
     } showHUD:YES];

@@ -77,11 +77,16 @@
 {
     
     [MHNetworkManager getRequstWithURL:kGetAreaAPI params:nil successBlock:^(id returnData) {
-        
-        _areaArray = [AreaOfXiZhan mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
-        
+        NSLog(@"%@",returnData[@"code"]);
+        if ([returnData[@"code"] integerValue] == 0) {
+            _areaArray = [AreaOfXiZhan mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
+        }
+        else
+        {
+            [MBProgressHUD showError:@"网络错误！" toView:nil];
+        }
     } failureBlock:^(NSError *error) {
-        
+         [MBProgressHUD showError:@"网络错误！" toView:nil];
     } showHUD:YES];
     
 }
@@ -164,11 +169,17 @@
         //
         [MHNetworkManager postWithURL:kPostOffLine params:@{@"userid":[User shareUser].zid,@"time":[Utility getCurrentDateStr]} successBlock:^(id returnData) {
             NSLog(@"offLine:%@",returnData[@"data"]);
-         _isFirstTouch = !_isFirstTouch;
-        [_resignButton setTitle:@"已签退" forState:UIControlStateNormal];
-        [Utility saveVolunteerState:NO];
+            if ([returnData[@"code"] integerValue] == 0) {
+                _isFirstTouch = !_isFirstTouch;
+                [_resignButton setTitle:@"已签退" forState:UIControlStateNormal];
+                [Utility saveVolunteerState:NO];
+            }
+            else
+            {
+            [MBProgressHUD showError:@"网络错误，未签退!" toView:nil];
+            }
         } failureBlock:^(NSError *error) {
-            
+             [MBProgressHUD showError:@"网络错误，未签退!" toView:nil];
         } showHUD:YES];
         
     }
@@ -180,11 +191,17 @@
     NSLog(@"zid:%@",[User shareUser].zid);
     [MHNetworkManager postWithURL:kPostOnLine params:@{@"userid":[User shareUser].zid,@"areaid":areaOfXiZhan.AreaID,@"time":[Utility getCurrentDateStr]} successBlock:^(id returnData) {
         NSLog(@"%@",returnData[@"data"]);
-        [Utility  saveVolunteerState:YES];
-        [_resignButton setTitle:@"已签到" forState:UIControlStateNormal];
-        _isFirstTouch = !_isFirstTouch;
+        if ([returnData[@"code"] integerValue] == 0) {
+            [Utility  saveVolunteerState:YES];
+            [_resignButton setTitle:@"已签到" forState:UIControlStateNormal];
+            _isFirstTouch = !_isFirstTouch;
+        }
+        else
+        {
+            [MBProgressHUD showError:@"网络错误，未签到!" toView:nil];
+        }
     } failureBlock:^(NSError *error) {
-        
+        [MBProgressHUD showError:@"网络错误，未签到!" toView:nil];
     } showHUD:YES];
 }
 #pragma mark 点击刷新
