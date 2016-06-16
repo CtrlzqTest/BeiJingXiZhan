@@ -163,7 +163,7 @@ static NSString *collCellId = @"MainCell";
     
     MenuModel *model = _dataArray[indexPath.row];
     
-    if (indexPath.row <= _dataArray.count - 1) {
+    if (indexPath.row >= _dataArray.count - 1) {
         TaxiClassifyViewController *taxiMsgVC = [[TaxiClassifyViewController alloc] init];
         taxiMsgVC.menuModel = model;
         [self.navigationController pushViewController:taxiMsgVC animated:YES];

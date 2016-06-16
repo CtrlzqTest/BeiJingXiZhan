@@ -318,7 +318,7 @@ static User *user = nil;
 // 检查是否需要接口签名
 + (BOOL )checkToSign:(NSString *)APIStr {
     
-    NSString *matchStr = @".*/((appversion)|(RegisterDevice)).*";
+    NSString *matchStr = @".*/((appversion)|(RegisterDevice)|(user/getSmsCode)|(user/repassword)|(user/register)).*";
     NSPredicate *regextestmobile = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", matchStr];
     if ([regextestmobile evaluateWithObject:APIStr]) {
         return NO;
@@ -369,7 +369,6 @@ static User *user = nil;
     for (NSString *key in [dict allKeys]) {
         [APIStr appendFormat:@"%@=%@&",key,dict[key]];
     }
-    
     dict = nil;
     dict2 = nil;
     allKeys = nil;
