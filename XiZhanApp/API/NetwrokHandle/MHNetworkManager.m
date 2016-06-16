@@ -163,10 +163,12 @@
     NSString *urlStr = nil;
     if ([Utility checkToSign:str]) {
         urlStr = [[Utility getSecretAPI:str paramDict:params] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        [self postReqeustWithURL:urlStr params:nil target:nil action:nil delegate:nil successBlock:successBlock failureBlock:failureBlock showHUD:showHUD];
     }else {
         urlStr = str;
+        [self postReqeustWithURL:urlStr params:params target:nil action:nil delegate:nil successBlock:successBlock failureBlock:failureBlock showHUD:showHUD];
     }
-    [self postReqeustWithURL:urlStr params:params target:nil action:nil delegate:nil successBlock:successBlock failureBlock:failureBlock showHUD:showHUD];
+    
 }
 
 
