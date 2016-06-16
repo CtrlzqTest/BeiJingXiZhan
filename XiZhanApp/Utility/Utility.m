@@ -291,8 +291,8 @@ static User *user = nil;
             } showHUD:NO];
         }else {
             __weak typeof(self) weakSelf = self;
-            [MHNetworkManager postReqeustWithURL:kGetUUIDSecretAPI params:@{@"appkey":uuidKey} successBlock:^(id returnData) {
-                
+            
+            [MHNetworkManager getRequstWithURL:kGetUUIDSecretAPI params:@{@"appkey":uuidKey} successBlock:^(id returnData) {
                 if ([returnData[@"code"] integerValue] == 0) {
                     
                     [GSKeychain setSecret:returnData[@"data"] forKey:UUIDSecret];
@@ -302,7 +302,6 @@ static User *user = nil;
                 }else {
                     [self registZhixin];
                 }
-                
             } failureBlock:^(NSError *error) {
                 
             } showHUD:NO];
