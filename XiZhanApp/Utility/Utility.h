@@ -176,4 +176,13 @@
  */
 + (NSString *)createGuidKey;
 
+/**
+ *  是否是要签名
+ *
+ *  @param APIStr 接口地址
+ *
+ *  @return 是/否
+ */
++ (BOOL )checkToSign:(NSString *)APIStr;
+
 @end

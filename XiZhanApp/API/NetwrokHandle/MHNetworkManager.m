@@ -160,11 +160,17 @@
 {
     
     NSString *str = [BaseAPI stringByAppendingString:url];
-    NSString *urlStr = [[Utility getSecretAPI:str paramDict:params] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString *urlStr = nil;
+    if ([Utility checkToSign:str]) {
+        urlStr = [[Utility getSecretAPI:str paramDict:params] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    }else {
+        urlStr = str;
+    }
     [self postReqeustWithURL:urlStr params:params target:nil action:nil delegate:nil successBlock:successBlock failureBlock:failureBlock showHUD:showHUD];
 }
 
 
+// 智信访问接口
 + (void)postWithURL:(NSString*)url
                     params:(NSDictionary*)params
               successBlock:(MHAsiSuccessBlock)successBlock
