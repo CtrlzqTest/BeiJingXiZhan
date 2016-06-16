@@ -128,23 +128,28 @@ static User *user = nil;
 }
 +(void)checkNewVersion:(void(^)(BOOL hasNewVersion,NSDictionary *stringForUpdate))versionCheckBlock{
     
-    NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
-    //    NSLog(@"%@",[infoDict objectForKey:@"CFBundleShortVersionString"]);
-    __block double currentVersion = [[infoDict objectForKey:@"CFBundleShortVersionString"] doubleValue];
-     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-     [param setObject:@"IOS" forKey:@"clientType"];
-    
-    [MHNetworkManager postReqeustWithURL:kCheckNewVersionAPI params:param successBlock:^(id returnData) {
-        NSDictionary *dict = [returnData objectForKey:@"list"];
-        NSLog(@"\ncheckVersion%@\n",dict);
-        double newVersion = [[dict objectForKey:@"versionNum"] doubleValue];
-        BOOL flag = newVersion > currentVersion;
-     //   NSString *str = [dict objectForKey:@"loadUrl"];
-        versionCheckBlock(flag,dict);
-        
-    } failureBlock:^(NSError *error) {
-        
-    } showHUD:NO];
+//    NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
+//    //    NSLog(@"%@",[infoDict objectForKey:@"CFBundleShortVersionString"]);
+//    __block double currentVersion = [[infoDict objectForKey:@"CFBundleShortVersionString"] doubleValue];
+//     NSMutableDictionary *param = [NSMutableDictionary dictionary];
+//     [param setObject:@"IOS" forKey:@"clientType"];
+//    
+//    [MHNetworkManager postReqeustWithURL:kCheckNewVersionAPI params:dict successBlock:^(id returnData) {
+//        if ([returnData[@"code"] integerValue] == 500) {
+//            [MBProgressHUD showError:@"网页不存在！" toView:nil];
+//        }
+//        else
+//        {
+//        NSDictionary *dict = [returnData objectForKey:@"list"];
+//        NSLog(@"\ncheckVersion%@\n",dict);
+//        double newVersion = [[dict objectForKey:@"versionNum"] doubleValue];
+//        BOOL flag = newVersion > currentVersion;
+//     //   NSString *str = [dict objectForKey:@"loadUrl"];
+//        versionCheckBlock(flag,dict);
+//        }
+//    } failureBlock:^(NSError *error) {
+//        [MBProgressHUD showError:@"校验失败！" toView:nil];
+//    } showHUD:NO];
 
 }
 

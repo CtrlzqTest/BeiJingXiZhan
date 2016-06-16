@@ -15,7 +15,7 @@
 
 #define BaseXiZhanAPI           @"http://222.240.172.197:8081/" // 西站测试
 
-#define BaseXiZhanImgAPI        @"http://222.240.172.197/"
+#define BaseXiZhanImgAPI        @"http://222.240.172.197/app_31/"
 
 // for首页
 #define BaseMainImgAPI          @"http://222.240.172.197/"

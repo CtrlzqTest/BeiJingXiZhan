@@ -33,6 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self initView];
     // Do any additional setup after loading the view.
 }
@@ -44,7 +45,7 @@
     
     CGFloat leftSide = 20.0;
     
-    UILabel *buttonHeaderLabel = [[UILabel alloc]initWithFrame:CGRectMake(40, 10, 160, 40)];
+    UILabel *buttonHeaderLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 10, KWidth, 40)];
     buttonHeaderLabel.textAlignment = NSTextAlignmentCenter;
     buttonHeaderLabel.text = @"出租车待客处查询";
     buttonHeaderLabel.textColor = mainColor;
@@ -53,9 +54,9 @@
     buttonHeaderLabel.layer.borderWidth = 2.0;
     buttonHeaderLabel.layer.borderColor = colorref;
     
-    [_header addSubview:buttonHeaderLabel];
+   // [_header addSubview:buttonHeaderLabel];
     
-    UILabel *headerLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(buttonHeaderLabel.frame), KWidth, 40)];
+    UILabel *headerLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, 10, KWidth, 40)];
     headerLabel.textAlignment = NSTextAlignmentCenter;
     headerLabel.text = @"出租车待客数量消息";
     headerLabel.textColor = mainColor;
@@ -212,6 +213,7 @@
     taxiLabel.frame = CGRectMake(0, CGRectGetMaxY(titleLabel.frame) + 4, 80, 30);
     taxiLabel.textColor = mainColor;
     taxiLabel.text = @"出租车";
+    taxiLabel.textAlignment = NSTextAlignmentRight;
     [alertView addSubview:taxiLabel];
     
     UITextField *taxiTF = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(taxiLabel.frame), CGRectGetMaxY(titleLabel.frame) + 4, alertView.frame.size.width-100, 30)];
@@ -227,6 +229,7 @@
     peopleLabel.frame = CGRectMake(0, CGRectGetMaxY(taxiLabel.frame) + 4, 80, 30);
     peopleLabel.textColor = mainColor;
     peopleLabel.text = @"待客人数";
+    peopleLabel.textAlignment = NSTextAlignmentRight;
     [alertView addSubview:peopleLabel];
     
     UITextField *peopleTF = [[UITextField alloc] initWithFrame:CGRectMake(CGRectGetMaxX(taxiLabel.frame), CGRectGetMaxY(taxiLabel.frame) + 4, alertView.frame.size.width-100, 30)];
@@ -244,7 +247,10 @@
     [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
     [cancelBtn setTitleColor:mainColor forState:UIControlStateNormal];
     cancelBtn.titleLabel.font = [UIFont systemFontOfSize:17];
-    cancelBtn.backgroundColor = [UIColor orangeColor];
+    //cancelBtn.backgroundColor = [UIColor orangeColor];
+    cancelBtn.layer.borderWidth = 1;
+    cancelBtn.layer.borderColor = colorref;
+    cancelBtn.layer.cornerRadius = 5;
     [alertView addSubview:cancelBtn];
     
     UIButton *confirmBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -253,11 +259,14 @@
     [confirmBtn setTitle:@"确定" forState:UIControlStateNormal];
     [confirmBtn setTitleColor:mainColor forState:UIControlStateNormal];
     confirmBtn.titleLabel.font = [UIFont systemFontOfSize:17];
-    confirmBtn.backgroundColor = [UIColor orangeColor];
+    //confirmBtn.backgroundColor = [UIColor orangeColor];
+    confirmBtn.layer.borderWidth = 1;
+    confirmBtn.layer.borderColor = colorref;
+    confirmBtn.layer.cornerRadius = 5;
     [alertView addSubview:confirmBtn];
-    
-    [alertView show];
-    
+    if ([[User shareUser].type isEqualToString:@"2"]) {
+        [alertView show];
+    }
 }
 
 - (void)cancelClick:(UIButton *)btn
