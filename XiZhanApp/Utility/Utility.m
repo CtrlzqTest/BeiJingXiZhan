@@ -131,8 +131,8 @@ static User *user = nil;
     NSDictionary *infoDict = [[NSBundle mainBundle] infoDictionary];
     //    NSLog(@"%@",[infoDict objectForKey:@"CFBundleShortVersionString"]);
     __block double currentVersion = [[infoDict objectForKey:@"CFBundleShortVersionString"] doubleValue];
-     NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-     [dict setObject:@"IOS" forKey:@"clientType"];
+     NSMutableDictionary *param = [NSMutableDictionary dictionary];
+     [param setObject:@"IOS" forKey:@"clientType"];
     
     [MHNetworkManager postReqeustWithURL:kCheckNewVersionAPI params:dict successBlock:^(id returnData) {
         if ([returnData[@"code"] integerValue] == 500) {
@@ -270,17 +270,17 @@ static User *user = nil;
 + (BOOL )registZhixin {
 
     NSString *uuidKey = [GSKeychain secretForKey:UUIDkey];
-//    [self getSecretAPI:nil paramDict:nil];
     if (uuidKey.length <= 0) {
         NSString * sysUUID = [UIDevice currentDevice].identifierForVendor.UUIDString;
         NSString *secret = [self createGuidKey];
         
-        [MHNetworkManager getRequstWithURL:kRegistZhixinAPI params:@{@"appkey":sysUUID,@"appsecret":secret,@"clienttype":@"2"} successBlock:^(id returnData) {
-            
+        [MHNetworkManager postReqeustWithURL:kRegistZhixinAPI params:@{@"appkey":sysUUID,@"appsecret":secret,@"clienttype":@"2"} successBlock:^(id returnData) {
+
             if ([returnData[@"code"] integerValue] == 0) {
                 [GSKeychain setSecret:sysUUID forKey:UUIDkey];
                 [GSKeychain setSecret:secret forKey:UUIDSecret];
             }
+            
         } failureBlock:^(NSError *error) {
             
         } showHUD:NO];
@@ -299,7 +299,16 @@ static User *user = nil;
     return uuid;
 }
 
-//+ (NSDictionary *)getSecret
+// 检查是否需要接口签名
++ (BOOL )checkToSign:(NSString *)APIStr {
+    
+    NSString *matchStr = @".*/((appversion)|(RegisterDevice)).*";
+    NSPredicate *regextestmobile = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", matchStr];
+    if ([regextestmobile evaluateWithObject:APIStr]) {
+        return NO;
+    }
+    return YES;
+}
 
 // 接口签名(直接访问智信)
 + (NSString *)getSecretAPI:(NSString *)keyAPI paramDict:(NSDictionary *)tempDict{
@@ -311,7 +320,7 @@ static User *user = nil;
     }
     NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
     NSString *apptimestamp = [NSString stringWithFormat:@"%.0f",time];
-    NSString *appKey = [GSKeychain secretForKey:UUIDkey];
+    NSString *appKey = [GSKeychain secretForKey:UUIDkey].length > 0 ? [GSKeychain secretForKey:UUIDkey] : @"";
     [dict setValue:@"31" forKey:@"appid"];
     [dict setValue:apptimestamp forKey:@"apptimestamp"];
     [dict setValue:appKey forKey:@"appkey"];
@@ -324,7 +333,8 @@ static User *user = nil;
     
     [allKeys_low sortUsingSelector:@selector(compare:)];
     NSMutableString *str = [NSMutableString string];
-    [str appendString:[GSKeychain secretForKey:UUIDSecret]];
+    NSString *secretStr = [GSKeychain secretForKey:UUIDSecret].length > 0 ? [GSKeychain secretForKey:UUIDSecret] : @"";
+    [str appendString:secretStr];
     for (int i = 0; i < allKeys_low.count; i ++) {
         NSString *key = allKeys_low[i];
         [str appendFormat:@"%@%@",allKeys_low[i],dict2[key]];
@@ -346,6 +356,7 @@ static User *user = nil;
     str = nil;
     return [NSString stringWithFormat:@"%@%@",keyAPI,[APIStr substringToIndex:APIStr.length - 1]];
 }
+
 
 
 @end
