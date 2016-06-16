@@ -9,6 +9,7 @@
 #import "Utility.h"
 //#import "User.h"
 #import "GSKeychain.h"
+#import "ZQKeyChain.h"
 #import <CommonCrypto/CommonDigest.h>
 
 static User *user = nil;
@@ -270,38 +271,57 @@ static User *user = nil;
 + (BOOL )registZhixin {
 
     NSString *uuidKey = [GSKeychain secretForKey:UUIDkey];
-    if (![self didRegistUUID]) {
+//    [GSKeychain setSecret:@"15A0D357-ECE6-4462-9EAA-5B03C04FD941" forKey:UUIDkey];
+//    [GSKeychain setSecret:@"4C1F9F51-14B8-4ECA-B0E2-7D358D74FA87" forKey:UUIDSecret];
+//    [self saveRegistState:@"4C1F9F51-14B8-4ECA-B0E2-7D358D74FA87"];
+    if ([self getSecretUUID].length <= 0) {
         if (uuidKey.length <= 0) {
             uuidKey = [UIDevice currentDevice].identifierForVendor.UUIDString;
+            NSString *secret = [self createGuidKey];
+            __weak typeof(self) weakSelf = self;
+            [MHNetworkManager postReqeustWithURL:kRegistZhixinAPI params:@{@"appkey":uuidKey,@"appsecret":secret,@"clienttype":@"2"} successBlock:^(id returnData) {
+                
+                if ([returnData[@"code"] integerValue] == 0) {
+                    [GSKeychain setSecret:uuidKey forKey:UUIDkey];
+                    [GSKeychain setSecret:secret forKey:UUIDSecret];
+                    [weakSelf saveRegistState:secret];
+                }
+                
+            } failureBlock:^(NSError *error) {
+                
+            } showHUD:NO];
+        }else {
+            __weak typeof(self) weakSelf = self;
+            [MHNetworkManager postReqeustWithURL:kGetUUIDSecretAPI params:@{@"appkey":uuidKey} successBlock:^(id returnData) {
+                
+                if ([returnData[@"code"] integerValue] == 0) {
+                    
+                    [GSKeychain setSecret:returnData[@"data"] forKey:UUIDSecret];
+                    [weakSelf saveRegistState:returnData[@"data"]];
+                }else {
+                    [self registZhixin];
+                }
+                
+            } failureBlock:^(NSError *error) {
+                
+            } showHUD:NO];
         }
-        NSString *secret = [self createGuidKey];
-        __weak typeof(self) weakSelf = self;
-        [MHNetworkManager postReqeustWithURL:kRegistZhixinAPI params:@{@"appkey":uuidKey,@"appsecret":secret,@"clienttype":@"2"} successBlock:^(id returnData) {
 
-            if ([returnData[@"code"] integerValue] == 0) {
-                [GSKeychain setSecret:uuidKey forKey:UUIDkey];
-                [GSKeychain setSecret:secret forKey:UUIDSecret];
-                [weakSelf saveRegistState:YES];
-            }
-            
-        } failureBlock:^(NSError *error) {
-            
-        } showHUD:NO];
     }
     return YES;
 }
 
-// 保存是否注册过UUID状态
-+ (void)saveRegistState:(BOOL )didRegist {
+// 保存智信secret
++ (void)saveRegistState:(NSString *)secretUUID {
     
-    [[NSUserDefaults standardUserDefaults] setBool:didRegist forKey:@"deviceUUID"];
+    [[NSUserDefaults standardUserDefaults] setValue:secretUUID forKey:@"secretUUID"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
 }
 
 // 是否需要注册UUID
-+ (BOOL)didRegistUUID {
-    return [[NSUserDefaults standardUserDefaults] boolForKey:@"deviceUUID"];
++ (NSString *)getSecretUUID {
+    return [[NSUserDefaults standardUserDefaults] valueForKey:@"secretUUID"];
 }
 
 // 获得随机的GUID
@@ -337,6 +357,9 @@ static User *user = nil;
     NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
     NSString *apptimestamp = [NSString stringWithFormat:@"%.0f",time];
     NSString *appKey = [GSKeychain secretForKey:UUIDkey];
+    if (appKey.length <= 0) {
+        NSLog(@"%@",@"去你妈");
+    }
     [dict setValue:@"31" forKey:@"appid"];
     [dict setValue:apptimestamp forKey:@"apptimestamp"];
     [dict setValue:appKey forKey:@"appkey"];
@@ -349,13 +372,8 @@ static User *user = nil;
     
     [allKeys_low sortUsingSelector:@selector(compare:)];
     NSMutableString *str = [NSMutableString string];
-    NSString *secretStr = [GSKeychain secretForKey:UUIDSecret];
-    NSLog(@"%@",keyAPI);
-    if (secretStr.length <= 0) {
-        [str appendString:@""];
-    }else {
-        [str appendString:secretStr];
-    }
+    NSString *secretStr = [self getSecretUUID].length <= 0 ? @"" : [self getSecretUUID];
+    [str appendString:secretStr];
     for (int i = 0; i < allKeys_low.count; i ++) {
         NSString *key = allKeys_low[i];
         [str appendFormat:@"%@%@",allKeys_low[i],dict2[key]];

@@ -73,6 +73,7 @@
 		F0C4AAF91CE2E14A0067E986 /* MHUploadParam.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AAF51CE2E14A0067E986 /* MHUploadParam.m */; };
 		F0C4AAFD1CE2E3520067E986 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F0C4AAFA1CE2E3520067E986 /* MBProgressHUD.bundle */; };
 		F0C4AAFE1CE2E3520067E986 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AAFC1CE2E3520067E986 /* MBProgressHUD+Add.m */; };
+		F0CE7FE41D12AA20002B835C /* ZQKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CE7FE31D12AA20002B835C /* ZQKeyChain.m */; };
 		F0D142291D0FD1C600E76199 /* ParkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0D142281D0FD1C600E76199 /* ParkViewController.m */; };
 		F0D1422D1D0FD8D400E76199 /* ParkTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0D1422C1D0FD8D400E76199 /* ParkTabCell.m */; };
 		F0D142301D0FEC3900E76199 /* ParkMsgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0D1422F1D0FEC3900E76199 /* ParkMsgModel.m */; };
@@ -230,6 +231,8 @@
 		F0C4AAFA1CE2E3520067E986 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
 		F0C4AAFB1CE2E3520067E986 /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
 		F0C4AAFC1CE2E3520067E986 /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
+		F0CE7FE21D12AA20002B835C /* ZQKeyChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQKeyChain.h; sourceTree = "<group>"; };
+		F0CE7FE31D12AA20002B835C /* ZQKeyChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQKeyChain.m; sourceTree = "<group>"; };
 		F0D142271D0FD1C600E76199 /* ParkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkViewController.h; sourceTree = "<group>"; };
 		F0D142281D0FD1C600E76199 /* ParkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ParkViewController.m; sourceTree = "<group>"; };
 		F0D1422B1D0FD8D400E76199 /* ParkTabCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkTabCell.h; sourceTree = "<group>"; };
@@ -724,6 +727,8 @@
 			children = (
 				F0F37A001CE07B280047A469 /* Utility.h */,
 				F0F37A011CE07B280047A469 /* Utility.m */,
+				F0CE7FE21D12AA20002B835C /* ZQKeyChain.h */,
+				F0CE7FE31D12AA20002B835C /* ZQKeyChain.m */,
 				F08142DD1D05553C000C001E /* GSKeychain.h */,
 				F08142DE1D05553C000C001E /* GSKeychain.m */,
 			);
@@ -1034,6 +1039,7 @@
 				F0607B3F1CE5B6650029EE31 /* ZQDatabaseManager.m in Sources */,
 				F0088C9B1CE6BE8300AF6EAF /* LQPhotoPickerViewController.m in Sources */,
 				F0614DD11CE1C4180036CC3E /* MyInformationsViewController.m in Sources */,
+				F0CE7FE41D12AA20002B835C /* ZQKeyChain.m in Sources */,
 				F0E396CE1CE1BA5400D4137E /* UIViewController+AYCNavigationItem.m in Sources */,
 				F0DC514E1CE84AC800CE29AD /* DJPhotoBrowser.m in Sources */,
 				F0E396B01CE186D200D4137E /* RegisterViewController.m in Sources */,
