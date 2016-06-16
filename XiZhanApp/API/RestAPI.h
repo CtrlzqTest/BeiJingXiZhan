@@ -74,6 +74,8 @@
 
 #define kRegistZhixinAPI        @"api/AppClient/RegisterDevice"  // 向智信注册设备
 
+#define kGetUUIDSecretAPI       @"api/AppClient/GetDeviceRegisterInfo"  // 获取设备UUIDSecret
+
 #define kCheckNewVersionAPI     @"app.appversion/update"
 
 //   常量

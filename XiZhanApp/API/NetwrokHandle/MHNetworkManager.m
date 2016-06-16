@@ -250,12 +250,12 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     //        manager.responseSerializer.acceptableContentTypes =  [NSSet setWithObject:@"text/html"];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/xml",@"text/html", nil];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json",@"text/json",@"text/xml",@"text/html",@"text/plain", nil];
     //设置请求超时时长
     [manager.requestSerializer setTimeoutInterval:10];
     //        manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
-    [manager POST:[Utility getSecretAPI:url paramDict:paramsDict] parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
+    NSString *urlStr = [Utility getSecretAPI:url paramDict:paramsDict];
+    [manager POST:urlStr parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
     {
         [formData appendPartWithFileData:uploadParam.data name:uploadParam.name fileName:uploadParam.fileName mimeType:uploadParam.mimeType];
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
