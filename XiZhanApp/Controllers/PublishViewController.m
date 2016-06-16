@@ -203,6 +203,10 @@
                     [weakSel postData];
                 }
             }
+            else
+            {
+             [MBProgressHUD showError:@"上传图片失败！" toView:nil];
+            }
         } failureBlock:^(NSError *error) {
             NSLog(@"%@",error);
             [MBProgressHUD showError:@"上传图片失败！" toView:nil];
@@ -257,10 +261,14 @@
         {
             [MBProgressHUD showSuccess:@"编辑成功！" toView:nil];
             [weakSelf.navigationController popViewControllerAnimated:YES];
-        // 通知列表需要刷新
-        if ([self.delegate respondsToSelector:@selector(noticeTableViewRefresh:)]) {
+            // 通知列表需要刷新
+            if ([self.delegate respondsToSelector:@selector(noticeTableViewRefresh:)]) {
                 [self.delegate noticeTableViewRefresh:nil];
             }
+        }
+        else
+        {
+            [MBProgressHUD showError:@"发送失败！" toView:nil];
         }
     } failureBlock:^(NSError *error) {
         [MBProgressHUD showError:@"发送失败！" toView:nil];
