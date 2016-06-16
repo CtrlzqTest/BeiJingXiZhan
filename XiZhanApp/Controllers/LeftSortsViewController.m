@@ -72,7 +72,7 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
     NSArray *resultArray = [[MessageModel shareTestModel] getDataWithCondition:@"msgDate = (select max(msgDate) from MessageModel)"];
     __block MessageModel *messageModel = [[MessageModel mj_objectArrayWithKeyValuesArray:resultArray] firstObject];
     
-    NSDictionary *dict = @{@"pageIndex":@"1",@"pageSize":@"1",@"time":[Utility getCurrentDateStr],@"sort":@"CreateTime"};
+    NSDictionary *dict = @{@"pageIndex":@"1",@"pageSize":@"1",@"time":[Utility getCurrentDateStr],@"sort":@"CreateTime",@"nodeid":@""};
     [MHNetworkManager getRequstWithURL:kMessageListAPI params:dict successBlock:^(id returnData) {
         
         if ([returnData[@"code"] integerValue] == 0) {

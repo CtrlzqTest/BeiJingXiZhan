@@ -15,7 +15,7 @@
 
 #define BaseXiZhanAPI           @"http://222.240.172.197:8081/" // 西站测试
 
-#define BaseXiZhanImgAPI        @"http://222.240.172.197/app_31/"
+#define BaseXiZhanImgAPI        @"http://222.240.172.197/"
 
 // for首页
 #define BaseMainImgAPI          @"http://222.240.172.197/"
@@ -56,7 +56,7 @@
 
 #define kAppopinion             @"api/Add/CommitFeedback" //意见反馈
 
-//#define kMuenListAPI          @"app.menu/getMenu" //首页菜单
+//#define kMuenListAPI            @"api/List/GetNodes" //首页菜单
 
 #define kMuenListAPI            @"api/List/GetNodesByParentID" //首页菜单
 

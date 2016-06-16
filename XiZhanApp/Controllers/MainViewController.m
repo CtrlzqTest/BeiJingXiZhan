@@ -36,7 +36,6 @@ static NSString *collCellId = @"MainCell";
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self addNotices];
     [self setupViews];
-    [self initData];
     
     // 消息提示
     if ([User shareUser].isLogin && [Utility getMyMsgReadState]) {
@@ -70,7 +69,7 @@ static NSString *collCellId = @"MainCell";
 - (void)initData {
     
     [self removeNodataView];
-    [MHNetworkManager getRequstWithURL:kMuenListAPI params:nil successBlock:^(id returnData) {
+    [MHNetworkManager getRequstWithURL:kMuenListAPI params:@{@"parentid":@""} successBlock:^(id returnData) {
 
         if ([returnData[@"code"] integerValue] == 0) {
             

@@ -167,7 +167,7 @@
  *
  *  @return 返回加密后的API
  */
-+ (NSString *)getSecretAPI:(NSString *)keyAPI paramDict:(NSMutableDictionary *)tempDict;
++ (NSString *)getSecretAPI:(NSString *)keyAPI paramDict:(NSDictionary *)tempDict;
 
 /**
  *  获取GUID

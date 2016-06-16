@@ -82,6 +82,9 @@
               failureBlock:(MHAsiFailureBlock)failureBlock
                    showHUD:(BOOL)showHUD;
 
+/**
+ *  请求智信接口
+ */
 + (void)postWithURL:(NSString*)url
              params:(NSDictionary*)params
        successBlock:(MHAsiSuccessBlock)successBlock
