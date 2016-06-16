@@ -33,6 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self initView];
     // Do any additional setup after loading the view.
 }
@@ -263,9 +264,9 @@
     confirmBtn.layer.borderColor = colorref;
     confirmBtn.layer.cornerRadius = 5;
     [alertView addSubview:confirmBtn];
-    
-    [alertView show];
-    
+    if ([[User shareUser].type isEqualToString:@"2"]) {
+        [alertView show];
+    }
 }
 
 - (void)cancelClick:(UIButton *)btn
