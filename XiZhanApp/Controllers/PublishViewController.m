@@ -249,17 +249,17 @@
     [MHNetworkManager postWithURL:kMenuAdd params:@{@"submitClient":@"2",@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":self.fieldOfUser.text,@"imageurl":self.imgString,@"createuser":[Utility getUserInfoFromLocal][@"id"],@"author":[Utility getUserInfoFromLocal][@"tel"],@"department":@"0",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0"} successBlock:^(id returnData) {
         
         NSLog(@"%@",returnData);
-        if ([returnData[@"code"] integerValue] == 500 ) {
-            [MBProgressHUD showError:@"发送失败！" toView:nil];
+        if ([returnData[@"code"] integerValue] == 0 ) {
+            [MBProgressHUD showSuccess:@"编辑成功！" toView:nil];
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+            // 通知列表需要刷新
+            if ([self.delegate respondsToSelector:@selector(noticeTableViewRefresh:)]) {
+                [self.delegate noticeTableViewRefresh:nil];
+            }
         }
         else
         {
-            [MBProgressHUD showSuccess:@"编辑成功！" toView:nil];
-            [weakSelf.navigationController popViewControllerAnimated:YES];
-        // 通知列表需要刷新
-        if ([self.delegate respondsToSelector:@selector(noticeTableViewRefresh:)]) {
-                [self.delegate noticeTableViewRefresh:nil];
-            }
+            [MBProgressHUD showError:@"发送失败！" toView:nil];
         }
     } failureBlock:^(NSError *error) {
         [MBProgressHUD showError:@"发送失败！" toView:nil];

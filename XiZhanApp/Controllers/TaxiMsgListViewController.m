@@ -124,7 +124,7 @@
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
     
-    [self setRightImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"edit" selectImage:nil action:^(AYCButton *button) {
+    [self setRightImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"" selectImage:nil action:^(AYCButton *button) {
         
     }];
     [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 50*ProportionWidth)title:@"出租车" fontSize:17.0];
@@ -192,6 +192,7 @@
 {
     TaxiMsgTableCell *cell = [tableView dequeueReusableCellWithIdentifier:cellMsgTable forIndexPath:indexPath];
     //cell.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"login_unSelect"]];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     TaxiMsgModel *model = _dataArray[indexPath.row];
     [cell writeDataWithModel:model];
     return cell;
