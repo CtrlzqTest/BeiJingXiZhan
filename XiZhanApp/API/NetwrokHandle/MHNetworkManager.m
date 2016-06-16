@@ -241,6 +241,7 @@
                   showHUD:(BOOL)showHUD
 {
     
+    NSString *urlStr = [Utility getSecretAPI:url paramDict:paramsDict];
     if (showHUD) {
         [MBProgressHUD showHUDAddedTo:nil animated:YES];
     }
@@ -254,7 +255,7 @@
     //设置请求超时时长
     [manager.requestSerializer setTimeoutInterval:10];
     //        manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    NSString *urlStr = [Utility getSecretAPI:url paramDict:paramsDict];
+    
     [manager POST:urlStr parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
     {
         [formData appendPartWithFileData:uploadParam.data name:uploadParam.name fileName:uploadParam.fileName mimeType:uploadParam.mimeType];

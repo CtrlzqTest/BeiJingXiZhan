@@ -188,6 +188,7 @@
         param.mimeType = [param mimeType];//文件格式
         
         NSString *strUrl = @"http://222.240.172.197:8081/api/File/UploadFile";
+
         [MHNetworkManager uploadFileWithURL:strUrl params:@{@"path":@"contentimage"} successBlock:^(id returnData) {
             if ([returnData[@"code"] integerValue] == 0)
             {
@@ -251,6 +252,7 @@
     
     NSDictionary *dict = @{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":self.fieldOfUser.text,@"imageurl":self.imgString,@"createuser":[Utility getUserInfoFromLocal][@"id"],@"author":[Utility getUserInfoFromLocal][@"tel"],@"department":@"0",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0"};
     
+    [Utility getSecretAPI:@"aa" paramDict:nil];
     [MHNetworkManager postWithURL:kMenuAdd params:dict successBlock:^(id returnData) {
         
         if ([returnData[@"code"] integerValue] == 0 )

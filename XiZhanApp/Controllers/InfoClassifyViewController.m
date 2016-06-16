@@ -41,7 +41,6 @@
     [self initView];
     self.title = self.menuModel.menuTitle;
      NSLog(@"zid:%@",[Utility getUserInfoFromLocal][@"zid"]);
-    [self getData];
 }
 
 
