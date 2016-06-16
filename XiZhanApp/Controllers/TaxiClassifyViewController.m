@@ -11,6 +11,7 @@
 #import "MenuModel.h"
 #import "MenuType2TabCell.h"
 #import <MJRefresh.h>
+#import "ParkViewController.h"
 
 @interface TaxiClassifyViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -34,10 +35,14 @@
 - (void)setupViews {
     
     _dataArray = [NSMutableArray array];
-    MenuModel *menuModel2 = [[MenuModel alloc] init];
-    menuModel2.menuTitle = @"获取出租车每个站点的最新数据";
-    [_dataArray addObject:menuModel2];
+    MenuModel *menuModel1 = [[MenuModel alloc] init];
+    menuModel1.menuTitle = @"出租车";
+    [_dataArray addObject:menuModel1];
 
+    MenuModel *menuModel2 = [[MenuModel alloc] init];
+    menuModel2.menuTitle = @"停车场";
+    [_dataArray addObject:menuModel2];
+    
     // 返回按钮
     __weak typeof(self) weakSelf = self;
     [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
@@ -90,9 +95,15 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    MenuModel *model = _dataArray[indexPath.row];
-    TaxiMsgListViewController *taxiStationVC = [[TaxiMsgListViewController alloc] init];
-    [self.navigationController pushViewController:taxiStationVC animated:YES];
+    MenuModel *model = _dataArray[indexPath.row];
+    if (indexPath.row == 0) {
+        TaxiMsgListViewController *taxiStationVC = [[TaxiMsgListViewController alloc] init];
+        [self.navigationController pushViewController:taxiStationVC animated:YES];
+    }else {
+        ParkViewController *taxiMsgVC = [Utility getControllerWithStoryBoardId:parkVCId];
+        taxiMsgVC.menuModel = model;
+        [self.navigationController pushViewController:taxiMsgVC animated:YES];
+    }
     
 }
 
