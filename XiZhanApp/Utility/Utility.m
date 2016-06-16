@@ -339,7 +339,6 @@ static User *user = nil;
     allKeys = nil;
     allKeys_low = nil;
     str = nil;
-    NSLog(@"%@",[NSString stringWithFormat:@"%@%@",keyAPI,[APIStr substringToIndex:APIStr.length - 1]]);
     return [NSString stringWithFormat:@"%@%@",keyAPI,[APIStr substringToIndex:APIStr.length - 1]];
 }
 
