@@ -32,9 +32,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [NSThread sleepForTimeInterval:1.2];
+    
     // 注册智信
     [Utility registZhixin];
+    
+    [NSThread sleepForTimeInterval:2];
     // 极光推送
     [self setupjPushWithLaunchOptions:launchOptions];
     

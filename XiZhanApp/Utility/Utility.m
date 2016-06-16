@@ -265,15 +265,18 @@ static User *user = nil;
 + (BOOL )registZhixin {
 
     NSString *uuidKey = [GSKeychain secretForKey:UUIDkey];
-    if (uuidKey.length <= 0) {
-        NSString * sysUUID = [UIDevice currentDevice].identifierForVendor.UUIDString;
+    if (![self didRegistUUID]) {
+        if (uuidKey.length <= 0) {
+            uuidKey = [UIDevice currentDevice].identifierForVendor.UUIDString;
+        }
         NSString *secret = [self createGuidKey];
-        
-        [MHNetworkManager postReqeustWithURL:kRegistZhixinAPI params:@{@"appkey":sysUUID,@"appsecret":secret,@"clienttype":@"2"} successBlock:^(id returnData) {
+        __weak typeof(self) weakSelf = self;
+        [MHNetworkManager postReqeustWithURL:kRegistZhixinAPI params:@{@"appkey":uuidKey,@"appsecret":secret,@"clienttype":@"2"} successBlock:^(id returnData) {
 
             if ([returnData[@"code"] integerValue] == 0) {
-                [GSKeychain setSecret:sysUUID forKey:UUIDkey];
+                [GSKeychain setSecret:uuidKey forKey:UUIDkey];
                 [GSKeychain setSecret:secret forKey:UUIDSecret];
+                [weakSelf saveRegistState:YES];
             }
             
         } failureBlock:^(NSError *error) {
@@ -281,6 +284,19 @@ static User *user = nil;
         } showHUD:NO];
     }
     return YES;
+}
+
+// 保存是否注册过UUID状态
++ (void)saveRegistState:(BOOL )didRegist {
+    
+    [[NSUserDefaults standardUserDefaults] setBool:didRegist forKey:@"deviceUUID"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+}
+
+// 是否需要注册UUID
++ (BOOL)didRegistUUID {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"deviceUUID"];
 }
 
 // 获得随机的GUID
@@ -315,7 +331,7 @@ static User *user = nil;
     }
     NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
     NSString *apptimestamp = [NSString stringWithFormat:@"%.0f",time];
-    NSString *appKey = [GSKeychain secretForKey:UUIDkey].length > 0 ? [GSKeychain secretForKey:UUIDkey] : @"";
+    NSString *appKey = [GSKeychain secretForKey:UUIDkey];
     [dict setValue:@"31" forKey:@"appid"];
     [dict setValue:apptimestamp forKey:@"apptimestamp"];
     [dict setValue:appKey forKey:@"appkey"];
@@ -328,8 +344,13 @@ static User *user = nil;
     
     [allKeys_low sortUsingSelector:@selector(compare:)];
     NSMutableString *str = [NSMutableString string];
-    NSString *secretStr = [GSKeychain secretForKey:UUIDSecret].length > 0 ? [GSKeychain secretForKey:UUIDSecret] : @"";
-    [str appendString:secretStr];
+    NSString *secretStr = [GSKeychain secretForKey:UUIDSecret];
+    NSLog(@"%@",keyAPI);
+    if (secretStr.length <= 0) {
+        [str appendString:@""];
+    }else {
+        [str appendString:secretStr];
+    }
     for (int i = 0; i < allKeys_low.count; i ++) {
         NSString *key = allKeys_low[i];
         [str appendFormat:@"%@%@",allKeys_low[i],dict2[key]];
