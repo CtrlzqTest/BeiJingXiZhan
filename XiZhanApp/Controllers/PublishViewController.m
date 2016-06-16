@@ -203,6 +203,10 @@
                     [weakSel postData];
                 }
             }
+            else
+            {
+             [MBProgressHUD showError:@"上传图片失败！" toView:nil];
+            }
         } failureBlock:^(NSError *error) {
             NSLog(@"%@",error);
             [MBProgressHUD showError:@"上传图片失败！" toView:nil];
