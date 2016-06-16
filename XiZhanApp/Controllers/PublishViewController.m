@@ -243,12 +243,11 @@
     if (![self checkInput]) {
         return;
     }
-    if ([self.miaoShuTextView.text isEqualToString:@""]) {
-        [MBProgressHUD showMessag:@"请输入详情" toView:self.view];
-        return;
-    }
-    
     __weak typeof(self) weakSelf = self;
+    
+    if ([self.imgString length] == 0) {
+        self.imgString = [NSString stringWithFormat:@"1"];
+    }
     
     NSDictionary *dict = @{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":self.fieldOfUser.text,@"imageurl":self.imgString,@"createuser":[Utility getUserInfoFromLocal][@"id"],@"author":[Utility getUserInfoFromLocal][@"tel"],@"department":@"0",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0"};
     
@@ -262,7 +261,6 @@
             if ([self.delegate respondsToSelector:@selector(noticeTableViewRefresh:)]) {
                 [self.delegate noticeTableViewRefresh:nil];
             }
-           
         }
         else
         {
