@@ -75,13 +75,15 @@
 }
 -(void)getAreaData
 {
-    [MHNetworkManager getWithURL:kGetAreaAPI params:nil successBlock:^(id returnData) {
-        NSLog(@"%@",returnData[@"data"]);
-          _areaArray = [AreaOfXiZhan mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
+    
+    [MHNetworkManager getRequstWithURL:kGetAreaAPI params:nil successBlock:^(id returnData) {
+        
+        _areaArray = [AreaOfXiZhan mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
         
     } failureBlock:^(NSError *error) {
         
     } showHUD:YES];
+    
 }
 #pragma mark initMethod
 -(void)initView

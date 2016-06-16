@@ -34,11 +34,11 @@
             failureBlock:(MHAsiFailureBlock)failureBlock
                  showHUD:(BOOL)showHUD;
 
-+ (void)getWithURL:(NSString*)url
-            params:(NSDictionary*)params
-      successBlock:(MHAsiSuccessBlock)successBlock
-      failureBlock:(MHAsiFailureBlock)failureBlock
-           showHUD:(BOOL)showHUD;
+//+ (void)getWithURL:(NSString*)url
+//            params:(NSDictionary*)params
+//      successBlock:(MHAsiSuccessBlock)successBlock
+//      failureBlock:(MHAsiFailureBlock)failureBlock
+//           showHUD:(BOOL)showHUD;
 /**
  *   GET请求通过代理回调
  *

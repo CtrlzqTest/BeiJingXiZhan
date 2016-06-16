@@ -71,19 +71,27 @@
                  showHUD:(BOOL)showHUD
 {
     NSString *str = [BaseAPI stringByAppendingString:url];
-    NSString *urlStr = [[Utility getSecretAPI:str paramDict:params] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [self getRequstWithURL:urlStr params:nil target:nil action:nil delegate:nil successBlock:successBlock failureBlock:failureBlock showHUD:showHUD];
+    NSString *urlStr = nil;
+    if ([Utility checkToSign:str]) {
+        urlStr = [[Utility getSecretAPI:str paramDict:params] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        [self getRequstWithURL:urlStr params:nil target:nil action:nil delegate:nil successBlock:successBlock failureBlock:failureBlock showHUD:showHUD];
+    }else {
+        urlStr = str;
+        [self getRequstWithURL:urlStr params:params target:nil action:nil delegate:nil successBlock:successBlock failureBlock:failureBlock showHUD:showHUD];
+    }
+    
 }
 
-+ (void)getWithURL:(NSString*)url
-                  params:(NSDictionary*)params
-            successBlock:(MHAsiSuccessBlock)successBlock
-            failureBlock:(MHAsiFailureBlock)failureBlock
-                 showHUD:(BOOL)showHUD
-{
-    NSString *str = [BaseXiZhanAPI stringByAppendingString:url];
-    [self getRequstWithURL:str params:params target:nil action:nil delegate:nil successBlock:successBlock failureBlock:failureBlock showHUD:showHUD];
-}
+//+ (void)getWithURL:(NSString*)url
+//                  params:(NSDictionary*)params
+//            successBlock:(MHAsiSuccessBlock)successBlock
+//            failureBlock:(MHAsiFailureBlock)failureBlock
+//                 showHUD:(BOOL)showHUD
+//{
+//    NSString *str = [BaseXiZhanAPI stringByAppendingString:url];
+//    [self getRequstWithURL:str params:params target:nil action:nil delegate:nil successBlock:successBlock failureBlock:failureBlock showHUD:showHUD];
+//}
+
 /**
  *   GET请求通过代理回调
  *
