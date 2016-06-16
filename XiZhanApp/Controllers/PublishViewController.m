@@ -249,8 +249,14 @@
     }
     
     __weak typeof(self) weakSelf = self;
-    
-    [MHNetworkManager postWithURL:kMenuAdd params:@{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":self.fieldOfUser.text,@"imageurl":self.imgString,@"createuser":[Utility getUserInfoFromLocal][@"id"],@"author":[Utility getUserInfoFromLocal][@"tel"],@"department":@"0",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0"} successBlock:^(id returnData) {
+    if ([self.imgString length] == 0) {
+        self.imgString = [NSString stringWithFormat:@"1"];
+    }
+//     NSString *strB = [@"中国"stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//    NSLog(@"%@",strB);
+//    NSString *titleStr = [self.fieldOfUser.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//    NSString *contentStr = [self.miaoShuTextView.text stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [MHNetworkManager postReqeustWithURL:kMenuAdd params:@{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":self.miaoShuTextView.text,@"imageurl":self.imgString,@"createuser":[Utility getUserInfoFromLocal][@"id"],@"author":[Utility getUserInfoFromLocal][@"tel"],@"department":@"0",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0"} successBlock:^(id returnData) {
         
         NSLog(@"%@ %@",returnData[@"data"],returnData[@"errmsg"]);
         if ([returnData[@"code"] integerValue] == 0 ) {

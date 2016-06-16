@@ -167,7 +167,7 @@
 {
     if (buttonIndex == 1) {
         //
-        [MHNetworkManager postWithURL:kPostOffLine params:@{@"userid":[User shareUser].zid,@"time":[Utility getCurrentDateStr]} successBlock:^(id returnData) {
+        [MHNetworkManager postReqeustWithURL:kPostOffLine params:@{@"userid":[User shareUser].zid,@"time":[Utility getCurrentDateStr]} successBlock:^(id returnData) {
             NSLog(@"offLine:%@",returnData[@"data"]);
             if ([returnData[@"code"] integerValue] == 0) {
                 _isFirstTouch = !_isFirstTouch;
@@ -189,7 +189,7 @@
 {
     NSLog(@"zid:%@",[Utility getUserInfoFromLocal][@"zid"]);
     NSLog(@"zid:%@",[User shareUser].zid);
-    [MHNetworkManager postWithURL:kPostOnLine params:@{@"userid":[User shareUser].zid,@"areaid":areaOfXiZhan.AreaID,@"time":[Utility getCurrentDateStr]} successBlock:^(id returnData) {
+    [MHNetworkManager postReqeustWithURL:kPostOnLine params:@{@"userid":[User shareUser].zid,@"areaid":areaOfXiZhan.AreaID,@"time":[Utility getCurrentDateStr]} successBlock:^(id returnData) {
         NSLog(@"%@",returnData[@"data"]);
         if ([returnData[@"code"] integerValue] == 0) {
             [Utility  saveVolunteerState:YES];

@@ -27,6 +27,8 @@
 @property(nonatomic,retain)UITextField *taxiTF;
 @property(nonatomic,retain)UITextField *peopleTF;
 @property(nonatomic,strong)TaxiMsgModel *modelChange;
+@property(nonatomic,assign)NSInteger peopleTotalNum;
+@property(nonatomic,assign)NSInteger taxtTotalNum;
 @end
 
 @implementation TaxiMsgListViewController
@@ -74,7 +76,7 @@
     [_header addSubview:carAllCountLabel];
     
     _carCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(carAllCountLabel.frame), CGRectGetMaxY(subHeaderLabel.frame)+5, 50*ProportionWidth, 30)];
-    _carCountLabel.text = @"xxx";
+    _carCountLabel.text = [NSString stringWithFormat:@"%ld",_taxtTotalNum];
      _carCountLabel.textAlignment = NSTextAlignmentCenter;
     _carCountLabel.textColor = mainColor;
     _carCountLabel.layer.cornerRadius = 15.0;
@@ -94,7 +96,7 @@
     [_header addSubview:peopleAllCountLabel];
     
     _peoplCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(carAllCountLabel.frame), CGRectGetMaxY(carAllCountLabel.frame)+5, 50*ProportionWidth, 30)];
-    _peoplCountLabel.text = @"xxx";
+    _peoplCountLabel.text = [NSString stringWithFormat:@"%ld",_peopleTotalNum];
     _peoplCountLabel.textColor = mainColor;
     _peoplCountLabel.textAlignment = NSTextAlignmentCenter;
     _peoplCountLabel.layer.cornerRadius = 15.0;
@@ -112,8 +114,10 @@
 
 -(void)updateHeaderDataMethod
 {
-    _peoplCountLabel.text = [NSString stringWithFormat:@"%d",arc4random() % 100];
-    _carCountLabel.text = [NSString stringWithFormat:@"%d",arc4random() % 100];
+   // _peoplCountLabel.text = [NSString stringWithFormat:@"%d",arc4random() % 100];
+   // _carCountLabel.text = [NSString stringWithFormat:@"%d",arc4random() % 100];
+    _peoplCountLabel.text = [NSString stringWithFormat:@"%ld",_peopleTotalNum];
+    _carCountLabel.text = [NSString stringWithFormat:@"%ld",_taxtTotalNum];
 }
 -(void)initView
 {
@@ -152,13 +156,19 @@
 }
 
 - (void)getData {
-    [self updateHeaderDataMethod];
-//    NSString *pageIndex = [NSString stringWithFormat:@"%ld",_page];
+    _peopleTotalNum = 0;
+    _taxtTotalNum = 0;
+    __weak typeof(self) weakSelf = self;
     [MHNetworkManager getRequstWithURL:kGetTaxiInfoNewDataAPI params:nil successBlock:^(id returnData) {
         
         if ([returnData[@"code"] integerValue] == 0) {
             
             _dataArray = [TaxiMsgModel mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
+            for (TaxiMsgModel *item in _dataArray) {
+                _peopleTotalNum = _peopleTotalNum+[item.PeopleCount integerValue];
+                _taxtTotalNum = _taxtTotalNum+[item.TaxiCount integerValue];
+            }
+            [weakSelf updateHeaderDataMethod];
             [self.tableView reloadData];
             
         }else {
@@ -291,7 +301,7 @@
     NSLog(@"[Utility getUserInfoFromLocal]name:%@",[Utility getUserInfoFromLocal][@"tel"]);
     NSNumber *taxiNum = [NSNumber numberWithInt:[_taxiTF.text intValue]] ;
     NSNumber *peopleNum = [NSNumber numberWithInt:[_peopleTF.text intValue]];
-    [MHNetworkManager postWithURL:KPostNewPublishTaxiInfo params:@{@"taxiRankID":_modelChange.TaxiRankID,@"taxiCount":taxiNum,@"peopleCount":peopleNum,@"createUser":[Utility getUserInfoFromLocal][@"tel"]} successBlock:^(id returnData) {
+    [MHNetworkManager postReqeustWithURL:KPostNewPublishTaxiInfo params:@{@"taxiRankID":_modelChange.TaxiRankID,@"taxiCount":taxiNum,@"peopleCount":peopleNum,@"createUser":[Utility getUserInfoFromLocal][@"tel"]} successBlock:^(id returnData) {
         NSLog(@"%@",returnData);
         if ([returnData[@"code"]integerValue] == 0) {
             [weakSelf getData];

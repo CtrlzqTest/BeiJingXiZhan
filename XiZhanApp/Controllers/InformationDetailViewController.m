@@ -96,7 +96,7 @@ static NSString *indentify = @"proCellX";
     }];
 
     self.imageArray = [NSMutableArray array];
-    if (![self.model.imgurl isEqualToString: @""])
+    if (![self.model.imgurl isEqualToString: @"1"])
     {
         NSArray *array = [self.model.imgurl componentsSeparatedByString:@","];
         
