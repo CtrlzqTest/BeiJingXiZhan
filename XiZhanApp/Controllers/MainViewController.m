@@ -78,8 +78,10 @@ static NSString *collCellId = @"MainCell";
             menuModel.menuTitle = @"交通引导";
             [_dataArray addObject:menuModel];
             
+        }else if([returnData[@"code"] integerValue] == 10001){
+            [Utility registZhixin];
         }else {
-            [MBProgressHUD showError:@"获取列表失败" toView:self.view];
+            [MBProgressHUD showError:@"网络不给力" toView:self.view];
         }
         
         if (_dataArray.count <= 0) {

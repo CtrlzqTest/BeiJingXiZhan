@@ -170,8 +170,8 @@
     NSString *str = [BaseAPI stringByAppendingString:url];
     NSString *urlStr = nil;
     if ([Utility checkToSign:str]) {
-        urlStr = [[Utility getSecretAPI:str paramDict:params] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        [self postReqeustWithURL:urlStr params:nil target:nil action:nil delegate:nil successBlock:successBlock failureBlock:failureBlock showHUD:showHUD];
+        urlStr = [[Utility getSecretAPI:str paramDict:nil] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        [self postReqeustWithURL:urlStr params:params target:nil action:nil delegate:nil successBlock:successBlock failureBlock:failureBlock showHUD:showHUD];
     }else {
         urlStr = str;
         [self postReqeustWithURL:urlStr params:params target:nil action:nil delegate:nil successBlock:successBlock failureBlock:failureBlock showHUD:showHUD];
@@ -188,8 +188,8 @@
                    showHUD:(BOOL)showHUD
 {
     NSString *str = [BaseXiZhanAPI stringByAppendingString:url];
-    NSString *urlStr = [[Utility getSecretAPI:str paramDict:params] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [self postReqeustWithURL:urlStr params:nil target:nil action:nil delegate:nil successBlock:successBlock failureBlock:failureBlock showHUD:showHUD];
+    NSString *urlStr = [[Utility getSecretAPI:str paramDict:nil] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    [self postReqeustWithURL:urlStr params:params target:nil action:nil delegate:nil successBlock:successBlock failureBlock:failureBlock showHUD:showHUD];
 }
 
 /**
@@ -241,7 +241,7 @@
                   showHUD:(BOOL)showHUD
 {
     
-    NSString *urlStr = [Utility getSecretAPI:url paramDict:paramsDict];
+    
     if (showHUD) {
         [MBProgressHUD showHUDAddedTo:nil animated:YES];
     }
@@ -255,8 +255,8 @@
     //设置请求超时时长
     [manager.requestSerializer setTimeoutInterval:10];
     //        manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    
-    [manager POST:urlStr parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
+    NSString *urlStr = [Utility getSecretAPI:url paramDict:nil];
+    [manager POST:urlStr parameters:paramsDict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
     {
         [formData appendPartWithFileData:uploadParam.data name:uploadParam.name fileName:uploadParam.fileName mimeType:uploadParam.mimeType];
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

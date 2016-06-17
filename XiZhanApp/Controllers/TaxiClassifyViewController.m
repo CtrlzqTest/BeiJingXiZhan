@@ -36,11 +36,11 @@
     
     _dataArray = [NSMutableArray array];
     MenuModel *menuModel1 = [[MenuModel alloc] init];
-    menuModel1.menuTitle = @"出租车";
+    menuModel1.menuTitle = @"出租车站点信息";
     [_dataArray addObject:menuModel1];
 
     MenuModel *menuModel2 = [[MenuModel alloc] init];
-    menuModel2.menuTitle = @"停车场";
+    menuModel2.menuTitle = @"停车场站点信息";
     [_dataArray addObject:menuModel2];
     
     // 返回按钮

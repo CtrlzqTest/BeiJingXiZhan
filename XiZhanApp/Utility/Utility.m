@@ -98,12 +98,14 @@ static User *user = nil;
 // SHA1加密
 + (NSString *) sha1:(NSString *)str {
     
-    const char *cstr = [str cStringUsingEncoding:NSUTF8StringEncoding];
-    NSData *data = [NSData dataWithBytes:cstr length:str.length];
+    NSData *data2 = [str dataUsingEncoding:NSUTF8StringEncoding];
     
+//    const char *cstr = [str cStringUsingEncoding:NSUnicodeStringEncoding];
+//    NSData *data = [NSData dataWithBytes:cstr length:str.length];
+//    NSLog(@"%@",data2.bytes);
     uint8_t digest[CC_SHA1_DIGEST_LENGTH];
     
-    CC_SHA1(data.bytes, (CC_LONG)data.length, digest);
+    CC_SHA1(data2.bytes, (CC_LONG)data2.length, digest);
     
     NSMutableString* output = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH * 2];
     

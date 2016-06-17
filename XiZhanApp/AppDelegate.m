@@ -55,7 +55,7 @@
     LeftSortsViewController *leftSortsVC = [[LeftSortsViewController alloc] init];
     
     self.leftSliderVC = [[LeftSlideViewController alloc] initWithLeftView:leftSortsVC andMainView:self.mainNavi];
-    
+    NSLog(@"%@",[Utility sha1:@"地方"]);
     
     self.window.rootViewController = self.leftSliderVC;
     [self.window makeKeyAndVisible];
@@ -131,7 +131,7 @@
     _bageIsZero = YES;
     [JPUSHService handleRemoteNotification:userInfo];
 
-    NSDictionary *dict = userInfo[@"aps"];
+//    NSDictionary *dict = userInfo[@"aps"];
     self.dictForUserInfo = [NSMutableDictionary dictionaryWithDictionary:userInfo];
     
     if (application.applicationState == UIApplicationStateActive)

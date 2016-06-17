@@ -16,7 +16,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="xtg-Tz-GDI">
-                        <rect key="frame" x="10" y="5" width="79.5" height="79.5"/>
+                        <rect key="frame" x="10" y="5" width="1" height="79.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="xtg-Tz-GDI" secondAttribute="height" multiplier="36:37" id="ISx-17-911"/>
                         </constraints>
@@ -39,12 +39,12 @@
                         </variation>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fz5-rl-mzl">
-                        <rect key="frame" x="97" y="34" width="259" height="21"/>
+                        <rect key="frame" x="18.5" y="34" width="337.5" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="XRC-Ps-k1q"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" red="0.078431372550000003" green="0.62745098040000002" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
@@ -58,7 +58,7 @@
                     <constraint firstItem="fz5-rl-mzl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Kx7-wO-Blq"/>
                     <constraint firstItem="Ou5-fO-Pm0" firstAttribute="leading" secondItem="fz5-rl-mzl" secondAttribute="trailing" constant="8" id="TQY-54-WgA"/>
                     <constraint firstItem="Ou5-fO-Pm0" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="kKd-kD-hgz"/>
-                    <constraint firstItem="xtg-Tz-GDI" firstAttribute="width" secondItem="xtg-Tz-GDI" secondAttribute="height" id="kbd-6Y-kfS"/>
+                    <constraint firstItem="xtg-Tz-GDI" firstAttribute="width" secondItem="xtg-Tz-GDI" secondAttribute="height" multiplier="1:100" id="kbd-6Y-kfS"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -66,7 +66,7 @@
                 <outlet property="pointImgView" destination="Ou5-fO-Pm0" id="Tem-ZL-SZq"/>
                 <outlet property="titleLabel" destination="fz5-rl-mzl" id="sRG-WQ-QrI"/>
             </connections>
-            <point key="canvasLocation" x="377" y="281"/>
+            <point key="canvasLocation" x="278" y="267"/>
         </tableViewCell>
     </objects>
     <resources>
