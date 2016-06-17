@@ -74,7 +74,7 @@
                 
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 [MBProgressHUD hideAllHUDsForView:(UIView*)[[[UIApplication sharedApplication]delegate]window] animated:YES];
-                DTLog(@"\n\n----请求的返回结果 %@\n",responseObject);
+//                DTLog(@"\n\n----请求的返回结果 %@\n",responseObject);
                 if (successBlock) {
                     successBlock(responseObject);
                 }
@@ -125,7 +125,7 @@
                 
             } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                 [MBProgressHUD hideHUDForView:(UIView*)[[[UIApplication sharedApplication]delegate]window] animated:YES];
-                DTLog(@"\n\n----请求的返回结果 %@\n",responseObject);
+//                DTLog(@"\n\n----请求的返回结果 %@\n",responseObject);
                 if (successBlock) {
                     successBlock(responseObject);
                 }

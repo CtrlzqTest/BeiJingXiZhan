@@ -272,6 +272,7 @@ static User *user = nil;
 //    [GSKeychain setSecret:@"15A0D357-ECE6-4462-9EAA-5B03C04FD941" forKey:UUIDkey];
 //    [GSKeychain setSecret:@"4C1F9F51-14B8-4ECA-B0E2-7D358D74FA87" forKey:UUIDSecret];
 //    [self saveRegistState:@"4C1F9F51-14B8-4ECA-B0E2-7D358D74FA87"];
+    
     if ([self getSecretWithKey:UUIDSecret].length <= 0) {
         if (uuidKey.length <= 0) {
             uuidKey = [UIDevice currentDevice].identifierForVendor.UUIDString;
@@ -284,27 +285,32 @@ static User *user = nil;
                     [GSKeychain setSecret:secret forKey:UUIDSecret];
                     [weakSelf saveSecret:uuidKey key:UUIDkey];
                     [weakSelf saveSecret:secret key:UUIDSecret];
+                }else {
+                    [weakSelf registZhixin];
                 }
                 
             } failureBlock:^(NSError *error) {
                 
             } showHUD:NO];
         }else {
-            __weak typeof(self) weakSelf = self;
-            
-            [MHNetworkManager getRequstWithURL:kGetUUIDSecretAPI params:@{@"appkey":uuidKey} successBlock:^(id returnData) {
-                if ([returnData[@"code"] integerValue] == 0) {
-                    
-                    [GSKeychain setSecret:returnData[@"data"] forKey:UUIDSecret];
-                    [weakSelf saveSecret:uuidKey key:UUIDkey];
-                    [weakSelf saveSecret:returnData[@"data"] key:UUIDSecret];
-                    
-                }else {
-                    [self registZhixin];
-                }
-            } failureBlock:^(NSError *error) {
-                
-            } showHUD:NO];
+            NSString *secret = [GSKeychain secretForKey:UUIDSecret];
+            [self saveSecret:uuidKey key:UUIDkey];
+            [self saveSecret:secret key:UUIDSecret];
+//            __weak typeof(self) weakSelf = self;
+//            
+//            [MHNetworkManager getRequstWithURL:kGetUUIDSecretAPI params:@{@"appkey":uuidKey} successBlock:^(id returnData) {
+//                if ([returnData[@"code"] integerValue] == 0) {
+//                    
+//                    [GSKeychain setSecret:returnData[@"data"] forKey:UUIDSecret];
+//                    [weakSelf saveSecret:uuidKey key:UUIDkey];
+//                    [weakSelf saveSecret:returnData[@"data"] key:UUIDSecret];
+//                    
+//                }else {
+//                    [self registZhixin];
+//                }
+//            } failureBlock:^(NSError *error) {
+//                
+//            } showHUD:NO];
         }
 
     }

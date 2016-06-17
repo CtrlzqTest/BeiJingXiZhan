@@ -96,7 +96,7 @@ static NSString *indentify = @"proCellX";
     }];
 
     self.imageArray = [NSMutableArray array];
-    NSLog(@"imgurl:%@",self.model.imgurl);
+
     if (![self.model.imgurl isEqualToString: @"1"])
     {
         NSArray *array = [self.model.imgurl componentsSeparatedByString:@","];
@@ -107,7 +107,7 @@ static NSString *indentify = @"proCellX";
         }
         
         for (NSString *item in self.imageArray) {
-            NSLog(@"item:%@",item);
+            
         }
     }
    self.view.backgroundColor = [UIColor whiteColor];
