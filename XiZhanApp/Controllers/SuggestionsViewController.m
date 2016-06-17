@@ -102,13 +102,14 @@
     
     self.registerButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     self.registerButton.frame = CGRectMake(80*ProportionWidth, CGRectGetMaxY(self.detailButton.frame) + 40*ProportionHeight, 200*ProportionWidth, 50*ProportionHeight);
-    self.registerButton.layer.cornerRadius = 5.0;
+    self.registerButton.layer.cornerRadius = 15.0;
     self.registerButton.layer.masksToBounds = YES;
-    self.registerButton.layer.borderWidth = 1.0;
+    self.registerButton.layer.borderWidth = 2.0;
     self.registerButton.layer.borderColor = colorref;
     
-    [self.registerButton setBackgroundColor:[UIColor orangeColor]];
-    [self.registerButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    //[self.registerButton setBackgroundColor:[UIColor orangeColor]];
+    [self.registerButton setTintColor:mainColor];
+    self.registerButton.titleLabel.font = [UIFont systemFontOfSize:17];
     [self.registerButton setTitle:@"提交" forState:UIControlStateNormal];
     [self.registerButton addTarget:self action:@selector(registerButtonMethod:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.registerButton];
@@ -160,15 +161,20 @@
         return ;
     }
     __weak typeof(self) weakSelf = self;
-    [MHNetworkManager postReqeustWithURL:kAppopinion params:@{@"content":self.textView.text,@"isanonymity":@"0",@"userid":[Utility getUserInfoFromLocal][@"id"]} successBlock:^(id returnData) {
-        
-        [MBProgressHUD showSuccess:@"意见成功发送" toView:weakSelf.view];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-              [weakSelf.navigationController popViewControllerAnimated:YES];
-        });
-        
+    [MHNetworkManager postReqeustWithURL:kAppopinion params:@{@"content":self.textView.text,@"isanonymity":@"0",@"userid":[User shareUser].userId} successBlock:^(id returnData) {
+        NSLog(@"returnData:%@",returnData);
+        if ([returnData[@"code"] integerValue] == 0) {
+            [MBProgressHUD showSuccess:@"意见成功发送" toView:weakSelf.view];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                [weakSelf.navigationController popViewControllerAnimated:YES];
+            });
+        }
+        else
+        {
+            [MBProgressHUD showError:@"意见发送失败" toView:weakSelf.view];
+        }
     } failureBlock:^(NSError *error) {
-        [MBProgressHUD showSuccess:@"意见发送失败" toView:weakSelf.view];
+        [MBProgressHUD showError:@"意见发送失败" toView:weakSelf.view];
     } showHUD:YES];
 
 }

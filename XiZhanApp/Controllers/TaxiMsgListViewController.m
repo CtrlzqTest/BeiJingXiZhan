@@ -173,6 +173,7 @@
             
         }else {
             // 请求失败
+            [MBProgressHUD showError:@"网络异常" toView:self.view];
         }
         [self.tableView.mj_header endRefreshing];
         
@@ -275,7 +276,7 @@
     confirmBtn.layer.borderColor = colorref;
     confirmBtn.layer.cornerRadius = 5;
     [alertView addSubview:confirmBtn];
-    if ([[User shareUser].type isEqualToString:@"2"]) {
+    if (![[User shareUser].type isEqualToString:@"1"]) {
         [alertView show];
     }
 }
@@ -287,20 +288,14 @@
 
 -  (void)confirmClick:(UIButton *)btn
 {
-    NSLog(@"456");
     if (![self checkInPut]) {
         return;
     }
     __weak typeof(self) weakSelf = self;
     
-//   [MHNetworkManager postWithURL:KPostTaxiInformation params:@{@"name":_modelChange.taxiRankName,@"areaID":_modelChange.areaID,@"laneCount":_modelChange.laneCount,@"maxTaxiCount":_taxiTF.text,@"maxPeopleCount":_peopleTF.text,@"description":@"0",@"imageurl":@"0"} successBlock:^(id returnData) {
-//       
-//    } failureBlock:^(NSError *error) {
-//
-//    } showHUD:YES];
     NSNumber *taxiNum = [NSNumber numberWithInt:[_taxiTF.text intValue]] ;
     NSNumber *peopleNum = [NSNumber numberWithInt:[_peopleTF.text intValue]];
-    [MHNetworkManager postReqeustWithURL:KPostNewPublishTaxiInfo params:@{@"taxiRankID":_modelChange.TaxiRankID,@"taxiCount":taxiNum,@"peopleCount":peopleNum,@"createUser":[Utility getUserInfoFromLocal][@"tel"]} successBlock:^(id returnData) {
+    [MHNetworkManager postReqeustWithURL:KPostNewPublishTaxiInfo params:@{@"taxiRankID":_modelChange.TaxiRankID,@"taxiCount":taxiNum,@"peopleCount":peopleNum,@"createUser":[User shareUser].tel} successBlock:^(id returnData) {
         
         if ([returnData[@"code"]integerValue] == 0) {
             [weakSelf getData];

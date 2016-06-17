@@ -96,7 +96,6 @@
     // 返回按钮
     _areaArray = [NSMutableArray array];
     
-    [self getAreaData];
     __weak typeof(self) weakSelf = self;
     // 左侧按钮
     [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
@@ -105,20 +104,26 @@
     
     if ([[User shareUser].type isEqualToString:@"2"]&&[self.menuModel.menuTitle isEqualToString:@"志愿者服务"])//type = 2志愿者,type = 1普通用户
     {
+        [self getAreaData];
         // 右侧按钮
         __block UIButton *rightBtn = nil;
         
         _resignButton = rightBtn;
         if (![Utility getVolunteerState]) {
+            [weakSelf getAreaData];
         _resignButton = [self setRightTextBarButtonItemWithFrame:CGRectMake(0, 0, 80, 30) title:@"签到" titleColor:[UIColor whiteColor] backImage:nil selectBackImage:nil action:^(AYCButton *button) {
             if (weakSelf.isFirstTouch) {
-                
+                if (_dataArray.count == 0) {
+                    [MBProgressHUD showError:@"网络不给力" toView:nil];
+                }
+                else
+                {
                 ZQChooseView *choosView = [[ZQChooseView alloc] initWithDataSource:weakSelf.areaArray chooseType:ZQChooseTypeSingle];
                 [choosView showChooseViewCallBack:^(NSInteger selectIndex) {
                     AreaOfXiZhan *model = weakSelf.areaArray[selectIndex];
                     [weakSelf requestOnline:model];
-                    
                 }];
+                }
             }
             else
             {
@@ -129,6 +134,7 @@
         }
         else
         {
+            [weakSelf getAreaData];
             _resignButton = [self setRightTextBarButtonItemWithFrame:CGRectMake(0, 0, 80, 30) title:@"已签到" titleColor:[UIColor whiteColor] backImage:nil selectBackImage:nil action:^(AYCButton *button) {
                 if (weakSelf.isFirstTouch) {
                     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"确认签退？" message:nil delegate:weakSelf cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
@@ -136,11 +142,17 @@
                 }
                 else
                 {
+                    if (_dataArray.count == 0) {
+                        [MBProgressHUD showError:@"网络不给力" toView:nil];
+                    }
+                    else
+                    {
                     ZQChooseView *choosView = [[ZQChooseView alloc] initWithDataSource:weakSelf.areaArray chooseType:ZQChooseTypeSingle];
                     [choosView showChooseViewCallBack:^(NSInteger selectIndex) {
                         AreaOfXiZhan *model = weakSelf.areaArray[selectIndex];
                         [weakSelf requestOnline:model];
                     }];
+                    }
                 }
             }];
         }
