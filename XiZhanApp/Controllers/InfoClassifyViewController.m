@@ -96,7 +96,6 @@
     // 返回按钮
     _areaArray = [NSMutableArray array];
     
-    //[self getAreaData];
     __weak typeof(self) weakSelf = self;
     // 左侧按钮
     [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
@@ -111,8 +110,9 @@
         
         _resignButton = rightBtn;
         if (![Utility getVolunteerState]) {
+            [weakSelf getAreaData];
         _resignButton = [self setRightTextBarButtonItemWithFrame:CGRectMake(0, 0, 80, 30) title:@"签到" titleColor:[UIColor whiteColor] backImage:nil selectBackImage:nil action:^(AYCButton *button) {
-          //  [weakSelf getAreaData];
+            
             if (weakSelf.isFirstTouch) {
                 ZQChooseView *choosView = [[ZQChooseView alloc] initWithDataSource:weakSelf.areaArray chooseType:ZQChooseTypeSingle];
                 [choosView showChooseViewCallBack:^(NSInteger selectIndex) {
@@ -130,7 +130,7 @@
         }
         else
         {
-           // [weakSelf getAreaData];
+            [weakSelf getAreaData];
             _resignButton = [self setRightTextBarButtonItemWithFrame:CGRectMake(0, 0, 80, 30) title:@"已签到" titleColor:[UIColor whiteColor] backImage:nil selectBackImage:nil action:^(AYCButton *button) {
                 if (weakSelf.isFirstTouch) {
                     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"确认签退？" message:nil delegate:weakSelf cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
