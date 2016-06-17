@@ -55,4 +55,12 @@
         return YES;
     }
 }
+-(void)webViewDidStartLoad:(UIWebView *)webView
+{
+    
+}
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    
+}
 @end

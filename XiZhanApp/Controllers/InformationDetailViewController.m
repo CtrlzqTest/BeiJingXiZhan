@@ -105,10 +105,6 @@ static NSString *indentify = @"proCellX";
             NSString *item = [BaseXiZhanImgAPI stringByAppendingString:array[i]];
             [self.imageArray addObject:item];
         }
-        
-        for (NSString *item in self.imageArray) {
-            
-        }
     }
    self.view.backgroundColor = [UIColor whiteColor];
     [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 40*ProportionWidth) title:@"详情" fontSize:17.0];

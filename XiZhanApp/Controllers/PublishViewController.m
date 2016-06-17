@@ -213,10 +213,6 @@
             [MBProgressHUD showError:@"上传图片失败！" toView:nil];
         } uploadParam:param showHUD:NO];
     }
-//    if (indexCount <= 0) {
-//        NSLog(@"self.imgString:%@",self.imgString);
-//        [self postData];
-//   }
 }
 //对图片尺寸进行压缩--
 - (NSData *)imageWithImage:(UIImage*)image
@@ -250,11 +246,11 @@
         self.imgString = [NSString stringWithFormat:@"1"];
     }
     
-    NSDictionary *dict = @{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":self.fieldOfUser.text,@"imageurl":self.imgString,@"createuser":[Utility getUserInfoFromLocal][@"id"],@"author":[Utility getUserInfoFromLocal][@"tel"],@"department":@"0",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0"};
+    NSDictionary *dict = @{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":self.fieldOfUser.text,@"imageurl":self.imgString,@"createuser":[User shareUser].userId,@"author":[User shareUser].tel,@"department":@"0",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0"};
     
     [Utility getSecretAPI:@"aa" paramDict:nil];
     [MHNetworkManager postWithURL:kMenuAdd params:dict successBlock:^(id returnData) {
-        
+        NSLog(@"returnData:%@",returnData);
         if ([returnData[@"code"] integerValue] == 0 )
         {
             [MBProgressHUD showSuccess:@"编辑成功！" toView:nil];
