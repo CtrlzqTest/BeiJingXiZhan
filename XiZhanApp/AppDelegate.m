@@ -113,7 +113,7 @@
 {
 
     [JPUSHService handleRemoteNotification:userInfo];
-    NSLog(@"%@",userInfo);
+//    NSLog(@"%@",userInfo);
 }
 
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo
@@ -130,9 +130,8 @@
     }
     _bageIsZero = YES;
     [JPUSHService handleRemoteNotification:userInfo];
-    NSLog(@"推送消息:%@",userInfo);
+
     NSDictionary *dict = userInfo[@"aps"];
-    NSLog(@"alert:%@",dict[@"alert"]);
     self.dictForUserInfo = [NSMutableDictionary dictionaryWithDictionary:userInfo];
     
     if (application.applicationState == UIApplicationStateActive)

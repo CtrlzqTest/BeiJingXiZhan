@@ -81,6 +81,7 @@ static NSString *collCellId = @"MainCell";
         }else {
             [MBProgressHUD showError:@"获取列表失败" toView:self.view];
         }
+        
         if (_dataArray.count <= 0) {
             [self addNodataViewInView:self.collectionView];
         }

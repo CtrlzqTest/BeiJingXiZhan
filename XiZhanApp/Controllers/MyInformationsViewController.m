@@ -119,10 +119,11 @@
     NSString *pageIndex = [NSString stringWithFormat:@"%ld",_page];
     NSDictionary *dict = nil;
     if (self.menuModel == nil) {
-        dict = @{@"pageIndex":pageIndex,@"pageSize":@"15",@"time":[Utility getCurrentDateStr],@"sort":@"CreateTime"};
+        dict = @{@"nodeid":@"",@"pageIndex":pageIndex,@"pageSize":@"15",@"time":[Utility getCurrentDateStr],@"sort":@"CreateTime"};
     }else {
         dict = @{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15",@"time":[Utility getCurrentDateStr],@"sort":@"CreateTime"};
     }
+    
     [MHNetworkManager getRequstWithURL:kMessageListAPI params:dict successBlock:^(id returnData) {
         
         if ([returnData[@"code"] integerValue] == 0) {
@@ -179,7 +180,7 @@
     NSString *nodeId = !self.menuModel ? @"" : self.menuModel.menuId;
     NSString *pageIndex = [NSString stringWithFormat:@"%ld",_page];
     if (self.menuModel == nil) {
-        dict = @{@"pageIndex":pageIndex,@"pageSize":@"15",@"sort":@"CreateTime",@"time":[Utility getCurrentDateStr]};
+        dict = @{@"nodeid":@"",@"pageIndex":pageIndex,@"pageSize":@"15",@"sort":@"CreateTime",@"time":[Utility getCurrentDateStr]};
     }else {
         dict = @{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15",@"sort":@"CreateTime",@"time":[Utility getCurrentDateStr]};
     }

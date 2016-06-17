@@ -199,7 +199,7 @@
                 NSArray *imgArray = [weakSel.imgString componentsSeparatedByString:@","];
                 if (imgArray.count == bigImageArray.count+1) {
                     weakSel.imgString = [weakSel.imgString substringToIndex:[weakSel.imgString length]-1];
-                    NSLog(@"%@",weakSel.imgString);
+                    
                      [MBProgressHUD showSuccess:@"上传图片成功！" toView:nil];
                     [weakSel postData];
                 }
@@ -270,7 +270,7 @@
         }
     } failureBlock:^(NSError *error) {
         [MBProgressHUD showError:@"发送失败！" toView:nil];
-        NSLog(@"%@",error);
+        
     } showHUD:YES];
     
 }

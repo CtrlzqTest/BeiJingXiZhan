@@ -40,7 +40,6 @@
     _page = 1;
     [self initView];
     self.title = self.menuModel.menuTitle;
-     NSLog(@"zid:%@",[Utility getUserInfoFromLocal][@"zid"]);
 }
 
 
@@ -76,7 +75,7 @@
 {
     
     [MHNetworkManager getRequstWithURL:kGetAreaAPI params:nil successBlock:^(id returnData) {
-        NSLog(@"%@",returnData[@"code"]);
+
         if ([returnData[@"code"] integerValue] == 0) {
             _areaArray = [AreaOfXiZhan mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
         }
@@ -167,7 +166,7 @@
     if (buttonIndex == 1) {
         //
         [MHNetworkManager postReqeustWithURL:kPostOffLine params:@{@"userid":[User shareUser].zid,@"time":[Utility getCurrentDateStr]} successBlock:^(id returnData) {
-            NSLog(@"offLine:%@",returnData[@"data"]);
+
             if ([returnData[@"code"] integerValue] == 0) {
                 _isFirstTouch = !_isFirstTouch;
                 [_resignButton setTitle:@"已签退" forState:UIControlStateNormal];
@@ -186,10 +185,8 @@
 
 -(void)requestOnline:(AreaOfXiZhan *)areaOfXiZhan
 {
-    NSLog(@"zid:%@",[Utility getUserInfoFromLocal][@"zid"]);
-    NSLog(@"zid:%@",[User shareUser].zid);
     [MHNetworkManager postReqeustWithURL:kPostOnLine params:@{@"userid":[User shareUser].zid,@"areaid":areaOfXiZhan.AreaID,@"time":[Utility getCurrentDateStr]} successBlock:^(id returnData) {
-        NSLog(@"%@",returnData[@"data"]);
+        
         if ([returnData[@"code"] integerValue] == 0) {
             [Utility  saveVolunteerState:YES];
             [_resignButton setTitle:@"已签到" forState:UIControlStateNormal];
