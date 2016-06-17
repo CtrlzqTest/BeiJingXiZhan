@@ -173,6 +173,7 @@
             
         }else {
             // 请求失败
+            [MBProgressHUD showError:@"网络异常" toView:self.view];
         }
         [self.tableView.mj_header endRefreshing];
         
