@@ -112,14 +112,18 @@
         if (![Utility getVolunteerState]) {
             [weakSelf getAreaData];
         _resignButton = [self setRightTextBarButtonItemWithFrame:CGRectMake(0, 0, 80, 30) title:@"签到" titleColor:[UIColor whiteColor] backImage:nil selectBackImage:nil action:^(AYCButton *button) {
-            
             if (weakSelf.isFirstTouch) {
+                if (_dataArray.count == 0) {
+                    [MBProgressHUD showError:@"网络不给力" toView:nil];
+                }
+                else
+                {
                 ZQChooseView *choosView = [[ZQChooseView alloc] initWithDataSource:weakSelf.areaArray chooseType:ZQChooseTypeSingle];
                 [choosView showChooseViewCallBack:^(NSInteger selectIndex) {
                     AreaOfXiZhan *model = weakSelf.areaArray[selectIndex];
                     [weakSelf requestOnline:model];
-                    
                 }];
+                }
             }
             else
             {
@@ -138,11 +142,17 @@
                 }
                 else
                 {
+                    if (_dataArray.count == 0) {
+                        [MBProgressHUD showError:@"网络不给力" toView:nil];
+                    }
+                    else
+                    {
                     ZQChooseView *choosView = [[ZQChooseView alloc] initWithDataSource:weakSelf.areaArray chooseType:ZQChooseTypeSingle];
                     [choosView showChooseViewCallBack:^(NSInteger selectIndex) {
                         AreaOfXiZhan *model = weakSelf.areaArray[selectIndex];
                         [weakSelf requestOnline:model];
                     }];
+                    }
                 }
             }];
         }
