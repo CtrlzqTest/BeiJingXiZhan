@@ -88,7 +88,7 @@ static NSString * const reuseIdentifier = @"LQPhotoViewCell";
     addImgStrLabel.text = @"点击添加图片";
     addImgStrLabel.font = [UIFont systemFontOfSize:12];
     addImgStrLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
-    [self.pickerCollectionView addSubview:addImgStrLabel];
+    //[self.pickerCollectionView addSubview:addImgStrLabel];
     
     self.pickButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.pickButton addTarget:self action:@selector(pickImageMethod) forControlEvents:UIControlEventTouchUpInside];
@@ -107,7 +107,7 @@ static NSString * const reuseIdentifier = @"LQPhotoViewCell";
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return _LQPhotoPicker_smallImageArray.count+1;
+    return _LQPhotoPicker_smallImageArray.count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {

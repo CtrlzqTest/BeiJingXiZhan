@@ -138,16 +138,12 @@ static User *user = nil;
      [param setObject:@"IOS" forKey:@"clientType"];
     
     [MHNetworkManager postReqeustWithURL:kCheckNewVersionAPI params:param successBlock:^(id returnData) {
-        if ([returnData[@"code"] integerValue] == 0) {
+        if ([returnData[@"message"] isEqualToString:@"success"]) {
             NSDictionary *dict = [returnData objectForKey:@"list"];
             NSLog(@"\ncheckVersion%@\n",dict);
             double newVersion = [[dict objectForKey:@"versionNum"] doubleValue];
             BOOL flag = newVersion > currentVersion;
             versionCheckBlock(flag,dict);
-        }
-        else
-        {
-            [MBProgressHUD showError:@"网络不给力" toView:nil];
         }
     } failureBlock:^(NSError *error) {
          [MBProgressHUD showError:@"网络不给力" toView:nil];

@@ -86,7 +86,7 @@
     self.fieldOfUser = [[UITextField alloc]init];
     self.fieldOfUser.borderStyle = UITextBorderStyleRoundedRect;
     self.fieldOfUser.backgroundColor = [UIColor whiteColor];
-    
+     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(change:) name:UITextFieldTextDidChangeNotification object:nil];
     self.fieldOfUser.enabled = YES;
     self.fieldOfUser.layer.cornerRadius = 20.0;
     self.fieldOfUser.layer.masksToBounds = YES;
@@ -137,6 +137,14 @@
     [self updateViewsFrame];
     
 }
+#pragma mark textfieldChange
+-(void)change:(NSNotification *)ch
+{
+    if (self.fieldOfCar.text.length >= 15) {
+        self.fieldOfCar.text = [self.fieldOfCar.text substringToIndex:15];
+    }
+}
+
 #pragma mark updateFrameMethod
 -(void)updateViewsFrame
 {
@@ -167,14 +175,16 @@
 //    }
 //    NSLog(@"%@",self.imgString);
 //}
+
 - (void)submitToServer{
+  
     NSMutableArray *bigImageArray = [self LQPhotoPicker_getBigImageArray];
     __weak typeof(self) weakSel = self;
     
     if (bigImageArray.count == 0) {
         [self postData];
     }
-
+    
     for (UIImage *item in bigImageArray)
     {
         NSInteger index = [bigImageArray indexOfObject:item];//获取下标
