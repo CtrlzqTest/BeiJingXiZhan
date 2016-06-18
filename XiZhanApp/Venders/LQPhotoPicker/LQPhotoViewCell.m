@@ -10,6 +10,13 @@
 
 @implementation LQPhotoViewCell
 
+-(void)awakeFromNib {
+    
+    self.profilePhoto.layer.cornerRadius = (([UIScreen mainScreen].bounds.size.width- 64) / 4 - 10) / 2;
+    self.profilePhoto.clipsToBounds = YES;
+    
+}
+
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -19,15 +26,17 @@
     return self;
 }
 - (void)setBigImgViewWithImage:(UIImage *)img{
-    if (_BigImgView) {
-        _BigImgView.frame = _profilePhoto.frame;
-        _BigImgView.image = img;
-    }
-    else{
-        _BigImgView = [[UIImageView alloc]initWithImage:img];
-        _BigImgView.frame = _profilePhoto.frame;
-        [self insertSubview:_BigImgView atIndex:0];
-    }
+    
+//    if (_BigImgView) {
+//        _BigImgView.frame = _profilePhoto.frame;
+//        
+//        _BigImgView.image = img;
+//    }
+//    else{
+//        _BigImgView = [[UIImageView alloc]initWithImage:img];
+//        _BigImgView.frame = _profilePhoto.frame;
+//        [self insertSubview:_BigImgView atIndex:0];
+//    }
     _BigImgView.contentMode = UIViewContentModeScaleToFill;
 }
 

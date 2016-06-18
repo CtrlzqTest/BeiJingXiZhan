@@ -156,7 +156,7 @@ static NSString * const reuseIdentifier = @"LQPhotoViewCell";
 //定义每个UICollectionView 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(([UIScreen mainScreen].bounds.size.width-64) /4 ,([UIScreen mainScreen].bounds.size.width-64) /4);
+    return CGSizeMake(([UIScreen mainScreen].bounds.size.width-64) / 4,([UIScreen mainScreen].bounds.size.width-64) /4);
 }
 
 //定义每个UICollectionView 的 margin
