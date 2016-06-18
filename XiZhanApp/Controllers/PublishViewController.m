@@ -28,6 +28,7 @@
     [super viewDidLoad];
     [self initView];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textfieldDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
 }
 
 #pragma mark setChoosePhotoViews
@@ -87,12 +88,14 @@
     self.fieldOfUser.borderStyle = UITextBorderStyleRoundedRect;
     self.fieldOfUser.backgroundColor = [UIColor whiteColor];
     
+    self.fieldOfUser.clearsOnBeginEditing = YES;
     self.fieldOfUser.enabled = YES;
     self.fieldOfUser.layer.cornerRadius = 20.0;
     self.fieldOfUser.layer.masksToBounds = YES;
     self.fieldOfUser.layer.borderWidth = 3.0;
     self.fieldOfUser.layer.borderColor = colorref;
     self.fieldOfUser.placeholder = @"标题";
+    
     //self.fieldOfUser.textColor = [UIColor colorWithRed:0 green:97.0/255 blue:167.0/255 alpha:1.0];
     self.fieldOfUser.autocapitalizationType = NO;
     self.fieldOfUser.clearButtonMode = UITextFieldViewModeWhileEditing;
@@ -291,8 +294,22 @@
     }
     return YES;
 }
+
+- (void)textfieldDidChange:(UITextField *)textField {
+    
+    if (self.fieldOfUser.text.length >= 15) {
+        self.fieldOfUser.text = [self.fieldOfUser.text substringToIndex:15];
+    }
+    
+}
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     return [textField resignFirstResponder];
+}
+
+-(void)dealloc {
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
 }
 @end
