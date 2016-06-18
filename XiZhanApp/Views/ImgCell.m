@@ -12,6 +12,9 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    self.imgOfCell.layer.cornerRadius = 100*ProportionWidth / 2.0;
+    self.imgOfCell.clipsToBounds = YES;
+    
 }
 
 @end
