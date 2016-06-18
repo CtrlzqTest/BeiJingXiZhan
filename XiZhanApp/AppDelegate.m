@@ -161,10 +161,12 @@
 {
     MyInformationsViewController *detailList = [[MyInformationsViewController alloc] init];
 
-    //MenuModel *model = [MenuModel mj_objectWithKeyValues:dict];
-   // detailList.menuModel = model;
-    detailList.parentIdString = dict[@"NodeID"];
-    detailList.msgType = dict[@"NodeName"];
+    MenuModel *model = [[MenuModel alloc] init];
+    model.menuId = dict[@"NodeID"];
+    model.menuTitle = dict[@"NodeName"];
+    detailList.menuModel = model;
+//    detailList.parentIdString = dict[@"NodeID"];
+//    detailList.msgType = dict[@"NodeName"];
     [self.mainNavi pushViewController:detailList animated:NO];
 }
 - (void)applicationWillResignActive:(UIApplication *)application {
