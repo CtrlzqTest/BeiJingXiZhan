@@ -68,6 +68,7 @@ static NSString *collCellId = @"MainCell";
 - (void)initData {
     
     [self removeNodataView];
+    
     [MHNetworkManager getRequstWithURL:kMuenListAPI params:@{@"parentid":@""} successBlock:^(id returnData) {
 
         if ([returnData[@"code"] integerValue] == 0) {
