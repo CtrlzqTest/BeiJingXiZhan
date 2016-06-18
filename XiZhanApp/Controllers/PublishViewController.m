@@ -306,8 +306,8 @@
 
 - (void)textfieldDidChange:(UITextField *)textField {
     
-    if (self.fieldOfUser.text.length >= 15) {
-        self.fieldOfUser.text = [self.fieldOfUser.text substringToIndex:15];
+    if (self.fieldOfUser.text.length >= 14) {
+        self.fieldOfUser.text = [self.fieldOfUser.text substringToIndex:14];
     }
     
 }
