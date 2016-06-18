@@ -156,13 +156,16 @@ static NSString * const reuseIdentifier = @"LQPhotoViewCell";
 //定义每个UICollectionView 的大小
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake(([UIScreen mainScreen].bounds.size.width-64) / 4,([UIScreen mainScreen].bounds.size.width-64) /4);
+//    return CGSizeMake(([UIScreen mainScreen].bounds.size.width-64) / 4,([UIScreen mainScreen].bounds.size.width-64) /4);
+        return CGSizeMake(100*ProportionWidth,100*ProportionWidth);
 }
 
 //定义每个UICollectionView 的 margin
 - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
-    return UIEdgeInsetsMake(20, 8, 20, 8);
+//    return UIEdgeInsetsMake(20, 8, 20, 8);
+    return UIEdgeInsetsMake(5, 5, 5, 25);
+
 }
 
 #pragma mark - 图片cell点击事件
@@ -185,7 +188,7 @@ static NSString * const reuseIdentifier = @"LQPhotoViewCell";
         
         JJPhotoManeger *mg = [JJPhotoManeger maneger];
         mg.delegate = self;
-        [mg showLocalPhotoViewer:@[cell.BigImgView] selecImageindex:0];
+        [mg showLocalPhotoViewer:@[cell.profilePhoto] selecImageindex:0];
     }
 }
 
@@ -234,11 +237,13 @@ static NSString * const reuseIdentifier = @"LQPhotoViewCell";
     //没有任何图片
     if (_LQPhotoPicker_smallImageArray.count == 0) {
         addImgStrLabel.hidden = NO;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"deleteToZero" object:nil];
     }
     else{
         addImgStrLabel.hidden = YES;
     }
     [self changeCollectionViewHeight];
+
 }
 
 #pragma mark - LQImgPickerActionSheetDelegate (返回选择的图片：缩略图，压缩原长宽比例大图)

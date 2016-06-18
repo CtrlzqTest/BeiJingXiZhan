@@ -17,8 +17,7 @@
 @property(nonatomic,retain)UITextView *miaoShuTextView;
 @property(nonatomic,retain)UIButton *photoButton;
 @property(nonatomic,strong) UILabel *explainLabel;
-
-
+@property(nonatomic,strong) NSArray *imgArray;
 @property(nonatomic,strong)NSString *imgString;
 @end
 
@@ -29,6 +28,8 @@
     [self initView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textfieldDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeArray:) name:@"imgArrayChange" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteArray:) name:@"deleteToZero" object:nil];
 }
 
 #pragma mark setChoosePhotoViews
@@ -42,14 +43,6 @@
     [self LQPhotoPicker_initPickerView];
     
     self.LQPhotoPicker_delegate = self;
-    
-    _explainLabel = [[UILabel alloc]init];
-    _explainLabel.text = @"添加图片不超过3张";
-    _explainLabel.textColor = [UIColor whiteColor];
-    _explainLabel.textAlignment = NSTextAlignmentCenter;
-    _explainLabel.font = [UIFont boldSystemFontOfSize:12];
-    
-    [self.ScrollofStatus addSubview:_explainLabel];
 }
 #pragma mark initMethod
 -(void)initView
@@ -135,9 +128,27 @@
     [self.summitButton setTitle:@"发布" forState:UIControlStateNormal];
     [self.summitButton setTintColor:[UIColor whiteColor]];
     [self.summitButton addTarget:self action:@selector(postData) forControlEvents:UIControlEventTouchUpInside];
-  //  [self.ScrollofStatus addSubview:self.summitButton];
-    [self updateViewsFrame];
+    [self.ScrollofStatus addSubview:self.summitButton];
+    [self setOldFrame];
+}
+-(void)changeArray:(NSNotification *)notice
+{
+        [self updateViewsFrame];
+}
+-(void)deleteArray:(NSNotification *)notice
+{
+    [self setOldFrame];
+}
+-(void)setOldFrame
+{
+    [self LQPhotoPicker_updatePickerViewFrameY:0];
     
+    CGFloat leftInset = 40 * ProportionWidth;
+    //说明文字
+    self.fieldOfUser.frame = CGRectMake(leftInset+10*ProportionWidth,70*ProportionHeight, KWidth-100, 40*ProportionHeight);
+    self.miaoShuTextView.frame = CGRectMake(leftInset,CGRectGetMaxY(self.fieldOfUser.frame) + 20*ProportionHeight, KWidth-80, 185*ProportionHeight);
+    self.photoButton.frame = CGRectMake(156*ProportionWidth,CGRectGetMaxY(self.miaoShuTextView.frame) + 100*ProportionHeight, 64*ProportionHeight, 56*ProportionHeight);
+    self.ScrollofStatus.contentSize = CGSizeMake(0, 700*ProportionHeight);
 }
 #pragma mark textfieldChange
 -(void)change:(NSNotification *)ch
@@ -154,13 +165,9 @@
     
     CGFloat leftInset = 40 * ProportionWidth;
     //说明文字
-    _explainLabel.frame = CGRectMake(leftInset, [self LQPhotoPicker_getPickerViewFrame].origin.y+[self LQPhotoPicker_getPickerViewFrame].size.height+10*ProportionHeight, KWidth-80, 20*ProportionHeight);
-    // CGFloat height =  + [self LQPhotoPicker_getPickerViewFrame].size.height + 30 + 100;
-    
-    self.fieldOfUser.frame = CGRectMake(leftInset+10*ProportionWidth,CGRectGetMaxY(_explainLabel.frame) + 20*ProportionHeight, KWidth-100, 40*ProportionHeight);
+     self.fieldOfUser.frame = CGRectMake(leftInset+10*ProportionWidth,[self LQPhotoPicker_getPickerViewFrame].origin.y+[self LQPhotoPicker_getPickerViewFrame].size.height+40*ProportionHeight, KWidth-100, 40*ProportionHeight);
     self.miaoShuTextView.frame = CGRectMake(leftInset,CGRectGetMaxY(self.fieldOfUser.frame) + 20*ProportionHeight, KWidth-80, 185*ProportionHeight);
-    self.summitButton.frame = CGRectMake(leftInset,CGRectGetMaxY(self.miaoShuTextView.frame) + 20*ProportionHeight, KWidth-80, 60*ProportionHeight);
-    self.photoButton.frame = CGRectMake(156*ProportionWidth,CGRectGetMaxY(self.summitButton.frame) + 20*ProportionHeight, 64*ProportionHeight, 56*ProportionHeight);
+    self.photoButton.frame = CGRectMake(156*ProportionWidth,CGRectGetMaxY(self.miaoShuTextView.frame) + 100*ProportionHeight, 64*ProportionHeight, 56*ProportionHeight);
     self.ScrollofStatus.contentSize = CGSizeMake(0, 700*ProportionHeight);
     
 }

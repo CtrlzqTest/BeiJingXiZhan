@@ -12,9 +12,10 @@
 
 -(void)awakeFromNib {
     
-    self.profilePhoto.layer.cornerRadius = (([UIScreen mainScreen].bounds.size.width- 64) / 4 - 10) / 2;
+    [self bringSubviewToFront:self.closeButton];
+//  self.profilePhoto.layer.cornerRadius = (([UIScreen mainScreen].bounds.size.width- 64) / 4 - 10) / 2;
+    self.profilePhoto.layer.cornerRadius = 40.0;
     self.profilePhoto.clipsToBounds = YES;
-    
 }
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -37,7 +38,7 @@
 //        _BigImgView.frame = _profilePhoto.frame;
 //        [self insertSubview:_BigImgView atIndex:0];
 //    }
-    _BigImgView.contentMode = UIViewContentModeScaleToFill;
+//    _BigImgView.contentMode = UIViewContentModeScaleToFill;
 }
 
 @end
