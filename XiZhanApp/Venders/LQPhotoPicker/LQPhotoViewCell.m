@@ -14,7 +14,7 @@
     
     [self bringSubviewToFront:self.closeButton];
 //  self.profilePhoto.layer.cornerRadius = (([UIScreen mainScreen].bounds.size.width- 64) / 4 - 10) / 2;
-    self.profilePhoto.layer.cornerRadius = 40.0;
+    self.profilePhoto.layer.cornerRadius = 45.0*ProportionWidth;
     self.profilePhoto.clipsToBounds = YES;
 }
 
