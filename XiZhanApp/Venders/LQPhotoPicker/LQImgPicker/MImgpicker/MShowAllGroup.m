@@ -54,6 +54,7 @@
 - (void)actionRightBar {
 
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"imgArrayChange" object:nil];
 }
 
 #pragma mark - tableDelegate

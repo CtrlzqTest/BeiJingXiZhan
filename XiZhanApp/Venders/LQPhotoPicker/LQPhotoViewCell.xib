@@ -18,16 +18,6 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backImg" translatesAutoresizingMaskIntoConstraints="NO" id="9VD-oh-4YA">
                         <rect key="frame" x="3" y="3" width="123" height="125"/>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0QS-zM-3aq">
-                        <rect key="frame" x="107" y="0.0" width="20" height="20"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="20" id="kRj-eH-t5a"/>
-                            <constraint firstAttribute="height" constant="20" id="zNm-KP-E45"/>
-                        </constraints>
-                        <state key="normal" image="close@3x.png">
-                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                        </state>
-                    </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5vD-Vu-FM6">
                         <rect key="frame" x="33" y="32" width="94" height="91"/>
                         <constraints>
@@ -41,6 +31,14 @@
                             </mask>
                         </variation>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pdn-4V-eBt">
+                        <rect key="frame" x="102" y="4" width="20" height="22"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="gAx-wn-mcD"/>
+                            <constraint firstAttribute="height" constant="30" id="hXW-F6-Td6"/>
+                        </constraints>
+                        <state key="normal" image="close.png"/>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
@@ -48,11 +46,11 @@
             <constraints>
                 <constraint firstItem="5vD-Vu-FM6" firstAttribute="leading" secondItem="9VD-oh-4YA" secondAttribute="leading" constant="2" id="3KL-8r-SA0"/>
                 <constraint firstItem="5vD-Vu-FM6" firstAttribute="top" secondItem="9VD-oh-4YA" secondAttribute="top" constant="2" id="5q9-OQ-7iK"/>
+                <constraint firstItem="pdn-4V-eBt" firstAttribute="top" secondItem="cER-Gx-NLj" secondAttribute="top" id="EDy-MW-z3F"/>
                 <constraint firstItem="5vD-Vu-FM6" firstAttribute="leading" secondItem="cER-Gx-NLj" secondAttribute="leading" constant="5" id="FSC-H7-P6H"/>
                 <constraint firstItem="5vD-Vu-FM6" firstAttribute="bottom" secondItem="9VD-oh-4YA" secondAttribute="bottom" constant="-2" id="Ghw-9z-RI7"/>
                 <constraint firstAttribute="bottom" secondItem="5vD-Vu-FM6" secondAttribute="bottom" constant="5" id="KXf-Cz-Xt5"/>
-                <constraint firstAttribute="trailing" secondItem="0QS-zM-3aq" secondAttribute="trailing" id="fKw-sg-Fdf"/>
-                <constraint firstItem="0QS-zM-3aq" firstAttribute="top" secondItem="cER-Gx-NLj" secondAttribute="top" id="lu2-WY-B8s"/>
+                <constraint firstAttribute="trailing" secondItem="pdn-4V-eBt" secondAttribute="trailing" id="h5e-KB-zby"/>
                 <constraint firstItem="5vD-Vu-FM6" firstAttribute="top" secondItem="cER-Gx-NLj" secondAttribute="top" constant="5" id="n7f-4c-kBU"/>
                 <constraint firstItem="5vD-Vu-FM6" firstAttribute="trailing" secondItem="9VD-oh-4YA" secondAttribute="trailing" constant="-2" id="oDR-Tv-ARa"/>
                 <constraint firstItem="5vD-Vu-FM6" firstAttribute="trailing" secondItem="cER-Gx-NLj" secondAttribute="trailingMargin" constant="5" id="q7o-Uh-KGQ"/>
@@ -65,7 +63,7 @@
                 </mask>
             </variation>
             <connections>
-                <outlet property="closeButton" destination="0QS-zM-3aq" id="mLi-JJ-kCY"/>
+                <outlet property="closeButton" destination="pdn-4V-eBt" id="byU-Ls-bSp"/>
                 <outlet property="profilePhoto" destination="5vD-Vu-FM6" id="tcM-Wy-t6K"/>
             </connections>
             <point key="canvasLocation" x="318.5" y="375.5"/>
@@ -73,6 +71,6 @@
     </objects>
     <resources>
         <image name="backImg" width="80" height="80"/>
-        <image name="close@3x.png" width="60" height="61"/>
+        <image name="close.png" width="20" height="20"/>
     </resources>
 </document>

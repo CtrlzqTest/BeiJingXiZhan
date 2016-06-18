@@ -112,6 +112,10 @@
     [self.delegate finishSelectImg];
     
     [_arrSelected removeAllObjects];
+    
+    if (self.arrData.count > 0) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"imgArrayChange" object:nil];
+    }
 }
 -(void)actionLeftBar
 {
