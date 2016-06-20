@@ -84,6 +84,12 @@
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
     
+    if ([[User shareUser].type isEqualToString:@"2"]) {
+        [self setRightImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"edit" selectImage:nil action:^(AYCButton *button) {
+            [weakSelf editAction:button];
+        }];
+    }
+    
     self.tableView = [[UITableView alloc]init];
     self.tableView.frame = CGRectMake(0, 0, KWidth, KHeight);
     self.tableView.dataSource = self;
@@ -239,7 +245,7 @@
 }
 
 
-- (IBAction)editAction:(id)sender {
+- (void)editAction:(id)sender {
     
     if (![User shareUser].isLogin) {
         LoginViewController *loginVC = [Utility getControllerWithStoryBoardId:ZQLoginViewCotrollerId];

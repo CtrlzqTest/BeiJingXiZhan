@@ -139,18 +139,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="jfb-L2-Asg">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="YiZ-Xv-hHM">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iIb-F9-tfl">
-                                <rect key="frame" x="334" y="9" width="25" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="edit"/>
-                                <connections>
-                                    <action selector="editAction:" destination="dqn-Ee-Uqq" eventType="touchUpInside" id="ksz-mM-JLo"/>
-                                </connections>
-                            </button>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="jfb-L2-Asg"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <segue destination="9Zk-xl-WG2" kind="push" id="RFY-AG-iji"/>
@@ -901,6 +890,6 @@
         <image name="user" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ewX-87-MmW"/>
+        <segue reference="RFY-AG-iji"/>
     </inferredMetricsTieBreakers>
 </document>

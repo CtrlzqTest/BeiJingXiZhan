@@ -224,7 +224,7 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
         [Utility setLoginStates:NO];
         [Utility saveVolunteerState:NO];
         [User shareUser].isLogin = NO;
-//        [Utility saveUserInfo:nil];
+        [User shareUser].type = @"";
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLogoutNotication object:nil];
         });
