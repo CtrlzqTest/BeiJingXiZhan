@@ -32,7 +32,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    
     // 注册智信
     [Utility registZhixin];
     
