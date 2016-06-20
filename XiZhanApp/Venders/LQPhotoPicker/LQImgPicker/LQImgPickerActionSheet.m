@@ -101,6 +101,7 @@
                         
                         [_arrSelected addObject:asset];
                         [self finishSelectImg];
+                         [[NSNotificationCenter defaultCenter]postNotificationName:@"imgArrayChange" object:nil];
                         [picker dismissViewControllerAnimated:NO completion:nil];
                     }
                 } failureBlock:^(NSError *error) {

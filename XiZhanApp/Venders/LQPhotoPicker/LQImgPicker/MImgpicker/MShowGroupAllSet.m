@@ -107,15 +107,18 @@
     
     [newSelected removeAllObjects];
     [deleteImgs removeAllObjects];
-    
+    if (self.arrSelected.count > 0) {
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"imgArrayChange" object:nil];
+    }
+    else
+    {
+         [[NSNotificationCenter defaultCenter]postNotificationName:@"deleteToZero" object:nil];
+    }
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     [self.delegate finishSelectImg];
     
     [_arrSelected removeAllObjects];
     
-    if (self.arrData.count > 0) {
-        [[NSNotificationCenter defaultCenter]postNotificationName:@"imgArrayChange" object:nil];
-    }
 }
 -(void)actionLeftBar
 {
