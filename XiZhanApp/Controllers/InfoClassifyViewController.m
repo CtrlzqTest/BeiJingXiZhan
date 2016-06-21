@@ -102,7 +102,7 @@
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
     
-    if ([[User shareUser].type isEqualToString:@"2"]&&[self.menuModel.menuTitle isEqualToString:@"志愿者服务"])//type = 2志愿者,type = 1普通用户
+    if ([[User shareUser].type isEqualToString:@"2"]&&[self.menuModel.alias isEqualToString:@"volunteer"])//type = 2志愿者,type = 1普通用户
     {
         //[self getAreaData];
         // 右侧按钮
@@ -288,6 +288,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MenuModel *model = _dataArray[indexPath.row];
+    model.alias = self.menuModel.alias;
     MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];;
     myInfoVC.menuModel = model;
     [self.navigationController pushViewController:myInfoVC animated:YES];

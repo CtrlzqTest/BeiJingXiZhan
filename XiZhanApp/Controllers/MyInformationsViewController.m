@@ -83,7 +83,7 @@
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
     
-    if ([[User shareUser].type isEqualToString:@"2"]) {
+    if ([[User shareUser].type isEqualToString:@"2"] && [self.menuModel.alias isEqualToString:@"volunteer"]) {
         [self setRightImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"edit" selectImage:nil action:^(AYCButton *button) {
             [weakSelf editAction:button];
         }];
