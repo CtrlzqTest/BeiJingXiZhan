@@ -81,10 +81,10 @@
         }
         else
         {
-            [MBProgressHUD showError:@"网络错误！" toView:nil];
+           // [MBProgressHUD showError:@"网络错误！" toView:nil];
         }
     } failureBlock:^(NSError *error) {
-         [MBProgressHUD showError:@"网络错误！" toView:nil];
+         //[MBProgressHUD showError:@"网络错误！" toView:nil];
     } showHUD:YES];
     
 }
@@ -110,7 +110,7 @@
         
         _resignButton = rightBtn;
         if (![Utility getVolunteerState]) {
-            [weakSelf getAreaData];
+           // [weakSelf getAreaData];
         _resignButton = [self setRightTextBarButtonItemWithFrame:CGRectMake(0, 0, 80, 30) title:@"签到" titleColor:[UIColor whiteColor] backImage:nil selectBackImage:nil action:^(AYCButton *button) {
             if (weakSelf.isFirstTouch) {
                 if (_dataArray.count == 0) {
@@ -134,7 +134,7 @@
         }
         else
         {
-            [weakSelf getAreaData];
+           // [weakSelf getAreaData];
             _resignButton = [self setRightTextBarButtonItemWithFrame:CGRectMake(0, 0, 80, 30) title:@"已签到" titleColor:[UIColor whiteColor] backImage:nil selectBackImage:nil action:^(AYCButton *button) {
                 if (weakSelf.isFirstTouch) {
                     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"确认签退？" message:nil delegate:weakSelf cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
@@ -228,7 +228,10 @@
         if ([returnData[@"code"] integerValue] == 0) {
             _dataArray = [MenuModel mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
             [self.tableView reloadData];
-
+            if ([[User shareUser].type isEqualToString:@"2"]&&[self.menuModel.menuTitle isEqualToString:@"志愿者服务"])
+            {
+                [self getAreaData];
+            }
         }else {
             [MBProgressHUD showError:@"获取列表失败" toView:self.view];
         }
