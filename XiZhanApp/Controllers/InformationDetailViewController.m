@@ -9,9 +9,9 @@
 #import "InformationDetailViewController.h"
 #import "UIViewController+AYCNavigationItem.h"
 #import "MessageModel.h"
-#import "UIImageView+AFNetworking.h"
 #import "DJPhotoBrowser.h"
 #import "ImgCell.h"
+#import <UIImageView+WebCache.h>
 
 static NSString *indentify = @"proCellX";
 @interface InformationDetailViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,DJPhotoBrowserDelegate,UIWebViewDelegate>
@@ -165,7 +165,6 @@ static NSString *indentify = @"proCellX";
     _contentTV.text = self.model.msgcontent;
     [self.view addSubview: _contentTV];
     
-    
     }
 -(void)addCollectionView
 {
@@ -199,7 +198,8 @@ static NSString *indentify = @"proCellX";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ImgCell *cell = (ImgCell *)[collectionView dequeueReusableCellWithReuseIdentifier:indentify forIndexPath:indexPath];
-    [cell.imgOfCell setImageWithURL:[NSURL URLWithString:self.imageArray[indexPath.row]]];
+   // [cell.imgOfCell sd_setImageWithURL:[NSURL URLWithString:self.imageArray[indexPath.row]]];
+    [cell.imgOfCell sd_setImageWithURL:[NSURL URLWithString:self.imageArray[indexPath.row]] placeholderImage:[UIImage imageNamed:@"default"]];
     return cell;
 }
 #pragma mark --UICollectionViewDelegateFlowLayout

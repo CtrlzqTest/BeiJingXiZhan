@@ -16,7 +16,6 @@
 #import "MsgType1TabCell.h"
 #import "PublishViewController.h"
 
-
 @interface MyInformationsViewController ()<UITableViewDelegate,UITableViewDataSource,PublishViewControllerDelegate>
 {
     NSInteger _page;

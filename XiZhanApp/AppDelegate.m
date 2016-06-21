@@ -16,6 +16,7 @@
 #import "InformationDetailViewController.h"
 #import "MyInformationsViewController.h"
 #import "IQKeyboardManager.h"
+#import "SDImageCache.h"
 
 @interface AppDelegate ()
 {
@@ -33,12 +34,17 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     // 注册智信
+    float tmpSize = [[SDImageCache sharedImageCache]getSize];
+    
+    NSLog(@"tmpSize%f",tmpSize);
     [Utility registZhixin];
     
     [NSThread sleepForTimeInterval:2];
     // 极光推送
     [self setupjPushWithLaunchOptions:launchOptions];
     
+    // 清除SD图片缓存
+    [self clearTmpPics];
     // 检查版本更新
     [Utility checkNewVersion:^(BOOL hasNewVersion,NSDictionary *stringForUpdate) {
         if (hasNewVersion) {
@@ -66,6 +72,15 @@
 {
     if (buttonIndex == 0) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.updateURLString]];
+    }
+}
+//清理缓存
+- (void)clearTmpPics
+{
+    float tmpSize = [[SDImageCache sharedImageCache] getSize];
+    if (tmpSize >= 50 * 1024 * 1024) {
+        [[SDImageCache sharedImageCache] clearDisk];
+        [[SDImageCache sharedImageCache] clearMemory];//可有可无
     }
 }
 
