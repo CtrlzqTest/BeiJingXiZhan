@@ -139,7 +139,7 @@ static NSString *indentify = @"proCellX";
     CGFloat leftInset = 40*ProportionWidth;
     
     _titleTF = [[UITextField alloc]init];
-    _titleTF.frame = CGRectMake(leftInset+10*ProportionWidth,CGRectGetMaxY(_myCollectionV.frame)+10*ProportionHeight, KWidth-100, 40*ProportionHeight);
+    _titleTF.frame = CGRectMake(leftInset+10*ProportionWidth,CGRectGetMaxY(_myCollectionV.frame)+5*ProportionHeight, KWidth-100, 40*ProportionHeight);
     _titleTF.borderStyle = UITextBorderStyleRoundedRect;
     _titleTF.backgroundColor = [UIColor whiteColor];
     _titleTF.enabled = NO;
@@ -171,7 +171,7 @@ static NSString *indentify = @"proCellX";
     UICollectionViewFlowLayout *flowL = [[UICollectionViewFlowLayout alloc]init];
     
     //创建一个UICollectionView
-    _myCollectionV = [[UICollectionView alloc]initWithFrame:CGRectMake(0,60*ProportionHeight, KWidth, 1.0/3*KHeight) collectionViewLayout:flowL];
+    _myCollectionV = [[UICollectionView alloc]initWithFrame:CGRectMake(0,10*ProportionHeight, KWidth, 190*ProportionHeight) collectionViewLayout:flowL];
     //设置代理为当前控制器
     _myCollectionV.delegate = self;
     _myCollectionV.dataSource = self;
@@ -212,7 +212,7 @@ static NSString *indentify = @"proCellX";
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
 {
     //return UIEdgeInsetsMake(5*ProportionWidth, 5*ProportionWidth, 5*ProportionWidth, 5*ProportionWidth);
-    return UIEdgeInsetsMake(5, 5, 5,25);
+    return UIEdgeInsetsMake(5, 20, 5,10);
     
 }
 - (CGFloat)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout minimumLineSpacingForSectionAtIndex:(NSInteger)section
