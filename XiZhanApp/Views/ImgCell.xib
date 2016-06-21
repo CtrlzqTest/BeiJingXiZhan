@@ -17,20 +17,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="139" height="149"/>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="42R-4J-oNF">
-                        <rect key="frame" x="2" y="2" width="135" height="145"/>
+                        <rect key="frame" x="0.0" y="0.0" width="139" height="149"/>
                     </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
-                <constraint firstItem="42R-4J-oNF" firstAttribute="bottom" secondItem="Yom-Lc-fg0" secondAttribute="bottom" constant="-2" id="Dtp-aU-7ri"/>
-                <constraint firstItem="42R-4J-oNF" firstAttribute="leading" secondItem="Yom-Lc-fg0" secondAttribute="leading" constant="2" id="SmD-Ur-rcO"/>
+                <constraint firstItem="42R-4J-oNF" firstAttribute="bottom" secondItem="Yom-Lc-fg0" secondAttribute="bottom" id="Dtp-aU-7ri"/>
+                <constraint firstItem="42R-4J-oNF" firstAttribute="leading" secondItem="Yom-Lc-fg0" secondAttribute="leading" id="SmD-Ur-rcO"/>
                 <constraint firstAttribute="bottom" secondItem="Yom-Lc-fg0" secondAttribute="bottom" id="ZFc-GB-Qxp"/>
                 <constraint firstItem="Yom-Lc-fg0" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="awy-NC-Q8M"/>
                 <constraint firstAttribute="trailing" secondItem="Yom-Lc-fg0" secondAttribute="trailing" id="evX-9W-msg"/>
                 <constraint firstItem="Yom-Lc-fg0" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="pMV-tP-EJY"/>
-                <constraint firstItem="42R-4J-oNF" firstAttribute="trailing" secondItem="Yom-Lc-fg0" secondAttribute="trailing" constant="-2" id="tyS-m5-Adv"/>
-                <constraint firstItem="42R-4J-oNF" firstAttribute="top" secondItem="Yom-Lc-fg0" secondAttribute="top" constant="2" id="vkz-Yi-fH7"/>
+                <constraint firstItem="42R-4J-oNF" firstAttribute="trailing" secondItem="Yom-Lc-fg0" secondAttribute="trailing" id="tyS-m5-Adv"/>
+                <constraint firstItem="42R-4J-oNF" firstAttribute="top" secondItem="Yom-Lc-fg0" secondAttribute="top" id="vkz-Yi-fH7"/>
             </constraints>
             <size key="customSize" width="139" height="149"/>
             <connections>
@@ -40,6 +40,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="backImg" width="80" height="80"/>
+        <image name="backImg" width="76" height="76"/>
     </resources>
 </document>
