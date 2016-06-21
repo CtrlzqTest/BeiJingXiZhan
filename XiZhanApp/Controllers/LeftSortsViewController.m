@@ -201,7 +201,7 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
         case 4:
         {
             if ([User shareUser].isLogin) {
-                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"确认退出？" message:nil delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"确认退出？" message:nil delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
                 [alert show];
             }
         }

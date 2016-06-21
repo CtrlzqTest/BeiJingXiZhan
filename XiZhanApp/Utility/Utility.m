@@ -348,6 +348,7 @@ static User *user = nil;
         return NO;
     }
     return YES;
+
 }
 
 // 接口签名(直接访问智信)

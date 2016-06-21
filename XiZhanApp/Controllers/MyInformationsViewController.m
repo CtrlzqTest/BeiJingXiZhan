@@ -221,7 +221,7 @@
         }else {
             // 请求失败
         }
-        [self.tableView.mj_header endRefreshing];
+        [self.tableView.mj_footer endRefreshing];
         
     } failureBlock:^(NSError *error) {
         if (_dataArray.count <= 0) {
