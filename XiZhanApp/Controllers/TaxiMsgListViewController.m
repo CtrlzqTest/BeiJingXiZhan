@@ -75,7 +75,7 @@
     carAllCountLabel.textColor = mainColor;
     [_header addSubview:carAllCountLabel];
     
-    _carCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(carAllCountLabel.frame), CGRectGetMaxY(subHeaderLabel.frame)+5, 50*ProportionWidth, 30)];
+    _carCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(carAllCountLabel.frame), CGRectGetMaxY(subHeaderLabel.frame)+5, 70*ProportionWidth, 30)];
     _carCountLabel.text = [NSString stringWithFormat:@"%ld",_taxtTotalNum];
      _carCountLabel.textAlignment = NSTextAlignmentCenter;
     _carCountLabel.textColor = mainColor;
@@ -95,7 +95,7 @@
     peopleAllCountLabel.textColor = mainColor;
     [_header addSubview:peopleAllCountLabel];
     
-    _peoplCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(carAllCountLabel.frame), CGRectGetMaxY(carAllCountLabel.frame)+5, 50*ProportionWidth, 30)];
+    _peoplCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(carAllCountLabel.frame), CGRectGetMaxY(carAllCountLabel.frame)+5, 70*ProportionWidth, 30)];
     _peoplCountLabel.text = [NSString stringWithFormat:@"%ld",_peopleTotalNum];
     _peoplCountLabel.textColor = mainColor;
     _peoplCountLabel.textAlignment = NSTextAlignmentCenter;
@@ -276,7 +276,7 @@
     confirmBtn.layer.borderColor = colorref;
     confirmBtn.layer.cornerRadius = 5;
     [alertView addSubview:confirmBtn];
-    if (![[User shareUser].type isEqualToString:@"1"]) {
+    if ([[User shareUser].type isEqualToString:@"2"]) {
         [alertView show];
     }
 }

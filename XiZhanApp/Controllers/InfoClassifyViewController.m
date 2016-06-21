@@ -104,7 +104,7 @@
     
     if ([[User shareUser].type isEqualToString:@"2"]&&[self.menuModel.menuTitle isEqualToString:@"志愿者服务"])//type = 2志愿者,type = 1普通用户
     {
-        [self getAreaData];
+        //[self getAreaData];
         // 右侧按钮
         __block UIButton *rightBtn = nil;
         
