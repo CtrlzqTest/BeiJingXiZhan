@@ -28,20 +28,20 @@
     self.taxiStationNameLabel.font = [UIFont systemFontOfSize:14.0];
     [self.contentView addSubview:self.taxiStationNameLabel];
 
-    self.taxiShowLabel = [[UILabel alloc]initWithFrame:CGRectMake(131*ProportionWidth, 11*ProportionHeight, 120*ProportionWidth, 26*ProportionHeight)];
+    self.taxiShowLabel = [[UILabel alloc]initWithFrame:CGRectMake(131*ProportionWidth, 11*ProportionHeight, CGRectGetMaxX(self.taxiStationNameLabel.frame)+8*ProportionWidth, 26*ProportionHeight)];
     self.taxiShowLabel.textColor = mainColor;
     self.taxiShowLabel.text = @"出租车待客";
     [self.contentView addSubview:self.taxiShowLabel];
     
-    self.peopleShowLabel = [[UILabel alloc]initWithFrame:CGRectMake(131*ProportionWidth, 51*ProportionHeight, 120*ProportionWidth, 26*ProportionHeight)];
+    self.peopleShowLabel = [[UILabel alloc]initWithFrame:CGRectMake(131*ProportionWidth, 51*ProportionHeight, CGRectGetMaxX(self.taxiStationNameLabel.frame)+8*ProportionWidth, 26*ProportionHeight)];
     self.peopleShowLabel.textColor = mainColor;
     self.peopleShowLabel.text = @"候车乘客";
     [self.contentView addSubview:self.peopleShowLabel];
     
-    self.taxiCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(270*ProportionWidth, 11*ProportionHeight, 50*ProportionWidth, 26*ProportionHeight)];
+    self.taxiCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.taxiShowLabel.frame)+20*ProportionWidth, 11*ProportionHeight, 60*ProportionWidth, 26*ProportionHeight)];
     [self.contentView addSubview:self.taxiCountLabel];
     
-    self.peopleCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(270*ProportionWidth, 55*ProportionHeight, 50*ProportionWidth, 26*ProportionHeight)];
+    self.peopleCountLabel = [[UILabel alloc]initWithFrame:CGRectMake(CGRectGetMaxX(self.taxiShowLabel.frame)+20*ProportionWidth, 55*ProportionHeight, 60*ProportionWidth, 26*ProportionHeight)];
     [self.contentView addSubview:self.peopleCountLabel];
     
     self.taxiDanWeiLabel = [[UILabel alloc]initWithFrame:CGRectMake(337*ProportionWidth, 11*ProportionHeight, 23*ProportionWidth, 26*ProportionHeight)];

@@ -207,6 +207,7 @@
         [JPUSHService setBadge:0];
    // }
    // _bageIsZero = NO;
+    [self clearTmpPics];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
