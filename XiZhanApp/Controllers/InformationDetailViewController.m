@@ -165,7 +165,6 @@ static NSString *indentify = @"proCellX";
     _contentTV.text = self.model.msgcontent;
     [self.view addSubview: _contentTV];
     
-    
     }
 -(void)addCollectionView
 {
