@@ -160,7 +160,7 @@ static NSString *collCellId = @"MainCell";
     cell.titleLabel.text = model.menuTitle;
     if (indexPath.row >= _dataArray.count - 1) {
         
-//        cell.headImageView.image = [UIImage imageNamed];
+        cell.headImageView.image = [UIImage imageNamed:@"taxi"];
         
     }else {
         NSString *imgUrl = [NSString stringWithFormat:@"%@%@",BaseXiZhanImgAPI,model.imgUrl];
