@@ -9,16 +9,16 @@
 #define _____RestAPI_h
 #import <UIKit/UIKit.h>
 
-//#define BaseAPI                 @"http://192.168.16.139:8080/bjws/"  // 龙龙
+#define BaseAPI                 @"http://192.168.16.147:8088/"  // 龙龙
 
-#define BaseAPI                 @"http://124.207.156.101:80/bjws/"  // 龙龙
+//#define BaseAPI                 @"http://124.207.156.101:80/bjws/"  // 龙龙
 
-#define BaseXiZhanAPI           @"http://222.240.172.197:8081/" // 西站测试
+#define BaseXiZhanAPI           @"http://192.168.16.147:8088/" // 西站测试
 
-#define BaseXiZhanImgAPI        @"http://222.240.172.197/"
+#define BaseXiZhanImgAPI        @"http://192.168.16.147/"
 
 // for首页
-#define BaseMainImgAPI          @"http://222.240.172.197/"
+//#define BaseMainImgAPI          @"http://222.240.172.197/"
 
 //#define BaseAPI                 @"http://222.240.172.197:8081/api/"  // 西站测试
 

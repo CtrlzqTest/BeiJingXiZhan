@@ -113,9 +113,14 @@
 //    [Utility md5:self.passWordTef.text]
     [MHNetworkManager postReqeustWithURL:kRegisteAPI params:@{@"tel":self.phoneTef.text,@"smscode":self.checkCodeTef.text,@"password":self.passWordTef.text} successBlock:^(id returnData) {
         
-        if ([returnData[@"message"] isEqualToString:@"success"]) {
+        
+        if ([returnData[@"error_code"] isEqualToString:@"20000"]) {
+            [MBProgressHUD showSuccess:@"服务器异常" toView:weakSelf.view];
+            return ;
+        }
+        
+        if ([returnData[@"message_code"] isEqualToString:@"10000"]) {
             
-//            [Utility saveUserInfo:returnData[@"user"]];
             [MBProgressHUD showSuccess:@"注册成功" toView:nil];
             [User shareUser].isLogin = YES;
             [[User shareUser] resetUserInfo:returnData[@"user"]];
@@ -123,9 +128,9 @@
             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
             
         }else {
-            [MBProgressHUD showSuccess:@"注册失败" toView:weakSelf.view];
+            [MBProgressHUD showSuccess:returnData[@"errmsg"] toView:weakSelf.view];
         }
-        
+
     } failureBlock:^(NSError *error) {
         
     } showHUD:YES];
