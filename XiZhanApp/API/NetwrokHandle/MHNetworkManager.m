@@ -255,7 +255,8 @@
     //设置请求超时时长
     [manager.requestSerializer setTimeoutInterval:10];
     //        manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    NSString *urlStr = [Utility getSecretAPI:url paramDict:nil];
+    NSString *str = [BaseXiZhanAPI stringByAppendingString:url];
+    NSString *urlStr = [Utility getSecretAPI:str paramDict:nil];
     [manager POST:urlStr parameters:paramsDict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData)
     {
         [formData appendPartWithFileData:uploadParam.data name:uploadParam.name fileName:uploadParam.fileName mimeType:uploadParam.mimeType];

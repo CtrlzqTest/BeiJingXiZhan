@@ -205,10 +205,8 @@
         param.fileName = [param fileName];//文件名
         param.name = [@"bin" stringByAppendingString:[NSString stringWithFormat:@"%ld",index]];//参数名
         param.mimeType = [param mimeType];//文件格式
-        
-        NSString *strUrl = @"http://222.240.172.197:8081/api/File/UploadFile";
 
-        [MHNetworkManager uploadFileWithURL:strUrl params:@{@"path":@"contentimage"} successBlock:^(id returnData) {
+        [MHNetworkManager uploadFileWithURL:kUploadFile params:@{@"path":@"contentimage"} successBlock:^(id returnData) {
             if ([returnData[@"code"] integerValue] == 0)
             {
                 NSDictionary *dict = returnData[@"data"];

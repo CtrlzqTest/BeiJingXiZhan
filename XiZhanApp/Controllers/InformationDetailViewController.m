@@ -63,7 +63,7 @@ static NSString *indentify = @"proCellX";
     _titleTF.layer.borderColor = colorref;
     _titleTF.text = self.model.msgtitle;
     _titleTF.adjustsFontSizeToFitWidth = YES;
-    _titleTF.textColor = mainColor;
+    _titleTF.textColor = [UIColor blackColor];
     
     [self.view addSubview:_titleTF];
     
@@ -73,9 +73,22 @@ static NSString *indentify = @"proCellX";
     _web.layer.borderWidth = 3.0;
     _web.layer.borderColor = colorref;
     _web.delegate = self;
+    [_web setOpaque:NO];
     _web.backgroundColor = [UIColor clearColor];
+    NSString *htmlString = [NSString stringWithFormat:@"<html> \n"
+                            "<head> \n"
+                            "<style type=\"text/css\"> \n"
+                            "body {font-size: %d; font-family: \"%@\"; color: %@;}\n"
+                            "</style> \n"
+                            "</head> \n"
+                            "<body>%@</body> \n"
+                            "</html>",14, @"FZLTXHK", @"rgb(0, 0, 0)",self.model.msgcontent];
+    
+   // [_web loadHTMLString:htmlString baseURL:nil];
+
     [self.view addSubview:_web];
-    [_web loadHTMLString:self.model.msgcontent baseURL:nil];
+    
+    [_web loadHTMLString:htmlString baseURL:nil];
 }
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
@@ -149,23 +162,35 @@ static NSString *indentify = @"proCellX";
     _titleTF.layer.borderColor = colorref;
     _titleTF.text = self.model.msgtitle;
     _titleTF.textColor = mainColor;
-   
+    _titleTF.font = [UIFont systemFontOfSize:16];
     [self.view addSubview:_titleTF];
 
-    _contentTV = [[UITextView alloc]init];
-        _contentTV.frame = CGRectMake(leftInset,CGRectGetMaxY(_titleTF.frame) + 20*ProportionHeight, KWidth-80, 185*ProportionHeight);
-    _contentTV.backgroundColor = [UIColor whiteColor];
-    [_contentTV setFont:[UIFont systemFontOfSize:17.0]];
-    _contentTV.layer.cornerRadius = 15.0;
-    _contentTV.layer.masksToBounds = YES;
-    _contentTV.layer.borderWidth = 3.0;
-    _contentTV.layer.borderColor = colorref;
-    _contentTV.editable = NO;
-    _contentTV.textColor = mainColor;
-    _contentTV.text = self.model.msgcontent;
-    [self.view addSubview: _contentTV];
+    _web = [[UIWebView alloc]init];
+        _web.frame = CGRectMake(leftInset,CGRectGetMaxY(_titleTF.frame) + 20*ProportionHeight, KWidth-80, 185*ProportionHeight);
+    _web.layer.cornerRadius = 15.0;
+    _web.layer.masksToBounds = YES;
+    _web.layer.borderWidth = 3.0;
+    _web.layer.borderColor = colorref;
+    _web.delegate = self;
+    [_web setOpaque:NO];
+    _web.backgroundColor = [UIColor clearColor];
+    NSString *htmlString = [NSString stringWithFormat:@"<html> \n"
+                            "<head> \n"
+                            "<style type=\"text/css\"> \n"
+                            "body {font-size: %d; font-family: \"%@\"; color: %@;}\n"
+                            "</style> \n"
+                            "</head> \n"
+                            "<body>%@</body> \n"
+                            "</html>",14, @"FZLTXHK", @"rgb(0, 97, 167)",self.model.msgcontent];
+    [_web loadHTMLString:htmlString baseURL:nil];
     
+    [self.view addSubview: _web];
     }
+#pragma mark webDelegateMethod
+//-(void)webViewDidFinishLoad:(UIWebView *)webView
+//{
+//   [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextFillColor= 'red'"];
+//}
 -(void)addCollectionView
 {
     UICollectionViewFlowLayout *flowL = [[UICollectionViewFlowLayout alloc]init];
