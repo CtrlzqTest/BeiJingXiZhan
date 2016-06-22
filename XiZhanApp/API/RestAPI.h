@@ -9,7 +9,7 @@
 #define _____RestAPI_h
 #import <UIKit/UIKit.h>
 
-#define BaseAPI                 @"http://192.168.16.139:8080/bjws/"  // 龙龙
+#define BaseAPI                 @"http://192.168.16.147:8080/bjws/"  // 龙龙
 
 //#define BaseAPI                 @"http://124.207.156.101:80/bjws/"  // 龙龙
 

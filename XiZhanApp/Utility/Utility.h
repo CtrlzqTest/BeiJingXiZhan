@@ -157,8 +157,12 @@
 /**
  *  注册智信
  */
-+ (BOOL )registZhixin;
++ (void)registZhixin;
 
+/**
+ *  // 检查是否已注册设备
+ */
++ (void)checkIsRegisteruuid;
 /**
  *  接口加密
  *

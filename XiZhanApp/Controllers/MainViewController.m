@@ -80,7 +80,7 @@ static NSString *collCellId = @"MainCell";
             [_dataArray addObject:menuModel];
             
         }else if([returnData[@"code"] integerValue] == 10001){
-            [Utility registZhixin];
+            [Utility checkIsRegisteruuid];
         }else {
             [MBProgressHUD showError:@"网络不给力" toView:self.view];
         }

@@ -264,12 +264,9 @@ static User *user = nil;
 }
 
 // 注册智信
-+ (BOOL )registZhixin {
++ (void)registZhixin {
 
     NSString *uuidKey = [GSKeychain secretForKey:UUIDkey];
-//    [GSKeychain setSecret:@"15A0D357-ECE6-4462-9EAA-5B03C04FD941" forKey:UUIDkey];
-//    [GSKeychain setSecret:@"4C1F9F51-14B8-4ECA-B0E2-7D358D74FA87" forKey:UUIDSecret];
-//    [self saveRegistState:@"4C1F9F51-14B8-4ECA-B0E2-7D358D74FA87"];
     
     if ([self getSecretWithKey:UUIDSecret].length <= 0) {
         if (uuidKey.length <= 0) {
@@ -294,25 +291,40 @@ static User *user = nil;
             NSString *secret = [GSKeychain secretForKey:UUIDSecret];
             [self saveSecret:uuidKey key:UUIDkey];
             [self saveSecret:secret key:UUIDSecret];
-//            __weak typeof(self) weakSelf = self;
-//            
-//            [MHNetworkManager getRequstWithURL:kGetUUIDSecretAPI params:@{@"appkey":uuidKey} successBlock:^(id returnData) {
-//                if ([returnData[@"code"] integerValue] == 0) {
-//                    
-//                    [GSKeychain setSecret:returnData[@"data"] forKey:UUIDSecret];
-//                    [weakSelf saveSecret:uuidKey key:UUIDkey];
-//                    [weakSelf saveSecret:returnData[@"data"] key:UUIDSecret];
-//                    
-//                }else {
-//                    [self registZhixin];
-//                }
-//            } failureBlock:^(NSError *error) {
-//                
-//            } showHUD:NO];
         }
 
     }
-    return YES;
+}
+
+// 检查是否已注册设备
++ (void)checkIsRegisteruuid {
+    
+    NSString *uuidKey = [GSKeychain secretForKey:UUIDkey];
+    if (uuidKey.length <= 0) {
+        [self registZhixin];
+    }else {
+        __weak typeof(self) weakSelf = self;
+        [MHNetworkManager getRequstWithURL:kGetUUIDSecretAPI params:@{@"appkey":uuidKey} successBlock:^(id returnData) {
+            
+            NSString *secretStr = returnData[@"data"];
+            if ([returnData[@"code"] integerValue] == 0 && secretStr.length > 0) {
+                
+                [GSKeychain setSecret:returnData[@"data"] forKey:UUIDSecret];
+                [weakSelf saveSecret:uuidKey key:UUIDkey];
+                [weakSelf saveSecret:returnData[@"data"] key:UUIDSecret];
+                
+            }else {
+                
+                [GSKeychain removeAllSecrets];
+                [weakSelf saveSecret:@"" key:UUIDkey];
+                [weakSelf saveSecret:@"" key:UUIDSecret];
+                [weakSelf registZhixin];
+            }
+        } failureBlock:^(NSError *error) {
+            
+        } showHUD:NO];
+    }
+    
 }
 
 // 保存智信secret
