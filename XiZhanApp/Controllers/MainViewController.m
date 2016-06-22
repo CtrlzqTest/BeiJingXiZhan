@@ -80,7 +80,7 @@ static NSString *collCellId = @"MainCell";
             [_dataArray addObject:menuModel];
             
         }else if([returnData[@"code"] integerValue] == 10001){
-            [Utility registZhixin];
+            [Utility checkIsRegisteruuid];
         }else {
             [MBProgressHUD showError:@"网络不给力" toView:self.view];
         }
@@ -160,7 +160,7 @@ static NSString *collCellId = @"MainCell";
     cell.titleLabel.text = model.menuTitle;
     if (indexPath.row >= _dataArray.count - 1) {
         
-//        cell.headImageView.image = [UIImage imageNamed];
+        cell.headImageView.image = [UIImage imageNamed:@"taxi"];
         
     }else {
         NSString *imgUrl = [NSString stringWithFormat:@"%@%@",BaseXiZhanImgAPI,model.imgUrl];

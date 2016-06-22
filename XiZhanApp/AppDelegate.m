@@ -34,9 +34,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     // 注册智信
-    float tmpSize = [[SDImageCache sharedImageCache]getSize];
-    
-    NSLog(@"tmpSize%f",tmpSize);
     [Utility registZhixin];
     
     [NSThread sleepForTimeInterval:2];
@@ -45,6 +42,7 @@
     
     // 清除SD图片缓存
     [self clearTmpPics];
+    
     // 检查版本更新
     [Utility checkNewVersion:^(BOOL hasNewVersion,NSDictionary *stringForUpdate) {
         if (hasNewVersion) {
