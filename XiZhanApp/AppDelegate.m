@@ -58,7 +58,6 @@
     LeftSortsViewController *leftSortsVC = [[LeftSortsViewController alloc] init];
     
     self.leftSliderVC = [[LeftSlideViewController alloc] initWithLeftView:leftSortsVC andMainView:self.mainNavi];
-    NSLog(@"%@",[Utility sha1:@"地方"]);
     
     self.window.rootViewController = self.leftSliderVC;
     [self.window makeKeyAndVisible];
