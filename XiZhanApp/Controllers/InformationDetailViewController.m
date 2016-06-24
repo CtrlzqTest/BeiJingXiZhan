@@ -164,6 +164,8 @@ static NSString *indentify = @"proCellX";
    // [self.view addSubview:_titleTF];
 
     _paoma = [[WQLPaoMaView alloc]initWithFrame:CGRectMake(leftInset+10*ProportionWidth,CGRectGetMaxY(_myCollectionV.frame)+5*ProportionHeight, KWidth-100, 40*ProportionHeight) withTitle:self.model.msgtitle];
+    _paoma.myLable.textColor = mainColor;
+    _paoma.behindLabel.textColor = mainColor;
     [self.view addSubview:_paoma];
     
     _web = [[UIWebView alloc]init];
