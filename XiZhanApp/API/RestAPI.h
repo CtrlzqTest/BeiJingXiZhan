@@ -9,9 +9,11 @@
 #define _____RestAPI_h
 #import <UIKit/UIKit.h>
 
+//#define BaseAPI                 @"http://192.168.16.147:8080/bjws/"
+
 #define BaseAPI                 @"http://42.62.18.88:8037/bjws/"  // 龙龙
 
-#define BaseXiZhanImgAPI        @"http://42.62.18.88:8081/"
+#define BaseXiZhanImgAPI        @"http://42.62.18.88:8080/"
 
 #define BaseXiZhanAPI           @"http://42.62.18.88:8081/" // 西站测试
 
@@ -19,7 +21,7 @@
 
 #define kLoginAPI               @"app.user/login"       // 登录
 
-#define kLogoutAPI               @"app.user/logout"       // 退出登录
+#define kLogoutAPI              @"app.user/logout"       // 退出登录
 
 #define kResetPwdAPI            @"app.user/repassword"       // 修改密码
 

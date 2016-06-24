@@ -12,6 +12,7 @@
 #import "DJPhotoBrowser.h"
 #import "ImgCell.h"
 #import <UIImageView+WebCache.h>
+#import "WQLPaoMaView.h"
 
 static NSString *indentify = @"proCellX";
 @interface InformationDetailViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,DJPhotoBrowserDelegate,UIWebViewDelegate>
@@ -20,6 +21,7 @@ static NSString *indentify = @"proCellX";
 @property(nonatomic,retain)UIWebView *web;
 @property(nonatomic,retain)UITextField *titleTF;
 @property(nonatomic,retain)UITextView *contentTV;
+@property(nonatomic,retain)WQLPaoMaView *paoma;
 @end
 
 @implementation InformationDetailViewController
@@ -67,7 +69,9 @@ static NSString *indentify = @"proCellX";
     _titleTF.font = [UIFont systemFontOfSize:15];
     _titleTF.textColor = [UIColor blackColor];
     
-    [self.view addSubview:_titleTF];
+   // [self.view addSubview:_titleTF];
+    _paoma = [[WQLPaoMaView alloc]initWithFrame:CGRectMake(50*ProportionWidth,80*ProportionHeight, KWidth-100, 40*ProportionHeight) withTitle:self.model.msgtitle];
+    [self.view addSubview:_paoma];
     
     _web = [[UIWebView alloc]initWithFrame:CGRectMake(20*ProportionWidth,CGRectGetMaxY(_titleTF.frame)+10*ProportionHeight, KWidth-40*ProportionWidth, 450*ProportionHeight)];
     _web.layer.cornerRadius = 20.0;
@@ -142,15 +146,6 @@ static NSString *indentify = @"proCellX";
         [self addCollectionView];
     }
 
-//    self.webUrl = self.model.msgtitle;
-//    self.webUrl = [self.webUrl stringByAppendingString:@"\n"];
-//    self.webUrl = [self.webUrl stringByAppendingString:self.model.msgcontent];
-//    
-//    _web = [[UIWebView alloc]initWithFrame:CGRectMake(20*ProportionWidth, 1.0/3*KHeight, KWidth-40*ProportionWidth, 2.0/3*KHeight)];
-//    _web.delegate = self;
-//    _web.backgroundColor = [UIColor clearColor];
-//   // [self.view addSubview:_web];
-//    [_web loadHTMLString:self.webUrl baseURL:nil];
     CGFloat leftInset = 40*ProportionWidth;
     
     _titleTF = [[UITextField alloc]init];
@@ -166,8 +161,11 @@ static NSString *indentify = @"proCellX";
     _titleTF.textAlignment = NSTextAlignmentCenter;
     _titleTF.textColor = mainColor;
     _titleTF.font = [UIFont systemFontOfSize:15];
-    [self.view addSubview:_titleTF];
+   // [self.view addSubview:_titleTF];
 
+    _paoma = [[WQLPaoMaView alloc]initWithFrame:CGRectMake(leftInset+10*ProportionWidth,CGRectGetMaxY(_myCollectionV.frame)+5*ProportionHeight, KWidth-100, 40*ProportionHeight) withTitle:self.model.msgtitle];
+    [self.view addSubview:_paoma];
+    
     _web = [[UIWebView alloc]init];
         _web.frame = CGRectMake(leftInset,CGRectGetMaxY(_titleTF.frame) + 20*ProportionHeight, KWidth-80, 185*ProportionHeight);
     _web.layer.cornerRadius = 15.0;
