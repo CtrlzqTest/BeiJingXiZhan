@@ -53,6 +53,7 @@
 		F02426DE1D0FD35200661961 /* ZQChooseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F02426DC1D0FD35200661961 /* ZQChooseView.xib */; };
 		F02426E11D0FDF9C00661961 /* AreaOfXiZhan.m in Sources */ = {isa = PBXBuildFile; fileRef = F02426E01D0FDF9C00661961 /* AreaOfXiZhan.m */; };
 		F026E5EF1CFD2F9B00C22FCE /* ForgetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F026E5EE1CFD2F9B00C22FCE /* ForgetPwdViewController.m */; };
+		F03A6F1F1D1D096600994DB1 /* WQLPaoMaView.m in Sources */ = {isa = PBXBuildFile; fileRef = F03A6F1E1D1D096600994DB1 /* WQLPaoMaView.m */; };
 		F046537F1D055DAA005D8E81 /* TaxiMsgCellEdit.m in Sources */ = {isa = PBXBuildFile; fileRef = F046537E1D055DAA005D8E81 /* TaxiMsgCellEdit.m */; };
 		F04A71EA1D0132A4006E4ADA /* TaxiMsgTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F04A71E81D0132A4006E4ADA /* TaxiMsgTableCell.m */; };
 		F04A71EB1D0132A4006E4ADA /* TaxiMsgTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F04A71E91D0132A4006E4ADA /* TaxiMsgTableCell.xib */; };
@@ -193,6 +194,8 @@
 		F02426E01D0FDF9C00661961 /* AreaOfXiZhan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AreaOfXiZhan.m; sourceTree = "<group>"; };
 		F026E5ED1CFD2F9B00C22FCE /* ForgetPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPwdViewController.h; sourceTree = "<group>"; };
 		F026E5EE1CFD2F9B00C22FCE /* ForgetPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPwdViewController.m; sourceTree = "<group>"; };
+		F03A6F1D1D1D096600994DB1 /* WQLPaoMaView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WQLPaoMaView.h; sourceTree = "<group>"; };
+		F03A6F1E1D1D096600994DB1 /* WQLPaoMaView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WQLPaoMaView.m; sourceTree = "<group>"; };
 		F046537D1D055DAA005D8E81 /* TaxiMsgCellEdit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxiMsgCellEdit.h; sourceTree = "<group>"; };
 		F046537E1D055DAA005D8E81 /* TaxiMsgCellEdit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxiMsgCellEdit.m; sourceTree = "<group>"; };
 		F04A71E71D0132A4006E4ADA /* TaxiMsgTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaxiMsgTableCell.h; sourceTree = "<group>"; };
@@ -481,6 +484,15 @@
 			name = "TaxiViewControllers(出租车)";
 			sourceTree = "<group>";
 		};
+		F03A6F1C1D1D096600994DB1 /* PaoMaLabel */ = {
+			isa = PBXGroup;
+			children = (
+				F03A6F1D1D1D096600994DB1 /* WQLPaoMaView.h */,
+				F03A6F1E1D1D096600994DB1 /* WQLPaoMaView.m */,
+			);
+			path = PaoMaLabel;
+			sourceTree = "<group>";
+		};
 		F0607B1F1CE5690F0029EE31 /* jPush */ = {
 			isa = PBXGroup;
 			children = (
@@ -738,6 +750,7 @@
 		F0F37A021CE07B280047A469 /* Venders */ = {
 			isa = PBXGroup;
 			children = (
+				F03A6F1C1D1D096600994DB1 /* PaoMaLabel */,
 				F0DC51451CE84AC800CE29AD /* DJPhotoBrowser */,
 				F0088C3D1CE6BE8300AF6EAF /* LQPhotoPicker */,
 				F0607B1F1CE5690F0029EE31 /* jPush */,
@@ -984,6 +997,7 @@
 				F0D142301D0FEC3900E76199 /* ParkMsgModel.m in Sources */,
 				F0088C981CE6BE8300AF6EAF /* SDBaseProgressView.m in Sources */,
 				F0C4AAF81CE2E14A0067E986 /* MHNetworkManager.m in Sources */,
+				F03A6F1F1D1D096600994DB1 /* WQLPaoMaView.m in Sources */,
 				F0088C901CE6BE8300AF6EAF /* LQImgPickerActionSheet.m in Sources */,
 				F0088CA31CE6C16F00AF6EAF /* PublishViewController.m in Sources */,
 				F0DC514D1CE84AC800CE29AD /* DJBrowserImageView.m in Sources */,
@@ -1182,7 +1196,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1c04b2b1-b617-41a9-8df1-cae8078fb3fe";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1205,7 +1219,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1c04b2b1-b617-41a9-8df1-cae8078fb3fe";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
