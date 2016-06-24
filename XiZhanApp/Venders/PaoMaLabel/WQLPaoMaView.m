@@ -54,19 +54,19 @@
         labelHeight = viewHeight;
 
         //循环的时间这里取的是4 此数越大速度越快
-        time = title.length/3;
+        time = title.length;
         
-        UILabel *myLable = [[UILabel alloc]init];
-        myLable.text = title;
-        myLable.textColor = mainColor;
-//        myLable.layer.cornerRadius = 20.0;
-        myLable.textAlignment = NSTextAlignmentCenter;
-//        myLable.layer.masksToBounds = YES;
-//        myLable.layer.borderWidth = 3.0;
-//        myLable.layer.borderColor = colorref;
+       _myLable = [[UILabel alloc]init];
+        _myLable.text = title;
+     //   _myLable.textColor = mainColor;
+//        _myLable.layer.cornerRadius = 20.0;
+        _myLable.textAlignment = NSTextAlignmentCenter;
+//        _myLable.layer.masksToBounds = YES;
+//        _myLable.layer.borderWidth = 3.0;
+//        _myLable.layer.borderColor = colorref;
 
-        myLable.font = [UIFont systemFontOfSize:16.0f];
-        myLable.backgroundColor = [UIColor whiteColor];
+        _myLable.font = [UIFont systemFontOfSize:16.0f];
+        _myLable.backgroundColor = [UIColor whiteColor];
         
         //计算文本的宽度
         CGFloat calcuWidth = [self widthForTextString:title height:labelHeight fontSize:16.0f];
@@ -75,28 +75,28 @@
         currentFrame = CGRectMake(0, 0, calcuWidth, labelHeight);
         behindFrame = CGRectMake(currentFrame.origin.x+currentFrame.size.width, 0, calcuWidth, labelHeight);
         
-        myLable.frame = currentFrame;
+        _myLable.frame = currentFrame;
         
-        [showContentView addSubview:myLable];
+        [showContentView addSubview:_myLable];
         
-        labelArray  = [NSMutableArray arrayWithObject:myLable];
+        labelArray  = [NSMutableArray arrayWithObject:_myLable];
         
         //如果文本的宽度大于视图的宽度才开始跑
         if (calcuWidth>=frame.size.width) {
-            UILabel *behindLabel = [[UILabel alloc]init];
-            behindLabel.frame = behindFrame;
-            behindLabel.text = title;
-            behindLabel.textColor = mainColor;
-//            behindLabel.layer.cornerRadius = 20.0;
-            behindLabel.textAlignment = NSTextAlignmentCenter;
-//            behindLabel.layer.masksToBounds = YES;
-//            behindLabel.layer.borderWidth = 3.0;
-//            behindLabel.layer.borderColor = colorref;
+            _behindLabel = [[UILabel alloc]init];
+            _behindLabel.frame = behindFrame;
+            _behindLabel.text = title;
+     //       _behindLabel.textColor = mainColor;
+//            _behindLabel.layer.cornerRadius = 20.0;
+            _behindLabel.textAlignment = NSTextAlignmentCenter;
+//            _behindLabel.layer.masksToBounds = YES;
+//            _behindLabel.layer.borderWidth = 3.0;
+//            _behindLabel.layer.borderColor = colorref;
             
-            behindLabel.font = [UIFont systemFontOfSize:16.0f];
-            behindLabel.backgroundColor = [UIColor whiteColor];
-            [labelArray addObject:behindLabel];
-            [showContentView addSubview:behindLabel];
+            _behindLabel.font = [UIFont systemFontOfSize:16.0f];
+            _behindLabel.backgroundColor = [UIColor whiteColor];
+            [labelArray addObject:_behindLabel];
+            [showContentView addSubview:_behindLabel];
             [self doAnimation];
         }
     }

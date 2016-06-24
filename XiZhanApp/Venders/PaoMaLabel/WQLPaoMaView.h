@@ -10,6 +10,9 @@
 
 @interface WQLPaoMaView : UIView
 
+@property(nonatomic,strong)UILabel *myLable;
+@property(nonatomic,strong)UILabel *behindLabel;
+
 - (instancetype)initWithFrame:(CGRect)frame withTitle:(NSString *)title;
 
 - (void)start;
