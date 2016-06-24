@@ -9,24 +9,11 @@
 #define _____RestAPI_h
 #import <UIKit/UIKit.h>
 
-#define BaseAPI                 @"http://192.168.16.147:8080/bjws/"  // 龙龙
+#define BaseAPI                 @"http://42.62.18.88:8037/bjws/"  // 龙龙
 
-//#define BaseAPI                 @"http://124.207.156.101:80/bjws/"  // 龙龙
+#define BaseXiZhanImgAPI        @"http://42.62.18.88:8081/"
 
-#define BaseXiZhanAPI           @"http://192.168.16.147:8088/" // 西站测试
-
-#define BaseXiZhanImgAPI        @"http://192.168.16.147/"
-
-// for首页
-//#define BaseMainImgAPI          @"http://222.240.172.197/"
-
-//#define BaseAPI                 @"http://222.240.172.197:8081/api/"  // 西站测试
-
-//#define BaseAPI                   @"http://124.207.156.101:80/bjws/"  // 公司服务器
-
-//#define BaseAPI                 @"http://192.168.16.124:8080/znweb/"    // 赵楠
-
-//#define BaseAPI                 @"http://124.207.156.101:80/bjws/"    // 公网
+#define BaseXiZhanAPI           @"http://42.62.18.88:8081/" // 西站测试
 
 #define kgetCodeAPI             @"app.user/getSmsCode"      // 获取验证码
 

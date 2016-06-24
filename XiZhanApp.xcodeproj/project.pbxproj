@@ -1182,7 +1182,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1c04b2b1-b617-41a9-8df1-cae8078fb3fe";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1205,7 +1205,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1c04b2b1-b617-41a9-8df1-cae8078fb3fe";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

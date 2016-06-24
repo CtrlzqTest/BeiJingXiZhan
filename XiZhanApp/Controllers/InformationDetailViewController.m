@@ -58,11 +58,13 @@ static NSString *indentify = @"proCellX";
     _titleTF.backgroundColor = [UIColor whiteColor];
     _titleTF.enabled = NO;
     _titleTF.layer.cornerRadius = 20.0;
+    _titleTF.textAlignment = NSTextAlignmentCenter;
     _titleTF.layer.masksToBounds = YES;
     _titleTF.layer.borderWidth = 3.0;
     _titleTF.layer.borderColor = colorref;
     _titleTF.text = self.model.msgtitle;
     _titleTF.adjustsFontSizeToFitWidth = YES;
+    _titleTF.font = [UIFont systemFontOfSize:15];
     _titleTF.textColor = [UIColor blackColor];
     
     [self.view addSubview:_titleTF];
@@ -161,8 +163,9 @@ static NSString *indentify = @"proCellX";
    _titleTF.layer.borderWidth = 3.0;
     _titleTF.layer.borderColor = colorref;
     _titleTF.text = self.model.msgtitle;
+    _titleTF.textAlignment = NSTextAlignmentCenter;
     _titleTF.textColor = mainColor;
-    _titleTF.font = [UIFont systemFontOfSize:16];
+    _titleTF.font = [UIFont systemFontOfSize:15];
     [self.view addSubview:_titleTF];
 
     _web = [[UIWebView alloc]init];
