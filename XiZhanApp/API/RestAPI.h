@@ -14,7 +14,7 @@
 
 #define BaseXiZhanImgAPI        @"http://42.62.18.88:8080/"
 
-#define BaseXiZhanAPI           @"http://42.62.18.88/8081/"
+#define BaseXiZhanAPI           @"http://42.62.18.88:8081/"
 
 #define kgetCodeAPI             @"app.user/getSmsCode"      // 获取验证码
 
