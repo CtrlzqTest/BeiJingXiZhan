@@ -47,13 +47,12 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
     if ([Utility isLogin]) {
         [User shareUser].isLogin = YES;
         loginStr = @"已登录";
+        [self requestData];
         _dataArray = [NSMutableArray arrayWithArray:@[loginStr,@"关于我们",@"意见反馈",@"我的消息",@"退出登录"]];
     }else {
         loginStr = @"登录/注册";
         _dataArray = [NSMutableArray arrayWithArray:@[loginStr,@"关于我们",@"意见反馈",@"我的消息"]];
     }
-    
-    [self requestData];
     
     self.tableview = [[UITableView alloc] initWithFrame:self.view.bounds style:(UITableViewStylePlain)];
     self.view.backgroundColor = [UIColor colorWithWhite:0.898 alpha:1.000];
@@ -225,7 +224,7 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
         [Utility saveVolunteerState:NO];
         [User shareUser].isLogin = NO;
         [User shareUser].type = @"";
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLogoutNotication object:nil];
         });
 
