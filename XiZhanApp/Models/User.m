@@ -18,6 +18,7 @@ static User *user = nil;
     dispatch_once(&onceToken, ^{
         NSDictionary *infoDict = [[NSUserDefaults standardUserDefaults] objectForKey:@"userInfo"];
         user = [User mj_objectWithKeyValues:infoDict];
+        user.isLogin = NO;
         if (!user) {
             user = [[User alloc] init];
         }
