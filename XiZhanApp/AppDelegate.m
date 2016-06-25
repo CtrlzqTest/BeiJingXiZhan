@@ -178,24 +178,26 @@
     model.menuTitle = dict[@"NodeName"];
     detailList.menuModel = model;
     
-    if (self.mainNavi.viewControllers.count < 2) {
-        [self.mainNavi pushViewController:detailList animated:NO];
-        return;
-    }
-    if ([self.mainNavi.topViewController class] == [MyInformationsViewController class] || [InformationDetailViewController class] || [PublishViewController class]) {
-        
-        MyInformationsViewController *myInfoVC = self.mainNavi.viewControllers[2];
-        myInfoVC.menuModel = model;
-        myInfoVC.isRemoteNotice = YES;
-        if ([self.mainNavi.topViewController class] == [MyInformationsViewController class]) {
-            [myInfoVC noticeRefreshData];
-            return;
-        }
-        [self.mainNavi popToViewController:self.mainNavi.viewControllers[2] animated:NO];
-        
-    }else {
-        
-    }
+//    if (self.mainNavi.viewControllers.count < 2) {
+//        [self.mainNavi pushViewController:detailList animated:NO];
+//        return;
+//    }
+//    if ([self.mainNavi.topViewController class] == [MyInformationsViewController class] || ([self.mainNavi.topViewController class] == [InformationDetailViewController class]) || ([self.mainNavi.topViewController class] == [PublishViewController class])) {
+//        
+//        MyInformationsViewController *myInfoVC = self.mainNavi.viewControllers[2];
+//        myInfoVC.menuModel = model;
+//        myInfoVC.isRemoteNotice = YES;
+//        if ([self.mainNavi.topViewController class] == [MyInformationsViewController class]) {
+//            [myInfoVC noticeRefreshData];
+//            return;
+//        }
+//        [self.mainNavi popToViewController:self.mainNavi.viewControllers[2] animated:NO];
+//        
+//    }else {
+//        
+//    }
+    [self.mainNavi popToRootViewControllerAnimated:NO];
+    [self.mainNavi pushViewController:detailList animated:NO];
 //    detailList.parentIdString = dict[@"NodeID"];
 //    detailList.msgType = dict[@"NodeName"];
     

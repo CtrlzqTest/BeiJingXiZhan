@@ -243,6 +243,7 @@
     
     
     if (showHUD) {
+        [MBProgressHUD hideAllHUDsForView:(UIView*)[[[UIApplication sharedApplication]delegate]window] animated:NO];
         [MBProgressHUD showHUDAddedTo:(UIView*)[[[UIApplication sharedApplication]delegate]window] animated:YES];
     }
     DTLog(@"上传图片接口 URL-> %@",url);
