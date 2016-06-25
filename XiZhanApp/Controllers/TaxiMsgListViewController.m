@@ -276,7 +276,7 @@
     confirmBtn.layer.borderColor = colorref;
     confirmBtn.layer.cornerRadius = 5;
     [alertView addSubview:confirmBtn];
-    if ([[User shareUser].type isEqualToString:@"2"]) {
+    if ([[User shareUser].type isEqualToString:@"4"]) {
         [alertView show];
     }
 }

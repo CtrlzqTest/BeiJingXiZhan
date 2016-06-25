@@ -58,13 +58,7 @@
         
        _myLable = [[UILabel alloc]init];
         _myLable.text = title;
-     //   _myLable.textColor = mainColor;
-//        _myLable.layer.cornerRadius = 20.0;
         _myLable.textAlignment = NSTextAlignmentCenter;
-//        _myLable.layer.masksToBounds = YES;
-//        _myLable.layer.borderWidth = 3.0;
-//        _myLable.layer.borderColor = colorref;
-
         _myLable.font = [UIFont systemFontOfSize:16.0f];
         _myLable.backgroundColor = [UIColor whiteColor];
         
@@ -74,30 +68,29 @@
         //这两个frame很重要 分别记录的是左右两个label的frame 而且后面也会需要到这两个frame
         currentFrame = CGRectMake(0, 0, calcuWidth, labelHeight);
         behindFrame = CGRectMake(currentFrame.origin.x+currentFrame.size.width, 0, calcuWidth, labelHeight);
-        
         _myLable.frame = currentFrame;
-        
         [showContentView addSubview:_myLable];
         
         labelArray  = [NSMutableArray arrayWithObject:_myLable];
         
         //如果文本的宽度大于视图的宽度才开始跑
-        if (calcuWidth>=frame.size.width) {
+        if (calcuWidth>frame.size.width) {
             _behindLabel = [[UILabel alloc]init];
             _behindLabel.frame = behindFrame;
             _behindLabel.text = title;
-     //       _behindLabel.textColor = mainColor;
-//            _behindLabel.layer.cornerRadius = 20.0;
             _behindLabel.textAlignment = NSTextAlignmentCenter;
-//            _behindLabel.layer.masksToBounds = YES;
-//            _behindLabel.layer.borderWidth = 3.0;
-//            _behindLabel.layer.borderColor = colorref;
-            
             _behindLabel.font = [UIFont systemFontOfSize:16.0f];
             _behindLabel.backgroundColor = [UIColor whiteColor];
             [labelArray addObject:_behindLabel];
             [showContentView addSubview:_behindLabel];
             [self doAnimation];
+        }
+        else
+        {
+            _myLable.text = title;
+            _myLable.frame = showContentView.frame;
+            _myLable.textAlignment = NSTextAlignmentCenter;
+            [showContentView addSubview:_myLable];
         }
     }
     return self;
