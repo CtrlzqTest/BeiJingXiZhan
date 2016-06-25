@@ -85,13 +85,12 @@ static NSString *indentify = @"proCellX";
                             "<head> \n"
                             "<style type=\"text/css\"> \n"
                             "body {font-size: %d; font-family: \"%@\"; color: %@;}\n"
+                            "img{display: block;padding:0;margin:0;width:%@;max-width: %@;height: auto;}\n"
                             "</style> \n"
                             "</head> \n"
                             "<body>%@</body> \n"
-                            "</html>",14, @"FZLTXHK", @"rgb(0, 0, 0)",self.model.msgcontent];
-    
-   // [_web loadHTMLString:htmlString baseURL:nil];
-
+                            "</html>",14, @"FZLTXHK", @"rgb(0, 0, 0)",@"100% !important",@"100% !important",self.model.msgcontent];
+    NSLog(@"%@",htmlString);
     [self.view addSubview:_web];
     
     [_web loadHTMLString:htmlString baseURL:nil];
@@ -106,6 +105,7 @@ static NSString *indentify = @"proCellX";
         return YES;
     }
 }
+
 -(void)initView
 {
     // 返回按钮
@@ -180,7 +180,7 @@ static NSString *indentify = @"proCellX";
     NSString *htmlString = [NSString stringWithFormat:@"<html> \n"
                             "<head> \n"
                             "<style type=\"text/css\"> \n"
-                            "body {font-size: %d; font-family: \"%@\"; color: %@;}\n"
+                            "body {font-size: %d; font-family: \"%@\"; color: %@;}\n"
                             "</style> \n"
                             "</head> \n"
                             "<body>%@</body> \n"
