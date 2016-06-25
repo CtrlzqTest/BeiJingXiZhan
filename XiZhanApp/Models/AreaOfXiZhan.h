@@ -11,4 +11,7 @@
 @interface AreaOfXiZhan : NSObject
 @property(nonatomic,copy)NSString *AreaName;
 @property(nonatomic,copy)NSString *AreaID;
+@property(nonatomic,copy)NSString *AreaCode;
+@property(nonatomic,copy)NSString *ImageUrl;
+@property(nonatomic,copy)NSString *Settings;
 @end

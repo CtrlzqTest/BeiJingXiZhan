@@ -228,7 +228,7 @@
         } failureBlock:^(NSError *error) {
             NSLog(@"%@",error);
             [MBProgressHUD showError:@"上传图片失败！" toView:nil];
-        } uploadParam:param showHUD:YES];
+        } uploadParam:param showHUD:NO];
     }
 }
 //对图片尺寸进行压缩--
