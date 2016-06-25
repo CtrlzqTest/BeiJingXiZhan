@@ -27,7 +27,7 @@
     [super viewDidLoad];
     [self initView];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textfieldDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textfieldDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeArray:) name:@"imgArrayChange" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deleteArray:) name:@"deleteToZero" object:nil];
 }
@@ -309,13 +309,13 @@
     return YES;
 }
 
-- (void)textfieldDidChange:(UITextField *)textField {
-    
-    if (self.fieldOfUser.text.length >= 14) {
-        self.fieldOfUser.text = [self.fieldOfUser.text substringToIndex:14];
-    }
-    
-}
+//- (void)textfieldDidChange:(UITextField *)textField {
+//    
+//    if (self.fieldOfUser.text.length >= 14) {
+//        self.fieldOfUser.text = [self.fieldOfUser.text substringToIndex:14];
+//    }
+//    
+//}
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {

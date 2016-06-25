@@ -274,14 +274,14 @@ static User *user = nil;
             NSString *secret = [self createGuidKey];
             __weak typeof(self) weakSelf = self;
             [MHNetworkManager postReqeustWithURL:kRegistZhixinAPI params:@{@"appkey":uuidKey,@"appsecret":secret,@"clienttype":@"2"} successBlock:^(id returnData) {
-                
+                NSLog(@"%@",returnData);
                 if ([returnData[@"code"] integerValue] == 0) {
                     [GSKeychain setSecret:uuidKey forKey:UUIDkey];
                     [GSKeychain setSecret:secret forKey:UUIDSecret];
                     [weakSelf saveSecret:uuidKey key:UUIDkey];
                     [weakSelf saveSecret:secret key:UUIDSecret];
                 }else if([returnData[@"code"] integerValue] == -1){
-                    
+//                    [weakSelf checkIsRegisteruuid];
                 }else {
                     [weakSelf registZhixin];
                 }
@@ -302,6 +302,7 @@ static User *user = nil;
 + (void)checkIsRegisteruuid {
     
     NSString *uuidKey = [GSKeychain secretForKey:UUIDkey];
+    
     if (uuidKey.length <= 0) {
         [self registZhixin];
     }else {
@@ -356,7 +357,7 @@ static User *user = nil;
 // 检查是否需要接口签名
 + (BOOL )checkToSign:(NSString *)APIStr {
     
-    NSString *matchStr = @".*/((appversion)|(RegisterDevice)|(getSmsCode)|(app.)|(register)|(login)).*";
+    NSString *matchStr = @".*/((appversion)|(GetDeviceRegisterInfo)|(RegisterDevice)|(getSmsCode)|(app.)|(register)|(login)).*";
     NSPredicate *regextestmobile = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", matchStr];
     if ([regextestmobile evaluateWithObject:APIStr]) {
         return NO;
