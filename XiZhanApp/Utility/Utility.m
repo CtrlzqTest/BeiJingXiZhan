@@ -280,6 +280,8 @@ static User *user = nil;
                     [GSKeychain setSecret:secret forKey:UUIDSecret];
                     [weakSelf saveSecret:uuidKey key:UUIDkey];
                     [weakSelf saveSecret:secret key:UUIDSecret];
+                }else if([returnData[@"code"] integerValue] == -1){
+                    
                 }else {
                     [weakSelf registZhixin];
                 }
