@@ -55,7 +55,7 @@ static NSString *indentify = @"proCellX";
     self.view.backgroundColor = [UIColor whiteColor];
   
     _titleTF = [[UITextField alloc]init];
-    _titleTF.frame = CGRectMake(50*ProportionWidth,80*ProportionHeight, KWidth-100, 40*ProportionHeight);
+    _titleTF.frame = CGRectMake(50*ProportionWidth,80*ProportionHeight, KWidth-100*ProportionWidth, 40*ProportionHeight);
     _titleTF.borderStyle = UITextBorderStyleRoundedRect;
     _titleTF.backgroundColor = [UIColor whiteColor];
     _titleTF.enabled = NO;
@@ -70,7 +70,7 @@ static NSString *indentify = @"proCellX";
     _titleTF.textColor = [UIColor blackColor];
     
    // [self.view addSubview:_titleTF];
-    _paoma = [[WQLPaoMaView alloc]initWithFrame:CGRectMake(50*ProportionWidth,80*ProportionHeight, KWidth-100, 40*ProportionHeight) withTitle:self.model.msgtitle];
+    _paoma = [[WQLPaoMaView alloc]initWithFrame:CGRectMake(50*ProportionWidth,80*ProportionHeight, KWidth-100*ProportionWidth, 40*ProportionHeight) withTitle:self.model.msgtitle];
     [self.view addSubview:_paoma];
     
     _web = [[UIWebView alloc]initWithFrame:CGRectMake(20*ProportionWidth,CGRectGetMaxY(_titleTF.frame)+10*ProportionHeight, KWidth-40*ProportionWidth, 450*ProportionHeight)];
@@ -149,7 +149,7 @@ static NSString *indentify = @"proCellX";
     CGFloat leftInset = 40*ProportionWidth;
     
     _titleTF = [[UITextField alloc]init];
-    _titleTF.frame = CGRectMake(leftInset+10*ProportionWidth,CGRectGetMaxY(_myCollectionV.frame)+5*ProportionHeight, KWidth-100, 40*ProportionHeight);
+    _titleTF.frame = CGRectMake(leftInset+10*ProportionWidth,CGRectGetMaxY(_myCollectionV.frame)+5*ProportionHeight, KWidth-100*ProportionWidth, 40*ProportionHeight);
     _titleTF.borderStyle = UITextBorderStyleRoundedRect;
     _titleTF.backgroundColor = [UIColor whiteColor];
     _titleTF.enabled = NO;
@@ -163,7 +163,7 @@ static NSString *indentify = @"proCellX";
     _titleTF.font = [UIFont systemFontOfSize:15];
    // [self.view addSubview:_titleTF];
 
-    _paoma = [[WQLPaoMaView alloc]initWithFrame:CGRectMake(leftInset+10*ProportionWidth,CGRectGetMaxY(_myCollectionV.frame)+5*ProportionHeight, KWidth-100, 40*ProportionHeight) withTitle:self.model.msgtitle];
+    _paoma = [[WQLPaoMaView alloc]initWithFrame:CGRectMake(leftInset+10*ProportionWidth,CGRectGetMaxY(_myCollectionV.frame)+5*ProportionHeight, KWidth-100*ProportionWidth, 40*ProportionHeight) withTitle:self.model.msgtitle];
     _paoma.myLable.textColor = mainColor;
     _paoma.behindLabel.textColor = mainColor;
     [self.view addSubview:_paoma];

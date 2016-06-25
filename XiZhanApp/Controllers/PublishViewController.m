@@ -145,8 +145,8 @@
     
     CGFloat leftInset = 40 * ProportionWidth;
     //说明文字
-    self.fieldOfUser.frame = CGRectMake(leftInset+10*ProportionWidth,70*ProportionHeight, KWidth-100, 40*ProportionHeight);
-    self.miaoShuTextView.frame = CGRectMake(leftInset,CGRectGetMaxY(self.fieldOfUser.frame) + 20*ProportionHeight, KWidth-80, 185*ProportionHeight);
+    self.fieldOfUser.frame = CGRectMake(leftInset+10*ProportionWidth,70*ProportionHeight, KWidth-100*ProportionWidth, 40*ProportionHeight);
+    self.miaoShuTextView.frame = CGRectMake(leftInset,CGRectGetMaxY(self.fieldOfUser.frame) + 20*ProportionHeight, KWidth-2*leftInset, 185*ProportionHeight);
     self.photoButton.frame = CGRectMake(156*ProportionWidth,CGRectGetMaxY(self.miaoShuTextView.frame) + 100*ProportionHeight, 64*ProportionHeight, 56*ProportionHeight);
     self.ScrollofStatus.contentSize = CGSizeMake(0, 700*ProportionHeight);
 }
@@ -165,8 +165,8 @@
     
     CGFloat leftInset = 40 * ProportionWidth;
     //说明文字
-     self.fieldOfUser.frame = CGRectMake(leftInset+10*ProportionWidth,[self LQPhotoPicker_getPickerViewFrame].origin.y+[self LQPhotoPicker_getPickerViewFrame].size.height+40*ProportionHeight, KWidth-100, 40*ProportionHeight);
-    self.miaoShuTextView.frame = CGRectMake(leftInset,CGRectGetMaxY(self.fieldOfUser.frame) + 20*ProportionHeight, KWidth-80, 185*ProportionHeight);
+     self.fieldOfUser.frame = CGRectMake(leftInset+10*ProportionWidth,[self LQPhotoPicker_getPickerViewFrame].origin.y+[self LQPhotoPicker_getPickerViewFrame].size.height+40*ProportionHeight, KWidth-100*ProportionWidth, 40*ProportionHeight);
+    self.miaoShuTextView.frame = CGRectMake(leftInset,CGRectGetMaxY(self.fieldOfUser.frame) + 20*ProportionHeight, KWidth-2*leftInset, 185*ProportionHeight);
     self.photoButton.frame = CGRectMake(156*ProportionWidth,CGRectGetMaxY(self.miaoShuTextView.frame) + 100*ProportionHeight, 64*ProportionHeight, 56*ProportionHeight);
     self.ScrollofStatus.contentSize = CGSizeMake(0, 700*ProportionHeight);
     
@@ -270,7 +270,7 @@
         NSLog(@"returnData:%@",returnData);
         if ([returnData[@"code"] integerValue] == 0 )
         {
-            [MBProgressHUD showSuccess:@"编辑成功！" toView:nil];
+            [MBProgressHUD showSuccess:@"提交成功！" toView:nil];
             [weakSelf.navigationController popViewControllerAnimated:YES];
             // 通知列表需要刷新
             if ([self.delegate respondsToSelector:@selector(noticeTableViewRefresh:)]) {
