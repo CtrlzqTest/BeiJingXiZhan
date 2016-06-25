@@ -9,7 +9,7 @@
 #define kScreenWidth          [[UIScreen mainScreen] bounds].size.width
 #define kScreenHeight         [[UIScreen mainScreen] bounds].size.height
 
-#define kMainPageDistance   100   //打开左侧窗时，中视图(右视图)露出的宽度
+#define kMainPageDistance   100.0 / 414 *  [[UIScreen mainScreen] bounds].size.width   //打开左侧窗时，中视图(右视图)露出的宽度
 #define kMainPageScale   0.8  //打开左侧窗时，中视图(右视图）缩放比例
 #define kMainPageCenter  CGPointMake(kScreenWidth + kScreenWidth * kMainPageScale / 2.0 - kMainPageDistance, kScreenHeight / 2)  //打开左侧窗时，中视图中心点
 
