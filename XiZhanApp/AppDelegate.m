@@ -15,6 +15,7 @@
 #import "MenuModel.h"
 #import "InformationDetailViewController.h"
 #import "MyInformationsViewController.h"
+#import "PublishViewController.h"
 #import "IQKeyboardManager.h"
 #import "SDImageCache.h"
 
@@ -171,15 +172,33 @@
 -(void)gotoInformationDetailVC:(NSDictionary *)dict
 {
     MyInformationsViewController *detailList = [[MyInformationsViewController alloc] init];
-
+    
     MenuModel *model = [[MenuModel alloc] init];
     model.menuId = dict[@"NodeID"];
     model.menuTitle = dict[@"NodeName"];
     detailList.menuModel = model;
     
+    if (self.mainNavi.viewControllers.count < 2) {
+        [self.mainNavi pushViewController:detailList animated:NO];
+        return;
+    }
+    if ([self.mainNavi.topViewController class] == [MyInformationsViewController class] || [InformationDetailViewController class] || [PublishViewController class]) {
+        
+        MyInformationsViewController *myInfoVC = self.mainNavi.viewControllers[2];
+        myInfoVC.menuModel = model;
+        myInfoVC.isRemoteNotice = YES;
+        if ([self.mainNavi.topViewController class] == [MyInformationsViewController class]) {
+            [myInfoVC noticeRefreshData];
+            return;
+        }
+        [self.mainNavi popToViewController:self.mainNavi.viewControllers[2] animated:NO];
+        
+    }else {
+        
+    }
 //    detailList.parentIdString = dict[@"NodeID"];
 //    detailList.msgType = dict[@"NodeName"];
-    [self.mainNavi pushViewController:detailList animated:NO];
+    
 }
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

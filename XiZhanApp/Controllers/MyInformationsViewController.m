@@ -55,9 +55,24 @@
 
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    if (self.isRemoteNotice) {
+        self.title = self.menuModel.menuTitle;
+        [self.tableView.mj_header beginRefreshing];
+        self.isRemoteNotice = NO;
+        return;
+    }
     if (_shouldRefresh) {
         [self.tableView.mj_header beginRefreshing];
     }
+}
+
+// 远程推送通知
+- (void)noticeRefreshData {
+    
+    self.title = self.menuModel.menuTitle;
+    [self.tableView.mj_header beginRefreshing];
+    
 }
 
 // 视图消失的时候，设置不需要刷新
@@ -85,7 +100,9 @@
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
     
-    if ([[User shareUser].type isEqualToString:@"2"] && [self.menuModel.alias isEqualToString:@"volunteer"]) {
+    BOOL isShow = ([[User shareUser].type isEqualToString:@"2"] && [self.menuModel.alias isEqualToString:@"volunteer"]) || ([[User shareUser].type isEqualToString:@"3"] && [self.menuModel.alias isEqualToString:@"service"]);
+    
+    if (isShow) {
         [self setRightImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"edit" selectImage:nil action:^(AYCButton *button) {
             [weakSelf editAction:button];
         }];

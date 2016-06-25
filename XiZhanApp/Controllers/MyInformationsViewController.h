@@ -13,5 +13,9 @@
 @property (nonatomic,copy)NSString *msgType;
 @property (nonatomic,copy)NSString *parentIdString;
 @property(nonatomic,strong)MenuModel *menuModel;
+@property (nonatomic,assign)BOOL isRemoteNotice; // 是否需要刷新数据
+
+// 通知刷新
+- (void)noticeRefreshData;
 
 @end
