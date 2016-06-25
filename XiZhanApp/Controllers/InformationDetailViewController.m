@@ -169,7 +169,7 @@ static NSString *indentify = @"proCellX";
     [self.view addSubview:_paoma];
     
     _web = [[UIWebView alloc]init];
-        _web.frame = CGRectMake(leftInset,CGRectGetMaxY(_titleTF.frame) + 20*ProportionHeight, KWidth-80, 185*ProportionHeight);
+        _web.frame = CGRectMake(leftInset,CGRectGetMaxY(_titleTF.frame) + 20*ProportionHeight, KWidth-2*leftInset, 185*ProportionHeight);
     _web.layer.cornerRadius = 15.0;
     _web.layer.masksToBounds = YES;
     _web.layer.borderWidth = 3.0;
