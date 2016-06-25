@@ -216,17 +216,15 @@
                 NSArray *imgArray = [weakSel.imgString componentsSeparatedByString:@","];
                 if (imgArray.count == bigImageArray.count+1) {
                     weakSel.imgString = [weakSel.imgString substringToIndex:[weakSel.imgString length]-1];
-                    
                      [MBProgressHUD showSuccess:@"上传图片成功！" toView:nil];
                     [weakSel postData];
                 }
             }
             else
             {
-             [MBProgressHUD showError:@"上传图片失败！" toView:nil];
+                [MBProgressHUD showError:@"上传图片失败！" toView:nil];
             }
         } failureBlock:^(NSError *error) {
-            NSLog(@"%@",error);
             [MBProgressHUD showError:@"上传图片失败！" toView:nil];
         } uploadParam:param showHUD:YES];
     }

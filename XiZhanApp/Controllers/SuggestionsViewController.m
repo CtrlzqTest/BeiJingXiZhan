@@ -27,9 +27,9 @@
     [super viewDidLoad];
      [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 50*ProportionWidth)title:@"意见反馈" fontSize:17.0];
 //    self.view.backgroundColor = [UIColor colorWithRed:0.773 green:0.153 blue:0.384 alpha:1.000];
-   self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self initView];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -116,6 +116,13 @@
     
 }
 #pragma mark textViewMethod
+- (void)textViewDidChange:(UITextView *)textView {
+    
+    if (self.textView.text.length >= 100) {
+        [MBProgressHUD showMessag:@"内容不能超过100字" toView:nil];
+    }
+}
+
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
     
     self.countTextLabel.text = [NSString stringWithFormat:@"%lu/100    ",(unsigned long)self.textView.text.length];
