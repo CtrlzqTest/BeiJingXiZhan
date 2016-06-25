@@ -21,6 +21,8 @@
     NSInteger _page;
     BOOL _shouldRefresh; // 是否需要刷新数据
     NSMutableArray *_dataArray;
+    
+    MJRefreshBackNormalFooter *_autoFooter;
 }
 @property(nonatomic,strong)UITableView *tableView;
 @property(nonatomic,strong)NSMutableArray *newsArray;
@@ -101,12 +103,12 @@
         [self getData];
     }];
 //    [self.tableView.mj_header beginRefreshing];
-    MJRefreshBackNormalFooter *autoFooter = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
+    _autoFooter = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
         [self getMoreData];
     }];
 //    [autoFooter setTitle:@"正在加载更多数据..." forState:MJRefreshStateRefreshing];
-    [autoFooter setTitle:@"暂无更多数据" forState:MJRefreshStateNoMoreData];
-    self.tableView.mj_footer = autoFooter;
+    [_autoFooter setTitle:@"暂无更多数据" forState:MJRefreshStateNoMoreData];
+    self.tableView.mj_footer = _autoFooter;
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
 }
@@ -206,16 +208,18 @@
                         [model save];
                     }
                 }
-            }else {
-                [self.tableView.mj_footer endRefreshingWithNoMoreData];
             }
             NSString *condition = !self.menuModel ? [NSString stringWithFormat:@"msgdate < '%ld'",lastMsgModel.msgdate] : [NSString stringWithFormat:@"msgdate < '%ld' and nodeid = '%@'",lastMsgModel.msgdate,self.menuModel.menuId];
             NSArray *moreArray = [MessageModel getDataWithCondition:condition page:1 orderBy:@"msgdate"];
+            if (moreArray.count <= 0) {
+                [_autoFooter endRefreshingWithNoMoreData];
+            }else {
+                [self.tableView.mj_footer endRefreshing];
+            }
             [_dataArray addObjectsFromArray:moreArray];
             if (_dataArray.count <= 0) {
                 [self addNodataViewInView:self.tableView];
             }
-            [self.tableView.mj_footer endRefreshing];
             [self.tableView reloadData];
             
         }else {
@@ -233,7 +237,7 @@
         [MBProgressHUD showError:@"网络不给力" toView:self.view];
         [self.tableView.mj_header endRefreshing];
         
-    } showHUD:YES];
+    } showHUD:NO];
     
 }
 
