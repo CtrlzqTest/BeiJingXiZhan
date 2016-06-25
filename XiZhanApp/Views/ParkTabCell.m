@@ -17,6 +17,7 @@
     self.carCountLabel.layer.masksToBounds = YES;
     self.carCountLabel.layer.borderWidth = 2.0;
     self.carCountLabel.layer.borderColor = colorref;
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     
 }
 
