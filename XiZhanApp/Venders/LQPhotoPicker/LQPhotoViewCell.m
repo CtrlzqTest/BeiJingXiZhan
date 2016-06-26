@@ -27,18 +27,17 @@
     return self;
 }
 - (void)setBigImgViewWithImage:(UIImage *)img{
-    
-//    if (_BigImgView) {
-//        _BigImgView.frame = _profilePhoto.frame;
-//        
-//        _BigImgView.image = img;
-//    }
-//    else{
-//        _BigImgView = [[UIImageView alloc]initWithImage:img];
-//        _BigImgView.frame = _profilePhoto.frame;
-//        [self insertSubview:_BigImgView atIndex:0];
-//    }
-//    _BigImgView.contentMode = UIViewContentModeScaleToFill;
+    if (_BigImgView) {
+        _BigImgView.frame = _profilePhoto.frame;
+        _BigImgView.image = img;
+    }
+    else{
+        _BigImgView = [[UIImageView alloc]initWithImage:img];
+        _BigImgView.frame = _profilePhoto.frame;
+        [self insertSubview:_BigImgView atIndex:0];
+    }
+    _BigImgView.contentMode = UIViewContentModeScaleToFill;
+    _BigImgView.hidden = YES;
 }
 
 @end

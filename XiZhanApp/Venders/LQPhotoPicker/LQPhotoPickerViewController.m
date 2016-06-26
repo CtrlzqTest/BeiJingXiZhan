@@ -188,7 +188,7 @@ static NSString * const reuseIdentifier = @"LQPhotoViewCell";
         
         JJPhotoManeger *mg = [JJPhotoManeger maneger];
         mg.delegate = self;
-        [mg showLocalPhotoViewer:@[cell.profilePhoto] selecImageindex:0];
+        [mg showLocalPhotoViewer:@[cell.BigImgView] selecImageindex:0];
     }
 }
 
@@ -225,7 +225,6 @@ static NSString * const reuseIdentifier = @"LQPhotoViewCell";
     
     [_LQPhotoPicker_smallImageArray removeObjectAtIndex:sender.tag];
     [_LQPhotoPicker_selectedAssetArray removeObjectAtIndex:sender.tag];
-
     
     [self.pickerCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:sender.tag inSection:0]]];
     
@@ -280,6 +279,9 @@ static NSString * const reuseIdentifier = @"LQPhotoViewCell";
 #pragma mark - 防止奔溃处理
 -(void)photoViwerWilldealloc:(NSInteger)selecedImageViewIndex
 {
+//    NSIndexPath *path = [NSIndexPath indexPathWithIndex:selecedImageViewIndex];
+//    LQPhotoViewCell *cell = (LQPhotoViewCell *)[self.pickerCollectionView cellForItemAtIndexPath:path];
+//    cell.BigImgView.hidden = YES;
     NSLog(@"最后一张观看的图片的index是:%zd",selecedImageViewIndex);
 }
 
@@ -320,7 +322,8 @@ static NSString * const reuseIdentifier = @"LQPhotoViewCell";
     return _LQPhotoPicker_selectedAssetArray;
 }
 
-- (NSMutableArray*)LQPhotoPicker_getBigImageArray{
+- (NSMutableArray*)LQPhotoPicker_getBigImageArray
+{
     if (_LQPhotoPicker_bigImageArray.count<=0) {
         _LQPhotoPicker_bigImageArray = [NSMutableArray array];
         _LQPhotoPicker_bigImgDataArray = [NSMutableArray array];
