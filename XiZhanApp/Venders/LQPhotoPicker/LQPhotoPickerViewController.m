@@ -185,7 +185,6 @@ static NSString * const reuseIdentifier = @"LQPhotoViewCell";
 
             [cell setBigImgViewWithImage:[self getBigIamgeWithALAsset:_LQPhotoPicker_selectedAssetArray[index]]];
         }
-        
         JJPhotoManeger *mg = [JJPhotoManeger maneger];
         mg.delegate = self;
         [mg showLocalPhotoViewer:@[cell.BigImgView] selecImageindex:0];

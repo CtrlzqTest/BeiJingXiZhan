@@ -233,6 +233,7 @@
     taxiTF.layer.borderWidth = 1;
     taxiTF.layer.borderColor = colorref;
     taxiTF.layer.cornerRadius = 5;
+    taxiTF.font = [UIFont systemFontOfSize:17];
     taxiTF.keyboardType = UIKeyboardTypeNumberPad;
     _taxiTF = taxiTF;
     [alertView addSubview:_taxiTF];
@@ -249,6 +250,7 @@
     peopleTF.layer.borderWidth = 1;
     peopleTF.layer.borderColor = colorref;
     peopleTF.layer.cornerRadius = 5;
+    peopleTF.font = [UIFont systemFontOfSize:17];
     peopleTF.keyboardType = UIKeyboardTypeNumberPad;
     _peopleTF = peopleTF;
     [alertView addSubview:_peopleTF];
@@ -321,7 +323,20 @@
         [MBProgressHUD showError:@"出租车数量不得为空" toView:nil];
         return NO;
     }
+    if (![self isPureInt:_peopleTF.text]||![self isPureInt:_taxiTF.text]) {
+        [MBProgressHUD showError:@"请输入数字" toView:nil];
+        return NO;
+    }
+    if ([_taxiTF.text integerValue] < 0 ||[_peopleTF.text integerValue] < 0) {
+         [MBProgressHUD showError:@"请输入自然数" toView:nil];
+        return NO;
+    }
     return YES;
+}
+- (BOOL)isPureInt:(NSString *)string{
+    NSScanner* scan = [NSScanner scannerWithString:string];
+    int val;
+    return [scan scanInt:&val] && [scan isAtEnd];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
