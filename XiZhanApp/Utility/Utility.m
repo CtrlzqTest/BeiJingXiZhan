@@ -16,8 +16,6 @@ static User *user = nil;
 
 @implementation Utility
 
-
-
 + (id)getControllerWithStoryBoardId:(NSString *)storyBoardId {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     id vc = [storyBoard instantiateViewControllerWithIdentifier:storyBoardId];
