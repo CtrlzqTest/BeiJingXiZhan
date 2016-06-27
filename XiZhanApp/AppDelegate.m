@@ -35,7 +35,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     // 注册智信
-    [Utility registZhixin];
+    [Utility checkIsRegisteruuid];
     
     [NSThread sleepForTimeInterval:2];
     // 极光推送

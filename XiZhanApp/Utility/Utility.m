@@ -264,62 +264,85 @@ static User *user = nil;
 }
 
 // 注册智信
+//+ (void)registZhixin {
+//
+//    NSString *uuidKey = [GSKeychain secretForKey:UUIDkey];
+//    
+//    if ([self getSecretWithKey:UUIDSecret].length <= 0) {
+//        if (uuidKey.length <= 0) {
+//            uuidKey = [UIDevice currentDevice].identifierForVendor.UUIDString;
+//            NSString *secret = [self createGuidKey];
+//            __weak typeof(self) weakSelf = self;
+//            [MHNetworkManager postReqeustWithURL:kRegistZhixinAPI params:@{@"appkey":uuidKey,@"appsecret":secret,@"clienttype":@"2"} successBlock:^(id returnData) {
+//                NSLog(@"%@",returnData);
+//                if ([returnData[@"code"] integerValue] == 0) {
+//                    [GSKeychain setSecret:uuidKey forKey:UUIDkey];
+//                    [GSKeychain setSecret:secret forKey:UUIDSecret];
+//                    [weakSelf saveSecret:uuidKey key:UUIDkey];
+//                    [weakSelf saveSecret:secret key:UUIDSecret];
+//                }else if([returnData[@"code"] integerValue] == -1)
+//                {
+////                    [weakSelf checkIsRegisteruuid];
+//                }else {
+//                    [weakSelf registZhixin];
+//                }
+//                
+//            } failureBlock:^(NSError *error) {
+//                
+//            } showHUD:NO];
+//        }else {
+//            NSString *secret = [GSKeychain secretForKey:UUIDSecret];
+//            [self saveSecret:uuidKey key:UUIDkey];
+//            [self saveSecret:secret key:UUIDSecret];
+//        }
+//    }
+//}
+
+
 + (void)registZhixin {
-
-    NSString *uuidKey = [GSKeychain secretForKey:UUIDkey];
     
-    if ([self getSecretWithKey:UUIDSecret].length <= 0) {
-        if (uuidKey.length <= 0) {
-            uuidKey = [UIDevice currentDevice].identifierForVendor.UUIDString;
-            NSString *secret = [self createGuidKey];
-            __weak typeof(self) weakSelf = self;
-            [MHNetworkManager postReqeustWithURL:kRegistZhixinAPI params:@{@"appkey":uuidKey,@"appsecret":secret,@"clienttype":@"2"} successBlock:^(id returnData) {
-                NSLog(@"%@",returnData);
-                if ([returnData[@"code"] integerValue] == 0) {
-                    [GSKeychain setSecret:uuidKey forKey:UUIDkey];
-                    [GSKeychain setSecret:secret forKey:UUIDSecret];
-                    [weakSelf saveSecret:uuidKey key:UUIDkey];
-                    [weakSelf saveSecret:secret key:UUIDSecret];
-                }else if([returnData[@"code"] integerValue] == -1)
-                {
-//                    [weakSelf checkIsRegisteruuid];
-                }else {
-                    [weakSelf registZhixin];
-                }
+        NSString *uuidKey = [UIDevice currentDevice].identifierForVendor.UUIDString;
+        NSString *secret = [self createGuidKey];
+        __weak typeof(self) weakSelf = self;
+        [MHNetworkManager postReqeustWithURL:kRegistZhixinAPI params:@{@"appkey":uuidKey,@"appsecret":secret,@"clienttype":@"2"} successBlock:^(id returnData) {
+            NSLog(@"%@",returnData);
+            if ([returnData[@"code"] integerValue] == 0) {
+//                [GSKeychain setSecret:uuidKey forKey:UUIDkey];
+//                [GSKeychain setSecret:secret forKey:UUIDSecret];
+                [weakSelf saveSecret:uuidKey key:UUIDkey];
+                [weakSelf saveSecret:secret key:UUIDSecret];
+            }else if([returnData[@"code"] integerValue] == -1)
+            {
+                //[weakSelf checkIsRegisteruuid];
+            }else {
+                [weakSelf registZhixin];
+            }
                 
-            } failureBlock:^(NSError *error) {
+        } failureBlock:^(NSError *error) {
                 
-            } showHUD:NO];
-        }else {
-            NSString *secret = [GSKeychain secretForKey:UUIDSecret];
-            [self saveSecret:uuidKey key:UUIDkey];
-            [self saveSecret:secret key:UUIDSecret];
-        }
-
-    }
+        } showHUD:NO];
+    
 }
 
 // 检查是否已注册设备
 + (void)checkIsRegisteruuid {
     
-    NSString *uuidKey = [GSKeychain secretForKey:UUIDkey];
-    
+    NSString *uuidKey = [self getSecretWithKey:UUIDkey];
     if (uuidKey.length <= 0) {
-        [self registZhixin];
-    }else {
+        uuidKey = [UIDevice currentDevice].identifierForVendor.UUIDString;
         __weak typeof(self) weakSelf = self;
         [MHNetworkManager getRequstWithURL:kGetUUIDSecretAPI params:@{@"appkey":uuidKey} successBlock:^(id returnData) {
             
             NSString *secretStr = returnData[@"data"];
             if ([returnData[@"code"] integerValue] == 0 && secretStr.length > 0) {
                 
-                [GSKeychain setSecret:returnData[@"data"] forKey:UUIDSecret];
+                //                [GSKeychain setSecret:returnData[@"data"] forKey:UUIDSecret];
                 [weakSelf saveSecret:uuidKey key:UUIDkey];
                 [weakSelf saveSecret:returnData[@"data"] key:UUIDSecret];
                 
             }else {
                 
-                [GSKeychain removeAllSecrets];
+                //[GSKeychain removeAllSecrets];
                 [weakSelf saveSecret:@"" key:UUIDkey];
                 [weakSelf saveSecret:@"" key:UUIDSecret];
                 [weakSelf registZhixin];
@@ -327,6 +350,10 @@ static User *user = nil;
         } failureBlock:^(NSError *error) {
             
         } showHUD:NO];
+
+    }else {
+        
+        
     }
     
 }
