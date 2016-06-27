@@ -66,7 +66,7 @@ static NSString *indentify = @"proCellX";
     _titleTF.layer.borderColor = colorref;
     _titleTF.text = self.model.msgtitle;
     _titleTF.adjustsFontSizeToFitWidth = YES;
-    _titleTF.font = [UIFont systemFontOfSize:15];
+    _titleTF.font = [UIFont systemFontOfSize:17];
     _titleTF.textColor = [UIColor blackColor];
     
    // [self.view addSubview:_titleTF];
@@ -89,7 +89,7 @@ static NSString *indentify = @"proCellX";
                             "</style> \n"
                             "</head> \n"
                             "<body>%@</body> \n"
-                            "</html>",14, @"FZLTXHK", @"rgb(0, 0, 0)",@"100% !important",@"100% !important",self.model.msgcontent];
+                            "</html>",15, @"FZLTXHK", @"rgb(0, 0, 0)",@"100% !important",@"100% !important",self.model.msgcontent];
     NSLog(@"%@",htmlString);
     [self.view addSubview:_web];
     
@@ -160,7 +160,7 @@ static NSString *indentify = @"proCellX";
     _titleTF.text = self.model.msgtitle;
     _titleTF.textAlignment = NSTextAlignmentCenter;
     _titleTF.textColor = mainColor;
-    _titleTF.font = [UIFont systemFontOfSize:15];
+    _titleTF.font = [UIFont systemFontOfSize:17];
    // [self.view addSubview:_titleTF];
 
     _paoma = [[WQLPaoMaView alloc]initWithFrame:CGRectMake(leftInset+10*ProportionWidth,CGRectGetMaxY(_myCollectionV.frame)+5*ProportionHeight, KWidth-100*ProportionWidth, 40*ProportionHeight) withTitle:self.model.msgtitle];
@@ -184,7 +184,7 @@ static NSString *indentify = @"proCellX";
                             "</style> \n"
                             "</head> \n"
                             "<body>%@</body> \n"
-                            "</html>",14, @"FZLTXHK", @"rgb(0, 97, 167)",self.model.msgcontent];
+                            "</html>",15, @"FZLTXHK", @"rgb(0, 97, 167)",self.model.msgcontent];
     [_web loadHTMLString:htmlString baseURL:nil];
     
     [self.view addSubview: _web];
