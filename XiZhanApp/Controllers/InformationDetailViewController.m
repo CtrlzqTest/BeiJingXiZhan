@@ -54,26 +54,10 @@ static NSString *indentify = @"proCellX";
     [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 40*ProportionWidth) title:@"详情" fontSize:17.0];
     self.view.backgroundColor = [UIColor whiteColor];
   
-    _titleTF = [[UITextField alloc]init];
-    _titleTF.frame = CGRectMake(50*ProportionWidth,80*ProportionHeight, KWidth-100*ProportionWidth, 40*ProportionHeight);
-    _titleTF.borderStyle = UITextBorderStyleRoundedRect;
-    _titleTF.backgroundColor = [UIColor whiteColor];
-    _titleTF.enabled = NO;
-    _titleTF.layer.cornerRadius = 20.0;
-    _titleTF.textAlignment = NSTextAlignmentCenter;
-    _titleTF.layer.masksToBounds = YES;
-    _titleTF.layer.borderWidth = 3.0;
-    _titleTF.layer.borderColor = colorref;
-    _titleTF.text = self.model.msgtitle;
-    _titleTF.adjustsFontSizeToFitWidth = YES;
-    _titleTF.font = [UIFont systemFontOfSize:17];
-    _titleTF.textColor = [UIColor blackColor];
-    
-   // [self.view addSubview:_titleTF];
     _paoma = [[WQLPaoMaView alloc]initWithFrame:CGRectMake(50*ProportionWidth,80*ProportionHeight, KWidth-100*ProportionWidth, 40*ProportionHeight) withTitle:self.model.msgtitle];
     [self.view addSubview:_paoma];
     
-    _web = [[UIWebView alloc]initWithFrame:CGRectMake(20*ProportionWidth,CGRectGetMaxY(_titleTF.frame)+10*ProportionHeight, KWidth-40*ProportionWidth, 450*ProportionHeight)];
+    _web = [[UIWebView alloc]initWithFrame:CGRectMake(20*ProportionWidth,CGRectGetMaxY(_paoma.frame)+10*ProportionHeight, KWidth-40*ProportionWidth, 450*ProportionHeight)];
     _web.layer.cornerRadius = 20.0;
     _web.layer.masksToBounds = YES;
     _web.layer.borderWidth = 3.0;
@@ -89,7 +73,7 @@ static NSString *indentify = @"proCellX";
                             "</style> \n"
                             "</head> \n"
                             "<body>%@</body> \n"
-                            "</html>",15, @"FZLTXHK", @"rgb(0, 0, 0)",@"100% !important",@"100% !important",self.model.msgcontent];
+                            "</html>",14, @"FZLTXHK", @"rgb(0, 0, 0)",@"100% !important",@"100% !important",self.model.msgcontent];
     NSLog(@"%@",htmlString);
     [self.view addSubview:_web];
     
@@ -148,28 +132,13 @@ static NSString *indentify = @"proCellX";
 
     CGFloat leftInset = 40*ProportionWidth;
     
-    _titleTF = [[UITextField alloc]init];
-    _titleTF.frame = CGRectMake(leftInset+10*ProportionWidth,CGRectGetMaxY(_myCollectionV.frame)+5*ProportionHeight, KWidth-100*ProportionWidth, 40*ProportionHeight);
-    _titleTF.borderStyle = UITextBorderStyleRoundedRect;
-    _titleTF.backgroundColor = [UIColor whiteColor];
-    _titleTF.enabled = NO;
-    _titleTF.layer.cornerRadius = 20.0;
-    _titleTF.layer.masksToBounds = YES;
-   _titleTF.layer.borderWidth = 3.0;
-    _titleTF.layer.borderColor = colorref;
-    _titleTF.text = self.model.msgtitle;
-    _titleTF.textAlignment = NSTextAlignmentCenter;
-    _titleTF.textColor = mainColor;
-    _titleTF.font = [UIFont systemFontOfSize:17];
-   // [self.view addSubview:_titleTF];
-
     _paoma = [[WQLPaoMaView alloc]initWithFrame:CGRectMake(leftInset+10*ProportionWidth,CGRectGetMaxY(_myCollectionV.frame)+5*ProportionHeight, KWidth-100*ProportionWidth, 40*ProportionHeight) withTitle:self.model.msgtitle];
-    _paoma.myLable.textColor = mainColor;
-    _paoma.behindLabel.textColor = mainColor;
+   // _paoma.myLable.textColor = mainColor;
+    //_paoma.behindLabel.textColor = mainColor;
     [self.view addSubview:_paoma];
     
     _web = [[UIWebView alloc]init];
-        _web.frame = CGRectMake(leftInset,CGRectGetMaxY(_titleTF.frame) + 20*ProportionHeight, KWidth-2*leftInset, 185*ProportionHeight);
+        _web.frame = CGRectMake(leftInset,CGRectGetMaxY(_paoma.frame) + 20*ProportionHeight, KWidth-2*leftInset, 185*ProportionHeight);
     _web.layer.cornerRadius = 15.0;
     _web.layer.masksToBounds = YES;
     _web.layer.borderWidth = 3.0;
@@ -184,7 +153,7 @@ static NSString *indentify = @"proCellX";
                             "</style> \n"
                             "</head> \n"
                             "<body>%@</body> \n"
-                            "</html>",15, @"FZLTXHK", @"rgb(0, 97, 167)",self.model.msgcontent];
+                            "</html>",14, @"FZLTXHK", @"rgb(0, 0, 0)",self.model.msgcontent];
     [_web loadHTMLString:htmlString baseURL:nil];
     
     [self.view addSubview: _web];
