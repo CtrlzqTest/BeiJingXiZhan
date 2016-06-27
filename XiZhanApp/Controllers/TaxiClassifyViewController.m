@@ -43,7 +43,11 @@
     menuModel2.menuTitle = @"停车场站点信息";
     [_dataArray addObject:menuModel2];
     
-    // 返回按钮
+    
+    MenuModel *menuModel3 = [[MenuModel alloc] init];
+    menuModel3.menuTitle = @"地图导航";
+    [_dataArray addObject:menuModel3];// 返回按钮
+    
     __weak typeof(self) weakSelf = self;
     [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
         [weakSelf.navigationController popViewControllerAnimated:YES];
@@ -96,13 +100,24 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     MenuModel *model = _dataArray[indexPath.row];
-    if (indexPath.row == 0) {
-        TaxiMsgListViewController *taxiStationVC = [[TaxiMsgListViewController alloc] init];
-        [self.navigationController pushViewController:taxiStationVC animated:YES];
-    }else {
-        ParkViewController *taxiMsgVC = [Utility getControllerWithStoryBoardId:parkVCId];
-        taxiMsgVC.menuModel = model;
-        [self.navigationController pushViewController:taxiMsgVC animated:YES];
+    switch (indexPath.row) {
+        case 0:{
+            TaxiMsgListViewController *taxiStationVC = [[TaxiMsgListViewController alloc] init];
+            [self.navigationController pushViewController:taxiStationVC animated:YES];
+        }
+            break;
+        case 1:{
+            ParkViewController *taxiMsgVC = [Utility getControllerWithStoryBoardId:parkVCId];
+            taxiMsgVC.menuModel = model;
+            [self.navigationController pushViewController:taxiMsgVC animated:YES];
+        }
+            break;
+        case 2:{
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://maps.apple.com/maps?q=&Z=13"]];
+        }
+            break;
+        default:
+            break;
     }
     
 }
