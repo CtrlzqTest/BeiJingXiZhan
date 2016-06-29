@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>chinese</string>
 	<key>CFBundleDisplayName</key>
-	<string>西站管委会</string>
+	<string>西站出行</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
