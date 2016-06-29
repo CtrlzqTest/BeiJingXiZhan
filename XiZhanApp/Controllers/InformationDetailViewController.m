@@ -62,6 +62,7 @@ static NSString *indentify = @"proCellX";
     _web = [[UIWebView alloc]initWithFrame:CGRectMake(20*ProportionWidth,CGRectGetMaxY(_paoma.frame)+10*ProportionHeight, KWidth-40*ProportionWidth, 450*ProportionHeight)];
     [self addWebMethod];
 }
+#pragma mark uiwebviewDelegate
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     
