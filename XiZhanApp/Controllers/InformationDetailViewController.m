@@ -15,6 +15,8 @@
 #import "WQLPaoMaView.h"
 
 static NSString *indentify = @"proCellX";
+#define BIG_IMG_WIDTH 300
+#define BIG_IMG_HEIGHT 300
 @interface InformationDetailViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,DJPhotoBrowserDelegate,UIWebViewDelegate>
 @property(nonatomic,retain)UICollectionView *myCollectionV;
 @property(nonatomic,strong)NSMutableArray *imageArray;
@@ -58,29 +60,11 @@ static NSString *indentify = @"proCellX";
     [self.view addSubview:_paoma];
     
     _web = [[UIWebView alloc]initWithFrame:CGRectMake(20*ProportionWidth,CGRectGetMaxY(_paoma.frame)+10*ProportionHeight, KWidth-40*ProportionWidth, 450*ProportionHeight)];
-    _web.layer.cornerRadius = 20.0;
-    _web.layer.masksToBounds = YES;
-    _web.layer.borderWidth = 3.0;
-    _web.layer.borderColor = colorref;
-    _web.delegate = self;
-    [_web setOpaque:NO];
-    _web.backgroundColor = [UIColor clearColor];
-    NSString *htmlString = [NSString stringWithFormat:@"<html> \n"
-                            "<head> \n"
-                            "<style type=\"text/css\"> \n"
-                            "body {font-size: %d; font-family: \"%@\"; color: %@;}\n"
-                            "img{display: block;padding:0;margin:0;width:%@;max-width: %@;height: auto;}\n"
-                            "</style> \n"
-                            "</head> \n"
-                            "<body>%@</body> \n"
-                            "</html>",14, @"FZLTXHK", @"rgb(0, 0, 0)",@"100% !important",@"100% !important",self.model.msgcontent];
-    NSLog(@"%@",htmlString);
-    [self.view addSubview:_web];
-    
-    [_web loadHTMLString:htmlString baseURL:nil];
+    [self addWebMethod];
 }
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
+    
     if (navigationType == UIWebViewNavigationTypeLinkClicked) {
         return NO;
     }
@@ -138,7 +122,11 @@ static NSString *indentify = @"proCellX";
     [self.view addSubview:_paoma];
     
     _web = [[UIWebView alloc]init];
-        _web.frame = CGRectMake(leftInset,CGRectGetMaxY(_paoma.frame) + 20*ProportionHeight, KWidth-2*leftInset, 185*ProportionHeight);
+    _web.frame = CGRectMake(leftInset,CGRectGetMaxY(_paoma.frame) + 20*ProportionHeight, KWidth-2*leftInset, 185*ProportionHeight);
+    [self addWebMethod];
+    }
+-(void)addWebMethod
+{
     _web.layer.cornerRadius = 15.0;
     _web.layer.masksToBounds = YES;
     _web.layer.borderWidth = 3.0;
@@ -146,23 +134,20 @@ static NSString *indentify = @"proCellX";
     _web.delegate = self;
     [_web setOpaque:NO];
     _web.backgroundColor = [UIColor clearColor];
+    _web.scalesPageToFit = YES;
     NSString *htmlString = [NSString stringWithFormat:@"<html> \n"
                             "<head> \n"
+                            "<meta name='viewport' content='user-scalable=yes, width=device-width,maximum-scale = 3.0, minimum-scale=1.0' />\n"
                             "<style type=\"text/css\"> \n"
-                            "body {font-size: %d; font-family: \"%@\"; color: %@;}\n"
+                            "body {font-size: %d; font-family: \"%@\"; color: %@;}\n"
+                            "img{display: block;padding:0;margin:0;width:%@;max-width: %@;height: auto !important;}\n"
                             "</style> \n"
                             "</head> \n"
                             "<body>%@</body> \n"
-                            "</html>",14, @"FZLTXHK", @"rgb(0, 0, 0)",self.model.msgcontent];
+                            "</html>",14, @"FZLTXHK", @"rgb(0, 0, 0)",@"100% !important",@"100% !important",self.model.msgcontent];
     [_web loadHTMLString:htmlString baseURL:nil];
-    
     [self.view addSubview: _web];
-    }
-#pragma mark webDelegateMethod
-//-(void)webViewDidFinishLoad:(UIWebView *)webView
-//{
-//   [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByTagName('body')[0].style.webkitTextFillColor= 'red'"];
-//}
+}
 -(void)addCollectionView
 {
     UICollectionViewFlowLayout *flowL = [[UICollectionViewFlowLayout alloc]init];
