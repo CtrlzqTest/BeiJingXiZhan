@@ -17,7 +17,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    CGFloat cornerRadius = (cellHeight - 10) / 2.0;
+    CGFloat height = cellHeight * KHeight / 860.0;
+    CGFloat cornerRadius = (height - 10) / 2.0;
     self.iconImgView.layer.cornerRadius = cornerRadius;
     self.iconImgView.clipsToBounds = YES;
     

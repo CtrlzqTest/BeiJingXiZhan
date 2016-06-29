@@ -74,7 +74,6 @@ static NSString *collCellId = @"MainCell";
         if ([returnData[@"code"] integerValue] == 0) {
             
             _dataArray = [MenuModel mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
-            
             MenuModel *menuModel = [[MenuModel alloc] init];
             menuModel.menuTitle = @"交通引导";
             [_dataArray addObject:menuModel];
@@ -98,9 +97,7 @@ static NSString *collCellId = @"MainCell";
         if (_dataArray.count <= 0) {
             [self addNodataViewInView:self.collectionView];
         }
-
     } showHUD:YES];
-    
 //    _dataArray = [NSMutableArray arrayWithArray:@[@"志愿者消息",@"站内公告消息",@"服务台消息"]];
 
 }

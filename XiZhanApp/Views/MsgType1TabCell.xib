@@ -22,14 +22,14 @@
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Point_red" translatesAutoresizingMaskIntoConstraints="NO" id="3h6-WO-Vsf">
-                        <rect key="frame" x="369" y="36" width="30" height="30"/>
+                        <rect key="frame" x="379" y="41" width="20" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="fpV-rV-9pr"/>
+                            <constraint firstAttribute="width" constant="20" id="fpV-rV-9pr"/>
                             <constraint firstAttribute="width" secondItem="3h6-WO-Vsf" secondAttribute="height" multiplier="1:1" id="q8h-S0-xaS"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cw-0F-0uz">
-                        <rect key="frame" x="110" y="26" width="251" height="21"/>
+                        <rect key="frame" x="110" y="26" width="261" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Jb7-up-Ml6"/>
                         </constraints>
@@ -41,7 +41,7 @@
                         <rect key="frame" x="10" y="5" width="92" height="92"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAI-PC-H3F">
-                        <rect key="frame" x="110" y="57" width="251" height="21"/>
+                        <rect key="frame" x="110" y="57" width="261" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="xsk-zg-O7M"/>
                         </constraints>
@@ -83,7 +83,7 @@
                 <outlet property="subTitleLabel" destination="KAI-PC-H3F" id="MUL-oQ-f30"/>
                 <outlet property="titleLabel" destination="8cw-0F-0uz" id="3vI-EK-v7N"/>
             </connections>
-            <point key="canvasLocation" x="353" y="352"/>
+            <point key="canvasLocation" x="294" y="354"/>
         </tableViewCell>
     </objects>
     <resources>
