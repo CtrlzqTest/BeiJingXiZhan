@@ -40,6 +40,16 @@
                   success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
                   failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure
                   showHUD:(BOOL )showHUD;
-
-
+/**
+ *  <#Description#>
+ *
+ *  @param postData      <#postData description#>
+ *  @param completion    <#completion description#>
+ *  @param progressBlock <#progressBlock description#>
+ *  @param failure       <#failure description#>
+ */
++ (void)uploadFile:(NSData *)postData
+ completionHandler:(void(^)(id responseObject))completion
+   progressHandler:(void(^)(long long p))progressBlock
+    failureHandler:(void(^)(NSError *error))failure;
 @end
