@@ -148,11 +148,10 @@
         dict = @{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15",@"time":@"",@"sort":@"CreateTime"};
     }
     
-    [MHNetworkManager getRequstWithURL:kMessageListAPI params:dict successBlock:^(id returnData) {
-        
-        if ([returnData[@"code"] integerValue] == 0) {
-
-            NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
+    [RequestManager getRequestWithURL:kMessageListAPI paramer:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject[@"code"] integerValue] == 0) {
+            
+            NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
             if (resultArray1.count > 0) {
                 _page ++;
                 for (MessageModel *model in resultArray1) {
@@ -171,7 +170,7 @@
             NSString *condition = !self.menuModel ? nil : [NSString stringWithFormat:@"nodeid = '%@'",self.menuModel.menuId];
             _dataArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:condition page:1 orderBy:@"msgdate"]];
             if (_dataArray.count <= 0) {
-//                [MBProgressHUD showMessag:@"" toView:nil];
+                //                [MBProgressHUD showMessag:@"" toView:nil];
                 [self addNodataViewInView:self.tableView];
             }
             [self.tableView reloadData];
@@ -181,7 +180,7 @@
         }
         [self.tableView.mj_header endRefreshing];
         
-    } failureBlock:^(NSError *error) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if (_dataArray.count <= 0) {
             [self addNodataViewInView:self.tableView];
         }
@@ -190,7 +189,6 @@
         }
         [MBProgressHUD showError:@"网络不给力" toView:self.view];
         [self.tableView.mj_header endRefreshing];
-        
     } showHUD:YES];
     
 }
@@ -208,10 +206,10 @@
     }else {
         dict = @{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15",@"sort":@"CreateTime",@"time":@""};
     }
-    [MHNetworkManager getRequstWithURL:kMessageListAPI params:dict successBlock:^(id returnData) {
-        
-        if ([returnData[@"code"] integerValue] == 0) {
-            NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"list"]];
+    
+    [RequestManager getRequestWithURL:kMessageListAPI paramer:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject[@"code"] integerValue] == 0) {
+            NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
             if (resultArray1.count > 0) {
                 _page ++;
                 for (MessageModel *model in resultArray1) {
@@ -243,8 +241,8 @@
             // 请求失败
         }
         [self.tableView.mj_footer endRefreshing];
-        
-    } failureBlock:^(NSError *error) {
+
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if (_dataArray.count <= 0) {
             [self addNodataViewInView:self.tableView];
         }
@@ -253,7 +251,6 @@
         }
         [MBProgressHUD showError:@"网络不给力" toView:self.view];
         [self.tableView.mj_header endRefreshing];
-        
     } showHUD:NO];
     
 }

@@ -72,10 +72,10 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
     __block MessageModel *messageModel = [[MessageModel mj_objectArrayWithKeyValuesArray:resultArray] firstObject];
     
     NSDictionary *dict = @{@"pageIndex":@"1",@"pageSize":@"1",@"time":[Utility getCurrentDateStr],@"sort":@"CreateTime",@"nodeid":@""};
-    [MHNetworkManager getRequstWithURL:kMessageListAPI params:dict successBlock:^(id returnData) {
-        
-        if ([returnData[@"code"] integerValue] == 0) {
-            NSArray *resultArray = [MessageModel mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
+    
+    [RequestManager getRequestWithURL:kMessageListAPI paramer:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject[@"code"] integerValue] == 0) {
+            NSArray *resultArray = [MessageModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
             MessageModel *newModel = [resultArray firstObject];
             // 如果服务器第一条数据的时间大于本地存储的最大时间
             if (newModel && [Utility timeIntervalWithDateStr:newModel.msgdatestr] > messageModel.msgdate) {
@@ -85,14 +85,15 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
                 [[NSNotificationCenter defaultCenter] postNotificationName:ZQReadStateDidChangeNotication object:nil];
                 [self.tableview reloadData];
             }else{
-//                [Utility saveMyMsgReadState:NO];
+                //                [Utility saveMyMsgReadState:NO];
             }
         }else {
             
         }
-    } failureBlock:^(NSError *error) {
+
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
-    } showHUD:NO];
+    } showHUD:YES];
 
 }
 
@@ -213,12 +214,6 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
-        // 退出登录
-        [MHNetworkManager getRequstWithURL:kLogoutAPI params:@{@"userId":[User shareUser].userId} successBlock:^(id returnData) {
-            
-        } failureBlock:^(NSError *error) {
-            
-        } showHUD:NO];
     
         [Utility setLoginStates:NO];
         [Utility saveVolunteerState:NO];

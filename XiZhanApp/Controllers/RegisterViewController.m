@@ -76,11 +76,10 @@
     }
     
     __weak typeof(self) weakSelf = self;
-    [MHNetworkManager postReqeustWithURL:kgetCodeAPI params:@{@"tel":self.phoneTef.text} successBlock:^(id returnData) {
+    [RequestManager postRequestWithURL:kgetCodeAPI paramer:@{@"tel":self.phoneTef.text} success:^(NSURLSessionDataTask *task, id responseObject) {
         [MBProgressHUD showSuccess:@"获取验证码成功" toView:self.view];
         [weakSelf countDownTime:@60];
-//        weakSelf.checkCodeTef.text = returnData[@"smscode"];
-    } failureBlock:^(NSError *error) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [MBProgressHUD showSuccess:@"获取验证码失败" toView:self.view];
     } showHUD:YES];
     
@@ -111,27 +110,24 @@
     }
     __weak typeof(self) weakSelf = self;
 //    [Utility md5:self.passWordTef.text]
-    [MHNetworkManager postReqeustWithURL:kRegisteAPI params:@{@"tel":self.phoneTef.text,@"smscode":self.checkCodeTef.text,@"password":self.passWordTef.text} successBlock:^(id returnData) {
-        
-        
-        if ([returnData[@"error_code"] isEqualToString:@"20000"]) {
+    [RequestManager postRequestWithURL:kRegisteAPI paramer:@{@"tel":self.phoneTef.text,@"smscode":self.checkCodeTef.text,@"password":self.passWordTef.text} success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject[@"error_code"] isEqualToString:@"20000"]) {
             [MBProgressHUD showSuccess:@"服务器异常" toView:weakSelf.view];
             return ;
         }
         
-        if ([returnData[@"message_code"] isEqualToString:@"10000"]) {
+        if ([responseObject[@"message_code"] isEqualToString:@"10000"]) {
             
             [MBProgressHUD showSuccess:@"注册成功" toView:nil];
             [User shareUser].isLogin = YES;
-            [[User shareUser] resetUserInfo:returnData[@"user"]];
+            [[User shareUser] resetUserInfo:responseObject[@"user"]];
             [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLoginNotication object:nil];
             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
             
         }else {
-            [MBProgressHUD showSuccess:returnData[@"errmsg"] toView:weakSelf.view];
+            [MBProgressHUD showSuccess:responseObject[@"errmsg"] toView:weakSelf.view];
         }
-
-    } failureBlock:^(NSError *error) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
     } showHUD:YES];
     

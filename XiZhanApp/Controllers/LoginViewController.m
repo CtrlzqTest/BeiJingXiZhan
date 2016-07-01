@@ -124,12 +124,12 @@
         return ;
     }
     __weak typeof(self) weakSelf = self;
-    [MHNetworkManager postReqeustWithURL:kLoginAPI params:@{@"tel":self.userNameLabel.text,@"password":pwd} successBlock:^(id returnData) {
+    [RequestManager postRequestWithURL:kLoginAPI paramer:@{@"tel":self.userNameLabel.text,@"password":pwd} success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        if ([returnData[@"message"] isEqualToString:@"success"]) {
+        if ([responseObject[@"message"] isEqualToString:@"success"]) {
             
             [User shareUser].isLogin = YES;
-            [[User shareUser] resetUserInfo:returnData[@"user"]];
+            [[User shareUser] resetUserInfo:responseObject[@"user"]];
             if (weakSelf.autoLoginSwitch.selected) {
                 [Utility setLoginStates:YES];
             }
@@ -139,15 +139,14 @@
         }else {
             [MBProgressHUD showError:@"密码与用户名不匹配" toView:nil];
         }
+
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
-    } failureBlock:^(NSError *error) {
-        [MBProgressHUD showError:@"服务器异常" toView:nil];
     } showHUD:YES];
     
 }
 
 - (BOOL )checkInput {
-    
     
     if (self.userNameLabel.text.length <= 0) {
         [MBProgressHUD showError:@"用户名不能为空" toView:nil];

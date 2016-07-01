@@ -168,9 +168,9 @@
         return ;
     }
     __weak typeof(self) weakSelf = self;
-    [MHNetworkManager postReqeustWithURL:kAppopinion params:@{@"content":self.textView.text,@"isanonymity":@"0",@"userid":[User shareUser].userId} successBlock:^(id returnData) {
-        NSLog(@"returnData:%@",returnData);
-        if ([returnData[@"code"] integerValue] == 0) {
+    [RequestManager postRequestWithURL:kAppopinion paramer:@{@"content":self.textView.text,@"isanonymity":@"0",@"userid":[User shareUser].userId} success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        if ([responseObject[@"code"] integerValue] == 0) {
             [MBProgressHUD showSuccess:@"意见成功发送" toView:weakSelf.view];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [weakSelf.navigationController popViewControllerAnimated:YES];
@@ -180,8 +180,8 @@
         {
             [MBProgressHUD showError:@"意见发送失败" toView:weakSelf.view];
         }
-    } failureBlock:^(NSError *error) {
-        [MBProgressHUD showError:@"意见发送失败" toView:weakSelf.view];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
     } showHUD:YES];
 
 }

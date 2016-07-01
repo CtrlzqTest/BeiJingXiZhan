@@ -73,18 +73,16 @@
 }
 -(void)getAreaData
 {
-    
-    [MHNetworkManager getRequstWithURL:kGetAreaAPI params:nil successBlock:^(id returnData) {
-
-        if ([returnData[@"code"] integerValue] == 0) {
-            _areaArray = [AreaOfXiZhan mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
+    [RequestManager getRequestWithURL:kGetAreaAPI paramer:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject[@"code"] integerValue] == 0) {
+            _areaArray = [AreaOfXiZhan mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
         }
         else
         {
-           // [MBProgressHUD showError:@"网络错误！" toView:nil];
+            // [MBProgressHUD showError:@"网络错误！" toView:nil];
         }
-    } failureBlock:^(NSError *error) {
-         //[MBProgressHUD showError:@"网络错误！" toView:nil];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
     } showHUD:YES];
     
 }
@@ -178,19 +176,18 @@
 {
     if (buttonIndex == 1) {
         //
-        [MHNetworkManager postReqeustWithURL:kPostOffLine params:@{@"userid":[User shareUser].zid,@"time":[Utility getCurrentDateStr]} successBlock:^(id returnData) {
-
-            if ([returnData[@"code"] integerValue] == 0) {
+        [RequestManager postRequestWithURL:kPostOffLine paramer:@{@"userid":[User shareUser].zid,@"time":[Utility getCurrentDateStr]} success:^(NSURLSessionDataTask *task, id responseObject) {
+            if ([responseObject[@"code"] integerValue] == 0) {
                 _isFirstTouch = !_isFirstTouch;
                 [_resignButton setTitle:@"已签退" forState:UIControlStateNormal];
                 [Utility saveVolunteerState:NO];
             }
             else
             {
-            [MBProgressHUD showError:@"网络错误，未签退!" toView:nil];
+                [MBProgressHUD showError:@"网络错误，未签退!" toView:nil];
             }
-        } failureBlock:^(NSError *error) {
-             [MBProgressHUD showError:@"网络错误，未签退!" toView:nil];
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
+            [MBProgressHUD showError:@"网络错误，未签退!" toView:nil];
         } showHUD:YES];
         
     }
@@ -198,9 +195,9 @@
 
 -(void)requestOnline:(AreaOfXiZhan *)areaOfXiZhan
 {
-    [MHNetworkManager postReqeustWithURL:kPostOnLine params:@{@"userid":[User shareUser].zid,@"areaid":areaOfXiZhan.AreaID,@"time":[Utility getCurrentDateStr]} successBlock:^(id returnData) {
-        
-        if ([returnData[@"code"] integerValue] == 0) {
+    
+    [RequestManager postRequestWithURL:kPostOnLine paramer:@{@"userid":[User shareUser].zid,@"areaid":areaOfXiZhan.AreaID,@"time":[Utility getCurrentDateStr]} success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject[@"code"] integerValue] == 0) {
             [Utility  saveVolunteerState:YES];
             [_resignButton setTitle:@"已签到" forState:UIControlStateNormal];
             _isFirstTouch = !_isFirstTouch;
@@ -209,9 +206,10 @@
         {
             [MBProgressHUD showError:@"网络错误，未签到!" toView:nil];
         }
-    } failureBlock:^(NSError *error) {
-        [MBProgressHUD showError:@"网络错误，未签到!" toView:nil];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        [MBProgressHUD showError:@"网络错误，未签退!" toView:nil];
     } showHUD:YES];
+    
 }
 #pragma mark 点击刷新
 -(void)tapNoDataView {
@@ -223,10 +221,9 @@
     // 判断是否有分类列表
 //    NSDictionary *dict = !self.menuModel ? nil : @{@"parentId":self.menuModel.menuId};
     [self removeNodataView];
-    [MHNetworkManager getRequstWithURL:kMuenListAPI params:@{@"parentid":self.menuModel.menuId} successBlock:^(id returnData) {
-
-        if ([returnData[@"code"] integerValue] == 0) {
-            _dataArray = [MenuModel mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
+    [RequestManager getRequestWithURL:kMuenListAPI paramer:@{@"parentid":self.menuModel.menuId} success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject[@"code"] integerValue] == 0) {
+            _dataArray = [MenuModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
             [self.tableView reloadData];
             if ([[User shareUser].type isEqualToString:@"2"]&&[self.menuModel.menuTitle isEqualToString:@"志愿者服务"])
             {
@@ -239,8 +236,7 @@
         if (_dataArray.count <= 0) {
             [self addNodataViewInView:self.tableView];
         }
-    } failureBlock:^(NSError *error) {
-        
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if ([self.tableView.mj_footer isRefreshing]) {
             [self.tableView.mj_footer endRefreshing];
         }

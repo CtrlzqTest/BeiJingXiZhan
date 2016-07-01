@@ -12,8 +12,7 @@
 #import "RestAPI.h"
 #import "Utility.h"
 #import "User.h"
-#import "MHNetworkManager.h"
-#import "MBProgressHUD+Add.h"
+#import "RequestManager.h"
 #import <MJExtension.h>
 #import "UIView+ZQExtention.h"
 #import "UIViewController+AYCNavigationItem.h"

@@ -69,16 +69,16 @@ static NSString *collCellId = @"MainCell";
     
     [self removeNodataView];
     
-    [MHNetworkManager getRequstWithURL:kMuenListAPI params:@{@"parentid":@""} successBlock:^(id returnData) {
-
-        if ([returnData[@"code"] integerValue] == 0) {
+    [RequestManager getRequestWithURL:kMuenListAPI paramer:@{@"parentid":@""} success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        if ([responseObject[@"code"] integerValue] == 0) {
             
-            _dataArray = [MenuModel mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
+            _dataArray = [MenuModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
             MenuModel *menuModel = [[MenuModel alloc] init];
             menuModel.menuTitle = @"交通引导";
             [_dataArray addObject:menuModel];
             
-        }else if([returnData[@"code"] integerValue] == 10001){
+        }else if([responseObject[@"code"] integerValue] == 10001){
             [Utility checkIsRegisteruuid];
         }else {
             [MBProgressHUD showError:@"网络不给力" toView:self.view];
@@ -90,10 +90,8 @@ static NSString *collCellId = @"MainCell";
         
         [self.collectionView reloadData];
         [self.collectionView.mj_header endRefreshing];
-        
-    } failureBlock:^(NSError *error) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [self.collectionView.mj_header endRefreshing];
-        [MBProgressHUD showError:@"网络不给力" toView:self.view];
         if (_dataArray.count <= 0) {
             [self addNodataViewInView:self.collectionView];
         }
