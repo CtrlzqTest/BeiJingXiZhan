@@ -159,11 +159,10 @@
     _peopleTotalNum = 0;
     _taxtTotalNum = 0;
     __weak typeof(self) weakSelf = self;
-    [MHNetworkManager getRequstWithURL:kGetTaxiInfoNewDataAPI params:nil successBlock:^(id returnData) {
-        
-        if ([returnData[@"code"] integerValue] == 0) {
+    [RequestManager getRequestWithURL:kGetTaxiInfoNewDataAPI paramer:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject[@"code"] integerValue] == 0) {
             
-            _dataArray = [TaxiMsgModel mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
+            _dataArray = [TaxiMsgModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
             for (TaxiMsgModel *item in _dataArray) {
                 _peopleTotalNum = _peopleTotalNum+[item.PeopleCount integerValue];
                 _taxtTotalNum = _taxtTotalNum+[item.TaxiCount integerValue];
@@ -176,14 +175,12 @@
             [MBProgressHUD showError:@"网络异常" toView:self.view];
         }
         [self.tableView.mj_header endRefreshing];
-        
-    } failureBlock:^(NSError *error) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         if ([self.tableView.mj_footer isRefreshing]) {
             [self.tableView.mj_footer endRefreshing];
         }
         [MBProgressHUD showError:@"网络不给力" toView:self.view];
         [self.tableView.mj_header endRefreshing];
-        
     } showHUD:YES];
     
 }
@@ -297,18 +294,18 @@
     
     NSNumber *taxiNum = [NSNumber numberWithInt:[_taxiTF.text intValue]] ;
     NSNumber *peopleNum = [NSNumber numberWithInt:[_peopleTF.text intValue]];
-    [MHNetworkManager postReqeustWithURL:KPostNewPublishTaxiInfo params:@{@"taxiRankID":_modelChange.TaxiRankID,@"taxiCount":taxiNum,@"peopleCount":peopleNum,@"createUser":[User shareUser].tel} successBlock:^(id returnData) {
-        
-        if ([returnData[@"code"]integerValue] == 0) {
+    [RequestManager postRequestWithURL:KPostNewPublishTaxiInfo paramer:@{@"taxiRankID":_modelChange.TaxiRankID,@"taxiCount":taxiNum,@"peopleCount":peopleNum,@"createUser":[User shareUser].tel} success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject[@"code"]integerValue] == 0) {
             [weakSelf getData];
             [btn.superview performSelector:@selector(close)];
         }
-       else
-       {
-           [MBProgressHUD showError:@"编辑失败！" toView:nil];
-       }
-    } failureBlock:^(NSError *error) {
-        [MBProgressHUD showError:@"编辑失败！" toView:nil];
+        else
+        {
+            [MBProgressHUD showError:@"编辑失败！" toView:nil];
+        }
+
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
     } showHUD:YES];
 
 }

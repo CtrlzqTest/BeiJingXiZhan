@@ -135,16 +135,17 @@ static User *user = nil;
      NSMutableDictionary *param = [NSMutableDictionary dictionary];
      [param setObject:@"IOS" forKey:@"clientType"];
     
-    [MHNetworkManager postReqeustWithURL:kCheckNewVersionAPI params:param successBlock:^(id returnData) {
-        if ([returnData[@"message"] isEqualToString:@"success"]) {
-            NSDictionary *dict = [returnData objectForKey:@"list"];
+
+    [RequestManager postRequestWithURL:kCheckNewVersionAPI paramer:param success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject[@"message"] isEqualToString:@"success"]) {
+            NSDictionary *dict = [responseObject objectForKey:@"list"];
             NSLog(@"\ncheckVersion%@\n",dict);
             double newVersion = [[dict objectForKey:@"versionNum"] doubleValue];
             BOOL flag = newVersion > currentVersion;
             versionCheckBlock(flag,dict);
         }
-    } failureBlock:^(NSError *error) {
-         [MBProgressHUD showError:@"网络不给力" toView:nil];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
     } showHUD:NO];
 }
 
@@ -302,24 +303,19 @@ static User *user = nil;
         NSString *uuidKey = [UIDevice currentDevice].identifierForVendor.UUIDString;
         NSString *secret = [self createGuidKey];
         __weak typeof(self) weakSelf = self;
-        [MHNetworkManager postReqeustWithURL:kRegistZhixinAPI params:@{@"appkey":uuidKey,@"appsecret":secret,@"clienttype":@"2"} successBlock:^(id returnData) {
-            NSLog(@"%@",returnData);
-            if ([returnData[@"code"] integerValue] == 0) {
-//                [GSKeychain setSecret:uuidKey forKey:UUIDkey];
-//                [GSKeychain setSecret:secret forKey:UUIDSecret];
-                [weakSelf saveSecret:uuidKey key:UUIDkey];
-                [weakSelf saveSecret:secret key:UUIDSecret];
-            }else if([returnData[@"code"] integerValue] == -1)
-            {
-                //[weakSelf checkIsRegisteruuid];
-            }else {
-                [weakSelf registZhixin];
-            }
-                
-        } failureBlock:^(NSError *error) {
-                
-        } showHUD:NO];
-    
+
+    [RequestManager postRequestWithURL:kRegistZhixinAPI paramer:@{@"appkey":uuidKey,@"appsecret":secret,@"clienttype":@"2"} success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject[@"code"] integerValue] == 0) {
+            [weakSelf saveSecret:uuidKey key:UUIDkey];
+            [weakSelf saveSecret:secret key:UUIDSecret];
+        }else if([responseObject[@"code"] integerValue] == -1){
+            //[weakSelf checkIsRegisteruuid];
+        }else {
+            [weakSelf registZhixin];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    } showHUD:NO];
 }
 
 // 检查是否已注册设备
@@ -329,14 +325,14 @@ static User *user = nil;
     if (uuidKey.length <= 0) {
         uuidKey = [UIDevice currentDevice].identifierForVendor.UUIDString;
         __weak typeof(self) weakSelf = self;
-        [MHNetworkManager getRequstWithURL:kGetUUIDSecretAPI params:@{@"appkey":uuidKey} successBlock:^(id returnData) {
-            
-            NSString *secretStr = returnData[@"data"];
-            if ([returnData[@"code"] integerValue] == 0 && secretStr.length > 0) {
+        
+        [RequestManager getRequestWithURL:kGetUUIDSecretAPI paramer:@{@"appkey":uuidKey} success:^(NSURLSessionDataTask *task, id responseObject) {
+            NSString *secretStr = responseObject[@"data"];
+            if ([responseObject[@"code"] integerValue] == 0 && secretStr.length > 0) {
                 
                 //                [GSKeychain setSecret:returnData[@"data"] forKey:UUIDSecret];
                 [weakSelf saveSecret:uuidKey key:UUIDkey];
-                [weakSelf saveSecret:returnData[@"data"] key:UUIDSecret];
+                [weakSelf saveSecret:responseObject[@"data"] key:UUIDSecret];
                 
             }else {
                 
@@ -345,14 +341,13 @@ static User *user = nil;
                 [weakSelf saveSecret:@"" key:UUIDSecret];
                 [weakSelf registZhixin];
             }
-        } failureBlock:^(NSError *error) {
+
+        } failure:^(NSURLSessionDataTask *task, NSError *error) {
             
         } showHUD:NO];
 
-    }else {
-        
-        
     }
+    
     
 }
 

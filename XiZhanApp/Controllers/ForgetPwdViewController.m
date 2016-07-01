@@ -69,18 +69,18 @@
     }
     __weak typeof(self) weakSelf = self;
 //    [Utility md5:self.pwdTef.text]
-    [MHNetworkManager postReqeustWithURL:kResetPwdAPI params:@{@"tel":self.phoneTef.text,@"smscode":self.codeTef.text,@"password":self.pwdTef.text} successBlock:^(id returnData) {
+    [RequestManager postRequestWithURL:kResetPwdAPI paramer:@{@"tel":self.phoneTef.text,@"smscode":self.codeTef.text,@"password":self.pwdTef.text} success:^(NSURLSessionDataTask *task, id responseObject) {
         
-        if ([returnData[@"message"] isEqualToString:@"success"]) {
+        if ([responseObject[@"message"] isEqualToString:@"success"]) {
             [MBProgressHUD showSuccess:@"修改成功" toView:weakSelf.view];
             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
         }else {
             [MBProgressHUD showSuccess:@"密码修改失败" toView:weakSelf.view];
         }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
-    } failureBlock:^(NSError *error) {
-//        [MBProgressHUD showSuccess:@"密码修改失败" toView:weakSelf.view];
     } showHUD:YES];
+    
     
 }
 
@@ -97,11 +97,10 @@
     }
     
     __weak typeof(self) weakSelf = self;
-    [MHNetworkManager postReqeustWithURL:kgetCodeAPI params:@{@"tel":self.phoneTef.text} successBlock:^(id returnData) {
+    [RequestManager postRequestWithURL:kgetCodeAPI paramer:@{@"tel":self.phoneTef.text} success:^(NSURLSessionDataTask *task, id responseObject) {
         [MBProgressHUD showSuccess:@"获取验证码成功" toView:self.view];
         [weakSelf countDownTime:@60];
-        //        weakSelf.checkCodeTef.text = returnData[@"smscode"];
-    } failureBlock:^(NSError *error) {
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [MBProgressHUD showSuccess:@"获取验证码失败" toView:self.view];
     } showHUD:YES];
     

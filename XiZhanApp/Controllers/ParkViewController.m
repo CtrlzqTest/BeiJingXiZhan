@@ -61,18 +61,16 @@
 
 - (void)requstData {
     
-    [MHNetworkManager getRequstWithURL:kGetParkInfoNewAPI params:nil successBlock:^(id returnData) {
-        
-        if ([returnData[@"code"] integerValue] == 0) {
-            _dataArray = [ParkMsgModel mj_objectArrayWithKeyValuesArray:returnData[@"data"]];
+    [RequestManager getRequestWithURL:kGetParkInfoNewAPI paramer:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject[@"code"] integerValue] == 0) {
+            _dataArray = [ParkMsgModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
             [self.tableView reloadData];
             
         }else {
             [MBProgressHUD showError:@"获取列表失败" toView:self.view];
         }
         [self.tableView.mj_header endRefreshing];
-    } failureBlock:^(NSError *error) {
-        [MBProgressHUD showError:@"网络连接异常" toView:self.view];
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
         [self.tableView.mj_header endRefreshing];
     } showHUD:YES];
     
