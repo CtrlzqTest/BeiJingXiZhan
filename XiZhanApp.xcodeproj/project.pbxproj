@@ -522,7 +522,8 @@
 				F07F46F41D264AEA00DCFD78 /* MBProgressHUD+Add.m */,
 				F07F46F51D264AEA00DCFD78 /* MBProgressHUD.bundle */,
 			);
-			path = ZQNetWork;
+			name = ZQNetWork;
+			path = ../ZQNetWork;
 			sourceTree = "<group>";
 		};
 		F092EEBF1CE6B6E200353351 /* MessageList(消息列表) */ = {
@@ -612,7 +613,6 @@
 			isa = PBXGroup;
 			children = (
 				F0F379E81CE07B280047A469 /* API */,
-				F07F46F21D264AEA00DCFD78 /* ZQNetWork */,
 				F0F379EE1CE07B280047A469 /* BaseViewControllers */,
 				F0F379FA1CE07B280047A469 /* Models */,
 				F0F379F51CE07B280047A469 /* Controllers */,
@@ -645,6 +645,7 @@
 		F0F379E81CE07B280047A469 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				F07F46F21D264AEA00DCFD78 /* ZQNetWork */,
 				F0F379ED1CE07B280047A469 /* RestAPI.h */,
 			);
 			path = API;
