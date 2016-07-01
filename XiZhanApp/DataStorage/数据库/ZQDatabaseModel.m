@@ -58,40 +58,6 @@
 {
     [[ZQDatabaseManager shareDatabaseManager] updateDataWithClass:self condition:condition];
 }
-#warning 需要重写下面两个方法
-// 条件查询
-- (NSArray *)getDataWithCondition:(NSString *)condition {
-    
-    NSArray *tempArray = [[ZQDatabaseManager shareDatabaseManager] getDataWithClass:self condition:condition];
-    return tempArray;
-    
-}
-
-// 获得所有数据
--(NSArray *)getAllDataFromLocal
-{
-    NSArray *tempArray = [[ZQDatabaseManager shareDatabaseManager] getAllDataWithClass:self];
-//    NSMutableArray *resultArray = [NSMutableArray array];
-//    for (NSDictionary *dict in tempArray) {
-//        TestModel *model = [[TestModel alloc] init];
-//        [model setValuesForKeysWithDictionary:dict];
-//        [resultArray addObject:model];
-//    }
-    return tempArray;
-}
-
-// 分页获取数据
-- (NSArray *)getDataWithPage:(NSInteger )page {
-    
-    NSArray *tempArray = [[ZQDatabaseManager shareDatabaseManager] getDataWithClass:self page:page];
-//    NSMutableArray *resultArray = [NSMutableArray array];
-//    for (NSDictionary *dict in tempArray) {
-//        NSObject *model = [[self alloc] init];
-//        [model setValuesForKeysWithDictionary:dict];
-//        [resultArray addObject:model];
-//    }
-    return tempArray;
-}
 
 // 获得所有数据并排序
 +(NSArray *)getAllDataFromLocalOrderby:(NSString *)proName

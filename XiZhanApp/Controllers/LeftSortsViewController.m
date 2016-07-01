@@ -68,7 +68,7 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
 // 获取我的消息列表（所有消息）
 - (void)requestData {
     
-    NSArray *resultArray = [[MessageModel shareTestModel] getDataWithCondition:@"msgDate = (select max(msgDate) from MessageModel)"];
+    NSArray *resultArray = [MessageModel getDataWithCondition:@"msgDate = (select max(msgDate) from MessageModel)" page:0 orderBy:nil];
     __block MessageModel *messageModel = [[MessageModel mj_objectArrayWithKeyValuesArray:resultArray] firstObject];
     
     NSDictionary *dict = @{@"pageIndex":@"1",@"pageSize":@"1",@"time":[Utility getCurrentDateStr],@"sort":@"CreateTime",@"nodeid":@""};

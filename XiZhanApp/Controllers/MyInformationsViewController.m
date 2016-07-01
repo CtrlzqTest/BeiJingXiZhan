@@ -158,7 +158,7 @@
                 for (MessageModel *model in resultArray1) {
                     
                     // 判断数据库是否已存在该条消息b
-                    NSArray *coutArr = [[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
+                    NSArray *coutArr = [MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid] page:0 orderBy:nil];
                     if (coutArr.count <= 0) {
                         // 先添加到数组，同时保存到数据库
                         model.msgdate = [Utility timeIntervalWithDateStr:model.msgdatestr];
@@ -217,7 +217,7 @@
                 for (MessageModel *model in resultArray1) {
                     
                     // 判断数据库是否已存在该条消息
-                    NSArray *coutArr = [[MessageModel shareTestModel] getDataWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
+                    NSArray *coutArr = [MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid] page:0 orderBy:nil];
                     if (coutArr.count <= 0) {
                         // 先添加到数组，同时保存到数据库
                         model.msgdate = [Utility timeIntervalWithDateStr:model.msgdatestr];

@@ -42,27 +42,6 @@
 -(void)updateWithCondition:(NSString *)condition;
 
 /**
- *  从本地获取数据
- *
- *  @return 数据数组
- */
--(NSArray *)getAllDataFromLocal;
-
-/**
- *  条件查询
- *
- *  @param condition 查询条件
- */
-- (NSArray *)getDataWithCondition:(NSString *)condition;
-
-/**
- *  分页查询
- *
- *  @param page 页数
- */
-- (NSArray *)getDataWithPage:(NSInteger )page;
-
-/**
  *  从本地获取数据并排序
  *
  *  @return 数据数组
