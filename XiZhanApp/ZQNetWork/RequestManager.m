@@ -19,7 +19,7 @@
     NSString *str = [BaseAPI stringByAppendingString:urlStr];
     NSString *url = nil;
     if ([Utility checkToSign:str]) {
-        url = [[Utility getSecretAPI:str paramDict:paramers] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        url = [[Utility getSecretAPI:str paramDict:nil] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         [RequestHelper startRequest:url paramer:paramers method:RequestMethodPost success:success failure:failure showHUD:showHUD];
     }else {
         url = str;
