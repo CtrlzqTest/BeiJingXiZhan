@@ -10,7 +10,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define BaseAPI                 @"http://192.168.88.1:8080/bjws/"  // 测试
+#define BaseAPI                 @"http://192.168.16.8:8080/bjws/"  // 测试
 
 //#define BaseAPI                 @"http://42.62.18.88:8037/bjws/"  // 发布接口地址
 //
@@ -20,7 +20,7 @@
 
 #define BaseXiZhanImgAPI        @"http://222.240.172.197/"     // 测试环境图片显示地址
 
-#define BaseXiZhanAPI           @"http://222.240.172.197:8081" // 测试环境图片接口地址
+#define BaseXiZhanAPI           @"http://222.240.172.197:8081/" // 测试环境图片接口地址
 
 #define kgetCodeAPI             @"app.user/getSmsCode"      // 获取验证码
 
