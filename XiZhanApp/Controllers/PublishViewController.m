@@ -210,7 +210,7 @@
             weakSel.imgString = [weakSel.imgString stringByAppendingString:@","];
                         
             NSArray *imgArray = [weakSel.imgString componentsSeparatedByString:@","];
-                        NSLog(@"lllll");
+                
             if (imgArray.count == bigImageArray.count+1) {
             weakSel.imgString = [weakSel.imgString substringToIndex:[weakSel.imgString length]-1];
                 [MBProgressHUD showSuccess:@"上传图片成功！" toView:nil];
@@ -227,7 +227,7 @@
         } failureHandler:^(NSError *error) {
              NSLog(@"%@",error);
             [MBProgressHUD showError:@"上传图片失败！" toView:nil];
-        }];
+        } showHUD:YES];
 //        MHUploadParam *param = [[MHUploadParam alloc] init];
 //        param.data = data;
 //        param.fileName = [param fileName];//文件名
@@ -294,7 +294,7 @@
     [RequestManager postRequestWithURL:kMenuAdd paramer:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject[@"code"] integerValue] == 0 )
         {
-            [MBProgressHUD showSuccess:@"提交信息成功！" toView:nil];
+            [MBProgressHUD showSuccess:@"提交成功！" toView:nil];
             [weakSelf.navigationController popViewControllerAnimated:YES];
             // 通知列表需要刷新
             if ([self.delegate respondsToSelector:@selector(noticeTableViewRefresh:)]) {
@@ -303,10 +303,10 @@
         }
         else
         {
-            [MBProgressHUD showError:@"提交信息失败！" toView:nil];
+            [MBProgressHUD showError:@"提交失败！" toView:nil];
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
+         [MBProgressHUD showError:@"提交失败！" toView:nil];
     } showHUD:YES];
     
     

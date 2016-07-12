@@ -52,8 +52,10 @@
 + (void)uploadFile:(NSData *)postData
  completionHandler:(void(^)(id responseObject))completion
    progressHandler:(void(^)(long long p))progressBlock
-    failureHandler:(void(^)(NSError *error))failure {
+    failureHandler:(void(^)(NSError *error))failure
+           showHUD:(BOOL)showHUD
+{
     
-    [RequestHelper uploadFile:postData completionHandler:completion progressHandler:progressBlock failureHandler:failure];
+    [RequestHelper uploadFile:postData completionHandler:completion progressHandler:progressBlock failureHandler:failure showHUD:showHUD];
 }
 @end

@@ -104,7 +104,16 @@
 }
 
 #warning 上传和下载还不完善,有待修改
-+ (void)uploadFile:(NSData *)postData completionHandler:(void(^)(id responseObject))completion progressHandler:(void(^)(long long p))progressBlock failureHandler:(void(^)(NSError *error))failure {
++ (void)uploadFile:(NSData *)postData
+ completionHandler:(void(^)(id responseObject))completion
+   progressHandler:(void(^)(long long p))progressBlock
+    failureHandler:(void(^)(NSError *error))failure
+           showHUD:(BOOL)showHUD{
+    
+    if (showHUD) {
+        [MBProgressHUD hideAllHUDsForView:(UIView*)[[[UIApplication sharedApplication]delegate]window] animated:NO];
+        [MBProgressHUD showHUDAddedTo:(UIView*)[[[UIApplication sharedApplication]delegate]window] animated:YES];
+    }
     
     AFHTTPRequestSerializer *serializer = [AFHTTPRequestSerializer serializer];
     NSString *path = [BaseXiZhanAPI stringByAppendingString:kUploadFile];
@@ -121,6 +130,7 @@
             NSLog(@"Error: %@", error);
         } else {
             NSLog(@"%@ %@", response, responseObject);
+            completion(responseObject);
         }
     }];
     [uploadTask resume];
