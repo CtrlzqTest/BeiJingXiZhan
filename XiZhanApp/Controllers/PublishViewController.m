@@ -197,10 +197,37 @@
     
     for (UIImage *item in bigImageArray)
     {
-        NSInteger index = [bigImageArray indexOfObject:item];//获取下标
+     //   NSInteger index = [bigImageArray indexOfObject:item];//获取下标
         CGSize imgSize = item.size;//原图大小
         CGFloat heightDivideWidth = imgSize.height*1.0/imgSize.width;//宽高比
         NSData *data = [self imageWithImage:item scaledToSize:CGSizeMake(KWidth, KWidth*heightDivideWidth)];//基准量为设备宽
+        [RequestHelper uploadFile:data completionHandler:^(id responseObject)
+         {
+            NSLog(@"%@",responseObject);
+            if ([responseObject[@"code"] integerValue] == 0){
+            NSDictionary *dict = responseObject[@"data"];
+            weakSel.imgString = [weakSel.imgString stringByAppendingString:dict[@"path"]];
+            weakSel.imgString = [weakSel.imgString stringByAppendingString:@","];
+                        
+            NSArray *imgArray = [weakSel.imgString componentsSeparatedByString:@","];
+                
+            if (imgArray.count == bigImageArray.count+1) {
+            weakSel.imgString = [weakSel.imgString substringToIndex:[weakSel.imgString length]-1];
+                [MBProgressHUD showSuccess:@"上传图片成功！" toView:nil];
+            [weakSel postData];
+            }
+         }
+            else
+            {
+            [MBProgressHUD showError:@"上传图片失败！" toView:nil];
+            }
+
+        } progressHandler:^(long long p) {
+            
+        } failureHandler:^(NSError *error) {
+             NSLog(@"%@",error);
+            [MBProgressHUD showError:@"上传图片失败！" toView:nil];
+        } showHUD:YES];
 //        MHUploadParam *param = [[MHUploadParam alloc] init];
 //        param.data = data;
 //        param.fileName = [param fileName];//文件名
@@ -263,8 +290,7 @@
     }
     
     NSDictionary *dict = @{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":self.fieldOfUser.text,@"imageurl":self.imgString,@"createuser":[User shareUser].userId,@"author":[User shareUser].tel,@"department":@"0",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0"};
-    
-    [Utility getSecretAPI:@"aa" paramDict:nil];
+    NSLog(@"%@",dict);
     [RequestManager postRequestWithURL:kMenuAdd paramer:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject[@"code"] integerValue] == 0 )
         {
@@ -277,10 +303,10 @@
         }
         else
         {
-            [MBProgressHUD showError:@"发送失败！" toView:nil];
+            [MBProgressHUD showError:@"提交失败！" toView:nil];
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
+         [MBProgressHUD showError:@"提交失败！" toView:nil];
     } showHUD:YES];
     
     

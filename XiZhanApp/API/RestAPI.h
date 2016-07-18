@@ -20,7 +20,7 @@
 
 #define BaseXiZhanImgAPI        @"http://222.240.172.197/"     // 测试环境图片显示地址
 
-#define BaseXiZhanAPI           @"http://222.240.172.197:8081" // 测试环境图片接口地址
+#define BaseXiZhanAPI           @"http://222.240.172.197:8081/" // 测试环境图片接口地址
 
 #define kgetCodeAPI             @"app.user/getSmsCode"      // 获取验证码
 
