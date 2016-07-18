@@ -9,11 +9,13 @@
 #import "ZQMapView.h"
 #import "PinImageView.h"
 #import "MapModel.h"
+#import "BubView.h"
 
-@interface ZQMapView(){
+@interface ZQMapView()<PinImageViewDelegate>{
     CGFloat lastScale;
     CGFloat minScale, maxScale;
     CGFloat old_y; // 记录缩放到原始状态时的Y值
+    BOOL _shouldScale;
 }
 
 @property (nonatomic,strong)UIImageView *imgView;
@@ -39,6 +41,9 @@
     self.imgView.userInteractionEnabled = YES;
     lastScale=1.0;minScale = 1.0;old_y = 0;
     
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    [self.imgView addGestureRecognizer:tap];
+    
     UIPinchGestureRecognizer *pin = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(scaleImageView:)];
     [self.imgView addGestureRecognizer:pin];
     
@@ -52,13 +57,39 @@
     [self addSubview:self.imgView];
     
     self.clipsToBounds = YES;
+    _shouldScale = YES;
+    
+    self.bubView = [[[NSBundle mainBundle] loadNibNamed:@"BubView" owner:self options:nil] objectAtIndex:0];
+    self.bubView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
+    self.bubView.frame = CGRectMake(0, 0, 200, 60);
+    [self.imgView addSubview:self.bubView];
+    self.bubView.hidden = YES;
+    
+}
+
+#pragma mark -- PinImageViewDelegate
+- (void)tapPinView:(PinImageView *)pinView {
+    
+    self.bubView.center = CGPointMake(pinView.center.x + 90, pinView.center.y - 45);
+    
+    self.bubView.hidden = NO;
+    _shouldScale = NO;
+    
 }
 
 // 添加大头针
 -(void)addPointAnnotation:(MapModel *)model {
     
     PinImageView *pinView = [[PinImageView alloc] initWithCoordinate:model.coordinate];
+    pinView.delegate = self;
     [self.imgView addSubview:pinView];
+    
+}
+
+- (void)tapAction:(UITapGestureRecognizer *)gesture {
+    
+    self.bubView.hidden = YES;
+    _shouldScale = YES;
     
 }
 
@@ -72,8 +103,9 @@
 //        pinView.backgroundColor = [UIColor blueColor];
 //    }
     for (int i = 0; i < viewArray.count; i++) {
+        
         PinImageView *pinView = viewArray[i];
-        if (i == index) {
+        if (i == index + 1) {
             pinView.backgroundColor = [UIColor redColor];
         }else {
             pinView.backgroundColor = [UIColor blueColor];
@@ -95,8 +127,12 @@
     
 }
 
+// 地图缩放
 - (void)scaleImageView:(UIPinchGestureRecognizer *)gesture {
     
+    if (_shouldScale == NO) {
+        return;
+    }
     if([gesture state] == UIGestureRecognizerStateEnded) {
         lastScale = 1.0;
         return;
@@ -126,6 +162,7 @@
     
 }
 
+// 拖动地图
 - (void)moveImageView:(UIPanGestureRecognizer *)gesture {
     
     CGPoint point = [gesture translationInView:self];

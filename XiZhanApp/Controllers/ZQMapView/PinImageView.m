@@ -30,26 +30,21 @@
 //        self.layer.borderColor = [UIColor blackColor].CGColor;
         self.userInteractionEnabled = YES;
         self.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-        [self setupViews];
+        
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+        [self addGestureRecognizer:tap];
     }
     return self;
 }
 
-- (void)setupViews {
-    
-    self.bubView = [[[NSBundle mainBundle] loadNibNamed:@"BubView" owner:self options:nil] objectAtIndex:0];
-    self.bubView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
-    self.bubView.frame = CGRectMake(0, 0, 200, 60);
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
-    [self addGestureRecognizer:tap];
-    
-}
-
 -(void)tapAction:(UITapGestureRecognizer *)gesture {
     
-    [self.bubView removeFromSuperview];
-    self.bubView.center = CGPointMake(self.center.x + 90, self.center.y - 35);
-    [self.superview addSubview:self.bubView];
+    if ([self.delegate respondsToSelector:@selector(tapPinView:)]) {
+        [self.delegate tapPinView:self];
+    }
+//    [self.bubView removeFromSuperview];
+//    self.bubView.center = CGPointMake(self.center.x + 90, self.center.y - 35);
+//    [self.superview addSubview:self.bubView];
     
 }
 
@@ -72,7 +67,8 @@
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect {
-     
+
+    
 }
 
 

@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class PinImageView;
+
+@protocol PinImageViewDelegate <NSObject>
+
+- (void)tapPinView:(PinImageView *)pinView;
+
+@end
+
 @interface PinImageView : UIImageView
 
 /**
@@ -32,5 +40,7 @@
  *  imageUrl
  */
 @property(nonatomic,copy)NSString *imageUrl;
+
+@property(nonatomic,assign)id<PinImageViewDelegate> delegate;
 
 @end

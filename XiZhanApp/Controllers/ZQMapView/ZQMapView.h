@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 @class MapModel;
+@class BubView;
 @interface ZQMapView : UIView
 
 /**
  *  地图图片
  */
 @property(nonatomic,strong)UIImage *mapImage;
+
+@property(nonatomic,strong)BubView *bubView;
 
 /**
  *  初始化
@@ -45,4 +48,6 @@
  *  @param index 大头针索引
  */
 - (void)resetPointAnnotation:(MapModel *)model atIndex:(NSInteger )index;
+
+
 @end
