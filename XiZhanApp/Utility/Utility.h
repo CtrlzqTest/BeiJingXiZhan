@@ -10,8 +10,6 @@
 
 @interface Utility : NSObject
 
-
-
 /**
  *  保存我的消息已读状态
  */

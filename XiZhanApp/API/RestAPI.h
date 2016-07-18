@@ -10,7 +10,7 @@
 
 #import <UIKit/UIKit.h>
 
-#define BaseAPI                 @"http://192.168.16.8:8080/bjws/"  // 测试
+#define BaseAPI                 @"http://192.168.16.99:8080/bjws/"  // 测试
 
 //#define BaseAPI                 @"http://42.62.18.88:8037/bjws/"  // 发布接口地址
 //

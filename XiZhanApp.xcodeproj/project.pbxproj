@@ -74,6 +74,14 @@
 		F092EEC41CE6B79500353351 /* MsgType1TabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F092EEC21CE6B79500353351 /* MsgType1TabCell.xib */; };
 		F0C4AAFD1CE2E3520067E986 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F0C4AAFA1CE2E3520067E986 /* MBProgressHUD.bundle */; };
 		F0C4AAFE1CE2E3520067E986 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AAFC1CE2E3520067E986 /* MBProgressHUD+Add.m */; };
+		F0C9FD441D38BA3E00FFDE8E /* LineSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C9FD431D38BA3E00FFDE8E /* LineSearchViewController.m */; };
+		F0C9FD471D38BC1400FFDE8E /* LineWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C9FD461D38BC1400FFDE8E /* LineWebViewController.m */; };
+		F0C9FD4A1D38C08A00FFDE8E /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C9FD491D38C08A00FFDE8E /* MapViewController.m */; };
+		F0C9FD521D38C0DE00FFDE8E /* MapModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C9FD4D1D38C0DE00FFDE8E /* MapModel.m */; };
+		F0C9FD531D38C0DE00FFDE8E /* PinImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C9FD4F1D38C0DE00FFDE8E /* PinImageView.m */; };
+		F0C9FD541D38C0DE00FFDE8E /* ZQMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C9FD511D38C0DE00FFDE8E /* ZQMapView.m */; };
+		F0C9FD571D38D1EA00FFDE8E /* BubView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C9FD561D38D1EA00FFDE8E /* BubView.m */; };
+		F0C9FD591D38D20100FFDE8E /* BubView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0C9FD581D38D20100FFDE8E /* BubView.xib */; };
 		F0CE7FE41D12AA20002B835C /* ZQKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = F0CE7FE31D12AA20002B835C /* ZQKeyChain.m */; };
 		F0D142291D0FD1C600E76199 /* ParkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0D142281D0FD1C600E76199 /* ParkViewController.m */; };
 		F0D1422D1D0FD8D400E76199 /* ParkTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0D1422C1D0FD8D400E76199 /* ParkTabCell.m */; };
@@ -230,6 +238,21 @@
 		F0C4AAFA1CE2E3520067E986 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
 		F0C4AAFB1CE2E3520067E986 /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
 		F0C4AAFC1CE2E3520067E986 /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
+		F0C9FD421D38BA3E00FFDE8E /* LineSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineSearchViewController.h; sourceTree = "<group>"; };
+		F0C9FD431D38BA3E00FFDE8E /* LineSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineSearchViewController.m; sourceTree = "<group>"; };
+		F0C9FD451D38BC1400FFDE8E /* LineWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineWebViewController.h; sourceTree = "<group>"; };
+		F0C9FD461D38BC1400FFDE8E /* LineWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineWebViewController.m; sourceTree = "<group>"; };
+		F0C9FD481D38C08A00FFDE8E /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		F0C9FD491D38C08A00FFDE8E /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		F0C9FD4C1D38C0DE00FFDE8E /* MapModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapModel.h; sourceTree = "<group>"; };
+		F0C9FD4D1D38C0DE00FFDE8E /* MapModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapModel.m; sourceTree = "<group>"; };
+		F0C9FD4E1D38C0DE00FFDE8E /* PinImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PinImageView.h; sourceTree = "<group>"; };
+		F0C9FD4F1D38C0DE00FFDE8E /* PinImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PinImageView.m; sourceTree = "<group>"; };
+		F0C9FD501D38C0DE00FFDE8E /* ZQMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQMapView.h; sourceTree = "<group>"; };
+		F0C9FD511D38C0DE00FFDE8E /* ZQMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQMapView.m; sourceTree = "<group>"; };
+		F0C9FD551D38D1EA00FFDE8E /* BubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubView.h; sourceTree = "<group>"; };
+		F0C9FD561D38D1EA00FFDE8E /* BubView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BubView.m; sourceTree = "<group>"; };
+		F0C9FD581D38D20100FFDE8E /* BubView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BubView.xib; sourceTree = "<group>"; };
 		F0CE7FE21D12AA20002B835C /* ZQKeyChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQKeyChain.h; sourceTree = "<group>"; };
 		F0CE7FE31D12AA20002B835C /* ZQKeyChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQKeyChain.m; sourceTree = "<group>"; };
 		F0D142271D0FD1C600E76199 /* ParkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParkViewController.h; sourceTree = "<group>"; };
@@ -557,6 +580,36 @@
 			path = AcyButton;
 			sourceTree = "<group>";
 		};
+		F0C9FD411D38B9C200FFDE8E /* MapViewControllers(地图相关) */ = {
+			isa = PBXGroup;
+			children = (
+				F0C9FD4B1D38C09800FFDE8E /* ZQMapView */,
+				F0C9FD421D38BA3E00FFDE8E /* LineSearchViewController.h */,
+				F0C9FD431D38BA3E00FFDE8E /* LineSearchViewController.m */,
+				F0C9FD451D38BC1400FFDE8E /* LineWebViewController.h */,
+				F0C9FD461D38BC1400FFDE8E /* LineWebViewController.m */,
+				F0C9FD481D38C08A00FFDE8E /* MapViewController.h */,
+				F0C9FD491D38C08A00FFDE8E /* MapViewController.m */,
+			);
+			name = "MapViewControllers(地图相关)";
+			sourceTree = "<group>";
+		};
+		F0C9FD4B1D38C09800FFDE8E /* ZQMapView */ = {
+			isa = PBXGroup;
+			children = (
+				F0C9FD4C1D38C0DE00FFDE8E /* MapModel.h */,
+				F0C9FD4D1D38C0DE00FFDE8E /* MapModel.m */,
+				F0C9FD4E1D38C0DE00FFDE8E /* PinImageView.h */,
+				F0C9FD4F1D38C0DE00FFDE8E /* PinImageView.m */,
+				F0C9FD501D38C0DE00FFDE8E /* ZQMapView.h */,
+				F0C9FD511D38C0DE00FFDE8E /* ZQMapView.m */,
+				F0C9FD551D38D1EA00FFDE8E /* BubView.h */,
+				F0C9FD561D38D1EA00FFDE8E /* BubView.m */,
+				F0C9FD581D38D20100FFDE8E /* BubView.xib */,
+			);
+			path = ZQMapView;
+			sourceTree = "<group>";
+		};
 		F0DC51451CE84AC800CE29AD /* DJPhotoBrowser */ = {
 			isa = PBXGroup;
 			children = (
@@ -673,6 +726,7 @@
 				F00007E91CF6CE6F00479EFB /* AboutXiZhanViewController.m */,
 				F0088CA11CE6C16F00AF6EAF /* PublishViewController.h */,
 				F0088CA21CE6C16F00AF6EAF /* PublishViewController.m */,
+				F0C9FD411D38B9C200FFDE8E /* MapViewControllers(地图相关) */,
 				F0186CC11D000FF900F90CE1 /* TaxiViewControllers(出租车) */,
 				F0F37A221CE093590047A469 /* LoginRegisterControllers(登录注册) */,
 				F0F37A111CE084330047A469 /* MainViewControllers(首页) */,
@@ -883,6 +937,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F02426DE1D0FD35200661961 /* ZQChooseView.xib in Resources */,
+				F0C9FD591D38D20100FFDE8E /* BubView.xib in Resources */,
 				F0088C7E1CE6BE8300AF6EAF /* close@3x.png in Resources */,
 				F0088C7D1CE6BE8300AF6EAF /* close@2x.png in Resources */,
 				F0E396BC1CE1B4FA00D4137E /* MainCollCell.xib in Resources */,
@@ -985,6 +1040,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0C9FD471D38BC1400FFDE8E /* LineWebViewController.m in Sources */,
 				F046537F1D055DAA005D8E81 /* TaxiMsgCellEdit.m in Sources */,
 				F0088C961CE6BE8300AF6EAF /* MShowAllGroup.m in Sources */,
 				F0088C8B1CE6BE8300AF6EAF /* JJMainScrollView.m in Sources */,
@@ -992,6 +1048,7 @@
 				F0088C981CE6BE8300AF6EAF /* SDBaseProgressView.m in Sources */,
 				F03A6F1F1D1D096600994DB1 /* WQLPaoMaView.m in Sources */,
 				F0088C901CE6BE8300AF6EAF /* LQImgPickerActionSheet.m in Sources */,
+				F0C9FD571D38D1EA00FFDE8E /* BubView.m in Sources */,
 				F0088CA31CE6C16F00AF6EAF /* PublishViewController.m in Sources */,
 				F0DC514D1CE84AC800CE29AD /* DJBrowserImageView.m in Sources */,
 				F0F37A0A1CE07B280047A469 /* BaseViewController.m in Sources */,
@@ -1019,15 +1076,19 @@
 				F0607B3E1CE5B6650029EE31 /* ZQDatabaseHelper.m in Sources */,
 				F0F37A081CE07B280047A469 /* BaseNaviViewController.m in Sources */,
 				F0088C9A1CE6BE8300AF6EAF /* SDDemoItemView.m in Sources */,
+				F0C9FD4A1D38C08A00FFDE8E /* MapViewController.m in Sources */,
+				F0C9FD531D38C0DE00FFDE8E /* PinImageView.m in Sources */,
 				F0088C951CE6BE8300AF6EAF /* MImaLibTool.m in Sources */,
 				F00007EA1CF6CE6F00479EFB /* AboutXiZhanViewController.m in Sources */,
 				F0E396CD1CE1BA5400D4137E /* AYCButton.m in Sources */,
 				F0ED7A211CE4676300369D33 /* MessageModel.m in Sources */,
 				F0088C991CE6BE8300AF6EAF /* SDLoopProgressView.m in Sources */,
 				F0F37A1E1CE088390047A469 /* UIView_extra.m in Sources */,
+				F0C9FD441D38BA3E00FFDE8E /* LineSearchViewController.m in Sources */,
 				F0FA99291CE2D0460078C74B /* LeftSortsTabCell.m in Sources */,
 				F0088C9C1CE6BE8300AF6EAF /* LQPhotoViewCell.m in Sources */,
 				F0607B361CE5752F0029EE31 /* MenuModel.m in Sources */,
+				F0C9FD541D38C0DE00FFDE8E /* ZQMapView.m in Sources */,
 				F02426E11D0FDF9C00661961 /* AreaOfXiZhan.m in Sources */,
 				F07F46FC1D264AEA00DCFD78 /* RequestHelper.m in Sources */,
 				F0088C881CE6BE8300AF6EAF /* MFlowLayOut.m in Sources */,
@@ -1039,6 +1100,7 @@
 				F0607B401CE5B6650029EE31 /* ZQDatabaseModel.m in Sources */,
 				F0E396AA1CE1858700D4137E /* UIView+ZQExtention.m in Sources */,
 				F0FC4B1B1CFD781700E6A536 /* MenuType2TabCell.m in Sources */,
+				F0C9FD521D38C0DE00FFDE8E /* MapModel.m in Sources */,
 				F0E396C21CE1B9C300D4137E /* SuggestionsViewController.m in Sources */,
 				F0F37A091CE07B280047A469 /* BaseTabBarViewController.m in Sources */,
 				F0186CCA1D00226900F90CE1 /* TaxiMsgModel.m in Sources */,

@@ -17,6 +17,8 @@
 #import <UIImageView+WebCache.h>
 #import "InfoClassifyViewController.h"
 #import "TaxiClassifyViewController.h"
+#import "LineSearchViewController.h"
+#import "MapViewController.h"
 
 static NSString *collCellId = @"MainCell";
 @interface MainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -77,6 +79,14 @@ static NSString *collCellId = @"MainCell";
             MenuModel *menuModel = [[MenuModel alloc] init];
             menuModel.menuTitle = @"交通引导";
             [_dataArray addObject:menuModel];
+            
+            MenuModel *menuModel1 = [[MenuModel alloc] init];
+            menuModel1.menuTitle = @"换乘查询";
+            [_dataArray addObject:menuModel1];
+            
+            MenuModel *menuModel2 = [[MenuModel alloc] init];
+            menuModel2.menuTitle = @"设施查询";
+            [_dataArray addObject:menuModel2];
             
         }else if([responseObject[@"code"] integerValue] == 10001){
             [Utility checkIsRegisteruuid];
@@ -168,17 +178,29 @@ static NSString *collCellId = @"MainCell";
     
     MenuModel *model = _dataArray[indexPath.row];
     
-    if (indexPath.row >= _dataArray.count - 1) {
+    if (indexPath.row == _dataArray.count - 3) {
+        
         TaxiClassifyViewController *taxiMsgVC = [[TaxiClassifyViewController alloc] init];
         taxiMsgVC.menuModel = model;
         [self.navigationController pushViewController:taxiMsgVC animated:YES];
-        return ;
+        
+    }else if(indexPath.row == _dataArray.count - 2){
+        
+        LineSearchViewController *lineVC = [[LineSearchViewController alloc] init];
+        lineVC.menuModel = model;
+        [self.navigationController pushViewController:lineVC animated:YES];
+        
+    }else if(indexPath.row == _dataArray.count - 1){
+        
+        MapViewController *mapVC = [Utility getControllerWithStoryBoardId:@"mapViewController"];
+        mapVC.title = model.menuTitle;
+        [self.navigationController pushViewController:mapVC animated:YES];
+        
+    }else{
+        InfoClassifyViewController *myInfoVC = [[InfoClassifyViewController alloc] init];
+        myInfoVC.menuModel = model;
+        [self.navigationController pushViewController:myInfoVC animated:YES];
     }
-    
-    InfoClassifyViewController *myInfoVC = [[InfoClassifyViewController alloc] init];
-    myInfoVC.menuModel = model;
-    [self.navigationController pushViewController:myInfoVC animated:YES];
-    
 }
 
 - (void)didReceiveMemoryWarning {
