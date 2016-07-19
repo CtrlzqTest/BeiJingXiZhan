@@ -70,6 +70,8 @@
 		F07F46FC1D264AEA00DCFD78 /* RequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F07F46F71D264AEA00DCFD78 /* RequestHelper.m */; };
 		F07F46FD1D264AEA00DCFD78 /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F07F46F91D264AEA00DCFD78 /* RequestManager.m */; };
 		F08142DF1D05553C000C001E /* GSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = F08142DE1D05553C000C001E /* GSKeychain.m */; };
+		F091B9BA1D3DC647005B4688 /* CapacityListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F091B9B91D3DC647005B4688 /* CapacityListViewController.m */; };
+		F091B9C01D3DFCCE005B4688 /* MapTest.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F091B9BF1D3DFCCE005B4688 /* MapTest.jpg */; };
 		F092EEC31CE6B79500353351 /* MsgType1TabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F092EEC11CE6B79500353351 /* MsgType1TabCell.m */; };
 		F092EEC41CE6B79500353351 /* MsgType1TabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F092EEC21CE6B79500353351 /* MsgType1TabCell.xib */; };
 		F0C4AAFD1CE2E3520067E986 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F0C4AAFA1CE2E3520067E986 /* MBProgressHUD.bundle */; };
@@ -232,6 +234,9 @@
 		F07F46F91D264AEA00DCFD78 /* RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestManager.m; sourceTree = "<group>"; };
 		F08142DD1D05553C000C001E /* GSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSKeychain.h; sourceTree = "<group>"; };
 		F08142DE1D05553C000C001E /* GSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSKeychain.m; sourceTree = "<group>"; };
+		F091B9B81D3DC647005B4688 /* CapacityListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CapacityListViewController.h; sourceTree = "<group>"; };
+		F091B9B91D3DC647005B4688 /* CapacityListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CapacityListViewController.m; sourceTree = "<group>"; };
+		F091B9BF1D3DFCCE005B4688 /* MapTest.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MapTest.jpg; sourceTree = "<group>"; };
 		F092EEC01CE6B79500353351 /* MsgType1TabCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgType1TabCell.h; sourceTree = "<group>"; };
 		F092EEC11CE6B79500353351 /* MsgType1TabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgType1TabCell.m; sourceTree = "<group>"; };
 		F092EEC21CE6B79500353351 /* MsgType1TabCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgType1TabCell.xib; sourceTree = "<group>"; };
@@ -549,6 +554,15 @@
 			path = ../ZQNetWork;
 			sourceTree = "<group>";
 		};
+		F091B9B71D3DC4FF005B4688 /* Capacity(运力相关) */ = {
+			isa = PBXGroup;
+			children = (
+				F091B9B81D3DC647005B4688 /* CapacityListViewController.h */,
+				F091B9B91D3DC647005B4688 /* CapacityListViewController.m */,
+			);
+			name = "Capacity(运力相关)";
+			sourceTree = "<group>";
+		};
 		F092EEBF1CE6B6E200353351 /* MessageList(消息列表) */ = {
 			isa = PBXGroup;
 			children = (
@@ -726,6 +740,7 @@
 				F00007E91CF6CE6F00479EFB /* AboutXiZhanViewController.m */,
 				F0088CA11CE6C16F00AF6EAF /* PublishViewController.h */,
 				F0088CA21CE6C16F00AF6EAF /* PublishViewController.m */,
+				F091B9B71D3DC4FF005B4688 /* Capacity(运力相关) */,
 				F0C9FD411D38B9C200FFDE8E /* MapViewControllers(地图相关) */,
 				F0186CC11D000FF900F90CE1 /* TaxiViewControllers(出租车) */,
 				F0F37A221CE093590047A469 /* LoginRegisterControllers(登录注册) */,
@@ -777,6 +792,7 @@
 			isa = PBXGroup;
 			children = (
 				F00007E61CF6CAA100479EFB /* about_info.png */,
+				F091B9BF1D3DFCCE005B4688 /* MapTest.jpg */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -960,6 +976,7 @@
 				F0E396D81CE1EB8C00D4137E /* ServeTabCell.xib in Resources */,
 				F0088C8F1CE6BE8300AF6EAF /* none.png in Resources */,
 				F0FC4B1C1CFD781700E6A536 /* MenuType2TabCell.xib in Resources */,
+				F091B9C01D3DFCCE005B4688 /* MapTest.jpg in Resources */,
 				F0F379DE1CE07AD90047A469 /* Assets.xcassets in Resources */,
 				F0F379DC1CE07AD90047A469 /* Main.storyboard in Resources */,
 				F0088C861CE6BE8300AF6EAF /* plus@2x.png in Resources */,
@@ -1087,6 +1104,7 @@
 				F0C9FD441D38BA3E00FFDE8E /* LineSearchViewController.m in Sources */,
 				F0FA99291CE2D0460078C74B /* LeftSortsTabCell.m in Sources */,
 				F0088C9C1CE6BE8300AF6EAF /* LQPhotoViewCell.m in Sources */,
+				F091B9BA1D3DC647005B4688 /* CapacityListViewController.m in Sources */,
 				F0607B361CE5752F0029EE31 /* MenuModel.m in Sources */,
 				F0C9FD541D38C0DE00FFDE8E /* ZQMapView.m in Sources */,
 				F02426E11D0FDF9C00661961 /* AreaOfXiZhan.m in Sources */,

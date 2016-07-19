@@ -35,13 +35,15 @@
     
     _dataArray = [NSMutableArray array];
     MapModel *model1 = [[MapModel alloc] init];
-    model1.coordinate = CGPointMake(180, 180);
+    NSLog(@"%f",[UIScreen mainScreen].bounds.size.width);
+    CGFloat scale = (3508 / 414.0000);
+    model1.coordinate = CGPointMake(111 / scale, 1491 / scale);
     model1.title = @"凉亭（A区）";
     MapModel *model2 = [[MapModel alloc] init];
-    model2.coordinate = CGPointMake(150, 250);
+    model2.coordinate = CGPointMake(330 / scale, 1564 / scale);
     model2.title = @"凉亭（B区）";
     MapModel *model3 = [[MapModel alloc] init];
-    model3.coordinate = CGPointMake(200, 150);
+    model3.coordinate = CGPointMake(352 / scale, 1573 / scale);
     model3.title = @"凉亭（C区）";
     [_dataArray addObject:model1];
     [_dataArray addObject:model2];
@@ -50,22 +52,23 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellId"];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
-    UIImage *image = [UIImage imageNamed:@"test.jpg"];
+    UIImage *image = [UIImage imageNamed:@"MapTest.jpg"];
     
-    self.mapView = [[ZQMapView alloc] initWithFrame:self.backView.bounds image:image];
+    self.mapView = [[ZQMapView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.width) image:image];
     for (MapModel *mapModel in _dataArray) {
         [self.mapView addPointAnnotation:mapModel];
     }
-    [self.mapView setMapScale:2];
+    
     [self.backView addSubview:self.mapView];
     
-    self.searchView.backgroundColor = [UIColor colorWithWhite:1.000 alpha:0.500];
+    self.searchView.backgroundColor = [UIColor colorWithRed:0.771 green:0.858 blue:1.000 alpha:0.500];
     [self.backView bringSubviewToFront:self.searchView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
 }
 
 - (IBAction)backAction:(id)sender {
+    
     
     
 }

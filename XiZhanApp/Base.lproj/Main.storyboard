@@ -271,7 +271,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgG-pe-TuZ">
-                                <rect key="frame" x="0.0" y="64" width="375" height="400"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="375"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tGr-Hj-AAf" userLabel="searchView">
                                         <rect key="frame" x="8" y="15" width="359" height="46"/>
@@ -303,7 +303,7 @@
                                                 </constraints>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.76974826389999995" green="0.76974826389999995" blue="0.76974826389999995" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="u3E-EL-yoa" firstAttribute="leading" secondItem="tGr-Hj-AAf" secondAttribute="leading" constant="8" id="1xb-p0-o1B"/>
                                             <constraint firstItem="u3E-EL-yoa" firstAttribute="top" secondItem="tGr-Hj-AAf" secondAttribute="top" constant="8" id="7g9-8y-eeW"/>
@@ -318,17 +318,23 @@
                                         </constraints>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.97647058819999999" green="0.35682784560000003" blue="0.36694225530000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" secondItem="hgG-pe-TuZ" secondAttribute="height" id="DNc-JL-Ihh"/>
                                     <constraint firstAttribute="trailing" secondItem="tGr-Hj-AAf" secondAttribute="trailing" constant="8" id="ENj-Tp-bRk"/>
                                     <constraint firstItem="tGr-Hj-AAf" firstAttribute="leading" secondItem="hgG-pe-TuZ" secondAttribute="leading" constant="8" id="O6T-fS-v1W"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="400" id="Ytp-ZS-gbn"/>
                                     <constraint firstAttribute="height" constant="400" id="kJN-K0-ktU"/>
                                     <constraint firstItem="tGr-Hj-AAf" firstAttribute="top" secondItem="hgG-pe-TuZ" secondAttribute="top" constant="15" id="o4A-1C-Yq1"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Ytp-ZS-gbn"/>
+                                        <exclude reference="kJN-K0-ktU"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="y6W-3h-hbO">
-                                <rect key="frame" x="0.0" y="464" width="375" height="203"/>
+                                <rect key="frame" x="0.0" y="439" width="375" height="228"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Ugv-11-9ll" id="LHI-rn-1Gh"/>

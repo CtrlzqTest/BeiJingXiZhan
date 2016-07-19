@@ -38,6 +38,7 @@
 - (void)setupViews {
     
     self.imgView = [[UIImageView alloc] initWithFrame:self.bounds];
+    self.imgView.backgroundColor = [UIColor blackColor];
     self.imgView.userInteractionEnabled = YES;
     lastScale=1.0;minScale = 1.0;old_y = 0;
     
@@ -96,17 +97,15 @@
 -(void)resetPointAnnotation:(MapModel *)model atIndex:(NSInteger)index {
     
     NSArray *viewArray = self.imgView.subviews;
-//    PinImageView *pinView = viewArray[index];
-//    if (model.isMark) {
-//        pinView.backgroundColor = [UIColor redColor];
-//    }else {
-//        pinView.backgroundColor = [UIColor blueColor];
-//    }
     for (int i = 0; i < viewArray.count; i++) {
         
         PinImageView *pinView = viewArray[i];
+        
         if (i == index + 1) {
+            NSLog(@"pinView:%@",NSStringFromCGRect(pinView.frame));
+            NSLog(@"supView:%@",NSStringFromCGRect(self.imgView.frame));
             pinView.backgroundColor = [UIColor redColor];
+            [self setPinViewInMapView:pinView];
         }else {
             pinView.backgroundColor = [UIColor blueColor];
         }
@@ -127,7 +126,33 @@
     
 }
 
-// 地图缩放
+// 坐标点自动显示在视野里
+- (void)setPinViewInMapView:(PinImageView *)pinView {
+    
+    CGRect tmpRect = pinView.frame;
+    CGFloat centerX,centerY;
+    if (tmpRect.origin.x <= self.frame.size.width / 2.0) {
+        centerX = -self.imgView.frame.origin.x;
+    }else {
+//        centerX = self.frame.size.width / 2.0 + tmpRect.origin.x;
+        centerX = -self.imgView.frame.origin.x - tmpRect.origin.x + self.frame.size.width / 2.0;
+    }
+    
+    if (tmpRect.origin.y <= self.frame.size.height / 2.0) {
+        centerY = -self.imgView.frame.origin.y;
+    }else {
+        centerY = -self.imgView.frame.origin.y - tmpRect.origin.y + self.frame.size.height / 2.0;
+    }
+    CGPoint point = self.imgView.center;
+    [UIView transitionWithView:self.imgView duration:0.5 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        self.imgView.center = CGPointMake(point.x + centerX,point.y + centerY);
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+
+// 地图手势缩放
 - (void)scaleImageView:(UIPinchGestureRecognizer *)gesture {
     
     if (_shouldScale == NO) {
@@ -146,7 +171,6 @@
     CGPoint p1 = [gesture locationOfTouch:0 inView:self.imgView];
     CGPoint p2 = [gesture locationOfTouch:1 inView:self.imgView];
     CGPoint anchorPoint = CGPointMake((p1.x+p2.x) /2.0 / tmpRect.size.width,(p1.y+p2.y)/2.0 / tmpRect.size.height); // 缩放中心点,锚点
-    
     CGFloat x,y,width,height;
     x = anchorPoint.x * tmpRect.size.width * (1 - scale) + tmpRect.origin.x;
     y = anchorPoint.y * tmpRect.size.height * (1 - scale) + tmpRect.origin.y;
@@ -159,7 +183,20 @@
         self.imgView.frame = self.bounds;
     }
     [self setViewInSuper];
+    [self resetAnnotationsPosition];
+}
+
+-(void)resetAnnotationsPosition {
     
+    CGFloat scale = self.imgView.frame.size.width / [UIScreen mainScreen].bounds.size.width;
+    for (UIView *view in self.imgView.subviews) {
+        if ([view isKindOfClass:[PinImageView class]]) {
+            PinImageView *pinview = (PinImageView *)view;
+            CGFloat centerX = pinview.coordinate.x * scale;
+            CGFloat centerY = pinview.coordinate.y * scale;
+            view.center = CGPointMake(centerX, centerY);
+        }
+    }
 }
 
 // 拖动地图

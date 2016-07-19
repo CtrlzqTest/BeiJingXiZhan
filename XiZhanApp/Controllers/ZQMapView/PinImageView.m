@@ -24,12 +24,13 @@
         self.coordinate = coordinate;
         self.frame = CGRectMake(0, 0, 20.0, 20.0);
         self.center = coordinate;
+        NSLog(@"-----%@",NSStringFromCGPoint(coordinate));
         self.layer.cornerRadius = 10.0;
         self.backgroundColor = [UIColor blueColor];
 //        self.layer.borderWidth = 2;
 //        self.layer.borderColor = [UIColor blackColor].CGColor;
         self.userInteractionEnabled = YES;
-        self.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin;
+//        self.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin;
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
         [self addGestureRecognizer:tap];
