@@ -179,24 +179,28 @@ static NSString *collCellId = @"MainCell";
     MenuModel *model = _dataArray[indexPath.row];
     
     if (indexPath.row == _dataArray.count - 3) {
-        
+        // 交通引导
         TaxiClassifyViewController *taxiMsgVC = [[TaxiClassifyViewController alloc] init];
         taxiMsgVC.menuModel = model;
         [self.navigationController pushViewController:taxiMsgVC animated:YES];
         
     }else if(indexPath.row == _dataArray.count - 2){
         
+        // 换成查询
         LineSearchViewController *lineVC = [[LineSearchViewController alloc] init];
         lineVC.menuModel = model;
         [self.navigationController pushViewController:lineVC animated:YES];
         
     }else if(indexPath.row == _dataArray.count - 1){
         
+        // 设施查询
         MapViewController *mapVC = [Utility getControllerWithStoryBoardId:@"mapViewController"];
         mapVC.title = model.menuTitle;
         [self.navigationController pushViewController:mapVC animated:YES];
         
     }else{
+        
+        // 后台数据模块
         InfoClassifyViewController *myInfoVC = [[InfoClassifyViewController alloc] init];
         myInfoVC.menuModel = model;
         [self.navigationController pushViewController:myInfoVC animated:YES];

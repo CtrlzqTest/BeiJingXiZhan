@@ -24,7 +24,6 @@
         self.coordinate = coordinate;
         self.frame = CGRectMake(0, 0, 20.0, 20.0);
         self.center = coordinate;
-        NSLog(@"-----%@",NSStringFromCGPoint(coordinate));
         self.layer.cornerRadius = 10.0;
         self.backgroundColor = [UIColor blueColor];
 //        self.layer.borderWidth = 2;

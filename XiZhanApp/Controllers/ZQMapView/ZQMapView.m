@@ -35,6 +35,14 @@
     return self;
 }
 
+-(void)setMapImage:(UIImage *)mapImage {
+    
+    if (_mapImage != mapImage) {
+        self.imgView.image = mapImage;
+        _mapImage = mapImage;
+    }
+}
+
 - (void)setupViews {
     
     self.imgView = [[UIImageView alloc] initWithFrame:self.bounds];

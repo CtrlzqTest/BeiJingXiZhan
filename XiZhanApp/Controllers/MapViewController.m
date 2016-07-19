@@ -65,6 +65,7 @@
     [self.backView bringSubviewToFront:self.searchView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
+    
 }
 
 - (IBAction)backAction:(id)sender {
@@ -73,6 +74,12 @@
     
 }
 
+// 搜索之后重新标点
+- (void)resetMapView:(NSArray *)dataArray {
+    
+    
+    
+}
 
 -(void)viewWillLayoutSubviews {
     
