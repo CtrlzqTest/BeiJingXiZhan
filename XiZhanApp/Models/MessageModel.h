@@ -18,6 +18,7 @@
 @property(nonatomic,strong)NSString *msgid;
 @property(nonatomic,copy)NSString *nodeid;
 @property(nonatomic,assign)BOOL isread;
+@property(nonatomic,assign)BOOL issign;
 @property(nonatomic,copy)NSString *imgurl;
 @property(nonatomic,copy)NSString *userid;
 @property(nonatomic,copy)NSString *msgdatestr;

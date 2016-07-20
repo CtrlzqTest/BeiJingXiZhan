@@ -83,7 +83,7 @@
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
-    } showHUD:YES];
+    } showHUD:NO];
     
 }
 #pragma mark initMethod

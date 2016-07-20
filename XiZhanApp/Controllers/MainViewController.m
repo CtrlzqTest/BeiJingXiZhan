@@ -200,10 +200,16 @@ static NSString *collCellId = @"MainCell";
         
     }else{
         
-        // 后台数据模块
-        InfoClassifyViewController *myInfoVC = [[InfoClassifyViewController alloc] init];
-        myInfoVC.menuModel = model;
-        [self.navigationController pushViewController:myInfoVC animated:YES];
+        if ([model.alias isEqualToString:@"taxi_capacity"]) {
+            MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];;
+            myInfoVC.menuModel = model;
+            [self.navigationController pushViewController:myInfoVC animated:YES];
+        }else {
+            // 后台数据模块
+            InfoClassifyViewController *myInfoVC = [[InfoClassifyViewController alloc] init];
+            myInfoVC.menuModel = model;
+            [self.navigationController pushViewController:myInfoVC animated:YES];
+        }
     }
 }
 

@@ -100,6 +100,7 @@
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
     
+    // 是否显示签到,type表示该登录账户角色,alias首页哪个模块
     BOOL isShow = ([[User shareUser].type isEqualToString:@"2"] && [self.menuModel.alias isEqualToString:@"volunteer"]) || ([[User shareUser].type isEqualToString:@"3"] && [self.menuModel.alias isEqualToString:@"service"]);
     
     if (isShow) {
@@ -303,9 +304,13 @@
         [self.tableView reloadData];
         [model updateWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
     }
-
+    
     InformationDetailViewController *vc = [[InformationDetailViewController alloc]init];
     vc.model = model;
+    // 如果是出租车运力
+    if ([self.menuModel.alias isEqualToString:@"taxi_capacity"]) {
+        vc.isShowSign = YES;
+    }
     [self.navigationController pushViewController:vc animated:YES];
 }
 @end

@@ -148,7 +148,38 @@ static NSString *indentify = @"proCellX";
                             "</html>",14, @"FZLTXHK", @"rgb(0, 0, 0)",@"100% !important",@"100% !important",self.model.msgcontent];
     [_web loadHTMLString:htmlString baseURL:nil];
     [self.view addSubview: _web];
+    
+    if (!self.isShowSign) {
+        return;
+    }
+    UIButton *signBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+    signBtn.frame = CGRectMake(0, CGRectGetMaxY(_web.frame) + 20, 80, 35);
+    if (self.model.issign) {
+        signBtn.backgroundColor = [UIColor colorWithWhite:0.758 alpha:0.649];
+        signBtn.userInteractionEnabled = NO;
+    }else {
+        signBtn.backgroundColor = mainColor;
+    }
+    
+    [signBtn setTitleColor:[UIColor colorWithRed:1.000 green:0.873 blue:0.377 alpha:1.000] forState:UIControlStateNormal];
+    signBtn.layer.cornerRadius = 5;
+    [signBtn setTitle:@"签到" forState:UIControlStateNormal];
+    signBtn.center = CGPointMake(KWidth / 2.0, signBtn.center.y);
+    [self.view addSubview:signBtn];
+    
+    [signBtn addTarget:self action:@selector(signAction:) forControlEvents:UIControlEventTouchUpInside];
 }
+
+- (void)signAction:(UIButton *)sender {
+    
+    self.model.issign = YES;
+    [self.model updateWithCondition:[NSString stringWithFormat:@"msgid = '%@'",self.model.msgid]];
+    [MBProgressHUD showSuccess:@"签到成功" toView:self.view];
+    sender.backgroundColor = [UIColor colorWithWhite:0.758 alpha:0.649];
+    sender.userInteractionEnabled = NO;
+}
+
+
 -(void)addCollectionView
 {
     UICollectionViewFlowLayout *flowL = [[UICollectionViewFlowLayout alloc]init];

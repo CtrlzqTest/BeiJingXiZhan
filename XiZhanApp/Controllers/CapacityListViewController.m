@@ -28,6 +28,7 @@
 
 - (void)setupViews {
     
+    
 }
 
 #pragma mark listMethod
@@ -45,7 +46,6 @@
     MessageModel *model = _dataArray[indexPath.row];
     [cell writeDataWithModel:model];
     return cell;
-    
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -64,7 +64,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*
