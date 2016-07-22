@@ -8,13 +8,21 @@
 
 #import "RegisterViewController.h"
 #import "MianZeViewController.h"
-@interface RegisterViewController ()
+#import "ZQPickerView.h"
+
+@interface RegisterViewController (){
+    NSArray *_userTypeArray;
+}
 
 @property (weak, nonatomic) IBOutlet UITextField *phoneTef;
 @property (weak, nonatomic) IBOutlet UITextField *passWordTef;
 @property (weak, nonatomic) IBOutlet UITextField *checkCodeTef;
+@property (weak, nonatomic) IBOutlet UIButton *userTypeBtn;
+
 @property (weak, nonatomic) IBOutlet UIButton *getCodeBtn;
 @property (weak, nonatomic) IBOutlet UIButton *agreeBtn;
+
+@property (nonatomic,strong)ZQPickerView *pickerView;
 
 @end
 
@@ -62,6 +70,28 @@
     self.checkCodeTef.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.checkCodeTef.leftViewMode = UITextFieldViewModeAlways;
     
+    self.userTypeBtn.layer.borderWidth = 0.5;
+    self.userTypeBtn.layer.borderColor = [UIColor grayColor].CGColor;
+    self.userTypeBtn.layer.cornerRadius = 3;
+    [self.userTypeBtn addTarget:self action:@selector(userTypeAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    _userTypeArray = @[@"出租车司机",@"旅客"];
+    
+}
+
+- (void)userTypeAction:(UIButton *)sender {
+    
+    [self resignKeyBoardInView:self.view];
+    
+    __block ZQPickerView *pickerView = [[ZQPickerView alloc] initWithDataArray:_userTypeArray];
+    
+    __weak typeof(self) weakSelf = self;
+    [pickerView showPickViewAnimated:^(NSInteger index) {
+        [weakSelf.userTypeBtn setTitle:_userTypeArray[index] forState:UIControlStateNormal];
+//        [weakSelf.userTypeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        pickerView = nil;
+    }];
+    
 }
 
 - (IBAction)getCodeAction:(id)sender {
@@ -89,9 +119,9 @@
     
     self.agreeBtn.selected = !self.agreeBtn.selected;
     if (self.agreeBtn.selected) {
-        [self.agreeBtn setImage:[UIImage imageNamed:@"agreeSelect"] forState:(UIControlStateNormal)];
+        [self.agreeBtn setImage:[UIImage imageNamed:@"autoLogin_sel"] forState:(UIControlStateNormal)];
     }else {
-        [self.agreeBtn setImage:[UIImage imageNamed:@"agreeUnSelect"] forState:(UIControlStateNormal)];
+        [self.agreeBtn setImage:[UIImage imageNamed:@"autoLogin_unsel"] forState:(UIControlStateNormal)];
     }
     
 }

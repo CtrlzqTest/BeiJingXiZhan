@@ -12,6 +12,7 @@
 
 @interface MapViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>{
     NSMutableArray *_dataArray;
+    NSMutableArray *_groupArray;
 }
 
 @property (weak, nonatomic) IBOutlet UIView *backView;

@@ -93,6 +93,7 @@
 		F0DC514F1CE84AC800CE29AD /* DJWaitingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0DC514C1CE84AC800CE29AD /* DJWaitingView.m */; };
 		F0DC51581CE84CB400CE29AD /* ImgCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0DC51561CE84CB400CE29AD /* ImgCell.m */; };
 		F0DC51591CE84CB400CE29AD /* ImgCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0DC51571CE84CB400CE29AD /* ImgCell.xib */; };
+		F0DE189C1D41B32800C4280A /* ZQPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = F0DE189B1D41B32800C4280A /* ZQPickerView.m */; };
 		F0E396AA1CE1858700D4137E /* UIView+ZQExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E396A91CE1858700D4137E /* UIView+ZQExtention.m */; };
 		F0E396B01CE186D200D4137E /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E396AF1CE186D200D4137E /* RegisterViewController.m */; };
 		F0E396BB1CE1B4FA00D4137E /* MainCollCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E396B91CE1B4FA00D4137E /* MainCollCell.m */; };
@@ -276,6 +277,8 @@
 		F0DC51551CE84CB400CE29AD /* ImgCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImgCell.h; sourceTree = "<group>"; };
 		F0DC51561CE84CB400CE29AD /* ImgCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImgCell.m; sourceTree = "<group>"; };
 		F0DC51571CE84CB400CE29AD /* ImgCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImgCell.xib; sourceTree = "<group>"; };
+		F0DE189A1D41B32800C4280A /* ZQPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQPickerView.h; sourceTree = "<group>"; };
+		F0DE189B1D41B32800C4280A /* ZQPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQPickerView.m; sourceTree = "<group>"; };
 		F0E396A81CE1858700D4137E /* UIView+ZQExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZQExtention.h"; sourceTree = "<group>"; };
 		F0E396A91CE1858700D4137E /* UIView+ZQExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZQExtention.m"; sourceTree = "<group>"; };
 		F0E396AE1CE186D200D4137E /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
@@ -638,6 +641,15 @@
 			path = DJPhotoBrowser;
 			sourceTree = "<group>";
 		};
+		F0DE18991D41B2F400C4280A /* ZQPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				F0DE189A1D41B32800C4280A /* ZQPickerView.h */,
+				F0DE189B1D41B32800C4280A /* ZQPickerView.m */,
+			);
+			path = ZQPickerView;
+			sourceTree = "<group>";
+		};
 		F0E396B11CE18F3400D4137E /* MainViews(首页) */ = {
 			isa = PBXGroup;
 			children = (
@@ -760,6 +772,7 @@
 		F0F379F81CE07B280047A469 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				F0DE18991D41B2F400C4280A /* ZQPickerView */,
 				F0C4AAFA1CE2E3520067E986 /* MBProgressHUD.bundle */,
 				F0C4AAFB1CE2E3520067E986 /* MBProgressHUD+Add.h */,
 				F0C4AAFC1CE2E3520067E986 /* MBProgressHUD+Add.m */,
@@ -1072,6 +1085,7 @@
 				F0F37A211CE08BC80047A469 /* LeftSortsViewController.m in Sources */,
 				F026E5EF1CFD2F9B00C22FCE /* ForgetPwdViewController.m in Sources */,
 				F0F37A0E1CE07B280047A469 /* Utility.m in Sources */,
+				F0DE189C1D41B32800C4280A /* ZQPickerView.m in Sources */,
 				F08142DF1D05553C000C001E /* GSKeychain.m in Sources */,
 				F0088C931CE6BE8300AF6EAF /* MImaCell.m in Sources */,
 				F0088C8A1CE6BE8300AF6EAF /* MHeadImaView.m in Sources */,

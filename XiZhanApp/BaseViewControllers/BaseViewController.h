@@ -26,4 +26,7 @@ typedef enum : NSUInteger {
 
 // 点击刷新数据
 - (void)tapNoDataView;
+
+/** 消失键盘*/
+- (void)resignKeyBoardInView:(UIView *)view;
 @end
