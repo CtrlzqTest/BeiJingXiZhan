@@ -172,11 +172,28 @@ static NSString *indentify = @"proCellX";
 
 - (void)signAction:(UIButton *)sender {
     
-    self.model.issign = YES;
-    [self.model updateWithCondition:[NSString stringWithFormat:@"msgid = '%@'",self.model.msgid]];
-    [MBProgressHUD showSuccess:@"签到成功" toView:self.view];
-    sender.backgroundColor = [UIColor colorWithWhite:0.758 alpha:0.649];
-    sender.userInteractionEnabled = NO;
+    [RequestManager getRequestWithURL:kTaxiSignInAPI paramer:@{@"contentid":self.model.msgid} success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        if ([responseObject[@"code"] integerValue] == 0) {
+            self.model.issign = YES;
+            [self.model updateWithCondition:[NSString stringWithFormat:@"msgid = '%@'",self.model.msgid]];
+            [MBProgressHUD showSuccess:@"签到成功" toView:self.view];
+            sender.backgroundColor = [UIColor colorWithWhite:0.758 alpha:0.649];
+            sender.userInteractionEnabled = NO;
+        }else if([responseObject[@"code"] integerValue] == -1){
+            self.model.issign = YES;
+            [self.model updateWithCondition:[NSString stringWithFormat:@"msgid = '%@'",self.model.msgid]];
+            [MBProgressHUD showSuccess:@"已过期" toView:self.view];
+            sender.backgroundColor = [UIColor colorWithWhite:0.758 alpha:0.649];
+            sender.userInteractionEnabled = NO;
+
+        }
+    
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    } showHUD:YES];
+    
+
 }
 
 

@@ -143,10 +143,12 @@
     NSString *nodeId = !self.menuModel ? @"" : self.menuModel.menuId;
     NSString *pageIndex = [NSString stringWithFormat:@"%ld",_page];
     NSDictionary *dict = nil;
+    
+    NSString *userType = [User shareUser].type.length > 0 ? [User shareUser].type : @"";
     if (self.menuModel == nil) {
-        dict = @{@"nodeid":@"",@"pageIndex":pageIndex,@"pageSize":@"15",@"time":@"",@"sort":@"CreateTime"};
+        dict = @{@"nodeid":@"",@"pageIndex":pageIndex,@"pageSize":@"15",@"time":@"",@"sort":@"CreateTime",@"PushRole":userType};
     }else {
-        dict = @{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15",@"time":@"",@"sort":@"CreateTime"};
+        dict = @{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15",@"time":@"2016-7-24",@"sort":@"CreateTime",@"PushRole":@""};
     }
     
     [RequestManager getRequestWithURL:kMessageListAPI paramer:dict success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -168,8 +170,9 @@
                 }
             }
             
-            NSString *condition = !self.menuModel ? nil : [NSString stringWithFormat:@"nodeid = '%@'",self.menuModel.menuId];
+            NSString *condition = !self.menuModel ? [NSString stringWithFormat:@"usertype is null or usertype = '%@'",userType] : [NSString stringWithFormat:@"nodeid = '%@' and (usertype is null or usertype = '%@')",self.menuModel.menuId,userType];
             _dataArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:condition page:1 orderBy:@"msgdate"]];
+            
             if (_dataArray.count <= 0) {
                 //                [MBProgressHUD showMessag:@"" toView:nil];
                 [self addNodataViewInView:self.tableView];
@@ -202,10 +205,11 @@
     NSDictionary *dict = nil;
     NSString *nodeId = !self.menuModel ? @"" : self.menuModel.menuId;
     NSString *pageIndex = [NSString stringWithFormat:@"%ld",_page];
+    __block NSString *userType = [User shareUser].type.length > 0 ? [User shareUser].type : @"";
     if (self.menuModel == nil) {
-        dict = @{@"nodeid":@"",@"pageIndex":pageIndex,@"pageSize":@"15",@"sort":@"CreateTime",@"time":@""};
+        dict = @{@"nodeid":@"",@"pageIndex":pageIndex,@"pageSize":@"15",@"sort":@"CreateTime",@"time":@"",@"PushRole":userType};
     }else {
-        dict = @{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15",@"sort":@"CreateTime",@"time":@""};
+        dict = @{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15",@"sort":@"CreateTime",@"time":@"",@"PushRole":userType};
     }
     
     [RequestManager getRequestWithURL:kMessageListAPI paramer:dict success:^(NSURLSessionDataTask *task, id responseObject) {
@@ -225,8 +229,9 @@
                     }
                 }
             }
-            NSString *condition = !self.menuModel ? [NSString stringWithFormat:@"msgdate < '%ld'",lastMsgModel.msgdate] : [NSString stringWithFormat:@"msgdate < '%ld' and nodeid = '%@'",lastMsgModel.msgdate,self.menuModel.menuId];
-            NSArray *moreArray = [MessageModel getDataWithCondition:condition page:1 orderBy:@"msgdate"];
+            
+            NSString *condition = !self.menuModel ? [NSString stringWithFormat:@"msgdate < '%ld'",lastMsgModel.msgdate] : [NSString stringWithFormat:@"msgdate < '%ld' and nodeid = '%@' and (usertype is null or usertype = '%@')",lastMsgModel.msgdate,self.menuModel.menuId,userType];
+            NSArray *moreArray = [MessageModel getDataWithCondition:condition page:_page orderBy:@"msgdate"];
             if (moreArray.count <= 0) {
                 [_autoFooter endRefreshingWithNoMoreData];
             }else {
@@ -308,7 +313,11 @@
     InformationDetailViewController *vc = [[InformationDetailViewController alloc]init];
     vc.model = model;
     // 如果是出租车运力
-    if ([self.menuModel.alias isEqualToString:@"taxi_capacity"]) {
+    BOOL flag = NO;
+    if (self.menuModel == nil && [[User shareUser].type isEqualToString:@"5"]) {
+        flag = YES;
+    }
+    if ([self.menuModel.alias isEqualToString:@"taxi_capacity"] || flag) {
         vc.isShowSign = YES;
     }
     [self.navigationController pushViewController:vc animated:YES];

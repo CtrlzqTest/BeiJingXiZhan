@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "MianZeViewController.h"
+#import "JPUSHService.h"
 
 @interface LoginViewController ()
 {
@@ -135,6 +136,11 @@
             }
             [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLoginNotication object:nil];
             [weakSelf.navigationController popViewControllerAnimated:YES];
+            
+            NSString *userType = [[User shareUser].type isEqualToString:@"1"] ? @"passenger" : @"taxi_driver";
+            [JPUSHService setTags:[NSSet setWithObject:userType] alias:[User shareUser].tel fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
+                
+            }];
             
         }else {
             [MBProgressHUD showError:@"密码与用户名不匹配" toView:nil];

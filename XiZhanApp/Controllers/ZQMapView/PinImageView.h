@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MapModel.h"
 
 @class PinImageView;
 
@@ -40,6 +41,11 @@
  *  imageUrl
  */
 @property(nonatomic,copy)NSString *imageUrl;
+
+/**
+ *  大头针模型
+ */
+@property(nonatomic,strong)MapModel *mapModel;
 
 @property(nonatomic,assign)id<PinImageViewDelegate> delegate;
 

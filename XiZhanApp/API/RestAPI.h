@@ -48,6 +48,8 @@
 
 #define KPostNewPublishTaxiInfo @"api/Add/PublishTaxiInfo"//出租车运力管理
 
+#define kGetFacilitiesAPI       @"api/List/GetFacilities"  // 获取设施信息
+
 #define kAppopinion             @"api/Add/CommitFeedback" //意见反馈
 
 //#define kMuenListAPI            @"api/List/GetNodes" //首页菜单
@@ -55,6 +57,8 @@
 #define kMuenListAPI            @"api/List/GetNodesByParentID" //首页菜单
 
 #define kMessageListAPI         @"api/List/GetContents" //消息列表
+
+#define kTaxiSignInAPI          @"api/Add/TaxiSignIn"   // 出租车司机针对推送消息进行签到
 
 //#define kAllMessageAPI          @"app.menu/list" // 所有消息列表
 
@@ -103,6 +107,6 @@ static NSString *const ZQPublishInfoViewControllerId = @"publishInfoViewControll
 /**************************************************************************************/
 
 // 推送
-#define AppKey @"6816fee48fb77859f7a9011b"
+#define AppKey @"b4b8bd0f427af09839e23286"
 
 #endif

@@ -176,6 +176,7 @@
     MenuModel *model = [[MenuModel alloc] init];
     model.menuId = dict[@"NodeID"];
     model.menuTitle = dict[@"NodeName"];
+    model.alias = dict[@"Alias"];
     detailList.menuModel = model;
     
 //    if (self.mainNavi.viewControllers.count < 2) {

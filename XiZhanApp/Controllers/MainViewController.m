@@ -200,7 +200,7 @@ static NSString *collCellId = @"MainCell";
         
     }else{
         
-        if ([model.alias isEqualToString:@"taxi_capacity"]) {
+        if ([model.alias isEqualToString:@"taxi_capacity"] || [model.alias isEqualToString:@"important_notice"]) {
             MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];;
             myInfoVC.menuModel = model;
             [self.navigationController pushViewController:myInfoVC animated:YES];

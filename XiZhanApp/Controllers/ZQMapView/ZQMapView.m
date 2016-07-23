@@ -10,6 +10,7 @@
 #import "PinImageView.h"
 #import "MapModel.h"
 #import "BubView.h"
+#define kImageWidth [UIScreen mainScreen].bounds.size.height - 64
 
 @interface ZQMapView()<PinImageViewDelegate>{
     CGFloat lastScale;
@@ -25,14 +26,21 @@
 
 @implementation ZQMapView
 
--(instancetype)initWithFrame:(CGRect)frame image:(UIImage *)image {
+-(instancetype)initWithFrame:(CGRect)frame imageType:(MapImageType )imageType {
     
     if (self = [super initWithFrame:frame]) {
 //        self.bounds = frame;
-        self.mapImage = image;
         [self setupViews];
+//        self.imageType = imageType;
     }
     return self;
+}
+
+-(void)setImageType:(MapImageType)imageType {
+    if (_imageType != imageType) {
+        _imageType = imageType;
+        self.imgView.image = [self imageWithType:imageType];
+    }
 }
 
 -(void)setMapImage:(UIImage *)mapImage {
@@ -45,8 +53,8 @@
 
 - (void)setupViews {
     
-    self.imgView = [[UIImageView alloc] initWithFrame:self.bounds];
-    self.imgView.backgroundColor = [UIColor blackColor];
+    self.imgView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kImageWidth, kImageWidth)];
+    self.imgView.center = CGPointMake(self.center.x, self.center.y - 32);
     self.imgView.userInteractionEnabled = YES;
     lastScale=1.0;minScale = 1.0;old_y = 0;
     
@@ -59,7 +67,8 @@
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveImageView:)];
     [self.imgView addGestureRecognizer:pan];
     
-    self.imgView.image = self.mapImage;
+//    self.imgView.image = self.mapImage;
+    self.imgView.image = [self imageWithType:self.imageType];
     self.imageSize = self.mapImage.size;
     
     [self.imgView setAutoresizesSubviews:YES];
@@ -67,22 +76,31 @@
     
     self.clipsToBounds = YES;
     _shouldScale = YES;
-    
+
     self.bubView = [[[NSBundle mainBundle] loadNibNamed:@"BubView" owner:self options:nil] objectAtIndex:0];
-    self.bubView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleBottomMargin;
-    self.bubView.frame = CGRectMake(0, 0, 200, 60);
-    [self.imgView addSubview:self.bubView];
-    self.bubView.hidden = YES;
+    self.bubView.frame = CGRectMake(0, self.frame.size.height - 64, KWidth, 80);
+    [self addSubview:self.bubView];
+//    self.bubView.hidden = YES;
     
 }
 
 #pragma mark -- PinImageViewDelegate
 - (void)tapPinView:(PinImageView *)pinView {
     
-    self.bubView.center = CGPointMake(pinView.center.x + 90, pinView.center.y - 45);
+    if ([self.delegate respondsToSelector:@selector(tapMapAction)]) {
+        [self.delegate tapMapAction];
+    }
     
-    self.bubView.hidden = NO;
-    _shouldScale = NO;
+    self.bubView.titleLabel.text = pinView.mapModel.title;
+    [UIView transitionWithView:self.bubView duration:0.5 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        self.bubView.transform = CGAffineTransformMakeTranslation(0, -80);
+    } completion:^(BOOL finished) {
+        
+    }];
+//    self.bubView.center = CGPointMake(pinView.center.x + 90, pinView.center.y - 45);
+//    
+//    self.bubView.hidden = NO;
+//    _shouldScale = NO;
     
 }
 
@@ -91,14 +109,11 @@
     
     PinImageView *pinView = [[PinImageView alloc] initWithCoordinate:model.coordinate];
     pinView.delegate = self;
+    pinView.mapModel = model;
+    if (model.isMark) {
+        pinView.backgroundColor = [UIColor redColor];
+    }
     [self.imgView addSubview:pinView];
-    
-}
-
-- (void)tapAction:(UITapGestureRecognizer *)gesture {
-    
-    self.bubView.hidden = YES;
-    _shouldScale = YES;
     
 }
 
@@ -109,15 +124,63 @@
         
         PinImageView *pinView = viewArray[i];
         
-        if (i == index + 1) {
-            NSLog(@"pinView:%@",NSStringFromCGRect(pinView.frame));
-            NSLog(@"supView:%@",NSStringFromCGRect(self.imgView.frame));
+        if (i == index) {
+//            NSLog(@"pinView:%@",NSStringFromCGRect(pinView.frame));
+//            NSLog(@"supView:%@",NSStringFromCGRect(self.imgView.frame));
             pinView.backgroundColor = [UIColor redColor];
             [self setPinViewInMapView:pinView];
         }else {
             pinView.backgroundColor = [UIColor blueColor];
         }
     }
+}
+
+// 重新加载地图
+- (void)resetMapView:(NSArray *)modelArray{
+    
+    if (modelArray.count <= 0) {
+        return;
+    }
+    MapModel *mapModel = modelArray[0];
+    self.imageType = MapImageType1;
+    [self.imgView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    for (MapModel *model in modelArray) {
+        [self addPointAnnotation:model];
+    }
+}
+
+#pragma mark -- 私有方法
+- (void)tapAction:(UITapGestureRecognizer *)gesture {
+    
+    if ([self.delegate respondsToSelector:@selector(tapMapAction)]) {
+        [self.delegate tapMapAction];
+    }
+    [UIView transitionWithView:self.bubView duration:0.5 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        self.bubView.transform = CGAffineTransformIdentity;
+    } completion:^(BOOL finished) {
+        
+    }];
+//    self.bubView.hidden = YES;
+//    _shouldScale = YES;
+    
+}
+
+- (UIImage *)imageWithType:(MapImageType )imageType {
+    
+    UIImage *image = nil;
+    switch (imageType) {
+        case MapImageType1:
+            image = [UIImage imageNamed:@"floor-2.jpg"];
+            break;
+        case MapImageType2:
+            image = [UIImage imageNamed:@"floor-1.png"];
+            break;
+        case MapImageType3:
+            break;
+        default:
+            break;
+    }
+    return image;
 }
 
 // 设置初始比例
@@ -146,10 +209,10 @@
         centerX = -self.imgView.frame.origin.x - tmpRect.origin.x + self.frame.size.width / 2.0;
     }
     
-    if (tmpRect.origin.y <= self.frame.size.height / 2.0) {
+    if (tmpRect.origin.y <= kImageWidth / 2.0) {
         centerY = -self.imgView.frame.origin.y;
     }else {
-        centerY = -self.imgView.frame.origin.y - tmpRect.origin.y + self.frame.size.height / 2.0;
+        centerY = -self.imgView.frame.origin.y - tmpRect.origin.y + kImageWidth / 2.0;
     }
     CGPoint point = self.imgView.center;
     [UIView transitionWithView:self.imgView duration:0.5 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
@@ -187,16 +250,20 @@
     self.imgView.frame = CGRectMake(x, y, width, height);
     
     lastScale = gesture.scale;
-    if (self.imgView.frame.size.width <= self.bounds.size.width) {
-        self.imgView.frame = self.bounds;
+    // 缩放到最小就不缩放了
+    CGFloat center_X = self.imgView.center.x;
+    if (self.imgView.frame.size.height <= kImageWidth) {
+        self.imgView.frame = CGRectMake(0, 0, kImageWidth, kImageWidth);
+        self.imgView.center = CGPointMake(center_X, self.center.y - 32);
     }
     [self setViewInSuper];
     [self resetAnnotationsPosition];
 }
 
+// 修改坐标点的位置
 -(void)resetAnnotationsPosition {
     
-    CGFloat scale = self.imgView.frame.size.width / [UIScreen mainScreen].bounds.size.width;
+    CGFloat scale = self.imgView.frame.size.height / kImageWidth;
     for (UIView *view in self.imgView.subviews) {
         if ([view isKindOfClass:[PinImageView class]]) {
             PinImageView *pinview = (PinImageView *)view;
@@ -237,9 +304,9 @@
         self.imgView.frame = tmpRect;
     }
     
-    if ((self.imgView.frame.origin.y + self.imgView.frame.size.height) <= self.bounds.size.height) {
+    if ((self.imgView.frame.origin.y + self.imgView.frame.size.height) <= kImageWidth) {
         CGRect tmpRect = self.imgView.frame;
-        tmpRect.origin.y = self.bounds.size.height - tmpRect.size.height;
+        tmpRect.origin.y = kImageWidth - tmpRect.size.height;
         self.imgView.frame = tmpRect;
     }
 }

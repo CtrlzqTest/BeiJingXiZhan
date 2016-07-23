@@ -7,8 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
-@class MapModel;
+#import "MapModel.h"
+
 @class BubView;
+
+@protocol ZQMapViewDelegate <NSObject>
+
+- (void)tapMapAction;
+
+@end
+
 @interface ZQMapView : UIView
 
 /**
@@ -18,6 +26,12 @@
 
 @property(nonatomic,strong)BubView *bubView;
 
+@property(nonatomic,assign)id<ZQMapViewDelegate> delegate;
+/**
+ *  地图图片类型
+ */
+@property(nonatomic,assign)MapImageType imageType;
+
 /**
  *  初始化
  *
@@ -26,7 +40,7 @@
  *
  *  @return self
  */
--(instancetype)initWithFrame:(CGRect)frame image:(UIImage *)image;
+-(instancetype)initWithFrame:(CGRect)frame imageType:(MapImageType )imageType;
 
 /**
  *  添加大头针
@@ -49,5 +63,10 @@
  */
 - (void)resetPointAnnotation:(MapModel *)model atIndex:(NSInteger )index;
 
-
+/**
+ *  重新设置地图
+ *
+ *  @param modelArray 坐标点数组
+ */
+- (void)resetMapView:(NSArray *)modelArray;
 @end

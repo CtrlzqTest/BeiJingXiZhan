@@ -9,9 +9,11 @@
 #import "RegisterViewController.h"
 #import "MianZeViewController.h"
 #import "ZQPickerView.h"
+#import "JPUSHService.h"
 
 @interface RegisterViewController (){
     NSArray *_userTypeArray;
+    NSInteger _chooseIndex;
 }
 
 @property (weak, nonatomic) IBOutlet UITextField *phoneTef;
@@ -75,7 +77,7 @@
     self.userTypeBtn.layer.cornerRadius = 3;
     [self.userTypeBtn addTarget:self action:@selector(userTypeAction:) forControlEvents:UIControlEventTouchUpInside];
     
-    _userTypeArray = @[@"出租车司机",@"旅客"];
+    _userTypeArray = @[@"旅客",@"出租车司机"];
     
 }
 
@@ -87,6 +89,7 @@
     
     __weak typeof(self) weakSelf = self;
     [pickerView showPickViewAnimated:^(NSInteger index) {
+        _chooseIndex = index + 1;
         [weakSelf.userTypeBtn setTitle:_userTypeArray[index] forState:UIControlStateNormal];
 //        [weakSelf.userTypeBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         pickerView = nil;
@@ -139,8 +142,14 @@
         return ;
     }
     __weak typeof(self) weakSelf = self;
-//    [Utility md5:self.passWordTef.text]
-    [RequestManager postRequestWithURL:kRegisteAPI paramer:@{@"tel":self.phoneTef.text,@"smscode":self.checkCodeTef.text,@"password":self.passWordTef.text} success:^(NSURLSessionDataTask *task, id responseObject) {
+    NSString *type = nil;
+    if (_chooseIndex == 2) {
+        type = @"5";
+    }else {
+        type = @"1";
+    }
+    
+    [RequestManager postRequestWithURL:kRegisteAPI paramer:@{@"tel":self.phoneTef.text,@"smscode":self.checkCodeTef.text,@"password":self.passWordTef.text,@"type":type} success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject[@"error_code"] isEqualToString:@"20000"]) {
             [MBProgressHUD showSuccess:@"服务器异常" toView:weakSelf.view];
             return ;
@@ -154,6 +163,10 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLoginNotication object:nil];
             [weakSelf.navigationController popToRootViewControllerAnimated:YES];
             
+            NSString *userType = [[User shareUser].type isEqualToString:@"1"] ? @"passenger" : @"taxi_driver";
+            [JPUSHService setTags:[NSSet setWithObject:userType] alias:[User shareUser].tel fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
+                
+            }];
         }else {
             [MBProgressHUD showSuccess:responseObject[@"errmsg"] toView:weakSelf.view];
         }
@@ -186,10 +199,15 @@
         [MBProgressHUD showError:@"手机号格式不正确" toView:nil];
         return NO;
     }
+    if (!_chooseIndex) {
+        [MBProgressHUD showError:@"请选择用户类型" toView:nil];
+        return NO;
+    }
     if (!self.agreeBtn.selected) {
         [MBProgressHUD showError:@"请同意免责声明" toView:nil];
         return NO;
     }
+
     return YES;
     
 }

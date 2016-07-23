@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+typedef enum : NSUInteger {
+    MapImageType1 = 1,
+    MapImageType2,
+    MapImageType3,
+} MapImageType;
 
 @interface MapModel : NSObject
 
@@ -16,5 +21,11 @@
 @property(nonatomic,assign)CGPoint coordinate;
 
 @property(nonatomic,assign)BOOL isMark;
+
+@property(nonatomic,copy)NSString *describe;
+
+@property(nonatomic,assign)MapImageType imageType;
+
++ (NSMutableArray *)setDataWithArray:(NSArray *)array;
 
 @end

@@ -50,7 +50,8 @@ static MessageModel *testModel = nil;
              @"nodeid":@"NodeID",
              @"linkUrl":@"LinkUrl",
              @"submitclient":@"SubmitClient",
-             @"nodeid" : @"NodeID"
+             @"nodeid" : @"NodeID",
+             @"usertype":@"PushRole"
              };
 }
 

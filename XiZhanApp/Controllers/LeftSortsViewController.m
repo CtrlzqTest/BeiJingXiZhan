@@ -71,7 +71,8 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
     NSArray *resultArray = [MessageModel getDataWithCondition:@"msgDate = (select max(msgDate) from MessageModel)" page:0 orderBy:nil];
     __block MessageModel *messageModel = [[MessageModel mj_objectArrayWithKeyValuesArray:resultArray] firstObject];
     
-    NSDictionary *dict = @{@"pageIndex":@"1",@"pageSize":@"1",@"time":[Utility getCurrentDateStr],@"sort":@"CreateTime",@"nodeid":@""};
+    NSString *userType = [User shareUser].type.length > 0 ? [User shareUser].type : @"";
+    NSDictionary *dict = @{@"pageIndex":@"1",@"pageSize":@"1",@"time":[Utility getCurrentDateStr],@"sort":@"CreateTime",@"nodeid":@"",@"PushRole":userType};
     
     [RequestManager getRequestWithURL:kMessageListAPI paramer:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject[@"code"] integerValue] == 0) {
@@ -111,6 +112,11 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
     _dataArray[0] = @"登录/注册";
     [_dataArray removeLastObject];
     [Utility saveMyMsgReadState:NO];
+    
+    [JPUSHService setTags:[NSSet set] alias:@"" fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
+        
+    }];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:ZQReadStateDidChangeNotication object:nil];
     [self.tableview reloadData];
 }
