@@ -31,7 +31,7 @@ static NSString *indentify = @"proCellX";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    if ([self.model.nodeid isEqualToString:@"33df5433_413b_4119_8ae4_ee266e60f0d9"] && [User shareUser].type) {
+    if ([self.model.nodeid isEqualToString:@"33df5433_413b_4119_8ae4_ee266e60f0d9"] && [[User shareUser].type isEqualToString:@"5"]) {
         self.isShowSign = YES;
     }
     if ([self.model.submitclient isEqualToString:@"2"]) {

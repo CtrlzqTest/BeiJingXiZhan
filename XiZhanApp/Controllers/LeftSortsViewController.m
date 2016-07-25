@@ -94,7 +94,7 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
 
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
         
-    } showHUD:YES];
+    } showHUD:NO];
 
 }
 
