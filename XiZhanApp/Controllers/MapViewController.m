@@ -35,22 +35,6 @@
     
     _dataArray = [NSMutableArray array];
     _groupArray = [NSMutableArray array];
-//    MapModel *model1 = [[MapModel alloc] init];
-//    NSLog(@"%f",[UIScreen mainScreen].bounds.size.width);
-//    CGFloat scale = (3508.0 / [UIScreen mainScreen].bounds.size.height);
-//    model1.coordinate = CGPointMake(111 / scale, 1491 / scale);
-//    model1.title = @"凉亭（A区）";
-//    MapModel *model2 = [[MapModel alloc] init];
-//    model2.coordinate = CGPointMake(330 / scale, 1564 / scale);
-//    model2.title = @"凉亭（B区）";
-//    MapModel *model3 = [[MapModel alloc] init];
-//    model3.coordinate = CGPointMake(352 / scale, 1573 / scale);
-//    model3.title = @"凉亭（C区）";
-//    [_dataArray addObject:model1];
-//    [_dataArray addObject:model2];
-//    [_dataArray addObject:model3];
-    
-    [_groupArray addObject:_dataArray];
     
     [self setupViews];
     
@@ -66,15 +50,15 @@
     [self.view addSubview:self.tableView];
     
     self.mapView = [[ZQMapView alloc] initWithFrame:self.view.bounds imageType:MapImageType1];
+    //  必须设置
     self.mapView.imageType = MapImageType1;
     self.mapView.delegate = self;
-    // 设置地图信息
-//    [self.mapView resetMapView:_dataArray];
     
     [self.backView addSubview:self.mapView];
     
     self.searchView.backgroundColor = [UIColor colorWithRed:0.771 green:0.858 blue:1.000 alpha:0.500];
     [self.backView bringSubviewToFront:self.searchView];
+    self.searchView.layer.cornerRadius = 5;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
     
@@ -87,8 +71,13 @@
         
         if ([responseObject[@"code"] integerValue] == 0) {
             _dataArray = [MapModel setDataWithArray:responseObject[@"data"]];
+            if (_dataArray.count <= 0) {
+                [MBProgressHUD showMessag:@"没有匹配到数据" toView:self.view];
+                return ;
+            }
+            [weakSelf groupPinviews:_dataArray];
             [weakSelf.tableView reloadData];
-            [weakSelf.mapView resetMapView:_dataArray];
+            [weakSelf.mapView resetMapView:_groupArray[MapImageType1 - 1]];
             [weakSelf showPositionList];
         }
         
@@ -98,6 +87,28 @@
     
 }
 
+// 楼层归类
+-(void)groupPinviews:(NSArray *)dataArray {
+    
+    NSMutableArray *tmpArray1 = [NSMutableArray array];
+    NSMutableArray *tmpArray2 = [NSMutableArray array];
+    
+    for (MapModel *model in _dataArray) {
+        
+        if (model.imageType == MapImageType1) {
+            
+            [tmpArray1 addObject:model];
+            
+        }else if(model.imageType == MapImageType2){
+            
+            [tmpArray2 addObject:model];
+        }
+    }
+    
+    [_groupArray addObject:tmpArray1];
+    [_groupArray addObject:tmpArray2];
+}
+
 -(void)tapMapAction {
     
     [UIView transitionWithView:self.tableView duration:0.5 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
@@ -105,7 +116,6 @@
     } completion:^(BOOL finished) {
         
     }];
-    
 }
 
 - (IBAction)backAction:(id)sender {
@@ -114,6 +124,7 @@
 
 - (IBAction)searchAction:(id)sender {
     
+    [self.mapView hideBubView];
     if (self.searchTef.text > 0) {
         [self requestData];
     }
@@ -143,12 +154,14 @@
     MapModel *model = _dataArray[indexPath.row];
     model.isMark = YES;
     if (self.mapView.imageType == model.imageType) {
-        
+        [self.mapView resetPointAnnotation:model atIndex:indexPath.row];
     }else {
         // 切换地图
-        
+        self.mapView.imageType = model.imageType;
+        [self.mapView resetMapView:_groupArray[model.imageType - 1]];
     }
-    [self.mapView resetPointAnnotation:model atIndex:indexPath.row];
+    
+    [self hidePositionList];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -168,6 +181,11 @@
     return [textField resignFirstResponder];
 }
 
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    [self.mapView hideBubView];
+    return YES;
+}
+
 // 显示列表
 - (void)showPositionList {
     
@@ -176,7 +194,16 @@
     } completion:^(BOOL finished) {
         
     }];
+}
+
+// 隐藏列表
+- (void)hidePositionList {
     
+    [UIView transitionWithView:self.tableView duration:0.5 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        self.tableView.transform = CGAffineTransformIdentity;
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 

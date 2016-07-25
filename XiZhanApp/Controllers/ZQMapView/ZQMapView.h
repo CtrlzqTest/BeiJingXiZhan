@@ -69,4 +69,9 @@
  *  @param modelArray 坐标点数组
  */
 - (void)resetMapView:(NSArray *)modelArray;
+
+/**
+ *  隐藏气泡
+ */
+- (void)hideBubView;
 @end

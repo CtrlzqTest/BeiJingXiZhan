@@ -23,6 +23,8 @@
         model.describe = dict[@"Describe"];
         if ([dict[@"Floor"] isEqualToString:@"01B1"]) {
             model.imageType = MapImageType1;
+        }else if([dict[@"Floor"] isEqualToString:@"01B2"]) {
+            model.imageType = MapImageType2;
         }
         [tmpArray addObject:model];
     }

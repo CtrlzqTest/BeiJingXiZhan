@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 typedef enum : NSUInteger {
-    MapImageType1 = 1,
-    MapImageType2,
+    MapImageType1 = 1, // 负一层
+    MapImageType2,      // 负二层
     MapImageType3,
 } MapImageType;
 
@@ -23,6 +23,8 @@ typedef enum : NSUInteger {
 @property(nonatomic,assign)BOOL isMark;
 
 @property(nonatomic,copy)NSString *describe;
+
+@property(nonatomic,copy)NSString *Imagesurl;
 
 @property(nonatomic,assign)MapImageType imageType;
 

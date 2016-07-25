@@ -142,11 +142,12 @@
         return;
     }
     MapModel *mapModel = modelArray[0];
-    self.imageType = MapImageType1;
+    self.imageType = mapModel.imageType;
     [self.imgView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
     for (MapModel *model in modelArray) {
         [self addPointAnnotation:model];
     }
+    [self resetAnnotationsPosition];
 }
 
 #pragma mark -- 私有方法
@@ -155,14 +156,18 @@
     if ([self.delegate respondsToSelector:@selector(tapMapAction)]) {
         [self.delegate tapMapAction];
     }
+    [self hideBubView];
+//    self.bubView.hidden = YES;
+//    _shouldScale = YES;
+}
+
+// 影藏气泡
+- (void)hideBubView {
     [UIView transitionWithView:self.bubView duration:0.5 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.bubView.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
         
     }];
-//    self.bubView.hidden = YES;
-//    _shouldScale = YES;
-    
 }
 
 - (UIImage *)imageWithType:(MapImageType )imageType {
@@ -170,10 +175,10 @@
     UIImage *image = nil;
     switch (imageType) {
         case MapImageType1:
-            image = [UIImage imageNamed:@"floor-2.jpg"];
+            image = [UIImage imageNamed:@"floor-1.jpg"];
             break;
         case MapImageType2:
-            image = [UIImage imageNamed:@"floor-1.png"];
+            image = [UIImage imageNamed:@"floor-2.jpg"];
             break;
         case MapImageType3:
             break;
@@ -202,17 +207,18 @@
     
     CGRect tmpRect = pinView.frame;
     CGFloat centerX,centerY;
-    if (tmpRect.origin.x <= self.frame.size.width / 2.0) {
+    if (tmpRect.origin.x <= self.frame.size.width / 2.0 || self.imgView.frame.size.width - tmpRect.origin.x <= self.frame.size.width / 2.0) {
         centerX = -self.imgView.frame.origin.x;
     }else {
 //        centerX = self.frame.size.width / 2.0 + tmpRect.origin.x;
         centerX = -self.imgView.frame.origin.x - tmpRect.origin.x + self.frame.size.width / 2.0;
     }
     
-    if (tmpRect.origin.y <= kImageWidth / 2.0) {
+    if (tmpRect.origin.y <= kImageWidth / 2.0 || self.imgView.frame.size.height - tmpRect.origin.y <= kImageWidth / 2.0) {
         centerY = -self.imgView.frame.origin.y;
     }else {
         centerY = -self.imgView.frame.origin.y - tmpRect.origin.y + kImageWidth / 2.0;
+//        centerY = -self.imgView.frame.origin.y - self.imgView.frame.size.height + kImageWidth;
     }
     CGPoint point = self.imgView.center;
     [UIView transitionWithView:self.imgView duration:0.5 options:UIViewAnimationOptionBeginFromCurrentState animations:^{

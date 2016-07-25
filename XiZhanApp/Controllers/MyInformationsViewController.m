@@ -170,7 +170,7 @@
                 }
             }
             
-            NSString *condition = !self.menuModel ? [NSString stringWithFormat:@"usertype is null or usertype = '%@'",userType] : [NSString stringWithFormat:@"nodeid = '%@' and (usertype is null or usertype = '%@')",self.menuModel.menuId,userType];
+            NSString *condition = !self.menuModel ? [NSString stringWithFormat:@"usertype = '' or usertype = '%@'",userType] : [NSString stringWithFormat:@"nodeid = '%@' and (usertype  = '' or usertype = '%@')",self.menuModel.menuId,userType];
             _dataArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:condition page:1 orderBy:@"msgdate"]];
             
             if (_dataArray.count <= 0) {
@@ -214,11 +214,10 @@
     
     [RequestManager getRequestWithURL:kMessageListAPI paramer:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject[@"code"] integerValue] == 0) {
-            NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:responseObject[@"list"]];
+            NSArray *resultArray1 = [MessageModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
             if (resultArray1.count > 0) {
                 _page ++;
                 for (MessageModel *model in resultArray1) {
-                    
                     // 判断数据库是否已存在该条消息
                     NSArray *coutArr = [MessageModel getDataWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid] page:0 orderBy:nil];
                     if (coutArr.count <= 0) {
@@ -230,8 +229,8 @@
                 }
             }
             
-            NSString *condition = !self.menuModel ? [NSString stringWithFormat:@"msgdate < '%ld'",lastMsgModel.msgdate] : [NSString stringWithFormat:@"msgdate < '%ld' and nodeid = '%@' and (usertype is null or usertype = '%@')",lastMsgModel.msgdate,self.menuModel.menuId,userType];
-            NSArray *moreArray = [MessageModel getDataWithCondition:condition page:_page orderBy:@"msgdate"];
+            NSString *condition = !self.menuModel ? [NSString stringWithFormat:@"msgdate < '%ld'",lastMsgModel.msgdate] : [NSString stringWithFormat:@"msgdate < '%ld' and nodeid = '%@' and (usertype  = '' or usertype = '%@')",lastMsgModel.msgdate,self.menuModel.menuId,userType];
+            NSArray *moreArray = [MessageModel getDataWithCondition:condition page:1 orderBy:@"msgdate"];
             if (moreArray.count <= 0) {
                 [_autoFooter endRefreshingWithNoMoreData];
             }else {
