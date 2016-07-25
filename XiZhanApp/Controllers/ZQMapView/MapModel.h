@@ -26,6 +26,8 @@ typedef enum : NSUInteger {
 
 @property(nonatomic,copy)NSString *Imagesurl;
 
+@property(nonatomic,assign)NSInteger pinTag;
+
 @property(nonatomic,assign)MapImageType imageType;
 
 + (NSMutableArray *)setDataWithArray:(NSArray *)array;

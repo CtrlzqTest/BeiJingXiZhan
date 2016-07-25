@@ -34,8 +34,7 @@
     }];
     
     _dataArray = [NSMutableArray array];
-    _groupArray = [NSMutableArray array];
-    
+
     [self setupViews];
     
 }
@@ -77,7 +76,12 @@
             }
             [weakSelf groupPinviews:_dataArray];
             [weakSelf.tableView reloadData];
-            [weakSelf.mapView resetMapView:_groupArray[MapImageType1 - 1]];
+            if ([_groupArray[0] count] > 0) {
+                [weakSelf.mapView resetMapView:_groupArray[MapImageType1 - 1]];
+            }else {
+                [weakSelf.mapView resetMapView:_groupArray[MapImageType2 - 1]];
+            }
+            
             [weakSelf showPositionList];
         }
         
@@ -90,6 +94,7 @@
 // 楼层归类
 -(void)groupPinviews:(NSArray *)dataArray {
     
+    _groupArray = [NSMutableArray array];
     NSMutableArray *tmpArray1 = [NSMutableArray array];
     NSMutableArray *tmpArray2 = [NSMutableArray array];
     
@@ -104,7 +109,6 @@
             [tmpArray2 addObject:model];
         }
     }
-    
     [_groupArray addObject:tmpArray1];
     [_groupArray addObject:tmpArray2];
 }
@@ -153,14 +157,15 @@
 //    self.mapView.imageType = 2;
     MapModel *model = _dataArray[indexPath.row];
     model.isMark = YES;
+    NSLog(@"%ld count:%ld",indexPath.row,[_groupArray[0] count]);
     if (self.mapView.imageType == model.imageType) {
+        
         [self.mapView resetPointAnnotation:model atIndex:indexPath.row];
     }else {
         // 切换地图
         self.mapView.imageType = model.imageType;
         [self.mapView resetMapView:_groupArray[model.imageType - 1]];
     }
-    
     [self hidePositionList];
 }
 

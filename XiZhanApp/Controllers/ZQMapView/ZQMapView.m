@@ -91,7 +91,7 @@
         [self.delegate tapMapAction];
     }
     
-    self.bubView.titleLabel.text = pinView.mapModel.title;
+    [self.bubView setDataWithModel:pinView.mapModel];
     [UIView transitionWithView:self.bubView duration:0.5 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.bubView.transform = CGAffineTransformMakeTranslation(0, -80);
     } completion:^(BOOL finished) {
@@ -110,6 +110,7 @@
     PinImageView *pinView = [[PinImageView alloc] initWithCoordinate:model.coordinate];
     pinView.delegate = self;
     pinView.mapModel = model;
+    pinView.tag = model.pinTag;
     if (model.isMark) {
         pinView.backgroundColor = [UIColor redColor];
     }
@@ -119,18 +120,33 @@
 
 -(void)resetPointAnnotation:(MapModel *)model atIndex:(NSInteger)index {
     
+//    NSArray *viewArray = self.imgView.subviews;
+//    for (int i = 0; i < viewArray.count; i++) {
+//        
+//        PinImageView *pinView = viewArray[i];
+//        
+//        if (i == index) {
+////            NSLog(@"pinView:%@",NSStringFromCGRect(pinView.frame));
+////            NSLog(@"supView:%@",NSStringFromCGRect(self.imgView.frame));
+//            pinView.backgroundColor = [UIColor redColor];
+//            [self.imgView bringSubviewToFront:pinView];
+//            [self setPinViewInMapView:pinView];
+//        }else {
+//            pinView.backgroundColor = [UIColor blueColor];
+//        }
+//    }
+    
+    PinImageView *pinView = [self.imgView viewWithTag:model.pinTag];
+    pinView.backgroundColor = [UIColor redColor];
+    [self.imgView bringSubviewToFront:pinView];
+    [self setPinViewInMapView:pinView];
+    
     NSArray *viewArray = self.imgView.subviews;
     for (int i = 0; i < viewArray.count; i++) {
         
-        PinImageView *pinView = viewArray[i];
-        
-        if (i == index) {
-//            NSLog(@"pinView:%@",NSStringFromCGRect(pinView.frame));
-//            NSLog(@"supView:%@",NSStringFromCGRect(self.imgView.frame));
-            pinView.backgroundColor = [UIColor redColor];
-            [self setPinViewInMapView:pinView];
-        }else {
-            pinView.backgroundColor = [UIColor blueColor];
+        PinImageView *pinView_other = viewArray[i];
+        if (pinView.tag != pinView_other.tag) {
+            pinView_other.backgroundColor = [UIColor blueColor];
         }
     }
 }

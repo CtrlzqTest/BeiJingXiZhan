@@ -21,8 +21,10 @@
 - (void)setDataWithModel:(MapModel *)model {
     
     self.titleLabel.text = model.title;
-    [self.bubImage sd_setImageWithURL:[NSURL URLWithString:model.Imagesurl] placeholderImage:nil];
-    
+    if (model.Imagesurl != nil) {
+        NSString *imgStr = [BaseXiZhanImgAPI stringByAppendingString:model.Imagesurl];
+        [self.bubImage sd_setImageWithURL:[NSURL URLWithString:imgStr] placeholderImage:nil];
+    }
 }
 /*
 // Only override drawRect: if you perform custom drawing.

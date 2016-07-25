@@ -13,7 +13,9 @@
 + (NSMutableArray *)setDataWithArray:(NSArray *)array {
     
     NSMutableArray *tmpArray = [NSMutableArray array];
+    int tag = 100;
     for (NSDictionary *dict in array) {
+        tag ++;
         MapModel *model = [[MapModel alloc] init];
         model.title = dict[@"Name"];
         CGFloat coord_X = [dict[@"LocateinfoX"] floatValue];
@@ -21,11 +23,13 @@
         CGFloat scale = (3508.0 / ([UIScreen mainScreen].bounds.size.height - 64));
         model.coordinate = CGPointMake(coord_X / scale, coord_Y / scale);
         model.describe = dict[@"Describe"];
+        model.Imagesurl = dict[@"Imagesurl"];
         if ([dict[@"Floor"] isEqualToString:@"01B1"]) {
             model.imageType = MapImageType1;
         }else if([dict[@"Floor"] isEqualToString:@"01B2"]) {
             model.imageType = MapImageType2;
         }
+        model.pinTag = tag;
         [tmpArray addObject:model];
     }
     return tmpArray;

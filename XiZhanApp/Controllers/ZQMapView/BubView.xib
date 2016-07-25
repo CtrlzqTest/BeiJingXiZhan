@@ -22,9 +22,16 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lzu-cW-ZDI">
                     <rect key="frame" x="89" y="15" width="271" height="59"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CtE-QK-rBE">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="0.5"/>
+                    <color key="backgroundColor" red="0.76974826389999995" green="0.76974826389999995" blue="0.76974826389999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="0.5" id="uvn-RX-vm8"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -32,6 +39,9 @@
                 <constraint firstAttribute="bottom" secondItem="shy-F0-4br" secondAttribute="bottom" constant="8" id="NUJ-0r-0gt"/>
                 <constraint firstAttribute="trailing" secondItem="Lzu-cW-ZDI" secondAttribute="trailing" constant="15" id="QJq-uR-Bs2"/>
                 <constraint firstItem="shy-F0-4br" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="SJL-Zc-ZDg"/>
+                <constraint firstItem="CtE-QK-rBE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="awd-EI-8bI"/>
+                <constraint firstAttribute="trailing" secondItem="CtE-QK-rBE" secondAttribute="trailing" id="eQZ-Yg-mVk"/>
+                <constraint firstItem="CtE-QK-rBE" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="gwH-7U-eoc"/>
                 <constraint firstItem="Lzu-cW-ZDI" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="i2Q-Gb-RrR"/>
                 <constraint firstAttribute="bottom" secondItem="Lzu-cW-ZDI" secondAttribute="bottom" constant="15" id="qn4-Ew-sdI"/>
                 <constraint firstItem="Lzu-cW-ZDI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="vqW-QC-fKd"/>
@@ -42,7 +52,7 @@
                 <outlet property="bubImage" destination="shy-F0-4br" id="HQW-Vp-dcP"/>
                 <outlet property="titleLabel" destination="Lzu-cW-ZDI" id="IX1-wm-gpe"/>
             </connections>
-            <point key="canvasLocation" x="48.5" y="229.5"/>
+            <point key="canvasLocation" x="48.5" y="239"/>
         </view>
     </objects>
 </document>
