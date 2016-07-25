@@ -10,7 +10,7 @@
 #import "PinImageView.h"
 #import "MapModel.h"
 #import "BubView.h"
-#define kImageWidth [UIScreen mainScreen].bounds.size.height - 64
+#define kImageWidth ([UIScreen mainScreen].bounds.size.height - 64)
 
 @interface ZQMapView()<PinImageViewDelegate>{
     CGFloat lastScale;

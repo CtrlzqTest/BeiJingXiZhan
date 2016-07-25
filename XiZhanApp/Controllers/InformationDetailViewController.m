@@ -30,6 +30,10 @@ static NSString *indentify = @"proCellX";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if ([self.model.nodeid isEqualToString:@"33df5433_413b_4119_8ae4_ee266e60f0d9"] && [User shareUser].type) {
+        self.isShowSign = YES;
+    }
     if ([self.model.submitclient isEqualToString:@"2"]) {
         [self initView];
     }
@@ -37,7 +41,7 @@ static NSString *indentify = @"proCellX";
     {
         [self initWebView];
     }
-
+    
     //[self initWebView];
     // Do any additional setup after loading the view.
 }
