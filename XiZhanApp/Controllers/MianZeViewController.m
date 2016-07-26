@@ -35,7 +35,8 @@
     [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
-    [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 50*ProportionWidth)title:@"免责申明条款" fontSize:17.0];
+//    [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 50*ProportionWidth)title:@"免责申明条款" fontSize:17.0];
+    self.title = @"免责申明条款";
     self.view.backgroundColor = [UIColor whiteColor];
 
     _web = [[UIWebView alloc]initWithFrame:[UIScreen mainScreen].bounds];

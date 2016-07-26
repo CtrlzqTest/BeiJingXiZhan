@@ -165,6 +165,7 @@
         // 切换地图
         self.mapView.imageType = model.imageType;
         [self.mapView resetMapView:_groupArray[model.imageType - 1]];
+        [self.mapView resetPointAnnotation:model atIndex:indexPath.row];
     }
     [self hidePositionList];
 }

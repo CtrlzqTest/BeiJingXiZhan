@@ -57,7 +57,8 @@ static NSString *indentify = @"proCellX";
     [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
-    [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 40*ProportionWidth) title:@"详情" fontSize:17.0];
+//    [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 40*ProportionWidth) title:@"详情" fontSize:17.0];
+    self.title = @"详情";
     self.view.backgroundColor = [UIColor whiteColor];
   
     _paoma = [[WQLPaoMaView alloc]initWithFrame:CGRectMake(50*ProportionWidth,80*ProportionHeight, KWidth-100*ProportionWidth, 40*ProportionHeight) withTitle:self.model.msgtitle];
@@ -306,7 +307,6 @@ static NSString *indentify = @"proCellX";
             }
         }
     }
-    
     return cell.imgOfCell.image;
 }
 
