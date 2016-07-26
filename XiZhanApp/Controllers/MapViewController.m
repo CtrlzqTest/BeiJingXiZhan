@@ -9,6 +9,8 @@
 #import "MapViewController.h"
 #import "ZQMapView.h"
 #import "MapModel.h"
+#import <Masonry.h>
+
 
 @interface MapViewController ()<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,ZQMapViewDelegate>{
     NSMutableArray *_dataArray;
@@ -20,6 +22,8 @@
 @property (nonatomic,strong) ZQMapView *mapView;
 @property (weak, nonatomic) IBOutlet UIView *searchView;
 @property (weak, nonatomic) IBOutlet UITextField *searchTef;
+@property (weak, nonatomic) IBOutlet UIButton *showBtn;
+@property(strong,nonatomic) BubView *bubView;
 
 @end
 
@@ -52,16 +56,30 @@
     //  必须设置
     self.mapView.imageType = MapImageType1;
     self.mapView.delegate = self;
-    
+    [self.mapView setMapScale:1.2];
     [self.backView addSubview:self.mapView];
     
     self.searchView.backgroundColor = [UIColor colorWithRed:0.771 green:0.858 blue:1.000 alpha:0.500];
     [self.backView bringSubviewToFront:self.searchView];
+    [self.backView bringSubviewToFront:self.showBtn];
     self.searchView.layer.cornerRadius = 5;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldDidChange:) name:UITextFieldTextDidChangeNotification object:nil];
     
+    self.showBtn.hidden = YES;
+    
+    self.bubView = [[[NSBundle mainBundle] loadNibNamed:@"BubView" owner:self options:nil] objectAtIndex:0];
+    NSLog(@"%f",self.backView.frame.size.height);
+//    self.bubView.frame = CGRectMake(0, self.backView.frame.size.height, KWidth, 80);
+    [self.backView addSubview:self.bubView];
+    [self.bubView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.offset(0);
+        make.right.offset(0);
+        make.bottom.offset(80);
+        make.height.offset(80);
+    }];
 }
+
 
 - (void)requestData {
     
@@ -113,8 +131,20 @@
     [_groupArray addObject:tmpArray2];
 }
 
+#pragma mark -- ZQMapViewDelegate
+-(void)tapMapActionWithPinview:(PinImageView *)pinView {
+    
+    [self.bubView setDataWithModel:pinView.mapModel];
+    [UIView transitionWithView:self.bubView duration:0.5 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        self.bubView.transform = CGAffineTransformMakeTranslation(0, -80);
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
 -(void)tapMapAction {
     
+    [self hideBubView];
     [UIView transitionWithView:self.tableView duration:0.5 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.tableView.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
@@ -122,13 +152,25 @@
     }];
 }
 
-- (IBAction)backAction:(id)sender {
+// 影藏气泡
+- (void)hideBubView {
+    [UIView transitionWithView:self.bubView duration:0.5 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+        self.bubView.transform = CGAffineTransformIdentity;
+    } completion:^(BOOL finished) {
+        
+    }];
+}
+
+- (IBAction)showBtnAction:(id)sender {
+    
+    [self showPositionList];
     
 }
 
+
 - (IBAction)searchAction:(id)sender {
     
-    [self.mapView hideBubView];
+    [self hideBubView];
     if (self.searchTef.text > 0) {
         [self requestData];
     }
@@ -140,6 +182,7 @@
 -(void)viewWillLayoutSubviews {
     
     self.mapView.frame = self.view.bounds;
+//    self.bubView.frame = CGRectMake(0, self.backView.frame.size.height, KWidth, 80);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -188,13 +231,16 @@
 }
 
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    [self.mapView hideBubView];
+    [self hideBubView];
     return YES;
 }
 
 // 显示列表
 - (void)showPositionList {
     
+    if (self.showBtn.hidden == YES) {
+        self.showBtn.hidden = NO;
+    }
     [UIView transitionWithView:self.tableView duration:0.5 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.tableView.transform = CGAffineTransformMakeTranslation(0, -200);
     } completion:^(BOOL finished) {

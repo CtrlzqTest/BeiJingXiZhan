@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#define kImageWidth ([UIScreen mainScreen].bounds.size.height - 64 - 68)
+
 typedef enum : NSUInteger {
     MapImageType1 = 1, // 负一层
     MapImageType2,      // 负二层

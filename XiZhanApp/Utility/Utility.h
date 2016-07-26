@@ -187,4 +187,13 @@
  */
 + (BOOL )checkToSign:(NSString *)APIStr;
 
+/**
+ *  获取推送tag
+ *
+ *  @param userType 用户类型
+ *
+ *  @return tag
+ */
++ (NSString *)getTagWithuserType:(NSString *)userType;
+
 @end

@@ -148,7 +148,7 @@
     if (self.menuModel == nil) {
         dict = @{@"nodeid":@"",@"pageIndex":pageIndex,@"pageSize":@"15",@"time":@"",@"sort":@"CreateTime",@"PushRole":userType};
     }else {
-        dict = @{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15",@"time":@"2016-7-24",@"sort":@"CreateTime",@"PushRole":@""};
+        dict = @{@"nodeid":nodeId,@"pageIndex":pageIndex,@"pageSize":@"15",@"time":@"",@"sort":@"CreateTime",@"PushRole":@""};
     }
     
     [RequestManager getRequestWithURL:kMessageListAPI paramer:dict success:^(NSURLSessionDataTask *task, id responseObject) {

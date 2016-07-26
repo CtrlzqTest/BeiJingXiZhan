@@ -137,7 +137,7 @@
             [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLoginNotication object:nil];
             [weakSelf.navigationController popViewControllerAnimated:YES];
             
-            NSString *userType = [[User shareUser].type isEqualToString:@"1"] ? @"passenger" : @"taxi_driver";
+            NSString *userType = [Utility getTagWithuserType:[User shareUser].type];
             [JPUSHService setTags:[NSSet setWithObject:userType] alias:[User shareUser].tel fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
                 
             }];

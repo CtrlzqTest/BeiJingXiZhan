@@ -209,8 +209,9 @@ static NSString *collCellId = @"MainCell";
         
     }else{
         
-        if ([model.alias isEqualToString:@"taxi_capacity"] || [model.alias isEqualToString:@"important_notice"]) {
-            MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];;
+        if ([model.alias isEqualToString:@"important_notice"] || [model.alias isEqualToString:@"area_news"] || [model.alias isEqualToString:@"query_service"] || [model.alias isEqualToString:@"taxi_capacity"]) {
+            
+            MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];
             myInfoVC.menuModel = model;
             [self.navigationController pushViewController:myInfoVC animated:YES];
         }else {

@@ -9,8 +9,8 @@
 #import "ZQMapView.h"
 #import "PinImageView.h"
 #import "MapModel.h"
-#import "BubView.h"
-#define kImageWidth ([UIScreen mainScreen].bounds.size.height - 64)
+// 一定要与MapModel里的坐标比例对应
+//#define kImageWidth ([UIScreen mainScreen].bounds.size.height - 64 - 68)
 
 @interface ZQMapView()<PinImageViewDelegate>{
     CGFloat lastScale;
@@ -58,6 +58,7 @@
     self.imgView.userInteractionEnabled = YES;
     lastScale=1.0;minScale = 1.0;old_y = 0;
     
+    // 点击地图
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
     [self.imgView addGestureRecognizer:tap];
     
@@ -77,9 +78,9 @@
     self.clipsToBounds = YES;
     _shouldScale = YES;
 
-    self.bubView = [[[NSBundle mainBundle] loadNibNamed:@"BubView" owner:self options:nil] objectAtIndex:0];
-    self.bubView.frame = CGRectMake(0, self.frame.size.height - 64, KWidth, 80);
-    [self addSubview:self.bubView];
+//    self.bubView = [[[NSBundle mainBundle] loadNibNamed:@"BubView" owner:self options:nil] objectAtIndex:0];
+//    self.bubView.frame = CGRectMake(0, kImageWidth, KWidth, 80);
+//    [self addSubview:self.bubView];
 //    self.bubView.hidden = YES;
     
 }
@@ -87,16 +88,16 @@
 #pragma mark -- PinImageViewDelegate
 - (void)tapPinView:(PinImageView *)pinView {
     
-    if ([self.delegate respondsToSelector:@selector(tapMapAction)]) {
-        [self.delegate tapMapAction];
+    if ([self.delegate respondsToSelector:@selector(tapMapActionWithPinview:)]) {
+        [self.delegate tapMapActionWithPinview:pinView];
     }
     
-    [self.bubView setDataWithModel:pinView.mapModel];
-    [UIView transitionWithView:self.bubView duration:0.5 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-        self.bubView.transform = CGAffineTransformMakeTranslation(0, -80);
-    } completion:^(BOOL finished) {
-        
-    }];
+//    [self.bubView setDataWithModel:pinView.mapModel];
+//    [UIView transitionWithView:self.bubView duration:0.5 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
+//        self.bubView.transform = CGAffineTransformMakeTranslation(0, -80);
+//    } completion:^(BOOL finished) {
+//        
+//    }];
 //    self.bubView.center = CGPointMake(pinView.center.x + 90, pinView.center.y - 45);
 //    
 //    self.bubView.hidden = NO;
@@ -172,19 +173,11 @@
     if ([self.delegate respondsToSelector:@selector(tapMapAction)]) {
         [self.delegate tapMapAction];
     }
-    [self hideBubView];
+//    [self hideBubView];
 //    self.bubView.hidden = YES;
 //    _shouldScale = YES;
 }
 
-// 影藏气泡
-- (void)hideBubView {
-    [UIView transitionWithView:self.bubView duration:0.5 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
-        self.bubView.transform = CGAffineTransformIdentity;
-    } completion:^(BOOL finished) {
-        
-    }];
-}
 
 - (UIImage *)imageWithType:(MapImageType )imageType {
     

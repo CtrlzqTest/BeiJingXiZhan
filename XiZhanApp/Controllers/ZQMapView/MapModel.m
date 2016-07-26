@@ -20,7 +20,7 @@
         model.title = dict[@"Name"];
         CGFloat coord_X = [dict[@"LocateinfoX"] floatValue];
         CGFloat coord_Y = [dict[@"LocateinfoY"] floatValue];
-        CGFloat scale = (3508.0 / ([UIScreen mainScreen].bounds.size.height - 64));
+        CGFloat scale = (3508.0 / kImageWidth);
         model.coordinate = CGPointMake(coord_X / scale, coord_Y / scale);
         model.describe = dict[@"Describe"];
         model.Imagesurl = dict[@"Imagesurl"];

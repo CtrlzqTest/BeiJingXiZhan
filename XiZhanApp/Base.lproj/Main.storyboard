@@ -304,7 +304,7 @@
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4B-fP-Abn">
                                         <rect key="frame" x="295" y="0.0" width="50" height="38"/>
-                                        <color key="backgroundColor" red="0.0" green="0.38039215686274508" blue="0.65490196078431373" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.082352941176470587" green="0.62745098039215685" blue="0.81176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="搜索">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
@@ -337,10 +337,32 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgG-pe-TuZ">
                                 <rect key="frame" x="0.0" y="132" width="375" height="535"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JA1-TE-gda">
+                                        <rect key="frame" x="15" y="476" width="345" height="44"/>
+                                        <color key="backgroundColor" red="0.08235294118" green="0.62745098040000002" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="RmH-8h-aF4"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="查看列表">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="3"/>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="showBtnAction:" destination="Ugv-11-9ll" eventType="touchUpInside" id="ZpM-7w-Dvb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <constraints>
+                                    <constraint firstItem="JA1-TE-gda" firstAttribute="leading" secondItem="hgG-pe-TuZ" secondAttribute="leading" constant="15" id="4C8-cJ-UbN"/>
                                     <constraint firstAttribute="width" secondItem="hgG-pe-TuZ" secondAttribute="height" id="DNc-JL-Ihh"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="400" id="Ytp-ZS-gbn"/>
                                     <constraint firstAttribute="height" constant="400" id="kJN-K0-ktU"/>
+                                    <constraint firstAttribute="trailing" secondItem="JA1-TE-gda" secondAttribute="trailing" constant="15" id="orB-GN-Ghv"/>
+                                    <constraint firstAttribute="bottom" secondItem="JA1-TE-gda" secondAttribute="bottom" constant="15" id="r2G-Sb-YyZ"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -368,6 +390,7 @@
                         <outlet property="backView" destination="hgG-pe-TuZ" id="bHD-Mc-k0L"/>
                         <outlet property="searchTef" destination="vsl-cB-Nk7" id="PhW-yx-YKa"/>
                         <outlet property="searchView" destination="tGr-Hj-AAf" id="Cpd-eC-6WN"/>
+                        <outlet property="showBtn" destination="JA1-TE-gda" id="o8X-fm-c2n"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="itG-43-E4U" userLabel="First Responder" sceneMemberID="firstResponder"/>

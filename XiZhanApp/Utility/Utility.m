@@ -433,6 +433,42 @@ static User *user = nil;
     return [NSString stringWithFormat:@"%@%@",keyAPI,[APIStr substringToIndex:APIStr.length - 1]];
 }
 
-
+/**
+ *  ***************** 其他 ********************
+ */
++ (NSString *)getTagWithuserType:(NSString *)userType {
+    
+    NSInteger index = [userType integerValue];
+    NSString *tag = nil;
+    switch (index) {
+        case 1:
+            tag =  @"passenger";
+            break;
+        case 2:
+            tag =  @"volunteer";
+            break;
+        case 3:
+            tag =  @"service";
+            break;
+        case 4:
+            tag =  @"guide";
+            break;
+        case 5:
+            tag =  @"taxi_driver";
+            break;
+        case 6:
+            tag =  @"army";
+            break;
+        case 7:
+            tag =  @"police";
+            break;
+        case 8:
+            tag =  @"cmps";
+            break;
+        default:
+            break;
+    }
+    return tag;
+}
 
 @end

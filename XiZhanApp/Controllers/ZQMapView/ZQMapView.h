@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "MapModel.h"
+#import "BubView.h"
+#import "PinImageView.h"
 
 @class BubView;
 
 @protocol ZQMapViewDelegate <NSObject>
+
+-(void)tapMapActionWithPinview:(PinImageView *)pinView;
 
 - (void)tapMapAction;
 
