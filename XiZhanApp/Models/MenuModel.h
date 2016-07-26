@@ -14,5 +14,6 @@
 @property(nonatomic,copy)NSString *menuTitle;
 @property(nonatomic,copy)NSString *imgUrl;
 @property(nonatomic,copy)NSString *alias;
+@property(nonatomic,copy)NSString *imageName;
 
 @end

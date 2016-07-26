@@ -13,5 +13,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *headImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *headLeft;
+@property (weak, nonatomic) IBOutlet UIView *backView;
 
 @end

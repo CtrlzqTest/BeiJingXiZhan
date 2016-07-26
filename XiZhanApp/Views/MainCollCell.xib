@@ -20,35 +20,39 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vmP-hp-3eY">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ftb-qy-DGO">
                         <rect key="frame" x="15" y="5" width="117" height="117"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1SU-AI-1Pn">
+                                <rect key="frame" x="15" y="15" width="87" height="87"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="vmP-hp-3eY" secondAttribute="height" id="guD-f0-7SB"/>
+                            <constraint firstItem="1SU-AI-1Pn" firstAttribute="leading" secondItem="ftb-qy-DGO" secondAttribute="leading" constant="15" id="0eR-Wn-KWj"/>
+                            <constraint firstAttribute="width" secondItem="ftb-qy-DGO" secondAttribute="height" id="1va-Ph-w38"/>
+                            <constraint firstAttribute="trailing" secondItem="1SU-AI-1Pn" secondAttribute="trailing" constant="15" id="Pli-bR-gsm"/>
+                            <constraint firstAttribute="bottom" secondItem="1SU-AI-1Pn" secondAttribute="bottom" constant="15" id="hmx-33-hTW"/>
+                            <constraint firstItem="1SU-AI-1Pn" firstAttribute="top" secondItem="ftb-qy-DGO" secondAttribute="top" constant="15" id="qgw-mG-hYL"/>
                         </constraints>
-                    </imageView>
+                    </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="CjM-FF-6Tg" secondAttribute="bottom" id="2uo-CU-cu6"/>
                 <constraint firstItem="CjM-FF-6Tg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="34h-lU-wA4"/>
-                <constraint firstItem="vmP-hp-3eY" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="DMI-7r-0DJ"/>
-                <constraint firstItem="vmP-hp-3eY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="FEs-6n-ESZ"/>
+                <constraint firstItem="ftb-qy-DGO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="75g-Vp-Hi8"/>
+                <constraint firstItem="CjM-FF-6Tg" firstAttribute="top" secondItem="ftb-qy-DGO" secondAttribute="bottom" id="Go4-gS-djE"/>
+                <constraint firstAttribute="trailing" secondItem="ftb-qy-DGO" secondAttribute="trailing" constant="15" id="HDn-BC-F6x"/>
                 <constraint firstAttribute="trailing" secondItem="CjM-FF-6Tg" secondAttribute="trailing" id="QGx-jF-Zwk"/>
-                <constraint firstItem="CjM-FF-6Tg" firstAttribute="top" secondItem="vmP-hp-3eY" secondAttribute="bottom" id="eat-aL-7K3"/>
-                <constraint firstAttribute="trailing" secondItem="vmP-hp-3eY" secondAttribute="trailing" constant="15" id="tc7-dS-U25"/>
-                <constraint firstItem="vmP-hp-3eY" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="zBj-rc-3vK"/>
+                <constraint firstItem="ftb-qy-DGO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="nvQ-dI-7sN"/>
             </constraints>
             <size key="customSize" width="147" height="156"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="zBj-rc-3vK"/>
-                </mask>
-            </variation>
             <connections>
-                <outlet property="headImageView" destination="vmP-hp-3eY" id="6Az-qr-Fbi"/>
-                <outlet property="headLeft" destination="FEs-6n-ESZ" id="ogH-kX-vbL"/>
+                <outlet property="backView" destination="ftb-qy-DGO" id="HRI-Cx-bXq"/>
+                <outlet property="headImageView" destination="1SU-AI-1Pn" id="FZj-RY-Ns9"/>
+                <outlet property="headLeft" destination="nvQ-dI-7sN" id="dRu-v9-wUN"/>
                 <outlet property="titleLabel" destination="CjM-FF-6Tg" id="WXo-nw-Cd7"/>
             </connections>
             <point key="canvasLocation" x="235.5" y="247"/>

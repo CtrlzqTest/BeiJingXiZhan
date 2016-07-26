@@ -50,6 +50,7 @@
 		F0186CCA1D00226900F90CE1 /* TaxiMsgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0186CC91D00226900F90CE1 /* TaxiMsgModel.m */; };
 		F021140B1CE2D81A00676971 /* InformationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F021140A1CE2D81A00676971 /* InformationDetailViewController.m */; };
 		F022D24C1D46038200833FD6 /* floor-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F022D24B1D46038200833FD6 /* floor-2.jpg */; };
+		F022D24E1D4619F800833FD6 /* floor-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F022D24D1D4619F800833FD6 /* floor-1.jpg */; };
 		F02426DD1D0FD35200661961 /* ZQChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = F02426DB1D0FD35200661961 /* ZQChooseView.m */; };
 		F02426DE1D0FD35200661961 /* ZQChooseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F02426DC1D0FD35200661961 /* ZQChooseView.xib */; };
 		F02426E11D0FDF9C00661961 /* AreaOfXiZhan.m in Sources */ = {isa = PBXBuildFile; fileRef = F02426E01D0FDF9C00661961 /* AreaOfXiZhan.m */; };
@@ -66,7 +67,6 @@
 		F0607B3F1CE5B6650029EE31 /* ZQDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0607B3B1CE5B6650029EE31 /* ZQDatabaseManager.m */; };
 		F0607B401CE5B6650029EE31 /* ZQDatabaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0607B3D1CE5B6650029EE31 /* ZQDatabaseModel.m */; };
 		F0614DD11CE1C4180036CC3E /* MyInformationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0614DD01CE1C4180036CC3E /* MyInformationsViewController.m */; };
-		F06DB0821D4347D5009C66F3 /* floor-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F06DB0811D4347D5009C66F3 /* floor-1.jpg */; };
 		F07F46FA1D264AEA00DCFD78 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = F07F46F41D264AEA00DCFD78 /* MBProgressHUD+Add.m */; };
 		F07F46FB1D264AEA00DCFD78 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F07F46F51D264AEA00DCFD78 /* MBProgressHUD.bundle */; };
 		F07F46FC1D264AEA00DCFD78 /* RequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F07F46F71D264AEA00DCFD78 /* RequestHelper.m */; };
@@ -200,6 +200,7 @@
 		F02114091CE2D81A00676971 /* InformationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationDetailViewController.h; sourceTree = "<group>"; };
 		F021140A1CE2D81A00676971 /* InformationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationDetailViewController.m; sourceTree = "<group>"; };
 		F022D24B1D46038200833FD6 /* floor-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "floor-2.jpg"; sourceTree = "<group>"; };
+		F022D24D1D4619F800833FD6 /* floor-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "floor-1.jpg"; sourceTree = "<group>"; };
 		F02426DA1D0FD35200661961 /* ZQChooseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQChooseView.h; sourceTree = "<group>"; };
 		F02426DB1D0FD35200661961 /* ZQChooseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQChooseView.m; sourceTree = "<group>"; };
 		F02426DC1D0FD35200661961 /* ZQChooseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZQChooseView.xib; sourceTree = "<group>"; };
@@ -228,7 +229,6 @@
 		F0607B3D1CE5B6650029EE31 /* ZQDatabaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQDatabaseModel.m; sourceTree = "<group>"; };
 		F0614DCF1CE1C4180036CC3E /* MyInformationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInformationsViewController.h; sourceTree = "<group>"; };
 		F0614DD01CE1C4180036CC3E /* MyInformationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInformationsViewController.m; sourceTree = "<group>"; };
-		F06DB0811D4347D5009C66F3 /* floor-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "floor-1.jpg"; sourceTree = "<group>"; };
 		F07F46F31D264AEA00DCFD78 /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
 		F07F46F41D264AEA00DCFD78 /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
 		F07F46F51D264AEA00DCFD78 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
@@ -807,7 +807,7 @@
 			isa = PBXGroup;
 			children = (
 				F00007E61CF6CAA100479EFB /* about_info.png */,
-				F06DB0811D4347D5009C66F3 /* floor-1.jpg */,
+				F022D24D1D4619F800833FD6 /* floor-1.jpg */,
 				F022D24B1D46038200833FD6 /* floor-2.jpg */,
 			);
 			path = Resources;
@@ -977,7 +977,7 @@
 				F0088C9D1CE6BE8300AF6EAF /* LQPhotoViewCell.xib in Resources */,
 				F092EEC41CE6B79500353351 /* MsgType1TabCell.xib in Resources */,
 				F0088C821CE6BE8300AF6EAF /* ico_check_select.png in Resources */,
-				F06DB0821D4347D5009C66F3 /* floor-1.jpg in Resources */,
+				F022D24E1D4619F800833FD6 /* floor-1.jpg in Resources */,
 				F0088C831CE6BE8300AF6EAF /* ico_check_select@2x.png in Resources */,
 				F0088C7C1CE6BE8300AF6EAF /* close.png in Resources */,
 				F0088C871CE6BE8300AF6EAF /* plus@3x.png in Resources */,

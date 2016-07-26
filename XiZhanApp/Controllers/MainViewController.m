@@ -78,14 +78,17 @@ static NSString *collCellId = @"MainCell";
             _dataArray = [MenuModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
             MenuModel *menuModel = [[MenuModel alloc] init];
             menuModel.menuTitle = @"交通引导";
+            menuModel.imageName = @"taxi";
             [_dataArray addObject:menuModel];
             
             MenuModel *menuModel1 = [[MenuModel alloc] init];
-            menuModel1.menuTitle = @"换乘查询";
+            menuModel1.menuTitle = @"交通换乘";
+            menuModel1.imageName = @"transfer";
             [_dataArray addObject:menuModel1];
             
             MenuModel *menuModel2 = [[MenuModel alloc] init];
             menuModel2.menuTitle = @"设施查询";
+            menuModel2.imageName = @"facilities";
             [_dataArray addObject:menuModel2];
             
         }else if([responseObject[@"code"] integerValue] == 10001){
@@ -163,10 +166,16 @@ static NSString *collCellId = @"MainCell";
     MainCollCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:collCellId forIndexPath:indexPath];
     MenuModel *model = _dataArray[indexPath.row];
     cell.titleLabel.text = model.menuTitle;
-    if (indexPath.row >= _dataArray.count - 1) {
-        
-        cell.headImageView.image = [UIImage imageNamed:@"taxi"];
-        
+//    if (indexPath.row >= _dataArray.count - 1) {
+//        
+//        cell.headImageView.image = [UIImage imageNamed:@"taxi"];
+//        
+//    }else {
+//        NSString *imgUrl = [NSString stringWithFormat:@"%@%@",BaseXiZhanImgAPI,model.imgUrl];
+//        [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"default"]];
+//    }
+    if (model.imgUrl.length <= 0) {
+        cell.headImageView.image = [UIImage imageNamed:model.imageName];
     }else {
         NSString *imgUrl = [NSString stringWithFormat:@"%@%@",BaseXiZhanImgAPI,model.imgUrl];
         [cell.headImageView sd_setImageWithURL:[NSURL URLWithString:imgUrl] placeholderImage:[UIImage imageNamed:@"default"]];
