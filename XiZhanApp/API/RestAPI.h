@@ -11,11 +11,13 @@
 #import <UIKit/UIKit.h>
 //#define BaseAPI                 @"http://192.168.16.147:8088/"  // 龙龙
 
-#define BaseAPI                 @"http://42.62.18.88:8037/bjws/"  // 龙龙
+//#define BaseAPI                 @"http://42.62.18.88:8037/bjws/"  // 龙龙
 
 #define BaseXiZhanImgAPI        @"http://42.62.18.88:8080/"
 
 #define BaseXiZhanAPI           @"http://42.62.18.88:8081/"
+
+#define BaseAPI                 @"http://42.62.18.88:8081/"
 
 #define kgetCodeAPI             @"app.user/getSmsCode"      // 获取验证码
 

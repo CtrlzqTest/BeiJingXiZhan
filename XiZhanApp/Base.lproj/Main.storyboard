@@ -648,6 +648,11 @@
                             <constraint firstItem="YKH-3x-4wb" firstAttribute="leading" secondItem="ink-nh-pSk" secondAttribute="leading" id="x0T-9g-IYD"/>
                             <constraint firstItem="CK1-W7-OJX" firstAttribute="leading" secondItem="3s7-BT-SVp" secondAttribute="trailing" constant="5" id="zLW-7m-N48"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="vkt-fS-qck"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="afx-ZG-7yQ"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -655,7 +660,12 @@
                         <outlet property="agreeBtn" destination="3s7-BT-SVp" id="90u-1W-BOL"/>
                         <outlet property="autoLoginSwitch" destination="h35-db-GiR" id="CUt-4j-0cv"/>
                         <outlet property="impunityBtn" destination="CK1-W7-OJX" id="6Hc-VJ-CaA"/>
+                        <outlet property="loginBtnHeght" destination="onZ-tD-4J0" id="gxV-S3-7UY"/>
+                        <outlet property="loginTopInset" destination="dei-1O-wko" id="dJX-9r-kvZ"/>
+                        <outlet property="mianzeTopinset" destination="DIq-MH-PiU" id="Ahc-yc-dCi"/>
                         <outlet property="passWordLabel" destination="YKH-3x-4wb" id="e4f-Oo-kNA"/>
+                        <outlet property="tefHeght" destination="w8O-ue-20N" id="RhO-yb-Z28"/>
+                        <outlet property="top" destination="bIR-WV-dKZ" id="fOb-be-PHZ"/>
                         <outlet property="userNameLabel" destination="ink-nh-pSk" id="yyn-gj-tFw"/>
                     </connections>
                 </viewController>

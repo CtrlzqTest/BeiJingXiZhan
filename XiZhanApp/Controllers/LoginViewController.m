@@ -13,6 +13,13 @@
 {
     BOOL _isAgree;
 }
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *loginTopInset;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mianzeTopinset;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tefHeght;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *loginBtnHeght;
+
 @property (weak, nonatomic) IBOutlet UITextField *userNameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passWordLabel;
 @property (weak, nonatomic) IBOutlet UIButton *autoLoginSwitch;
@@ -40,15 +47,21 @@
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
     
+    self.top.constant = 70 * ProportionHeight;
+    self.loginTopInset.constant = 50 * ProportionHeight;
+    self.mianzeTopinset.constant = 25 * ProportionHeight;
+    self.tefHeght.constant = 40 * ProportionHeight;
+    self.loginBtnHeght.constant = 60 * ProportionHeight;
+    
     self.userNameLabel.layer.borderWidth = 2.5;
     self.userNameLabel.layer.borderColor = colorref;
-    self.userNameLabel.layer.cornerRadius = 20;
+    self.userNameLabel.layer.cornerRadius = 20 * ProportionHeight;
     self.userNameLabel.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.userNameLabel.leftViewMode = UITextFieldViewModeAlways;
     
     self.passWordLabel.layer.borderWidth = 2.5;
     self.passWordLabel.layer.borderColor = colorref;
-    self.passWordLabel.layer.cornerRadius = 20;
+    self.passWordLabel.layer.cornerRadius = 20 * ProportionHeight;
     self.passWordLabel.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.passWordLabel.leftViewMode = UITextFieldViewModeAlways;
     
