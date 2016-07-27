@@ -289,10 +289,11 @@
         self.imgString = [NSString stringWithFormat:@"1"];
     }
     
-    NSDictionary *dict = @{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":self.fieldOfUser.text,@"imageurl":self.imgString,@"createuser":[User shareUser].userId,@"author":[User shareUser].tel,@"department":@"0",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0"};
-    NSLog(@"%@",dict);
-    [RequestManager postRequestWithURL:kMenuAdd paramer:dict success:^(NSURLSessionDataTask *task, id responseObject) {
-        if ([responseObject[@"code"] integerValue] == 0 )
+    NSDictionary *dict = @{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":self.fieldOfUser.text,@"imageurl":self.imgString,@"createuser":[User shareUser].userId,@"author":[User shareUser].tel,@"department":@"0",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0",@"pushRole":@""};
+    
+    [RequestManager postWithURL:kMenuAdd paramer:dict success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@",responseObject[@"errmsg"]);
+        if ([responseObject[@"code"] integerValue] == 0)
         {
             [MBProgressHUD showSuccess:@"提交成功！" toView:nil];
             [weakSelf.navigationController popViewControllerAnimated:YES];

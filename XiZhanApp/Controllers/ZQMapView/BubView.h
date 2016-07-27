@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *bubImage;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *descLabel;
 
 /**
  *  气泡赋值

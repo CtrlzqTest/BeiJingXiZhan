@@ -69,7 +69,6 @@
     self.showBtn.hidden = YES;
     
     self.bubView = [[[NSBundle mainBundle] loadNibNamed:@"BubView" owner:self options:nil] objectAtIndex:0];
-    NSLog(@"%f",self.backView.frame.size.height);
 //    self.bubView.frame = CGRectMake(0, self.backView.frame.size.height, KWidth, 80);
     [self.backView addSubview:self.bubView];
     [self.bubView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -135,6 +134,7 @@
 -(void)tapMapActionWithPinview:(PinImageView *)pinView {
     
     [self.bubView setDataWithModel:pinView.mapModel];
+//    self.bubView.bubImage.image = [UIImage imageNamed:@"about_info"];
     [UIView transitionWithView:self.bubView duration:0.5 options:UIViewAnimationOptionBeginFromCurrentState animations:^{
         self.bubView.transform = CGAffineTransformMakeTranslation(0, -80);
     } completion:^(BOOL finished) {

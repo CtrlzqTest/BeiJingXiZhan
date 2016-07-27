@@ -117,8 +117,9 @@
     
     AFHTTPRequestSerializer *serializer = [AFHTTPRequestSerializer serializer];
     NSString *path = [BaseXiZhanAPI stringByAppendingString:kUploadFile];
+    NSString *urlStr = [Utility getSecretAPI:path paramDict:nil];
     NSMutableURLRequest *request =
-    [serializer multipartFormRequestWithMethod:@"POST" URLString:path parameters:@{@"path":@"contentimage"} constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+    [serializer multipartFormRequestWithMethod:@"POST" URLString:urlStr parameters:@{@"path":@"contentimage"} constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         [formData appendPartWithFileData:postData
                                     name:@"bin"
                                 fileName:@"image.jpg"

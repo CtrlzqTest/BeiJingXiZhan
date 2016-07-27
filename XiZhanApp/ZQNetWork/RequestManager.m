@@ -29,6 +29,26 @@
     
 }
 
+// 智信
++ (void)postWithURL:(NSString *)urlStr
+            paramer:(NSDictionary *)paramers
+            success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+            failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure
+            showHUD:(BOOL )showHUD{
+    
+    NSString *str = [BaseXiZhanAPI stringByAppendingString:urlStr];
+    NSString *url = nil;
+    if ([Utility checkToSign:str]) {
+        url = [[Utility getSecretAPI:str paramDict:nil] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        [RequestHelper startRequest:url paramer:paramers method:RequestMethodPost success:success failure:failure showHUD:showHUD];
+    }else {
+        url = str;
+        [RequestHelper startRequest:url paramer:paramers method:RequestMethodPost success:success failure:failure showHUD:showHUD];
+    }
+    //    [RequestHelper startRequest:urlStr paramer:paramers method:RequestMethodPost success:success failure:failure];
+    
+}
+
 + (void)getRequestWithURL:(NSString *)urlStr
                   paramer:(NSDictionary *)paramers
                   success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
@@ -39,7 +59,7 @@
     NSString *url = nil;
     if ([Utility checkToSign:str]) {
         url = [[Utility getSecretAPI:str paramDict:paramers] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-        [RequestHelper startRequest:url paramer:paramers method:RequestMethodGet success:success failure:failure showHUD:showHUD];
+        [RequestHelper startRequest:url paramer:nil method:RequestMethodGet success:success failure:failure showHUD:showHUD];
     }else {
         url = str;
         [RequestHelper startRequest:url paramer:paramers method:RequestMethodGet success:success failure:failure showHUD:showHUD];

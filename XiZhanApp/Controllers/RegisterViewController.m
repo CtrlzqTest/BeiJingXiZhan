@@ -72,10 +72,14 @@
     self.checkCodeTef.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.checkCodeTef.leftViewMode = UITextFieldViewModeAlways;
     
-    self.userTypeBtn.layer.borderWidth = 0.5;
-    self.userTypeBtn.layer.borderColor = [UIColor grayColor].CGColor;
-    self.userTypeBtn.layer.cornerRadius = 3;
+    self.userTypeBtn.layer.borderWidth = 2.5;
+    self.userTypeBtn.layer.borderColor = colorref;
+    self.userTypeBtn.layer.cornerRadius = 20;
     [self.userTypeBtn addTarget:self action:@selector(userTypeAction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.checkCodeTef.layer.borderWidth = 2.5;
+    self.checkCodeTef.layer.borderColor = colorref;
+    self.checkCodeTef.layer.cornerRadius = 20;
     
     _userTypeArray = @[@"旅客",@"出租车司机"];
     

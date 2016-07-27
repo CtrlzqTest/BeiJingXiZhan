@@ -27,6 +27,20 @@
                    showHUD:(BOOL )showHUD;
 
 /**
+ *  <#Description#>
+ *
+ *  @param urlStr   <#urlStr description#>
+ *  @param paramers <#paramers description#>
+ *  @param success  <#success description#>
+ *  @param failure  <#failure description#>
+ *  @param showHUD  <#showHUD description#>
+ */
++ (void)postWithURL:(NSString *)urlStr
+            paramer:(NSDictionary *)paramers
+            success:(void (^)(NSURLSessionDataTask *task, id responseObject))success
+            failure:(void (^)(NSURLSessionDataTask *task, NSError *error))failure
+            showHUD:(BOOL )showHUD;
+/**
  *  GET请求
  *
  *  @param urlStr   请求地址

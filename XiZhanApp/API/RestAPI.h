@@ -10,11 +10,13 @@
 
 #import <UIKit/UIKit.h>
 
-//#define BaseAPI                 @"http://192.168.16.99:8080/bjws/"  // 测试
+//#define BaseAPI                 @"http://192.168.16.8:8080/bjws/"  // 测试
 
 //#define BaseAPI                 @"http://222.240.172.197:8081/"  // 智信接口地址
 
 #define BaseAPI                 @"http://42.62.18.88:8037/bjws/"  // 发布接口地址
+
+//#define BaseAPI                 @"http://42.62.18.88:8081/"  // 发布环境智信接口地址
 //
 #define BaseXiZhanImgAPI        @"http://42.62.18.88:8080/"  // 发布环境图片显示地址
 
@@ -66,6 +68,8 @@
 
 #define kMenuAdd                @"api/Add/PublishContent"   //添加意见
 
+//#define kMenuAdd                @"app.push/push"   //添加意见
+
 #define kUploadFile             @"api/File/UploadFile"//上传文件
 
 #define kMianzeAPI              @"disclaimer.html"  //免责申明
@@ -76,7 +80,7 @@
 
 #define kGetUUIDSecretAPI       @"api/AppClient/GetDeviceRegisterInfo"  // 获取设备UUIDSecret
 
-#define kCheckNewVersionAPI     @"app.appversion/update"
+#define kCheckNewVersionAPI     @"app.appversion/update" // 更新
 
 //   常量
 /**************************************************************************************/
