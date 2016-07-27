@@ -22,10 +22,10 @@
     
     if (self = [super init]) {
         self.coordinate = coordinate;
-        self.frame = CGRectMake(0, 0, 20.0, 20.0);
-        self.center = coordinate;
-        self.layer.cornerRadius = 10.0;
-        self.backgroundColor = [UIColor blueColor];
+        self.frame = CGRectMake(0, 0, 20.0, 34.0);
+        // 10是大头针的一半
+        self.center = CGPointMake(coordinate.x, coordinate.y - 18);
+        self.image = [UIImage imageNamed:@"pinIcon"];
 //        self.layer.borderWidth = 2;
 //        self.layer.borderColor = [UIColor blackColor].CGColor;
         self.userInteractionEnabled = YES;

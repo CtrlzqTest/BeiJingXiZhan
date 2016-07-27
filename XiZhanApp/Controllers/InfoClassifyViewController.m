@@ -178,6 +178,10 @@
         //
         [RequestManager postRequestWithURL:kPostOffLine paramer:@{@"userid":[User shareUser].zid,@"time":[Utility getCurrentDateStr]} success:^(NSURLSessionDataTask *task, id responseObject) {
             if ([responseObject[@"code"] integerValue] == 0) {
+                if ([responseObject[@"data"] isEqualToString:@"false"]) {
+                    [MBProgressHUD showError:responseObject[@"errmsg"] toView:self.view];
+                    return ;
+                }
                 _isFirstTouch = !_isFirstTouch;
                 [_resignButton setTitle:@"已签退" forState:UIControlStateNormal];
                 [Utility saveVolunteerState:NO];
@@ -195,15 +199,17 @@
 
 -(void)requestOnline:(AreaOfXiZhan *)areaOfXiZhan
 {
-    
     [RequestManager postRequestWithURL:kPostOnLine paramer:@{@"userid":[User shareUser].zid,@"areaid":areaOfXiZhan.AreaID,@"time":[Utility getCurrentDateStr]} success:^(NSURLSessionDataTask *task, id responseObject) {
+        
         if ([responseObject[@"code"] integerValue] == 0) {
+            if ([responseObject[@"data"] isEqualToString:@"false"]) {
+                [MBProgressHUD showError:responseObject[@"errmsg"] toView:self.view];
+                return ;
+            }
             [Utility  saveVolunteerState:YES];
             [_resignButton setTitle:@"已签到" forState:UIControlStateNormal];
             _isFirstTouch = !_isFirstTouch;
-        }
-        else
-        {
+        }else{
             [MBProgressHUD showError:@"网络错误，未签到!" toView:nil];
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {

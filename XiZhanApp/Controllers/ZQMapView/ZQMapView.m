@@ -113,7 +113,10 @@
     pinView.mapModel = model;
     pinView.tag = model.pinTag;
     if (model.isMark) {
-        pinView.backgroundColor = [UIColor redColor];
+//        pinView.backgroundColor = [UIColor redColor];
+        
+    }else {
+        
     }
     [self.imgView addSubview:pinView];
     
@@ -138,7 +141,8 @@
 //    }
     
     PinImageView *pinView = [self.imgView viewWithTag:model.pinTag];
-    pinView.backgroundColor = [UIColor redColor];
+//    pinView.backgroundColor = [UIColor redColor];
+    pinView.image = [UIImage imageNamed:@"pinIcon_select"];
     [self.imgView bringSubviewToFront:pinView];
     [self setPinViewInMapView:pinView];
     
@@ -147,7 +151,8 @@
         
         PinImageView *pinView_other = viewArray[i];
         if (pinView.tag != pinView_other.tag) {
-            pinView_other.backgroundColor = [UIColor blueColor];
+//            pinView_other.backgroundColor = [UIColor blueColor];
+            pinView_other.image = [UIImage imageNamed:@"pinIcon"];
         }
     }
 }
@@ -282,7 +287,8 @@
         if ([view isKindOfClass:[PinImageView class]]) {
             PinImageView *pinview = (PinImageView *)view;
             CGFloat centerX = pinview.coordinate.x * scale;
-            CGFloat centerY = pinview.coordinate.y * scale;
+            // 10是大头针图片的一般
+            CGFloat centerY = pinview.coordinate.y * scale - 18;
             view.center = CGPointMake(centerX, centerY);
         }
     }

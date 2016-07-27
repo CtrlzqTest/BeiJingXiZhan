@@ -46,7 +46,7 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
     // 免登陆
     if ([Utility isLogin]) {
         [User shareUser].isLogin = YES;
-        loginStr = @"已登录";
+        loginStr = [Utility getNameWithuserType:[User shareUser].type];
         [self requestData];
         _dataArray = [NSMutableArray arrayWithArray:@[loginStr,@"关于我们",@"意见反馈",@"我的消息",@"退出登录"]];
     }else {
@@ -101,7 +101,7 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
 - (void)didLoginAction {
     
 //    [JPUSHService setTags:nil alias:[User shareUser].tel callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:self];
-    _dataArray[0] = @"已登录";
+    _dataArray[0] = [Utility getNameWithuserType:[User shareUser].type];
     [_dataArray addObject:@"退出登录"];
     [self requestData];
     [self.tableview reloadData];
@@ -163,7 +163,7 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
     switch (indexPath.row) {
         case 0:
         {
-            if ([_dataArray[indexPath.row] isEqualToString:@"已登录"]) {
+            if (![_dataArray[indexPath.row] isEqualToString:@"登录/注册"]) {
                 return;
             }
             LoginViewController *vc = [storyBoard instantiateViewControllerWithIdentifier:ZQLoginViewCotrollerId];

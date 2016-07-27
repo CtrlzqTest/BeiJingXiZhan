@@ -196,4 +196,13 @@
  */
 + (NSString *)getTagWithuserType:(NSString *)userType;
 
+/**
+ *  获取用户角色名称
+ *
+ *  @param userType 用户角色类型
+ *
+ *  @return 
+ */
++ (NSString *)getNameWithuserType:(NSString *)userType;
+
 @end

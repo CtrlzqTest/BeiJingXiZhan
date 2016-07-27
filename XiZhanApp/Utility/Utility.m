@@ -471,4 +471,39 @@ static User *user = nil;
     return tag;
 }
 
++ (NSString *)getNameWithuserType:(NSString *)userType {
+    
+    NSInteger index = [userType integerValue];
+    NSString *tag = nil;
+    switch (index) {
+        case 1:
+            tag =  @"旅客";
+            break;
+        case 2:
+            tag =  @"志愿者";
+            break;
+        case 3:
+            tag =  @"服务台";
+            break;
+        case 4:
+            tag =  @"交通引导员";
+            break;
+        case 5:
+            tag =  @"出租车司机";
+            break;
+        case 6:
+            tag =  @"军";
+            break;
+        case 7:
+            tag =  @"警";
+            break;
+        case 8:
+            tag =  @"综治办";
+            break;
+        default:
+            break;
+    }
+    return tag;
+}
+
 @end
