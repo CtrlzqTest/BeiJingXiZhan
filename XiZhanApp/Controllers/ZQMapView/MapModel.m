@@ -17,7 +17,7 @@
     for (NSDictionary *dict in array) {
         tag ++;
         MapModel *model = [[MapModel alloc] init];
-        model.title = dict[@"Name"];
+        
         CGFloat coord_X = [dict[@"LocateinfoX"] floatValue];
         CGFloat coord_Y = [dict[@"LocateinfoY"] floatValue];
         CGFloat scale = (3508.0 / kImageWidth);
@@ -26,8 +26,10 @@
         model.Imagesurl = dict[@"Imagesurl"];
         if ([dict[@"Floor"] isEqualToString:@"01B1"]) {
             model.imageType = MapImageType1;
+            model.title = [dict[@"Name"] stringByAppendingString:@"(负一层)"];
         }else if([dict[@"Floor"] isEqualToString:@"01B2"]) {
             model.imageType = MapImageType2;
+            model.title = [dict[@"Name"] stringByAppendingString:@"(负二层)"];
         }
         model.pinTag = tag;
         [tmpArray addObject:model];

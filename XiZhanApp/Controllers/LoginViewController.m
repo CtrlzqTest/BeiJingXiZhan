@@ -55,13 +55,13 @@
     self.loginBtnHeght.constant = 60 * ProportionHeight;
     
     self.userNameLabel.layer.borderWidth = 2.5;
-    self.userNameLabel.layer.borderColor = colorref;
+    self.userNameLabel.layer.borderColor = kBorderColor;
     self.userNameLabel.layer.cornerRadius = 20 * ProportionHeight;
     self.userNameLabel.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.userNameLabel.leftViewMode = UITextFieldViewModeAlways;
     
     self.passWordLabel.layer.borderWidth = 2.5;
-    self.passWordLabel.layer.borderColor = colorref;
+    self.passWordLabel.layer.borderColor = kBorderColor;
     self.passWordLabel.layer.cornerRadius = 20 * ProportionHeight;
     self.passWordLabel.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.passWordLabel.leftViewMode = UITextFieldViewModeAlways;

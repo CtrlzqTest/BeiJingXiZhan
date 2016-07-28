@@ -16,6 +16,7 @@
     
     self.layer.cornerRadius = 8;
     self.bubImage.layer.cornerRadius = (80 - 16) / 2.0;
+    self.bubImage.clipsToBounds = YES;
     self.bubImage.contentMode = UIViewContentModeScaleAspectFill;
     self.bubImage.backgroundColor = mainColor;
     self.bubImage.image = [UIImage imageNamed:@"default"];

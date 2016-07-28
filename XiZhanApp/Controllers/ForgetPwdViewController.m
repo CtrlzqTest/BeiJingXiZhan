@@ -38,23 +38,23 @@
     
 //    self.getCodeBtn.layer.cornerRadius = 25;
 //    self.getCodeBtn.layer.borderWidth = 2.5;
-//    self.getCodeBtn.layer.borderColor = colorref;
+//    self.getCodeBtn.layer.borderColor = kBorderColor;
 //    self.getCodeBtn.highlighted = NO;
     
     self.phoneTef.layer.borderWidth = 2.5;
-    self.phoneTef.layer.borderColor = colorref;
+    self.phoneTef.layer.borderColor = kBorderColor;
     self.phoneTef.layer.cornerRadius = 25;
     self.phoneTef.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.phoneTef.leftViewMode = UITextFieldViewModeAlways;
     
     self.pwdTef.layer.borderWidth = 2.5;
-    self.pwdTef.layer.borderColor = colorref;
+    self.pwdTef.layer.borderColor = kBorderColor;
     self.pwdTef.layer.cornerRadius = 25;
     self.pwdTef.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.pwdTef.leftViewMode = UITextFieldViewModeAlways;
     
     self.codeTef.layer.borderWidth = 2.5;
-    self.codeTef.layer.borderColor = colorref;
+    self.codeTef.layer.borderColor = kBorderColor;
     self.codeTef.layer.cornerRadius = 25;
     self.codeTef.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.codeTef.leftViewMode = UITextFieldViewModeAlways;
