@@ -49,8 +49,6 @@
 		F0186CC71D001DA200F90CE1 /* TaxiMsgListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0186CC61D001DA200F90CE1 /* TaxiMsgListViewController.m */; };
 		F0186CCA1D00226900F90CE1 /* TaxiMsgModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0186CC91D00226900F90CE1 /* TaxiMsgModel.m */; };
 		F021140B1CE2D81A00676971 /* InformationDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F021140A1CE2D81A00676971 /* InformationDetailViewController.m */; };
-		F022D24C1D46038200833FD6 /* floor-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F022D24B1D46038200833FD6 /* floor-2.jpg */; };
-		F022D24E1D4619F800833FD6 /* floor-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F022D24D1D4619F800833FD6 /* floor-1.jpg */; };
 		F02426DD1D0FD35200661961 /* ZQChooseView.m in Sources */ = {isa = PBXBuildFile; fileRef = F02426DB1D0FD35200661961 /* ZQChooseView.m */; };
 		F02426DE1D0FD35200661961 /* ZQChooseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F02426DC1D0FD35200661961 /* ZQChooseView.xib */; };
 		F02426E11D0FDF9C00661961 /* AreaOfXiZhan.m in Sources */ = {isa = PBXBuildFile; fileRef = F02426E01D0FDF9C00661961 /* AreaOfXiZhan.m */; };
@@ -75,6 +73,8 @@
 		F091B9BA1D3DC647005B4688 /* CapacityListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F091B9B91D3DC647005B4688 /* CapacityListViewController.m */; };
 		F092EEC31CE6B79500353351 /* MsgType1TabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F092EEC11CE6B79500353351 /* MsgType1TabCell.m */; };
 		F092EEC41CE6B79500353351 /* MsgType1TabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F092EEC21CE6B79500353351 /* MsgType1TabCell.xib */; };
+		F09B7C821D49F7EB004754C1 /* floor-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F09B7C801D49F7EB004754C1 /* floor-1.jpg */; };
+		F09B7C831D49F7EB004754C1 /* floor-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F09B7C811D49F7EB004754C1 /* floor-2.jpg */; };
 		F0C4AAFD1CE2E3520067E986 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F0C4AAFA1CE2E3520067E986 /* MBProgressHUD.bundle */; };
 		F0C4AAFE1CE2E3520067E986 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AAFC1CE2E3520067E986 /* MBProgressHUD+Add.m */; };
 		F0C9FD441D38BA3E00FFDE8E /* LineSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C9FD431D38BA3E00FFDE8E /* LineSearchViewController.m */; };
@@ -199,8 +199,6 @@
 		F0186CC91D00226900F90CE1 /* TaxiMsgModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaxiMsgModel.m; sourceTree = "<group>"; };
 		F02114091CE2D81A00676971 /* InformationDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationDetailViewController.h; sourceTree = "<group>"; };
 		F021140A1CE2D81A00676971 /* InformationDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationDetailViewController.m; sourceTree = "<group>"; };
-		F022D24B1D46038200833FD6 /* floor-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "floor-2.jpg"; sourceTree = "<group>"; };
-		F022D24D1D4619F800833FD6 /* floor-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "floor-1.jpg"; sourceTree = "<group>"; };
 		F02426DA1D0FD35200661961 /* ZQChooseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZQChooseView.h; sourceTree = "<group>"; };
 		F02426DB1D0FD35200661961 /* ZQChooseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQChooseView.m; sourceTree = "<group>"; };
 		F02426DC1D0FD35200661961 /* ZQChooseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ZQChooseView.xib; sourceTree = "<group>"; };
@@ -243,6 +241,8 @@
 		F092EEC01CE6B79500353351 /* MsgType1TabCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgType1TabCell.h; sourceTree = "<group>"; };
 		F092EEC11CE6B79500353351 /* MsgType1TabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MsgType1TabCell.m; sourceTree = "<group>"; };
 		F092EEC21CE6B79500353351 /* MsgType1TabCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MsgType1TabCell.xib; sourceTree = "<group>"; };
+		F09B7C801D49F7EB004754C1 /* floor-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "floor-1.jpg"; sourceTree = "<group>"; };
+		F09B7C811D49F7EB004754C1 /* floor-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "floor-2.jpg"; sourceTree = "<group>"; };
 		F0C4AAFA1CE2E3520067E986 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
 		F0C4AAFB1CE2E3520067E986 /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
 		F0C4AAFC1CE2E3520067E986 /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
@@ -807,8 +807,8 @@
 			isa = PBXGroup;
 			children = (
 				F00007E61CF6CAA100479EFB /* about_info.png */,
-				F022D24D1D4619F800833FD6 /* floor-1.jpg */,
-				F022D24B1D46038200833FD6 /* floor-2.jpg */,
+				F09B7C801D49F7EB004754C1 /* floor-1.jpg */,
+				F09B7C811D49F7EB004754C1 /* floor-2.jpg */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -977,7 +977,6 @@
 				F0088C9D1CE6BE8300AF6EAF /* LQPhotoViewCell.xib in Resources */,
 				F092EEC41CE6B79500353351 /* MsgType1TabCell.xib in Resources */,
 				F0088C821CE6BE8300AF6EAF /* ico_check_select.png in Resources */,
-				F022D24E1D4619F800833FD6 /* floor-1.jpg in Resources */,
 				F0088C831CE6BE8300AF6EAF /* ico_check_select@2x.png in Resources */,
 				F0088C7C1CE6BE8300AF6EAF /* close.png in Resources */,
 				F0088C871CE6BE8300AF6EAF /* plus@3x.png in Resources */,
@@ -986,8 +985,8 @@
 				F0088C851CE6BE8300AF6EAF /* plus.png in Resources */,
 				F0F379E11CE07AD90047A469 /* LaunchScreen.storyboard in Resources */,
 				F00007E71CF6CAA100479EFB /* about_info.png in Resources */,
-				F022D24C1D46038200833FD6 /* floor-2.jpg in Resources */,
 				F0DC51591CE84CB400CE29AD /* ImgCell.xib in Resources */,
+				F09B7C831D49F7EB004754C1 /* floor-2.jpg in Resources */,
 				F07F46FB1D264AEA00DCFD78 /* MBProgressHUD.bundle in Resources */,
 				F0088C7F1CE6BE8300AF6EAF /* ico_check_nomal.png in Resources */,
 				F0088C941CE6BE8300AF6EAF /* MImaCell.xib in Resources */,
@@ -996,6 +995,7 @@
 				F0FC4B1C1CFD781700E6A536 /* MenuType2TabCell.xib in Resources */,
 				F0F379DE1CE07AD90047A469 /* Assets.xcassets in Resources */,
 				F0F379DC1CE07AD90047A469 /* Main.storyboard in Resources */,
+				F09B7C821D49F7EB004754C1 /* floor-1.jpg in Resources */,
 				F0088C861CE6BE8300AF6EAF /* plus@2x.png in Resources */,
 				F04A71EB1D0132A4006E4ADA /* TaxiMsgTableCell.xib in Resources */,
 				F0088C801CE6BE8300AF6EAF /* ico_check_nomal@2x.png in Resources */,
