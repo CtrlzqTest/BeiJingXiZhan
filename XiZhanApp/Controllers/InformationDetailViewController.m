@@ -34,7 +34,10 @@ static NSString *indentify = @"proCellX";
     // 出租车运力消息签到
     if ([self.model.nodeid isEqualToString:@"d5af4d6b_180e_4ac7_a562_f3ae0a585e02"] && [[User shareUser].type isEqualToString:@"5"]) {
         self.isShowSign = YES;
+    }else{
+        self.isShowSign = NO;
     }
+    
     if ([self.model.submitclient isEqualToString:@"2"]) {
         [self initView];
     }

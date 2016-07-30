@@ -144,7 +144,7 @@
     NSString *pageIndex = [NSString stringWithFormat:@"%ld",_page];
     NSDictionary *dict = nil;
     
-    NSString *userType = [User shareUser].type.length > 0 ? [User shareUser].type : @"";
+    __block NSString *userType = [User shareUser].type.length > 0 ? [User shareUser].type : @"";
     if (self.menuModel == nil) {
         dict = @{@"nodeid":@"",@"pageIndex":pageIndex,@"pageSize":@"15",@"time":@"",@"sort":@"CreateTime",@"PushRole":userType};
     }else {
@@ -169,8 +169,11 @@
                     }
                 }
             }
+            if (userType.length <= 0) {
+                userType = @"''";
+            }
+            NSString *condition = !self.menuModel ? [NSString stringWithFormat:@"usertype = '' or usertype like '%%%@%%'",userType] : [NSString stringWithFormat:@"nodeid = '%@' and (usertype  = '' or usertype like '%%%@%%')",self.menuModel.menuId,userType];
             
-            NSString *condition = !self.menuModel ? [NSString stringWithFormat:@"usertype = '' or usertype like '%%'%@'%%'",userType] : [NSString stringWithFormat:@"nodeid = '%@' and (usertype  = '' or usertype like '%%'%@'%%')",self.menuModel.menuId,userType];
             _dataArray = [NSMutableArray arrayWithArray:[MessageModel getDataWithCondition:condition page:1 orderBy:@"msgdate"]];
         
             if (_dataArray.count <= 0) {
@@ -228,8 +231,10 @@
                     }
                 }
             }
-            
-            NSString *condition = !self.menuModel ? [NSString stringWithFormat:@"msgdate < '%ld' and (usertype  = '' or usertype like '%%'%@'%%')",lastMsgModel.msgdate,userType] : [NSString stringWithFormat:@"msgdate < '%ld' and nodeid = '%@' and (usertype  = '' or usertype like '%%'%@'%%')",lastMsgModel.msgdate,self.menuModel.menuId,userType];
+            if (userType.length <= 0) {
+                userType = @"''";
+            }
+            NSString *condition = !self.menuModel ? [NSString stringWithFormat:@"msgdate < '%ld' and (usertype  = '' or usertype like '%%%@%%')",lastMsgModel.msgdate,userType] : [NSString stringWithFormat:@"msgdate < '%ld' and nodeid = '%@' and (usertype  = '' or usertype like '%%%@%%')",lastMsgModel.msgdate,self.menuModel.menuId,userType];
             NSArray *moreArray = [MessageModel getDataWithCondition:condition page:1 orderBy:@"msgdate"];
             if (moreArray.count <= 0) {
                 [_autoFooter endRefreshingWithNoMoreData];
@@ -319,6 +324,7 @@
     if ([self.menuModel.alias isEqualToString:@"taxi_capacity"] || flag) {
         vc.isShowSign = YES;
     }
+    
     [self.navigationController pushViewController:vc animated:YES];
 }
 @end

@@ -16,8 +16,8 @@
 
 #define BaseAPI                 @"http://42.62.18.88:8037/bjws/"  // 发布接口地址
 
-//#define BaseAPI                 @"http://42.62.18.88:8081/"  // 发布环境智信接口地址
-//
+//#define BaseAPI                 @"http://42.62.18.88:8081/"  // 发布接口地址智信
+
 #define BaseXiZhanImgAPI        @"http://42.62.18.88:8080/"  // 发布环境图片显示地址
 
 #define BaseXiZhanAPI           @"http://42.62.18.88:8081/"  // 发布环境智信接口地址

@@ -28,8 +28,9 @@
                 break;
             case AFNetworkReachabilityStatusNotReachable:
             default:
-                [MBProgressHUD showError:@"无网络连接" toView:nil];
-                [operationQueue setSuspended:YES];
+//                [MBProgressHUD showError:@"无网络连接" toView:nil];
+//                [MBProgressHUD hideAllHUDsForView:(UIView*)[[[UIApplication sharedApplication]delegate]window] animated:NO];
+//                [operationQueue setSuspended:YES];
                 break;
         }
     }];
@@ -68,7 +69,7 @@
             success(task,responseObject);
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            [MBProgressHUD hideAllHUDsForView:(UIView*)[[[UIApplication sharedApplication]delegate]window] animated:YES];
+            [MBProgressHUD hideAllHUDsForView:(UIView*)[[[UIApplication sharedApplication] delegate]window] animated:YES];
             [MBProgressHUD showMessag:@"网络异常" toView:nil];
             NSLog(@"%@",error.description);
             failure(task,error);
