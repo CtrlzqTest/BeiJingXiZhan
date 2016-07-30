@@ -307,7 +307,7 @@
             [MBProgressHUD showError:@"提交失败！" toView:nil];
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-         [MBProgressHUD showError:@"提交失败！" toView:nil];
+//         [MBProgressHUD showError:@"提交失败！" toView:nil];
     } showHUD:YES];
     
     

@@ -194,7 +194,7 @@
         if ([self.tableView.mj_footer isRefreshing]) {
             [self.tableView.mj_footer endRefreshing];
         }
-        [MBProgressHUD showError:@"网络不给力" toView:self.view];
+//        [MBProgressHUD showError:@"网络不给力" toView:self.view];
         [self.tableView.mj_header endRefreshing];
     } showHUD:YES];
     
@@ -259,7 +259,7 @@
         if ([self.tableView.mj_footer isRefreshing]) {
             [self.tableView.mj_footer endRefreshing];
         }
-        [MBProgressHUD showError:@"网络不给力" toView:self.view];
+//        [MBProgressHUD showError:@"网络不给力" toView:self.view];
         [self.tableView.mj_header endRefreshing];
     } showHUD:NO];
     

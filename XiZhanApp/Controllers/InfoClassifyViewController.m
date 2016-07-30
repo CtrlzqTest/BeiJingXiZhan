@@ -191,7 +191,7 @@
                 [MBProgressHUD showError:@"网络错误，未签退!" toView:nil];
             }
         } failure:^(NSURLSessionDataTask *task, NSError *error) {
-            [MBProgressHUD showError:@"网络错误，未签退!" toView:nil];
+//            [MBProgressHUD showError:@"网络错误，未签退!" toView:nil];
         } showHUD:YES];
         
     }
@@ -213,7 +213,7 @@
             [MBProgressHUD showError:@"网络错误，未签到!" toView:nil];
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        [MBProgressHUD showError:@"网络错误，未签退!" toView:nil];
+//        [MBProgressHUD showError:@"网络错误，未签退!" toView:nil];
     } showHUD:YES];
     
 }
@@ -246,7 +246,7 @@
         if ([self.tableView.mj_footer isRefreshing]) {
             [self.tableView.mj_footer endRefreshing];
         }
-        [MBProgressHUD showError:@"网络不给力" toView:self.view];
+//        [MBProgressHUD showError:@"网络不给力" toView:self.view];
         [self.tableView.mj_header endRefreshing];
         if (_dataArray.count <= 0) {
             [self addNodataViewInView:self.tableView];

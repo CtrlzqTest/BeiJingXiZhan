@@ -51,6 +51,8 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
         _dataArray = [NSMutableArray arrayWithArray:@[loginStr,@"关于我们",@"意见反馈",@"我的消息",@"退出登录"]];
     }else {
         loginStr = @"登录/注册";
+        [User shareUser].isLogin = NO;
+        [User shareUser].type = @"";
         _dataArray = [NSMutableArray arrayWithArray:@[loginStr,@"关于我们",@"意见反馈",@"我的消息"]];
     }
     

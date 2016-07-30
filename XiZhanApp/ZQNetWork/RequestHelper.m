@@ -70,7 +70,7 @@
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             [MBProgressHUD hideAllHUDsForView:(UIView*)[[[UIApplication sharedApplication] delegate]window] animated:YES];
-            [MBProgressHUD showMessag:@"网络异常" toView:nil];
+            [MBProgressHUD showMessag:@"网络不给力" toView:nil];
             NSLog(@"%@",error.description);
             failure(task,error);
         }];
@@ -85,7 +85,7 @@
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             [MBProgressHUD hideAllHUDsForView:(UIView*)[[[UIApplication sharedApplication]delegate]window] animated:YES];
-            [MBProgressHUD showMessag:@"网络异常" toView:nil];
+            [MBProgressHUD showMessag:@"网络不给力" toView:nil];
             failure(task,error);
         }];
         
@@ -97,7 +97,7 @@
             
         } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
             [MBProgressHUD hideAllHUDsForView:(UIView*)[[[UIApplication sharedApplication]delegate]window] animated:YES];
-            [MBProgressHUD showMessag:@"网络异常" toView:nil];
+            [MBProgressHUD showMessag:@"网络不给力" toView:nil];
             failure(task,error);
         }];
         

@@ -159,7 +159,7 @@
         [self chooseSkipVC];
     }else if (application.applicationState == UIApplicationStateBackground){
         //        NSLog(@"后台");
-        [MBProgressHUD showError:@"后台" toView:nil];
+//        [MBProgressHUD showError:@"后台" toView:nil];
     }
 }
 -(void)chooseSkipVC
