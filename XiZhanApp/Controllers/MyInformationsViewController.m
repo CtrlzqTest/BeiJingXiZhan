@@ -100,8 +100,8 @@
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
     
-    // 是否显示签到,type表示该登录账户角色,alias首页哪个模块
-    BOOL isShow = ([[User shareUser].type isEqualToString:@"2"] && [self.menuModel.alias isEqualToString:@"volunteer"]) || ([[User shareUser].type isEqualToString:@"3"] && [self.menuModel.alias isEqualToString:@"service"]);
+    // 是否显示发布按钮,type表示该登录账户角色,alias首页哪个模块
+    BOOL isShow = ([[User shareUser].type isEqualToString:@"2"] && [self.menuModel.alias isEqualToString:@"volunteer"]) || ([User shareUser].type.length > 0 && [self.menuModel.alias isEqualToString:@"service"]);
     
     if (isShow) {
         [self setRightImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"edit" selectImage:nil action:^(AYCButton *button) {

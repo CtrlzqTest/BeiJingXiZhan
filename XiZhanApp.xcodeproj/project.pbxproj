@@ -122,6 +122,7 @@
 		F0F37A1E1CE088390047A469 /* UIView_extra.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F37A1C1CE088390047A469 /* UIView_extra.m */; };
 		F0F37A211CE08BC80047A469 /* LeftSortsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F37A201CE08BC80047A469 /* LeftSortsViewController.m */; };
 		F0F37A251CE093A10047A469 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F37A241CE093A10047A469 /* LoginViewController.m */; };
+		F0F958501D547BED0031B00E /* main_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = F0F9584F1D547BED0031B00E /* main_bg.png */; };
 		F0FA99291CE2D0460078C74B /* LeftSortsTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FA99271CE2D0460078C74B /* LeftSortsTabCell.m */; };
 		F0FA992A1CE2D0460078C74B /* LeftSortsTabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0FA99281CE2D0460078C74B /* LeftSortsTabCell.xib */; };
 		F0FC4B1B1CFD781700E6A536 /* MenuType2TabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0FC4B191CFD781700E6A536 /* MenuType2TabCell.m */; };
@@ -333,6 +334,7 @@
 		F0F37A201CE08BC80047A469 /* LeftSortsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSortsViewController.m; sourceTree = "<group>"; };
 		F0F37A231CE093A10047A469 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		F0F37A241CE093A10047A469 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		F0F9584F1D547BED0031B00E /* main_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_bg.png; sourceTree = "<group>"; };
 		F0FA99261CE2D0460078C74B /* LeftSortsTabCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftSortsTabCell.h; sourceTree = "<group>"; };
 		F0FA99271CE2D0460078C74B /* LeftSortsTabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftSortsTabCell.m; sourceTree = "<group>"; };
 		F0FA99281CE2D0460078C74B /* LeftSortsTabCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftSortsTabCell.xib; sourceTree = "<group>"; };
@@ -599,7 +601,7 @@
 			path = AcyButton;
 			sourceTree = "<group>";
 		};
-		F0C9FD411D38B9C200FFDE8E /* MapViewControllers(地图相关) */ = {
+		F0C9FD411D38B9C200FFDE8E /* MapViewControllers(地图交通相关) */ = {
 			isa = PBXGroup;
 			children = (
 				F0C9FD4B1D38C09800FFDE8E /* ZQMapView */,
@@ -610,7 +612,7 @@
 				F0C9FD481D38C08A00FFDE8E /* MapViewController.h */,
 				F0C9FD491D38C08A00FFDE8E /* MapViewController.m */,
 			);
-			name = "MapViewControllers(地图相关)";
+			name = "MapViewControllers(地图交通相关)";
 			sourceTree = "<group>";
 		};
 		F0C9FD4B1D38C09800FFDE8E /* ZQMapView */ = {
@@ -755,7 +757,7 @@
 				F0088CA11CE6C16F00AF6EAF /* PublishViewController.h */,
 				F0088CA21CE6C16F00AF6EAF /* PublishViewController.m */,
 				F091B9B71D3DC4FF005B4688 /* Capacity(运力相关) */,
-				F0C9FD411D38B9C200FFDE8E /* MapViewControllers(地图相关) */,
+				F0C9FD411D38B9C200FFDE8E /* MapViewControllers(地图交通相关) */,
 				F0186CC11D000FF900F90CE1 /* TaxiViewControllers(出租车) */,
 				F0F37A221CE093590047A469 /* LoginRegisterControllers(登录注册) */,
 				F0F37A111CE084330047A469 /* MainViewControllers(首页) */,
@@ -809,6 +811,7 @@
 				F00007E61CF6CAA100479EFB /* about_info.png */,
 				F09B7C801D49F7EB004754C1 /* floor-1.jpg */,
 				F09B7C811D49F7EB004754C1 /* floor-2.jpg */,
+				F0F9584F1D547BED0031B00E /* main_bg.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -981,6 +984,7 @@
 				F0088C7C1CE6BE8300AF6EAF /* close.png in Resources */,
 				F0088C871CE6BE8300AF6EAF /* plus@3x.png in Resources */,
 				F0FA992A1CE2D0460078C74B /* LeftSortsTabCell.xib in Resources */,
+				F0F958501D547BED0031B00E /* main_bg.png in Resources */,
 				F0C4AAFD1CE2E3520067E986 /* MBProgressHUD.bundle in Resources */,
 				F0088C851CE6BE8300AF6EAF /* plus.png in Resources */,
 				F0F379E11CE07AD90047A469 /* LaunchScreen.storyboard in Resources */,
@@ -1223,7 +1227,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "efe3cbdf-f1c5-42c0-a0b2-dbae5e627462";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1264,7 +1268,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "efe3cbdf-f1c5-42c0-a0b2-dbae5e627462";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1289,7 +1293,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "efe3cbdf-f1c5-42c0-a0b2-dbae5e627462";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1312,7 +1316,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "efe3cbdf-f1c5-42c0-a0b2-dbae5e627462";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

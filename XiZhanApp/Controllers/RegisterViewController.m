@@ -25,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *agreeBtn;
 
 @property (nonatomic,strong)ZQPickerView *pickerView;
-
+@property(nonatomic,strong)UIImageView *backImgView;
 @end
 
 @implementation RegisterViewController
@@ -33,14 +33,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"注册";
-    [self setupViews];
+//    [self setupViews];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapMethod)];
     [self.view addGestureRecognizer:tap];
+    
+    self.backImgView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    self.backImgView.image = [UIImage imageNamed:@"main_bg"];
+    [self.view addSubview:self.backImgView];
+    [self setupViews];
+    [self.view sendSubviewToBack:self.backImgView];
+    
 }
+
 -(void)tapMethod
 {
     [self.view endEditing:YES];
 }
+
 - (void)setupViews {
     
     // 返回按钮
@@ -55,30 +64,30 @@
 //    self.getCodeBtn.highlighted = NO;
     
     self.phoneTef.layer.borderWidth = 2.5;
-    self.phoneTef.layer.borderColor = kBorderColor;
+    self.phoneTef.layer.borderColor = colorref;
     self.phoneTef.layer.cornerRadius = 20;
     self.phoneTef.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.phoneTef.leftViewMode = UITextFieldViewModeAlways;
     
     self.passWordTef.layer.borderWidth = 2.5;
-    self.passWordTef.layer.borderColor = kBorderColor;
+    self.passWordTef.layer.borderColor = colorref;
     self.passWordTef.layer.cornerRadius = 20;
     self.passWordTef.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.passWordTef.leftViewMode = UITextFieldViewModeAlways;
     
     self.checkCodeTef.layer.borderWidth = 2.5;
-    self.checkCodeTef.layer.borderColor = kBorderColor;
+    self.checkCodeTef.layer.borderColor = colorref;
     self.checkCodeTef.layer.cornerRadius = 20;
     self.checkCodeTef.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.checkCodeTef.leftViewMode = UITextFieldViewModeAlways;
     
     self.userTypeBtn.layer.borderWidth = 2.5;
-    self.userTypeBtn.layer.borderColor = kBorderColor;
+    self.userTypeBtn.layer.borderColor = colorref;
     self.userTypeBtn.layer.cornerRadius = 20;
     [self.userTypeBtn addTarget:self action:@selector(userTypeAction:) forControlEvents:UIControlEventTouchUpInside];
     
     self.checkCodeTef.layer.borderWidth = 2.5;
-    self.checkCodeTef.layer.borderColor = kBorderColor;
+    self.checkCodeTef.layer.borderColor = colorref;
     self.checkCodeTef.layer.cornerRadius = 20;
     
     _userTypeArray = @[@"旅客",@"出租车司机"];

@@ -11,6 +11,8 @@
 #import <MJRefresh.h>
 #import "MenuType2TabCell.h"
 #import "LineWebViewController.h"
+#import "ParkViewController.h"
+#import "MyInformationsViewController.h"
 
 @interface LineSearchViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -34,13 +36,6 @@
 - (void)setupViews {
     
     _dataArray = [NSMutableArray array];
-    MenuModel *menuModel1 = [[MenuModel alloc] init];
-    menuModel1.menuTitle = @"公交线路查询";
-    [_dataArray addObject:menuModel1];
-    
-    MenuModel *menuModel2 = [[MenuModel alloc] init];
-    menuModel2.menuTitle = @"地铁线路查询";
-    [_dataArray addObject:menuModel2];
     
     __weak typeof(self) weakSelf = self;
     [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
@@ -63,13 +58,64 @@
     
 }
 
+-(void)tapNoDataView {
+    [self.tableView.mj_header beginRefreshing];
+}
+
+- (void)addLocalData {
+    
+    MenuModel *menuModel1 = [[MenuModel alloc] init];
+    menuModel1.menuTitle = @"公交线路查询";
+    [_dataArray addObject:menuModel1];
+    
+    MenuModel *menuModel2 = [[MenuModel alloc] init];
+    menuModel2.menuTitle = @"地铁线路查询";
+    [_dataArray addObject:menuModel2];
+    
+    MenuModel *menuModel3 = [[MenuModel alloc] init];
+    menuModel3.menuTitle = @"停车场站点信息";
+    [_dataArray addObject:menuModel3];
+    
+    MenuModel *menuModel4 = [[MenuModel alloc] init];
+    menuModel4.menuTitle = @"地图导航";
+    [_dataArray addObject:menuModel4];
+}
+
 - (void)getData {
     
-    //    MenuModel *menuModel1 = [[MenuModel alloc] init];
-    //    menuModel1.menuTitle = @"获取出租车站点信息";
-    //    [_dataArray addObject:menuModel1];
-    [self.tableView reloadData];
-    [self.tableView.mj_header endRefreshing];
+    // 判断是否有分类列表
+    //    NSDictionary *dict = !self.menuModel ? nil : @{@"parentId":self.menuModel.menuId};
+    [self removeNodataView];
+    
+    __weak typeof(self) weakSelf = self;
+    [RequestManager getRequestWithURL:kMuenListAPI paramer:@{@"parentid":self.menuModel.menuId} success:^(NSURLSessionDataTask *task, id responseObject) {
+        if ([responseObject[@"code"] integerValue] == 0) {
+            [_dataArray removeAllObjects];
+            [weakSelf addLocalData];
+            NSArray *resultArray = [MenuModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
+            if (resultArray.count <= 0) {
+                
+            }else {
+                [_dataArray addObjectsFromArray:resultArray];
+            }
+        }else {
+            [MBProgressHUD showError:@"获取列表失败" toView:self.view];
+        }
+        [self.tableView.mj_header endRefreshing];
+        [self.tableView reloadData];
+        if (_dataArray.count <= 0) {
+            [self addNodataViewInView:self.tableView];
+        }
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        if ([self.tableView.mj_footer isRefreshing]) {
+            [self.tableView.mj_footer endRefreshing];
+        }
+        //        [MBProgressHUD showError:@"网络不给力" toView:self.view];
+        [self.tableView.mj_header endRefreshing];
+        if (_dataArray.count <= 0) {
+            [self addNodataViewInView:self.tableView];
+        }
+    } showHUD:YES];
     
 }
 
@@ -103,13 +149,31 @@
         }
             break;
         case 1:{
+    
             LineWebViewController *lineWebVC = [[LineWebViewController alloc] init];
             lineWebVC.title = model.menuTitle;
             lineWebVC.webUrl = @"http://www.bjsubway.com/mobile/station/";
             [self.navigationController pushViewController:lineWebVC animated:YES];
         }
             break;
-        default:
+        case 2:{
+            ParkViewController *taxiMsgVC = [Utility getControllerWithStoryBoardId:parkVCId];
+            taxiMsgVC.menuModel = model;
+            [self.navigationController pushViewController:taxiMsgVC animated:YES];
+        }
+            break;
+        case 3:{
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://maps.apple.com/maps?q=&Z=13"]];
+        }
+            break;
+        default:{
+            
+            MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];;
+            myInfoVC.menuModel = model;
+            [self.navigationController pushViewController:myInfoVC animated:YES];
+            
+        }
+            
             break;
     }
     

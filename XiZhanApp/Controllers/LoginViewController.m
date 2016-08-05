@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *mianzeTopinset;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tefHeght;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *loginBtnHeght;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *registTop;
+
 
 @property (weak, nonatomic) IBOutlet UITextField *userNameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passWordLabel;
@@ -27,6 +29,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *agreeBtn;
 // 免责按钮
 @property (weak, nonatomic) IBOutlet UIButton *impunityBtn;
+
+@property(nonatomic,strong)UIImageView *backImgView;
 
 @end
 
@@ -37,7 +41,11 @@
     self.title = @"登录";
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapMethod)];
     [self.view addGestureRecognizer:tap];
+    self.backImgView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    self.backImgView.image = [UIImage imageNamed:@"main_bg"];
+    [self.view addSubview:self.backImgView];
     [self setupViews];
+    [self.view sendSubviewToBack:self.backImgView];
 }
 
 - (void)setupViews {
@@ -48,20 +56,21 @@
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
     
-    self.top.constant = 70 * ProportionHeight;
-    self.loginTopInset.constant = 50 * ProportionHeight;
-    self.mianzeTopinset.constant = 25 * ProportionHeight;
+    self.top.constant = 40 * ProportionHeight;
+    self.loginTopInset.constant = 25 * ProportionHeight;
+    self.mianzeTopinset.constant = 20 * ProportionHeight;
     self.tefHeght.constant = 40 * ProportionHeight;
-    self.loginBtnHeght.constant = 60 * ProportionHeight;
+    self.loginBtnHeght.constant = 45 * ProportionHeight;
+    self.registTop.constant = 25 * ProportionHeight;
     
     self.userNameLabel.layer.borderWidth = 2.5;
-    self.userNameLabel.layer.borderColor = kBorderColor;
+    self.userNameLabel.layer.borderColor = colorref;
     self.userNameLabel.layer.cornerRadius = 20 * ProportionHeight;
     self.userNameLabel.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.userNameLabel.leftViewMode = UITextFieldViewModeAlways;
     
     self.passWordLabel.layer.borderWidth = 2.5;
-    self.passWordLabel.layer.borderColor = kBorderColor;
+    self.passWordLabel.layer.borderColor = colorref;
     self.passWordLabel.layer.cornerRadius = 20 * ProportionHeight;
     self.passWordLabel.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.passWordLabel.leftViewMode = UITextFieldViewModeAlways;

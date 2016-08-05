@@ -76,18 +76,18 @@ static NSString *collCellId = @"MainCell";
         if ([responseObject[@"code"] integerValue] == 0) {
             
             _dataArray = [MenuModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
-            MenuModel *menuModel = [[MenuModel alloc] init];
-            menuModel.menuTitle = @"交通引导";
-            menuModel.imageName = @"taxi";
-            [_dataArray addObject:menuModel];
+//            MenuModel *menuModel = [[MenuModel alloc] init];
+//            menuModel.menuTitle = @"交通引导";
+//            menuModel.imageName = @"taxi";
+//            [_dataArray addObject:menuModel];
             
-            MenuModel *menuModel1 = [[MenuModel alloc] init];
-            menuModel1.menuTitle = @"交通换乘";
-            menuModel1.imageName = @"transfer";
-            [_dataArray addObject:menuModel1];
+//            MenuModel *menuModel1 = [[MenuModel alloc] init];
+//            menuModel1.menuTitle = @"交通换乘";
+//            menuModel1.imageName = @"transfer";
+//            [_dataArray addObject:menuModel1];
             
             MenuModel *menuModel2 = [[MenuModel alloc] init];
-            menuModel2.menuTitle = @"设施查询";
+            menuModel2.menuTitle = @"位置查询";
             menuModel2.imageName = @"facilities";
             [_dataArray addObject:menuModel2];
             
@@ -187,34 +187,36 @@ static NSString *collCellId = @"MainCell";
     
     MenuModel *model = _dataArray[indexPath.row];
     
-    if (indexPath.row == _dataArray.count - 3) {
-        // 交通引导
-        TaxiClassifyViewController *taxiMsgVC = [[TaxiClassifyViewController alloc] init];
-        taxiMsgVC.menuModel = model;
-        [self.navigationController pushViewController:taxiMsgVC animated:YES];
+    if(indexPath.row == _dataArray.count - 1){
         
-    }else if(indexPath.row == _dataArray.count - 2){
-        
-        // 换成查询
-        LineSearchViewController *lineVC = [[LineSearchViewController alloc] init];
-        lineVC.menuModel = model;
-        [self.navigationController pushViewController:lineVC animated:YES];
-        
-    }else if(indexPath.row == _dataArray.count - 1){
-        
-        // 设施查询
+        // 位置查询
         MapViewController *mapVC = [Utility getControllerWithStoryBoardId:@"mapViewController"];
         mapVC.title = model.menuTitle;
         [self.navigationController pushViewController:mapVC animated:YES];
         
     }else{
         
-        if ([model.alias isEqualToString:@"important_notice"] || [model.alias isEqualToString:@"area_news"] || [model.alias isEqualToString:@"query_service"] || [model.alias isEqualToString:@"taxi_capacity"]) {
+        if ([model.alias isEqualToString:@"important_notice"] || [model.alias isEqualToString:@"area_news"] || [model.alias isEqualToString:@"query_service"] || [model.alias isEqualToString:@"railway_service"]) {
             
             MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];
             myInfoVC.menuModel = model;
             [self.navigationController pushViewController:myInfoVC animated:YES];
-        }else {
+            
+        }else if([model.alias isEqualToString:@"taxi_capacity"]){
+            
+            // 出租车服务
+            TaxiClassifyViewController *taxiMsgVC = [[TaxiClassifyViewController alloc] init];
+            taxiMsgVC.menuModel = model;
+            [self.navigationController pushViewController:taxiMsgVC animated:YES];
+            
+        }else if([model.alias isEqualToString:@"transfer"]){
+            
+            // 交通换乘
+            LineSearchViewController *lineVC = [[LineSearchViewController alloc] init];
+            lineVC.menuModel = model;
+            [self.navigationController pushViewController:lineVC animated:YES];
+            
+        }else{
             // 后台数据模块
             InfoClassifyViewController *myInfoVC = [[InfoClassifyViewController alloc] init];
             myInfoVC.menuModel = model;

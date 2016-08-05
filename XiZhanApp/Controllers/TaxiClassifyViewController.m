@@ -12,6 +12,7 @@
 #import "MenuType2TabCell.h"
 #import <MJRefresh.h>
 #import "ParkViewController.h"
+#import "MyInformationsViewController.h"
 
 @interface TaxiClassifyViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -40,14 +41,10 @@
     [_dataArray addObject:menuModel1];
 
     MenuModel *menuModel2 = [[MenuModel alloc] init];
-    menuModel2.menuTitle = @"停车场站点信息";
+    menuModel2.menuTitle = @"出租车运力消息";
     [_dataArray addObject:menuModel2];
     
-    
-    MenuModel *menuModel3 = [[MenuModel alloc] init];
-    menuModel3.menuTitle = @"地图导航";
-    [_dataArray addObject:menuModel3];// 返回按钮
-    
+    // 返回按钮
     __weak typeof(self) weakSelf = self;
     [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
         [weakSelf.navigationController popViewControllerAnimated:YES];
@@ -99,7 +96,6 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    MenuModel *model = _dataArray[indexPath.row];
     switch (indexPath.row) {
         case 0:{
             TaxiMsgListViewController *taxiStationVC = [[TaxiMsgListViewController alloc] init];
@@ -107,16 +103,15 @@
         }
             break;
         case 1:{
-            ParkViewController *taxiMsgVC = [Utility getControllerWithStoryBoardId:parkVCId];
-            taxiMsgVC.menuModel = model;
-            [self.navigationController pushViewController:taxiMsgVC animated:YES];
+            
+            MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];;
+            myInfoVC.menuModel = self.menuModel;
+            [self.navigationController pushViewController:myInfoVC animated:YES];
         }
             break;
-        case 2:{
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://maps.apple.com/maps?q=&Z=13"]];
+        default:{
+            
         }
-            break;
-        default:
             break;
     }
     
