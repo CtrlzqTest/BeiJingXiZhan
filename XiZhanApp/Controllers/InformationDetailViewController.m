@@ -65,7 +65,7 @@ static NSString *indentify = @"proCellX";
     self.title = @"详情";
     self.view.backgroundColor = [UIColor whiteColor];
   
-    _paoma = [[WQLPaoMaView alloc] initWithFrame:CGRectMake(50*ProportionWidth,70*ProportionHeight, KWidth-100*ProportionWidth, 40*ProportionHeight) withTitle:self.model.msgtitle];
+    _paoma = [[WQLPaoMaView alloc] initWithFrame:CGRectMake(50*ProportionWidth,64 + 10 * ProportionHeight, KWidth-100*ProportionWidth, 40*ProportionHeight) withTitle:self.model.msgtitle];
     [self.view addSubview:_paoma];
     
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_paoma.frame) + 9, KWidth, 0.7)];

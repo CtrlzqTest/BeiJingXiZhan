@@ -1106,9 +1106,14 @@
                     <connections>
                         <outlet property="agreeBtn" destination="BXY-Aa-OHH" id="SiI-n1-XUL"/>
                         <outlet property="checkCodeTef" destination="o0d-ie-TpG" id="7aD-hT-jZh"/>
+                        <outlet property="code_Height" destination="Jjl-bM-KPT" id="wYo-Jw-SPK"/>
                         <outlet property="getCodeBtn" destination="x54-3f-pfb" id="Tk8-NV-Gfc"/>
                         <outlet property="passWordTef" destination="XFI-Wj-wwq" id="DdZ-k2-l7Y"/>
                         <outlet property="phoneTef" destination="RPd-Wo-OR8" id="0U6-SS-JNZ"/>
+                        <outlet property="registBtn_Height" destination="2T1-Ka-aHV" id="u0q-el-yUd"/>
+                        <outlet property="registBtn_Top" destination="45e-GI-xEQ" id="5vv-DH-n0o"/>
+                        <outlet property="tef_Height" destination="y4g-da-skO" id="mHl-3p-qXE"/>
+                        <outlet property="top" destination="WgS-8f-ncX" id="nfu-lM-ZEO"/>
                         <outlet property="userTypeBtn" destination="rta-9j-h5C" id="DiS-hx-7Yd"/>
                     </connections>
                 </viewController>

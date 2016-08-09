@@ -234,14 +234,14 @@ static User *user = nil;
     return [dateFormatter stringFromDate:date];
 }
 
-+(long )timeIntervalWithDateStr:(NSString *)dateStr {
++(long long)timeIntervalWithDateStr:(NSString *)dateStr {
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];//格式化
     [dateFormatter setDateFormat:@"yyyy/MM/dd HH:mm:ss"];
     NSDate *date = [dateFormatter dateFromString:dateStr];
     
     NSTimeInterval time = [date timeIntervalSince1970];
-    long time2 = (long )(time * 1000);
+    long long time2 = (long long)(time * 1000);
     return time2;
 }
 

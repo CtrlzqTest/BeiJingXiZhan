@@ -141,7 +141,7 @@
     [self removeNodataView];
     _page = 1;
     NSString *nodeId = !self.menuModel ? @"" : self.menuModel.menuId;
-    NSString *pageIndex = [NSString stringWithFormat:@"%ld",_page];
+    NSString *pageIndex = [NSString stringWithFormat:@"%ld",(long)_page];
     NSDictionary *dict = nil;
     
     __block NSString *userType = [User shareUser].type.length > 0 ? [User shareUser].type : @"";
@@ -207,7 +207,7 @@
     __block MessageModel *lastMsgModel = [_dataArray lastObject];
     NSDictionary *dict = nil;
     NSString *nodeId = !self.menuModel ? @"" : self.menuModel.menuId;
-    NSString *pageIndex = [NSString stringWithFormat:@"%ld",_page];
+    NSString *pageIndex = [NSString stringWithFormat:@"%ld",(long)_page];
     __block NSString *userType = [User shareUser].type.length > 0 ? [User shareUser].type : @"";
     if (self.menuModel == nil) {
         dict = @{@"nodeid":@"",@"pageIndex":pageIndex,@"pageSize":@"15",@"sort":@"CreateTime",@"time":@"",@"PushRole":userType};
@@ -234,7 +234,7 @@
             if (userType.length <= 0) {
                 userType = @"''";
             }
-            NSString *condition = !self.menuModel ? [NSString stringWithFormat:@"msgdate < '%ld' and (usertype  = '' or usertype like '%%%@%%')",lastMsgModel.msgdate,userType] : [NSString stringWithFormat:@"msgdate < '%ld' and nodeid = '%@' and (usertype  = '' or usertype like '%%%@%%')",lastMsgModel.msgdate,self.menuModel.menuId,userType];
+            NSString *condition = !self.menuModel ? [NSString stringWithFormat:@"msgdate < '%lld' and (usertype  = '' or usertype like '%%%@%%')",lastMsgModel.msgdate,userType] : [NSString stringWithFormat:@"msgdate < '%lld' and nodeid = '%@' and (usertype  = '' or usertype like '%%%@%%')",lastMsgModel.msgdate,self.menuModel.menuId,userType];
             NSArray *moreArray = [MessageModel getDataWithCondition:condition page:1 orderBy:@"msgdate"];
             if (moreArray.count <= 0) {
                 [_autoFooter endRefreshingWithNoMoreData];

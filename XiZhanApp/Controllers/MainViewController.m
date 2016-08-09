@@ -137,9 +137,9 @@ static NSString *collCellId = @"MainCell";
     self.view.backgroundColor = [UIColor whiteColor];
     // 和maincolcell统一
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-    flowLayout.itemSize = CGSizeMake(KWidth / 2.0 - 40, (KWidth / 2.0 - 40) * 1.2);
-    flowLayout.minimumInteritemSpacing = 10;
-    flowLayout.minimumLineSpacing = 10;
+    flowLayout.itemSize = CGSizeMake(KWidth / 2.0 - 30 * ProportionWidth, (KWidth / 2.0 - 30 * ProportionWidth) * 1.2);
+    flowLayout.minimumInteritemSpacing = 10 * ProportionWidth;
+    flowLayout.minimumLineSpacing = 10 * ProportionWidth;
     flowLayout.sectionInset = UIEdgeInsetsMake(10, 20, 10, 20);
     self.collectionView.collectionViewLayout = flowLayout;
     

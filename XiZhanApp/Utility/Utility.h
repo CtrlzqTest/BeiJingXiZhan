@@ -120,7 +120,7 @@
 /**
  *  字符串转时间戳
  */
-+(long )timeIntervalWithDateStr:(NSString *)dateStr;
++(long long)timeIntervalWithDateStr:(NSString *)dateStr;
 
 /**
  *  获取系统当前时间

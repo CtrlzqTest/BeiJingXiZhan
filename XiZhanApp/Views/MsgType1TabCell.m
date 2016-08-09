@@ -11,6 +11,13 @@
 #import "TaxiMsgModel.h"
 #import <UIImageView+WebCache.h>
 
+@interface MsgType1TabCell()
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *back_Top;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *back_Buttom;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *label_Height;
+
+@end
 
 @implementation MsgType1TabCell
 
@@ -21,6 +28,10 @@
     CGFloat cornerRadius = (height - 10) / 2.0;
     self.iconImgView.layer.cornerRadius = cornerRadius;
     self.iconImgView.clipsToBounds = YES;
+    
+    self.label_Height.constant = 21 * ProportionHeight;
+    self.titleLabel.font = [UIFont systemFontOfSize:17.0 * ProportionWidth];
+    self.subTitleLabel.font = [UIFont systemFontOfSize:17.0 * ProportionWidth];
     
 }
 

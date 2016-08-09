@@ -26,6 +26,14 @@
 
 @property (nonatomic,strong)ZQPickerView *pickerView;
 @property(nonatomic,strong)UIImageView *backImgView;
+// 适配
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *registBtn_Top;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tef_Height;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *code_Height;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *registBtn_Height;
+
+
 @end
 
 @implementation RegisterViewController
@@ -40,9 +48,15 @@
     self.backImgView = [[UIImageView alloc] initWithFrame:self.view.bounds];
     self.backImgView.image = [UIImage imageNamed:@"main_bg"];
     [self.view addSubview:self.backImgView];
-    [self setupViews];
-    [self.view sendSubviewToBack:self.backImgView];
     
+    [self.view sendSubviewToBack:self.backImgView];
+    self.top.constant = 80 * ProportionHeight;
+    self.registBtn_Top.constant = 50 * ProportionHeight;
+    self.tef_Height.constant = 40 * ProportionHeight;
+    self.code_Height.constant = 40 * ProportionHeight;
+    self.registBtn_Height.constant = 45 * ProportionHeight;
+    
+    [self setupViews];
 }
 
 -(void)tapMethod
@@ -65,30 +79,30 @@
     
     self.phoneTef.layer.borderWidth = 2.5;
     self.phoneTef.layer.borderColor = colorref;
-    self.phoneTef.layer.cornerRadius = 20;
+    self.phoneTef.layer.cornerRadius = 20 * ProportionHeight;
     self.phoneTef.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.phoneTef.leftViewMode = UITextFieldViewModeAlways;
     
     self.passWordTef.layer.borderWidth = 2.5;
     self.passWordTef.layer.borderColor = colorref;
-    self.passWordTef.layer.cornerRadius = 20;
+    self.passWordTef.layer.cornerRadius = 20 * ProportionHeight;
     self.passWordTef.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.passWordTef.leftViewMode = UITextFieldViewModeAlways;
     
     self.checkCodeTef.layer.borderWidth = 2.5;
     self.checkCodeTef.layer.borderColor = colorref;
-    self.checkCodeTef.layer.cornerRadius = 20;
+    self.checkCodeTef.layer.cornerRadius = 20 * ProportionHeight;
     self.checkCodeTef.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.checkCodeTef.leftViewMode = UITextFieldViewModeAlways;
     
     self.userTypeBtn.layer.borderWidth = 2.5;
     self.userTypeBtn.layer.borderColor = colorref;
-    self.userTypeBtn.layer.cornerRadius = 20;
+    self.userTypeBtn.layer.cornerRadius = 20 * ProportionHeight;
     [self.userTypeBtn addTarget:self action:@selector(userTypeAction:) forControlEvents:UIControlEventTouchUpInside];
     
     self.checkCodeTef.layer.borderWidth = 2.5;
     self.checkCodeTef.layer.borderColor = colorref;
-    self.checkCodeTef.layer.cornerRadius = 20;
+    self.checkCodeTef.layer.cornerRadius = 20 * ProportionHeight;
     
     _userTypeArray = @[@"旅客",@"出租车司机"];
     

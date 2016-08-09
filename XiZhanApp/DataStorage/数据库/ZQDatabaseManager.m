@@ -221,7 +221,7 @@ static ZQDatabaseManager *manager = nil;
             [sql appendFormat:@" order by %@ desc",proName];
         }
         if (page != 0) {
-            [sql appendFormat:@" limit %ld,15",(page - 1) * 15];
+            [sql appendFormat:@" limit %d,15",(page - 1) * 15];
         }
         NSLog(@"SQL:%@",sql);
         FMResultSet *set= [_db executeQuery:sql];

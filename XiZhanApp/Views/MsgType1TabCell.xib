@@ -16,20 +16,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backImg" translatesAutoresizingMaskIntoConstraints="NO" id="iAU-WS-bRX">
-                        <rect key="frame" x="10" y="5" width="92" height="92"/>
+                        <rect key="frame" x="10" y="5" width="91.5" height="91.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="iAU-WS-bRX" secondAttribute="height" id="9TH-1o-V7m"/>
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Point_red" translatesAutoresizingMaskIntoConstraints="NO" id="3h6-WO-Vsf">
-                        <rect key="frame" x="369" y="36" width="30" height="30"/>
+                        <rect key="frame" x="379" y="41" width="20" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="30" id="fpV-rV-9pr"/>
+                            <constraint firstAttribute="width" constant="20" id="fpV-rV-9pr"/>
                             <constraint firstAttribute="width" secondItem="3h6-WO-Vsf" secondAttribute="height" multiplier="1:1" id="q8h-S0-xaS"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8cw-0F-0uz">
-                        <rect key="frame" x="110" y="26" width="251" height="21"/>
+                        <rect key="frame" x="109" y="26" width="261.5" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="Jb7-up-Ml6"/>
                         </constraints>
@@ -37,18 +37,23 @@
                         <color key="textColor" red="0.078431372549019607" green="0.62745098039215685" blue="0.81960784313725488" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="G4h-p1-khY">
-                        <rect key="frame" x="10" y="5" width="92" height="92"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KAI-PC-H3F">
-                        <rect key="frame" x="110" y="57" width="251" height="21"/>
+                        <rect key="frame" x="109" y="57" width="261.5" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="xsk-zg-O7M"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.078431372550000003" green="0.62745098040000002" blue="0.81960784310000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="xsk-zg-O7M"/>
+                            </mask>
+                        </variation>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G4h-p1-khY">
+                        <rect key="frame" x="19" y="8" width="81.5" height="81.5"/>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="8cw-0F-0uz" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" constant="-15" id="0Ba-vc-62y"/>
@@ -63,6 +68,7 @@
                     <constraint firstItem="KAI-PC-H3F" firstAttribute="top" secondItem="8cw-0F-0uz" secondAttribute="bottom" constant="10" id="b7h-H4-yFw"/>
                     <constraint firstAttribute="trailing" secondItem="3h6-WO-Vsf" secondAttribute="trailing" constant="15" id="hv0-at-lan"/>
                     <constraint firstItem="KAI-PC-H3F" firstAttribute="leading" secondItem="8cw-0F-0uz" secondAttribute="leading" id="ijN-DZ-gWc"/>
+                    <constraint firstItem="KAI-PC-H3F" firstAttribute="height" secondItem="8cw-0F-0uz" secondAttribute="height" id="jsU-0W-xyx"/>
                     <constraint firstItem="G4h-p1-khY" firstAttribute="trailing" secondItem="iAU-WS-bRX" secondAttribute="trailing" id="pbK-UB-4OA"/>
                     <constraint firstItem="G4h-p1-khY" firstAttribute="bottom" secondItem="iAU-WS-bRX" secondAttribute="bottom" id="rRl-tb-tNW"/>
                     <constraint firstItem="G4h-p1-khY" firstAttribute="top" secondItem="iAU-WS-bRX" secondAttribute="top" id="s6G-0C-M79"/>
@@ -77,8 +83,11 @@
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="back_Buttom" destination="6y5-zt-2TA" id="i1y-Ub-ioD"/>
+                <outlet property="back_Top" destination="0lp-1O-pT0" id="EiN-os-SfK"/>
                 <outlet property="iconImgView" destination="G4h-p1-khY" id="6Em-hs-Hp0"/>
                 <outlet property="imgView" destination="iAU-WS-bRX" id="0jh-Pm-HDA"/>
+                <outlet property="label_Height" destination="Jb7-up-Ml6" id="xSX-4d-uKL"/>
                 <outlet property="pointImgView" destination="3h6-WO-Vsf" id="3mQ-90-FCN"/>
                 <outlet property="subTitleLabel" destination="KAI-PC-H3F" id="MUL-oQ-f30"/>
                 <outlet property="titleLabel" destination="8cw-0F-0uz" id="3vI-EK-v7N"/>

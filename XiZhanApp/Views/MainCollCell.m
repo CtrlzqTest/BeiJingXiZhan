@@ -13,7 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    CGFloat width = KWidth / 2.0 - 40;
+    CGFloat width = KWidth / 2.0 - 30 * ProportionWidth;
     CGFloat cornerRadius  = width - self.headLeft.constant * 2;
     self.backView.layer.cornerRadius = cornerRadius / 2.0;
     self.backView.clipsToBounds = YES;
