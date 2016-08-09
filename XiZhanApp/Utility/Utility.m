@@ -465,6 +465,12 @@ static User *user = nil;
         case 8:
             tag =  @"cmps";
             break;
+        case 9:
+            tag =  @"super_user";
+            break;
+        case 10:
+            tag =  @"city_mgr";
+            break;
         default:
             break;
     }
@@ -499,6 +505,12 @@ static User *user = nil;
             break;
         case 8:
             tag =  @"综治办";
+            break;
+        case 9:
+            tag = @"高级用户";
+            break;
+        case 10:
+            tag =  @"城管";
             break;
         default:
             break;

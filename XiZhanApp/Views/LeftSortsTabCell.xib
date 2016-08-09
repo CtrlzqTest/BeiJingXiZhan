@@ -22,16 +22,16 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZ6-0e-53Z">
-                        <rect key="frame" x="49" y="16" width="214" height="30"/>
+                        <rect key="frame" x="49" y="23.5" width="184" height="15"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Point_red" translatesAutoresizingMaskIntoConstraints="NO" id="uOa-4j-s4T">
-                        <rect key="frame" x="271" y="16" width="30" height="30"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="new_msg" translatesAutoresizingMaskIntoConstraints="NO" id="uOa-4j-s4T">
+                        <rect key="frame" x="241" y="23.5" width="30" height="15"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="30" id="KdI-Fk-vEd"/>
-                            <constraint firstAttribute="width" secondItem="uOa-4j-s4T" secondAttribute="height" id="dvB-hM-HYH"/>
+                            <constraint firstAttribute="width" secondItem="uOa-4j-s4T" secondAttribute="height" multiplier="2" id="dvB-hM-HYH"/>
                         </constraints>
                     </imageView>
                 </subviews>
@@ -40,7 +40,7 @@
                     <constraint firstItem="sW8-8l-gOm" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="D7t-UC-wgw"/>
                     <constraint firstAttribute="bottom" secondItem="sW8-8l-gOm" secondAttribute="bottom" constant="10" id="KPM-f9-IEi"/>
                     <constraint firstItem="uOa-4j-s4T" firstAttribute="bottom" secondItem="jZ6-0e-53Z" secondAttribute="bottom" id="YxP-H6-2g8"/>
-                    <constraint firstAttribute="trailing" secondItem="uOa-4j-s4T" secondAttribute="trailing" constant="50" id="avh-qu-2aC"/>
+                    <constraint firstAttribute="trailing" secondItem="uOa-4j-s4T" secondAttribute="trailing" constant="80" id="avh-qu-2aC"/>
                     <constraint firstItem="uOa-4j-s4T" firstAttribute="top" secondItem="jZ6-0e-53Z" secondAttribute="top" id="gBi-MZ-Cuh"/>
                     <constraint firstItem="uOa-4j-s4T" firstAttribute="leading" secondItem="jZ6-0e-53Z" secondAttribute="trailing" constant="8" id="gmZ-lt-aGz"/>
                     <constraint firstItem="jZ6-0e-53Z" firstAttribute="leading" secondItem="sW8-8l-gOm" secondAttribute="trailing" id="k6a-1y-oIY"/>
@@ -56,7 +56,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Point_red" width="32" height="32"/>
+        <image name="new_msg" width="31" height="16"/>
         <image name="user-icon5" width="20" height="20"/>
     </resources>
 </document>

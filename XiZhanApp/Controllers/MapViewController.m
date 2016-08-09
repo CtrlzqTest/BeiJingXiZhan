@@ -77,6 +77,11 @@
         make.bottom.offset(80);
         make.height.offset(80);
     }];
+    
+    if (self.keyStr.length > 0) {
+        self.searchTef.text = self.keyStr;
+        [self requestData];
+    }
 }
 
 

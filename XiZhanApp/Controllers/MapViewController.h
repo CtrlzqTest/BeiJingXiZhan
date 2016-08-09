@@ -10,4 +10,6 @@
 
 @interface MapViewController : BaseViewController
 
+@property(nonatomic,copy)NSString *keyStr;
+
 @end

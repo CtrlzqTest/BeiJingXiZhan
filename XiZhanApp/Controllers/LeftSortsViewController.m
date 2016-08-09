@@ -47,6 +47,10 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
     if ([Utility isLogin]) {
         [User shareUser].isLogin = YES;
         loginStr = [Utility getNameWithuserType:[User shareUser].type];
+        // 是否是高级用户
+        if ([loginStr isEqualToString:@"高级用户"]) {
+            loginStr = [NSString stringWithFormat:@"%@(%@)",[User shareUser].name,loginStr];
+        }
         [self requestData];
         _dataArray = [NSMutableArray arrayWithArray:@[loginStr,@"关于我们",@"意见反馈",@"我的消息",@"退出登录"]];
     }else {
@@ -103,7 +107,13 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
 - (void)didLoginAction {
     
 //    [JPUSHService setTags:nil alias:[User shareUser].tel callbackSelector:@selector(tagsAliasCallback:tags:alias:) object:self];
-    _dataArray[0] = [Utility getNameWithuserType:[User shareUser].type];
+    NSString *loginStr = nil;
+    loginStr = [Utility getNameWithuserType:[User shareUser].type];
+    // 是否是高级用户
+    if ([loginStr isEqualToString:@"高级用户"]) {
+        loginStr = [NSString stringWithFormat:@"%@(%@)",[User shareUser].name,loginStr];
+    }
+    _dataArray[0] = loginStr;
     [_dataArray addObject:@"退出登录"];
     [self requestData];
     [self.tableview reloadData];

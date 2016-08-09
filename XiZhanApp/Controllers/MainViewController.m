@@ -196,6 +196,7 @@ static NSString *collCellId = @"MainCell";
         
     }else{
         
+        // 二级消息列表
         if ([model.alias isEqualToString:@"important_notice"] || [model.alias isEqualToString:@"area_news"] || [model.alias isEqualToString:@"query_service"] || [model.alias isEqualToString:@"railway_service"]) {
             
             MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];

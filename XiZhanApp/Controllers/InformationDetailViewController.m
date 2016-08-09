@@ -65,10 +65,15 @@ static NSString *indentify = @"proCellX";
     self.title = @"详情";
     self.view.backgroundColor = [UIColor whiteColor];
   
-    _paoma = [[WQLPaoMaView alloc]initWithFrame:CGRectMake(50*ProportionWidth,80*ProportionHeight, KWidth-100*ProportionWidth, 40*ProportionHeight) withTitle:self.model.msgtitle];
+    _paoma = [[WQLPaoMaView alloc] initWithFrame:CGRectMake(50*ProportionWidth,70*ProportionHeight, KWidth-100*ProportionWidth, 40*ProportionHeight) withTitle:self.model.msgtitle];
     [self.view addSubview:_paoma];
     
-    _web = [[UIWebView alloc]initWithFrame:CGRectMake(20*ProportionWidth,CGRectGetMaxY(_paoma.frame)+10*ProportionHeight, KWidth-40*ProportionWidth, 450*ProportionHeight)];
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_paoma.frame) + 9, KWidth, 0.7)];
+    lineView.backgroundColor = [UIColor colorWithWhite:0.761 alpha:0.825];
+    [self.view addSubview:lineView];
+    
+    CGFloat height = self.view.frame.size.height - (CGRectGetMaxY(_paoma.frame)+10*ProportionHeight);
+    _web = [[UIWebView alloc]initWithFrame:CGRectMake(10*ProportionWidth,CGRectGetMaxY(_paoma.frame)+10*ProportionHeight, KWidth-20*ProportionWidth, height)];
     [self addWebMethod];
 }
 #pragma mark uiwebviewDelegate
@@ -134,13 +139,14 @@ static NSString *indentify = @"proCellX";
     _web = [[UIWebView alloc]init];
     _web.frame = CGRectMake(leftInset,CGRectGetMaxY(_paoma.frame) + 20*ProportionHeight, KWidth-2*leftInset, 185*ProportionHeight);
     [self addWebMethod];
-    }
+    
+}
 -(void)addWebMethod
 {
     _web.layer.cornerRadius = 15.0;
     _web.layer.masksToBounds = YES;
-    _web.layer.borderWidth = 3.0;
-    _web.layer.borderColor = colorref;
+//    _web.layer.borderWidth = 3.0;
+//    _web.layer.borderColor = colorref;
     _web.delegate = self;
     [_web setOpaque:NO];
     _web.backgroundColor = [UIColor clearColor];
@@ -156,27 +162,37 @@ static NSString *indentify = @"proCellX";
                             "<body>%@</body> \n"
                             "</html>",14, @"FZLTXHK", @"rgb(0, 0, 0)",@"100% !important",@"100% !important",self.model.msgcontent];
     [_web loadHTMLString:htmlString baseURL:nil];
+    _web.scrollView.showsVerticalScrollIndicator = NO;
     [self.view addSubview: _web];
     
     if (!self.isShowSign) {
         return;
     }
-    UIButton *signBtn = [UIButton buttonWithType:UIButtonTypeSystem];
-    signBtn.frame = CGRectMake(0, CGRectGetMaxY(_web.frame) + 20, 80, 35);
+    NSString *signStr =  self.model.issign ? @"已签到" : @"签到";
+    __weak typeof(self) weakSelf = self;
+    __block UIButton *signBtn = [self setRightTextBarButtonItemWithFrame:CGRectMake(0, 0, 60, 30) title:signStr titleColor:[UIColor whiteColor] backImage:nil selectBackImage:nil action:^(AYCButton *button) {
+        [weakSelf signAction:signBtn];
+    }];
     if (self.model.issign) {
-        signBtn.backgroundColor = [UIColor colorWithWhite:0.758 alpha:0.649];
         signBtn.userInteractionEnabled = NO;
-    }else {
-        signBtn.backgroundColor = mainColor;
+        [signBtn setTitleColor:[UIColor colorWithWhite:0.758 alpha:0.649] forState:UIControlStateNormal];
     }
-    
-    [signBtn setTitleColor:[UIColor colorWithRed:1.000 green:0.873 blue:0.377 alpha:1.000] forState:UIControlStateNormal];
-    signBtn.layer.cornerRadius = 5;
-    [signBtn setTitle:@"签到" forState:UIControlStateNormal];
-    signBtn.center = CGPointMake(KWidth / 2.0, signBtn.center.y);
-    [self.view addSubview:signBtn];
-    
-    [signBtn addTarget:self action:@selector(signAction:) forControlEvents:UIControlEventTouchUpInside];
+//    UIButton *signBtn = [UIButton buttonWithType:UIButtonTypeSystem];
+//    signBtn.frame = CGRectMake(0, CGRectGetMaxY(_web.frame) + 20, 80, 35);
+//    if (self.model.issign) {
+//        signBtn.backgroundColor = [UIColor colorWithWhite:0.758 alpha:0.649];
+//        signBtn.userInteractionEnabled = NO;
+//    }else {
+//        signBtn.backgroundColor = mainColor;
+//    }
+//    
+//    [signBtn setTitleColor:[UIColor colorWithRed:1.000 green:0.873 blue:0.377 alpha:1.000] forState:UIControlStateNormal];
+//    signBtn.layer.cornerRadius = 5;
+//    [signBtn setTitle:@"签到" forState:UIControlStateNormal];
+//    signBtn.center = CGPointMake(KWidth / 2.0, signBtn.center.y);
+//    [self.view addSubview:signBtn];
+//    
+//    [signBtn addTarget:self action:@selector(signAction:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)signAction:(UIButton *)sender {
@@ -187,13 +203,15 @@ static NSString *indentify = @"proCellX";
             self.model.issign = YES;
             [self.model updateWithCondition:[NSString stringWithFormat:@"msgid = '%@'",self.model.msgid]];
             [MBProgressHUD showSuccess:@"签到成功" toView:self.view];
-            sender.backgroundColor = [UIColor colorWithWhite:0.758 alpha:0.649];
+            [sender setTitle:@"已签到" forState:UIControlStateNormal];
+            [sender setTitleColor:[UIColor colorWithWhite:0.505 alpha:0.649] forState:UIControlStateNormal];
             sender.userInteractionEnabled = NO;
         }else if([responseObject[@"code"] integerValue] == -1){
             self.model.issign = YES;
             [self.model updateWithCondition:[NSString stringWithFormat:@"msgid = '%@'",self.model.msgid]];
             [MBProgressHUD showSuccess:@"已过期" toView:self.view];
-            sender.backgroundColor = [UIColor colorWithWhite:0.758 alpha:0.649];
+            [sender setTitle:@"已签到" forState:UIControlStateNormal];
+            [sender setTitleColor:[UIColor colorWithWhite:0.758 alpha:0.649] forState:UIControlStateNormal];
             sender.userInteractionEnabled = NO;
 
         }

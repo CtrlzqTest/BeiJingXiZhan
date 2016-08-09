@@ -13,6 +13,7 @@
 #import <MJRefresh.h>
 #import "ParkViewController.h"
 #import "MyInformationsViewController.h"
+#import "MapViewController.h"
 
 @interface TaxiClassifyViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -41,9 +42,12 @@
     [_dataArray addObject:menuModel1];
 
     MenuModel *menuModel2 = [[MenuModel alloc] init];
-    menuModel2.menuTitle = @"出租车运力消息";
+    menuModel2.menuTitle = @"车辆和候车人员情况";
     [_dataArray addObject:menuModel2];
     
+    MenuModel *menuModel3 = [[MenuModel alloc] init];
+    menuModel3.menuTitle = @"出租车站点位置";
+    [_dataArray addObject:menuModel3];
     // 返回按钮
     __weak typeof(self) weakSelf = self;
     [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
@@ -96,6 +100,7 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    MenuModel *model = _dataArray[indexPath.row];
     switch (indexPath.row) {
         case 0:{
             TaxiMsgListViewController *taxiStationVC = [[TaxiMsgListViewController alloc] init];
@@ -108,6 +113,13 @@
             myInfoVC.menuModel = self.menuModel;
             [self.navigationController pushViewController:myInfoVC animated:YES];
         }
+            break;
+        case 2:{
+            // 位置查询
+            MapViewController *mapVC = [Utility getControllerWithStoryBoardId:@"mapViewController"];
+            mapVC.title = model.menuTitle;
+            mapVC.keyStr = @"出租车";
+            [self.navigationController pushViewController:mapVC animated:YES];        }
             break;
         default:{
             

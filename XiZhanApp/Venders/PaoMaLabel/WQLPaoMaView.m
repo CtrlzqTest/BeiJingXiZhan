@@ -45,8 +45,8 @@
         showContentView.clipsToBounds = YES;
         showContentView.layer.cornerRadius = 15.0;
         showContentView.layer.masksToBounds = YES;
-        showContentView.layer.borderWidth = 3.0;
-        showContentView.layer.borderColor = colorref;
+//        showContentView.layer.borderWidth = 3.0;
+//        showContentView.layer.borderColor = colorref;
         
         [self addSubview: showContentView];
         
