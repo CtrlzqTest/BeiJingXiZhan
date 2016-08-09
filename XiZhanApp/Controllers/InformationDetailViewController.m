@@ -209,7 +209,7 @@ static NSString *indentify = @"proCellX";
         }else if([responseObject[@"code"] integerValue] == -1){
             self.model.issign = YES;
             [self.model updateWithCondition:[NSString stringWithFormat:@"msgid = '%@'",self.model.msgid]];
-            [MBProgressHUD showSuccess:@"已过期" toView:self.view];
+            [MBProgressHUD showSuccess:@"该消息已过期" toView:self.view];
             [sender setTitle:@"已签到" forState:UIControlStateNormal];
             [sender setTitleColor:[UIColor colorWithWhite:0.758 alpha:0.649] forState:UIControlStateNormal];
             sender.userInteractionEnabled = NO;

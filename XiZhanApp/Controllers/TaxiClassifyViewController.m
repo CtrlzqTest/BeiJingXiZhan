@@ -38,11 +38,11 @@
     
     _dataArray = [NSMutableArray array];
     MenuModel *menuModel1 = [[MenuModel alloc] init];
-    menuModel1.menuTitle = @"出租车站点信息";
+    menuModel1.menuTitle = @"车辆和候车人员情况";
     [_dataArray addObject:menuModel1];
 
     MenuModel *menuModel2 = [[MenuModel alloc] init];
-    menuModel2.menuTitle = @"车辆和候车人员情况";
+    menuModel2.menuTitle = @"出租车运营提示";
     [_dataArray addObject:menuModel2];
     
     MenuModel *menuModel3 = [[MenuModel alloc] init];

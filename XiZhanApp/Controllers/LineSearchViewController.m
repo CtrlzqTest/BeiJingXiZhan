@@ -73,7 +73,7 @@
     [_dataArray addObject:menuModel2];
     
     MenuModel *menuModel3 = [[MenuModel alloc] init];
-    menuModel3.menuTitle = @"停车场站点信息";
+    menuModel3.menuTitle = @"停车场信息";
     [_dataArray addObject:menuModel3];
     
     MenuModel *menuModel4 = [[MenuModel alloc] init];
