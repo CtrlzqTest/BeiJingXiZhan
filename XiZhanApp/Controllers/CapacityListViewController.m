@@ -38,7 +38,7 @@
     [_dataArray addObject:menuModel1];
     
     MenuModel *menuModel2 = [[MenuModel alloc] init];
-    menuModel2.menuTitle = @"火车乘车消息";
+    menuModel2.menuTitle = @"火车乘车信息";
     [_dataArray addObject:menuModel2];
     
     // 返回按钮
