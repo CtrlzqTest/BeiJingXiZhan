@@ -13,6 +13,7 @@
 #import "LineWebViewController.h"
 #import "ParkViewController.h"
 #import "MyInformationsViewController.h"
+#import "InfoClassifyViewController.h"
 
 @interface LineSearchViewController ()<UITableViewDelegate,UITableViewDataSource>
 {
@@ -168,9 +169,16 @@
             break;
         default:{
             
-            MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];;
-            myInfoVC.menuModel = model;
-            [self.navigationController pushViewController:myInfoVC animated:YES];
+            if ([model.alias isEqualToString:@"bus_route"]) {
+                // 后台数据模块
+                InfoClassifyViewController *myInfoVC = [[InfoClassifyViewController alloc] init];
+                myInfoVC.menuModel = model;
+                [self.navigationController pushViewController:myInfoVC animated:YES];
+            }else {
+                MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];;
+                myInfoVC.menuModel = model;
+                [self.navigationController pushViewController:myInfoVC animated:YES];
+            }
             
         }
             

@@ -107,6 +107,8 @@
         [self setRightImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"edit" selectImage:nil action:^(AYCButton *button) {
             [weakSelf editAction:button];
         }];
+    }else if ([self.menuModel.menuTitle isEqualToString:@""]){
+        
     }
     
     self.tableView = [[UITableView alloc]init];

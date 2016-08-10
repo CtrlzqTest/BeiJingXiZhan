@@ -9,7 +9,9 @@
 #import "LineWebViewController.h"
 
 @interface LineWebViewController ()<UIWebViewDelegate>
-
+{
+    MBProgressHUD *_hud;
+}
 @property(nonatomic,strong)UIWebView *webView;
 
 @end
@@ -44,14 +46,19 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     
+    _hud = [MBProgressHUD showHUDAddedTo:self.view animated:NO];
+    
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
+    
+    [_hud hide:YES];
     
 }
 
 -(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
+    [_hud hide:YES];
     [MBProgressHUD showError:@"网络不给力！" toView:nil];
 }
 

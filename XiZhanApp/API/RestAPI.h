@@ -105,16 +105,13 @@ static NSString *const ZQLoginViewCotrollerId = @"loginViewCotrollerId";    // �
 static NSString *const ZQServeTabViewControllerId = @"serveTabViewControllerId";    // 服务台信息
 
 static NSString *const ZQServeDetailViewControllerId = @"serveDetailViewControllerId"; // 服务台信息详情
-
 static NSString *const ZQPublishInfoViewControllerId = @"publishInfoViewControllerId"; // 发布消息
-
-
 
 /**************************************************************************************/
 
 // 推送
-//#define AppKey @"b4b8bd0f427af09839e23286"    // 测试
+#define AppKey @"b4b8bd0f427af09839e23286"    // 测试
 
-#define AppKey @"6816fee48fb77859f7a9011b"
+//#define AppKey @"6816fee48fb77859f7a9011b"
 
 #endif

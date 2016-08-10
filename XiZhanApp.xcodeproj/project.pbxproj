@@ -561,13 +561,13 @@
 			path = ../ZQNetWork;
 			sourceTree = "<group>";
 		};
-		F091B9B71D3DC4FF005B4688 /* Capacity(运力相关) */ = {
+		F091B9B71D3DC4FF005B4688 /* TrainViewControllers(火车乘车) */ = {
 			isa = PBXGroup;
 			children = (
 				F091B9B81D3DC647005B4688 /* CapacityListViewController.h */,
 				F091B9B91D3DC647005B4688 /* CapacityListViewController.m */,
 			);
-			name = "Capacity(运力相关)";
+			name = "TrainViewControllers(火车乘车)";
 			sourceTree = "<group>";
 		};
 		F092EEBF1CE6B6E200353351 /* MessageList(消息列表) */ = {
@@ -756,7 +756,7 @@
 				F00007E91CF6CE6F00479EFB /* AboutXiZhanViewController.m */,
 				F0088CA11CE6C16F00AF6EAF /* PublishViewController.h */,
 				F0088CA21CE6C16F00AF6EAF /* PublishViewController.m */,
-				F091B9B71D3DC4FF005B4688 /* Capacity(运力相关) */,
+				F091B9B71D3DC4FF005B4688 /* TrainViewControllers(火车乘车) */,
 				F0C9FD411D38B9C200FFDE8E /* MapViewControllers(地图交通相关) */,
 				F0186CC11D000FF900F90CE1 /* TaxiViewControllers(出租车) */,
 				F0F37A221CE093590047A469 /* LoginRegisterControllers(登录注册) */,
@@ -1227,7 +1227,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "1c04b2b1-b617-41a9-8df1-cae8078fb3fe";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1268,7 +1268,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "1c04b2b1-b617-41a9-8df1-cae8078fb3fe";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1293,7 +1293,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1c04b2b1-b617-41a9-8df1-cae8078fb3fe";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1316,7 +1316,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1c04b2b1-b617-41a9-8df1-cae8078fb3fe";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

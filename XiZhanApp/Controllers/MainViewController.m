@@ -19,6 +19,7 @@
 #import "TaxiClassifyViewController.h"
 #import "LineSearchViewController.h"
 #import "MapViewController.h"
+#import "CapacityListViewController.h"
 
 static NSString *collCellId = @"MainCell";
 @interface MainViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
@@ -197,7 +198,7 @@ static NSString *collCellId = @"MainCell";
     }else{
         
         // 二级消息列表
-        if ([model.alias isEqualToString:@"important_notice"] || [model.alias isEqualToString:@"area_news"] || [model.alias isEqualToString:@"query_service"] || [model.alias isEqualToString:@"railway_service"]) {
+        if ([model.alias isEqualToString:@"important_notice"] || [model.alias isEqualToString:@"area_news"] || [model.alias isEqualToString:@"query_service"]) {
             
             MyInformationsViewController *myInfoVC = [Utility getControllerWithStoryBoardId:@"myInfoVC"];
             myInfoVC.menuModel = model;
@@ -217,8 +218,15 @@ static NSString *collCellId = @"MainCell";
             lineVC.menuModel = model;
             [self.navigationController pushViewController:lineVC animated:YES];
             
+        }else if ([model.alias isEqualToString:@"railway_service"]){
+            
+            // 火车乘车服务
+            CapacityListViewController *trainVC = [[CapacityListViewController alloc] init];
+            trainVC.menuModel = model;
+            [self.navigationController pushViewController:trainVC animated:YES];
+            
         }else{
-            // 后台数据模块
+            // 后台三级数据模块
             InfoClassifyViewController *myInfoVC = [[InfoClassifyViewController alloc] init];
             myInfoVC.menuModel = model;
             [self.navigationController pushViewController:myInfoVC animated:YES];

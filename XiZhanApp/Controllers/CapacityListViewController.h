@@ -8,6 +8,9 @@
 
 #import "BaseViewController.h"
 
+@class MenuModel;
 @interface CapacityListViewController : BaseViewController
+
+@property(nonatomic,strong)MenuModel *menuModel;
 
 @end
