@@ -3,12 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Launch View Controller-->
         <scene sceneID="DjE-ok-5fG">
             <objects>
-                <viewController id="ykU-g0-00m" sceneMemberID="viewController">
+                <viewController id="ykU-g0-00m" customClass="LaunchViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JzZ-MQ-VZ1"/>
                         <viewControllerLayoutGuide type="bottom" id="HlJ-ui-YIs"/>
@@ -16,7 +17,65 @@
                     <view key="view" contentMode="scaleToFill" id="kMQ-F2-M8A">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ImageLaunch" translatesAutoresizingMaskIntoConstraints="NO" id="kO7-Ug-Ryo">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xizhanServer" translatesAutoresizingMaskIntoConstraints="NO" id="XbP-ze-gP9">
+                                <rect key="frame" x="94" y="155" width="187" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="187" id="2Zp-HT-dVM"/>
+                                    <constraint firstAttribute="height" constant="17" id="fP3-ck-TdQ"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mFV-pn-Cz3">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="113"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xizhanchuxing" translatesAutoresizingMaskIntoConstraints="NO" id="vyJ-MD-XW2">
+                                <rect key="frame" x="122" y="113" width="131" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="2fr-aw-Tji"/>
+                                    <constraint firstAttribute="width" constant="131" id="ajg-zv-I80"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zoS-AZ-hi9">
+                                <rect key="frame" x="0.0" y="605" width="375" height="31"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zuhe.png" translatesAutoresizingMaskIntoConstraints="NO" id="m8D-rc-jsw">
+                                        <rect key="frame" x="108.5" y="2" width="158" height="29"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="158" id="4sV-ki-MrW"/>
+                                            <constraint firstAttribute="height" constant="29" id="lAn-z6-34y"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="m8D-rc-jsw" secondAttribute="bottom" id="Apx-I1-10H"/>
+                                    <constraint firstAttribute="height" constant="31" id="I2C-dv-VQX"/>
+                                    <constraint firstItem="m8D-rc-jsw" firstAttribute="centerX" secondItem="zoS-AZ-hi9" secondAttribute="centerX" id="uYD-sQ-sT1"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kO7-Ug-Ryo" firstAttribute="leading" secondItem="kMQ-F2-M8A" secondAttribute="leading" id="3OL-Ni-3Kk"/>
+                            <constraint firstAttribute="bottom" secondItem="zoS-AZ-hi9" secondAttribute="bottom" constant="31" id="PBx-Ip-gbl"/>
+                            <constraint firstItem="XbP-ze-gP9" firstAttribute="top" secondItem="vyJ-MD-XW2" secondAttribute="bottom" constant="12" id="RT6-gl-Mmo"/>
+                            <constraint firstAttribute="trailing" secondItem="kO7-Ug-Ryo" secondAttribute="trailing" id="Ti1-rI-bRP"/>
+                            <constraint firstItem="vyJ-MD-XW2" firstAttribute="centerX" secondItem="kMQ-F2-M8A" secondAttribute="centerX" id="UTq-cg-LKB"/>
+                            <constraint firstAttribute="trailing" secondItem="zoS-AZ-hi9" secondAttribute="trailing" id="V5T-dH-9fB"/>
+                            <constraint firstItem="XbP-ze-gP9" firstAttribute="centerX" secondItem="kMQ-F2-M8A" secondAttribute="centerX" id="Yb5-io-ULu"/>
+                            <constraint firstItem="vyJ-MD-XW2" firstAttribute="top" secondItem="mFV-pn-Cz3" secondAttribute="bottom" id="aQ7-Je-dhQ"/>
+                            <constraint firstItem="mFV-pn-Cz3" firstAttribute="top" secondItem="kMQ-F2-M8A" secondAttribute="top" id="d74-mq-PYF"/>
+                            <constraint firstItem="zoS-AZ-hi9" firstAttribute="leading" secondItem="kMQ-F2-M8A" secondAttribute="leading" id="fSU-p8-P81"/>
+                            <constraint firstItem="kO7-Ug-Ryo" firstAttribute="top" secondItem="kMQ-F2-M8A" secondAttribute="top" id="jay-hE-nJi"/>
+                            <constraint firstItem="mFV-pn-Cz3" firstAttribute="leading" secondItem="kMQ-F2-M8A" secondAttribute="leading" id="ji8-4N-iqF"/>
+                            <constraint firstItem="HlJ-ui-YIs" firstAttribute="top" secondItem="kO7-Ug-Ryo" secondAttribute="bottom" id="ncT-JB-j09"/>
+                            <constraint firstItem="mFV-pn-Cz3" firstAttribute="height" secondItem="kO7-Ug-Ryo" secondAttribute="height" multiplier="113:667" id="psw-Tn-ldh"/>
+                            <constraint firstAttribute="trailing" secondItem="mFV-pn-Cz3" secondAttribute="trailing" id="tp5-9D-kbW"/>
+                        </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
@@ -25,4 +84,10 @@
             <point key="canvasLocation" x="125.5" y="218.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ImageLaunch" width="640" height="1136"/>
+        <image name="xizhanServer" width="197" height="17"/>
+        <image name="xizhanchuxing" width="131" height="30"/>
+        <image name="zuhe.png" width="315" height="57"/>
+    </resources>
 </document>

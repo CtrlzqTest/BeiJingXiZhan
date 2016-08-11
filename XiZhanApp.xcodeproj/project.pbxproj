@@ -65,6 +65,7 @@
 		F0607B3F1CE5B6650029EE31 /* ZQDatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F0607B3B1CE5B6650029EE31 /* ZQDatabaseManager.m */; };
 		F0607B401CE5B6650029EE31 /* ZQDatabaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0607B3D1CE5B6650029EE31 /* ZQDatabaseModel.m */; };
 		F0614DD11CE1C4180036CC3E /* MyInformationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0614DD01CE1C4180036CC3E /* MyInformationsViewController.m */; };
+		F063DD0E1D5C40BA006272FE /* zuhe.png in Resources */ = {isa = PBXBuildFile; fileRef = F063DD0D1D5C40BA006272FE /* zuhe.png */; };
 		F07F46FA1D264AEA00DCFD78 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = F07F46F41D264AEA00DCFD78 /* MBProgressHUD+Add.m */; };
 		F07F46FB1D264AEA00DCFD78 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F07F46F51D264AEA00DCFD78 /* MBProgressHUD.bundle */; };
 		F07F46FC1D264AEA00DCFD78 /* RequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F07F46F71D264AEA00DCFD78 /* RequestHelper.m */; };
@@ -228,6 +229,7 @@
 		F0607B3D1CE5B6650029EE31 /* ZQDatabaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZQDatabaseModel.m; sourceTree = "<group>"; };
 		F0614DCF1CE1C4180036CC3E /* MyInformationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyInformationsViewController.h; sourceTree = "<group>"; };
 		F0614DD01CE1C4180036CC3E /* MyInformationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyInformationsViewController.m; sourceTree = "<group>"; };
+		F063DD0D1D5C40BA006272FE /* zuhe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zuhe.png; sourceTree = "<group>"; };
 		F07F46F31D264AEA00DCFD78 /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
 		F07F46F41D264AEA00DCFD78 /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
 		F07F46F51D264AEA00DCFD78 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
@@ -812,6 +814,7 @@
 				F09B7C801D49F7EB004754C1 /* floor-1.jpg */,
 				F09B7C811D49F7EB004754C1 /* floor-2.jpg */,
 				F0F9584F1D547BED0031B00E /* main_bg.png */,
+				F063DD0D1D5C40BA006272FE /* zuhe.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1002,6 +1005,7 @@
 				F09B7C821D49F7EB004754C1 /* floor-1.jpg in Resources */,
 				F0088C861CE6BE8300AF6EAF /* plus@2x.png in Resources */,
 				F04A71EB1D0132A4006E4ADA /* TaxiMsgTableCell.xib in Resources */,
+				F063DD0E1D5C40BA006272FE /* zuhe.png in Resources */,
 				F0088C801CE6BE8300AF6EAF /* ico_check_nomal@2x.png in Resources */,
 				F0088C841CE6BE8300AF6EAF /* ico_check_select@3x.png in Resources */,
 				F0088C811CE6BE8300AF6EAF /* ico_check_nomal@3x.png in Resources */,
@@ -1227,7 +1231,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "1c04b2b1-b617-41a9-8df1-cae8078fb3fe";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1268,7 +1272,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "1c04b2b1-b617-41a9-8df1-cae8078fb3fe";
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1279,7 +1283,6 @@
 			baseConfigurationReference = CD43E78761016B7AC1D95A13 /* Pods-XiZhanApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
@@ -1293,7 +1296,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1c04b2b1-b617-41a9-8df1-cae8078fb3fe";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -1302,7 +1305,6 @@
 			baseConfigurationReference = 41BD5CBE375055456DFC98EF /* Pods-XiZhanApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
@@ -1316,7 +1318,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1c04b2b1-b617-41a9-8df1-cae8078fb3fe";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

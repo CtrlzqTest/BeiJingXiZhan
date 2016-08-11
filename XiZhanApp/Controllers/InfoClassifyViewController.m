@@ -231,7 +231,7 @@
         if ([responseObject[@"code"] integerValue] == 0) {
             _dataArray = [MenuModel mj_objectArrayWithKeyValuesArray:responseObject[@"data"]];
             [self.tableView reloadData];
-            if ([[User shareUser].type isEqualToString:@"2"]&&[self.menuModel.menuTitle isEqualToString:@"志愿者服务"])
+            if ([[User shareUser].type isEqualToString:@"2"]&&[self.menuModel.alias isEqualToString:@"volunteer"])
             {
                 [self getAreaData];
             }
