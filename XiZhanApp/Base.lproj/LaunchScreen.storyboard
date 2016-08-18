@@ -42,7 +42,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zoS-AZ-hi9">
                                 <rect key="frame" x="0.0" y="605" width="375" height="31"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="zuhe.png" translatesAutoresizingMaskIntoConstraints="NO" id="m8D-rc-jsw">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Launch_zuhe" translatesAutoresizingMaskIntoConstraints="NO" id="m8D-rc-jsw">
                                         <rect key="frame" x="108.5" y="2" width="158" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="158" id="4sV-ki-MrW"/>
@@ -86,8 +86,8 @@
     </scenes>
     <resources>
         <image name="ImageLaunch" width="640" height="1136"/>
+        <image name="Launch_zuhe" width="158" height="29"/>
         <image name="xizhanServer" width="197" height="17"/>
         <image name="xizhanchuxing" width="131" height="30"/>
-        <image name="zuhe.png" width="315" height="57"/>
     </resources>
 </document>

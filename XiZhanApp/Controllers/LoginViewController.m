@@ -145,7 +145,6 @@
             }
             [[NSNotificationCenter defaultCenter] postNotificationName:ZQdidLoginNotication object:nil];
             [weakSelf.navigationController popViewControllerAnimated:YES];
-            
             NSString *userType = [Utility getTagWithuserType:[User shareUser].type];
             [JPUSHService setTags:[NSSet setWithObject:userType] alias:[User shareUser].tel fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
                 
@@ -173,7 +172,7 @@
         return NO;
     }
     if (![Utility checkPassword:self.passWordLabel.text]) {
-        [MBProgressHUD showError:@"密码格式不正确,密码为6-18位数字或字母" toView:nil];
+        [MBProgressHUD showError:@"密码必须是6-18位数字和字母组合" toView:nil];
         return NO;
     }
     if (!self.agreeBtn.selected) {

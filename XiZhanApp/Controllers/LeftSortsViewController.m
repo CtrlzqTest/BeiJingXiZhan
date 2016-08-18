@@ -47,6 +47,7 @@ static NSString *leftSortsCellId = @"leftSortsCellId";
     if ([Utility isLogin]) {
         [User shareUser].isLogin = YES;
         loginStr = [Utility getNameWithuserType:[User shareUser].type];
+        NSLog(@"%@",[User shareUser].type);
         // 是否是高级用户
         if ([loginStr isEqualToString:@"高级用户"]) {
             loginStr = [NSString stringWithFormat:@"%@(%@)",[User shareUser].name,loginStr];

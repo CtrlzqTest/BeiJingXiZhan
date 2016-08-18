@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *pwdTef;
 @property (weak, nonatomic) IBOutlet UITextField *codeTef;
 @property (weak, nonatomic) IBOutlet UIButton *getCodeBtn;
-
+@property (nonatomic,strong)UIImageView *backImgView;
 
 @end
 
@@ -24,7 +24,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"忘记密码";
+    self.backImgView = [[UIImageView alloc] initWithFrame:self.view.bounds];
+    self.backImgView.image = [UIImage imageNamed:@"main_bg"];
+    [self.view addSubview:self.backImgView];
     [self setupViews];
+    [self.view sendSubviewToBack:self.backImgView];
     // Do any additional setup after loading the view.
 }
 
@@ -58,6 +62,8 @@
     self.codeTef.layer.cornerRadius = 25;
     self.codeTef.leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 0)];
     self.codeTef.leftViewMode = UITextFieldViewModeAlways;
+    
+    
     
 }
 
