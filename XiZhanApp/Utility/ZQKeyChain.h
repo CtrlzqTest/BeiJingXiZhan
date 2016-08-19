@@ -10,9 +10,16 @@
 
 @interface ZQKeyChain : NSObject
 
-//+ (void)setSecret:(NSString *)secret forKey:(NSString *)key;
-//+ (NSString *)secretForKey:(NSString *)key;
-//+ (void)removeSecretForKey:(NSString *)key;
-//+ (void)removeAllSecrets;
+/**
+ *  保存UUID到钥匙串
+ */
++(void)saveUUIDToKeyChain;
+
+/**
+ *  从钥匙串获取UUID
+ *
+ *  @return
+ */
++(NSString *)readUUIDFromKeyChain;
 
 @end

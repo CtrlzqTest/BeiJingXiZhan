@@ -8,9 +8,11 @@
 
 #import "Utility.h"
 //#import "User.h"
-#import "GSKeychain.h"
 #import "ZQKeyChain.h"
 #import <CommonCrypto/CommonDigest.h>
+
+static NSString *UUIDkey = @"Device_UUID";
+static NSString *UUIDSecret = @"UUIDSecret";
 
 static User *user = nil;
 

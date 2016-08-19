@@ -7,36 +7,29 @@
 //
 
 #import "ZQKeyChain.h"
-//#import "KeychainItemWrapper.h"
+#import "KeychainItemWrapper.h"
 
 //static KeychainItemWrapper *kechain = nil;
 @implementation ZQKeyChain
 
-//+ (KeychainItemWrapper *)shareZQKeychain {
-//    if (kechain == nil) {
-//        kechain = [[KeychainItemWrapper alloc] initWithIdentifier:@"ZhiXinSign" accessGroup:nil];
-//    }
-//    return kechain;
-//}
-//
-//+ (void)setSecret:(NSString *)secret forKey:(NSString *)key {
-//    KeychainItemWrapper *keychain = [self shareZQKeychain];
-//    [keychain setObject:secret forKey:key];
-//}
-//
-//+ (NSString *)secretForKey:(NSString *)key {
-//    
-//    KeychainItemWrapper *keychain = [self shareZQKeychain];
-//    return [keychain objectForKey:key];
-//}
-//
-//+ (void)removeSecretForKey:(NSString *)key {
-////    KeychainItemWrapper *keychain = [self shareZQKeychain];
-//}
-//
-//+ (void)removeAllSecrets {
-//    KeychainItemWrapper *keychain = [self shareZQKeychain];
-//    [keychain resetKeychainItem];
-//}
++(void)saveUUIDToKeyChain{
+    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"UUID" accessGroup:@"com.jinyefeilin.GenericKeychain"];
+    NSString *string = [keychainItem objectForKey: (__bridge id)kSecAttrGeneric];
+    if([string isEqualToString:@""] || !string){
+        [keychainItem setObject:[self getUUIDString] forKey:(__bridge id)kSecAttrGeneric];
+    }
+}
+
++(NSString *)readUUIDFromKeyChain{
+    KeychainItemWrapper *keychainItemm = [[KeychainItemWrapper alloc] initWithIdentifier:@"UUID" accessGroup:@"com.jinyefeilin.GenericKeychain"];
+    NSString *UUID = [keychainItemm objectForKey: (__bridge id)kSecAttrGeneric];
+    return UUID;
+}
+
++ (NSString *)getUUIDString
+{
+    NSString *uuidString = [UIDevice currentDevice].identifierForVendor.UUIDString;
+    return uuidString;
+}
 
 @end

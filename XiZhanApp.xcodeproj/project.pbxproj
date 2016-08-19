@@ -70,7 +70,6 @@
 		F07F46FB1D264AEA00DCFD78 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F07F46F51D264AEA00DCFD78 /* MBProgressHUD.bundle */; };
 		F07F46FC1D264AEA00DCFD78 /* RequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F07F46F71D264AEA00DCFD78 /* RequestHelper.m */; };
 		F07F46FD1D264AEA00DCFD78 /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F07F46F91D264AEA00DCFD78 /* RequestManager.m */; };
-		F08142DF1D05553C000C001E /* GSKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = F08142DE1D05553C000C001E /* GSKeychain.m */; };
 		F091B9BA1D3DC647005B4688 /* CapacityListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F091B9B91D3DC647005B4688 /* CapacityListViewController.m */; };
 		F092EEC31CE6B79500353351 /* MsgType1TabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F092EEC11CE6B79500353351 /* MsgType1TabCell.m */; };
 		F092EEC41CE6B79500353351 /* MsgType1TabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F092EEC21CE6B79500353351 /* MsgType1TabCell.xib */; };
@@ -106,6 +105,8 @@
 		F0E396CE1CE1BA5400D4137E /* UIViewController+AYCNavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E396CC1CE1BA5400D4137E /* UIViewController+AYCNavigationItem.m */; };
 		F0E396D71CE1EB8C00D4137E /* ServeTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E396D51CE1EB8C00D4137E /* ServeTabCell.m */; };
 		F0E396D81CE1EB8C00D4137E /* ServeTabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0E396D61CE1EB8C00D4137E /* ServeTabCell.xib */; };
+		F0E997B71D66F4C700650B60 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E997B61D66F4C700650B60 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		F0E997B91D66F6ED00650B60 /* KeychainAccessGroups.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0E997B81D66F6ED00650B60 /* KeychainAccessGroups.plist */; };
 		F0ED7A211CE4676300369D33 /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0ED7A201CE4676300369D33 /* MessageModel.m */; };
 		F0F18BDA1CF845B000BD675F /* InfoClassifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F18BD91CF845B000BD675F /* InfoClassifyViewController.m */; };
 		F0F379D31CE07AD90047A469 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F379D21CE07AD90047A469 /* main.m */; };
@@ -237,8 +238,6 @@
 		F07F46F71D264AEA00DCFD78 /* RequestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestHelper.m; sourceTree = "<group>"; };
 		F07F46F81D264AEA00DCFD78 /* RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManager.h; sourceTree = "<group>"; };
 		F07F46F91D264AEA00DCFD78 /* RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestManager.m; sourceTree = "<group>"; };
-		F08142DD1D05553C000C001E /* GSKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GSKeychain.h; sourceTree = "<group>"; };
-		F08142DE1D05553C000C001E /* GSKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GSKeychain.m; sourceTree = "<group>"; };
 		F091B9B81D3DC647005B4688 /* CapacityListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CapacityListViewController.h; sourceTree = "<group>"; };
 		F091B9B91D3DC647005B4688 /* CapacityListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CapacityListViewController.m; sourceTree = "<group>"; };
 		F092EEC01CE6B79500353351 /* MsgType1TabCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MsgType1TabCell.h; sourceTree = "<group>"; };
@@ -302,6 +301,9 @@
 		F0E396D41CE1EB8C00D4137E /* ServeTabCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServeTabCell.h; sourceTree = "<group>"; };
 		F0E396D51CE1EB8C00D4137E /* ServeTabCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServeTabCell.m; sourceTree = "<group>"; };
 		F0E396D61CE1EB8C00D4137E /* ServeTabCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServeTabCell.xib; sourceTree = "<group>"; };
+		F0E997B51D66F4C700650B60 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		F0E997B61D66F4C700650B60 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		F0E997B81D66F6ED00650B60 /* KeychainAccessGroups.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KeychainAccessGroups.plist; sourceTree = "<group>"; };
 		F0ED7A1F1CE4676300369D33 /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
 		F0ED7A201CE4676300369D33 /* MessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageModel.m; sourceTree = "<group>"; };
 		F0F18BD81CF845B000BD675F /* InfoClassifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoClassifyViewController.h; sourceTree = "<group>"; };
@@ -722,6 +724,7 @@
 			isa = PBXGroup;
 			children = (
 				F0F379FD1CE07B280047A469 /* PrefixHeader.pch */,
+				F0E997B81D66F6ED00650B60 /* KeychainAccessGroups.plist */,
 				F0F379D21CE07AD90047A469 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -826,8 +829,8 @@
 				F0F37A011CE07B280047A469 /* Utility.m */,
 				F0CE7FE21D12AA20002B835C /* ZQKeyChain.h */,
 				F0CE7FE31D12AA20002B835C /* ZQKeyChain.m */,
-				F08142DD1D05553C000C001E /* GSKeychain.h */,
-				F08142DE1D05553C000C001E /* GSKeychain.m */,
+				F0E997B51D66F4C700650B60 /* KeychainItemWrapper.h */,
+				F0E997B61D66F4C700650B60 /* KeychainItemWrapper.m */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -992,6 +995,7 @@
 				F0088C851CE6BE8300AF6EAF /* plus.png in Resources */,
 				F0F379E11CE07AD90047A469 /* LaunchScreen.storyboard in Resources */,
 				F00007E71CF6CAA100479EFB /* about_info.png in Resources */,
+				F0E997B91D66F6ED00650B60 /* KeychainAccessGroups.plist in Resources */,
 				F0DC51591CE84CB400CE29AD /* ImgCell.xib in Resources */,
 				F09B7C831D49F7EB004754C1 /* floor-2.jpg in Resources */,
 				F07F46FB1D264AEA00DCFD78 /* MBProgressHUD.bundle in Resources */,
@@ -1098,7 +1102,6 @@
 				F026E5EF1CFD2F9B00C22FCE /* ForgetPwdViewController.m in Sources */,
 				F0F37A0E1CE07B280047A469 /* Utility.m in Sources */,
 				F0DE189C1D41B32800C4280A /* ZQPickerView.m in Sources */,
-				F08142DF1D05553C000C001E /* GSKeychain.m in Sources */,
 				F0088C931CE6BE8300AF6EAF /* MImaCell.m in Sources */,
 				F0088C8A1CE6BE8300AF6EAF /* MHeadImaView.m in Sources */,
 				F0186CC41D00129100F90CE1 /* TaxiClassifyViewController.m in Sources */,
@@ -1107,6 +1110,7 @@
 				F04A71EA1D0132A4006E4ADA /* TaxiMsgTableCell.m in Sources */,
 				F0F37A0D1CE07B280047A469 /* User.m in Sources */,
 				F092EEC31CE6B79500353351 /* MsgType1TabCell.m in Sources */,
+				F0E997B71D66F4C700650B60 /* KeychainItemWrapper.m in Sources */,
 				F0088C8D1CE6BE8300AF6EAF /* JJPhoto.m in Sources */,
 				F0DC514F1CE84AC800CE29AD /* DJWaitingView.m in Sources */,
 				F0D1422D1D0FD8D400E76199 /* ParkTabCell.m in Sources */,
@@ -1231,7 +1235,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "1c04b2b1-b617-41a9-8df1-cae8078fb3fe";
+				PROVISIONING_PROFILE = "efe3cbdf-f1c5-42c0-a0b2-dbae5e627462";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1272,7 +1276,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "1c04b2b1-b617-41a9-8df1-cae8078fb3fe";
+				PROVISIONING_PROFILE = "efe3cbdf-f1c5-42c0-a0b2-dbae5e627462";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1296,7 +1300,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1c04b2b1-b617-41a9-8df1-cae8078fb3fe";
+				PROVISIONING_PROFILE = "efe3cbdf-f1c5-42c0-a0b2-dbae5e627462";
 			};
 			name = Debug;
 		};
@@ -1318,7 +1322,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "1c04b2b1-b617-41a9-8df1-cae8078fb3fe";
+				PROVISIONING_PROFILE = "efe3cbdf-f1c5-42c0-a0b2-dbae5e627462";
 			};
 			name = Release;
 		};
