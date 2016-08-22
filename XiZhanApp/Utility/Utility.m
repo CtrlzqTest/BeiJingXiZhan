@@ -302,9 +302,9 @@ static User *user = nil;
 
 + (void)registZhixin {
     
-        NSString *uuidKey = [UIDevice currentDevice].identifierForVendor.UUIDString;
-        NSString *secret = [self createGuidKey];
-        __weak typeof(self) weakSelf = self;
+    NSString *uuidKey = [ZQKeyChain readUUIDFromKeyChain];
+    NSString *secret = [self createGuidKey];
+    __weak typeof(self) weakSelf = self;
 
     [RequestManager postRequestWithURL:kRegistZhixinAPI paramer:@{@"appkey":uuidKey,@"appsecret":secret,@"clienttype":@"2"} success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject[@"code"] integerValue] == 0) {
@@ -325,11 +325,12 @@ static User *user = nil;
     
     NSString *uuidKey = [self getSecretWithKey:UUIDkey];
     if (uuidKey.length <= 0) {
-        uuidKey = [UIDevice currentDevice].identifierForVendor.UUIDString;
+        uuidKey = [ZQKeyChain readUUIDFromKeyChain];
         __weak typeof(self) weakSelf = self;
         
         [RequestManager getRequestWithURL:kGetUUIDSecretAPI paramer:@{@"appkey":uuidKey} success:^(NSURLSessionDataTask *task, id responseObject) {
             NSString *secretStr = responseObject[@"data"];
+            
             if ([responseObject[@"code"] integerValue] == 0 && secretStr.length > 0) {
                 
                 //                [GSKeychain setSecret:returnData[@"data"] forKey:UUIDSecret];
@@ -349,7 +350,6 @@ static User *user = nil;
         } showHUD:NO];
 
     }
-    
     
 }
 

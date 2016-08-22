@@ -106,8 +106,8 @@
 		F0E396D71CE1EB8C00D4137E /* ServeTabCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E396D51CE1EB8C00D4137E /* ServeTabCell.m */; };
 		F0E396D81CE1EB8C00D4137E /* ServeTabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0E396D61CE1EB8C00D4137E /* ServeTabCell.xib */; };
 		F0E997B71D66F4C700650B60 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E997B61D66F4C700650B60 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		F0E997B91D66F6ED00650B60 /* KeychainAccessGroups.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0E997B81D66F6ED00650B60 /* KeychainAccessGroups.plist */; };
 		F0ED7A211CE4676300369D33 /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0ED7A201CE4676300369D33 /* MessageModel.m */; };
+		F0EED6111D6A935C006C397A /* KeychainAccessGroups.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0EED6101D6A935C006C397A /* KeychainAccessGroups.plist */; };
 		F0F18BDA1CF845B000BD675F /* InfoClassifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F18BD91CF845B000BD675F /* InfoClassifyViewController.m */; };
 		F0F379D31CE07AD90047A469 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F379D21CE07AD90047A469 /* main.m */; };
 		F0F379D61CE07AD90047A469 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F379D51CE07AD90047A469 /* AppDelegate.m */; };
@@ -303,9 +303,10 @@
 		F0E396D61CE1EB8C00D4137E /* ServeTabCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ServeTabCell.xib; sourceTree = "<group>"; };
 		F0E997B51D66F4C700650B60 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		F0E997B61D66F4C700650B60 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
-		F0E997B81D66F6ED00650B60 /* KeychainAccessGroups.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KeychainAccessGroups.plist; sourceTree = "<group>"; };
 		F0ED7A1F1CE4676300369D33 /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
 		F0ED7A201CE4676300369D33 /* MessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageModel.m; sourceTree = "<group>"; };
+		F0EED6101D6A935C006C397A /* KeychainAccessGroups.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KeychainAccessGroups.plist; sourceTree = "<group>"; };
+		F0EED6121D6A9700006C397A /* XiZhanApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = XiZhanApp.entitlements; sourceTree = "<group>"; };
 		F0F18BD81CF845B000BD675F /* InfoClassifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoClassifyViewController.h; sourceTree = "<group>"; };
 		F0F18BD91CF845B000BD675F /* InfoClassifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoClassifyViewController.m; sourceTree = "<group>"; };
 		F0F379CE1CE07AD90047A469 /* XiZhanApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XiZhanApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -699,6 +700,7 @@
 		F0F379D01CE07AD90047A469 /* XiZhanApp */ = {
 			isa = PBXGroup;
 			children = (
+				F0EED6121D6A9700006C397A /* XiZhanApp.entitlements */,
 				F0F379E81CE07B280047A469 /* API */,
 				F0F379EE1CE07B280047A469 /* BaseViewControllers */,
 				F0F379FA1CE07B280047A469 /* Models */,
@@ -724,7 +726,7 @@
 			isa = PBXGroup;
 			children = (
 				F0F379FD1CE07B280047A469 /* PrefixHeader.pch */,
-				F0E997B81D66F6ED00650B60 /* KeychainAccessGroups.plist */,
+				F0EED6101D6A935C006C397A /* KeychainAccessGroups.plist */,
 				F0F379D21CE07AD90047A469 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -947,6 +949,9 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 2936LQZ357;
 						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -995,7 +1000,7 @@
 				F0088C851CE6BE8300AF6EAF /* plus.png in Resources */,
 				F0F379E11CE07AD90047A469 /* LaunchScreen.storyboard in Resources */,
 				F00007E71CF6CAA100479EFB /* about_info.png in Resources */,
-				F0E997B91D66F6ED00650B60 /* KeychainAccessGroups.plist in Resources */,
+				F0EED6111D6A935C006C397A /* KeychainAccessGroups.plist in Resources */,
 				F0DC51591CE84CB400CE29AD /* ImgCell.xib in Resources */,
 				F09B7C831D49F7EB004754C1 /* floor-2.jpg in Resources */,
 				F07F46FB1D264AEA00DCFD78 /* MBProgressHUD.bundle in Resources */,
@@ -1211,6 +1216,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -1235,7 +1241,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "efe3cbdf-f1c5-42c0-a0b2-dbae5e627462";
+				PROVISIONING_PROFILE = "9974d837-cb9b-46b7-995e-ed8a2e857a81";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1258,6 +1264,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -1276,7 +1283,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "efe3cbdf-f1c5-42c0-a0b2-dbae5e627462";
+				PROVISIONING_PROFILE = "9974d837-cb9b-46b7-995e-ed8a2e857a81";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1287,6 +1294,7 @@
 			baseConfigurationReference = CD43E78761016B7AC1D95A13 /* Pods-XiZhanApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = XiZhanApp/XiZhanApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
@@ -1300,7 +1308,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "efe3cbdf-f1c5-42c0-a0b2-dbae5e627462";
+				PROVISIONING_PROFILE = "9974d837-cb9b-46b7-995e-ed8a2e857a81";
 			};
 			name = Debug;
 		};
@@ -1309,6 +1317,7 @@
 			baseConfigurationReference = 41BD5CBE375055456DFC98EF /* Pods-XiZhanApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = XiZhanApp/XiZhanApp.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/PrefixHeader.pch";
@@ -1322,7 +1331,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "efe3cbdf-f1c5-42c0-a0b2-dbae5e627462";
+				PROVISIONING_PROFILE = "9974d837-cb9b-46b7-995e-ed8a2e857a81";
 			};
 			name = Release;
 		};

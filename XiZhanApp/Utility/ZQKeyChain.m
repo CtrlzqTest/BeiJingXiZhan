@@ -12,17 +12,26 @@
 //static KeychainItemWrapper *kechain = nil;
 @implementation ZQKeyChain
 
+/**
+ *  保存UUID到钥匙串
+ */
 +(void)saveUUIDToKeyChain{
-    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"UUID" accessGroup:@"com.jinyefeilin.GenericKeychain"];
-    NSString *string = [keychainItem objectForKey: (__bridge id)kSecAttrGeneric];
+
+    KeychainItemWrapper *keychainItem = [[KeychainItemWrapper alloc] initWithIdentifier:@"com.JinYeFeiLin.XiZhanApp" accessGroup:@"2936LQZ357.com.JinYeFeiLin.XiZhanApp"];
+    NSString *string = [keychainItem objectForKey:(__bridge id)kSecValueData];
     if([string isEqualToString:@""] || !string){
-        [keychainItem setObject:[self getUUIDString] forKey:(__bridge id)kSecAttrGeneric];
+        [keychainItem resetKeychainItem];
+        [keychainItem setObject:@"MY_APP_CREDENTIALS" forKey:(id)kSecAttrAccount];
+        [keychainItem setObject:[self getUUIDString] forKey:(__bridge id)kSecValueData];
     }
 }
 
+/**
+ *  从钥匙串获取UUID
+ */
 +(NSString *)readUUIDFromKeyChain{
-    KeychainItemWrapper *keychainItemm = [[KeychainItemWrapper alloc] initWithIdentifier:@"UUID" accessGroup:@"com.jinyefeilin.GenericKeychain"];
-    NSString *UUID = [keychainItemm objectForKey: (__bridge id)kSecAttrGeneric];
+    KeychainItemWrapper *keychainItemm = [[KeychainItemWrapper alloc] initWithIdentifier:@"com.JinYeFeiLin.XiZhanApp" accessGroup:@"2936LQZ357.com.JinYeFeiLin.XiZhanApp"];
+    NSString *UUID = [keychainItemm objectForKey:(__bridge id)kSecValueData];
     return UUID;
 }
 

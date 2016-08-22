@@ -18,6 +18,7 @@
 #import "PublishViewController.h"
 #import "IQKeyboardManager.h"
 #import "SDImageCache.h"
+#import "ZQKeyChain.h"
 
 @interface AppDelegate ()
 {
@@ -33,6 +34,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    // 保存UUID到keyChain
+    [ZQKeyChain saveUUIDToKeyChain];
     
     // 注册智信
     [Utility checkIsRegisteruuid];
