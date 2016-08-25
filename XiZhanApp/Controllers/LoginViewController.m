@@ -21,8 +21,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *tefHeght;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *loginBtnHeght;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *registTop;
-
-
 @property (weak, nonatomic) IBOutlet UITextField *userNameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passWordLabel;
 @property (weak, nonatomic) IBOutlet UIButton *autoLoginSwitch;
@@ -168,13 +166,13 @@
     }
     
     if (self.passWordLabel.text.length <= 0) {
-        [MBProgressHUD showError:@"密码不能为空" toView:nil];
+        [MBProgressHUD showError:@"亲输入密码" toView:nil];
         return NO;
     }
-    if (![Utility checkPassword:self.passWordLabel.text]) {
-        [MBProgressHUD showError:@"密码必须是6-18位数字和字母组合" toView:nil];
-        return NO;
-    }
+//    if (![Utility checkPassword:self.passWordLabel.text]) {
+//        [MBProgressHUD showError:@"密码必须是6-18位数字和字母组合" toView:nil];
+//        return NO;
+//    }
     if (!self.agreeBtn.selected) {
         [MBProgressHUD showError:@"请同意免责声明" toView:nil];
         return NO;

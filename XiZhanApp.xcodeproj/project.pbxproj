@@ -107,7 +107,6 @@
 		F0E396D81CE1EB8C00D4137E /* ServeTabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0E396D61CE1EB8C00D4137E /* ServeTabCell.xib */; };
 		F0E997B71D66F4C700650B60 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = F0E997B61D66F4C700650B60 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		F0ED7A211CE4676300369D33 /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0ED7A201CE4676300369D33 /* MessageModel.m */; };
-		F0EED6111D6A935C006C397A /* KeychainAccessGroups.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0EED6101D6A935C006C397A /* KeychainAccessGroups.plist */; };
 		F0F18BDA1CF845B000BD675F /* InfoClassifyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F18BD91CF845B000BD675F /* InfoClassifyViewController.m */; };
 		F0F379D31CE07AD90047A469 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F379D21CE07AD90047A469 /* main.m */; };
 		F0F379D61CE07AD90047A469 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F379D51CE07AD90047A469 /* AppDelegate.m */; };
@@ -305,7 +304,6 @@
 		F0E997B61D66F4C700650B60 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		F0ED7A1F1CE4676300369D33 /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageModel.h; sourceTree = "<group>"; };
 		F0ED7A201CE4676300369D33 /* MessageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageModel.m; sourceTree = "<group>"; };
-		F0EED6101D6A935C006C397A /* KeychainAccessGroups.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = KeychainAccessGroups.plist; sourceTree = "<group>"; };
 		F0EED6121D6A9700006C397A /* XiZhanApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = XiZhanApp.entitlements; sourceTree = "<group>"; };
 		F0F18BD81CF845B000BD675F /* InfoClassifyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoClassifyViewController.h; sourceTree = "<group>"; };
 		F0F18BD91CF845B000BD675F /* InfoClassifyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoClassifyViewController.m; sourceTree = "<group>"; };
@@ -726,7 +724,6 @@
 			isa = PBXGroup;
 			children = (
 				F0F379FD1CE07B280047A469 /* PrefixHeader.pch */,
-				F0EED6101D6A935C006C397A /* KeychainAccessGroups.plist */,
 				F0F379D21CE07AD90047A469 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -1000,7 +997,6 @@
 				F0088C851CE6BE8300AF6EAF /* plus.png in Resources */,
 				F0F379E11CE07AD90047A469 /* LaunchScreen.storyboard in Resources */,
 				F00007E71CF6CAA100479EFB /* about_info.png in Resources */,
-				F0EED6111D6A935C006C397A /* KeychainAccessGroups.plist in Resources */,
 				F0DC51591CE84CB400CE29AD /* ImgCell.xib in Resources */,
 				F09B7C831D49F7EB004754C1 /* floor-2.jpg in Resources */,
 				F07F46FB1D264AEA00DCFD78 /* MBProgressHUD.bundle in Resources */,
@@ -1241,7 +1237,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
-				PROVISIONING_PROFILE = "9974d837-cb9b-46b7-995e-ed8a2e857a81";
+				PROVISIONING_PROFILE = "834aac72-ddb9-47f4-b69d-10c3b59b518c";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1283,7 +1279,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "9974d837-cb9b-46b7-995e-ed8a2e857a81";
+				PROVISIONING_PROFILE = "834aac72-ddb9-47f4-b69d-10c3b59b518c";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1308,7 +1304,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9974d837-cb9b-46b7-995e-ed8a2e857a81";
+				PROVISIONING_PROFILE = "834aac72-ddb9-47f4-b69d-10c3b59b518c";
 			};
 			name = Debug;
 		};
@@ -1331,7 +1327,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JinYeFeiLin.XiZhanApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9974d837-cb9b-46b7-995e-ed8a2e857a81";
+				PROVISIONING_PROFILE = "834aac72-ddb9-47f4-b69d-10c3b59b518c";
 			};
 			name = Release;
 		};
