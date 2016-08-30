@@ -289,8 +289,8 @@
         self.imgString = [NSString stringWithFormat:@"1"];
     }
     
-    NSDictionary *dict = @{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":self.fieldOfUser.text,@"imageurl":self.imgString,@"createuser":[User shareUser].userId,@"author":[User shareUser].tel,@"department":@"0",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0",@"pushRole":@""};
-    
+    NSDictionary *dict = @{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":self.fieldOfUser.text,@"imageurl":self.imgString,@"createuser":[User shareUser].zid,@"author":[User shareUser].tel,@"department":@"0",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0",@"pushRole":@""};
+    NSLog(@"zid:%@",[User shareUser].zid);
     [RequestManager postWithURL:kMenuAdd paramer:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@",responseObject[@"errmsg"]);
         if ([responseObject[@"code"] integerValue] == 0)
@@ -304,7 +304,7 @@
         }
         else
         {
-            [MBProgressHUD showError:@"提交失败！" toView:nil];
+            [MBProgressHUD showError:responseObject[@"errmsg"] toView:nil];
         }
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
 //         [MBProgressHUD showError:@"提交失败！" toView:nil];

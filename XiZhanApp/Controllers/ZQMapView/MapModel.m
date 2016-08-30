@@ -30,6 +30,9 @@
         }else if([dict[@"Floor"] isEqualToString:@"01B2"]) {
             model.imageType = MapImageType2;
             model.title = [dict[@"Name"] stringByAppendingString:@"(负二层)"];
+        }else if([dict[@"Floor"] isEqualToString:@"01F1"]){
+            model.imageType = MapImageType3;
+            model.title = [dict[@"Name"] stringByAppendingString:@"(南北广场)"];
         }
         model.pinTag = tag;
         [tmpArray addObject:model];

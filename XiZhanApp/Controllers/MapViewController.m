@@ -98,12 +98,20 @@
             }
             [weakSelf groupPinviews:_dataArray];
             [weakSelf.tableView reloadData];
+            // 循序判断地图上是否有设施
             if ([_groupArray[0] count] > 0) {
+                
                 [weakSelf.mapView resetMapView:_groupArray[MapImageType1 - 1]];
-            }else {
+                
+            }else if([_groupArray[1] count] > 0){
+                
                 [weakSelf.mapView resetMapView:_groupArray[MapImageType2 - 1]];
+                
+            }else {
+                
+                [weakSelf.mapView resetMapView:_groupArray[MapImageType3 - 1]];
+                
             }
-            
             [weakSelf showPositionList];
         }
         
@@ -119,6 +127,7 @@
     _groupArray = [NSMutableArray array];
     NSMutableArray *tmpArray1 = [NSMutableArray array];
     NSMutableArray *tmpArray2 = [NSMutableArray array];
+    NSMutableArray *tmpArray3 = [NSMutableArray array];
     
     for (MapModel *model in _dataArray) {
         
@@ -129,10 +138,14 @@
         }else if(model.imageType == MapImageType2){
             
             [tmpArray2 addObject:model];
+            
+        }else {
+            [tmpArray3 addObject:model];
         }
     }
     [_groupArray addObject:tmpArray1];
     [_groupArray addObject:tmpArray2];
+    [_groupArray addObject:tmpArray3];
 }
 
 #pragma mark -- ZQMapViewDelegate
