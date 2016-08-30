@@ -289,7 +289,7 @@
         self.imgString = [NSString stringWithFormat:@"1"];
     }
     
-    NSDictionary *dict = @{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":self.fieldOfUser.text,@"imageurl":self.imgString,@"createuser":[User shareUser].zid,@"author":[User shareUser].tel,@"department":@"0",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0",@"pushRole":@""};
+    NSDictionary *dict = @{@"nodeid":self.parentIdString,@"title":self.fieldOfUser.text,@"subtitle":self.fieldOfUser.text,@"content":self.miaoShuTextView.text,@"summary":self.fieldOfUser.text,@"imageurl":self.imgString,@"createuser":[User shareUser].tel,@"author":[User shareUser].tel,@"department":@"0",@"keyword":@"0",@"istop":@"0",@"isrecommend":@"0",@"ishot":@"0",@"iscolor":@"0",@"iscomment":@"0",@"pushRole":@""};
     NSLog(@"zid:%@",[User shareUser].zid);
     [RequestManager postWithURL:kMenuAdd paramer:dict success:^(NSURLSessionDataTask *task, id responseObject) {
         NSLog(@"%@",responseObject[@"errmsg"]);
