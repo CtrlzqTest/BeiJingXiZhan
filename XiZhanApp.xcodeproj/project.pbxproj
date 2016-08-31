@@ -77,6 +77,7 @@
 		F09B7C831D49F7EB004754C1 /* floor-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F09B7C811D49F7EB004754C1 /* floor-2.jpg */; };
 		F0C4AAFD1CE2E3520067E986 /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F0C4AAFA1CE2E3520067E986 /* MBProgressHUD.bundle */; };
 		F0C4AAFE1CE2E3520067E986 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C4AAFC1CE2E3520067E986 /* MBProgressHUD+Add.m */; };
+		F0C86FAA1D6ED822006594E2 /* floor1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F0C86FA91D6ED822006594E2 /* floor1.jpg */; };
 		F0C9FD441D38BA3E00FFDE8E /* LineSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C9FD431D38BA3E00FFDE8E /* LineSearchViewController.m */; };
 		F0C9FD471D38BC1400FFDE8E /* LineWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C9FD461D38BC1400FFDE8E /* LineWebViewController.m */; };
 		F0C9FD4A1D38C08A00FFDE8E /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C9FD491D38C08A00FFDE8E /* MapViewController.m */; };
@@ -247,6 +248,7 @@
 		F0C4AAFA1CE2E3520067E986 /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
 		F0C4AAFB1CE2E3520067E986 /* MBProgressHUD+Add.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Add.h"; sourceTree = "<group>"; };
 		F0C4AAFC1CE2E3520067E986 /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
+		F0C86FA91D6ED822006594E2 /* floor1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = floor1.jpg; sourceTree = "<group>"; };
 		F0C9FD421D38BA3E00FFDE8E /* LineSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineSearchViewController.h; sourceTree = "<group>"; };
 		F0C9FD431D38BA3E00FFDE8E /* LineSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineSearchViewController.m; sourceTree = "<group>"; };
 		F0C9FD451D38BC1400FFDE8E /* LineWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineWebViewController.h; sourceTree = "<group>"; };
@@ -812,6 +814,7 @@
 		F0F379FE1CE07B280047A469 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F0C86FA91D6ED822006594E2 /* floor1.jpg */,
 				F00007E61CF6CAA100479EFB /* about_info.png */,
 				F09B7C801D49F7EB004754C1 /* floor-1.jpg */,
 				F09B7C811D49F7EB004754C1 /* floor-2.jpg */,
@@ -987,6 +990,7 @@
 				F0088C921CE6BE8300AF6EAF /* MGroupCell.xib in Resources */,
 				F0088C9D1CE6BE8300AF6EAF /* LQPhotoViewCell.xib in Resources */,
 				F092EEC41CE6B79500353351 /* MsgType1TabCell.xib in Resources */,
+				F0C86FAA1D6ED822006594E2 /* floor1.jpg in Resources */,
 				F0088C821CE6BE8300AF6EAF /* ico_check_select.png in Resources */,
 				F0088C831CE6BE8300AF6EAF /* ico_check_select@2x.png in Resources */,
 				F0088C7C1CE6BE8300AF6EAF /* close.png in Resources */,

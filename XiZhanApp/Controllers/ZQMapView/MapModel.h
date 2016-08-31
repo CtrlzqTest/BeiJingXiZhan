@@ -13,7 +13,7 @@
 typedef enum : NSUInteger {
     MapImageType1 = 1, // 负一层
     MapImageType2,      // 负二层
-    MapImageType3,
+    MapImageType3,      // 南北广场
 } MapImageType;
 
 @interface MapModel : NSObject

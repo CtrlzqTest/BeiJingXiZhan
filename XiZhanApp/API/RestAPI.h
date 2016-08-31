@@ -10,18 +10,20 @@
 
 #import <UIKit/UIKit.h>
 
-//#define BaseAPI                 @"http://192.168.16.8:8080/bjws/"  // 测试
 
-//#define BaseAPI                 @"http://222.240.172.197:8081/"  // 智信接口地址
 
-#define BaseAPI                 @"http://42.62.18.88:8037/bjws/"  // 发布接口地址
+//#define BaseAPI                 @"http://222.240.172.197:8081/"  // 智信测试接口地址
 
 //#define BaseAPI                 @"http://42.62.18.88:8081/"  // 发布接口地址智信
+
+#define BaseAPI                 @"http://42.62.18.88:8037/bjws/"  // 发布接口地址
 
 #define BaseXiZhanImgAPI        @"http://42.62.18.88:8080/"  // 发布环境图片显示地址
 
 #define BaseXiZhanAPI           @"http://42.62.18.88:8081/"  // 发布环境智信接口地址
 
+//#define BaseAPI                 @"http://192.168.16.8:8080/bjws/"  // 测试
+//
 //#define BaseXiZhanImgAPI        @"http://222.240.172.197/"     // 测试环境图片显示地址
 //
 //#define BaseXiZhanAPI           @"http://222.240.172.197:8081/" // 测试环境图片接口地址
@@ -112,6 +114,6 @@ static NSString *const ZQPublishInfoViewControllerId = @"publishInfoViewControll
 // 推送
 //#define AppKey @"b4b8bd0f427af09839e23286"    // 测试
 
-#define AppKey @"6816fee48fb77859f7a9011b"
+#define AppKey @"6816fee48fb77859f7a9011b"     // 发布
 
 #endif

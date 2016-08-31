@@ -195,6 +195,7 @@
             image = [UIImage imageNamed:@"floor-2.jpg"];
             break;
         case MapImageType3:
+            image = [UIImage imageNamed:@"floor1.jpg"];
             break;
         default:
             break;
