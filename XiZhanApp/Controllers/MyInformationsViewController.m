@@ -16,7 +16,7 @@
 #import "MsgType1TabCell.h"
 #import "PublishViewController.h"
 
-@interface MyInformationsViewController ()<UITableViewDelegate,UITableViewDataSource,PublishViewControllerDelegate>
+@interface MyInformationsViewController ()<UITableViewDelegate,UITableViewDataSource,PublishViewControllerDelegate,InformationDetailDelegate>
 {
     NSInteger _page;
     BOOL _shouldRefresh; // 是否需要刷新数据
@@ -40,6 +40,13 @@
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addOtherInfo) name:ZQAddOtherInfoNotication object:nil];
     
     [self getData];
+
+}
+
+#pragma mark 非法消息删除代理方法
+-(void)removeMethod
+{
+     _shouldRefresh = YES;
 }
 
 -(void)backMethod
@@ -269,10 +276,7 @@
 
 - (void)requestMoreData {
     
-    
-    
 }
-
 
 - (void)editAction:(id)sender {
     
@@ -315,8 +319,9 @@
         [self.tableView reloadData];
         [model updateWithCondition:[NSString stringWithFormat:@"msgid = '%@'",model.msgid]];
     }
-    
+    NSLog(@"model.status:%@",model.status);
     InformationDetailViewController *vc = [[InformationDetailViewController alloc]init];
+    vc.delegate = self;
     vc.model = model;
     // 如果是出租车运力
     BOOL flag = NO;
@@ -329,4 +334,5 @@
     
     [self.navigationController pushViewController:vc animated:YES];
 }
+
 @end
