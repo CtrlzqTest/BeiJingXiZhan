@@ -9,10 +9,16 @@
 #import "BaseViewController.h"
 
 @class MessageModel;
+
+@protocol InformationDetailDelegate <NSObject>
+-(void)removeMethod;
+@end
+
 @interface InformationDetailViewController : BaseViewController
 
 @property(nonatomic,copy)NSString *webUrl;
 @property(nonatomic,strong)MessageModel *model;
 @property(nonatomic,assign)BOOL isShowSign;
+@property(nonatomic,assign)id <InformationDetailDelegate> delegate;
 
 @end

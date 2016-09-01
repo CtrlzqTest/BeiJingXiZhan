@@ -24,47 +24,76 @@ static NSString *indentify = @"proCellX";
 @property(nonatomic,retain)UITextField *titleTF;
 @property(nonatomic,retain)UITextView *contentTV;
 @property(nonatomic,retain)WQLPaoMaView *paoma;
+@property(nonatomic,strong)NSDictionary *dict;
 @end
 
 @implementation InformationDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = [UIColor whiteColor];
+    __weak typeof(self) weakSelf = self;
+    [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
+        [weakSelf.navigationController popViewControllerAnimated:YES];
+    }];
+    [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 40*ProportionWidth) title:@"详情" fontSize:17.0];
     
+    _dict = [[NSDictionary alloc]init];
     // 出租车运力消息签到
     if ([self.model.nodeid isEqualToString:@"d5af4d6b_180e_4ac7_a562_f3ae0a585e02"] && [[User shareUser].type isEqualToString:@"5"]) {
         self.isShowSign = YES;
     }else{
         self.isShowSign = NO;
     }
+    [self getData];
     
-    if ([self.model.submitclient isEqualToString:@"2"]) {
-        [self initView];
-    }
-    else if([self.model.submitclient isEqualToString:@"1"])
-    {
-        [self initWebView];
-    }
-    
-    //[self initWebView];
     // Do any additional setup after loading the view.
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)getData
+{
+    __weak typeof(self) weakSelf = self;
+    [RequestManager getRequestWithURL:KGetContentsDetail paramer:@{@"contentid":self.model.msgid} success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSLog(@"%@",responseObject[@"data"]);
+        weakSelf.dict = responseObject[@"data"];
+        if ([weakSelf.dict[@"status"]integerValue] == 4) {
+            [weakSelf.model deleteWithPropName:@"msgid"value:weakSelf.model.msgid];
+            [weakSelf initUnAcceptedView];
+        }
+        else
+        {
+            if ([weakSelf.model.submitclient isEqualToString:@"2"]) {
+                [weakSelf initView];
+            }
+            else if([weakSelf.model.submitclient isEqualToString:@"1"])
+            {
+                [weakSelf initWebView];
+            }
+        }
+
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        
+    } showHUD:NO];
+}
+#pragma mark unAcceptedMethod
+-(void)initUnAcceptedView
+{
+    [self.delegate removeMethod];
+    UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, KHeight/2, KWidth, 50*ProportionHeight)];
+    label.backgroundColor = [UIColor clearColor];
+    label.textColor = mainColor;
+    label.textAlignment = NSTextAlignmentCenter;
+    label.font = [UIFont systemFontOfSize:18.0];
+    label.text = [NSString stringWithFormat:@"违反相关政策法规,已被删除"];
+    [self.view addSubview:label];
+}
+
 #pragma mark webMethod
 -(void)initWebView
 {
-    __weak typeof(self) weakSelf = self;
-    [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
-        [weakSelf.navigationController popViewControllerAnimated:YES];
-    }];
-//    [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 40*ProportionWidth) title:@"详情" fontSize:17.0];
-    self.title = @"详情";
-    self.view.backgroundColor = [UIColor whiteColor];
-  
     _paoma = [[WQLPaoMaView alloc] initWithFrame:CGRectMake(50*ProportionWidth,64 + 10 * ProportionHeight, KWidth-100*ProportionWidth, 40*ProportionHeight) withTitle:self.model.msgtitle];
     [self.view addSubview:_paoma];
     
@@ -79,7 +108,6 @@ static NSString *indentify = @"proCellX";
 #pragma mark uiwebviewDelegate
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    
     if (navigationType == UIWebViewNavigationTypeLinkClicked) {
         return NO;
     }
@@ -88,15 +116,36 @@ static NSString *indentify = @"proCellX";
         return YES;
     }
 }
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [MBProgressHUD showHUDAddedTo:(UIView*)[[[UIApplication sharedApplication]delegate]window] animated:YES];
+}
+//-(void)viewDidAppear:(BOOL)animated
+//{
+//    [super viewDidAppear:animated];
+//    [MBProgressHUD hideAllHUDsForView:(UIView*)[[[UIApplication sharedApplication]delegate]window] animated:YES];
+//}
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [MBProgressHUD hideAllHUDsForView:(UIView*)[[[UIApplication sharedApplication]delegate]window] animated:YES];
+}
+-(void)webViewDidStartLoad:(UIWebView *)webView
+{
+    [MBProgressHUD showHUDAddedTo:(UIView*)[[[UIApplication sharedApplication]delegate]window] animated:YES];
+}
+-(void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [MBProgressHUD hideAllHUDsForView:(UIView*)[[[UIApplication sharedApplication]delegate]window] animated:YES];
+}
+-(void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    [MBProgressHUD showError:@"网络不给力！" toView:nil];
+}
 
 -(void)initView
 {
-    // 返回按钮
-    __weak typeof(self) weakSelf = self;
-    [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
-        [weakSelf.navigationController popViewControllerAnimated:YES];
-    }];
-
     self.imageArray = [NSMutableArray array];
 
     if (![self.model.imgurl isEqualToString: @"1"])
@@ -108,8 +157,6 @@ static NSString *indentify = @"proCellX";
             [self.imageArray addObject:item];
         }
     }
-   self.view.backgroundColor = [UIColor whiteColor];
-    [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 40*ProportionWidth) title:@"详情" fontSize:17.0];
     if (self.imageArray.count == 0) {
         UICollectionViewFlowLayout *flowL = [[UICollectionViewFlowLayout alloc]init];
         

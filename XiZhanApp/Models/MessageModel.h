@@ -24,6 +24,7 @@
 @property(nonatomic,copy)NSString *msgdatestr;
 @property(nonatomic,copy)NSString *linkurl;
 @property(nonatomic,copy)NSString *submitclient;
+@property(nonatomic,copy)NSString *status;
 
 +(MessageModel *)shareTestModel;
 

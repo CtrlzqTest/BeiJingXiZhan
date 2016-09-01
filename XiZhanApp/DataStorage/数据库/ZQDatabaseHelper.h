@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 @interface ZQDatabaseHelper : NSObject
 
-
 /**
  *  将类型转换成sqlite数据类型
  *

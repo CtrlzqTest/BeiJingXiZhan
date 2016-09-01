@@ -15,17 +15,17 @@
 
 //#define BaseAPI                 @"http://42.62.18.88:8081/"  // 发布接口地址智信
 
-#define BaseAPI                 @"http://42.62.18.88:8037/bjws/"  // 发布接口地址
-
-#define BaseXiZhanImgAPI        @"http://42.62.18.88:8080/"  // 发布环境图片显示地址
-
-#define BaseXiZhanAPI           @"http://42.62.18.88:8081/"  // 发布环境智信接口地址
-
-//#define BaseAPI                 @"http://192.168.16.8:8080/bjws/"  // 测试
+//#define BaseAPI                 @"http://42.62.18.88:8037/bjws/"  // 发布接口地址
 //
-//#define BaseXiZhanImgAPI        @"http://222.240.172.197/"     // 测试环境图片显示地址
+//#define BaseXiZhanImgAPI        @"http://42.62.18.88:8080/"  // 发布环境图片显示地址
 //
-//#define BaseXiZhanAPI           @"http://222.240.172.197:8081/" // 测试环境图片接口地址
+//#define BaseXiZhanAPI           @"http://42.62.18.88:8081/"  // 发布环境智信接口地址
+
+#define BaseAPI                 @"http://192.168.16.8:8080/bjws/"  // 测试
+
+#define BaseXiZhanImgAPI        @"http://222.240.172.197/"     // 测试环境图片显示地址
+
+#define BaseXiZhanAPI           @"http://222.240.172.197:8081/" // 测试环境图片接口地址
 
 #define kgetCodeAPI             @"app.user/getSmsCode"      // 获取验证码
 
@@ -70,6 +70,8 @@
 #define kMenuAdd                @"api/Add/PublishContent"   //添加意见
 
 //#define kMenuAdd                @"app.push/push"   //添加意见
+
+#define KGetContentsDetail      @"api/List/GetContentsDetail"  //获得详情
 
 #define kUploadFile             @"api/File/UploadFile"//上传文件
 
