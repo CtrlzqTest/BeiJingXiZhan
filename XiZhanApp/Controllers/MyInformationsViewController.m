@@ -6,6 +6,9 @@
 //  Copyright © 2016年 zhangqiang. All rights reserved.
 //
 
+//只在该列表，进行了数据库操作
+
+
 #import "MyInformationsViewController.h"
 #import "UIViewController+AYCNavigationItem.h"
 #import "LoginViewController.h"
@@ -36,6 +39,7 @@
     
     _page = 1;
     [self initView];
+    self.view.backgroundColor = [UIColor whiteColor];
     self.title = self.menuModel ? self.menuModel.menuTitle : @"我的消息";
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addOtherInfo) name:ZQAddOtherInfoNotication object:nil];
     
@@ -107,7 +111,7 @@
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
     
-    // 是否显示发布按钮,type表示该登录账户角色,alias首页哪个模块
+    // 是否显示发布按钮,type表示该登录账户角色,alias首页哪个模块，只有志愿者和服务台才能发布消息
     BOOL isShow = ([[User shareUser].type isEqualToString:@"2"] && [self.menuModel.alias isEqualToString:@"volunteer"]) || ([User shareUser].type.length > 0 && [self.menuModel.alias isEqualToString:@"service"]);
     
     if (isShow) {
@@ -115,7 +119,7 @@
             [weakSelf editAction:button];
         }];
     }else if ([self.menuModel.menuTitle isEqualToString:@""]){
-        
+     //todo what？
     }
     
     self.tableView = [[UITableView alloc]init];
@@ -147,7 +151,7 @@
 
 - (void)getData {
     
-    [self removeNodataView];
+    [self removeNodataView];//什么用
     _page = 1;
     NSString *nodeId = !self.menuModel ? @"" : self.menuModel.menuId;
     NSString *pageIndex = [NSString stringWithFormat:@"%ld",(long)_page];

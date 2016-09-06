@@ -179,14 +179,10 @@
                 myInfoVC.menuModel = model;
                 [self.navigationController pushViewController:myInfoVC animated:YES];
             }
-            
         }
-            
             break;
     }
-    
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
