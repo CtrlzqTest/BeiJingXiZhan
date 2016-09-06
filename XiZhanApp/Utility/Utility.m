@@ -137,7 +137,6 @@ static User *user = nil;
      NSMutableDictionary *param = [NSMutableDictionary dictionary];
      [param setObject:@"IOS" forKey:@"clientType"];
     
-
     [RequestManager postRequestWithURL:kCheckNewVersionAPI paramer:param success:^(NSURLSessionDataTask *task, id responseObject) {
         if ([responseObject[@"message"] isEqualToString:@"success"]) {
             NSDictionary *dict = [responseObject objectForKey:@"list"];
@@ -501,7 +500,7 @@ static User *user = nil;
             tag =  @"出租车司机";
             break;
         case 6:
-            tag =  @"军";
+            tag =  @"执法部门";
             break;
         case 7:
             tag =  @"警";

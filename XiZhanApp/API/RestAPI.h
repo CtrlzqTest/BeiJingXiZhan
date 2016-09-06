@@ -10,8 +10,6 @@
 
 #import <UIKit/UIKit.h>
 
-
-
 //#define BaseAPI                 @"http://222.240.172.197:8081/"  // 智信测试接口地址
 
 //#define BaseAPI                 @"http://42.62.18.88:8081/"  // 发布接口地址智信

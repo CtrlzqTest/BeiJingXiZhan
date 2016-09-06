@@ -32,13 +32,14 @@ static NSString *indentify = @"proCellX";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    _dict = [[NSDictionary alloc]init];
+    
     __weak typeof(self) weakSelf = self;
     [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
     [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 40*ProportionWidth) title:@"详情" fontSize:17.0];
     
-    _dict = [[NSDictionary alloc]init];
     // 出租车运力消息签到
     if ([self.model.nodeid isEqualToString:@"d5af4d6b_180e_4ac7_a562_f3ae0a585e02"] && [[User shareUser].type isEqualToString:@"5"]) {
         self.isShowSign = YES;
@@ -75,7 +76,7 @@ static NSString *indentify = @"proCellX";
         }
 
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
-        
+         [MBProgressHUD showError:@"网络不给力" toView:self.view];
     } showHUD:NO];
 }
 #pragma mark unAcceptedMethod
@@ -129,6 +130,7 @@ static NSString *indentify = @"proCellX";
 -(void)viewDidDisappear:(BOOL)animated
 {
     [super viewDidDisappear:animated];
+    [self.navigationController popViewControllerAnimated:YES];
     [MBProgressHUD hideAllHUDsForView:(UIView*)[[[UIApplication sharedApplication]delegate]window] animated:YES];
 }
 -(void)webViewDidStartLoad:(UIWebView *)webView

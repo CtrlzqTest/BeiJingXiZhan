@@ -95,7 +95,6 @@
         [resultArray addObject:model];
     }
     return resultArray;
-    
 }
 
 @end

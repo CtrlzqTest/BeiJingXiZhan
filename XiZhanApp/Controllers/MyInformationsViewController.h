@@ -6,11 +6,12 @@
 //  Copyright © 2016年 zhangqiang. All rights reserved.
 //
 
+//只在该列表，进行了数据库操作
+
 #import "BaseViewController.h"
 #import "MenuModel.h"
 @interface MyInformationsViewController : BaseViewController
 
-@property (nonatomic,copy)NSString *msgType;
 @property (nonatomic,copy)NSString *parentIdString;
 @property(nonatomic,strong)MenuModel *menuModel;
 @property (nonatomic,assign)BOOL isRemoteNotice; // 是否需要刷新数据

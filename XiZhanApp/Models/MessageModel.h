@@ -5,6 +5,8 @@
 //  Created by zhangqiang on 16/5/12.
 //  Copyright © 2016年 zhangqiang. All rights reserved.
 //
+// 注意，添加属性不要用大写字母
+// 详情类前面列表的model
 
 #import <Foundation/Foundation.h>
 #import "ZQDatabaseModel.h"
