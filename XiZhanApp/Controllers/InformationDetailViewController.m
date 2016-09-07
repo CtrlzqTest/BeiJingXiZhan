@@ -25,6 +25,7 @@ static NSString *indentify = @"proCellX";
 @property(nonatomic,retain)UITextView *contentTV;
 @property(nonatomic,retain)WQLPaoMaView *paoma;
 @property(nonatomic,strong)NSDictionary *dict;
+@property(nonatomic,assign)BOOL isremoveMethod;
 @end
 
 @implementation InformationDetailViewController
@@ -36,6 +37,9 @@ static NSString *indentify = @"proCellX";
     
     __weak typeof(self) weakSelf = self;
     [self setLeftImageBarButtonItemWithFrame:CGRectMake(0, 0, 30, 30) image:@"back" selectImage:nil action:^(AYCButton *button) {
+        if (weakSelf.isremoveMethod) {
+            [weakSelf.delegate removeMethod];
+        }
         [weakSelf.navigationController popViewControllerAnimated:YES];
     }];
     [self setTextTitleViewWithFrame:CGRectMake(180*ProportionWidth, 0, 120*ProportionWidth, 40*ProportionWidth) title:@"详情" fontSize:17.0];
@@ -74,7 +78,6 @@ static NSString *indentify = @"proCellX";
                 [weakSelf initWebView];
             }
         }
-
     } failure:^(NSURLSessionDataTask *task, NSError *error) {
          [MBProgressHUD showError:@"网络不给力" toView:self.view];
     } showHUD:NO];
@@ -82,7 +85,8 @@ static NSString *indentify = @"proCellX";
 #pragma mark unAcceptedMethod
 -(void)initUnAcceptedView
 {
-    [self.delegate removeMethod];
+    //[self.delegate removeMethod];
+    _isremoveMethod = YES;
     UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(0, KHeight/2, KWidth, 50*ProportionHeight)];
     label.backgroundColor = [UIColor clearColor];
     label.textColor = mainColor;
@@ -278,7 +282,7 @@ static NSString *indentify = @"proCellX";
     UICollectionViewFlowLayout *flowL = [[UICollectionViewFlowLayout alloc]init];
     
     //创建一个UICollectionView
-    _myCollectionV = [[UICollectionView alloc]initWithFrame:CGRectMake(0,10*ProportionHeight, KWidth, 190*ProportionHeight) collectionViewLayout:flowL];
+    _myCollectionV = [[UICollectionView alloc]initWithFrame:CGRectMake(0,74*ProportionHeight, KWidth, 110*ProportionHeight) collectionViewLayout:flowL];
     //设置代理为当前控制器
     _myCollectionV.delegate = self;
     _myCollectionV.dataSource = self;
